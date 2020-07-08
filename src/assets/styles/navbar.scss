@@ -1,0 +1,45 @@
+nav{
+    display: flex;
+    height: 72px;
+    // background-color: skyblue;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 25px;
+    align-items: center;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    background-color: white;
+    position: fixed;
+    top: 0;
+    .burger{
+        cursor: pointer;
+    }
+    .left{
+        display: flex;
+        align-items: center;
+        img{
+            margin-left: 40px;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                display: inline;
+                margin-left: 40px;
+            }
+        }
+    }
+    .right{
+        ul{
+            margin: 0;
+            padding: 0;
+            li{
+                display: inline;
+                margin-left: 40px;
+                button{
+                    width: 106px;
+                    height: 42px;
+                }
+            }
+        }
+    }
+}

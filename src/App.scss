@@ -1,0 +1,46 @@
+//   color code 
+$grey: #A5A5A5;
+$low-grey: #F4F4F4;
+
+$blue-grey: #455A64;
+$low-blue: #0288D1;
+$blue: #01579B;
+
+$dark-blue: #0288D1;
+$red: #F27272;
+$orange : #F29877;
+
+
+// buttons
+.but-solid{
+    background-color: $low-blue;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    outline: unset !important;
+}
+
+.but{
+    color: black;
+    border-radius: 8px;
+    border: 1px solid $low-blue;
+    background-color: white;
+    font-size: 16px;
+    outline: unset !important;
+}
+
+
+a{
+    color: unset;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.container{
+    padding: 0 !important;
+}
+
+@import './assets/styles/navbar';
+@import './assets/styles/home';
