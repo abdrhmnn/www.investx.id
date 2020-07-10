@@ -27,7 +27,7 @@ class Login extends Component {
                               <button>Google</button>
                               <button>Facebook</button>
                           </div>
-                          <p className="or">or</p>
+                          <p className="or">Or</p>
                           <form >
                               <div className="w-inp">
                                 <input type="email" placeholder='Email'/>
