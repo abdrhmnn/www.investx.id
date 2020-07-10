@@ -7,13 +7,14 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/home/Home.jsx';
+import Login from './components/auth/Login';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Home />
-       
+        <Route exact path='/' component={Home}/>
+        <Route path='/login' component={Login}/>
       </Router>
     );
   }
