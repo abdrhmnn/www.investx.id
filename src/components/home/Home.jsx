@@ -3,6 +3,7 @@ import Navbar from '../shared/Navbar';
 import ojk from '../../assets/img/ojk.svg'
 import x from '../../assets/img/bg/x.svg'
 import human from '../../assets/img/bg/human.svg'
+import Footer from '../shared/Footer';
 
 class Home extends Component {
     render() {
@@ -36,6 +37,7 @@ class Home extends Component {
                     ))
                 }
                 </div>
+                <Footer />
 
             </div>
         );
