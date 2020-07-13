@@ -8,13 +8,17 @@ import {
 } from "react-router-dom";
 import Home from './components/home/Home.jsx';
 import Login from './components/auth/Login';
+import Register from './components/auth/SignUp';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Route exact path='/' component={Home}/>
-        <Route path='/login' component={Login}/>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/signup' component={Register}/>
+        </Switch>
       </Router>
     );
   }
