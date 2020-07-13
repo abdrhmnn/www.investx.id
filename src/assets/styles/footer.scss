@@ -5,7 +5,6 @@ footer{
     background-color: #021F59;
     width: 100%;
     justify-content: space-between;
-    padding: 0 25px;
     align-items: center;
     text-align: left;
     
@@ -27,5 +26,39 @@ footer{
         display: flex;
         
         
+    }
+}
+
+@media only screen and (max-width: 768px){
+    footer{
+        display: flex;
+        height: 336px;
+        background-color: skyblue;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0 25px;
+        align-items: center;
+        text-align: left;
+        
+        color: white;
+    
+        header{
+            color: #F27272;
+            font-weight: bold;
+            font-size: 16px;
+            padding-bottom: 5px;
+        }
+    
+        .left{
+            display: flex;
+            
+            align-items: center;
+            
+        }
+        .right{
+            display: flex;
+            
+            
+        }
     }
 }
