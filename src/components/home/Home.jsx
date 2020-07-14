@@ -47,7 +47,7 @@ class Home extends Component {
 }
 
 
-const mapStateToProp = (state)=>{
+const mapStateToProps = (state)=>{
     return {
         data : state.number
     }
@@ -55,4 +55,4 @@ const mapStateToProp = (state)=>{
 
 
 
-export default connect(mapStateToProp)(Home);
+export default connect(mapStateToProps)(Home);
