@@ -10,6 +10,7 @@ import Home from './components/home/Home.jsx';
 import Login from './components/auth/Login';
 import Register from './components/auth/SignUp';
 
+import Footer from './components/shared/Footer';
 class App extends Component {
   render() {
     return (
@@ -17,7 +18,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path='/login' component={Login}/>
-          <Route path='/signup' component={Register}/>
+          {/* <Route path='/footer' component={Footer}/> */}
         </Switch>
       </Router>
     );

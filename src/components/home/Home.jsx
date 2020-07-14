@@ -3,10 +3,15 @@ import Navbar from '../shared/Navbar';
 import ojk from '../../assets/img/ojk.svg'
 import x from '../../assets/img/bg/x.svg'
 import human from '../../assets/img/bg/human.svg'
+import Footer from '../shared/Footer';
+import { connect } from 'react-redux';
 
 class Home extends Component {
     render() {
         const arr = [1,2,3,4]
+        console.log('====================================');
+        console.log(this.props.data);
+        console.log('====================================');
         return (
             <div className='home' style={{backgroundImage: `url(${x}), url(${human})`}}>
                 <Navbar />
@@ -36,10 +41,18 @@ class Home extends Component {
                     ))
                 }
                 </div>
-
             </div>
         );
     }
 }
 
-export default Home;
+
+const mapStateToProp = (state)=>{
+    return {
+        data : state.number
+    }
+}
+
+
+
+export default connect(mapStateToProp)(Home);
