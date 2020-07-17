@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import logo from '../../assets/img/logo.svg'
+import logo from '../../assets/img/logo-white.svg'
 import {Link} from 'react-router-dom'
 import gogico from  '../../assets/img/google.svg'
 import fb from  '../../assets/img/fb.svg'
+import jeruk from '../../assets/img/bg/jeruk.jpg'
+
 
 
 class Register extends Component {
@@ -16,7 +18,7 @@ class Register extends Component {
             <div>
               <div className="signup">
                     <img className="logo" src={logo} alt="logo"/>    
-                  <div className="w-left">
+                  <div className="w-left" style={{backgroundImage: `url(${jeruk})`}}>
                       <div className="box-title">
                           <p className='title'>Kemudahan ber investasi dalam genggaman</p>
                           <p className='t-foot'>Daftarkan bisnis mu atau bergabung sebagai Investor secara gratis.</p>
@@ -58,16 +60,6 @@ class Register extends Component {
                                     <input type="password" placeholder='Password Confirmation'/>
                                 </div>
                               </div>
-
-                              {/* <div className="w-forgot">
-                                  <div className="w-check">
-                                        <div className="cbox" onClick={()=> this.setState({rememberMe : !this.state.rememberMe})}>
-                                        {this.state.rememberMe?<i className="fas fa-check"></i>:null}
-                                        </div>
-                                        <span>Remember me</span>
-                                  </div>
-                                  <Link to='/' className="forgot">Forgot Password?</Link>
-                              </div> */}
                               <button className='but-login' type='submit'>Sign Up</button>
                               <hr className='s-b'/>
                               <p className="term">By Signing Up I agree to <Link to='/'>InvestX’s Term of Service</Link> and <Link to='/'>Privacy Policy</Link> </p>

@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         const arr = [1,2,3,4]
         console.log('====================================');
-        console.log(this.props.data);
+        console.log(this.props);
         console.log('====================================');
         return (
             <div className='home' style={{backgroundImage: `url(${x}), url(${human})`}}>
@@ -29,7 +29,7 @@ class Home extends Component {
                 <div className="last-invest">
                 {
                     arr.map((res,i)=>(
-                        <div className="card-last" key={i}>
+                        <div className="card-last" key={i} onClick={this.props.hahaFunct}>
                             <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt=""/>
                             <p className="name">
                                 Kemal Aditya Invested <span>$1000 </span>
@@ -40,6 +40,7 @@ class Home extends Component {
                         </div>
                     ))
                 }
+                <button onClick={()=>this.props.hahaFunct()}>dfsafasdfa</button>
                 </div>
             </div>
         );
@@ -53,6 +54,15 @@ const mapStateToProps = (state)=>{
     }
 }
 
+const mapDispatchToProps = (dispatch) =>{
+    return {
+        hahaFunct : ()=>{
+            const action = {type :'HAHA'}
+            dispatch(action)
+        } 
+    }
+}
 
 
-export default connect(mapStateToProps)(Home);
+
+export default connect(mapStateToProps,mapDispatchToProps )(Home);

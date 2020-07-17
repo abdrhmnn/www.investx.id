@@ -36,7 +36,7 @@ class Navbar extends Component {
                         <li> <Link>How it works</Link> </li>
                         <li> <Link>About Us</Link> </li>
                         <li> <Link>FAQ</Link> </li>
-                        <li> <Link><button className="but">Sign In</button></Link> </li>
+                        <li> <Link to='/login'><button className="but">Sign In</button></Link> </li>
                     </ul>
                 </div>
             </nav>

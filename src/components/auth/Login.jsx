@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../../assets/img/logo.svg'
+import logo from '../../assets/img/logo-white.svg'
 import {Link} from 'react-router-dom'
 import gogico from  '../../assets/img/google.svg'
 import fb from  '../../assets/img/fb.svg'
+import jeruk from '../../assets/img/bg/jeruk.jpg'
 
 
 class Login extends Component {
@@ -10,13 +11,35 @@ class Login extends Component {
         hidePass : true,
         rememberMe : false,
         isSignUp : false,
+        email : '',
+        password : '',
+        isInvalid : false
+    }
+
+    handleChange = (e)=>{
+        this.setState({
+            [e.target.name] : e.target.value
+        }, ()=> this.setState({isInvalid : false}))
+    }
+
+    handleSubmit = (e)=>{
+        e.preventDefault()
+        const dummyuser = {
+            email : 'kemal@kemal.com',
+            password : 'kemal'
+        }
+        if (this.state.email === dummyuser.email && this.state.password === dummyuser.password) {
+            this.props.history.push('/term')
+        }else{
+            this.setState({isInvalid : true})
+        }
     }
     render() {
         return (
             <div>
               <div className="login">
                     <img className="logo" src={logo} alt="logo"/>    
-                  <div className="w-left">
+                  <div className="w-left"  style={{backgroundImage: `url(${jeruk})`}}>
                       <div className="box-title">
                           <p className='title'>Kemudahan ber investasi dalam genggaman</p>
                           <p className='t-foot'>Daftarkan bisnis mu atau bergabung sebagai Investor secara gratis.</p>
@@ -33,12 +56,12 @@ class Login extends Component {
                               <button> <img src={fb} alt=""/> Facebook</button>
                           </div>
                           <p className="or">Or</p>
-                          <form >
+                          <form onSubmit={this.handleSubmit}>
                               <div className="w-inp">
-                                <input type="email" placeholder='Email'/>
+                                <input type="email" name='email' value={this.state.email} onChange={this.handleChange} placeholder='Email'/>
                               </div>
                               <div className="w-inp">
-                                <input placeholder="Password" type={this.state.hidePass?'password' :'text' }/>
+                                <input placeholder="Password" name='password' value={this.state.password} onChange={this.handleChange} type={this.state.hidePass?'password' :'text' }/>
                                 <i onClick={()=> this.setState({hidePass : !this.state.hidePass})} class={this.state.hidePass?"far fa-eye":"far fa-eye-slash"}></i>
                               </div>
                               <div className="w-forgot">
@@ -51,6 +74,7 @@ class Login extends Component {
                                   <Link to='/' className="forgot">Forgot Password?</Link>
                               </div>
                               <button className='but-login' type='submit'>Log in</button>
+                              <div className="error">{this.state.isInvalid? 'Sorry, email or password you entered is incorrect' : null }</div>
                               <hr className='s-b'/>
                               <p className="sign-up">Dont Have Account? <Link to='/signup'>Sign Up</Link> </p>
                           </form>

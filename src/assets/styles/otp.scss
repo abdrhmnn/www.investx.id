@@ -1,0 +1,78 @@
+.otp{
+    height: 100vh;
+    position: fixed ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000a3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .box-otp{
+        width: 933px;
+        height: 661px;
+        left: 254px;
+        top: 119px;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .title{
+            font-size: 36px;
+            font-weight: 900;
+        }
+        .desc{
+            width: 409px;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 63px;
+        }
+        form{
+            margin-bottom: 30px;
+            input{
+                border: 1px solid rgba(36, 36, 36, 0.4);
+                box-sizing: border-box;
+                border-radius: 4px;
+                width: 63.08px;
+                height: 61.4px;
+                margin: 0 9px;
+                text-align: center;
+                font-size: 24px;
+                font-weight: 600;
+                color: #4CB5EF;
+            }
+        }
+        .timer{
+            font-size: 24px;
+            line-height: 20px;
+            text-align: center;
+            color: #01579B;
+            margin-bottom: 68px;
+            
+        }
+        .box-emails{
+            display: flex;
+            margin-bottom: 35px;
+            a{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 29px;
+                font-size: 14px;
+                color: #242424;
+                img{
+                    margin-right: 5px;
+                }
+            }
+        }
+        .info{
+            font-size: 12px;
+            line-height: 16px;
+            color: #242424;
+        }
+
+    }
+}

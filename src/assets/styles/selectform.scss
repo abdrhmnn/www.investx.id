@@ -1,0 +1,79 @@
+.selectform{
+    display: flex;
+    height: 100vh;
+    position: relative;
+    .logo{
+        margin: 25px 30px;
+        position: absolute;
+
+    }
+    .w-left{
+        background-position: center;
+        background-size: cover;
+        // background-position-y: -1px;
+        background-repeat: no-repeat;
+        width: 46.7%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .w-right{
+        width: 55%;
+        // background-color: slateblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .box-select{
+            text-align: center;
+            img{
+                margin-bottom: 25px;
+            }
+            .title{
+                font-weight: 900;
+                font-size: 36px;
+                line-height: 42px;
+                color: #000000;
+                margin-bottom: 20px;
+            }
+            .desc{
+                margin-bottom: 65px;
+                font-size: 18px;
+                line-height: 21px;
+            }
+            .start{
+                width: 205px;
+                height: 52px;
+                background: #4CB5EF;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 8px;
+                border: none;
+                font-weight: 500;
+                font-size: 16px;
+                color: #FFFFFF;
+                margin-bottom: 30px;
+            }
+            .mid{
+                width: 205px;
+                margin-bottom: 0;
+            }
+            .atau{
+                position: relative;
+                top: -12.5px;
+                background-color: white;
+                padding: 0 20px;
+            }
+            .bfun{
+                margin-top: 25px;
+                width: 205px;
+                height: 52px;
+                background: #FFFFFF;
+                border: 1px solid #0288D1;
+                box-sizing: border-box;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 8px;
+                font-weight: 500;
+                font-size: 16px;
+            }
+        }
+    }
+}

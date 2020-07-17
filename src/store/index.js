@@ -5,7 +5,8 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action ) =>{
-    if (action.type === 'INCREAMENT') {
+    if (action.type === 'HAHA') {
+        console.log('yiiihaaa')
         return 'hahaha'
     }
 
