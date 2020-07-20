@@ -1,0 +1,53 @@
+
+ojk{
+    display: flex;
+    height: 470px; //di figma 470px
+    background-color: white;
+    font-size: 10px;
+    line-height: 20px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    
+    color: black;
+
+    header{
+        font-weight: bold; 
+        padding-bottom: 5px;
+    }
+
+    p{
+        text-align: justify;
+    }
+
+}
+
+@media only screen and (max-width: 768px){
+    ojk{
+        display: flex;
+        height: 470px;
+        background-color: white;
+        font-size: 10px;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        
+        color: black;
+    
+        .border-right {
+            border-right: 1px solid grey;
+        }
+
+        header{
+            font-weight: bold; 
+            padding-bottom: 5px;
+        }
+    
+        p{
+            text-align: justify;
+        }
+    
+    }
+}

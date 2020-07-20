@@ -4,6 +4,7 @@ import ojk from '../../assets/img/ojk.svg'
 import x from '../../assets/img/bg/x.svg'
 import human from '../../assets/img/bg/human.svg'
 import Footer from '../shared/Footer';
+import Ojk from '../shared/Ojk';
 import { connect } from 'react-redux';
 
 class Home extends Component {
@@ -42,6 +43,8 @@ class Home extends Component {
                 }
                 <button onClick={()=>this.props.hahaFunct()}>dfsafasdfa</button>
                 </div>
+                <Footer />
+                <Ojk />
             </div>
         );
     }

@@ -11,6 +11,7 @@ import Login from './components/auth/Login';
 import Register from './components/auth/SignUp';
 
 import Footer from './components/shared/Footer';
+import Ojk from './components/shared/Ojk';
 import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path='/term' component={Term}/>
           <Route path='/select-form' component={SelectForm}/>
           <Route path='/footer' component={Footer}/>
+          <Route path='/ojk' component={Ojk}/>
         </Switch>
       </Router>
     );
