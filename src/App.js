@@ -13,6 +13,7 @@ import Register from './components/auth/SignUp';
 import Footer from './components/shared/Footer';
 import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
+import DataDiri from './components/investorForms/DataDiri';
 class App extends Component {
   render() {
     return (
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
           <Route path='/select-form' component={SelectForm}/>
+          <Route path='/data-diri' component={DataDiri}/>
           <Route path='/footer' component={Footer}/>
         </Switch>
       </Router>
