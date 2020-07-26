@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import arrowback from '../../assets/img/arrowback.svg'
+import arrowback from '../../images/arrowback.svg'
 
 class DataDiri extends Component {
     render() {

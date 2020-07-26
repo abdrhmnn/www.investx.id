@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import select from '../../assets/img/bg/select.jpg'
-import icon from '../../assets/img/selecticon.svg'
+import select from '../../images/bg/select.jpg'
+import icon from '../../images/selecticon.svg'
+import { Link } from 'react-router-dom';
 
 class SelectForm extends Component {
     render() {
@@ -12,7 +13,9 @@ class SelectForm extends Component {
                         <img src={icon} alt="icon"/>
                         <p className="title">Verifikasi email berhasil !</p>
                         <p className="desc">Silakan isi formulir sesuai kebutuhan kamu</p>
-                        <button className='start'>Start Investing</button>
+                        <Link to='/select-form/data-diri'>
+                            <button className='start'>Start Investing</button>
+                        </Link>
                         <hr className="mid"/>
                         <span className="atau">Atau</span>
                         <br/>

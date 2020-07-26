@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import x from './assets/img/bg/x.svg'
-import './App.scss'
+import './styles/App.scss'
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,8 +23,8 @@ class App extends Component {
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
-          <Route path='/select-form' component={SelectForm}/>
-          <Route path='/data-diri' component={DataDiri}/>
+          <Route exact path='/select-form' component={SelectForm}/>
+          <Route path='/select-form/data-diri' component={DataDiri}/>
           <Route path='/footer' component={Footer}/>
           <Route path='/ojk' component={Ojk}/>
         </Switch>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../../assets/img/logo-white.svg'
+import logo from '../../images/logo-white.svg'
 import {Link} from 'react-router-dom'
-import gogico from  '../../assets/img/google.svg'
-import fb from  '../../assets/img/fb.svg'
-import jeruk from '../../assets/img/bg/jeruk.jpg'
+import gogico from  '../../images/google.svg'
+import fb from  '../../images/fb.svg'
+import jeruk from '../../images/bg/jeruk.jpg'
 
 
 

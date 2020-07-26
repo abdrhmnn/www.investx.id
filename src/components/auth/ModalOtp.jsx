@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import gmail from '../../assets/img/gmail.svg'
-import outlook from '../../assets/img/outlook.svg'
+import gmail from '../../images/gmail.svg'
+import outlook from '../../images/outlook.svg'
 
 class ModalOtp extends Component {
     state ={

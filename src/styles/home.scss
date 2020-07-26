@@ -1,14 +1,16 @@
 .home{
     height: 100vh;
-    // background-color: skyblue;
-    background-position: right bottom;
+    background-position: right ;
     background-repeat: no-repeat;
-    background-size: 60%, 45%;
+    background-size: contain;
+    position: relative;
+    padding: 75px 0 120px;
+    background-origin: padding-box;
     .contain-home{
         display: flex;
+        padding: 75px 0 120px !important;
         align-items: center;
         height: 100%;
-        // background-color: yellowgreen;
         .wrap{
             margin-top: 72px;
             .title{
@@ -32,20 +34,19 @@
     }
 
     .last-invest{
-        // border-top: 1px solid #DEDEDE;
-        // border-bottom: 1px solid #DEDEDE;
-        height: 121px;
-        padding: 0 65px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+        background-color: white;
+        padding: 15px 0;
+        position: absolute !important;
+        width: 100%;
+        bottom: 0;
 
         .card-last{
-            // background-color: skyblue;
-            border-right: 1px solid #DEDEDE;
-            display: flex;
-            min-width: 300px;
+            // background-color: maroon;
+            border-right: 1px solid #DEDEDE !important;
+            display: flex !important;
+            // width: 300px;
+            justify-content: center;
             padding: 12px; 
             &:last-of-type{
                 border-right: 0;
@@ -67,7 +68,44 @@
                 span{
                     color: black;
                 }
+                .time{
+                    margin-top: 5px;
+                    margin-bottom: 0px ;
+                    font-size: 12px;
+                }
             }
         }
+    }
+}
+
+
+.butraise{
+    padding: 50px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .tit{
+        font-weight: 900;
+        font-size: 35px;
+        margin-bottom: 10px;
+    }
+    .desc{
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 5px;
+            font-size: 16px;
+        }
+    }
+    button{
+        width: 344px;
+        height: 59px;
+        font-weight: 900;
+        font-size: 18px;
+        background: #FFFFFF;
+        border: 1px solid #4CB5EF;
+        box-sizing: border-box;
+        border-radius: 8px;
+        filter: drop-shadow(0px 0px 9px rgba(0, 0, 0, 0.25));
     }
 }
