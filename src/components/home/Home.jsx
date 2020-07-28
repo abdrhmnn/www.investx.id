@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CaroHome from './CaroHome';
 import Benefit from './Benefit';
+import JoinNow from './JoinNow';
 
 class Home extends Component {
     render() {
@@ -78,6 +79,7 @@ class Home extends Component {
                 
                 <CaroHome />
                 <Benefit />
+                <JoinNow />
                 <Footer />
                 <Ojk />
             </div>
