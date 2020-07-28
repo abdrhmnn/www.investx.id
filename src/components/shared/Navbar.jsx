@@ -25,7 +25,9 @@ class Navbar extends Component {
                         animationDuration={0.3}
                         className='burger'
                     /> */}
-                    <img src={logo} alt="logo"/>
+                    <Link to='/'>
+                        <img src={logo} alt="logo"/>
+                    </Link>
                     <ul>
                         <li><Link>Start Investing</Link> </li>
                         <li><Link>Get Funding</Link> </li>

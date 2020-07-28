@@ -154,6 +154,11 @@
                     display: flex;
                     a{
                         margin: 0 10px;
+                        .img-soc{
+                            width: 23px;
+                            height: unset;
+                            border-radius: unset;
+                        }
                     }
                 }
             }

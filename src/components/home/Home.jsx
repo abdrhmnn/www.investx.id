@@ -3,7 +3,7 @@ import Navbar from '../shared/Navbar';
 import ojk from '../../images/ojk.svg'
 import x from '../../images/bg/x.svg'
 import greenshield from '../../images/greenshield.svg'
-import human from '../../images/bg/human.svg'
+import zebra from '../../images/bg/zebra.jpg'
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
 import { connect } from 'react-redux';
@@ -35,7 +35,7 @@ class Home extends Component {
         return (
             <div>
 
-                <div className='home' style={{backgroundImage: `url(${x}), url(${human})`}}>
+                <div className='home' style={{backgroundImage: `url(${x}), url(${zebra})`}}>
                     <Navbar />
                     <div className="container p-0 contain-home">
                         <div className="wrap">

@@ -7,8 +7,14 @@ import backtop from '../../images/backtop.svg'
 import { Link } from 'react-router-dom';
 import Ojk from '../shared/Ojk';
 import Footer from '../shared/Footer';
+import linkedin from '../../images/social/linkedin.svg'
+import twitter from '../../images/social/twitter.svg'
+import gmail from '../../images/social/gmail.svg'
 
 class AboutUs extends Component {
+
+    toTop = ()=> window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     render() {
         return (
             <div className="aboutus">
@@ -52,9 +58,9 @@ class AboutUs extends Component {
                                 <p className="title">CEO</p>
                                 <p className="desc">Adi Arriansyah as a founder of Invest X. 8+ Years of experience in design, engineering, business, and sales for many clients from startup, corporation, banking, government, to multinational companies.</p>
                                 <div className="socials">
-                                    <a href="/">linkind</a>
-                                    <a href="/">twit</a>
-                                    <a href="/">gmail</a>
+                                    <a href="/"><img className='img-soc' src={linkedin} alt="linkedin"/></a>
+                                    <a href="/"><img className='img-soc' src={twitter} alt="twitter"/></a>
+                                    <a href="/"><img className='img-soc' src={gmail} alt="gamil"/></a>
                                 </div>
                             </div>
 
@@ -64,9 +70,9 @@ class AboutUs extends Component {
                                 <p className="title">Co - Founder & VP of Engineering</p>
                                 <p className="desc">Arif Dzikrullah as a Co-founder/ VP of engineering. He is professional in tech managerial, specialized in a startup. Still an expert in full-stack. Experienced in building system from zero to something.</p>
                                 <div className="socials">
-                                    <a href="/">linkind</a>
-                                    <a href="/">twit</a>
-                                    <a href="/">gmail</a>
+                                    <a href="/"><img className='img-soc' src={linkedin} alt="linkedin"/></a>
+                                    <a href="/"><img className='img-soc' src={twitter} alt="twitter"/></a>
+                                    <a href="/"><img className='img-soc' src={gmail} alt="gamil"/></a>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +92,7 @@ class AboutUs extends Component {
                         <button>Become an Investor</button>
                     </Link>
                     <p className="have-acc">Have an account? <Link to='/login'>Log in</Link> </p>
-                    <div className="backtop"><img src={backtop} alt="backtop"/></div>
+                    <div className="backtop" onClick={()=> this.toTop()}><img src={backtop} alt="backtop"/></div>
                 </div>
                 <Footer />
                 <Ojk />
