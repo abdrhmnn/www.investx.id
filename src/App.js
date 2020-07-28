@@ -14,6 +14,7 @@ import Ojk from './components/shared/Ojk';
 import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
 import DataDiri from './components/investorForms/DataDiri';
+import AboutUs from './components/About/AboutUs';
 class App extends Component {
   render() {
     return (
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
+          <Route path='/about' component={AboutUs}/>
           <Route exact path='/select-form' component={SelectForm}/>
           <Route path='/select-form/data-diri' component={DataDiri}/>
           <Route path='/footer' component={Footer}/>

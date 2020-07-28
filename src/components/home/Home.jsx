@@ -13,6 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CaroHome from './CaroHome';
+import Benefit from './Benefit';
 
 class Home extends Component {
     render() {
@@ -53,7 +54,7 @@ class Home extends Component {
                                 <div className="card-last" key={i} onClick={this.props.hahaFunct}>
                                     <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt=""/>
                                     <p className="name">
-                                        Kemal Aditya Invested <span>$1000 </span>
+                                        Zeff mc Donal Invested <span>$1000 </span>
                                         in <span>Fleting</span>
                                         <br/>
                                         <p className="time">2 hours again</p>
@@ -76,6 +77,7 @@ class Home extends Component {
                 </div>
                 
                 <CaroHome />
+                <Benefit />
                 <Footer />
                 <Ojk />
             </div>

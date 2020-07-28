@@ -1,0 +1,230 @@
+.aboutus{
+    .head{
+        min-height: 100vh;
+        padding-top: 72px;
+        .jumbo{
+            height: 435px;
+            display: flex;
+            align-items: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: #0000005c;
+            background-blend-mode: darken;
+            .title{
+                font-weight: 900;
+                font-size: 55px;
+                line-height: 64px;
+                color: #FFFFFF;
+            }
+            .sub-title{
+                font-weight: 900;
+                font-size: 25px;
+                line-height: 29px;
+                color: #FFFFFF;
+            }
+            .desc{
+                font-size: 16px;
+                line-height: 30px;
+                color: #FFFFFF;   
+                max-width: 520px;         
+            }
+        }
+        .jfot{
+            font-style: italic;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 30px;
+            color: #333333;    
+            text-align: center;    
+            padding-top: 76px;
+        }
+    }
+
+    .whatis{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: #F5F5F5;
+        img{
+            width: 40%;
+            object-fit: cover;
+            height: 734px;
+        }
+        .parag{
+            padding: 30px 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            .con{
+                .title{
+                    font-weight: 900;
+                    font-size: 25px;
+                    line-height: 29px;
+                    color: #2c1313;   
+                    text-indent: 30px;
+                }
+                .desc{
+                    font-weight: normal;
+                    font-size: 14px;
+                    line-height: 30px;
+                    text-align: justify;
+                    text-indent: 30px;
+                    color: #455A64;
+                    margin-bottom: 30px;
+                    // max-width: 661px;
+                    max-width: 90%;
+                    &:last-of-type{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .weare{
+        padding: 100px 0 120px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center;
+        .header{
+            text-align: center;
+            margin-bottom: 100px;
+            .title{
+                font-weight: 900;
+                font-size: 40px;
+                line-height: 47px;
+                color: #000000;                
+            }
+            .sub{
+                font-size: 18px;
+                line-height: 30px;
+                font-weight: bold;
+            }
+            .desc{
+                font-size: 14px;
+                line-height: 30px;
+                text-align: justify;
+                color: #455A64;
+                text-indent: 30px;
+            }
+        }
+        .cards{
+            display: flex;
+            justify-content: center;
+            .card-profile{
+                padding: 30px 45px 45px;
+                background-color: skyblue;
+                width: 393px;
+                background: #FFFFFF;
+                box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 0 45px;
+                img{
+                    width: 145px;
+                    height: 145px;
+                    border-radius: 50%;
+                    margin-bottom: 15px;
+                }
+                .name{
+                    font-weight: 900;
+                    font-size: 22px;
+                    line-height: 26px;
+                    margin-bottom: 10px;
+                }
+                .title{
+                    font-weight: 300;
+                    font-size: 18px;
+                    line-height: 21px;
+                    color: #757575;
+                    margin-bottom: 20px;
+                }
+                .desc{
+                    font-size: 14px;
+                    line-height: 25px;
+                    text-align: justify;
+                    text-indent: 30px;
+                    color: #000000;   
+                    margin-bottom: 40px;                 
+                }
+                .socials{
+                    display: flex;
+                    a{
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .addmap{
+        padding: 40px 0 25px;
+        background-color: #F5F5F5;
+        .title{
+            text-align: center;
+            font-weight: 900;
+            font-size: 22px;
+            line-height: 26px;
+            color: #000000;  
+            margin-bottom: 20px;          
+        }
+        .box-map{
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            padding: 0 !important;
+        }
+    }
+
+    .become{
+        position: relative;
+        text-align: center;
+        padding: 100px 0 ;
+        background: linear-gradient(99.08deg, #53B4E8 31.13%, rgba(232, 190, 83, 0) 150.44%);        
+        .title{
+            font-weight: 500;
+            font-size: 36px;
+            line-height: 42px;
+            color: #000000;     
+            margin-bottom: 25px;       
+        }
+        button{
+            background: #FFFFFF;
+            border: 1px solid #0288D1;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            width: 379px;
+            height: 65px;
+            font-weight: 900;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+        .have-acc{
+            font-weight: 300;
+            font-size: 18px;
+            line-height: 21px;
+            margin-bottom: 0;
+            a{
+                text-decoration-line: underline;
+                color: #0288D1;            
+            }
+        }
+        .backtop{
+            position: absolute;
+            width: 74px;
+            height: 74px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            top: 40%;
+            right: 0;
+            margin-right: 60px;
+            box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+    }
+}
