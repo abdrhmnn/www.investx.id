@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import logoOJK from '../../images/ojk.svg'
-import { Link } from 'react-router-dom'
 
 class Ojk extends Component {
     render(){
