@@ -36,6 +36,14 @@ nav{
             li{
                 display: inline;
                 margin-left: 40px;
+                .nav-active{
+                    color: #4CB5EF;
+                }
+                a{
+                    &:hover{
+                        color: #4CB5EF;
+                    }
+                }
                 button{
                     width: 106px;
                     height: 42px;

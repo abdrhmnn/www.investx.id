@@ -41,7 +41,7 @@ class Home extends Component {
                     <div className="container p-0 contain-home">
                         <div className="wrap">
                             <p className="title">EQUITY <br/><span>CROWDFUNDING</span></p>
-                            <p className="desc">Cras vel arcu massa. Pellentesque at rhoncus justo, sed rutrum felis. Nullam vel mi in justo fringilla hendrerit in a nisi. Mauris tempus erat est.</p>
+                            <p className="desc">Mewujudkan era baru dalam berinvestasi Dapatkan pendapatan secara pasif dan pendanaan dengan cepat dengan InvestX.</p>
                             <button className="but-solid">Start Investing</button>
                             <button className="but">Get Funding</button> <br/>
                             <img src={ojk} alt=""/>
@@ -55,7 +55,7 @@ class Home extends Component {
                                 <div className="card-last" key={i} onClick={this.props.hahaFunct}>
                                     <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt=""/>
                                     <p className="name">
-                                        Zeff mc Donal Invested <span>$1000 </span>
+                                        John Donal Invested <span>$1000 </span>
                                         in <span>Fleting</span>
                                         <br/>
                                         <p className="time">2 hours again</p>

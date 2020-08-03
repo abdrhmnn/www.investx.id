@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
+import logo from '../../images/logo.svg'
+
 
 class DataDiri extends Component {
     render() {
         return (
            <div className="data-diri">
+               <div className="bg">
+                    <div className="bg-round"></div> 
+               </div>
                <div className="back-button">
                    <img src={arrowback} alt=""/>
                </div>
+               <div className="logo-invest">
+                   <img src={logo} alt=""/>
+               </div>
+               <p className="title">Selamat datang Cecillia</p>
+                   <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
                <div className="steps-invest">
                    <ul>
                        <li><div className="number">1</div> <span>Data Diri</span></li>
@@ -19,8 +29,7 @@ class DataDiri extends Component {
                    <hr/>
                </div>
                <div className="box-form-data">
-                   <p className="title">Selamat datang Cecillia</p>
-                   <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
+                   
                    <form action="">
                     <div className="row">
 
