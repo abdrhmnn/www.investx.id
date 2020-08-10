@@ -45,6 +45,67 @@ button{
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+// has float overide 
+.w-input-active{
+    border: 1px solid #0288D1 !important;
+}
+.w-input{
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #B9BBCB;
+    box-sizing: border-box;
+    border-radius: 9px;
+    .has-float-label{
+        // flex: 1;
+        width: 100%;
+        height: 48px;
+        // background-color: skyblue;
+        input{
+            height: 100%;
+            width: 100%;
+            background-color: inherit;
+            padding: 0 20px;
+            font-size: 14px;
+            border: none;
+    
+            &::placeholder{
+                // color: white;
+                opacity: 0;
+            }
+            
+        }
+        label{
+            z-index: 999999 !important;
+            position: absolute;
+            top: -8.6px;
+            left: 15px;
+            background-color: white;
+            padding: 0 5px;
+            // z-index: 1000;
+            // position: relative;
+            font-size: 11px;
+            color: #0288D1;
+        }
+    }
+    i{
+        margin: 0 15px;
+    }
+}
+
+.has-float-label input:placeholder-shown:not(:focus)+*, .has-float-label select:placeholder-shown:not(:focus)+*, .has-float-label textarea:placeholder-shown:not(:focus)+* {
+    font-size: 14px;
+    opacity: 1;
+    top: 0;
+    background-color: unset;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A9A9A9;
+}
 
 // outline slick overide
 .slick-slide, .slick-slide *{ outline: none !important; }

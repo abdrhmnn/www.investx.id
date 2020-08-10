@@ -13,7 +13,8 @@ class Login extends Component {
         isSignUp : false,
         email : '',
         password : '',
-        isInvalid : false
+        isInvalid : false,
+        borderActive : ''
     }
 
     handleChange = (e)=>{
@@ -34,6 +35,17 @@ class Login extends Component {
             this.setState({isInvalid : true})
         }
     }
+
+    borderBlue = (e)=>{
+        if (e.target.id.length !== 0) {
+            console.log(e.target.id);
+            this.setState({borderActive : e.target.id})
+        }else{
+            console.log(e.target.id);
+            console.log('kosong');
+        }
+    }
+
     render() {
         return (
             <div>
@@ -50,21 +62,30 @@ class Login extends Component {
                           <div className="well">Hi, welcome back !</div>
                           <div className="well-desc">Enter your e-mail and password to log in to InvestX</div>
                           <hr/>
-                          <p className="lw"> <span>Login with</span> </p>
+                          {/* <p className="lw"> <span>Login with</span> </p>
                           <div className="wrap-button">
                               <button><img src={gogico} alt=""/> Google</button>
                               <button> <img src={fb} alt=""/> Facebook</button>
-                          </div>
+                          </div> */}
                           <p className="or">Or</p>
                           <form onSubmit={this.handleSubmit}>
-                              <div className="w-inp">
+                              {/* <div className="w-inp">
                                 <input type="email" name='email' value={this.state.email} onChange={this.handleChange} placeholder='Email'/>
                               </div>
                               <div className="w-inp">
                                 <input placeholder="Password" name='password' value={this.state.password} onChange={this.handleChange} type={this.state.hidePass?'password' :'text' }/>
                                 <i onClick={()=> this.setState({hidePass : !this.state.hidePass})} class={this.state.hidePass?"far fa-eye":"far fa-eye-slash"}></i>
+                              </div> */}
+                              <div className={this.state.borderActive === 'last' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
+                                <div class="has-float-label">
+                                    <input id="last" type="text" placeholder="emailnya"/>
+                                    <label for="last">emailnya</label>
+                                </div>
+                                <i onClick={()=> this.setState({hidePass : !this.state.hidePass})} class={this.state.hidePass?"far fa-eye":"far fa-eye-slash"}></i>
+
                               </div>
-                              <div className="w-forgot">
+                                
+                                <div className="w-forgot">
                                   <div className="w-check">
                                         <div className="cbox" onClick={()=> this.setState({rememberMe : !this.state.rememberMe})}>
                                         {this.state.rememberMe?<i className="fas fa-check"></i>:null}
