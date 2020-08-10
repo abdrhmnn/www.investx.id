@@ -1,3 +1,71 @@
 .caro-quotes{
     background-color: white;
+    background-image: url('../images/caroQuotes/x.svg');
+    background-position: center; 
+    
+    display: flex;
+    align-items: center; 
+    text-align: center;
+    height: 780px;
+    .center{
+        justify-content: center;
+    }
+
+    .carousell-sec{
+        position: relative; 
+        align-items: center;
+
+        .header{
+            font-size: 48px;
+            font-style: italic;
+            
+        }
+    
+        .name{
+            font-size: 24px;
+            font-weight: bold;
+        }
+    
+        .details{
+            font-size: 24px;
+            font-style: italic;
+            font-weight: lighter;
+        }
+
+        img{
+            justify-content: center;
+        }
+        
+        .arrows{
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            width: 100%;
+            top: 40%;
+            .back{
+                border: 0;
+                margin-left: -60px;
+            }
+            .next{
+                border: 0;
+                margin-right: -60px;
+            }
+            button{
+                background: rgba(196, 196, 196, 0.48);
+                opacity: .3;
+                transition: .3s;
+                width: 36px;
+                height: 31px;
+                img{
+                    margin-bottom: 2px;
+                }
+                &:hover{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    
+
+    
 }
