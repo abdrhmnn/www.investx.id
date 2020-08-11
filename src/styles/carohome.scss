@@ -42,11 +42,17 @@
         }
         .card-sec{
             cursor: pointer;
-            margin: 5px 30px;
+            margin: 15px 30px;
             // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
             box-shadow: 0px 0px 6px rgba(133, 133, 133, 0.25);
             // border: 5px solid skyblue;
             background-color: white;
+            transition: .3s;
+            &:hover{
+                transition: .3s;
+                transform: scale(1.03);
+                box-shadow: 0px 0px 6px rgba(133, 133, 133, 0.90);
+            }
             img{
                 height: 179px;
                 object-fit: cover;
