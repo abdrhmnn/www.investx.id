@@ -1,14 +1,14 @@
 
 .login, .signup{
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     background-color: white;
     background-position: left top;
     background-size: 45%;
     background-repeat: no-repeat;
     .logo{
-        margin: 25px 30px;
+        margin: 25px 0px;
         position: absolute;
 
     }
@@ -19,7 +19,10 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        height: 100vh;
+        height: 100%;
+        // .error{
+        //     height: 40px;
+        // }
         .box-form{
             width: 520px;
             // background-color: tan;
@@ -142,17 +145,18 @@
                         display: flex;
                         align-items: center;
                         .cbox{
-                            width: 24px;
-                            height: 24px;
+                            width: 23px;
+                            height: 23px;
                             background: #F4F4F4;
                             border: 1px solid #0288D1;
                             cursor: pointer;
                             display: flex;
                             justify-content: center;
                             align-items: center;
+                            border-radius: 3px;
                         }
                         span{
-                            margin-left: 10px;
+                            margin-left: 20px;
                             font-size: 14px;
                         }
                     }
@@ -171,10 +175,17 @@
                     color: white;
                     width: 100%;
                     margin-bottom: 30px;
+                    &:disabled{
+                        background-color: slategray;
+                    }
                 }
-                .error{
-                    font-size: 14px;
-                    color: #E10000;
+                .box-err{
+                    height: 40px;
+                    .error{
+                        font-size: 14px;
+                        color: #E10000;
+                        // background-color: skyblue;
+                    }
                 }
                 .sign-up{
                     text-align: center;
@@ -192,8 +203,12 @@
 }
 
 .signup{
+    .box-form{
+        padding: 70px 0 !important;
+        // background-color: skyblue;
+    }
     .w-input{
-        margin-bottom: 30px;
+        // margin-bottom: 40px;
         display: flex;
         .spoil{
             width: 50px;
@@ -210,10 +225,6 @@
     .phone-sp{
         .has-float-label input:placeholder-shown:not(:focus) + *{
             left: 15px !important;
-        }
-
-        .has-float-label input:placeholder-shown:not(:focus) + *, .has-float-label select:placeholder-shown:not(:focus) + *, .has-float-label textarea:placeholder-shown:not(:focus) + * {
-            
         }
 
         label{

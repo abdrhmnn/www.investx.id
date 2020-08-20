@@ -2721,6 +2721,23 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
+calidation@^1.16.2:
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/calidation/-/calidation-1.16.2.tgz#5822bf9490275b6acaca21ab8e3d142b4e6c0e08"
+  integrity sha512-LUgIP1XttXHeztK4uwESBjYlL6TTBotD3hkvH+9gZBveVg9UP0FCAAjezlZBHWX2wnlQh8Hl8KrCBfXY4IG82A==
+  dependencies:
+    calidators "^3.0.0"
+    invariant "^2.2.4"
+    prop-types "^15.6.1"
+
+calidators@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/calidators/-/calidators-3.0.2.tgz#7dd864df7642c646961e715fc872cf5fc371c430"
+  integrity sha512-7nyR07BASMge8oOIvharRAor+FJQFjTdUXik7nSBgpEpBEtIrghsjjNzfFVu22qDnXhFF9RUhYL8yq/NA5CYWQ==
+  dependencies:
+    invariant "^2.2.4"
+    warning "^4.0.3"
+
 call-me-maybe@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/call-me-maybe/-/call-me-maybe-1.0.1.tgz#26d208ea89e37b5cbde60250a15f031c16a4d66b"
@@ -8739,7 +8756,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10936,6 +10953,13 @@ walker@^1.0.7, walker@~1.0.5:
   integrity sha1-L3+bj9ENZ3JisYqITijRlhjgKPs=
   dependencies:
     makeerror "1.0.x"
+
+warning@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
+  integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+  dependencies:
+    loose-envify "^1.0.0"
 
 watchpack@^1.6.0:
   version "1.6.0"
