@@ -26,13 +26,13 @@ class CaroQuotes extends Component {
                     arr.map((res,i)=>(
                       <div>
                         <div className="row center"> 
-                            <div className="col-md-7">
+                            <div className="col-md-7 ">
                               <span className="header">"Exactly what founders need to be successful"</span> 
                             </div>
                         </div>
                         <div className="row">
-                          <div className="col-md-4 ">
-                            <img className="center" src={picture} alt=""/>
+                          <div className="col-md center">
+                            <img src={picture} alt=""/>
                           </div>
                         </div>
                         <div className="row">
