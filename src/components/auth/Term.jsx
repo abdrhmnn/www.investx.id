@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
-import ModalOtp from './ModalOtp';
+// import ModalOtp from './Otp';
 
 class Term extends Component {
     state={
@@ -9,7 +9,7 @@ class Term extends Component {
     render() {
         return (
             <div>
-                {this.state.isOtp? <ModalOtp/> : null}
+                {/* {this.state.isOtp? <ModalOtp/> : null} */}
                 <div className='termandcon'>
                     <div className="box">
                         <h5>SYARAT DAN KETENTUAN UMUM</h5>

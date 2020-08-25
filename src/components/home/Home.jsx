@@ -16,8 +16,21 @@ import CaroHome from './CaroHome';
 import Benefit from './Benefit';
 import JoinNow from './JoinNow';
 import CaroQuotes from './CaroQuotes';
+import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 
 class Home extends Component {
+    state={
+        modalOtp : true,
+    }
+
+    componentDidMount(){
+
+    }
+
+    offModal = ()=>{
+        this.setState({modalOtp : false})
+    }
+
     render() {
         const arr = [1,2,3,4,5,6,7,7,8]
         console.log('====================================');
@@ -36,7 +49,7 @@ class Home extends Component {
           };
         return (
             <div>
-
+                { this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal}/> : null}
                 <div className='home' style={{backgroundImage: `url(${x}), url(${zebra})`}}>
                     <Navbar />
                     <div className="container p-0 contain-home">

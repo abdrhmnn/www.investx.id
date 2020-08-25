@@ -233,3 +233,82 @@
     }
 
 }
+
+.over{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.65);
+    .modal-confirm{
+        position: relative;
+        background-color: white;
+        padding: 50px 70px 30px;
+        border-radius: 35px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        .title{
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 33px;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .desc{
+            font-size: 14px;
+            width: 321px;
+            line-height: 25px;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        .box{
+            display: flex;
+            margin-bottom: 70px;
+            justify-content: space-around;
+            width: 100%;
+            .mailphone{
+                font-weight: 600;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                img{
+                    margin-right: 10px;
+                }
+            }
+        }
+        .but-all{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            p{
+                margin-bottom: 0;
+                font-weight: 600;
+                font-size: 20px;
+                color: #0288D1;
+                margin: 0 30px;
+                cursor: pointer;
+            }
+            button{
+                width: 303px;
+                height: 48px;
+                font-weight: 600;
+                font-size: 20px;
+                color: #0288D1;
+                border-radius: 9px;
+                border: 1px solid #0288D1;
+                background-color: white;
+            }
+        }
+    }
+}

@@ -10,8 +10,8 @@ class Login extends Component {
         hidePass : true,
         rememberMe : false,
         isSignUp : false,
-        email : '',
-        password : '',
+        // email : '',
+        // password : '',
         disabled : true,
         borderActive : ''
     }
@@ -55,14 +55,12 @@ class Login extends Component {
           console.log('Something is wrong:', errors);
           console.log('Something is wrong:', fields.email);
         }
-      };
+    }
 
     borderBlue = (e)=>{
         if (e.target.id.length !== 0) {
             console.log(e.target.id);
             this.setState({borderActive : e.target.id})
-
-
             console.log();
         }else{
             console.log(e.target.id);
@@ -104,15 +102,15 @@ class Login extends Component {
                                     ({ fields, errors, submitted })=>(
                                         <div>
                                             <div className={this.state.borderActive === 'email' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                <div class="has-float-label">
+                                                <div className="has-float-label">
                                                     <input 
                                                     id="email" 
                                                     name='email' 
                                                     type="text" 
                                                     // onChange={this.handleChange} 
-                                                    value={fields.email}
+                                                    // value={fields.email}
                                                     placeholder="Email or Phone number"/>
-                                                    <label for="email">Email or Phone number</label>
+                                                    <label htmlFor="email">Email or Phone number</label>
                                                 </div>
                                             </div>
                                             <div className="box-err">
@@ -120,14 +118,14 @@ class Login extends Component {
                                             </div>
             
                                             <div className={this.state.borderActive === 'Password' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                <div class="has-float-label">
+                                                <div className="has-float-label">
                                                     <input 
                                                     id="Password" 
                                                     name='password' 
                                                     // onChange={this.handleChange} 
                                                     type={this.state.hidePass? 'password' : 'text'} 
                                                     placeholder="Password"/>
-                                                    <label for="Password">Password</label>
+                                                    <label htmlFor="Password">Password</label>
                                                 </div>
                                                 <i id='Password' 
                                                 onClick={()=> this.setState({hidePass : !this.state.hidePass})} 

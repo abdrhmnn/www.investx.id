@@ -3,6 +3,8 @@ import logo from '../../images/logo-white.svg'
 import {Link} from 'react-router-dom'
 import bluewoman from '../../images/bg/bluewoman.jpg'
 import { FormValidation } from "calidation";
+import phoneicon from '../../images/phoneicon.svg'
+import emailicon from '../../images/emailicon.svg'
 
 
 
@@ -16,7 +18,8 @@ class Register extends Component {
         borderActive : '',
         password : '',
         c_password : '',
-        isSamePass : false
+        isSamePass : false,
+        isModalConfirm : false
     }
 
     handleChange = (e)=>{
@@ -42,16 +45,34 @@ class Register extends Component {
 
     onSubmit = ({ fields, errors, isValid }) => {
         if (isValid) {
-          // This is where we'd handle our submission...
-          // `fields` is an object, { field: value }
           console.log('Everything is good:', fields.email);
           console.log('Everything is good:', fields.password);
+          this.setState({isModalConfirm : true})
         } else {
-          // `errors` is also an object!
           console.log('Something is wrong:', errors);
           console.log('Something is wrong:', fields.email);
         }
-      };
+    }
+
+    modalConfirm = ()=>(
+        <div className="over">
+            <div className='modal-confirm'>
+                <div className="title">Apakah email dan no handphone anda sudah benar?</div>
+                <div className="desc">No hp digunakan untuk mendapatkan kode OTP dan Email digunakan untuk Verifikasi data</div>
+                <div className="box">
+                    <div className="mailphone"> <img src={phoneicon} alt="phone"/> +6285720001212</div>
+                    <div className="mailphone"> <img src={emailicon} alt="phone"/> dekartikas@gmail.com</div>
+                </div>
+                <div className="but-all">
+                    <p onClick={()=>this.setState({isModalConfirm : false})}>Ubah</p>
+                    <Link to='/otp'>
+                        <button>Ya, Lanjutkan</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    )
+
     render() {
         const config = {
             full_name : {
@@ -89,6 +110,7 @@ class Register extends Component {
         };
         return (
             <div>
+                {this.state.isModalConfirm? this.modalConfirm() : null}
               <div className="signup" style={{backgroundImage: `url(${bluewoman})`}}>
                 
                   <div className="container">

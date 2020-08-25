@@ -16,6 +16,7 @@ import SelectForm from './components/auth/SelectForm';
 import DataDiri from './components/investorForms/DataDiri';
 import AboutUs from './components/About/AboutUs';
 import HowItWorks from './components/how/HowItWorks';
+import Otp from './components/auth/Otp';
 class App extends Component {
   render() {
     return (
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path='/login' component={Login}/>
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
+          <Route path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
           <Route exact path='/select-form' component={SelectForm}/>
