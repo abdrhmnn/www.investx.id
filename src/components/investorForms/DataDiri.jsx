@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import moment from 'moment'
+
+import Select from 'react-dropdown-select';
 
 
 class DataDiri extends Component {
@@ -25,6 +27,19 @@ class DataDiri extends Component {
     }
 
     render() {
+        const config = {
+            email: {
+              isRequired: "Email field is required!",
+              isEmail: "Valid emails only, please!"
+            },
+            password: {
+              isRequired: "Password field required!",
+              isMinLength: {
+                message: "16+ character password is required",
+                length: 16
+              }
+            }
+          };
         return (
            <div className="data-diri">
                <div className="bg">
@@ -49,28 +64,27 @@ class DataDiri extends Component {
                    <hr/>
                </div>
                <div className="box-form-data">
-                   <p className="title">Data Diri</p>
-                   
+                   {/* ///////////////////FORMS//////////////////// */}
+                    <p className="title">Data Diri</p>
                    <form action="">
                     <div className="row">
 
                         <div className="col-md-12 ">
-                            <div className={this.state.borderActive === 'name' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                <div className="has-float-label">
-                                    <input 
-                                    id="name" 
-                                    name='name' 
-                                    type="text" 
-                                    // onChange={this.handleChange} 
-                                    value={'kemal'}
-                                    disabled
-                                    placeholder="Email or Phone number"/>
-                                    <label htmlFor="email">Nama Lengkap Sesuai KTP</label>
-                                </div>
+                            <div className="label-cus">Nama Lengkap Sesua KTP</div>
+                            <div className="frame-inp">
+                                <input 
+                                type="text" 
+                                name=""
+                                value='kemal' 
+                                disabled
+                                id=""/>
                             </div>
                         </div>
+                        <div className="error-input">
+                            {/* error */}
+                        </div>
 
-                        <div className="col-md-12 p-0 im">
+                        <div className="col-md-12 p-0">
                             <div className="col-md-6">
                                 <p className="label-cus">Jenis Kelamin *</p>
                                 <div className="box-sex">
@@ -78,63 +92,360 @@ class DataDiri extends Component {
                                     <div className={this.state.gender === 'wanita'? "gen active-gen" : 'gen'}  onClick={()=> this.setState({gender : 'wanita'})}>Wanita</div>
                                 </div>
                             </div>
+                            <div className="error-input">
+                                error
+                            </div>
                         </div>
 
-                        <div className="col-md-6 im">
-                            <div className={this.state.borderActive === 'tempatlahir' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                <div className="has-float-label">
-                                    <input 
-                                    id="tempatlahir" 
-                                    name='' 
-                                    type="text" 
-                                    // onChange={this.handleChange} 
-                                    // value={'kemal'}
-                                    placeholder="Email or Phone number"/>
-                                    <label htmlFor="tempatlahir">Tempat Lahir *</label>
+                        <div className="col-md-6">
+                            <div className="label-cus">Tempat Lahir *</div>
+                            <div className="frame-inp">
+                                <input 
+                                type="text" 
+                                name=""
+                                // value='kemal' 
+                                // disabled
+                                placeholder='Tempat Lahir'
+                                />
+                            </div>
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 datapick">
+                            <div className="label-cus">Tanggal Lahir *</div>
+                            <div className="date-wrap">
+                                <DatePicker selected={this.state.tanggalLahir} 
+                                    onChange={date => this.setState({tanggalLahir: date})} 
+                                    className="datapick-cus"
+                                    dateFormat="dd - MMMM - yyyy"
+                                    placeholderText='Tanggal Lahir'
+                                    showYearDropdown
+                                    id='dateborn'
+                                    // withPortal
+                                />
+                                <label className='m-0' htmlFor="dateborn">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </label>
+                            </div>
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-12 ">
+                            <div className="label-cus">Status Pernikahan *</div>
+                                <Select
+                                    options={[
+                                        {label:'kemal', value: 'kemal'},
+                                        {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
+                                        {label:'zul', value: 'zul'}]}
+                                    className='rs'
+                                    name='kawin'
+                                    style={{boxShadow : 'none'}}
+                                    // placeholder='status perkawinan'
+                                    onChange={(values) => console.log(values)}
+                                    closeOnSelect={true}
+                                    dropdownHandleRenderer={({ state }) => (
+                                        // if dropdown is open show "–" else show "+"
+                                        <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                    )}
+                                />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+
+                        <div className="col-md-12 ">
+                            <div className="label-cus">Status Kewarganegaraan *</div>
+                            <Select
+                                options={[
+                                    {label:'kemal', value: 'kemal'},
+                                    {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                    {label:'zul', value: 'zul'}]}
+                                className='rs'
+                                name='kawin'
+                                style={{boxShadow : 'none'}}
+                                // placeholder='status perkawinan'
+                                onChange={(values) => console.log(values)}
+                                closeOnSelect={true}
+                                dropdownHandleRenderer={({ state }) => (
+                                    // if dropdown is open show "–" else show "+"
+                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                )}
+                            />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6">
+                            <div className="label-cus">No Handphone</div>
+                            <div className="frame-inp">
+                                <input 
+                                type="text" 
+                                name=""
+                                value='0816161616' 
+                                disabled
+                                placeholder='Tempat Lahir'
+                                />
+                            </div>
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6">
+                            <div className="label-cus">No Telepon Rumah</div>
+                            <div className="frame-inp">
+                                <input 
+                                type="text" 
+                                name=""
+                                // value='kemal' 
+                                // disabled
+                                placeholder='No Telepon Rumah'
+                                />
+                            </div>
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-12 ">
+                            <div className="label-cus">Alamat Sesuai KTP *</div>
+                                <div className="frame-area">
+                                    <textarea name="" rows="4" placeholder='Alamat Sesuai KTP' />  
+                                </div>
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 ">
+                            <div className="label-cus">Provinsi *</div>
+                            <Select
+                                options={[
+                                    {label:'kemal', value: 'kemal'},
+                                    {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                    {label:'zul', value: 'zul'}]}
+                                className='rs'
+                                name='kawin'
+                                style={{boxShadow : 'none'}}
+                                placeholder='Pilih Provinsi'
+                                onChange={(values) => console.log(values)}
+                                closeOnSelect={true}
+                                dropdownHandleRenderer={({ state }) => (
+                                    // if dropdown is open show "–" else show "+"
+                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                )}
+                            />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 ">
+                            <div className="label-cus">Kota/Kabupaten *</div>
+                            <Select
+                                options={[
+                                    {label:'kemal', value: 'kemal'},
+                                    {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                    {label:'zul', value: 'zul'}]}
+                                className='rs'
+                                name='kawin'
+                                style={{boxShadow : 'none'}}
+                                placeholder='Pilih Kota/Kabupaten'
+                                onChange={(values) => console.log(values)}
+                                closeOnSelect={true}
+                                dropdownHandleRenderer={({ state }) => (
+                                    // if dropdown is open show "–" else show "+"
+                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                )}
+                            />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 ">
+                            <div className="label-cus">Kecamatan *</div>
+                            <Select
+                                options={[
+                                    {label:'kemal', value: 'kemal'},
+                                    {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                    {label:'zul', value: 'zul'}]}
+                                className='rs'
+                                name='kawin'
+                                style={{boxShadow : 'none'}}
+                                placeholder='Pilih Kecamatan'
+                                onChange={(values) => console.log(values)}
+                                closeOnSelect={true}
+                                dropdownHandleRenderer={({ state }) => (
+                                    // if dropdown is open show "–" else show "+"
+                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                )}
+                            />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 ">
+                            <div className="label-cus">Kode Pos *</div>
+                            <Select
+                                options={[
+                                    {label:'kemal', value: 'kemal'},
+                                    {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                    {label:'zul', value: 'zul'}]}
+                                className='rs'
+                                name='kawin'
+                                style={{boxShadow : 'none'}}
+                                placeholder='Pilih Kode Pos'
+                                onChange={(values) => console.log(values)}
+                                closeOnSelect={true}
+                                dropdownHandleRenderer={({ state }) => (
+                                    // if dropdown is open show "–" else show "+"
+                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                )}
+                            />
+                            <div className="error-input p-0">
+                                error
+                            </div>
+                        </div>
+
+                        <div className="col-md-12 ">
+                            <div className="label-cus">Alamat Tinggal Sekarang</div>
+                                <div className="frame-area">
+                                    <textarea name="" rows="4" placeholder='Alamat Tinggal Sekarang' />  
+                                </div> 
+                            <div className="error-input p-0">
+                                {/* error */}
+                            </div>
+                        </div>
+
+
+                        {/* OPTIONAL ADDRESS  */}
+                        <div className="col-md-12">
+                            <div className="w-addnow">
+                                <div className="w-check">
+                                    <div className="cbox" onClick={()=> this.setState({isSameAddress : !this.state.isSameAddress})}>
+                                        {this.state.isSameAddress?<i className="fas fa-check"></i>:null}
+                                    </div>
+                                    <span>Sama Seperti KTP</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="col-md-6 im datapick">
-                            <div className={this.state.borderActive === 'tanggallahir' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                <div className="has-float-label">
-                                    <DatePicker selected={this.state.tanggalLahir} 
-                                        onChange={date => this.setState({tanggalLahir: date})} 
-                                        className="datapick-cus"
-                                        dateFormat="dd - MMMM - yyyy"
-                                        placeholderText='Tanggal Lahir'
-                                        id='tanggallahir'
-                                        showYearDropdown
-                                        // withPortal
+                        {
+                            !this.state.isSameAddress?
+                            <Fragment>
+                                <div className="col-md-6 ">
+                                    <div className="label-cus">Provinsi</div>
+                                    <Select
+                                        options={[
+                                            {label:'kemal', value: 'kemal'},
+                                            {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                            {label:'zul', value: 'zul'}]}
+                                        className='rs'
+                                        name='kawin'
+                                        style={{boxShadow : 'none'}}
+                                        placeholder='Pilih Provinsi'
+                                        onChange={(values) => console.log(values)}
+                                        closeOnSelect={true}
+                                        dropdownHandleRenderer={({ state }) => (
+                                            // if dropdown is open show "–" else show "+"
+                                            <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                        )}
                                     />
-                                    <label htmlFor="tanggallahir" className='icon-label'>
-                                        <i className="fas fa-calendar-alt" ></i>
-                                    </label>
-                                    <label htmlFor="tanggallahir">Tanggal Lahir *</label>
+                                    <div className="error-input p-0">
+                                        {/* error */}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div className="col-md-12 im">
-                            <div className={this.state.borderActive === 'status' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                <div className="has-float-label">
-                                    <input 
-                                    id="status" 
-                                    name='status' 
-                                    type="text" 
-                                    // onChange={this.handleChange} 
-                                    // value={'kemal'}
-                                    // disabled
-                                    placeholder="status"/>
-                                    <label htmlFor="status">Status Pernikahan</label>
+                                <div className="col-md-6 ">
+                                    <div className="label-cus">Kota/Kabupaten</div>
+                                    <Select
+                                        options={[
+                                            {label:'kemal', value: 'kemal'},
+                                            {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                            {label:'zul', value: 'zul'}]}
+                                        className='rs'
+                                        name='kawin'
+                                        style={{boxShadow : 'none'}}
+                                        placeholder='Pilih Kota/Kabupaten'
+                                        onChange={(values) => console.log(values)}
+                                        closeOnSelect={true}
+                                        dropdownHandleRenderer={({ state }) => (
+                                            // if dropdown is open show "–" else show "+"
+                                            <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                        )}
+                                    />
+                                    <div className="error-input p-0">
+                                        {/* error */}
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+
+                                <div className="col-md-6 ">
+                                    <div className="label-cus">Kecamatan</div>
+                                    <Select
+                                        options={[
+                                            {label:'kemal', value: 'kemal'},
+                                            {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                            {label:'zul', value: 'zul'}]}
+                                        className='rs'
+                                        name='kawin'
+                                        style={{boxShadow : 'none'}}
+                                        placeholder='Pilih Kecamatan'
+                                        onChange={(values) => console.log(values)}
+                                        closeOnSelect={true}
+                                        dropdownHandleRenderer={({ state }) => (
+                                            // if dropdown is open show "–" else show "+"
+                                            <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                        )}
+                                    />
+                                    <div className="error-input p-0">
+                                        {/* error */}
+                                    </div>
+                                </div>
+
+                                <div className="col-md-6 ">
+                                    <div className="label-cus">Kode Pos</div>
+                                    <Select
+                                        options={[
+                                            {label:'kemal', value: 'kemal'},
+                                            {label:'aditya aditya ', value: 'aditya djfhkasd '},
+                                            {label:'zul', value: 'zul'}]}
+                                        className='rs'
+                                        name='kawin'
+                                        style={{boxShadow : 'none'}}
+                                        placeholder='Pilih Kode Pos'
+                                        onChange={(values) => console.log(values)}
+                                        closeOnSelect={true}
+                                        dropdownHandleRenderer={({ state }) => (
+                                            // if dropdown is open show "–" else show "+"
+                                            <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
+                                        )}
+                                    />
+                                    <div className="error-input p-0">
+                                        {/* error */}
+                                    </div>
+                                </div>
+                            </Fragment>
+                            :null
+                        }
+
+
+                        {/* OPTIONAL ADDRESS END */}
+
 
                         
                     </div>
 
                    </form>
+                   {/* ///////////////////FORMS END//////////////////// */}
+
                </div>
 
                <div className="foot-data-diri">
