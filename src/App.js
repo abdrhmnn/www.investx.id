@@ -13,10 +13,10 @@ import Footer from './components/shared/Footer';
 import Ojk from './components/shared/Ojk';
 import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
-import DataDiri from './components/investorForms/DataDiri';
 import AboutUs from './components/About/AboutUs';
 import HowItWorks from './components/how/HowItWorks';
 import Otp from './components/auth/Otp';
+import DataDiri from './components/investorForms/DataDiri';
 class App extends Component {
   render() {
     return (

@@ -19,7 +19,9 @@ class Register extends Component {
         password : '',
         c_password : '',
         isSamePass : false,
-        isModalConfirm : false
+        isModalConfirm : false,
+        phone : '',
+        email : ''
     }
 
     handleChange = (e)=>{
@@ -44,9 +46,21 @@ class Register extends Component {
     }
 
     onSubmit = ({ fields, errors, isValid }) => {
+        console.log('====================================');
+        console.log(fields.phone_number[0]);
+        console.log('====================================');
+        this.setState({email : fields.email})
+        if (fields.phone_number[0] === '0') {
+            var removeZero = fields.phone_number - 1
+            var phone = '62' + removeZero
+            this.setState({'phone' : phone})
+        }else{
+            var phone = '62' + fields.phone_number
+        }
         if (isValid) {
-          console.log('Everything is good:', fields.email);
-          console.log('Everything is good:', fields.password);
+        //   console.log('Everything is good:', fields.email);
+          console.log('Everything is good:', phone);
+        //   console.log('Everything is good:', fields.password);
           this.setState({isModalConfirm : true})
         } else {
           console.log('Something is wrong:', errors);
@@ -60,8 +74,8 @@ class Register extends Component {
                 <div className="title">Apakah email dan no handphone anda sudah benar?</div>
                 <div className="desc">No hp digunakan untuk mendapatkan kode OTP dan Email digunakan untuk Verifikasi data</div>
                 <div className="box">
-                    <div className="mailphone"> <img src={phoneicon} alt="phone"/> +6285720001212</div>
-                    <div className="mailphone"> <img src={emailicon} alt="phone"/> dekartikas@gmail.com</div>
+                    <div className="mailphone"> <img src={phoneicon} alt="phone"/> +{this.state.phone}</div>
+                    <div className="mailphone"> <img src={emailicon} alt="phone"/> {this.state.email}</div>
                 </div>
                 <div className="but-all">
                     <p onClick={()=>this.setState({isModalConfirm : false})}>Ubah</p>
@@ -99,12 +113,12 @@ class Register extends Component {
             phone_number: {
                 isRequired: "phone number field required!",
                 isMinLength: {
-                    message: "10+ character phone number is required",
-                    length: 10
+                    message: "Minimum characters is 8",
+                    length: 8
                 },
-                isRegexMatch: {
-                    message: 'format phone number is required',
-                    regex: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+                isMaxLength: {
+                    message: "Maximum character is 20",
+                    length: 20
                 },
             }
         };

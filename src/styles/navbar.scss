@@ -51,4 +51,26 @@ nav{
             }
         }
     }
+
+}
+
+.drop{
+    position: fixed;
+    height: 70px;
+    left: 0;
+    right: 0;
+    background-color: #021F59;
+    top: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    a,span{
+        text-decoration-line: underline;
+        color: #4CB5EF;
+        cursor: pointer;
+        margin-left: 20px;
+    }
+
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import successotp from '../../images/successotp.svg'
 import emailicon from '../../images/emailicon.svg'
+import { Link } from 'react-router-dom';
 
 
 class ModalSuccessOtp extends Component {
@@ -16,7 +17,10 @@ class ModalSuccessOtp extends Component {
                     <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span>  dalam 47 detik</p>
                     <div className="box-butt">
                         <button className='back' onClick={this.props.offModal}>Kembali ke Halaman Utama</button>
-                        <button className='bmail'> <img src={emailicon} alt="email"/> Buka Email</button>
+                        {/* sementarta  */}
+                        <Link to='/select-form'>
+                            <button className='bmail'> <img src={emailicon} alt="email"/> Buka Email</button>
+                        </Link>
                     </div>
                 </div>
             </div>

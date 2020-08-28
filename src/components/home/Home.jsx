@@ -20,7 +20,7 @@ import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 
 class Home extends Component {
     state={
-        modalOtp : true,
+        modalOtp : false,
     }
 
     componentDidMount(){
@@ -29,6 +29,10 @@ class Home extends Component {
 
     offModal = ()=>{
         this.setState({modalOtp : false})
+    }
+
+    onModal = ()=>{
+        this.setState({modalOtp : true})
     }
 
     render() {
@@ -51,7 +55,7 @@ class Home extends Component {
             <div>
                 { this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal}/> : null}
                 <div className='home' style={{backgroundImage: `url(${x}), url(${zebra})`}}>
-                    <Navbar />
+                    <Navbar onModal={this.onModal} />
                     <div className="container p-0 contain-home">
                         <div className="wrap">
                             <p className="title">EQUITY <br/><span>CROWDFUNDING</span></p>

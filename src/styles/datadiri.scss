@@ -107,32 +107,93 @@
         z-index: 2;
         width: 700px;
         background-color: white;
-        padding: 30px;
+        padding: 50px 80px;
         border: 3px solid #F3F3F3;
         border-radius: 9px;
         margin-bottom: 40px;
-        
+        .title{
+            font-weight: 500;
+            font-size: 25px;
+            color: #0288D1;
+            text-align: left;
+            line-height: normal;
+            margin-bottom: 36px;
+        }
         form{
-            .label{
-                font-size: 14px;
-                margin-bottom: 7px;
-                line-height: normal;
+            .im{
+                margin-bottom: 33px;
             }
-            input{
-                height: 30px;
-                border: 1px solid rgba(36, 36, 36, 0.5);
-                box-sizing: border-box;
-                border-radius: 4px;
-                outline: none;
-                margin-bottom: 20px;
+            .has-float-label{
+                input{
+                    &:disabled{
+                        background-color: #ECEFF4;
+                        border-radius: 9px;
+                        color: #A9A9A9;
+                    }
+                }
             }
-            textarea{
-                border: 1px solid rgba(36, 36, 36, 0.5);
-                box-sizing: border-box;
-                border-radius: 4px;
-                margin-bottom: 20px;
-                outline: none;
+
+            .datapick{
+                .has-float-label{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    .datapick-cus{
+                        height: 48px !important;
+                    }
+                    .fa-calendar-alt{
+                        font-size: 28px;
+                        cursor: pointer;
+                        color: #0288D1;
+                    }
+                    .icon-label{
+                        position: static;
+                        margin-bottom: 0;
+                    }
+                }
             }
+
+            .label-cus{
+                margin-top: 20px;
+                margin-bottom: 8px;
+                font-size: 12px;
+                line-height: 18px;
+                color: #333333;  
+                margin-left: 20px;              
+            }
+
+            .box-sex{
+                border-radius: 9px;
+                background: #FFFFFF;
+                border: 1px solid #B9BBCB;
+                display: flex;
+                height: 48px;
+                overflow: hidden;
+                color: #A9A9A9;
+                cursor: pointer;
+                .gen{
+                    flex: 1;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .active-gen{
+                    color: #333333;
+                    background: #ECEFF4;
+                    box-shadow: inset 0px 4px 4px #D4D7DD;
+                }
+
+            }
+
+            // textarea{
+            //     border: 1px solid rgba(36, 36, 36, 0.5);
+            //     box-sizing: border-box;
+            //     border-radius: 4px;
+            //     margin-bottom: 20px;
+            //     outline: none;
+            // }
         }
     }
 

@@ -281,6 +281,11 @@
                 font-size: 20px;
                 display: flex;
                 align-items: center;
+                margin-right: 5px;
+                &:last-of-type{
+                    margin-right: 0;
+                    margin-left: 5px;
+                }
                 img{
                     margin-right: 10px;
                 }

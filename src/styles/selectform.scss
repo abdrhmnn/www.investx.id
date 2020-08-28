@@ -1,32 +1,33 @@
 .selectform{
     display: flex;
     height: 100vh;
-    position: relative;
+    background-position: left;
+    background-size: cover;
+    // background-position-y: -1px;
+    background-repeat: no-repeat;
+    background-size: 46.7%;
     .logo{
         margin: 25px 30px;
         position: absolute;
-
     }
-    .w-left{
-        background-position: center;
-        background-size: cover;
-        // background-position-y: -1px;
-        background-repeat: no-repeat;
-        width: 46.7%;
+    .box-con{
         display: flex;
+        justify-content: flex-end;
         align-items: center;
-        justify-content: center;
-    }
-    .w-right{
-        width: 55%;
-        // background-color: slateblue;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+        .bglog{
+            margin-top: 32px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
         .box-select{
             text-align: center;
+            // background-color: slateblue;
+            width: 498px;
+            height: 445px;
             img{
-                margin-bottom: 25px;
+                margin-bottom: 45px;
             }
             .title{
                 font-weight: 900;
@@ -36,24 +37,38 @@
                 margin-bottom: 20px;
             }
             .desc{
-                margin-bottom: 65px;
+                margin-bottom: 55px;
                 font-size: 18px;
                 line-height: 21px;
             }
-            .start{
-                width: 205px;
-                height: 52px;
-                background: #4CB5EF;
-                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 8px;
-                border: none;
-                font-weight: 500;
-                font-size: 16px;
-                color: #FFFFFF;
-                margin-bottom: 30px;
+            .wbut{
+                display: flex;
+                justify-content: space-between;
+                button{
+                    width: 243px;
+                    height: 52px;
+                    font-weight: 500;
+                    font-size: 14px;
+                }
+                .inv{
+                    background: #4CB5EF;
+                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 8px;
+                    border: none;
+                    color: #FFFFFF;
+                    margin-bottom: 30px;
+                }
+                .start{
+                    background:white;
+                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 8px;
+                    border: 1px solid #4CB5EF;
+                    color: black;
+                    margin-bottom: 30px;
+                }
             }
             .mid{
-                width: 205px;
+                width: 100%;
                 margin-bottom: 0;
             }
             .atau{
@@ -61,18 +76,21 @@
                 top: -12.5px;
                 background-color: white;
                 padding: 0 20px;
+                color: #A5A5A5;
+                font-size: 14px;
+                font-weight: 300;
             }
             .bfun{
-                margin-top: 25px;
-                width: 205px;
+                margin-top: 20px;
+                width: 100%;
                 height: 52px;
                 background: #FFFFFF;
-                border: 1px solid #0288D1;
-                box-sizing: border-box;
+                border: 1px solid #A5A5A5;
                 box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
                 border-radius: 8px;
+                font-size: 14px;
+                color: #A5A5A5;
                 font-weight: 500;
-                font-size: 16px;
             }
         }
     }

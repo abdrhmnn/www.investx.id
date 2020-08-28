@@ -5,12 +5,19 @@ import { Link, NavLink } from 'react-router-dom'
 
 class Navbar extends Component {
     state={
-        open : false
+        open : false,
+        statusId : 2
+    }
+    componentDidMount(){
+        if (window.location.pathname === '/otp') {
+            this.setState({statusId : 0})
+        }
     }
 
 
     render() {
         return (
+            <div>
                   <nav>
                     <div className="left">
                     {/* <HamburgerMenu
@@ -42,6 +49,16 @@ class Navbar extends Component {
                         </ul>
                     </div>
                 </nav>
+                    {
+                        this.state.statusId === 1?
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
+                        : this.state.statusId === 2?
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <span onClick={this.props.onModal}> Verifikasi sekarang</span> </div>
+                        :this.state.statusId === 3?
+                        <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
+                        : null
+                    }
+            </div>
         );
     }
 }
