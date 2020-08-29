@@ -1,4 +1,4 @@
-.data-diri{
+.all-forms-style{
     padding: 95px 0;
     display: flex;
     justify-content: center;
@@ -177,6 +177,9 @@
                         height: 48px !important;
                         border: none;
                         font-size: 14px;
+                        input{
+                            padding: 0 !important;
+                        }
                         &:focus{
                             outline: none;
                         }
@@ -337,4 +340,119 @@
             outline: none;
         }
     }
+
+    ///dokumen
+    
+    .info-dok{
+        font-size: 12px;
+        line-height: 20px;
+        text-align: justify;
+        color: rgba(36, 36, 36, 0.8);
+        font-weight: 300;
+        margin-bottom: 40px;
+        span{
+            font-weight: 500;
+        }
+        a{
+           color: #048FFF;
+           text-decoration: underline;
+        }
+    }
+    
+    .tit-unggah{
+        margin-left: 15px;
+        font-size: 14px;
+        line-height: 18px;
+        color: #333333;    
+    }
+
+    .box-upload-dok{
+        display: flex;
+        justify-content: space-between;
+        .tag{
+            text-align: center;
+            font-size: 14px;
+            color: #333333;  
+            margin-bottom: 10px;          
+        }
+        button{
+            font-size: 12px;
+            line-height: 18px;
+            text-decoration-line: underline;
+            color: #C4C4C4;
+            background: #FAFAFA;
+            border-radius: 9px;
+            border: none;
+            width: 163px;
+            height: 48px;
+            filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.25));
+            img{
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .mod-file{
+        z-index: 200;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.65);
+        .box-mod{
+            // position: relative;
+            // z-index: 400;
+            padding: 30px 0;
+            border-radius: 20px;
+            background-color: white;
+            width: 744px;
+            filter: drop-shadow(0px 0px 9px rgba(0, 0, 0, 0.25));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .title-mod{
+                font-size: 30px;
+                line-height: 48px;
+                color: #000000;
+            }
+            .desc-mod{
+                font-size: 14px;
+                line-height: 18px;
+                text-align: center;
+                max-width: 420px;
+                color: #000000;  
+                font-weight: 300;              
+            }
+            .popic{
+                margin-bottom: 30px;
+            }
+            button{
+                font-size: 14px;
+                color: #FFFFFF;  
+                width: 180px;
+                height: 48px;
+                background: #01579B;
+                border-radius: 9px;
+                border: none;    
+                margin-bottom: 12px;          
+            }
+            .info{
+                font-size: 12px;
+                margin-bottom: 0;
+                color: #333333;  
+                font-weight: 300;              
+                span{
+                    font-weight: 500;
+                }
+            }
+
+        }
+    }
+
+
 }
+

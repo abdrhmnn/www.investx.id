@@ -17,6 +17,8 @@ import AboutUs from './components/About/AboutUs';
 import HowItWorks from './components/how/HowItWorks';
 import Otp from './components/auth/Otp';
 import DataDiri from './components/investorForms/DataDiri';
+import Pendidikan from './components/investorForms/Pendidikan';
+import Dokumen from './components/investorForms/Dokumen';
 class App extends Component {
   render() {
     return (
@@ -31,6 +33,8 @@ class App extends Component {
           <Route path='/how' component={HowItWorks}/>
           <Route exact path='/select-form' component={SelectForm}/>
           <Route path='/select-form/data-diri' component={DataDiri}/>
+          <Route path='/select-form/pendidikan-pekerjaan' component={Pendidikan}/>
+          <Route path='/select-form/dokumen' component={Dokumen}/>
           <Route path='/footer' component={Footer}/>
           <Route path='/ojk' component={Ojk}/>
         </Switch>
