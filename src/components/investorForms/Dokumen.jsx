@@ -11,6 +11,7 @@ import popnpwp from '../../images/formdokumen/popnpwp.svg'
 import { FormValidation } from "calidation";
 import InputFiles from 'react-input-files';
 import ReactLoading from 'react-loading';
+import { Link } from 'react-router-dom';
 
 // import Select from 'react-dropdown-select';
 
@@ -116,9 +117,11 @@ class Dokumen extends Component {
                <div className="bg">
                     <div className="bg-round"></div> 
                </div>
-               <div className="back-button">
-                   <img src={arrowback} alt=""/>
-               </div>
+               <Link to='/select-form/pendidikan-pekerjaan'>
+                    <div className="back-button">
+                        <img src={arrowback} alt=""/>
+                    </div>
+               </Link>
                <div className="logo-invest">
                    <img src={logo} alt=""/>
                </div>
@@ -128,7 +131,7 @@ class Dokumen extends Component {
                    <ul>
                        <li><div className="number">1</div> <span>Data Diri</span></li>
                        <li><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
-                       <li><div className="number">3</div> <span>Dokumen</span></li>
+                       <li className='actbread'><div className="number">3</div> <span>Dokumen</span></li>
                        <li><div className="number">4</div> <span>Bank</span></li>
                        <li><div className="number">5</div> <span>Preference</span></li>
                    </ul>

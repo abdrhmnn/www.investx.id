@@ -19,6 +19,8 @@ import Otp from './components/auth/Otp';
 import DataDiri from './components/investorForms/DataDiri';
 import Pendidikan from './components/investorForms/Pendidikan';
 import Dokumen from './components/investorForms/Dokumen';
+import Bank from './components/investorForms/Bank';
+import Preference from './components/investorForms/Preference';
 class App extends Component {
   render() {
     return (
@@ -31,10 +33,14 @@ class App extends Component {
           <Route path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
+
           <Route exact path='/select-form' component={SelectForm}/>
           <Route path='/select-form/data-diri' component={DataDiri}/>
           <Route path='/select-form/pendidikan-pekerjaan' component={Pendidikan}/>
           <Route path='/select-form/dokumen' component={Dokumen}/>
+          <Route path='/select-form/bank' component={Bank}/>
+          <Route path='/select-form/preference' component={Preference}/>
+
           <Route path='/footer' component={Footer}/>
           <Route path='/ojk' component={Ojk}/>
         </Switch>

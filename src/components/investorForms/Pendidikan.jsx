@@ -8,6 +8,7 @@ import { FormValidation } from "calidation";
 
 
 import Select from 'react-dropdown-select';
+import { Link } from 'react-router-dom';
 
 
 class Pendidikan extends Component {
@@ -71,9 +72,11 @@ class Pendidikan extends Component {
                <div className="bg">
                     <div className="bg-round"></div> 
                </div>
-               <div className="back-button">
-                   <img src={arrowback} alt=""/>
-               </div>
+               <Link to='/select-form/data-diri'>
+                    <div className="back-button">
+                        <img src={arrowback} alt=""/>
+                    </div>
+               </Link>
                <div className="logo-invest">
                    <img src={logo} alt=""/>
                </div>
@@ -82,7 +85,7 @@ class Pendidikan extends Component {
                <div className="steps-invest">
                    <ul>
                        <li><div className="number">1</div> <span>Data Diri</span></li>
-                       <li><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
+                       <li className='actbread'><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
                        <li><div className="number">3</div> <span>Dokumen</span></li>
                        <li><div className="number">4</div> <span>Bank</span></li>
                        <li><div className="number">5</div> <span>Preference</span></li>
