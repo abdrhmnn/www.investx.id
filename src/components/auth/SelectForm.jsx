@@ -15,10 +15,10 @@ class SelectForm extends Component {
                             <p className="title">Verifikasi email berhasil !</p>
                             <p className="desc">Silakan isi formulir sesuai kebutuhan kamu</p>
                             <div className="wbut">
-                                <Link to='/select-form/data-diri'>
+                                <Link to='/investor-form-data-diri'>
                                     <button className='inv'>Saya adalah Investor</button>
                                 </Link>
-                                <Link to='/select-form/data-diri'>
+                                <Link to='/startup-form-data-diri'>
                                     <button className='start'>Ajukan Pendanaan</button>
                                 </Link>
                             </div>

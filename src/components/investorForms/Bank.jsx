@@ -64,7 +64,7 @@ class Bank extends Component {
                <div className="bg">
                     <div className="bg-round"></div> 
                </div>
-               <Link to='/select-form/dokumen'>
+               <Link to='/investor-form-dokumen'>
                     <div className="back-button">
                         <img src={arrowback} alt=""/>
                     </div>

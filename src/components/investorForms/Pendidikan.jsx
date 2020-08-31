@@ -72,7 +72,7 @@ class Pendidikan extends Component {
                <div className="bg">
                     <div className="bg-round"></div> 
                </div>
-               <Link to='/select-form/data-diri'>
+               <Link to='/investor-form-data-diri'>
                     <div className="back-button">
                         <img src={arrowback} alt=""/>
                     </div>

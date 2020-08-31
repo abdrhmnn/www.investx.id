@@ -21,6 +21,13 @@ import Pendidikan from './components/investorForms/Pendidikan';
 import Dokumen from './components/investorForms/Dokumen';
 import Bank from './components/investorForms/Bank';
 import Preference from './components/investorForms/Preference';
+import StartUpDataDiri from './components/startUpForms/StartUpDataDiri';
+import StartUpDokumen from './components/startUpForms/StartUpDokumen';
+import InfoPerusahaan from './components/startUpForms/InfoPerusahaan';
+import InfoFinansial from './components/startUpForms/InfoFinansial';
+import InfoNonFinansial from './components/startUpForms/InfoNonFinansial';
+import Media from './components/startUpForms/Media';
+import Syarat from './components/startUpForms/Syarat';
 class App extends Component {
   render() {
     return (
@@ -35,11 +42,19 @@ class App extends Component {
           <Route path='/how' component={HowItWorks}/>
 
           <Route exact path='/select-form' component={SelectForm}/>
-          <Route path='/select-form/data-diri' component={DataDiri}/>
-          <Route path='/select-form/pendidikan-pekerjaan' component={Pendidikan}/>
-          <Route path='/select-form/dokumen' component={Dokumen}/>
-          <Route path='/select-form/bank' component={Bank}/>
-          <Route path='/select-form/preference' component={Preference}/>
+          <Route exact path='/investor-form-data-diri' component={DataDiri}/>
+          <Route exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
+          <Route exact path='/investor-form-dokumen' component={Dokumen}/>
+          <Route exact path='/investor-form-bank' component={Bank}/>
+          <Route exact path='/investor-form-preference' component={Preference}/>
+
+          <Route exact path='/startup-form-data-diri' component={StartUpDataDiri}/>
+          <Route exact path='/startup-form-dokumen' component={StartUpDokumen}/>
+          <Route exact path='/startup-form-informasi-perusahaan' component={InfoPerusahaan}/>
+          <Route exact path='/startup-form-informasi-finansial' component={InfoFinansial}/>
+          <Route exact path='/startup-form-informasi-nonfinansial' component={InfoNonFinansial}/>
+          <Route exact path='/startup-form-media' component={Media}/>
+          <Route exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route path='/footer' component={Footer}/>
           <Route path='/ojk' component={Ojk}/>

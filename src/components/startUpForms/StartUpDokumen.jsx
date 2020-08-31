@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 // import Select from 'react-dropdown-select';
 
 
-class Dokumen extends Component {
+class StartUpDokumen extends Component {
     state={
         borderActive : '',
         modalFile : {}
@@ -117,7 +117,7 @@ class Dokumen extends Component {
                <div className="bg">
                     <div className="bg-round"></div> 
                </div>
-               <Link to='/investor-form-pendidikan-pekerjaan'>
+               <Link to='/startup-form-data-diri'>
                     <div className="back-button">
                         <img src={arrowback} alt=""/>
                     </div>
@@ -126,20 +126,21 @@ class Dokumen extends Component {
                    <img src={logo} alt=""/>
                </div>
                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-               <div className="steps-invest">
+                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk untuk mengajukan funding</p>
+                <div className="steps-startup">
                    <ul>
-                       <li><div className="number">1</div> <span>Data Diri</span></li>
-                       <li><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
-                       <li className='actbread'><div className="number">3</div> <span>Dokumen</span></li>
-                       <li><div className="number">4</div> <span>Bank</span></li>
-                       <li><div className="number">5</div> <span>Preference</span></li>
+                       <li><div className="number">1</div> <span>Identitas Calon Penerbit</span></li>
+                       <li className='actbread'><div className="number">2</div> <span>Dokumen Calon Penerbit</span></li>
+                       <li><div className="number">3</div> <span> Informasi Perusahaan</span></li>
+                       <li><div className="number">4</div> <span>Informasi Finansial</span></li>
+                       <li><div className="number">5</div> <span>Informasi Non Finansial</span></li>
+                       <li><div className="number">5</div> <span>Media</span></li>
                    </ul>
                    <hr/>
                </div>
                <div className="box-form-data">
                    {/* ///////////////////FORMS//////////////////// */}
-                    <p className="title">Dokumen</p>
+                    <p className="title">Dokumen Calon Penerbit</p>
                     <FormValidation onSubmit={this.onSubmit} config={config} id='datadiri'>
                         {
                             ({ fields, errors, submitted })=>(
@@ -224,4 +225,4 @@ class Dokumen extends Component {
     }
 }
 
-export default Dokumen;
+export default StartUpDokumen;
