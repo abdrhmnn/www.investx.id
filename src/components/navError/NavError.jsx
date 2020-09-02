@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import HamburgerMenu from 'react-hamburger-menu'
 import logo from '../../images/logo.svg'
+import "../../styles/NavError.scss"
 import { Link, NavLink } from 'react-router-dom'
 
 class NavError extends Component {
@@ -35,10 +36,14 @@ class NavError extends Component {
                     <Link to='/'>
                         <img src={logo} alt="logo"/>
                     </Link>
+                    <ul>
+                      
+                    </ul>
                     </div>
                     <div className="right">
                         <ul>
                             <li> <Link to='/login'><button className="but">Sign In</button></Link> </li>
+                            <li> <Link className="en">EN</Link> </li>
                         </ul>
                     </div>
                 </nav>
@@ -47,4 +52,4 @@ class NavError extends Component {
     }
 }
 
-export default navError;
+export default NavError;

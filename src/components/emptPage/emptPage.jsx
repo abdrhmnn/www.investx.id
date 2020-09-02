@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Ojk from '../shared/Ojk';
 import Footer from '../shared/Footer';
 import "../../styles/emptPage.scss";
-import navError from '../navError';
+import NavError from '../navError/NavError';
 
 class emptPage extends Component {
 
