@@ -15,6 +15,7 @@ import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
 import AboutUs from './components/About/AboutUs';
 import HowItWorks from './components/how/HowItWorks';
+import emptPage from './components/emptPage/emptPage';
 import Otp from './components/auth/Otp';
 import DataDiri from './components/investorForms/DataDiri';
 import Pendidikan from './components/investorForms/Pendidikan';
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
+          <Route path='/404' component={emptPage}/>
 
           <Route exact path='/select-form' component={SelectForm}/>
           <Route exact path='/investor-form-data-diri' component={DataDiri}/>

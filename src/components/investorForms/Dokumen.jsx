@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
 import minifile from '../../images/formdokumen/minifile.svg'
