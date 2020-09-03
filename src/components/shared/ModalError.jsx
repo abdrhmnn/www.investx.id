@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import example from '../../images/successformimage.svg'
+import errorImage from '../../images/clip-list-is-empty 1.svg'
 
 class ModalError extends Component {
     render() {
@@ -9,11 +9,14 @@ class ModalError extends Component {
                 <div className="modal-error-body">
                     <i className="fas fa-times" onClick={this.props.offModal}></i>
 
-                    <img src={example} alt="" className="error-image" />
-                    <h2 className="error-title">Mohon Maaf</h2>
-                    <h5 className="error-description">Data yang anda masukan salah</h5>
+                    <div className="modal-error-detail">
+                        <img src={errorImage} alt="" className="error-image" />
+                        <h2 className="error-title">Mohon Maaf</h2>
+                        <h5 className="error-description">Data yang anda masukan salah</h5>
 
-                    <button className="but">Ulangi</button>
+                        <button className="but">Ulangi</button>
+                    </div>
+
                 </div>
             </div>
         );
