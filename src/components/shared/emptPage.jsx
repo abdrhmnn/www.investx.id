@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+
+import error from "../../images/error.svg";
+
 import Navbar from './Navbar';
 import ModalError from './ModalError';
 
@@ -20,8 +23,8 @@ class emptPage extends Component {
             <>
             {this.state.displayModal ? <ModalError onClose = {() => this.setDisplayModal(false)} /> : null}
             <Navbar />
-            <div className="emptpage" onClick = {() => this.setDisplayModal(true)} >
-                <img src={"https://res.cloudinary.com/codelifings/image/upload/v1599049238/ok_diqja0.png"} />
+            <div className="emptpage" onClick = {() => this.setDisplayModal(true)}>
+                <img src={error} />
             </div>
             </>
         );
