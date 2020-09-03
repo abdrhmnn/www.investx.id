@@ -56,6 +56,7 @@ class App extends Component {
           <Route exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route exact path='*' component={emptPage}/>
+          
         </Switch>
       </Router>
     );

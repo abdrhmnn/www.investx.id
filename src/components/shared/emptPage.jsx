@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import ModalError from './ModalError';
 
 class emptPage extends Component {
     render() {
