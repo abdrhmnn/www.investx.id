@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
 import ModalError from './ModalError';
+import error from "../../images/error.svg";
 
 class emptPage extends Component {
     render() {
@@ -8,7 +9,7 @@ class emptPage extends Component {
             <>
             <Navbar />
             <div className="emptpage">
-                <img src={"https://res.cloudinary.com/codelifings/image/upload/v1599049238/ok_diqja0.png"} />
+                <img src={error} />
             </div>
             </>
         );
