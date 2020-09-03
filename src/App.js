@@ -9,13 +9,11 @@ import Home from './components/home/Home.jsx';
 import Login from './components/auth/Login';
 import Register from './components/auth/SignUp';
 
-import Footer from './components/shared/Footer';
-import Ojk from './components/shared/Ojk';
 import Term from './components/auth/Term';
 import SelectForm from './components/auth/SelectForm';
 import AboutUs from './components/About/AboutUs';
 import HowItWorks from './components/how/HowItWorks';
-import emptPage from './components/emptPage/emptPage';
+import emptPage from './components/shared/emptPage';
 import Otp from './components/auth/Otp';
 import DataDiri from './components/investorForms/DataDiri';
 import Pendidikan from './components/investorForms/Pendidikan';

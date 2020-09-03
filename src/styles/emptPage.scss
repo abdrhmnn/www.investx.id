@@ -1,15 +1,9 @@
-body{    
+.emptpage{    
     background: #F4F4F4;
-        overflow: hidden;
-
-}
-.error{
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     img{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: auto;
-        margin-top: 180px;
     }
 }
