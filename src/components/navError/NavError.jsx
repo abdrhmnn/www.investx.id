@@ -42,7 +42,7 @@ class NavError extends Component {
                     </div>
                     <div className="right">
                         <ul>
-                            <li> <Link to='/login'><button className="but">Sign In</button></Link> </li>
+                            <li> <Link to='/login'><button className="but">log In</button></Link> </li>
                             <li> <Link className="en">EN</Link> </li>
                         </ul>
                     </div>
