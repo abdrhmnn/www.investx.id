@@ -41,7 +41,6 @@ class App extends Component {
           <Route path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
-          <Route path='/404' component={emptPage}/>
 
           <Route exact path='/select-form' component={SelectForm}/>
           <Route exact path='/investor-form-data-diri' component={DataDiri}/>
@@ -58,8 +57,7 @@ class App extends Component {
           <Route exact path='/startup-form-media' component={Media}/>
           <Route exact path='/startup-form-syarat' component={Syarat}/>
 
-          <Route path='/footer' component={Footer}/>
-          <Route path='/ojk' component={Ojk}/>
+          <Route exact path='*' component={emptPage}/>
         </Switch>
       </Router>
     );
