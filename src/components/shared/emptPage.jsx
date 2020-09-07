@@ -7,7 +7,7 @@ class emptPage extends Component {
         return (
             <>
             <Navbar />
-            <div className="emptpage">
+                <div className="emptpage">
                 <img src={"https://res.cloudinary.com/codelifings/image/upload/v1599049238/ok_diqja0.png"} />
             </div>
             </>

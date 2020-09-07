@@ -39,6 +39,14 @@ a{
 
 button{
     outline: none !important;
+    &:hover{
+        opacity: .7;
+    }
+}
+
+button:hover {
+    background-blend-mode: color-burn;
+    // background-color: #08080836 !important
 }
 
 .container{
