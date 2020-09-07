@@ -40,151 +40,29 @@
             margin: 0 -30px !important;
             overflow: hidden !important;
         }
-        .card-sec{
-            cursor: pointer;
-            margin: 15px 30px;
-            // box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-            box-shadow: 0px 0px 6px rgba(133, 133, 133, 0.25);
-            // border: 5px solid skyblue;
-            background-color: white;
-            transition: .3s;
-            &:hover{
-                transition: .3s;
-                transform: scale(1.03);
-                box-shadow: 0px 0px 6px rgba(133, 133, 133, 0.90);
-            }
-            img{
-                height: 179px;
-                object-fit: cover;
-                width: 100%;
-            }
-
-            .share{
-                // display: flex;
-                // justify-content: space-between;
-                // align-items: center;
-                padding: 20px;
-                position: relative;
-                height: 50px;
-                .ishare{
-                    float: right;
-                    width: 17px;
-                    height: 17px;
-                }
-                .log{
-                    top: -35px;
-                    position: absolute;
-                    width: 68px;
-                    height: 68px;
-                    background: #FFFFFF;
-                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-                    border-radius: 50%;
-                    overflow: hidden;
-                    padding: 7px;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                        object-fit: contain
-                    }
-                }
-            }
-            .body{
-                padding: 0 20px;
-                .name{
-                    font-weight: bold;
-                    font-size: 18px;
-                    color: #000000;
-                    margin-bottom: 5px;
-                }
-                .desc{
-                    font-size: 14px;
-                    color: #757575;
-                }
-            }
-            .prog{
-                display: flex;   
-                align-items: center;
-                justify-content: space-between;
-                padding:0 20px;
-                flex-wrap: wrap;
-                .progress{
-                    flex: 1;
-                    height: 5px;
-                    position: relative;
-                    background: #E1E1E1;
-                    .progress-bar{
-                        background-color: #0288D1;
-                    }
-                }
-                .num{
-                    color: #0288D1;
-                    margin-left: 20px;
-                }
-            }
-            .raised{
-                display: flex;
-                padding: 25px 0;
-                justify-content: space-between;
-                .box{
-                    .nom{
-                        font-weight: 500;
-                        font-size: 18px;
-                        color: #000000;                    
-                        padding:0 20px;
-                        margin-bottom: 0;
-                        flex: 1;
-                        span{
-                            font-weight: 300;
-                            font-size: 14px;
-                            color: #757575;                            
-                        }
-                    }
-                }
-            }
-            .loc{
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px;
-                font-size: 14px;
-                .name{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    color: #A9A9A9;
-                    // background-color: skyblue;
-                    line-height: normal;
-                    img{
-                        width: 16px;
-                        height: 16px;
-                    }
-                }
-                .day{
-                    color: #757575;
-                }
-            }
-        }
 
         .arrows{
             display: flex;
             justify-content: space-between;
             position: absolute;
             width: 100%;
-            top: 40%;
+            top: 35%;
             .back{
                 border: 0;
-                margin-left: -60px;
+                margin-left: -100px;
             }
             .next{
                 border: 0;
-                margin-right: -60px;
+                margin-right: -100px;
             }
             button{
-                background: rgba(196, 196, 196, 0.48);
-                opacity: .3;
+                background: white;
+                opacity: .5;
                 transition: .3s;
-                width: 36px;
-                height: 31px;
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+                box-shadow: 0px 0px 9px #CACACA;
                 img{
                     margin-bottom: 2px;
                 }
