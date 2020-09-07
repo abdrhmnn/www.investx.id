@@ -152,7 +152,7 @@ class CompanyList extends Component {
 
                                         <hr/>
 
-                                        <div className="title-check">Investment amount ( Rp )</div>
+                                        <div className="title-check text-center justify-content-center pr-4">Investment amount ( Rp )</div>
 
                                         <div className="filter-amount">
                                             <div className="wrap-disp">

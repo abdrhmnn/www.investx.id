@@ -124,7 +124,7 @@
             }
 
             .filter-amount{
-                padding-right: 10px;
+                padding-right: 25px;
                 .wrap-disp{
                     margin-bottom: 37px;
                     display: flex;
@@ -157,12 +157,13 @@
                 }
                 // overide input ramge 
                 .range-wrap{
-                    padding-right: 15px;
+                    // padding-right: 15px;
                     .input-range{
                         .input-range__label{
                             color: black;
                             font-size: 12px;
                             font-weight: 500;
+                            bottom: -15px;
                         }
     
                         .input-range__track{
@@ -174,7 +175,7 @@
                                 border: 1px solid black;
                             }
                             .input-range__label{
-                                margin-top: 60px;
+                                margin-top: 45px;
                                 .input-range__label-container{
                                     color: black;
                                     font-size: 18px !important;
