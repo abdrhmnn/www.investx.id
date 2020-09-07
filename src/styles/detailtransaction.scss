@@ -1,0 +1,21 @@
+.detail-transaction {
+    .tile-active {
+        padding: 1em 1em;
+        border-radius: 12px;
+        background: rgba(76, 181, 239, 0.1);
+    }
+    .text-blue {
+        color: $low-blue;
+    }
+
+    .note {
+        font-size: 10px;
+        line-height: 12px;
+        color: #333333;
+    }
+
+    .but-solid {
+        padding: 1em 0;
+        width: 100%;
+    }
+}

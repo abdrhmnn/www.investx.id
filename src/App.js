@@ -28,6 +28,9 @@ import InfoNonFinansial from './components/startUpForms/InfoNonFinansial';
 import Media from './components/startUpForms/Media';
 import Syarat from './components/startUpForms/Syarat';
 import CompanyList from './components/product/CompanyList';
+import MethodTopUp from './components/topup/MethodTopUp';
+import DetailTransaction from './components/topup/DetailTransaction';
+import StatusTopUp from './components/topup/StatusTopUp';
 class App extends Component {
   render() {
     return (
@@ -57,6 +60,10 @@ class App extends Component {
           <Route exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route exact path='/company-list' component={CompanyList}/>
+
+          <Route exact path='/topup-method' component={MethodTopUp}/>
+          <Route exact path='/topup-detail' component={DetailTransaction}/>
+          <Route exact path='/topup-status' component={StatusTopUp}/>
 
           <Route exact path='*' component={emptPage}/>
 
