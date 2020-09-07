@@ -6,8 +6,15 @@ import Slide from 'react-reveal/Slide';
 import FilterCheck from './FilterCheck';
 import triangle from '../../images/companylist/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
+
+import Select from 'react-dropdown-select';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
+
+import helper from '../shared/helper'
+
+
 
 
 
@@ -16,6 +23,7 @@ class CompanyList extends Component {
         filterShow : true,
         most_funded : false,
         industriesCount : [],
+        amount: { min: 2, max: 10 },
     }
 
     componentDidMount(){
@@ -56,11 +64,20 @@ class CompanyList extends Component {
 
     render() {
         console.log(this.state);
-        const filterIndustries = [
+        const filterCheck = [
+            {id : 0, name : 'Most Funded',},
+            {id : 1, name : 'Recently launched',},
+            {id : 2, name : 'Closing Soon',},
+            {id : 3, name : 'In Progress',},
+            {id : 4, name : 'Completed campaigns',},
+        ]
+        const filterCheckIndustries = [
             {id : 0, name : 'Fashion',},
             {id : 1, name : 'Automotive',},
             {id : 2, name : 'Energy',},
             {id : 3, name : 'Finance',},
+            {id : 4, name : 'Creative',},
+            {id : 5, name : 'Food',},
         ]
         return (
             <>
@@ -70,7 +87,7 @@ class CompanyList extends Component {
                 <Navbar/>
                 <div className='company-list'>
                     <div className="container"> 
-                        <div className="breadcrumb-custom"><Link to='/'>Home</Link>  <span> > </span><Link to='/company-list'>Company list</Link> </div>
+                        <div className="breadcrumb-custom"><Link to='/'>Home</Link>  <span> {`>`} </span><Link to='/company-list'>Company list</Link> </div>
                         <p className="title-company">Find your favourite company. Invest now, or regret later</p>
                         <p className="desc-company">All companies are rigorously screened & pass due diligence.</p>
                     </div>
@@ -88,41 +105,78 @@ class CompanyList extends Component {
                                 <Slide right when={this.state.filterShow} > 
                                     <div className={this.state.filterShow? "filter-box1" : 'filter-box1 filter-hidden'}>
                                         <ul>
-                                            <li>
-                                                <FilterCheck label='Most Funded' 
-                                                isCheck={this.state.most_funded} onClick={()=>this.handleCheckFilter('most_funded', !this.state.most_funded )} 
-                                                />
-                                            </li>
-                                            <li>
-                                                <FilterCheck label='Recently launched' />
-                                            </li>
-                                            <li>
-                                                <FilterCheck label='Closing Soon' />
-                                            </li>
-                                            <li>
-                                                <FilterCheck label='In Progress' />
-                                            </li>
-                                            <li>
-                                                <FilterCheck label='Completed campaigns' />
-                                            </li>
+                                            {filterCheck.map((res,i)=>
+                                                <li key={i}>
+                                                    <FilterCheck label={res.name}
+                                                    isCheck={this.state[`${res.name}`]} onClick={()=>this.handleCheckFilter(res.name, !this.state[`${res.name}`] )} 
+                                                    />
+                                                </li>
+                                            )}
                                         </ul> 
+
+                                        <hr/>
+
+                                        <div className="title-check">City </div>
+                                        <div className="w-100 pr-3">
+                                                <Select
+                                                    options={[
+                                                        {label:'jakarta', value: 'jakarta'},
+                                                        {label:'bandung ', value: 'bandung'},
+                                                        {label:'bekasi', value: 'bekasi'}]}
+                                                    className='rs'
+                                                    name='kawin'
+                                                    style={{boxShadow : 'none'}}
+                                                    placeholder='Pilih Kota'
+                                                    onChange={(values) => console.log(values)}
+                                                    closeOnSelect={true}
+                                                    dropdownHandleRenderer={({ state }) => (
+                                                        // if dropdown is open show "–" else show "+"
+                                                        <span style={{}}>{state.dropdown ? <i className="fas fa-chevron-up px-2"></i> : <i class="fas fa-chevron-down px-2"></i>}</span>
+                                                    )}
+                                                />
+                                        </div>
 
                                         <hr/>
 
                                         <div className="title-check">Industries <img src={triangle} alt="triangle"/></div>
                                         <ul className='industries-check'>
-                                            {
-                                                filterIndustries.map((res,i)=>
-                                                    <li key={i}>
-                                                        <FilterCheck label={res.name} 
-                                                        isCheck={this.state[`${res.name}`]} 
-                                                        onClick={()=>this.handleCheckIndustries(res.name, !this.state[`${res.name}`], res.id )} 
-                                                        />
-                                                    </li>
-                                                    )
-                                            }
+                                            {filterCheckIndustries.map((res,i)=>
+                                                <li key={i}>
+                                                    <FilterCheck label={res.name} 
+                                                    isCheck={this.state[`${res.name}`]} 
+                                                    onClick={()=>this.handleCheckIndustries(res.name, !this.state[`${res.name}`], res.id )} 
+                                                    />
+                                                </li>
+                                            )}
                                         </ul> 
-                                        
+
+                                        <hr/>
+
+                                        <div className="title-check">Investment amount ( Rp )</div>
+
+                                        <div className="filter-amount">
+                                            <div className="wrap-disp">
+                                                <div className="amount-disp">
+                                                    <div className="label">Min. ammount</div>
+                                                    <div className="value-amount">{helper.idr(this.state.amount.min * 1000000)}</div>
+                                                </div>
+                                                <span>-</span>
+                                                <div className="amount-disp">
+                                                    <div className="label">Max. ammount</div>
+                                                    <div className="value-amount">{helper.idr(this.state.amount.max * 1000000)}</div>
+                                                </div>
+
+                                            </div>
+                                            <div className="range-wrap">
+                                                <InputRange
+                                                // formatLabel={value => `${value}Jt`}
+                                                maxValue={15}
+                                                minValue={1}
+                                                value={this.state.amount}
+                                                onChange={value => this.setState({ amount : value })} />
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </Slide>
 
@@ -140,19 +194,19 @@ class CompanyList extends Component {
                                 </div>
 
                                 <div className=" row no-gutters">
-                                    <div className="card-sizing col-md-4 ">
+                                    <div className="mb-5 col-md-4 ">
                                         <Card />
                                     </div>
-                                    <div className="card-sizing col-md-4 ">
+                                    <div className="mb-5 col-md-4 ">
                                         <Card />
                                     </div>
-                                    <div className="card-sizing col-md-4 ">
+                                    <div className="mb-5 col-md-4 ">
                                         <Card />
                                     </div>
-                                    <div className="card-sizing col-md-4 ">
+                                    <div className="mb-5 col-md-4 ">
                                         <Card />
                                     </div>
-                                    <div className="card-sizing col-md-4 ">
+                                    <div className="mb-5 col-md-4 ">
                                         <Card />
                                     </div>
 

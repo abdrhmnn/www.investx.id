@@ -12,7 +12,7 @@ class Card extends Component {
                     <div className="body-card">
                         <div>
                             <p className="name">MOON FAB</p>
-                            <p className="desc">Lorem ipsum dolor sit amet, consectetur </p>
+                            <p className="desc">All you need for healthy lifetsyle </p>
                         </div>
                         <i className="far fa-heart"></i>
                     </div>
