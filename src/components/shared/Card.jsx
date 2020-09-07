@@ -23,13 +23,13 @@ class Card extends Component {
                         <div className="num">50%</div>
                     </div>
                     <div className="raised">
-                        <div className="box">
+                        <div className="box text-center">
                             <p className="nom">Rp. 1,2M <br/> <span>Raised</span></p>
                         </div>
-                        <div className="box border-left border-right">
+                        <div className="box border-left border-right text-center">
                             <p className="nom">Rp. 1 Jt <br/> <span>Min. Invest</span></p>
                         </div>
-                        <div className="box">
+                        <div className="box text-center">
                             <p className="nom">1030 <br/> <span>Investors</span></p>
                         </div>
                     </div>

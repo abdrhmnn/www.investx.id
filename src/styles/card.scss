@@ -14,7 +14,7 @@
         box-shadow: 0px 0px 6px rgba(133, 133, 133, 0.90);
     }
     img{
-        height: 179px;
+        height: 180px;
         object-fit: cover;
         width: 100%;
     }
@@ -63,11 +63,15 @@
         padding: 25px 0;
         justify-content: space-between;
         .box{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .nom{
                 font-weight: 500;
                 font-size: 18px;
                 color: #000000;                    
-                padding:0 20px;
+                padding:0 10px;
                 margin-bottom: 0;
                 flex: 1;
                 span{

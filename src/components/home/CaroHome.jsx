@@ -49,7 +49,7 @@ class CaroHome extends Component {
                     <div className="header">
                         <div className="wrap">
                             <span className="sele">Highly selective</span>
-                            <Link to='/'> <u>See All</u> </Link>
+                            <Link to='/company-list'> <u>See All</u> </Link>
                         </div>
                         <hr/>
                     </div>
@@ -71,7 +71,7 @@ class CaroHome extends Component {
                     <div className="header">
                         <div className="wrap">
                             <span className="sele">Closed Soon</span>
-                            <Link to='/'> <u>See All</u> </Link>
+                            <Link to='/company-list'> <u>See All</u> </Link>
                         </div>
                         <hr/>
                     </div>
@@ -93,7 +93,7 @@ class CaroHome extends Component {
                     <div className="header">
                         <div className="wrap">
                             <span className="sele">New Startup</span>
-                            <Link to='/'> <u>See All</u> </Link>
+                            <Link to='/company-list'> <u>See All</u> </Link>
                         </div>
                         <hr/>
                     </div>
