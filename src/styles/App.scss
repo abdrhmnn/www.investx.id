@@ -50,6 +50,14 @@ a {
 
 button {
     outline: none !important;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+button:hover {
+    background-blend-mode: color-burn;
+    // background-color: #08080836 !important
 }
 
 .container {
@@ -149,6 +157,7 @@ input[type="number"] {
 @import "./how.scss";
 @import "./modalerror.scss";
 @import "./emptPage.scss";
-@import "./metodetopup.scss";
+@import "./emptPage.scss";
+@import "./methodtopup.scss";
 @import "./detailtransaction.scss";
 @import "./topupstatus.scss";

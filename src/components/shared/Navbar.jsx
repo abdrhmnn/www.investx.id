@@ -9,7 +9,7 @@ class Navbar extends Component {
         statusId : 2
     }
     componentDidMount(){
-        if (window.location.pathname === '/otp') {
+        if (window.location.pathname === '/otp' || window.location.pathname === '/company-list') {
             this.setState({statusId : 0})
         }
     }

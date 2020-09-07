@@ -5,6 +5,7 @@ import share from '../../images/share.svg'
 import caroback from '../../images/caroback.svg'
 import caronext from '../../images/caronext.svg'
 import loca from '../../images/loca.svg'
+import Card from '../shared/Card';
 
 
 class CaroHome extends Component {
@@ -17,6 +18,7 @@ class CaroHome extends Component {
             slidesToScroll: 1,
             speed: 500,
             cssEase: "linear",
+            afterChange: (current, next) =>{ console.log({curr : current, next : next})}
           };
 
           const settings2 = {
@@ -39,7 +41,7 @@ class CaroHome extends Component {
             cssEase: "linear",
           };
 
-          var arr = [1,2,2,2,2,2,2,2,2,2,2]
+          var arr = [1,2,2,2,2,2]
         return (
             <div className='carohome'>
                 <div className="container">
@@ -56,45 +58,7 @@ class CaroHome extends Component {
                         <Slider {...settings} ref={c => (this.slider = c)}>
                             {
                                 arr.map((res,i)=>(
-                                    <div>
-                                        <div className="card-sec">
-                                            <img src="https://placeimg.com/640/480/tech" alt=""/>
-                                            <div className="share">
-                                                <div className="log">
-                                                    <img src='https://placeimg.com/640/480/grayscale' alt=""/>   
-                                                </div>
-                                                <img className='ishare' src={share} alt=""/>
-                                            </div>
-                                            <div className="body">
-                                                <p className="name">MOON FAB</p>
-                                                <p className="desc">Lorem ipsum dolor sit amet, consectetur </p>
-                                            </div>
-                                            <div className="prog">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <div className="num">50%</div>
-                                            </div>
-                                            <div className="raised">
-                                                <div className="box">
-                                                    <p className="nom">Rp. 1,2M <br/> <span>Raised</span></p>
-                                                </div>
-                                                <div className="box border-left border-right">
-                                                    <p className="nom">Rp. 1 Jt <br/> <span>Min. Invest</span></p>
-                                                </div>
-                                                <div className="box">
-                                                    <p className="nom">1030 <br/> <span>Investors</span></p>
-                                                </div>
-                                            </div>
-                                            <div className="loc">
-                                                <div className="name">
-                                                    <img src={loca} alt=""/>
-                                                    Jakarta
-                                                </div>
-                                                <div className="day">30 Days left</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Card key={i} />
                                 ))
                             }
                         </Slider>
@@ -116,45 +80,7 @@ class CaroHome extends Component {
                         <Slider {...settings2} ref={c => (this.slider2 = c)}>
                             {
                                 arr.map((res,i)=>(
-                                    <div>
-                                        <div className="card-sec">
-                                            <img src="https://placeimg.com/640/480/nature" alt=""/>
-                                            <div className="share">
-                                                <div className="log">
-                                                    <img src='https://placeimg.com/640/480/animals/sepia' alt=""/>   
-                                                </div>
-                                                <img className='ishare' src={share} alt=""/>
-                                            </div>
-                                            <div className="body">
-                                                <p className="name">MOON FAB</p>
-                                                <p className="desc">Lorem ipsum dolor sit amet, consectetur </p>
-                                            </div>
-                                            <div className="prog">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <div className="num">50%</div>
-                                            </div>
-                                            <div className="raised">
-                                                <div className="box">
-                                                    <p className="nom">Rp. 1,2M <br/> <span>Raised</span></p>
-                                                </div>
-                                                <div className="box border-left border-right">
-                                                    <p className="nom">Rp. 1 Jt <br/> <span>Min. Invest</span></p>
-                                                </div>
-                                                <div className="box">
-                                                    <p className="nom">1030 <br/> <span>Investors</span></p>
-                                                </div>
-                                            </div>
-                                            <div className="loc">
-                                                <div className="name">
-                                                    <img src={loca} alt=""/>
-                                                    Jakarta
-                                                </div>
-                                                <div className="day">30 Days left</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Card key={i} />
                                 ))
                             }
                         </Slider>
@@ -176,45 +102,7 @@ class CaroHome extends Component {
                         <Slider {...settings3} ref={c => (this.slider3 = c)}>
                             {
                                 arr.map((res,i)=>(
-                                    <div>
-                                        <div className="card-sec">
-                                            <img src="https://placeimg.com/640/480/arch" alt=""/>
-                                            <div className="share">
-                                                <div className="log">
-                                                    <img src='https://placeimg.com/640/480/tech/grayscale' alt=""/>   
-                                                </div>
-                                                <img className='ishare' src={share} alt=""/>
-                                            </div>
-                                            <div className="body">
-                                                <p className="name">MOON FAB</p>
-                                                <p className="desc">Lorem ipsum dolor sit amet, consectetur </p>
-                                            </div>
-                                            <div className="prog">
-                                                <div class="progress">
-                                                    <div class="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                                <div className="num">50%</div>
-                                            </div>
-                                            <div className="raised">
-                                                <div className="box">
-                                                    <p className="nom">Rp. 1,2M <br/> <span>Raised</span></p>
-                                                </div>
-                                                <div className="box border-left border-right">
-                                                    <p className="nom">Rp. 1 Jt <br/> <span>Min. Invest</span></p>
-                                                </div>
-                                                <div className="box">
-                                                    <p className="nom">1030 <br/> <span>Investors</span></p>
-                                                </div>
-                                            </div>
-                                            <div className="loc">
-                                                <div className="name">
-                                                    <img src={loca} alt=""/>
-                                                    Jakarta
-                                                </div>
-                                                <div className="day">30 Days left</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <Card key={i}/>
                                 ))
                             }
                         </Slider>

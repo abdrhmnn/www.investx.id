@@ -1,0 +1,77 @@
+.company-list{
+    padding-top: 74px;
+    background-color: white;
+    .breadcrumb-custom{
+        margin-top: 20px;
+        color: #757575;
+        margin-bottom: 45px;
+        span{
+            margin: 0 10px;
+        }
+    }
+    .title{
+        text-align: center;
+        font-weight: 900;
+        font-size: 35px;
+        line-height: 41px;
+        margin-bottom: 10px;
+    }
+    .desc{
+        text-align: center;
+        font-size: 16px;
+        line-height: 30px;
+        margin-bottom: 70px;
+    }
+    .list-boxes{
+        display: flex;
+        justify-content: center;
+        transition: .3s;
+
+        .filter-box-active{
+            width: 265px;            
+            cursor: pointer;
+            transition: .3s;
+            .title-filter{
+                background: #4CB5EF;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 9px 0px 0px 9px;
+                // width: 93px;
+                height: 62px;
+                display: flex;
+                align-items: center;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 24px;
+                color: #FFFFFF;
+                padding: 10px;
+                margin-bottom: 45px;
+            }
+        }
+        .filter-box{
+            // width: 25%;
+            cursor: pointer;
+            transition: .3s;
+            .title-filter{
+                background: #4CB5EF;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 9px 0px 0px 9px;
+                height: 62px;
+                display: flex;
+                align-items: center;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 24px;
+                color: #FFFFFF;
+                padding: 10px;
+            }
+        }
+        .list-box{
+            width: 100%;
+            padding: 1.2rem ;
+            background-color: #F6F6F6;;
+            .header-list-company{
+
+            }
+        }
+    }
+}
