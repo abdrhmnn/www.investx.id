@@ -31,6 +31,7 @@ import CompanyList from './components/product/CompanyList';
 import MethodTopUp from './components/topup/MethodTopUp';
 import DetailTransaction from './components/topup/DetailTransaction';
 import StatusTopUp from './components/topup/StatusTopUp';
+import Wallet from './components/withDraw/Wallet';
 class App extends Component {
   render() {
     return (
@@ -64,6 +65,13 @@ class App extends Component {
           <Route exact path='/topup-method' component={MethodTopUp}/>
           <Route exact path='/topup-detail' component={DetailTransaction}/>
           <Route exact path='/topup-status' component={StatusTopUp}/>
+
+          <Route exact path='/my-wallet' component={Wallet}/>
+          <Route exact path='/topup-status' component={StatusTopUp}/>
+          <Route exact path='/topup-status' component={StatusTopUp}/>
+          <Route exact path='/topup-status' component={StatusTopUp}/>
+          <Route exact path='/topup-status' component={StatusTopUp}/>
+
 
           <Route exact path='*' component={emptPage}/>
 
