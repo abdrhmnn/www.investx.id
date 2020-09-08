@@ -24,7 +24,8 @@ class DetailTransaction extends Component {
                 </div>
                 <div className="box saldo">
                     <img className="wallet" src={wallet} alt=""/>
-                    <span style={{background: "#0288D1", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "60px"}}>Total Saldo</span>
+                    <span style={{background: "#0288D1", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "40px"}}>Total Saldo</span>
+                    <div className="uang">Rp. <span className="jumlah">25.000</span></div>
                 </div>
                 <div className="box nominal">
 
