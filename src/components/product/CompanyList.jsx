@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Card from '../shared/Card';
 import Slide from 'react-reveal/Slide';
 import FilterCheck from './FilterCheck';
-import triangle from '../../images/companylist/triangle.svg'
+import triangle from '../../images/company/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -78,6 +78,15 @@ class CompanyList extends Component {
             {id : 3, name : 'Finance',},
             {id : 4, name : 'Creative',},
             {id : 5, name : 'Food',},
+        ]
+
+        const dummyCards =[
+            {id : 0, name : 'Bukalapak',},
+            {id : 1, name : 'Tokopedia',},
+            {id : 2, name : 'Facebook',},
+            {id : 3, name : 'Travelio',},
+            {id : 4, name : 'Alkulaku',},
+            {id : 5, name : 'Spotify',},
         ]
         return (
             <>
@@ -194,22 +203,15 @@ class CompanyList extends Component {
                                 </div>
 
                                 <div className=" row no-gutters">
-                                    <div className="mb-5 col-md-4 ">
-                                        <Card />
-                                    </div>
-                                    <div className="mb-5 col-md-4 ">
-                                        <Card />
-                                    </div>
-                                    <div className="mb-5 col-md-4 ">
-                                        <Card />
-                                    </div>
-                                    <div className="mb-5 col-md-4 ">
-                                        <Card />
-                                    </div>
-                                    <div className="mb-5 col-md-4 ">
-                                        <Card />
-                                    </div>
-
+                                {
+                                    dummyCards.map((res,i)=>
+                                        <div className="mb-5 col-md-4 " key={i}>
+                                            <Link to={`/company-list/detail/${res.id}`}>
+                                                <Card name={res.name} />
+                                            </Link>
+                                        </div>
+                                    )
+                                }
                                 </div>
                                 
                             </div>

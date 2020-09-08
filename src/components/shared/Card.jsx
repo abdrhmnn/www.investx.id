@@ -4,6 +4,7 @@ import loca from '../../images/loca.svg'
 
 class Card extends Component {
     render() {
+        const {name} = this.props
         return (
             <div>
                 <div className="card-sec">
@@ -11,7 +12,7 @@ class Card extends Component {
                     
                     <div className="body-card">
                         <div>
-                            <p className="name">MOON FAB</p>
+                            <p className="name">{name}</p>
                             <p className="desc">All you need for healthy lifetsyle </p>
                         </div>
                         <i className="far fa-heart"></i>

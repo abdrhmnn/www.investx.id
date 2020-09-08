@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import share from '../../images/share.svg'
 import caroback from '../../images/caroback.svg'
 import caronext from '../../images/caronext.svg'
-import loca from '../../images/loca.svg'
 import Card from '../shared/Card';
 
 
@@ -41,7 +39,14 @@ class CaroHome extends Component {
             cssEase: "linear",
           };
 
-          var arr = [1,2,2,2,2,2]
+          const dummyCards =[
+            {id : 0, name : 'Bukalapak',},
+            {id : 1, name : 'Tokopedia',},
+            {id : 2, name : 'Facebook',},
+            {id : 3, name : 'Travelio',},
+            {id : 4, name : 'Alkulaku',},
+            {id : 5, name : 'Spotify',},
+        ]
         return (
             <div className='carohome'>
                 <div className="container">
@@ -57,8 +62,10 @@ class CaroHome extends Component {
                     <div className="carousell-sec">
                         <Slider {...settings} ref={c => (this.slider = c)}>
                             {
-                                arr.map((res,i)=>(
-                                    <Card key={i} />
+                                dummyCards.map((res,i)=>(
+                                    <Link key={i} to={`company-list/detail/${res.id}`}>
+                                        <Card name={res.name} />
+                                    </Link>
                                 ))
                             }
                         </Slider>
@@ -79,8 +86,10 @@ class CaroHome extends Component {
                     <div className="carousell-sec">
                         <Slider {...settings2} ref={c => (this.slider2 = c)}>
                             {
-                                arr.map((res,i)=>(
-                                    <Card key={i} />
+                                dummyCards.map((res,i)=>(
+                                    <Link key={i} to={`company-list/detail/${res.id}`}>
+                                        <Card name={res.name} />
+                                    </Link>
                                 ))
                             }
                         </Slider>
@@ -101,8 +110,10 @@ class CaroHome extends Component {
                     <div className="carousell-sec">
                         <Slider {...settings3} ref={c => (this.slider3 = c)}>
                             {
-                                arr.map((res,i)=>(
-                                    <Card key={i}/>
+                                dummyCards.map((res,i)=>(
+                                    <Link key={i} to={`company-list/detail/${res.id}`}>
+                                        <Card name={res.name} />
+                                    </Link>
                                 ))
                             }
                         </Slider>

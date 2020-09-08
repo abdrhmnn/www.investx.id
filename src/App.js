@@ -31,6 +31,7 @@ import CompanyList from './components/product/CompanyList';
 import MethodTopUp from './components/topup/MethodTopUp';
 import DetailTransaction from './components/topup/DetailTransaction';
 import StatusTopUp from './components/topup/StatusTopUp';
+import CompanyDetail from './components/product/CompanyDetail';
 class App extends Component {
   render() {
     return (
@@ -60,6 +61,7 @@ class App extends Component {
           <Route exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route exact path='/company-list' component={CompanyList}/>
+          <Route exact path='/company-list/detail/:id' component={CompanyDetail}/>
 
           <Route exact path='/topup-method' component={MethodTopUp}/>
           <Route exact path='/topup-detail' component={DetailTransaction}/>

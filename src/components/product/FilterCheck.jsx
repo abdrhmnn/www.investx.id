@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import check from '../../images/companylist/check.svg'
+import check from '../../images/company/check.svg'
 
 class FilterCheck extends Component {
     render() {
