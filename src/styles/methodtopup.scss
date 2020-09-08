@@ -10,21 +10,34 @@
     }
 
     .box-form-data {
+        &.payment-methods {
+            padding-top: 1.5em !important;
+        }
         .title-alt {
-            margin-bottom: 1em;
             font-weight: bold;
             font-size: 16px;
+            color: rgba(43, 43, 43, 0.8);
+        }
+
+        .subtitle {
+            margin-bottom: 1em;
+            font-size: 10px;
             color: rgba(43, 43, 43, 0.8);
         }
 
         .more-transfer-method {
             color: #87b72e;
             cursor: pointer;
+            margin-bottom: 0;
         }
 
         &.payment-detail {
             font-size: 14px;
             line-height: 32px;
+
+            .amount {
+                font-weight: bold;
+            }
         }
 
         .radio-bank {
@@ -32,12 +45,14 @@
             display: flex;
             align-items: center;
             flex-direction: row;
+            margin-bottom: 1em;
             padding: 2em 20px;
+            border: 1px solid #c4c4c4;
+            border-radius: 4px;
 
             &.checked {
                 background: rgba(76, 181, 239, 0.1);
                 border: 1px solid #4cb5ef;
-                border-radius: 4px;
             }
 
             img {

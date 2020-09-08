@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 
-class DetailTransaction extends Component {
+class withDrawOtp extends Component {
 
     state = {
         isInvoice: false,
@@ -71,7 +71,7 @@ class DetailTransaction extends Component {
                     <br />
                     <div className="d-flex justify-content-between">
                         <p className="name">Batas Waktu</p>
-                        <p className="amount">12;34;00</p>
+                        <p className="amount">12:34:00</p>
                     </div>
 
                     <br />
@@ -100,4 +100,4 @@ class DetailTransaction extends Component {
     }
 }
 
-export default DetailTransaction;
+export default withDrawOtp;
