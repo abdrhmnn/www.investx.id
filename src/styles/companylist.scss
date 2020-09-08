@@ -9,69 +9,226 @@
             margin: 0 10px;
         }
     }
-    .title{
+    .title-company{
         text-align: center;
         font-weight: 900;
         font-size: 35px;
         line-height: 41px;
         margin-bottom: 10px;
     }
-    .desc{
+    .desc-company{
         text-align: center;
         font-size: 16px;
         line-height: 30px;
         margin-bottom: 70px;
     }
+    .container-cus{
+        float: right;
+        width: 80%;
+    }
+    
     .list-boxes{
+        .header-list-company{
+            padding: 0 30px;
+            display: flex;
+            height: 62px;
+            justify-content: space-between;
+            align-items: center;
+            .tags{
+                display: flex;
+                .box-tag{
+                    height: 39px;
+                    padding: 0 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 1px solid #77A4E5 ;
+                    border-radius: 9px;
+                    font-size: 14px;
+                    margin: 0 7.5px;
+                }
+            }
+
+            
+        }
+        
+        .title-filter{
+            transition: .3s;
+            cursor: pointer;
+            width: 100px;
+            background: #4CB5EF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 9px 0px 0px 9px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            color: #FFFFFF;
+            padding: 10px;
+        }
+
+        .title-filter-active{
+            cursor: pointer;
+            transition: .3s;
+            width: 100%;
+            background: #4CB5EF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 9px 0px 0px 9px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            color: #FFFFFF;
+            padding: 10px;
+        }
+
+        .filter-box1{
+            width: 100%;
+            margin-top: 45px;
+            padding-left: 10px;
+            ul{
+                margin-right: 10px;
+                padding: 0;
+                li{
+                    cursor: pointer;
+                    list-style-type: none;
+                    margin: 10px 0;
+                }
+            }
+
+            hr{
+                margin: 20px 0;
+            }
+
+            .title-check{
+                font-weight: 500;
+                display: flex;
+                justify-content: space-between;
+                padding-right: 9px;
+                margin-bottom: 20px;
+            }
+            .rs{
+                input{
+                    width: 0;
+                }
+            }
+
+            .industries-check{
+                height: 160px;
+                // background-color: skyblue;
+                overflow-y: scroll;
+            }
+
+            .filter-amount{
+                padding-right: 25px;
+                .wrap-disp{
+                    margin-bottom: 37px;
+                    display: flex;
+                    justify-content: space-between;
+    
+                    .label{
+                        font-size: 8px;
+                        line-height: 12px;
+                        color: rgba(51, 51, 51, 0.648875);
+                        text-align: center;
+                        margin-bottom: 5px;
+                    }
+                    span{
+                        margin-top: 12px;
+                        color: rgba(51, 51, 51, 0.648875);
+                    }
+                    .amount-disp{
+                        width: 45%;
+                        
+                        .value-amount{
+                            width: 100%;
+                            border-bottom: 1px solid rgba(51, 51, 51, 0.648875);
+                            font-size: 14px;
+                            line-height: 18px;
+                            text-align: center;
+                            color: rgba(51, 51, 51, 0.648875);
+                        }
+                    }
+
+                }
+                // overide input ramge 
+                .range-wrap{
+                    // padding-right: 15px;
+                    .input-range{
+                        .input-range__label{
+                            color: black;
+                            font-size: 12px;
+                            font-weight: 500;
+                            bottom: -15px;
+                        }
+    
+                        .input-range__track{
+                            .input-range__track--active{
+                                background: #AFE843;
+                            }
+                            .input-range__slider{
+                                background-color: white;
+                                border: 1px solid black;
+                            }
+                            .input-range__label{
+                                margin-top: 45px;
+                                .input-range__label-container{
+                                    color: black;
+                                    font-size: 18px !important;
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    &::after{
+                                        content: 'Jt';
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+        .filter-hidden{
+            display: none;
+        }
+
+    }
+    
+}
+
+
+// CHECKBOX COMPONENTS 
+.filter-check{
+    display: flex;
+    align-items: center;
+    .checklist{
+        width: 17px;
+        height: 17px;
+        background-color: #DEDEDE;
+        border-radius: 2px;
+        margin-right: 20px;
         display: flex;
         justify-content: center;
-        transition: .3s;
-
-        .filter-box-active{
-            width: 265px;            
-            cursor: pointer;
-            transition: .3s;
-            .title-filter{
-                background: #4CB5EF;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 9px 0px 0px 9px;
-                // width: 93px;
-                height: 62px;
-                display: flex;
-                align-items: center;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 24px;
-                color: #FFFFFF;
-                padding: 10px;
-                margin-bottom: 45px;
-            }
-        }
-        .filter-box{
-            // width: 25%;
-            cursor: pointer;
-            transition: .3s;
-            .title-filter{
-                background: #4CB5EF;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-                border-radius: 9px 0px 0px 9px;
-                height: 62px;
-                display: flex;
-                align-items: center;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 24px;
-                color: #FFFFFF;
-                padding: 10px;
-            }
-        }
-        .list-box{
-            width: 100%;
-            padding: 1.2rem ;
-            background-color: #F6F6F6;;
-            .header-list-company{
-
-            }
-        }
+        align-items: center;
+    }
+    .checklist-active{
+        width: 17px;
+        height: 17px;
+        background-color: #757575;;
+        border-radius: 2px;
+        margin-right: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .check-label{
+        font-size: 14px;
+        // font-weight: 300;
     }
 }
