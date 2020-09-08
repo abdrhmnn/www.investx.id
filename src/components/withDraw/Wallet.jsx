@@ -5,7 +5,7 @@ import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import wallet from "../../images/withdraw/wallet.svg";
 
-class DetailTransaction extends Component {
+class Wallet extends Component {
     render() {
         return (
             <div className="all-forms-style detail-transaction">
@@ -38,4 +38,4 @@ class DetailTransaction extends Component {
     }
 }
 
-export default DetailTransaction;
+export default Wallet;

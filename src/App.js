@@ -33,6 +33,8 @@ import DetailTransaction from './components/topup/DetailTransaction';
 import StatusTopUp from './components/topup/StatusTopUp';
 import Wallet from './components/withDraw/Wallet';
 import withDraw from './components/withDraw/withDraw';
+import withDrawOtp from './components/withDraw/withDrawOtp';
+
 
 class App extends Component {
   render() {
@@ -70,7 +72,7 @@ class App extends Component {
 
           <Route exact path='/my-wallet' component={Wallet}/>
           <Route exact path='/withdraw' component={withDraw}/>
-          <Route exact path='/topup-status' component={StatusTopUp}/>
+          <Route exact path='/withdraw-otp' component={withDrawOtp}/>
           <Route exact path='/topup-status' component={StatusTopUp}/>
           <Route exact path='/topup-status' component={StatusTopUp}/>
 

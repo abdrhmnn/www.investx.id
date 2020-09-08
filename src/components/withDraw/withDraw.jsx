@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
 
 
-class PaymentMethod extends Component {
+class withDraw extends Component {
     render() {
         const { methods } = this.props;
         return (
@@ -51,7 +51,7 @@ class PaymentMethod extends Component {
 }
 
 
-PaymentMethod.propTypes = {
+withDraw.propTypes = {
     methods: PropTypes.arrayOf(
         PropTypes.exact({
             first: PropTypes.bool,
@@ -132,9 +132,9 @@ class MethodTopUp extends Component {
                     {
                         this.state.toggleMethods ?
                             <Slide bottom>
-                                <PaymentMethod methods={methods} />
+                                <withDraw methods={methods} />
                             </Slide>
-                            : <PaymentMethod methods={[methods[0]]} />
+                            : <withDraw methods={[methods[0]]} />
                     }
                 </div>
 
@@ -151,4 +151,4 @@ class MethodTopUp extends Component {
     }
 }
 
-export default MethodTopUp;
+export default withDraw;
