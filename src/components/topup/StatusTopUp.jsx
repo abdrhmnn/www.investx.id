@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-import logo from "../../images/logo.svg";
+import logoWhite from "../../images/logo-white.svg";
 import paymentImage from "../../images/paymentimage.svg"
 
 class StatusTopUp extends Component {
     render() {
         return (
             <div className="topup-status">
-                <img src={logo} alt="logo" />
+                <img src={logoWhite} alt="logo-white" />
                 <br /><br />
 
                 <img src={paymentImage} alt="" />
