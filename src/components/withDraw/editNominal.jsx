@@ -5,8 +5,6 @@ import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
 
-
-
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
 
@@ -123,7 +121,10 @@ class MethodTopUp extends Component {
                         />
                     </div>
                     <div>
-                        <span style={{background: "grey", color: "black", padding: "5px", marginTop: "60px"}}>100.000.000</span>
+                        <button className="saran">1.000.000.000</button>
+                        <button className="saran">100.000.000</button>
+                        <button className="saran">10.000.000.000</button>
+                        <button className="saran">100.000.000</button>
                     </div>
                 </div>
 

@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
+import plus from "../../images/plus.svg";
 
 
 
+import formBank from "./formBank";
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
 
@@ -42,6 +44,10 @@ class PaymentMethod extends Component {
                                 </div>
                             )}
                             <br />
+                            <div className="formBanking" style={{cursor: "pointer"}}>
+                                <img src={plus} />
+                                <span style={{marginLeft:"9px", color:"#0288D1", fontWeight:"bolder"}}>Tambah Bank</span>
+                            </div>
                         </div>
                     )
                     )
