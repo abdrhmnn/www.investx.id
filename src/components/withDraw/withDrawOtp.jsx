@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
+import kotakSurat from "../../images/kotakSurat.svg";
 
 class withDrawOtp extends Component {
 
@@ -33,40 +34,15 @@ class withDrawOtp extends Component {
                 <p className="title">{this.state.isInvoice ? "INVOICE" : "DETAIL TRANSAKSI"}</p>
 
                 <div className="payment-detail box-form-data">
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Tanggal</p>
-                        <p className="amount">22/09/2020</p>
+                    <div style={{marginLeft: "200px"}}>
+                        <img src={kotakSurat} alt=""/>
                     </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">No Invoice</p>
-                        <p className="amount">ABC123-EF45</p>
+                    <div style={{marginLeft: "100px", marginTop: "-40px"}} className="d-flex justify-content-between">
+                        <h2>Verifikasi Kode OTP</h2>
                     </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Status</p>
-                        <p className={"amount " + (this.state.isInvoice ? "text-blue" : "")} >{this.state.isInvoice ? "Success" : "Pending"}</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Pembayaran</p>
-                        <p className="amount">Top Up Wallet</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Metode Pengiriman</p>
-                        <p className="amount">BCA Virtual Account</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Nominal Top Up</p>
-                        <p className="amount text-blue">Rp. 200,000,-</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Administrasi</p>
-                        <p className="amount text-blue">Rp. 2,500,-</p>
-                    </div>
-                    <div className="tile-active d-flex justify-content-between">
-                        <p className="name">Total</p>
-                        <div>
-                            <br />
-                            <p className="amount h3 text-blue">Rp. 202, 500</p>
-                        </div>
+                    <div style={{textAlign: "center"}}>
+                       <p>Hai Maria, Untuk melanjutkan transaksi kamu harus memasukkan kode OTP</p>
+                       <span>Kode Verifikasi telah dikirimkan ke nomor</span>
                     </div>
                     <br />
                     <div className="d-flex justify-content-between">
