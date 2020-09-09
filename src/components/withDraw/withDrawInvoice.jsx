@@ -54,7 +54,7 @@ class DetailTransaction extends Component {
                         <p className="amount">BCA Virtual Account</p>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <p className="name">Nominal Top Up</p>
+                        <p className="name">Nominal</p>
                         <p className="amount text-blue">Rp. 200,000,-</p>
                     </div>
                     <div className="d-flex justify-content-between">
@@ -65,7 +65,7 @@ class DetailTransaction extends Component {
                         <p className="name">Total</p>
                         <div>
                             <br />
-                            <p className="amount h3 text-blue">Rp. 202, 500</p>
+                            <p className="amount h3 text-blue">Rp. 202,500,-</p>
                         </div>
                     </div>
                     <br />
@@ -89,7 +89,7 @@ class DetailTransaction extends Component {
                         :
                         <div>
                             <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
-                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>BAYAR TRANSAKSI</button>
+                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>Bayar Transaksi</button>
                         </div>
                     }
 

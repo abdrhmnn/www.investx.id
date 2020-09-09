@@ -21,8 +21,8 @@ class PaymentMethod extends Component {
                                 <div className="title-alt">{method.title}</div>
                                 {methods.length === 1 ?
                                     (
-                                        <span className="more-transfer-method" onClick={method.toggle}>
-                                            Ganti Bank<i className="fas fa-chevron-down ml-2"></i>
+                                        <span className="more-transfer-method" onClick={method.toggle} style={{color: "red", fontWeight: "bolder"}}>
+                                            Ganti Bank
                                         </span>
                                     ) : <div></div>
                                 }
@@ -121,14 +121,14 @@ class MethodTopUp extends Component {
                         />
                     </div>
                     <div>
-                        <button className="saran">1.000.000.000</button>
-                        <button className="saran">100.000.000</button>
-                        <button className="saran">10.000.000.000</button>
-                        <button className="saran">100.000.000</button>
+                        <button className="saran">20.000.000</button>
+                        <button className="saran">30.000.000</button>
+                        <button className="saran">40.000.000</button>
+                        <button className="saran">50.000.000</button>
                     </div>
                 </div>
 
-                <p className="box-form-title">Pilih Transfer Bank</p>
+                <p className="box-form-title">Pilih Metode Pembayaran</p>
                 <div className="payment-methods box-form-data">
                     {
                         this.state.toggleMethods ?
@@ -142,7 +142,7 @@ class MethodTopUp extends Component {
               
                 <div className="foot-data-diri">
                    <p className="agreement"></p>
-                    <button type='submit' form='datadiri'>SIMPAN & LANJUTKAN</button>
+                    <button type='submit' form='datadiri'>LANJUTKAN</button>
                </div>
             </div>
         );
