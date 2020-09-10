@@ -120,11 +120,19 @@ class MethodTopUp extends Component {
                             name="username" placeholder="1.000.000"
                         />
                     </div>
-                    <div>
+                    <div style={{maxHeight:"40px", overflowX:"hidden", overflowY: "hidden",whiteSpace: "nowrap"}} className="geser">
                         <button className="saran">20.000.000</button>
                         <button className="saran">30.000.000</button>
                         <button className="saran">40.000.000</button>
                         <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        
+
                     </div>
                 </div>
 
