@@ -29,15 +29,20 @@
     margin-top: 40px;
     margin-left: 40px;
 } 
+.geser{
+    -webkit-overflow-scrolling: touch;
+}
 .uang{
-    color: #0288D1;
     font-weight: bolder;
     font-size: 20pt;
-    margin-left: 150px;
+    margin-left: 130px;
     margin-top: -40px;
 }
 .saran{
+    display: inline-block;
     border: none;
     margin-top: 20px;
     margin-right: 20px;
+    background: #DEDEDE;
+    font-size: 9pt;
 }
