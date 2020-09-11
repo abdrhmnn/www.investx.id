@@ -11,7 +11,7 @@ import topup from "../../images/withdraw/topup.svg";
 class Wallet extends Component {
     render() {
         return (
-            <div className="all-forms-style detail-transaction">
+            <div className="all-forms-style detail-transaction withdraw">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
