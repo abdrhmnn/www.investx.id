@@ -5,12 +5,11 @@ import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
 
-
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
-import withDraw from './withDraw'
 
-class editNominal extends Component {
+
+class PaymentMethod extends Component {
     render() {
         const { methods } = this.props;
         return (
@@ -22,8 +21,8 @@ class editNominal extends Component {
                                 <div className="title-alt">{method.title}</div>
                                 {methods.length === 1 ?
                                     (
-                                        <span className="more-transfer-method" onClick={method.toggle}>
-                                            Ganti Bank<i className="fas fa-chevron-down ml-2"></i>
+                                        <span className="more-transfer-method" onClick={method.toggle} style={{color: "red", fontWeight: "bolder"}}>
+                                            Ganti Bank
                                         </span>
                                     ) : <div></div>
                                 }
@@ -36,7 +35,7 @@ class editNominal extends Component {
                                         name="bank"
                                     />
 
-                                    <img src={bca} alt="bca" />
+                                    <img src={value} alt="bca" />
                                     <br />
                                 </div>
                             )}
@@ -51,7 +50,7 @@ class editNominal extends Component {
 }
 
 
-withDraw.propTypes = {
+PaymentMethod.propTypes = {
     methods: PropTypes.arrayOf(
         PropTypes.exact({
             first: PropTypes.bool,
@@ -80,15 +79,8 @@ class MethodTopUp extends Component {
     render() {
         const methods = [
             {
-                first: true,
-                toggle: this.setToggleMethods,
                 title: 'TRANSFER REKENING',
-                logos: [
-                    bca,   
-                ]
-            },
-            {
-                title: 'TRANSFER REKENING',
+               
                 logos: [
                     bca,
                     bca,
@@ -97,6 +89,7 @@ class MethodTopUp extends Component {
             },
             {
                 title: 'TRANSFER REKENING',
+               
                 logos: [
                     bca,
                     bca,
@@ -117,38 +110,51 @@ class MethodTopUp extends Component {
                 <div className="logo-invest">
                     <img src={logo} alt="" />
                 </div>
-                <p className="title">WITHDRAW</p>
+                <p className="title">Top Up</p>
 
                 <div className="box-form-data">
                     <div className="title-alt">Jumlah Nominal</div>
                     <div className="input-border-underline">
-                        <input value="100.000.000"
+                        <input
+                            type="number"
+                            name="username" placeholder="1.000.000"
                         />
+                    </div>
+                    <div style={{maxHeight:"40px", overflowX:"hidden", overflowY: "hidden",whiteSpace: "nowrap"}} className="geser">
+                        <button className="saran">20.000.000</button>
+                        <button className="saran">30.000.000</button>
+                        <button className="saran">40.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        <button className="saran">50.000.000</button>
+                        
+
                     </div>
                 </div>
 
-                <p className="box-form-title">Pilih Bank Transfer</p>
+                <p className="box-form-title">Pilih Metode Pembayaran</p>
                 <div className="payment-methods box-form-data">
                     {
                         this.state.toggleMethods ?
                             <Slide bottom>
-                                <withDraw methods={methods} />
+                                <PaymentMethod methods={methods} />
                             </Slide>
-                            : <withDraw methods={[methods[0]]} />
+                            : <PaymentMethod methods={[methods[0]]} />
                     }
                 </div>
 
-            
-
+              
                 <div className="foot-data-diri">
-                    <div className="agreement"></div>
-                    <button type="submit" form="#">
-                        Lanjutkan
-                    </button>
-                </div>
+                   <p className="agreement"></p>
+                    <button type='submit' form='datadiri'>LANJUTKAN</button>
+               </div>
             </div>
         );
     }
 }
 
-export default editNominal;
+export default MethodTopUp;

@@ -1,38 +1,67 @@
-// .box{
-//     position: absolute;
-//     width: 372px;
-//     background: white;
-//     height: 240px;
+.withdraw{
+    .menu a{
+    position: absolute;
+margin-top: 20px;
+padding: 6px;
+border: 2px solid #2388D1;
+color: #2388D1;
+border-radius: 30px;
+font-size: 10pt;
+padding-left: 15px;
+padding-right: 15px;
+margin-left: 30px;
+cursor: pointer;
+}
+.menu a:hover{
+    background: #2388D1;
+    color:white;
+}
+.box{
+    position: absolute;
+    width: 372px;
+    background: white;
+    height: 240px;
     
-// }
-// .saldo{
-//     left: 140px;
-//     top: 190px;    
-//     width: 340px;
-//     height: 190px;    
-//     border-bottom: 8px solid #0288D1;
-// }
-// .nominal, .riwayat{
-//     width: 700px;
-//     left: 500px;
-//     top: 192px;
-// }
-// .title{
-//     position: absolute;
-//     left: -550px;
-//     top: -1px;
-// }
-// .riwayat{
-//     top: 450px;
-// }
-// .wallet{
-//     margin-top: 40px;
-//     margin-left: 40px;
-// } 
-// .uang{
-//     color: #0288D1;
-//     font-weight: bolder;
-//     font-size: 20pt;
-//     margin-left: 150px;
-//     margin-top: -40px;
-// }
+}
+.saldo{
+    left: 140px;
+    top: 190px;    
+    width: 340px;
+    height: 190px;    
+    border-bottom: 8px solid #0288D1;
+}
+.nominal, .riwayat{
+    width: 700px;
+    left: 500px;
+    top: 192px;
+}
+.title{
+    position: absolute;
+    left: -550px;
+    top: -1px;
+}
+.riwayat{
+    top: 450px;
+}
+.wallet{
+    margin-top: 40px;
+    margin-left: 40px;
+} 
+.geser{
+    -webkit-overflow-scrolling: touch;
+}
+.uang{
+    font-weight: bolder;
+    font-size: 20pt;
+    margin-left: 130px;
+    margin-top: -40px;
+}
+.saran{
+    display: inline-block;
+    border: none;
+    margin-top: 20px;
+    margin-right: 20px;
+    background: #DEDEDE;
+    font-size: 9pt;
+}
+}

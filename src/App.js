@@ -40,6 +40,8 @@ import withDrawInvoice from './components/withDraw/withDrawInvoice';
 import editNominal from './components/withDraw/editNominal';
 import CompanyDetail from './components/product/CompanyDetail';
 import Play from './components/PLAYGROUND/Play';
+import formBank from './components/withDraw/formBank';
+
 
 class App extends Component {
   render() {
@@ -81,6 +83,7 @@ class App extends Component {
           <Route exact path='/withdraw-otp' component={withDrawOtp}/>
           <Route exact path='/invoice' component={withDrawInvoice}/>
           <Route exact path='/editNominal' component={editNominal}/>
+          <Route exact path='/tambah-bank' component={formBank}/>
 
           <Route exact path='/play' component={Play}/>
 

@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
+import plus from "../../images/plus.svg";
 
 
+
+import formBank from "./formBank";
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
 
 
-class withDraw extends Component {
+class PaymentMethod extends Component {
     render() {
         const { methods } = this.props;
         return (
@@ -36,11 +39,18 @@ class withDraw extends Component {
                                         name="bank"
                                     />
 
-                                    <img src={bca} alt="bca" />
+                                    <img src={value} alt="bca" />
+                                    <div style={{position:"absolute", padding:"6px", border: "2px solid #2388D1", color:"#2388D1", borderRadius:"30px", fontSize:"10pt", paddingLeft:"15px", paddingRight:"15px", marginLeft:"420px"}}>
+                                        <span>NEW</span>
+                                    </div>
                                     <br />
                                 </div>
                             )}
-                            <br />
+                            <br /> <br /> <br />
+                            <div className="formBanking" style={{cursor: "pointer"}}>
+                                <img src={plus} />
+                                <span style={{marginLeft:"9px", color:"#0288D1", fontWeight:"bolder"}}>Tambah Bank</span>
+                            </div>
                         </div>
                     )
                     )
@@ -51,7 +61,7 @@ class withDraw extends Component {
 }
 
 
-withDraw.propTypes = {
+PaymentMethod.propTypes = {
     methods: PropTypes.arrayOf(
         PropTypes.exact({
             first: PropTypes.bool,
@@ -80,15 +90,8 @@ class MethodTopUp extends Component {
     render() {
         const methods = [
             {
-                first: true,
-                toggle: this.setToggleMethods,
                 title: 'TRANSFER REKENING',
-                logos: [
-                    bca,   
-                ]
-            },
-            {
-                title: 'TRANSFER REKENING',
+               
                 logos: [
                     bca,
                     bca,
@@ -97,6 +100,7 @@ class MethodTopUp extends Component {
             },
             {
                 title: 'TRANSFER REKENING',
+               
                 logos: [
                     bca,
                     bca,
@@ -117,12 +121,14 @@ class MethodTopUp extends Component {
                 <div className="logo-invest">
                     <img src={logo} alt="" />
                 </div>
-                <p className="title">WITHDRAW</p>
+                <p className="title">Top Up</p>
 
                 <div className="box-form-data">
                     <div className="title-alt">Jumlah Nominal</div>
                     <div className="input-border-underline">
-                        <input value="100.000.000"
+                        <input
+                            type="number"
+                            name="username"
                         />
                     </div>
                 </div>
@@ -132,23 +138,20 @@ class MethodTopUp extends Component {
                     {
                         this.state.toggleMethods ?
                             <Slide bottom>
-                                <withDraw methods={methods} />
+                                <PaymentMethod methods={methods} />
                             </Slide>
-                            : <withDraw methods={[methods[0]]} />
+                            : <PaymentMethod methods={[methods[0]]} />
                     }
                 </div>
 
-            
-
+              
                 <div className="foot-data-diri">
-                    <div className="agreement"></div>
-                    <button type="submit" form="#">
-                        Lanjutkan
-                    </button>
-                </div>
+                   <p className="agreement"></p>
+                    <button type='submit' form='datadiri'>LANJUTKAN</button>
+               </div>
             </div>
         );
     }
 }
 
-export default withDraw;
+export default MethodTopUp;

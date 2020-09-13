@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 
-class withDrawInvoice extends Component {
+class DetailTransaction extends Component {
 
     state = {
         isInvoice: false,
@@ -18,7 +18,7 @@ class withDrawInvoice extends Component {
 
     render() {
         return (
-            <div className="all-forms-style detail-transaction">
+            <div className="all-forms-style detail-transaction withdraw">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
@@ -54,7 +54,7 @@ class withDrawInvoice extends Component {
                         <p className="amount">BCA Virtual Account</p>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <p className="name">Nominal Top Up</p>
+                        <p className="name">Nominal</p>
                         <p className="amount text-blue">Rp. 200,000,-</p>
                     </div>
                     <div className="d-flex justify-content-between">
@@ -65,13 +65,13 @@ class withDrawInvoice extends Component {
                         <p className="name">Total</p>
                         <div>
                             <br />
-                            <p className="amount h3 text-blue">Rp. 202, 500</p>
+                            <p className="amount h3 text-blue">Rp. 202,500,-</p>
                         </div>
                     </div>
                     <br />
                     <div className="d-flex justify-content-between">
                         <p className="name">Batas Waktu</p>
-                        <p className="amount">12:34:00</p>
+                        <p className="amount">12;34;00</p>
                     </div>
 
                     <br />
@@ -89,7 +89,7 @@ class withDrawInvoice extends Component {
                         :
                         <div>
                             <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
-                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>BAYAR TRANSAKSI</button>
+                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>Bayar Transaksi</button>
                         </div>
                     }
 
@@ -100,4 +100,4 @@ class withDrawInvoice extends Component {
     }
 }
 
-export default withDrawInvoice;
+export default DetailTransaction;

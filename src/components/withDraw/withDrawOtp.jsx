@@ -1,103 +1,69 @@
-import React, { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
+import gmail from '../../images/gmail.svg'
+import outlook from '../../images/outlook.svg'
+import Navbar from '../shared/Navbar';
+import mailbox from '../../images/mailbox.png'
 
-import arrowback from "../../images/arrowback.svg";
-import logo from "../../images/logo.svg";
 
-class withDrawOtp extends Component {
-
-    state = {
-        isInvoice: false,
+class Otp extends Component {
+    state ={
+        box1 : '',
+        box2 : '',
+        box3 : '',
+        box4 : '',
+        box5 : '',
+        box6 : '',
     }
+    handleChange = (e) =>{
+        let boxes = ['box1','box2','box3','box4','box5','box6',]
+        for (let i = 0; i < 5; i++) {
+            if (e.target.name === boxes[i] && e.target.value !== "") {
+                this[`boxFoc${i + 2}`].focus()
+            }
+        }
 
-    setIsInvoice = (status) => {
+        const regex = /[0-9]/g;
+        var val  = e.target.value.match(regex)
         this.setState({
-            isInvoice: status
+            [e.target.name] : val == null ? '' : e.target.value
+        }, ()=>{
+            var {box1, box2, box3, box4, box5, box6 } = this.state
+            if (box1 !== '' && box2 !== '' && box3 !== '' && box4 !== '' && box5 !== '' && box6 !== '' ) {
+        }
         })
+    }
+    handleSubmit = (e)=>{
+        var {box1, box2, box3, box4, box5, box6 } = this.state
+        let inCode = box1 + box2 + box3 + box4 + box5 + box6
+        console.log(this.state);
+        // window.location.href = '/select-form'
+        e.preventDefault()
     }
 
     render() {
         return (
-            <div className="all-forms-style detail-transaction">
-                <div className="bg">
-                    <div className="bg-round"></div>
+            <div>
+                <div className='otp'>
+                    <div className="box-otp">
+                        <img src={mailbox} alt=""/>
+                        <h2>Verifikasi Kode OTP</h2>
+                        <p>Hi, Maria.. untuk melanjutkan transaksi kamu harus memasukkan kode OTP</p>
+                        <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
+                        <p className="num">0 8 5 7 * * * * 1 2 1 2</p>
+                        <form onSubmit={this.handleSubmit} id='otp'>
+                        <input required ref={(input) => { this.boxFoc1 = input; }}  type='number' maxLength='1' name='box1' value={this.state.box1} onChange={this.handleChange}  />
+                        <input required ref={(input) => { this.boxFoc2 = input; }}  type='number' maxLength='1' name='box2' value={this.state.box2} onChange={this.handleChange}  />
+                        <input required ref={(input) => { this.boxFoc3 = input; }}  type='number' maxLength='1' name='box3' value={this.state.box3} onChange={this.handleChange}  />
+                        <input required ref={(input) => { this.boxFoc4 = input; }}  type='number' maxLength='1' name='box4' value={this.state.box4} onChange={this.handleChange}  />
+                        </form>
+                    <button type='submit' form='otp'>Verifikasi</button>
+                    <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
+                    </div>
                 </div>
-                <Link to="/select-form/">
-                    <div className="back-button">
-                        <img src={arrowback} alt="" />
-                    </div>
-                </Link>
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-                <p className="title">{this.state.isInvoice ? "INVOICE" : "DETAIL TRANSAKSI"}</p>
-
-                <div className="payment-detail box-form-data">
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Tanggal</p>
-                        <p className="amount">22/09/2020</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">No Invoice</p>
-                        <p className="amount">ABC123-EF45</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Status</p>
-                        <p className={"amount " + (this.state.isInvoice ? "text-blue" : "")} >{this.state.isInvoice ? "Success" : "Pending"}</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Pembayaran</p>
-                        <p className="amount">Top Up Wallet</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Metode Pengiriman</p>
-                        <p className="amount">BCA Virtual Account</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Nominal Top Up</p>
-                        <p className="amount text-blue">Rp. 200,000,-</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Administrasi</p>
-                        <p className="amount text-blue">Rp. 2,500,-</p>
-                    </div>
-                    <div className="tile-active d-flex justify-content-between">
-                        <p className="name">Total</p>
-                        <div>
-                            <br />
-                            <p className="amount h3 text-blue">Rp. 202, 500</p>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Batas Waktu</p>
-                        <p className="amount">12:34:00</p>
-                    </div>
-
-                    <br />
-
-                    {this.state.isInvoice ?
-                        <div>
-                            <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
-
-                            <div className="d-flex justify-content-between">
-                                <button className="but">BUTUH BANTUAN</button>
-                                <button className="but-solid" type="submit" >KIRIM BUKTI</button>
-                            </div>
-
-                        </div>
-                        :
-                        <div>
-                            <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
-                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>BAYAR TRANSAKSI</button>
-                        </div>
-                    }
-
-                </div>
-
             </div>
-        );
+        ); 
     }
 }
 
-export default withDrawOtp;
+export default Otp;
