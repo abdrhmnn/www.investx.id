@@ -1,85 +1,51 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-// import moment from 'moment'
-import { FormValidation } from "calidation";
-
-import {InputLabel, FormControl, MenuItem, TextField , Select as CusSelect, FormHelperText, Button} from '@material-ui/core'
-import {Autocomplete} from '@material-ui/lab';
-import chevroninput from '../../images/chevroninput.svg'
-
-
-import Select from 'react-dropdown-select';
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment'
 import { Link } from 'react-router-dom';
+import { Formik , Field} from "formik";
+import * as Yup from 'yup'
+import {InputText, InputSelect, InputTextArea} from '../shared/InputComponents'
+import {Checkbox, ButtonGroup, Button, FormHelperText} from '@material-ui/core'
+import Fade from 'react-reveal/Fade';
 
 
 class DataDiri extends Component {
     state={
-        borderActive : '',
-        gender : '',
         tanggalLahir : null
     }
 
-    borderBlue = (e)=>{
-        if (e.target.id.length !== 0) {
-            console.log(e.target.id);
-            this.setState({borderActive : e.target.id})
-            console.log();
-        }else{
-            console.log(e.target.id);
-            console.log('kosong');
-        }
-    }
-
-    onSubmit = ({ fields, errors, isValid }) => {
-        if (isValid) {
-         
-        } else {
-          // `errors` is also an object!
-          console.log('Something is wrong:', errors);
-          
-            // for (const property in errors) {
-            //     console.log(`${property}: ${errors[property]}`);
-            //     if (errors[property] !== null) {
-            //         this[property].focus()
-            //         break
-            //     }
-            // }
-        }
-    }
-
     render() {
-
-
-        const config = {
-            username: {
-              isRequired: "Name lengkap field is required!",
-            },
-            gender: {
-                isRequired: "Jenis kelamin field is required!",
-            },
-
-            born: {
-                isRequired: "Tempat lahir field is required!",
-            },
-
-            password: {
-              isRequired: "Password field required!",
-              isMinLength: {
-                message: "16+ character password is required",
-                length: 16
-              }
-            }
-          };
-
-          const top100Films = [
-            { title: 'The Shawshank Redemption', year: 1994, value: 'lala'},
-            { title: 'The Godfather', year: 1972 },
-            { title: 'The Godfather: Part II', year: 1974 },
-            { title: 'The Dark Knight', year: 2008 },
+        const top100Films = [
+            { label: 'The Shawshank Redemption', year: 1994, value: 'lala'},
+            { label: 'The Godfather', year: 1972 },
+            { label: 'The Godfather: Part II', year: 1974 },
+            { label: 'The Dark Knight', year: 2008 },
         ]
+
+        const initialValueObj = {
+            name : 'Sagara Finn',
+            born : '',
+            tanggalLahir : '2017-05-24',
+            dummy : null,
+            phone : '0812345678',
+            address: '',
+            isSameAdd : false,
+            gender : '',
+        }
+
+        const schemaObj = Yup.object({
+            name : Yup.string().required(),
+            born : Yup.string().required(),
+            tanggalLahir : Yup.string().required(),
+            address : Yup.string().required(),
+            dummy : Yup.object().nullable().required(),
+            gender : Yup.string().required(),
+        })
+
+
         return (
            <div className="all-forms-style">
                <div className="bg">
@@ -106,508 +72,268 @@ class DataDiri extends Component {
                    <hr/>
                </div>
                <div className="box-form-data">
-                   {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Data Diri</p>
-                    <FormValidation onSubmit={this.onSubmit} config={config} id='datadiri'>
-                        {
-                            ({ fields, errors, submitted })=>(
-
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <TextField 
-                                        className='input-custom'
-                                        error={false}
-                                        id="outlined-basic" 
-                                        label="Data Diri" 
-                                        variant="outlined"
-                                        helperText=""
-                                        value=''
-                                        // disabled
-                                        fullWidth={true}
-                                        placeholder='placeholder'
-                                        // inputProps={{ style: { fontSize: '9px', height: '48px !important'}}}
-                                        />
-
-                                    </div>
-
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div className='col-md-12'>
-
-                        <FormControl variant="outlined" fullWidth={true} className='select-custom' error>
-                            <InputLabel id="demo-simple-select-outlined-label"  >Age</InputLabel>
-                            <CusSelect
-                            IconComponent={(c) => c.className === 'MuiSelect-icon MuiSelect-iconOutlined' ? <i className="fas fa-chevron-down px-3"></i>:  <i className="fas fa-chevron-up px-3"></i> }
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            // value={age}
-                            // onChange={handleChange}
-                            placeholder='pilih age'
-                            label="Age"
-                            >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                            </CusSelect>
-                            <FormHelperText>ssss</FormHelperText>
-                        </FormControl>
-                        </div>
-
-                        <div className='col-md-12'>
-
-                        <TextField
-                            fullWidth={true}
-                            error
-                            variant="outlined"
-                            id="date"
-                            label="Birthday"
-                            type="date"
-                            // defaultValue=""
-                            className='input-custom'
-                            placeholder="Tanggal Lahir"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            helperText="ssss"
-                            onChange={(val)=>console.log(val.target.value)}
-                        />
-
-                        </div>
-
-                        <div className="col-md-12">
-                            <TextField 
-                                className='input-custom'
-                                error
-                                multiline
-                                rows={4}
-                                id="outlined-basic" 
-                                label="Data Diri" 
-                                variant="outlined"
-                                helperText="ssss"
-                                // value='kemal'
-                                // disabled
-                                fullWidth={true}
-                                placeholder='placeholder'
-                                // inputProps={{ style: { fontSize: '9px', height: '48px !important'}}}
-                                />
-                        </div>
-
-
-                        <div className="col-md-12">
-                            <Autocomplete
-                            popupIcon={<img style={{margin : '0 8px'}} src={chevroninput} alt='chevron'/>}
-                            id="combo-box-demo"
-                            autoComplete
-                            openOnFocus
-                            options={top100Films}
-                            getOptionLabel={(option) => option.title}
-                            onChange={(e,val)=>console.log(val, e.target.name)}
-                            style={{ width: '100%'}}
-                            // disabled
-                            // value
-                            renderInput={(params) => <TextField {...params} className='input-custom'  helperText="ssss" placeholder='cari' label="auto cari" variant="outlined" />}
-                            />
-                        </div>
-
-                        <div className="col-md-12">
-                            <Button className='bg-warning'>submit</Button>
-                            <Button variant='outlined' style={{color : '#0288d1', borderColor : '#0288d1', width: 200,height: 48}}>submit</Button>
-                        </div>
-
-
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-                                    <br/>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Nama Lengkap Sesua KTP</div>
-                                        <div className="frame-inp">
-                                            <input 
-                                            type="text" 
-                                            name="username"
-                                            disabled
-                                            value='kemal'
-                                            // ref={ i => this.username = i}
-                                            id=""/>
-                                        </div>
-                                    </div>
-                                    <div className="error-input">
-                                        {submitted && errors.username && <div className="error">{errors.username}</div> }
-                                    </div>
-
-                                    <div className="col-md-12 p-0">
-                                        <div className="col-md-6">
-                                            <p className="label-cus">Jenis Kelamin *</p>
-                                            <div className="box-sex"  ref={ i => this.gender = i}>
-                                                <div className={this.state.gender === 'pria'? "gen active-gen" : 'gen'} onClick={()=> this.setState({gender : 'pria'})}>Pria</div>
-                                                <div className={this.state.gender === 'wanita'? "gen active-gen" : 'gen'}  onClick={()=> this.setState({gender : 'wanita'})}>Wanita</div>
-                                            </div>
-                                        </div>
-                                        <div className="error-input">
-                                            {submitted && this.state.gender === '' && <div className="error">{errors.gender}</div>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="label-cus">Tempat Lahir *</div>
-                                        <div className="frame-inp">
-                                            <input 
-                                            type="text" 
-                                            name="born"
-                                            // value='kemal' 
-                                            // disabled
-                                            placeholder='Tempat Lahir'
-                                            />
-                                        </div>
-                                        <div className="error-input p-0">
-                                            {submitted && errors.born && <div className="error">{errors.born}</div>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6 datapick">
-                                        <div className="label-cus">Tanggal Lahir *</div>
-                                        <div className="date-wrap">
-                                            <DatePicker selected={this.state.tanggalLahir} 
-                                                onChange={date => this.setState({tanggalLahir: date})} 
-                                                className="datapick-cus"
-                                                dateFormat="dd - MMMM - yyyy"
-                                                placeholderText='Tanggal Lahir'
-                                                showYearDropdown
-                                                id='dateborn'
-                                                // withPortal
-                                            />
-                                            <label className='m-0' htmlFor="dateborn">
-                                                <i class="fas fa-calendar-alt"></i>
-                                            </label>
-                                        </div>
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Status Pernikahan *</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rs'
-                                                name='kawin'
-                                                style={{boxShadow : 'none'}}
-                                                // placeholder='status perkawinan'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
-                                            />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Status Kewarganegaraan *</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            // placeholder='status perkawinan'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="label-cus">No Handphone</div>
-                                        <div className="frame-inp">
-                                            <input 
-                                            type="text" 
-                                            name=""
-                                            value='0816161616' 
-                                            disabled
-                                            placeholder='Tempat Lahir'
-                                            />
-                                        </div>
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="label-cus">No Telepon Rumah</div>
-                                        <div className="frame-inp">
-                                            <input 
-                                            type="text" 
-                                            name=""
-                                            // value='kemal' 
-                                            // disabled
-                                            placeholder='No Telepon Rumah'
-                                            />
-                                        </div>
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Alamat Sesuai KTP *</div>
-                                            <div className="frame-area">
-                                                <textarea name="" rows="4" placeholder='Alamat Sesuai KTP' />  
-                                            </div>
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Provinsi *</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Provinsi'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Kota/Kabupaten *</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Kota/Kabupaten'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Kecamatan *</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Kecamatan'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Kode Pos *</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Kode Pos'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            error
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Alamat Tinggal Sekarang</div>
-                                            <div className="frame-area">
-                                                <textarea name="" rows="4" placeholder='Alamat Tinggal Sekarang' />  
-                                            </div> 
-                                        <div className="error-input p-0">
-                                            {/* error */}
-                                        </div>
-                                    </div>
-
-
-                                    {/* OPTIONAL ADDRESS  */}
-                                    <div className="col-md-12">
-                                        <div className="w-addnow">
-                                            <div className="w-check">
-                                                <div className="cbox" onClick={()=> this.setState({isSameAddress : !this.state.isSameAddress})}>
-                                                    {this.state.isSameAddress?<i className="fas fa-check"></i>:null}
-                                                </div>
-                                                <span>Sama Seperti KTP</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {
-                                        !this.state.isSameAddress?
-                                        <Fragment>
-                                            <div className="col-md-6 ">
-                                                <div className="label-cus">Provinsi</div>
-                                                <Select
-                                                    options={[
-                                                        {label:'kemal', value: 'kemal'},
-                                                        {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                        {label:'zul', value: 'zul'}]}
-                                                    className='rs'
-                                                    name='kawin'
-                                                    style={{boxShadow : 'none'}}
-                                                    placeholder='Pilih Provinsi'
-                                                    onChange={(values) => console.log(values)}
-                                                    closeOnSelect={true}
-                                                    dropdownHandleRenderer={({ state }) => (
-                                                        // if dropdown is open show "–" else show "+"
-                                                        <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                    )}
-                                                />
-                                                <div className="error-input p-0">
-                                                    {/* error */}
-                                                </div>
-                                            </div>
-
-                                            <div className="col-md-6 ">
-                                                <div className="label-cus">Kota/Kabupaten</div>
-                                                <Select
-                                                    options={[
-                                                        {label:'kemal', value: 'kemal'},
-                                                        {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                        {label:'zul', value: 'zul'}]}
-                                                    className='rs'
-                                                    name='kawin'
-                                                    style={{boxShadow : 'none'}}
-                                                    placeholder='Pilih Kota/Kabupaten'
-                                                    onChange={(values) => console.log(values)}
-                                                    closeOnSelect={true}
-                                                    dropdownHandleRenderer={({ state }) => (
-                                                        // if dropdown is open show "–" else show "+"
-                                                        <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                    )}
-                                                />
-                                                <div className="error-input p-0">
-                                                    {/* error */}
-                                                </div>
-                                            </div>
-
-                                            <div className="col-md-6 ">
-                                                <div className="label-cus">Kecamatan</div>
-                                                <Select
-                                                    options={[
-                                                        {label:'kemal', value: 'kemal'},
-                                                        {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                        {label:'zul', value: 'zul'}]}
-                                                    className='rs'
-                                                    name='kawin'
-                                                    style={{boxShadow : 'none'}}
-                                                    placeholder='Pilih Kecamatan'
-                                                    onChange={(values) => console.log(values)}
-                                                    closeOnSelect={true}
-                                                    dropdownHandleRenderer={({ state }) => (
-                                                        // if dropdown is open show "–" else show "+"
-                                                        <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                    )}
-                                                />
-                                                {/* <div className="error-input p-0">
-                                                    error
-                                                </div> */}
-                                            </div>
-
-                                            <div className="col-md-6 ">
-                                                <div className="label-cus">Kode Pos</div>
-                                                <Select
-                                                    options={[
-                                                        {label:'kemal', value: 'kemal'},
-                                                        {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                        {label:'zul', value: 'zul'}]}
-                                                    className='rs'
-                                                    name='kawin'
-                                                    style={{boxShadow : 'none'}}
-                                                    placeholder='Pilih Kode Pos'
-                                                    onChange={(values) => console.log(values)}
-                                                    closeOnSelect={true}
-                                                    dropdownHandleRenderer={({ state }) => (
-                                                        // if dropdown is open show "–" else show "+"
-                                                        <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                    )}
-                                                />
-                                                {/* <div className="error-input p-0">
-                                                    error
-                                                </div> */}
-                                            </div>
-                                        </Fragment>
-                                        :null
-                                    }
-                                    {/* OPTIONAL ADDRESS END */}
-
+                    <Formik
+                    initialValues={initialValueObj}
+                    validationSchema={schemaObj}
+                    onSubmit={(val)=>{
+                        console.log('====================================');
+                        console.log(val);
+                        console.log('====================================');
+                    }}>
+                    {
+                        ({handleChange, handleBlur, handleSubmit, errors, values, touched, setFieldValue})=>(
+                        <form onSubmit={handleSubmit} id='investorForm'> 
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <Field 
+                                        as={InputText}
+                                        label='Name'
+                                        type='text'
+                                        name='name'
+                                        placeholder='Nama Lengkap'
+                                        disabled={true}
+                                        // errorsMessage={touched.name && errors.name}
+                                        // error ={touched.name && errors.name}
+                                    />
                                 </div>
-                            )
-                        }
-                    </FormValidation>
+                                <div className="col-md-12 ">
+                                    <ButtonGroup className={errors.gender?'button-gender line-error':'button-gender'}>
+                                        <Button className={values.gender === 'pria'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'pria')} >Pria</Button>
+                                        <Button className={values.gender === 'wanita'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'wanita')} >Wanita</Button>
+                                    </ButtonGroup>
+                                    <FormHelperText className='help-gender' error={touched.gender && errors.gender? true : false} id="my-helper-text">{errors.gender}</FormHelperText>
+                                </div>
+                                <div className="col-md-6">
+                                    <Field 
+                                        as={InputText}
+                                        label='Tempat Lahir'
+                                        type='text'
+                                        name='born'
+                                        placeholder='Tempat Lahir *'
+                                        helperText={touched.born && errors.born}
+                                        error ={touched.born && errors.born? true : false}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <Field 
+                                        name='tanggalLahir'
+                                        type='date'
+                                        // defaultValue="2017-05-24"
+                                        label='Tanggal Lahir *' 
+                                        helperText={touched.tanggalLahir && errors.tanggalLahir}
+                                        error ={touched.tanggalLahir && errors.tanggalLahir? true : false}
+                                        as={InputText}
+                                    />
+                                </div>
+                                <div className="col-md-12">
+                                    <InputSelect 
+                                        label='Status Pernikahan *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
 
-                   {/* ///////////////////FORMS END//////////////////// */}
+                                <div className="col-md-12">
+                                    <InputSelect 
+                                        label='Status Kewarganegaraan *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
 
+                                <div className="col-md-6">
+                                    <Field 
+                                        as={InputText}
+                                        label='Phone'
+                                        type='text'
+                                        name='phone'
+                                        // placeholder='Nama Lengkap'
+                                        disabled={true}
+                                        // errorsMessage={touched.name && errors.name}
+                                        // error ={touched.name && errors.name}
+                                    />
+                                </div>
+
+                                <div className="col-md-6">
+                                    <Field 
+                                        as={InputText}
+                                        label='No Telepon Rumah'
+                                        type='text'
+                                        name='phone'
+                                        // placeholder=''
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                    />
+                                </div>
+
+                                <div className="col-md-12">
+                                     <Field 
+                                        as={InputTextArea}
+                                        label='Alamat Sesuai KTP *'
+                                        type='text'
+                                        name='address'
+                                        rows={5}
+                                        // placeholder=''
+                                        helperText={touched.address && errors.address}
+                                        error ={touched.address && errors.address? true : false}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <InputSelect 
+                                        label='Provinsi *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <InputSelect 
+                                        label='Kota/ Kabupaten *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <InputSelect 
+                                        label='Kecamatan *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
+                                <div className="col-md-6">
+                                    <InputSelect 
+                                        label='Kode Pos *'
+                                        name='dummy'
+                                        getOptionLabel={(val)=>val.label}
+                                        options={top100Films}
+                                        helperText={touched.dummy && errors.dummy}
+                                        error ={touched.dummy && errors.dummy? true : false}
+                                        value={values.dummy}
+                                        onBlur={handleBlur}  
+                                        onChange={(e,val)=> setFieldValue('dummy', val)}
+                                    />
+                                </div>
+
+                                <div className="col-md-12">
+                                     <Field 
+                                        as={InputTextArea}
+                                        label='Alamat Tinggal Sekarang'
+                                        type='text'
+                                        name='address'
+                                        rows={5}
+                                        // placeholder=''
+                                        helperText={touched.address && errors.address}
+                                        error ={touched.address && errors.address? true : false}
+                                    />
+                                </div>
+                                <div className="col-md-12 mb-3">
+                                    <label className="d-inline mb-4" style={{fontSize : 14, cursor: 'pointer'}}>
+                                        <Checkbox
+                                            id='same'
+                                            style={{color : '#01579B', marginBottom : 3}}
+                                            name='isSameAdd'
+                                            onChange={handleChange}
+                                        />
+                                            Sama Seperti KTP
+                                    </label>
+                                </div>
+                                <Fade cascade  duration={500}  when={!values.isSameAdd}>
+                                    <div className="col-md-6" style={values.isSameAdd? {display : 'none'} : null}>
+                                        <InputSelect 
+                                            label='Provinsi *'
+                                            name='dummy'
+                                            getOptionLabel={(val)=>val.label}
+                                            options={top100Films}
+                                            helperText={touched.dummy && errors.dummy}
+                                            // error ={touched.dummy && errors.dummy? true : false}
+                                            // value={values.dummy}
+                                            onBlur={handleBlur}  
+                                            onChange={(e,val)=> setFieldValue('dummy', val)}
+                                        />
+                                    </div>
+                                    <div className="col-md-6" style={values.isSameAdd? {display : 'none'} : null}>
+                                        <InputSelect 
+                                            label='Kota/ Kabupaten *'
+                                            name='dummy'
+                                            getOptionLabel={(val)=>val.label}
+                                            options={top100Films}
+                                            helperText={touched.dummy && errors.dummy}
+                                            // error ={touched.dummy && errors.dummy? true : false}
+                                            // value={values.dummy}
+                                            onBlur={handleBlur}  
+                                            onChange={(e,val)=> setFieldValue('dummy', val)}
+                                        />
+                                    </div>
+                                    <div className="col-md-6" style={values.isSameAdd? {display : 'none'} : null}>
+                                        <InputSelect 
+                                            label='Kecamatan *'
+                                            name='dummy'
+                                            getOptionLabel={(val)=>val.label}
+                                            options={top100Films}
+                                            helperText={touched.dummy && errors.dummy}
+                                            // error ={touched.dummy && errors.dummy? true : false}
+                                            // value={values.dummy}
+                                            onBlur={handleBlur}  
+                                            onChange={(e,val)=> setFieldValue('dummy', val)}
+                                        />
+                                    </div>
+                                    <div className="col-md-6" style={values.isSameAdd? {display : 'none'} : null}>
+                                        <InputSelect 
+                                            label='Kode Pos *'
+                                            name='dummy'
+                                            getOptionLabel={(val)=>val.label}
+                                            options={top100Films}
+                                            helperText={touched.dummy && errors.dummy}
+                                            // error ={touched.dummy && errors.dummy? true : false}
+                                            // value={values.dummy}
+                                            onBlur={handleBlur}  
+                                            onChange={(e,val)=> setFieldValue('dummy', val)}
+                                        />
+                                    </div>
+                                </Fade>
+
+
+                            </div>
+                        </form>
+                        )
+                    }
+
+                    </Formik>
                </div>
 
                <div className="foot-data-diri">
                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <button type='submit' form='datadiri'>SIMPAN & LANJUTKAN</button>
+                    <button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</button>
                </div>
            </div>
         );

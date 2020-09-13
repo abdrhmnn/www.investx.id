@@ -1,7 +1,7 @@
 
 
 .custom_text_input{
-    margin-bottom: 20px;
+    margin-bottom: 20px !important; 
     label{
         top: -3px;
         font-size: 14px;
@@ -10,6 +10,10 @@
     input{
         font-size: 14px !important;
         padding: 15.7px 14px;
+        &:disabled{
+            background-color: #ECEFF4;
+            border-radius: 9px;
+        }
     }
     .MuiInputLabel-outlined.MuiInputLabel-shrink {
         font-size: 14px;
@@ -35,9 +39,9 @@
 
     //autocomplete
     .MuiAutocomplete-inputRoot{
-        padding: 0 8px;
+        padding: 6.2px  !important;
     }
-    // .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-    // }
 
 }
+
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Select from 'react-dropdown-select';
 import {Formik} from 'formik'
 import * as yup from 'yup'
-import { InputText } from '../shared/InputComponents'
+import { InputText, InputCheckbox } from '../shared/InputComponents'
 
 class Play extends Component {
     state={
@@ -54,6 +54,7 @@ class Play extends Component {
                                             onBlur={f.handleBlur}
                                             disabled={false}
                                             errorsMessage={<span>{f.touched.name && f.errors.name}</span>}
+                                            error ={f.errors.name}
                                         />
                                             <p>{f.touched.name && f.errors.name}</p>
                                         <InputText 
@@ -68,6 +69,18 @@ class Play extends Component {
                                             disabled={false}
                                             errorsMessage={<span>{f.touched.password && f.errors.password}</span>}
                                         />
+
+                                        <InputCheckbox 
+                                            value='coklat' 
+                                            label='coklat'
+                                            // labelColor='red'
+                                            // color='blue'
+                                            onChange={f.handleChange}
+                                            onBlur={f.handleBlur}
+                                            errorsMessage='pilih'
+                                            error={true}
+                                            legend='pilih dua'
+                                         />
 
                                         <div className="col-md-6 ">
                                             <div className="label-cus">Industri Pekerjaan</div>
