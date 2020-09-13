@@ -51,16 +51,17 @@ a {
 button {
     outline: none !important;
     transition: .2s;
-    &:hover {
-        transition: .2s;
-        opacity: 0.8;
-    }
+    // &:hover {
+    //     transition: .2s;
+    //     opacity: 0.8;
+    // }
 }
 
-button:hover {
-    background-blend-mode: color-burn;
-    // background-color: #08080836 !important
-}
+
+// button:hover {
+//     background-blend-mode: color-burn;
+//     // background-color: #08080836 !important
+// }
 
 .container {
     padding-left: 0 !important;
@@ -70,45 +71,45 @@ button:hover {
 .w-input-active {
     border: 1px solid #0288d1 !important;
 }
-.w-input {
-    // margin-bottom: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #b9bbcb;
-    box-sizing: border-box;
-    border-radius: 9px;
-    .has-float-label {
-        width: 100%;
-        height: 48px;
-        input {
-            height: 100%;
-            width: 100%;
-            background-color: inherit;
-            padding: 0 20px;
-            font-size: 14px;
-            border: none;
+// .w-input {
+//     // margin-bottom: 40px;
+//     width: 100%;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border: 1px solid #b9bbcb;
+//     box-sizing: border-box;
+//     border-radius: 9px;
+//     .has-float-label {
+//         width: 100%;
+//         height: 48px;
+//         input {
+//             height: 100%;
+//             width: 100%;
+//             background-color: inherit;
+//             padding: 0 20px;
+//             font-size: 14px;
+//             border: none;
 
-            &::placeholder {
-                opacity: 0;
-            }
-        }
-        label {
-            z-index: 5 !important;
-            position: absolute;
-            top: -8.6px;
-            left: 15px;
-            background-color: white;
-            padding: 0 5px;
-            font-size: 11px;
-            color: #0288d1;
-        }
-    }
-    i {
-        margin: 0 15px;
-    }
-}
+//             &::placeholder {
+//                 opacity: 0;
+//             }
+//         }
+//         label {
+//             z-index: 5 !important;
+//             position: absolute;
+//             top: -8.6px;
+//             left: 15px;
+//             background-color: white;
+//             padding: 0 5px;
+//             font-size: 11px;
+//             color: #0288d1;
+//         }
+//     }
+//     i {
+//         margin: 0 15px;
+//     }
+// }
 
 .has-float-label input:placeholder-shown:not(:focus) + *,
 .has-float-label select:placeholder-shown:not(:focus) + *,
@@ -142,6 +143,11 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+
+.MuiAutocomplete-option{
+    font-size: 14px !important;
+}
+
 @import "./navbar";
 @import "./home";
 @import "./login_register";
@@ -166,3 +172,7 @@ input[type="number"] {
 @import "./topupstatus.scss";
 @import "./companydetail.scss";
 @import "./withdraw.scss";
+@import "./CUSTOM_INPUT_GLOBAL.scss";
+
+
+

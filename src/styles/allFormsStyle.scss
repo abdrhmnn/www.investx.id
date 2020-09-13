@@ -47,7 +47,8 @@
         line-height: 54px;
         color: #0288d1;
         margin-bottom: 12px;
-        z-index: 2;
+        z-index: 9;
+        display: block !important;
     }
     .logo-invest {
         margin: 80px;
@@ -173,282 +174,359 @@
             margin-bottom: 36px;
         }
         form {
-            .error-input {
-                padding-left: 15px;
-                height: 30px;
-                color: red;
-                font-size: 12px;
-            }
-
-            .label-cus {
-                // margin-top: 20px;
-                margin-bottom: 5px;
-                font-size: 12px;
-                line-height: 18px;
-                color: #333333;
-                margin-left: 20px;
-            }
-
-            .file-frame {
-                overflow: hidden;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                span {
-                    width: 100%;
-                    padding: 0 20px;
-                    font-size: 14px;
-                }
-                button {
-                    width: 115px;
-                    height: 48px;
-                    border: none;
-                    background: #0288d1;
-                    color: whitesmoke;
-                    font-size: 14px;
-                    box-sizing: border-box;
-                    border-radius: 0px 9px 9px 0px;
-                }
-            }
-            .info-file {
-                font-size: 12px;
-                margin-bottom: 0;
-                color: #333333;
-                font-weight: 300;
-                span {
-                    font-weight: 500;
-                }
-            }
-
-            .frame-inp {
-                height: 48px;
-                border: 1px solid #b9bbcb;
-                border-radius: 9px;
-                &:disabled {
-                    background-color: #eceff4;
-                    border-radius: 9px;
-                    color: #a9a9a9;
-                    border: none;
-                }
-                input {
-                    padding: 0 20px;
-                    height: 100%;
-                    width: 100%;
-                    border: none;
-                    font-size: 14px;
-                    background-color: inherit;
-                    &:focus {
-                        outline: none;
-                    }
-                    &:disabled {
-                        background-color: #eceff4;
-                        border-radius: 9px;
-                        color: #a9a9a9;
-                    }
-                }
-            }
-
-            .datapick {
-                .date-wrap {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 0 20px;
-                    align-items: center;
-                    cursor: pointer;
-                    border: 1px solid #b9bbcb;
-                    border-radius: 9px;
-                    .datapick-cus {
-                        height: 48px !important;
-                        border: none;
-                        font-size: 14px;
-                        input {
-                            padding: 0 !important;
-                        }
-                        &:focus {
-                            outline: none;
-                        }
-                    }
-                    .fa-calendar-alt {
-                        font-size: 28px;
-                        cursor: pointer;
-                        color: #0288d1;
-                    }
-                }
-            }
-
-            .wrap-select {
-                height: 48px;
-                border: 1px solid #b9bbcb;
-                border-radius: 9px;
-                display: flex;
-                justify-content: space-between;
-                padding: 0 20px;
-                align-items: center;
-                select {
-                    width: 100%;
-                    height: 100%;
-                    border: none;
-                    font-size: 14px;
-                    cursor: pointer;
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-
-            .rs {
-                width: 100%;
-                height: 100%;
-                border: none;
-                border: 1px solid #b9bbcb;
-                // background-color: red;
-                padding: 0 20px;
-                height: 48px;
-                border-radius: 9px;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                position: relative;
-                input {
-                    margin: 0;
-                    width: 80%;
-                    padding-left: 20px;
-                    top: 0;
-                    left: 0;
-                    position: absolute;
-                    height: 100%;
-                    background-color: inherit;
-                    box-shadow: "none";
-                    &::placeholder {
-                        font-size: 14px;
-                        opacity: 1;
-                    }
-                    &:focus {
-                        outline: none !important;
-                        border: none;
-                        background-color: white;
-                        border-radius: 9px;
-                    }
-                }
-            }
-
-            .rsm {
-                width: 100%;
-                height: 100%;
-                border: none;
-                border: 1px solid #b9bbcb;
-                // background-color: red;
-                padding: 0 20px;
-                height: 48px;
-                border-radius: 9px;
-                font-size: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                input {
-                    margin: 0;
-                    // width: 80%;
-                    // padding-left: 20px;
-                    // top: 0;
-                    // left: 0;
-                    // position: absolute;
-                    // background-color: skyblue;
-                    box-shadow: "none";
-                    font-size: 14px;
-                    &::placeholder {
-                        font-size: 14px;
-                        opacity: 1;
-                    }
-                    &:focus {
-                        // height: 48px;
-                        outline: none !important;
-                        border: none;
-                        // background-color: white;
-                        // border-radius: 9px;
-                    }
-                }
-            }
-            .box-sex {
-                border-radius: 9px;
-                background: #ffffff;
-                border: 1px solid #b9bbcb;
-                display: flex;
-                height: 48px;
-                overflow: hidden;
-                color: #a9a9a9;
-                cursor: pointer;
-                .gen {
-                    flex: 1;
-                    height: 100%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-                .active-gen {
-                    color: #333333;
-                    background: #eceff4;
-                    box-shadow: inset 0px 4px 4px #d4d7dd;
-                }
-            }
-
-            .w-addnow {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+            .input-custom{
                 margin-bottom: 20px;
-                .w-check {
-                    display: flex;
-                    align-items: center;
-                    .cbox {
-                        width: 23px;
-                        height: 23px;
-                        background: #f4f4f4;
-                        border: 1px solid #0288d1;
-                        cursor: pointer;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 3px;
-                    }
-                    span {
-                        margin-left: 20px;
-                        font-size: 14px;
-                        font-weight: 500;
-                        font-size: 14px;
-                        line-height: 24px;
-                        color: #333333;
-                    }
-                }
-            }
-
-            .frame-area {
-                border: 1px solid #b9bbcb;
-                border-radius: 9px;
-                overflow: hidden;
-                textarea {
-                    padding: 10px 20px 10px 20px;
-                    width: 100%;
-                    border: none;
-                    outline: none;
+                label{
+                    top: -3px;
                     font-size: 14px;
-                    resize: none;
                 }
-            }
 
-            .syarat {
-                .title {
-                    font-size: 18px;
-                    margin-bottom: 20px;
-                    // line-height: 18px;
-                    color: #333333;
-                    font-weight: 400;
+                input{
+                    font-size: 14px !important;
+                    padding: 15.7px 14px;
                 }
-                p {
-                    font-weight: 300;
-                    font-size: 12px;
+                .MuiInputLabel-outlined.MuiInputLabel-shrink {
+                    font-size: 14px;
+                    transform: translate(14px, -2px) scale(0.75);
+
+                }
+
+                .MuiInputLabel-outlined.MuiInputLabel-marginDense {
+                    transform: translate(14px, 12px) scale(1);
+                    font-size: 14px;
+                }
+
+                fieldset{
+                    border-radius: 9px;
+                    legend{
+                        font-size: 11px;
+                    }
+                }
+                //textarea
+                textarea{
+                    font-size: 14px;
+                }
+
+                //autocomplete
+                .MuiAutocomplete-inputRoot{
+                    padding: 0 8px;
+                }
+                // .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+                // }
+
+            }
+                    .MuiAutocomplete-option{
+                        font-size: 14px !important;
+                    }
+                    
+
+            .select-custom{
+                margin-bottom: 20px;
+                .MuiInputLabel-outlined.MuiInputLabel-shrink {
+                    font-size: 14px;
+                    transform: translate(14px, -2px) scale(0.75);
+
+                }
+                .MuiInputLabel-outlined.MuiInputLabel-marginDense {
+                    transform: translate(14px, 12px) scale(1);
+                    font-size: 14px;
+                }
+                label{
+                    top: -3px;
+                    font-size: 14px;
+                }
+                .MuiInputBase-root{
+                    // padding: 15.7px 14px;
+                    font-size: 14px !important;
+                }
+                
+                .MuiOutlinedInput-input {
+                    padding: 15.7px 14px;
+                    padding-right: 14px;
+                }
+                fieldset{
+                    border-radius: 9px !important;
+                    legend{
+                        font-size: 11px;
+                    }
                 }
             }
+            // .error-input {
+            //     padding-left: 15px;
+            //     height: 30px;
+            //     color: red;
+            //     font-size: 12px;
+            // }
+
+            // .label-cus {
+            //     // margin-top: 20px;
+            //     margin-bottom: 5px;
+            //     font-size: 12px;
+            //     line-height: 18px;
+            //     color: #333333;
+            //     margin-left: 20px;
+            // }
+
+            // .file-frame {
+            //     overflow: hidden;
+            //     display: flex;
+            //     justify-content: space-between;
+            //     align-items: center;
+            //     span {
+            //         width: 100%;
+            //         padding: 0 20px;
+            //         font-size: 14px;
+            //     }
+            //     button {
+            //         width: 115px;
+            //         height: 48px;
+            //         border: none;
+            //         background: #0288d1;
+            //         color: whitesmoke;
+            //         font-size: 14px;
+            //         box-sizing: border-box;
+            //         border-radius: 0px 9px 9px 0px;
+            //     }
+            // }
+            // .info-file {
+            //     font-size: 12px;
+            //     margin-bottom: 0;
+            //     color: #333333;
+            //     font-weight: 300;
+            //     span {
+            //         font-weight: 500;
+            //     }
+            // }
+
+            // .frame-inp {
+            //     height: 48px;
+            //     border: 1px solid #b9bbcb;
+            //     border-radius: 9px;
+            //     &:disabled {
+            //         background-color: #eceff4;
+            //         border-radius: 9px;
+            //         color: #a9a9a9;
+            //         border: none;
+            //     }
+            //     input {
+            //         padding: 0 20px;
+            //         height: 100%;
+            //         width: 100%;
+            //         border: none;
+            //         font-size: 14px;
+            //         background-color: inherit;
+            //         &:focus {
+            //             outline: none;
+            //         }
+            //         &:disabled {
+            //             background-color: #eceff4;
+            //             border-radius: 9px;
+            //             color: #a9a9a9;
+            //         }
+            //     }
+            // }
+
+            // .datapick {
+            //     .date-wrap {
+            //         display: flex;
+            //         justify-content: space-between;
+            //         padding: 0 20px;
+            //         align-items: center;
+            //         cursor: pointer;
+            //         border: 1px solid #b9bbcb;
+            //         border-radius: 9px;
+            //         .datapick-cus {
+            //             height: 48px !important;
+            //             border: none;
+            //             font-size: 14px;
+            //             input {
+            //                 padding: 0 !important;
+            //             }
+            //             &:focus {
+            //                 outline: none;
+            //             }
+            //         }
+            //         .fa-calendar-alt {
+            //             font-size: 28px;
+            //             cursor: pointer;
+            //             color: #0288d1;
+            //         }
+            //     }
+            // }
+
+            // .wrap-select {
+            //     height: 48px;
+            //     border: 1px solid #b9bbcb;
+            //     border-radius: 9px;
+            //     display: flex;
+            //     justify-content: space-between;
+            //     padding: 0 20px;
+            //     align-items: center;
+            //     select {
+            //         width: 100%;
+            //         height: 100%;
+            //         border: none;
+            //         font-size: 14px;
+            //         cursor: pointer;
+            //         &:focus {
+            //             outline: none;
+            //         }
+            //     }
+            // }
+
+            // .rs {
+            //     width: 100%;
+            //     height: 100%;
+            //     border: none;
+            //     border: 1px solid #b9bbcb;
+            //     // background-color: red;
+            //     padding: 0 20px;
+            //     height: 48px;
+            //     border-radius: 9px;
+            //     font-size: 14px;
+            //     display: flex;
+            //     align-items: center;
+            //     position: relative;
+            //     input {
+            //         margin: 0;
+            //         width: 80%;
+            //         padding-left: 20px;
+            //         top: 0;
+            //         left: 0;
+            //         position: absolute;
+            //         height: 100%;
+            //         background-color: inherit;
+            //         box-shadow: "none";
+            //         &::placeholder {
+            //             font-size: 14px;
+            //             opacity: 1;
+            //         }
+            //         &:focus {
+            //             outline: none !important;
+            //             border: none;
+            //             background-color: white;
+            //             border-radius: 9px;
+            //         }
+            //     }
+            // }
+
+            // .rsm {
+            //     width: 100%;
+            //     height: 100%;
+            //     border: none;
+            //     border: 1px solid #b9bbcb;
+            //     // background-color: red;
+            //     padding: 0 20px;
+            //     height: 48px;
+            //     border-radius: 9px;
+            //     font-size: 14px;
+            //     display: flex;
+            //     align-items: center;
+            //     justify-content: center;
+            //     position: relative;
+            //     input {
+            //         margin: 0;
+            //         // width: 80%;
+            //         // padding-left: 20px;
+            //         // top: 0;
+            //         // left: 0;
+            //         // position: absolute;
+            //         // background-color: skyblue;
+            //         box-shadow: "none";
+            //         font-size: 14px;
+            //         &::placeholder {
+            //             font-size: 14px;
+            //             opacity: 1;
+            //         }
+            //         &:focus {
+            //             // height: 48px;
+            //             outline: none !important;
+            //             border: none;
+            //             // background-color: white;
+            //             // border-radius: 9px;
+            //         }
+            //     }
+            // }
+            // .box-sex {
+            //     border-radius: 9px;
+            //     background: #ffffff;
+            //     border: 1px solid #b9bbcb;
+            //     display: flex;
+            //     height: 48px;
+            //     overflow: hidden;
+            //     color: #a9a9a9;
+            //     cursor: pointer;
+            //     .gen {
+            //         flex: 1;
+            //         height: 100%;
+            //         display: flex;
+            //         align-items: center;
+            //         justify-content: center;
+            //     }
+            //     .active-gen {
+            //         color: #333333;
+            //         background: #eceff4;
+            //         box-shadow: inset 0px 4px 4px #d4d7dd;
+            //     }
+            // }
+
+            // .w-addnow {
+            //     display: flex;
+            //     justify-content: space-between;
+            //     align-items: center;
+            //     margin-bottom: 20px;
+            //     .w-check {
+            //         display: flex;
+            //         align-items: center;
+            //         .cbox {
+            //             width: 23px;
+            //             height: 23px;
+            //             background: #f4f4f4;
+            //             border: 1px solid #0288d1;
+            //             cursor: pointer;
+            //             display: flex;
+            //             justify-content: center;
+            //             align-items: center;
+            //             border-radius: 3px;
+            //         }
+            //         span {
+            //             margin-left: 20px;
+            //             font-size: 14px;
+            //             font-weight: 500;
+            //             font-size: 14px;
+            //             line-height: 24px;
+            //             color: #333333;
+            //         }
+            //     }
+            // }
+
+            // .frame-area {
+            //     border: 1px solid #b9bbcb;
+            //     border-radius: 9px;
+            //     overflow: hidden;
+            //     textarea {
+            //         padding: 10px 20px 10px 20px;
+            //         width: 100%;
+            //         border: none;
+            //         outline: none;
+            //         font-size: 14px;
+            //         resize: none;
+            //     }
+            // }
+
+            // .syarat {
+            //     .title {
+            //         font-size: 18px;
+            //         margin-bottom: 20px;
+            //         // line-height: 18px;
+            //         color: #333333;
+            //         font-weight: 400;
+            //     }
+            //     p {
+            //         font-weight: 300;
+            //         font-size: 12px;
+            //     }
+            // }
         }
     }
 

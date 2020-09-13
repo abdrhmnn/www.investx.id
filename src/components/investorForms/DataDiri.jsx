@@ -6,6 +6,10 @@ import "react-datepicker/dist/react-datepicker.css";
 // import moment from 'moment'
 import { FormValidation } from "calidation";
 
+import {InputLabel, FormControl, MenuItem, TextField , Select as CusSelect, FormHelperText, Button} from '@material-ui/core'
+import {Autocomplete} from '@material-ui/lab';
+import chevroninput from '../../images/chevroninput.svg'
+
 
 import Select from 'react-dropdown-select';
 import { Link } from 'react-router-dom';
@@ -47,6 +51,8 @@ class DataDiri extends Component {
     }
 
     render() {
+
+
         const config = {
             username: {
               isRequired: "Name lengkap field is required!",
@@ -67,6 +73,13 @@ class DataDiri extends Component {
               }
             }
           };
+
+          const top100Films = [
+            { title: 'The Shawshank Redemption', year: 1994, value: 'lala'},
+            { title: 'The Godfather', year: 1972 },
+            { title: 'The Godfather: Part II', year: 1974 },
+            { title: 'The Dark Knight', year: 2008 },
+        ]
         return (
            <div className="all-forms-style">
                <div className="bg">
@@ -80,7 +93,7 @@ class DataDiri extends Component {
                <div className="logo-invest">
                    <img src={logo} alt=""/>
                </div>
-               <p className="title">Selamat datang Cecillia</p>
+                <p className="title">Selamat datang Cecillia</p>
                 <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
                <div className="steps-invest">
                    <ul>
@@ -100,6 +113,119 @@ class DataDiri extends Component {
                             ({ fields, errors, submitted })=>(
 
                                 <div className="row">
+                                    <div className="col-md-12">
+                                        <TextField 
+                                        className='input-custom'
+                                        error={false}
+                                        id="outlined-basic" 
+                                        label="Data Diri" 
+                                        variant="outlined"
+                                        helperText=""
+                                        value=''
+                                        // disabled
+                                        fullWidth={true}
+                                        placeholder='placeholder'
+                                        // inputProps={{ style: { fontSize: '9px', height: '48px !important'}}}
+                                        />
+
+                                    </div>
+
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div className='col-md-12'>
+
+                        <FormControl variant="outlined" fullWidth={true} className='select-custom' error>
+                            <InputLabel id="demo-simple-select-outlined-label"  >Age</InputLabel>
+                            <CusSelect
+                            IconComponent={(c) => c.className === 'MuiSelect-icon MuiSelect-iconOutlined' ? <i className="fas fa-chevron-down px-3"></i>:  <i className="fas fa-chevron-up px-3"></i> }
+                            labelId="demo-simple-select-outlined-label"
+                            id="demo-simple-select-outlined"
+                            // value={age}
+                            // onChange={handleChange}
+                            placeholder='pilih age'
+                            label="Age"
+                            >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                            </CusSelect>
+                            <FormHelperText>ssss</FormHelperText>
+                        </FormControl>
+                        </div>
+
+                        <div className='col-md-12'>
+
+                        <TextField
+                            fullWidth={true}
+                            error
+                            variant="outlined"
+                            id="date"
+                            label="Birthday"
+                            type="date"
+                            // defaultValue=""
+                            className='input-custom'
+                            placeholder="Tanggal Lahir"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                            helperText="ssss"
+                            onChange={(val)=>console.log(val.target.value)}
+                        />
+
+                        </div>
+
+                        <div className="col-md-12">
+                            <TextField 
+                                className='input-custom'
+                                error
+                                multiline
+                                rows={4}
+                                id="outlined-basic" 
+                                label="Data Diri" 
+                                variant="outlined"
+                                helperText="ssss"
+                                // value='kemal'
+                                // disabled
+                                fullWidth={true}
+                                placeholder='placeholder'
+                                // inputProps={{ style: { fontSize: '9px', height: '48px !important'}}}
+                                />
+                        </div>
+
+
+                        <div className="col-md-12">
+                            <Autocomplete
+                            popupIcon={<img style={{margin : '0 8px'}} src={chevroninput} alt='chevron'/>}
+                            id="combo-box-demo"
+                            autoComplete
+                            openOnFocus
+                            options={top100Films}
+                            getOptionLabel={(option) => option.title}
+                            onChange={(e,val)=>console.log(val, e.target.name)}
+                            style={{ width: '100%'}}
+                            // disabled
+                            // value
+                            renderInput={(params) => <TextField {...params} className='input-custom'  helperText="ssss" placeholder='cari' label="auto cari" variant="outlined" />}
+                            />
+                        </div>
+
+                        <div className="col-md-12">
+                            <Button className='bg-warning'>submit</Button>
+                            <Button variant='outlined' style={{color : '#0288d1', borderColor : '#0288d1', width: 200,height: 48}}>submit</Button>
+                        </div>
+
+
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
+                                    <br/>
 
                                     <div className="col-md-12 ">
                                         <div className="label-cus">Nama Lengkap Sesua KTP</div>
@@ -107,7 +233,8 @@ class DataDiri extends Component {
                                             <input 
                                             type="text" 
                                             name="username"
-                                            // disabled
+                                            disabled
+                                            value='kemal'
                                             // ref={ i => this.username = i}
                                             id=""/>
                                         </div>
