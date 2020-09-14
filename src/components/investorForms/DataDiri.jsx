@@ -8,14 +8,13 @@ import { Link } from 'react-router-dom';
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
 import {InputText, InputSelect, InputTextArea} from '../shared/InputComponents'
-import {Checkbox, ButtonGroup, Button, FormHelperText} from '@material-ui/core'
+import {Checkbox, ButtonGroup, Button, FormHelperText, Fab} from '@material-ui/core'
 import Fade from 'react-reveal/Fade';
 import StepsInvestor from './StepsInvestor';
 
 
 class DataDiri extends Component {
     state={
-        tanggalLahir : null
     }
 
     render() {
@@ -53,13 +52,10 @@ class DataDiri extends Component {
                     <div className="bg-round"></div> 
                </div>
                 <Link to='/select-form/'>
-                    <div className="back-button">
-                        <img src={arrowback} alt=""/>
-                    </div>
+                    <Fab className="back-button"><img src={arrowback} alt=""/></Fab>
                 </Link>
-               <div className="logo-invest">
-                   <img src={logo} alt=""/>
-               </div>
+               <div className="logo-invest"><img src={logo} alt=""/></div>
+
                 <p className="title">Selamat datang Cecillia</p>
                 <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
 
@@ -71,9 +67,7 @@ class DataDiri extends Component {
                     initialValues={initialValueObj}
                     validationSchema={schemaObj}
                     onSubmit={(val)=>{
-                        console.log('====================================');
                         console.log(val);
-                        console.log('====================================');
                     }}>
                     {
                         ({handleChange, handleBlur, handleSubmit, errors, values, touched, setFieldValue})=>(

@@ -2,48 +2,23 @@ import React, { Component } from 'react';
 import logo from '../../images/logo-white.svg'
 import {Link} from 'react-router-dom'
 import bluewoman from '../../images/bg/bluewoman.jpg'
-import { FormValidation } from "calidation";
+
 import phoneicon from '../../images/phoneicon.svg'
 import emailicon from '../../images/emailicon.svg'
+
+import {Button, TextField, OutlinedInput, InputAdornment, InputLabel, FormControl,IconButton, FormHelperText} from '@material-ui/core'
+import { Formik , Field} from "formik";
+import * as Yup from 'yup'
 
 
 
 
 class Register extends Component {
     state={
-        hidePass : true,
-        hideConPass : true,
-        isAgree : false,
-        isSignUp : false,
-        borderActive : '',
-        password : '',
-        c_password : '',
-        isSamePass : false,
-        isModalConfirm : false,
-        phone : '',
-        email : ''
+        showPassword : false,
+        re_showPassword : false,
     }
 
-    handleChange = (e)=>{
-        console.log(e.target.name);
-        this.setState({[e.target.name] : e.target.value}, ()=>{
-            if (this.state.password === this.state.c_password) {
-                this.setState({isSamePass : true})
-            }else{
-                this.setState({isSamePass : false})
-            }
-        })
-    }
-
-    borderBlue = (e)=>{
-        if (e.target.id.length !== 0) {
-            console.log(e.target.id);
-            this.setState({borderActive : e.target.id})
-        }else{
-            console.log(e.target.id);
-            console.log('kosong');
-        }
-    }
 
     onSubmit = ({ fields, errors, isValid }) => {
         console.log('====================================');
@@ -88,40 +63,21 @@ class Register extends Component {
     )
 
     render() {
-        const config = {
-            full_name : {
-                isRequired : 'Full Name field is required!',
-            },
-            email: {
-                isRequired: "Email field is required!",
-                isRegexMatch: {
-                    message: 'Harus format email yang benar contoh : xxxx@xxxx.xx',
-                    regex: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
-                },
-            },
-            password: {
-                isRequired: "Password field required!",
-                isMinLength: {
-                    message: "8+ character password is required",
-                    length: 8
-                },
-                isRegexMatch: {
-                    message: 'Minimum eight characters, at least one letter and one number',
-                    regex: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                },
-            },
-            phone_number: {
-                isRequired: "phone number field required!",
-                isMinLength: {
-                    message: "Minimum characters is 8",
-                    length: 8
-                },
-                isMaxLength: {
-                    message: "Maximum character is 20",
-                    length: 20
-                },
-            }
-        };
+        const schemaObj = Yup.object({
+            fullName : Yup.string().required().min(3),
+            email : Yup.string().required().email(),
+            phone : Yup.number().required(),
+            password : Yup.string().required().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, 'Must Contain 8 Characters, One Number and one special case Character'),
+            re_password : Yup.string().required('masukan ulang Kata sandi').oneOf([Yup.ref('password'), null], 'Kata sandi tidak sama'),
+        })
+
+        const initialValuesObj = {
+            fullName : '',
+            email : '',
+            phone : '',
+            password : '',
+            re_password : ''
+        }
         return (
             <div>
                 {this.state.isModalConfirm? this.modalConfirm() : null}
@@ -135,95 +91,131 @@ class Register extends Component {
                             <div className="well-desc">Already have an account? <Link to='/login'>Login</Link></div>
                             {/* <hr/> */}
                     
-                            {/* <form onSubmit={this.handleSubmit}> */}
-                            <FormValidation onSubmit={this.onSubmit} config={config}>
+                            <Formik
+                            initialValues={initialValuesObj}
+                            validationSchema={schemaObj}
+                            onSubmit={(val)=>{
+                                console.log(val)
+
+                            }}
+                            >
                                 {
-                                     ({ fields, errors, submitted })=>(
-                                         <div>
+                                    ({errors, handleSubmit, touched,handleChange, values, handleBlur})=>
+                                    <form onSubmit={handleSubmit}>
+                                        <Field
+                                            className='custom_text_input'
+                                            name='fullName'
+                                            variant='outlined'
+                                            fullWidth={true}
+                                            label='Full Name ( Same as KTP )'
+                                            // onBlur={handleBlur}
+                                            error={touched.fullName && errors.fullName? true : false}
+                                            helperText={touched.fullName && errors.fullName}
+                                            as={TextField} 
+                                        />
 
-                                             <div className={this.state.borderActive === 'fullName' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                 <div class="has-float-label">
-                                                     <input id="fullName" name='full_name' type="text" placeholder="Full Name ( Same as KTP )"/>
-                                                     <label for="fullName">Full Name ( Same as KTP )</label>
-                                                 </div>
-                                             </div>
-                                             <div className="box-err">
-                                                {submitted && errors.full_name &&<div className="error">{errors.full_name}</div>}
-                                            </div>
-             
-                                             <div className={this.state.borderActive === 'email' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                 <div class="has-float-label">
-                                                     <input id="email" name='email' type="text" onChange={this.handleChange} placeholder="Email"/>
-                                                     <label for="email">Email</label>
-                                                 </div>
-                                             </div>
-                                             <div className="box-err">
-                                                {submitted && errors.email &&<div className="error">{errors.email}</div>}
-                                            </div>
-             
-                                             <div className={this.state.borderActive === 'phone' ?"w-input w-input-active phone-sp" :"w-input phone-sp"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                 <div className="spoil">+62</div>
-                                                 <div class="has-float-label">
-                                                     <input id="phone" name='phone_number' type="tel" placeholder="phone"/>
-                                                     <label for="phone">Phone No. ( Ex : 85720001212 )</label>
-                                                 </div>
-                                             </div>
-                                             <div className="box-err">
-                                                {submitted && errors.phone_number &&<div className="error">{errors.phone_number}</div>}
-                                            </div>
-             
-                                             <div className={this.state.borderActive === 'Password' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                 <div class="has-float-label">
-                                                    <input id="Password" name='password' 
-                                                    value={fields.password}
-                                                    name='password'
-                                                    type={this.state.hidePass? 'password' : 'text'} 
-                                                    onChange={this.handleChange}
-                                                    placeholder="Password"/>
-                                                     <label for="Password">Password</label>
-                                                 </div>
-                                                 <i onClick={()=> this.setState({hidePass : !this.state.hidePass})} className={this.state.hidePass?"far fa-eye":"far fa-eye-slash"}></i>
-                                             </div>
-                                             <div className="box-err">
-                                                {submitted && errors.password &&<div className="error">{errors.password}</div>}
-                                            </div>
-             
-                                            <div className={this.state.borderActive === 'c_password' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                <div class="has-float-label">
-                                                    <input id="c_password" name='c_password' onChange={this.handleChange} type={this.state.hideConPass? 'password' : 'text'} placeholder="c_password"/>
-                                                    <label for="c_password">Confirmation Password</label>
+                                        <Field
+                                            className='custom_text_input'
+                                            name='email'
+                                            variant='outlined'
+                                            fullWidth={true}
+                                            label='Email'
+                                            // onBlur={handleBlur}
+                                            error={touched.email && errors.email? true : false}
+                                            helperText={touched.email && errors.email}
+                                            as={TextField} 
+                                        />
+
+                                        <Field
+                                            className='custom_text_input'
+                                            type='number'
+                                            name='phone'
+                                            variant='outlined'
+                                            fullWidth={true}
+                                            label='Phone number'
+                                            // placeholder='Phone No. ( Ex : 85720001212 )'}
+                                            error={touched.phone && errors.phone? true : false}
+                                            helperText={touched.phone && errors.phone}
+                                            as={TextField} 
+                                        />
+
+                                        <FormControl 
+                                        error={touched.password && errors.password? true : false}
+                                        fullWidth={true}
+                                        className='custom_text_input'
+                                        onBlur={handleBlur}
+                                        variant="outlined">
+                                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                                            <OutlinedInput
+                                                name='password'
+                                                style={{marginBottom :'0 !important', }}
+                                                fullWidth={true}
+                                                id="outlined-adornment-password"
+                                                type={this.state.showPassword ? 'text' : 'password'}
+                                                value={values.password}
+                                                onChange={handleChange}
+                                                endAdornment={
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={()=> this.setState({showPassword : !this.state.showPassword})}
+                                                    edge="end"
+                                                    >
+                                                    {this.state.showPassword ? <i className="far fa-eye"></i> :  <i className="far fa-eye-slash"></i>}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                                }
+                                                labelWidth={70}
+                                            />
+                                            <FormHelperText id="outlined-adornment-password" >{touched.password && errors.password}</FormHelperText>
+                                        </FormControl>
+
+                                        <FormControl 
+                                        error={touched.re_password && errors.re_password? true : false}
+                                        className='custom_text_input'
+                                        fullWidth={true}
+                                        onBlur={handleBlur}
+                                        variant="outlined">
+                                            <InputLabel htmlFor="outlined-adornment-re_password">Confirmation Password</InputLabel>
+                                            <OutlinedInput
+                                                name='re_password'
+                                                // style={{marginBottom :'0 !important', }}
+                                                fullWidth={true}
+                                                id="outlined-adornment-re_password"
+                                                type={this.state.re_showPassword ? 'text' : 'password'}
+                                                value={values.re_password}
+                                                onChange={handleChange}
+                                                endAdornment={
+                                                <InputAdornment position="end">
+                                                    <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={()=> this.setState({re_showPassword : !this.state.re_showPassword})}
+                                                    edge="end"
+                                                    >
+                                                    {this.state.re_showPassword ? <i className="far fa-eye"></i> :  <i className="far fa-eye-slash"></i>}
+                                                    </IconButton>
+                                                </InputAdornment>
+                                                }
+                                                labelWidth={160}
+                                            />
+                                            <FormHelperText id="outlined-adornment-password" >{touched.re_password && errors.re_password}</FormHelperText>
+                                        </FormControl>
+                                            
+                                        <div className="w-forgot">
+                                            <div className="w-check">
+                                                <div className="cbox" onClick={()=> this.setState({rememberMe : !this.state.rememberMe})}>
+                                                    {this.state.rememberMe?<i className="fas fa-check"></i>:null}
                                                 </div>
-                                                <i onClick={()=> this.setState({hideConPass : !this.state.hideConPass})} className={this.state.hideConPass?"far fa-eye":"far fa-eye-slash"}></i>
+                                                <span>I have read and I agree to InvestX’s Term of Service and Privacy Policy</span>
                                             </div>
-                                            <div className="box-err">
-                                                {submitted && !this.state.isSamePass &&<div className="error">password tidak sama!</div>}
-                                            </div>
-             
-                                             {/* <div className={this.state.borderActive === 'promo' ?"w-input w-input-active" :"w-input"} onFocus={this.borderBlue} onBlur={()=> this.setState({borderActive : ''})}>
-                                                 <div class="has-float-label">
-                                                     <input id="promo" name='promo' type="text" onChange={this.handleChange} placeholder="promo"/>
-                                                     <label for="promo">Promo code/ Referral ( Optional )</label>
-                                                 </div>
-                                             </div> */}
-                                                 
-                                             <div className="w-forgot">
-                                                 <div className="w-check">
-                                                     <div className="cbox" onClick={()=> this.setState({isAgree : !this.state.isAgree})}>
-                                                     {this.state.isAgree?<i className="fas fa-check"></i>:null}
-                                                     </div>
-                                                     <span>I have read and I agree to InvestX’s Term of Service and Privacy Policy</span>
-                                                 </div>
-                                                 {/* <Link to='/' className="forgot">Forgot Password?</Link> */}
-                                             </div>
-                                             <button disabled={ !this.state.isAgree} className='but-login' type='submit'>Sign Up</button>
-                                             <div className="error">{this.state.isInvalid? 'Sorry, email or password you entered is incorrect' : null }</div>
-
-                                         </div>
-                                     )
+                                            {/* <Link to='/' className="forgot">Forgot Password?</Link> */}
+                                        </div>
+                                        <Button className='but-login' type='submit'>Sign Up</Button>
+                                        {/* <div className="error">{this.state.isInvalid? 'Sorry, email or password you entered is incorrect' : null }</div> */}
+                                        {/* <p className="sign-up">Dont Have Account? <Link to='/signup'>Sign Up</Link> </p> */}
+                                    </form>
                                 }
-                                {/* <p className="sign-up">Dont Have Account? <Link to='/signup'>Sign Up</Link> </p> */}
-                            </FormValidation>
-                            {/* </form> */}
+                            </Formik>
                         </div>
                     </div>
 
