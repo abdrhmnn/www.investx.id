@@ -83,7 +83,7 @@ class Login extends Component {
                                                     </IconButton>
                                                 </InputAdornment>
                                                 }
-                                                // labelWidth={70}
+                                                labelWidth={70}
                                             />
                                             <FormHelperText id="outlined-adornment-password" >{touched.password && errors.password}</FormHelperText>
                                         </FormControl>

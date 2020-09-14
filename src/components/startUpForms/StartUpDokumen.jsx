@@ -12,6 +12,7 @@ import { FormValidation } from "calidation";
 import InputFiles from 'react-input-files';
 import ReactLoading from 'react-loading';
 import { Link } from 'react-router-dom';
+import StepsStartUp from './StepsStartUp';
 
 // import Select from 'react-dropdown-select';
 
@@ -127,17 +128,7 @@ class StartUpDokumen extends Component {
                </div>
                <p className="title">Selamat datang Cecillia</p>
                 <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk untuk mengajukan funding</p>
-                <div className="steps-startup">
-                   <ul>
-                       <li><div className="number">1</div> <span>Identitas Calon Penerbit</span></li>
-                       <li className='actbread'><div className="number">2</div> <span>Dokumen Calon Penerbit</span></li>
-                       <li><div className="number">3</div> <span> Informasi Perusahaan</span></li>
-                       <li><div className="number">4</div> <span>Informasi Finansial</span></li>
-                       <li><div className="number">5</div> <span>Informasi Non Finansial</span></li>
-                       <li><div className="number">5</div> <span>Media</span></li>
-                   </ul>
-                   <hr/>
-               </div>
+                <StepsStartUp active={2} />
                <div className="box-form-data">
                    {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Dokumen Calon Penerbit</p>

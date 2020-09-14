@@ -32,7 +32,7 @@
                 line-height: 42px;
                 text-align: center;
             }
-            .well-desc{
+            .well-desc, .sign-up{
                 text-align: center;
                 font-size: 18px;
                 // line-height: 30px;
@@ -138,16 +138,16 @@
                         background-color: slategray;
                     }
                 }
-                .sign-up{
-                    text-align: center;
-                    font-size: 14px;
-                    font-weight: 300;
-                    margin-bottom: 0;
-                    a{
-                        color: #4CB5EF;
-                        font-weight: 900;
-                    }
-                }
+                // .sign-up{
+                //     text-align: center;
+                //     font-size: 14px;
+                //     font-weight: 300;
+                //     margin-bottom: 0;
+                //     a{
+                //         color: #4CB5EF;
+                //         font-weight: 900;
+                //     }
+                // }
             }
         }
     }
@@ -155,7 +155,7 @@
 
 .signup{
     .box-form{
-        padding: 70px 0 !important;
+        padding: 50px 0 !important;
         // background-color: skyblue;
     }
     // .w-input{
