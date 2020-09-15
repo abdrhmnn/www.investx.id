@@ -1,3 +1,21 @@
+.withdraw{
+    .menu a{
+    position: absolute;
+margin-top: 20px;
+padding: 6px;
+border: 2px solid #2388D1;
+color: #2388D1;
+border-radius: 30px;
+font-size: 10pt;
+padding-left: 15px;
+padding-right: 15px;
+margin-left: 30px;
+cursor: pointer;
+}
+.menu a:hover{
+    background: #2388D1;
+    color:white;
+}
 .box{
     position: absolute;
     width: 372px;
@@ -45,4 +63,5 @@
     margin-right: 20px;
     background: #DEDEDE;
     font-size: 9pt;
+}
 }

@@ -32,7 +32,7 @@
                 line-height: 42px;
                 text-align: center;
             }
-            .well-desc{
+            .well-desc, .sign-up{
                 text-align: center;
                 font-size: 18px;
                 // line-height: 30px;
@@ -84,57 +84,17 @@
                 margin-bottom: 15px;
             }
             form{
-                // .grp-inp{
-                //     display: flex;
-                //     justify-content: space-between;
-                //     .w-inp{
-                //         border: 1px solid rgba(36, 36, 36, 0.4);
-                //         max-width: 215px;
-                //         height: 48px;
-                //         margin-bottom: 30px;
-                //         display: flex;
-                //         justify-content: center;
-                //         align-items: center;
-                //         border-radius: 4px;
-                //         overflow: hidden;
-                //         i{
-                //             margin: 0 15px;
-                //             color: rgba(36, 36, 36, 0.4);
-                //         }
-                //         input{
-                //             border: none;
-                //             padding: 0 15px;
-                //             font-size: 14px;
-                //             width: 100%;
-                //             height: 100%;
-                //             outline: none;
-                //             font-weight: 300;
-                //         }
-                //     }
+                // overide password input 
+                // .MuiInputLabel-outlined.MuiInputLabel-shrink {
+                //     transform: translate(14px, -2px) scale(0.75);
                 // }
-                // .w-inp{
-                //     border: 1px solid rgba(36, 36, 36, 0.4);
-                //     width: 100%;
-                //     height: 48px;
-                //     margin-bottom: 30px;
-                //     display: flex;
-                //     justify-content: center;
-                //     align-items: center;
-                //     border-radius: 4px;
-                //     overflow: hidden;
-                //     i{
-                //         margin: 0 15px;
-                //         color: rgba(36, 36, 36, 0.4);
-                //     }
-                //     input{
-                //         border: none;
-                //         padding: 0 15px;
-                //         font-size: 14px;
-                //         height: 100%;
-                //         outline: none;
-                //         font-weight: 300;
-                //     }
-                // }
+
+                .fa-eye, .fa-eye-slash{
+                    font-size: 14px;
+                }
+
+
+                
                 .w-forgot{
                     display: flex;
                     justify-content: space-between;
@@ -178,24 +138,16 @@
                         background-color: slategray;
                     }
                 }
-                .box-err{
-                    height: 40px;
-                    .error{
-                        font-size: 14px;
-                        color: #E10000;
-                        // background-color: skyblue;
-                    }
-                }
-                .sign-up{
-                    text-align: center;
-                    font-size: 14px;
-                    font-weight: 300;
-                    margin-bottom: 0;
-                    a{
-                        color: #4CB5EF;
-                        font-weight: 900;
-                    }
-                }
+                // .sign-up{
+                //     text-align: center;
+                //     font-size: 14px;
+                //     font-weight: 300;
+                //     margin-bottom: 0;
+                //     a{
+                //         color: #4CB5EF;
+                //         font-weight: 900;
+                //     }
+                // }
             }
         }
     }
@@ -203,33 +155,33 @@
 
 .signup{
     .box-form{
-        padding: 70px 0 !important;
+        padding: 50px 0 !important;
         // background-color: skyblue;
     }
-    .w-input{
-        // margin-bottom: 40px;
-        display: flex;
-        .spoil{
-            width: 50px;
-            height: 48px;
-            border-right: 1px solid #B9BBCB;
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            // background-color: skyblue;
-        }
-    }
+    // .w-input{
+    //     // margin-bottom: 40px;
+    //     display: flex;
+    //     .spoil{
+    //         width: 50px;
+    //         height: 48px;
+    //         border-right: 1px solid #B9BBCB;
+    //         font-size: 14px;
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //         // background-color: skyblue;
+    //     }
+    // }
 
-    .phone-sp{
-        .has-float-label input:placeholder-shown:not(:focus) + *{
-            left: 15px !important;
-        }
+    // .phone-sp{
+    //     // .has-float-label input:placeholder-shown:not(:focus) + *{
+    //     //     left: 15px !important;
+    //     // }
 
-        label{
-            left: -35px;
-        }
-    }
+    //     // label{
+    //     //     left: -35px;
+    //     // }
+    // }
 
 }
 

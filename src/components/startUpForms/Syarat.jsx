@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
-
-import { FormValidation } from "calidation";
-
+import {Button, Fab} from '@material-ui/core'
 import { Link } from 'react-router-dom';
 
 
@@ -40,26 +38,15 @@ class Syarat extends Component {
                     <div className="bg-round"></div> 
                </div>
                <Link to='/startup-form-media'>
-                    <div className="back-button">
+                    <Fab className="back-button">
                         <img src={arrowback} alt=""/>
-                    </div>
+                    </Fab>
                </Link>
                <div className="logo-invest">
                    <img src={logo} alt=""/>
                </div>
                <p className="title">Selamat datang Cecillia</p>
                 <p className="desc mb-5"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk untuk mengajukan funding</p>
-                {/* <div className="steps-startup" style={{opacity : 0}}>
-                   <ul>
-                       <li><div className="number">1</div> <span>Identitas Calon Penerbit</span></li>
-                       <li ><div className="number">2</div> <span>Dokumen Calon Penerbit</span></li>
-                       <li ><div className="number">3</div> <span> Informasi Perusahaan</span></li>
-                       <li ><div className="number">4</div> <span>Informasi Finansial</span></li>
-                       <li><div className="number">5</div> <span>Informasi Non Finansial</span></li>
-                       <li className='actbread'><div className="number">5</div> <span>Media</span></li>
-                   </ul>
-                   <hr/>
-               </div> */}
                <div className="box-form-data mt-5">
                    {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Syarat dan Ketentuan</p>
@@ -92,7 +79,7 @@ class Syarat extends Component {
 
                <div className="foot-data-diri">
                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <button type='submit' form='datadiri'>SUBMIT</button>
+                    <Button type='submit' form='datadiri'>SUBMIT</Button>
                </div>
            </div>
         );

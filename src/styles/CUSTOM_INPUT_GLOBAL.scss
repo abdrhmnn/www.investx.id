@@ -1,0 +1,50 @@
+
+
+.custom_text_input{
+    margin-bottom: 20px !important; 
+    label{
+        top: -3px;
+        font-size: 14px;
+    }
+
+    input{
+        font-size: 14px !important;
+        padding: 15.7px 14px;
+        &:disabled{
+            background-color: #ECEFF4;
+            border-radius: 9px;
+        }
+    }
+    .MuiInputLabel-outlined.MuiInputLabel-shrink {
+        font-size: 14px;
+        // background-color: white;
+        // padding: 0 5px;
+        // width: inherit !important;
+        transform: translate(14px, -2px) scale(0.80);
+
+    }
+
+    .MuiInputLabel-outlined.MuiInputLabel-marginDense {
+        transform: translate(14px, 12px) scale(1);
+        font-size: 14px;
+    }
+
+    fieldset{
+        border-radius: 9px;
+        legend{
+            font-size: 11px;
+        }
+    }
+    //textarea
+    textarea{
+        font-size: 14px;
+    }
+
+    //autocomplete
+    .MuiAutocomplete-inputRoot{
+        padding: 6.2px  !important;
+    }
+
+}
+
+

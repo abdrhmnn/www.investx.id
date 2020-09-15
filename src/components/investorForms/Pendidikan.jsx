@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 // import moment from 'moment'
 import { FormValidation } from "calidation";

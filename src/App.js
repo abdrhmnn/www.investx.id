@@ -39,6 +39,7 @@ import withDrawOtp from './components/withDraw/withDrawOtp';
 import withDrawInvoice from './components/withDraw/withDrawInvoice';
 import editNominal from './components/withDraw/editNominal';
 import CompanyDetail from './components/product/CompanyDetail';
+import Play from './components/PLAYGROUND/Play';
 import formBank from './components/withDraw/formBank';
 
 
@@ -84,8 +85,10 @@ class App extends Component {
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
 
-          <Route exact path='*' component={emptPage}/>
+          <Route exact path='/play' component={Play}/>
 
+          
+          <Route exact path='*' component={emptPage}/>
         </Switch>
       </Router>
     );
