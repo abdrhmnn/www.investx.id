@@ -71,7 +71,7 @@ class StartUpDataDiri extends Component {
                     }}>
                     {
                         ({handleChange, handleBlur, handleSubmit, errors, values, touched, setFieldValue})=>(
-                        <form onSubmit={handleSubmit} id='investorForm'> 
+                        <form onSubmit={handleSubmit} id='startupForm'> 
                             <div className="row">
                                 <div className="col-md-12">
                                     <Field 
@@ -321,7 +321,7 @@ class StartUpDataDiri extends Component {
 
                <div className="foot-data-diri">
                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
+                    <Button type='submit' form='startupForm'>SIMPAN & LANJUTKAN</Button>
                </div>
            </div>
         );

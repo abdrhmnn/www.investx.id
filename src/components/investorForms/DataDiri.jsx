@@ -3,7 +3,7 @@ import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
-import moment from 'moment'
+// import moment from 'moment'
 import { Link } from 'react-router-dom';
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
@@ -321,7 +321,7 @@ class DataDiri extends Component {
 
                <div className="foot-data-diri">
                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</button>
+                    <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
                </div>
            </div>
         );
