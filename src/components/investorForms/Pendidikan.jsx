@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Formik } from "formik";
+import * as Yup from 'yup'
+
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import moment from 'moment'
-import { FormValidation } from "calidation";
 
-
-import Select from 'react-dropdown-select';
-import { Link } from 'react-router-dom';
-
+import StepsInvestor from './StepsInvestor';
+import { InputSelect } from '../shared/InputComponents'
 
 class Pendidikan extends Component {
-    state={
-        borderActive : '',
-        gender : '',
-        tanggalLahir : null
+    state = {
+        borderActive: '',
+        gender: '',
+        tanggalLahir: null
     }
 
-    borderBlue = (e)=>{
+    borderBlue = (e) => {
         if (e.target.id.length !== 0) {
             console.log(e.target.id);
-            this.setState({borderActive : e.target.id})
+            this.setState({ borderActive: e.target.id })
             console.log();
-        }else{
+        } else {
             console.log(e.target.id);
             console.log('kosong');
         }
@@ -31,11 +29,11 @@ class Pendidikan extends Component {
 
     onSubmit = ({ fields, errors, isValid }) => {
         if (isValid) {
-         
+
         } else {
-          // `errors` is also an object!
-          console.log('Something is wrong:', errors);
-          
+            // `errors` is also an object!
+            console.log('Something is wrong:', errors);
+
             // for (const property in errors) {
             //     console.log(`${property}: ${errors[property]}`);
             //     if (errors[property] !== null) {
@@ -47,9 +45,30 @@ class Pendidikan extends Component {
     }
 
     render() {
+        const top100Films = [
+            { label: 'The Shawshank Redemption', year: 1994, value: 'lala' },
+            { label: 'The Godfather', year: 1972 },
+            { label: 'The Godfather: Part II', year: 1974 },
+            { label: 'The Dark Knight', year: 2008 },
+        ]
+
+        const initialValueObj = {
+            budget: null,
+            preferensiresiko: null,
+            preferensi: null,
+            darimana: null,
+        }
+
+        const schemaObj = Yup.object({
+            budget: Yup.object().nullable().required(),
+            preferensiresiko: Yup.object().nullable().required(),
+            preferensi: Yup.object().nullable().required(),
+            darimana: Yup.object().nullable().required(),
+        })
+
         const config = {
             username: {
-              isRequired: "Name lengkap field is required!",
+                isRequired: "Name lengkap field is required!",
             },
             gender: {
                 isRequired: "Jenis kelamin field is required!",
@@ -60,176 +79,124 @@ class Pendidikan extends Component {
             },
 
             password: {
-              isRequired: "Password field required!",
-              isMinLength: {
-                message: "16+ character password is required",
-                length: 16
-              }
+                isRequired: "Password field required!",
+                isMinLength: {
+                    message: "16+ character password is required",
+                    length: 16
+                }
             }
-          };
+        };
         return (
-           <div className="all-forms-style">
-               <div className="bg">
-                    <div className="bg-round"></div> 
-               </div>
-               <Link to='/investor-form-data-diri'>
+            <div className="all-forms-style">
+                <div className="bg">
+                    <div className="bg-round"></div>
+                </div>
+                <Link to='/investor-form-data-diri'>
                     <div className="back-button">
-                        <img src={arrowback} alt=""/>
+                        <img src={arrowback} alt="" />
                     </div>
-               </Link>
-               <div className="logo-invest">
-                   <img src={logo} alt=""/>
-               </div>
-               <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-               <div className="steps-invest">
-                   <ul>
-                       <li><div className="number">1</div> <span>Data Diri</span></li>
-                       <li className='actbread'><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
-                       <li><div className="number">3</div> <span>Dokumen</span></li>
-                       <li><div className="number">4</div> <span>Bank</span></li>
-                       <li><div className="number">5</div> <span>Preference</span></li>
-                   </ul>
-                   <hr/>
-               </div>
-               <div className="box-form-data">
-                   {/* ///////////////////FORMS//////////////////// */}
+                </Link>
+                <div className="logo-invest">
+                    <img src={logo} alt="" />
+                </div>
+                <p className="title">Selamat datang Cecillia</p>
+                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
+
+                <StepsInvestor active={2} />
+
+                <div className="box-form-data">
+                    {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Pendidikan dan Pekerjaan</p>
-                    <FormValidation onSubmit={this.onSubmit} config={config} id='datadiri'>
+                    <Formik
+                        initialValues={initialValueObj}
+                        validationSchema={schemaObj}
+                        onSubmit={(val) => {
+                            console.log(val);
+                        }}>
                         {
-                            ({ fields, errors, submitted })=>(
-
-                                <div className="row">
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Pendidikan Terakhir</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rs'
-                                                name='kawin'
-                                                style={{boxShadow : 'none'}}
-                                                placeholder='Pilih Pendidikan Terakhir'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
+                            ({ handleChange, handleBlur, handleSubmit, errors, values, touched, setFieldValue }) => (
+                                <form onSubmit={handleSubmit} id='investorForm'>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label='Pendikan Terakhir'
+                                                name='budget'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.budget && errors.budget}
+                                                error={touched.budget && errors.budget ? true : false}
+                                                value={values.budget}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('budget', val)}
                                             />
-                                        <div className="error-input p-0">
-                                            {/* error */}
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Pekerjaan saat ini</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Pekerjaan saat ini'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            {/* error */}
+                                        <div className="col-md-6">
+                                            <InputSelect
+                                                label='Pekerjaan Saat Ini'
+                                                name='preferensiresiko'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.preferensiresiko && errors.preferensiresiko}
+                                                error={touched.preferensiresiko && errors.preferensiresiko ? true : false}
+                                                value={values.preferensiresiko}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('preferensiresiko', val)}
+                                            />
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Industri Pekerjaan</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Industri Pekerjaan'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            {/* error */}
+                                        <div className="col-md-6">
+                                            <InputSelect
+                                                label='Industri Pekerjaan'
+                                                name='preferensi'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.preferensi && errors.preferensi}
+                                                error={touched.preferensi && errors.preferensi ? true : false}
+                                                value={values.preferensi}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('preferensi', val)}
+                                            />
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Pendapatan Perbulan</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Pendapatan Perbulan'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            {/* error */}
+                                        <div className="col-md-6">
+                                            <InputSelect
+                                                label='Pendapatan Perbulan'
+                                                name='darimana'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.darimana && errors.darimana}
+                                                error={touched.darimana && errors.darimana ? true : false}
+                                                value={values.darimana}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('darimana', val)}
+                                            />
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-6 ">
-                                        <div className="label-cus">Sumber Pendapatan</div>
-                                        <Select
-                                            options={[
-                                                {label:'kemal', value: 'kemal'},
-                                                {label:'aditya aditya ', value: 'aditya djfhkasd '},
-                                                {label:'zul', value: 'zul'}]}
-                                            className='rs'
-                                            name='kawin'
-                                            style={{boxShadow : 'none'}}
-                                            placeholder='Pilih Sumber Pendapatan'
-                                            onChange={(values) => console.log(values)}
-                                            closeOnSelect={true}
-                                            dropdownHandleRenderer={({ state }) => (
-                                                // if dropdown is open show "–" else show "+"
-                                                <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                            )}
-                                        />
-                                        <div className="error-input p-0">
-                                            {/* error */}
+                                        <div className="col-md-6">
+                                            <InputSelect
+                                                label='Sumber Pendapatan'
+                                                name='darimana'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.darimana && errors.darimana}
+                                                error={touched.darimana && errors.darimana ? true : false}
+                                                value={values.darimana}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('darimana', val)}
+                                            />
                                         </div>
+
+
                                     </div>
+                                </form>
+                            )}
+                    </Formik>
+                    {/* ///////////////////FORMS END//////////////////// */}
 
-                                </div>
-                            )
-                        }
-                    </FormValidation>
+                </div>
 
-                   {/* ///////////////////FORMS END//////////////////// */}
-
-               </div>
-
-               <div className="foot-data-diri">
-                   <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
+                <div className="foot-data-diri">
+                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
                     <button type='submit' form='datadiri'>SIMPAN & LANJUTKAN</button>
-               </div>
-           </div>
+                </div>
+            </div>
         );
     }
 }
