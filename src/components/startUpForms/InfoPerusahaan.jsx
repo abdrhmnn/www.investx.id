@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
 
@@ -8,30 +8,14 @@ import InputFiles from 'react-input-files';
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
 import {InputText, InputSelect, InputTextArea} from '../shared/InputComponents'
-import {Checkbox, ButtonGroup, Button, FormHelperText, Fab} from '@material-ui/core'
-import Fade from 'react-reveal/Fade';
+import {Button, Fab} from '@material-ui/core'
 import StepsStartUp from './StepsStartUp';
 
-
-import Select from 'react-dropdown-select';
-import { FormValidation } from "calidation";
 
 
 class InfoPerusahaan extends Component {
     state={
-        // borderActive : '',
     }
-
-    // borderBlue = (e)=>{
-    //     if (e.target.id.length !== 0) {
-    //         console.log(e.target.id);
-    //         this.setState({borderActive : e.target.id})
-    //         console.log();
-    //     }else{
-    //         console.log(e.target.id);
-    //         console.log('kosong');
-    //     }
-    // }
 
     handleFileUpload = (file, name)=>{
         console.log('====================================');
@@ -40,15 +24,6 @@ class InfoPerusahaan extends Component {
         console.log('====================================');
         this.setState({modalFile : {}})
     } 
-
-    // onSubmit = ({ fields, errors, isValid }) => {
-    //     if (isValid) {
-         
-    //     } else {
-    //       // `errors` is also an object!
-    //       console.log('Something is wrong:', errors);
-    //     }
-    // }
 
     render() {
         const top100Films = [
