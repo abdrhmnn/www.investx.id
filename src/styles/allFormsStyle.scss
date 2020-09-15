@@ -257,7 +257,38 @@
                 }
             }
 
+            .w-addnow{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                .w-check{
+                    display: flex;
+                    align-items: center;
+                    .cbox{
+                        width: 23px;
+                        height: 23px;
+                        background: #F4F4F4;
+                        border: 1px solid #0288D1;
+                        cursor: pointer;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 3px;
+                    }
+                    span{
+                        margin-left: 20px;
+                        font-size: 14px;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 24px;
+                        color: #333333;                        
+                    }
+                }
+            }
+
             .syarat{
+                
                 .title{
                     font-size: 18px;
                     margin-bottom: 20px;
