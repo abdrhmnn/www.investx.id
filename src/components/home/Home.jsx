@@ -76,7 +76,7 @@ class Home extends Component {
                                         John Donal Invested <span>$1000 </span>
                                         in <span>Fleting</span>
                                         <br/>
-                                        <p className="time">2 hours again</p>
+                                        <span className="time">2 hours again</span>
                                     </p> 
                                 </div>
                             ))
