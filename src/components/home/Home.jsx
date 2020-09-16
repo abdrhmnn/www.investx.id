@@ -17,26 +17,27 @@ import Benefit from './Benefit';
 import JoinNow from './JoinNow';
 import CaroQuotes from './CaroQuotes';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
+import FAQ from './FAQ';
 
 class Home extends Component {
-    state={
-        modalOtp : false,
+    state = {
+        modalOtp: false,
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
     }
 
-    offModal = ()=>{
-        this.setState({modalOtp : false})
+    offModal = () => {
+        this.setState({ modalOtp: false })
     }
 
-    onModal = ()=>{
-        this.setState({modalOtp : true})
+    onModal = () => {
+        this.setState({ modalOtp: true })
     }
 
     render() {
-        const arr = [1,2,3,4,5,6,7,7,8]
+        const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8]
         console.log('====================================');
         console.log(this.props);
         console.log('====================================');
@@ -50,56 +51,57 @@ class Home extends Component {
             speed: 5000,
             autoplaySpeed: 0,
             cssEase: "linear"
-          };
+        };
         return (
             <div>
-                { this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal}/> : null}
-                <div className='home' style={{backgroundImage: `url(${x}), url(${zebra})`}}>
+                {this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal} /> : null}
+                <div className='home' style={{ backgroundImage: `url(${x}), url(${zebra})` }}>
                     <Navbar onModal={this.onModal} />
                     <div className="container p-0 contain-home">
                         <div className="wrap">
-                            <p className="title">EQUITY <br/><span>CROWDFUNDING</span></p>
+                            <p className="title">EQUITY <br /><span>CROWDFUNDING</span></p>
                             <p className="desc">Mewujudkan era baru dalam berinvestasi Dapatkan pendapatan secara pasif dan pendanaan dengan cepat dengan InvestX.</p>
                             <button className="but-solid">Start Investing</button>
-                            <button className="but">Get Funding</button> <br/>
-                            <img src={ojk} alt=""/>
+                            <button className="but">Get Funding</button> <br />
+                            <img src={ojk} alt="" />
                         </div>
                     </div>
 
-                        <div className="last-invest">
+                    <div className="last-invest">
                         <Slider {...settings}>
-                        {
-                            arr.map((res,i)=>(
-                                <div className="card-last" key={i} onClick={this.props.hahaFunct}>
-                                    <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt=""/>
-                                    <p className="name">
-                                        John Donal Invested <span>$1000 </span>
+                            {
+                                arr.map((res, i) => (
+                                    <div className="card-last" key={i} onClick={this.props.hahaFunct}>
+                                        <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt="" />
+                                        <p className="name">
+                                            John Donal Invested <span>$1000 </span>
                                         in <span>Fleting</span>
-                                        <br/>
-                                        <span className="time">2 hours again</span>
-                                    </p> 
-                                </div>
-                            ))
-                        }
+                                            <br />
+                                            <p className="time">2 hours again</p>
+                                        </p>
+                                    </div>
+                                ))
+                            }
                         </Slider>
-                        </div>
+                    </div>
                 </div>
                 <div className="butraise container">
                     <div className="left">
                         <p className="tit">COMPANIES FUNDRAISING</p>
                         <div className="desc">
-                            <img src={greenshield} alt="shield"/>
+                            <img src={greenshield} alt="shield" />
                             All companies are rigorously screened & pass due diligence.
                         </div>
                     </div>
                     <button>See All</button>
                 </div>
-                
+
                 <CaroHome />
                 <Benefit />
                 <CaroQuotes />
                 <JoinNow />
-                
+                <FAQ />
+
                 <Footer />
                 <Ojk />
             </div>
@@ -108,21 +110,21 @@ class Home extends Component {
 }
 
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
     return {
-        data : state.number
+        data: state.number
     }
 }
 
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
     return {
-        hahaFunct : ()=>{
-            const action = {type :'HAHA'}
+        hahaFunct: () => {
+            const action = { type: 'HAHA' }
             dispatch(action)
-        } 
+        }
     }
 }
 
 
 
-export default connect(mapStateToProps,mapDispatchToProps )(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

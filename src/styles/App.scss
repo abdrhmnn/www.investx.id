@@ -11,52 +11,51 @@ $red: #f27272;
 $orange: #f29877;
 
 .but-blue {
-    width: 197px;
-    height: 36px;
-    font-size: 14px;
-    text-transform: uppercase;
-    color: #ffffff;
-    background: $blue;
-    border-radius: 24px;
-    border: none;
-    outline: none;
+  width: 197px;
+  height: 36px;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: $blue;
+  border-radius: 24px;
+  border: none;
+  outline: none;
 }
 
 // buttons
 .but-solid {
-    background-color: $low-blue;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    outline: unset !important;
+  background-color: $low-blue;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  outline: unset !important;
 }
 
 .but {
-    color: black;
-    border-radius: 8px;
-    border: 1px solid $low-blue;
-    background-color: white;
-    font-size: 16px;
-    outline: unset !important;
+  color: black;
+  border-radius: 8px;
+  border: 1px solid $low-blue;
+  background-color: white;
+  font-size: 16px;
+  outline: unset !important;
 }
 
 a {
-    color: unset;
-    &:hover {
-        text-decoration: none;
-    }
+  color: unset;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 button {
-    outline: none !important;
-    transition: .2s;
-    // &:hover {
-    //     transition: .2s;
-    //     opacity: 0.8;
-    // }
+  outline: none !important;
+  transition: 0.2s;
+  // &:hover {
+  //     transition: .2s;
+  //     opacity: 0.8;
+  // }
 }
-
 
 // button:hover {
 //     background-blend-mode: color-burn;
@@ -64,12 +63,12 @@ button {
 // }
 
 .container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 // has float overide
 .w-input-active {
-    border: 1px solid #0288d1 !important;
+  border: 1px solid #0288d1 !important;
 }
 // .w-input {
 //     // margin-bottom: 40px;
@@ -114,38 +113,37 @@ button {
 .has-float-label input:placeholder-shown:not(:focus) + *,
 .has-float-label select:placeholder-shown:not(:focus) + *,
 .has-float-label textarea:placeholder-shown:not(:focus) + * {
-    font-size: 14px;
-    opacity: 1;
-    top: 0;
-    background-color: unset;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #a9a9a9;
+  font-size: 14px;
+  opacity: 1;
+  top: 0;
+  background-color: unset;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a9a9a9;
 }
 
 // outline slick overide
 .slick-slide,
 .slick-slide * {
-    outline: none !important;
+  outline: none !important;
 }
 
 //REMOVE ARROW INPUT NUMBER
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
-
-.MuiAutocomplete-option{
-    font-size: 14px !important;
+.MuiAutocomplete-option {
+  font-size: 14px !important;
 }
 
 @import "./navbar";
@@ -172,7 +170,5 @@ input[type="number"] {
 @import "./topupstatus.scss";
 @import "./companydetail.scss";
 @import "./withdraw.scss";
+@import "./faq.scss";
 @import "./CUSTOM_INPUT_GLOBAL.scss";
-
-
-

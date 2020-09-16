@@ -1,0 +1,28 @@
+.faq {
+  background-color: #f6f6f6;
+  padding: 5em;
+
+  p {
+    text-align: justify;
+    flex-wrap: wrap;
+    word-break: normal;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .question-reveal-wrapper {
+    margin-right: 2em;
+    .question-container {
+      width: 100%;
+    }
+    .question {
+      margin-bottom: 1em;
+    }
+    .answer {
+      margin-top: 0.5em;
+      margin-bottom: 2em;
+    }
+  }
+}

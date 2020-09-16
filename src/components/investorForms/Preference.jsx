@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
 import arrowback from '../../images/arrowback.svg'
 import logo from '../../images/logo.svg'
-import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import moment from 'moment'
-import { FormValidation } from "calidation";
 
-
-import Select from 'react-dropdown-select';
 import { Link } from 'react-router-dom';
 import PopSuccessForm from '../shared/PopSuccessForm';
+import { Formik } from "formik";
+import * as Yup from 'yup'
+import { InputSelect } from '../shared/InputComponents'
+import StepsInvestor from './StepsInvestor';
 
 
 class Preference extends Component {
-    state={
-        borderActive : '',
-        gender : '',
-        tanggalLahir : null,
-        successSubmit : false
+    state = {
+        borderActive: '',
+        gender: '',
+        tanggalLahir: null,
+        successSubmit: false
     }
 
-    borderBlue = (e)=>{
+    borderBlue = (e) => {
         if (e.target.id.length !== 0) {
             console.log(e.target.id);
-            this.setState({borderActive : e.target.id})
+            this.setState({ borderActive: e.target.id })
             console.log();
-        }else{
+        } else {
             console.log(e.target.id);
             console.log('kosong');
         }
@@ -33,179 +31,140 @@ class Preference extends Component {
 
     onSubmit = ({ fields, errors, isValid }) => {
         if (isValid) {
-         
+
         } else {
-          // `errors` is also an object!
-          console.log('Something is wrong:', errors);
+            // `errors` is also an object!
+            console.log('Something is wrong:', errors);
         }
     }
 
-    offModal = ()=> this.setState({successSubmit : false}, ()=> window.location.href='/')
+    offModal = () => this.setState({ successSubmit: false }, () => window.location.href = '/')
 
     render() {
-        const config = {
-            username: {
-              isRequired: "Name lengkap field is required!",
-            },
-            gender: {
-                isRequired: "Jenis kelamin field is required!",
-            },
+        const top100Films = [
+            { label: 'The Shawshank Redemption', year: 1994, value: 'lala' },
+            { label: 'The Godfather', year: 1972 },
+            { label: 'The Godfather: Part II', year: 1974 },
+            { label: 'The Dark Knight', year: 2008 },
+        ]
 
-            born: {
-                isRequired: "Tempat lahir field is required!",
-            },
+        const initialValueObj = {
+            pendidikan: null,
+            pekerjaan: null,
+            industri: null,
+            pendapatan: null,
+            sumberpendapatan: null,
+        }
 
-            password: {
-              isRequired: "Password field required!",
-              isMinLength: {
-                message: "16+ character password is required",
-                length: 16
-              }
-            }
-          };
+        const schemaObj = Yup.object({
+            pendidikan: Yup.object().nullable().required(),
+            pekerjaan: Yup.object().nullable().required(),
+            industri: Yup.object().nullable().required(),
+            pendapatan: Yup.object().nullable().required(),
+            sumberpendapatan: Yup.object().nullable().required(),
+        })
+
         return (
-           <div className="all-forms-style">
-               {this.state.successSubmit ? <PopSuccessForm offModal={this.offModal} /> : null}
-               <div className="bg">
-                    <div className="bg-round"></div> 
-               </div>
-               <Link to='/investor-form-bank'>
+            <div className="all-forms-style">
+                {this.state.successSubmit ? <PopSuccessForm offModal={this.offModal} /> : null}
+                <div className="bg">
+                    <div className="bg-round"></div>
+                </div>
+                <Link to='/investor-form-bank'>
                     <div className="back-button">
-                        <img src={arrowback} alt=""/>
+                        <img src={arrowback} alt="" />
                     </div>
-               </Link>
+                </Link>
 
-               <div className="logo-invest">
-                   <img src={logo} alt=""/>
-               </div>
-               <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-               <div className="steps-invest">
-                   <ul>
-                       <li><div className="number">1</div> <span>Data Diri</span></li>
-                       <li><div className="number">2</div> <span>Pendidikan & Pekerjaan</span></li>
-                       <li><div className="number">3</div> <span>Dokumen</span></li>
-                       <li><div className="number">4</div> <span>Bank</span></li>
-                       <li className='actbread'><div className="number">5</div> <span>Preference</span></li>
-                   </ul>
-                   <hr/>
-               </div>
-               <div className="box-form-data">
-                   {/* ///////////////////FORMS//////////////////// */}
+                <div className="logo-invest">
+                    <img src={logo} alt="" />
+                </div>
+                <p className="title">Selamat datang Cecillia</p>
+                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
+
+                <StepsInvestor active={5} />
+
+                <div className="box-form-data">
+                    {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Preference</p>
-                    <FormValidation onSubmit={this.onSubmit} config={config} id='datadiri'>
+                    <Formik
+                        initialValues={initialValueObj}
+                        validationSchema={schemaObj}
+                        onSubmit={(val) => {
+                            console.log(val);
+                        }}>
                         {
-                            ({ fields, errors, submitted })=>(
-
-                                <div className="row">
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Budget Investasi *</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rs'
-                                                name=''
-                                                style={{boxShadow : 'none'}}
-                                                placeholder='Pilih Budget Investasi'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
+                            ({ handleChange, handleBlur, handleSubmit, errors, values, touched, setFieldValue }) => (
+                                <form onSubmit={handleSubmit} id='investorForm'>
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label='Budget Investasi *'
+                                                name='pendidikan'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.pendidikan && errors.pendidikan}
+                                                error={touched.pendidikan && errors.pendidikan ? true : false}
+                                                value={values.pendidikan}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('pendidikan', val)}
                                             />
-                                        <div className="error-input p-0">
-                                            {/* error */}
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Preferensi Resiko Investasi *</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rs'
-                                                name=''
-                                                style={{boxShadow : 'none'}}
-                                                placeholder='Pilih Preferensi Resiko Investasi'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label='Preferensi Resiko Investasi *'
+                                                name='pekerjaan'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.pekerjaan && errors.pekerjaan}
+                                                error={touched.pekerjaan && errors.pekerjaan ? true : false}
+                                                value={values.pekerjaan}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('pekerjaan', val)}
                                             />
-                                        <div className="error-input p-0">
-                                            {/* error */}
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Preferensi Investasi *</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rsm'
-                                                name=''
-                                                multi
-                                                style={{boxShadow : 'none'}}
-                                                placeholder='Pilih Preferensi Investasi'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label='Preferensi Investasi *'
+                                                name='industri'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.industri && errors.industri}
+                                                error={touched.industri && errors.industri ? true : false}
+                                                value={values.industri}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('industri', val)}
                                             />
-                                        <div className="error-input p-0">
-                                            {/* error */}
                                         </div>
-                                    </div>
-
-                                    <div className="col-md-12 ">
-                                        <div className="label-cus">Darimana anda mengetahui tentang Invest X ? *</div>
-                                            <Select
-                                                options={[
-                                                    {label:'kemal', value: 'kemal'},
-                                                    {label:'aditya aditya ', value: 'aditya djfhkasd dfmbashjfaskbjfkshff kjhfjskhfkshkfshjkfsk kjdhfkjshfkjsa'},
-                                                    {label:'zul', value: 'zul'}]}
-                                                className='rs'
-                                                name=''
-                                                style={{boxShadow : 'none'}}
-                                                placeholder='Pilih Darimana anda mengetahui tentang Invest X ?'
-                                                onChange={(values) => console.log(values)}
-                                                closeOnSelect={true}
-                                                dropdownHandleRenderer={({ state }) => (
-                                                    // if dropdown is open show "–" else show "+"
-                                                    <span>{state.dropdown ? <i className="fas fa-chevron-up"></i> : <i class="fas fa-chevron-down"></i>}</span>
-                                                )}
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label='Darimana anda mengetahui tentang Invest X ? *'
+                                                name='sumberpendapatan'
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={touched.sumberpendapatan && errors.sumberpendapatan}
+                                                error={touched.sumberpendapatan && errors.sumberpendapatan ? true : false}
+                                                value={values.sumberpendapatan}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) => setFieldValue('sumberpendapatan', val)}
                                             />
-                                        <div className="error-input p-0">
-                                            {/* error */}
                                         </div>
+
+
                                     </div>
+                                </form>
+                            )}
+                    </Formik>
 
-                                </div>
-                            )
-                        }
-                    </FormValidation>
+                    {/* ///////////////////FORMS END//////////////////// */}
 
-                   {/* ///////////////////FORMS END//////////////////// */}
+                </div>
 
-               </div>
-
-               <div className="foot-data-diri">
-                   <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <button type='submit' form='datadiri' onClick={()=> this.setState({successSubmit : true})}>SIMPAN & LANJUTKAN</button>
-               </div>
-           </div>
+                <div className="foot-data-diri">
+                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
+                    <button type='submit' form='datadiri' onClick={() => this.setState({ successSubmit: true })}>SIMPAN & LANJUTKAN</button>
+                </div>
+            </div>
         );
     }
 }
