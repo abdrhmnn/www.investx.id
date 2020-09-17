@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Navbar from '../shared/Navbar';
-import step1 from '../../images/how/step1.svg'
-import step2 from '../../images/how/step2.svg'
-import step3 from '../../images/how/step3.svg'
+import step1 from '../../images/how/step1.svg';
+import step2 from '../../images/how/step2.svg';
+import step3 from '../../images/how/step3.svg';
+import stepsBisnis from '../../images/how/steps-bisnis.svg';
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
 
@@ -34,13 +35,13 @@ class HowItWorks extends Component {
                             </div>
                             <div className="karcon">
                                 <figure>
-                                    <img src={step1} alt="steps"/>
+                                    <img src={step1} alt="steps" />
                                 </figure>
                                 <ul>
                                     <li><i className="fas fa-circle"></i></li>
                                     <li>
                                         Pick a startup you like.
-                                        <br/><br/>
+                                        <br /><br />
                                         Review the company pitch, terms, and decide whether you believe they will succeed.
                                     </li>
                                 </ul>
@@ -54,13 +55,13 @@ class HowItWorks extends Component {
                             </div>
                             <div className="karcon">
                                 <figure>
-                                    <img src={step2} alt="steps"/>
+                                    <img src={step2} alt="steps" />
                                 </figure>
                                 <ul>
                                     <li><i className="fas fa-circle"></i></li>
                                     <li>
                                         Invest a small amount to start.
-                                        <br/><br/>
+                                        <br /><br />
                                         Plan to diversify, which means investing smaller amounts into several companies.
                                     </li>
                                 </ul>
@@ -74,13 +75,13 @@ class HowItWorks extends Component {
                             </div>
                             <div className="karcon">
                                 <figure>
-                                    <img src={step3} alt="steps"/>
+                                    <img src={step3} alt="steps" />
                                 </figure>
                                 <ul>
                                     <li><i className="fas fa-circle"></i></li>
                                     <li>
-                                    Wait to see if the startup succeeds.
-                                        <br/><br/>
+                                        Wait to see if the startup succeeds.
+                                        <br /><br />
                                         If the startup does well, your investment can bring a return.
                                     </li>
                                 </ul>
@@ -89,10 +90,42 @@ class HowItWorks extends Component {
                     </div>
                 </div>
 
-                <div className="cara">
-                    <p className="title">Cara Mengajukan Bisnis</p>
-                    <p className="desc">Ikuti panduan singkat cara investasi dari kami dan dapatkan penghasilan rutin dari bagihasil bisnis kamu pilih.</p>
+                <div className="cara-mengajukan">
+                    <div className="cara">
+                        <p className="title">Cara Mengajukan Bisnis</p>
+                        <p className="desc">Ikuti panduan singkat cara investasi dari kami dan dapatkan penghasilan rutin dari bagihasil bisnis kamu pilih.</p>
+                    </div>
+
+                    <div className="steps container center">
+                        <div className="documents row">
+                            <div className="mr-3">
+                                <img src={step2} width="50" height="50" alt="steps" />
+                            </div>
+                            <div>
+                                <h5 className="title">Sisipkan Dokumen</h5>
+                                <p>Untuk mengajukan bisnis, anda harus menyiapkan dokumen sebagai berikut : </p>
+                                <p>1. Foto KTP, Selfie dengan KTP dan NPWP  </p>
+                                <p>2. Logo perusahaan </p>
+                                <p>3. Foto perusahaan </p>
+                                <p>4. Video perusahaan dalam bentuk link youtube ( Optional )</p>
+                                <p className="text-danger mt-4">* File selain Video di unggah dalam bentuk PNG/ JPEG/ PDF tidak lebih dari 5MB</p>
+                            </div>
+                        </div>
+
+                        <div className="steps-image">
+                            <h5 className="title mb-3 ml-3">Tahapan proses pengajuan bisnis</h5>
+                            <center>
+                                <img src={stepsBisnis} alt="steps-bisnis" />
+                            </center>
+                        </div>
+
+                        <center>
+                            <button className="but-solid ">Ajukan Bisnis</button>
+                        </center>
+
+                    </div>
                 </div>
+
                 <Footer />
                 <Ojk />
             </div>
