@@ -12,6 +12,7 @@ import love from '../../images/company/love.svg'
 import share from '../../images/company/share.svg'
 import StepSaham from './StepSaham';
 import TabsComp from './tab/TabsComp';
+import EmbedMap from './EmbedMap';
 
 class CompanyDetail extends Component {
     render() {
@@ -78,12 +79,11 @@ class CompanyDetail extends Component {
                                         <div>#Food</div>
                                     </div>
                                 </div>
-
-
                             </div>
-                            <StepSaham active={3}/>
 
+                            <StepSaham active={3}/>
                             <TabsComp/>
+
                         </div>
                         <div className="col-md-4 d-flex flex-column justify-content-between">
                             <div className="top-bar">
@@ -136,8 +136,12 @@ class CompanyDetail extends Component {
 
                             </div>
 
-                            <div className="bottom-bar bg-info">
-                                peta
+                            <div className="bottom-bar pt-4">
+                                <p>Location</p>
+                                <EmbedMap />
+                                <p className="desc-address">
+                                Cyber2 Tower, Lantai 17 Unit D-E, Blok X5 no 13, Jl. H. R. Rasuna Said, RT.7/RW.2, Kuningan, Kecamatan Setiabudi, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950
+                                </p>
                             </div>
 
                         </div>

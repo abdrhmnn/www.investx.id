@@ -160,19 +160,213 @@
     }
 
     .tab-custom{
-        border-bottom: 1px solid #C4C4C4;
         margin-top: 125px;
         margin-bottom: 25px;
-        .MuiTab-textColorPrimary{
-            color: #757575;
-            font-weight: 300;
+        .box-tabs{
+            border-bottom: 1px solid #C4C4C4;
+            margin-bottom: 27px;
+            .MuiTab-textColorPrimary{
+                color: #757575;
+                font-weight: 300;
+            }
+            .MuiTab-textColorSecondary{
+                color: black;
+            }
+            .MuiTabs-indicator{
+                background-color: black;
+                height: 5px;
+            }
         }
-        .MuiTab-textColorSecondary{
-            color: black;
-        }
-        .MuiTabs-indicator{
-            background-color: black;
-            height: 5px;
+
+        .tab-content{
+            padding: 45px 40px;
+            background: #F6F6F6;
+            border-radius: 15px;
+            //FINANSIAL TAB
+            .finansial-tab{
+                .title{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    font-size: 35px;
+                    line-height: 42px;
+                    color: #333333; 
+                    margin-bottom: 55px;  
+                    img{
+                        margin-right: 20px;
+                    }                 
+                }
+                .lab{
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                    color: #757575;
+                    font-weight: 300;
+                }
+                hr{
+                    border: 2px solid white;
+                    margin: 40px 0;
+                }
+                .val-fin{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    p{
+                        margin-bottom: unset;
+                        height: 47px;
+                        background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                        border-radius: 9px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .saham{
+                        // padding: 0 30px;
+                        width: 60%;
+                        justify-content: center;
+                        font-size: 18px;
+                    }
+                    .lembar{
+                        justify-content: center;
+                        text-align: center !important;
+                        width: 30%;
+                        color: #0288D1;
+                        font-size: 18px;
+                        font-weight: 300;
+                    }
+                }
+            }
+            .simulasi-tab{
+                  //SIMULASI TAB
+                .title{
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    font-size: 35px;
+                    line-height: 42px;
+                    color: #333333; 
+                    margin-bottom: 55px;  
+                    img{
+                        margin-right: 20px;
+                    }                 
+                }
+                .lab{
+                    margin-bottom: 20px;
+                    font-size: 16px;
+                    color: #757575;
+                    font-weight: 300;
+                }
+
+                .sim-count{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 70px;
+                    .cal{
+                        width: 45%;
+                        .inp-count{
+                            display: flex;
+                            justify-content: space-between;
+                            input{
+                                width: 60%;
+                                background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                                box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+                                border-radius: 9px;
+                                text-align: center;
+                                border: unset;
+                                font-weight: bold;
+                                font-size: 18px;
+                                &:focus{
+                                    outline: none;
+                                }
+                            }
+                            button{
+                                width: 41px ;
+                                height: 41px ;
+                                // border-radius: 50%;
+                                font-size: 35px;
+                                background: linear-gradient(0deg, #FFFFFF, #FFFFFF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                                box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+                            }
+                            .butcounter{
+                            }
+                        }
+                    }
+                    .val-inv{
+                        width: 45%;
+                        .right{
+                            margin-bottom: unset;
+                            height: 47px;
+                            background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                            border-radius: 9px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 18px;
+                            font-weight: 700;
+                        }
+                    }
+                }
+                .val-sim{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    p{
+                        margin-bottom: unset;
+                        height: 47px;
+                        background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                        border-radius: 9px;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .left{
+                        width: 45%;
+                        justify-content: center;
+                        font-size: 18px;
+                        color: #0288D1;
+                        font-weight: 300;
+
+                    }
+                    .right{
+                        justify-content: center;
+                        width: 45%;
+                        color: #0288D1;
+                        font-size: 18px;
+                        font-weight: 300;
+                    }
+                }
+
+            }
+
+            //UPDATES TAB
+            .updates{
+                .notif-update{
+                    padding: 30px 50px;
+                    background-color: white;
+                    background: #FFFFFF;
+                    border: 1px solid #757575;
+                    box-sizing: border-box;
+                    border-radius: 15px;
+                    margin-bottom: 30px;
+                    .head{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 37px;
+                        color: #757575;
+                        font-size: 14px;
+                    }
+                    .con{
+                        font-size: 14px;
+                        line-height: 20px;
+                        color: #000000;  
+                        a{
+                            color: #4CB5EF;
+                        }                      
+                    }
+                }
+
+            }
         }
     }
 
@@ -293,6 +487,21 @@
         font-size: 20px;
         color: #0288D1;
         margin-top: 40px;
+    }
+
+    .bottom-bar{
+        .emb-map{
+            width: 100%;
+            height: 300px;
+            margin-bottom: 50px;
+        }
+        .desc-address{
+            font-size: 14px;
+            line-height: 30px;
+            text-align: justify;
+            text-indent: 30px;
+            color: #757575;
+        }
     }
 
 
