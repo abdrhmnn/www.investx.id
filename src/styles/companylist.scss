@@ -48,8 +48,46 @@
                     margin: 0 7.5px;
                 }
             }
-
+            .filad{
+                // background-color: violet;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 25%;
+                .selfil{
+                    width: 210px;
+                }
+            }
             
+        }
+        .pagination_cus{
+            padding:0 30px;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 100px;
+            align-items: center;
+            .innerClass{
+                background: #FFFFFF;
+                border: 1px solid #C4C4C4;
+                box-sizing: border-box;
+                border-radius: 6px;
+                display: flex;
+                margin: 0;
+                padding: 0 10px 0 10px;
+            }
+            .itemClass{
+                list-style: none;
+                padding: 5px 10px ;
+                font-size: 18px;
+                color: #C4C4C4;
+            }
+            .activeClass{
+                background-color: #EEEEEE;;
+                color: black !important;
+            }
+            .activeArrows{
+                color: black !important;
+            }
         }
         
         .title-filter{
@@ -110,6 +148,11 @@
                 justify-content: space-between;
                 padding-right: 9px;
                 margin-bottom: 20px;
+            }
+            .city-select{
+                .css-yk16xz-control{
+                    border-radius: unset !important;
+                }
             }
             .rs{
                 input{

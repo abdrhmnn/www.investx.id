@@ -8,11 +8,14 @@ import triangle from '../../images/company/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Select from 'react-dropdown-select';
+import Select from 'react-select'
+
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 
 import helper from '../shared/helper'
+
+import Pagination from "react-js-pagination";
 
 
 
@@ -24,10 +27,16 @@ class CompanyList extends Component {
         most_funded : false,
         industriesCount : [],
         amount: { min: 2, max: 10 },
+        page : 1
+
     }
 
     componentDidMount(){
         window.scrollTo(0, 0)
+    }
+    handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({page: pageNumber});
     }
 
     handleCheckFilter = (name, value)=>{
@@ -88,6 +97,12 @@ class CompanyList extends Component {
             {id : 4, name : 'Alkulaku',},
             {id : 5, name : 'Spotify',},
         ]
+
+        const options = [
+            { value: 'bandung', label: 'Bandung' },
+            { value: 'jakarta', label: 'Jakarta' },
+            { value: 'bekasi', label: 'Bekasi' }
+        ]
         return (
             <>
              <ToastContainer
@@ -126,23 +141,8 @@ class CompanyList extends Component {
                                         <hr/>
 
                                         <div className="title-check">City </div>
-                                        <div className="w-100 pr-3">
-                                                <Select
-                                                    options={[
-                                                        {label:'jakarta', value: 'jakarta'},
-                                                        {label:'bandung ', value: 'bandung'},
-                                                        {label:'bekasi', value: 'bekasi'}]}
-                                                    className='rs'
-                                                    name='kawin'
-                                                    style={{boxShadow : 'none'}}
-                                                    placeholder='Pilih Kota'
-                                                    onChange={(values) => console.log(values)}
-                                                    closeOnSelect={true}
-                                                    dropdownHandleRenderer={({ state }) => (
-                                                        // if dropdown is open show "–" else show "+"
-                                                        <span style={{}}>{state.dropdown ? <i className="fas fa-chevron-up px-2"></i> : <i class="fas fa-chevron-down px-2"></i>}</span>
-                                                    )}
-                                                />
+                                        <div className='w-100 pr-3 city-select'>
+                                            <Select  options={options} />
                                         </div>
 
                                         <hr/>
@@ -195,11 +195,15 @@ class CompanyList extends Component {
                             <div className="col-md-10 bg-light">
 
                                 <div className="header-list-company">
-                                    Discover 6 Investments 
+                                    <span>
+                                        Discover <span style={{color: '#4CB5EF'}}> 6 </span>Investments 
+                                    </span>
                                     <div className="tags">
                                         {this.state.industriesCount.map((res,i)=> <div className='box-tag' key={i}>#{res.name}</div> )}
                                     </div>
-                                    Page 1
+                                    <div className="filad">
+                                        <span>Urutkan : </span> <Select className='selfil'  options={options} />
+                                    </div>
                                 </div>
 
                                 <div className=" row no-gutters">
@@ -213,7 +217,24 @@ class CompanyList extends Component {
                                     )
                                 }
                                 </div>
-                                
+                                <div className="pagination_cus">
+                                    <span className="mr-3">Page</span>
+                                    <Pagination
+                                    hideDisabled
+                                    activePage={this.state.page}
+                                    itemsCountPerPage={10}
+                                    totalItemsCount={450}
+                                    pageRangeDisplayed={5}
+                                    onChange={this.handlePageChange}
+                                    activeClass='activeClass'
+                                    itemClass='itemClass'
+                                    innerClass='innerClass'
+                                    itemClassNext='activeArrows'
+                                    itemClassPrev='activeArrows'
+                                    itemClassFirst='activeArrows'
+                                    itemClassLast='activeArrows'
+                                    />
+                                </div>
                             </div>
                         </div>
 
