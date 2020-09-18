@@ -56,7 +56,7 @@ cursor: pointer;
     margin-left: 130px;
     margin-top: -40px;
 }
-.saran{
+.saran {
     display: inline-block;
     border: none;
     margin-top: 20px;
@@ -64,4 +64,25 @@ cursor: pointer;
     background: #DEDEDE;
     font-size: 9pt;
 }
+.more-transfer-method{
+    color: red;
+font-weight: bolder
+}
+
+.geser{
+    max-height: 40px;
+overflow-x: hidden;
+overflow-y: hidden;
+white-space: nowrap;
+}
+.error-image{
+width: auto;
+height: 60px
+}
+.error-title{
+    margin-top: 10px;
+font-size: 12pt;
+margin-bottom: 15px
+}
+
 }

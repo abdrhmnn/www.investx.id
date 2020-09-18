@@ -13,8 +13,8 @@ class ModalError extends Component {
             <div className="modal-error-container">
                 <div className="modal-error-body" style={{ maxWidth: "500px" }}>
                     <div className="modal-error-detail">
-                        <img src={bankRumah} style={{ width: "auto", height: "60px" }} alt="" className="error-image" />
-                        <h5 className="error-title" style={{ marginTop: "10px", fontSize: "12pt", marginBottom: "15px" }}>Tambah Bank</h5>
+                        <img src={bankRumah} alt="" className="error-image" />
+                        <h5 className="error-title">Tambah Bank</h5>
                         <div>
                             <select class="form-control" id="sel1" style={{ width: "450px" }}>
                                 <option>Nama Bank</option>

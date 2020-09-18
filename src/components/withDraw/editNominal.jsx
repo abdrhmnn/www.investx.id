@@ -21,7 +21,7 @@ class PaymentMethod extends Component {
                                 <div className="title-alt">{method.title}</div>
                                 {methods.length === 1 ?
                                     (
-                                        <span className="more-transfer-method" onClick={method.toggle} style={{color: "red", fontWeight: "bolder"}}>
+                                        <span className="more-transfer-method" onClick={method.toggle}>
                                             Ganti Bank
                                         </span>
                                     ) : <div></div>
@@ -98,7 +98,7 @@ class MethodTopUp extends Component {
             },
         ]
         return (
-            <div className="all-forms-style">
+            <div className="all-forms-style withdraw">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
@@ -120,7 +120,7 @@ class MethodTopUp extends Component {
                             name="username" placeholder="1.000.000"
                         />
                     </div>
-                    <div style={{maxHeight:"40px", overflowX:"hidden", overflowY: "hidden",whiteSpace: "nowrap"}} className="geser">
+                    <div className="geser">
                         <button className="saran">20.000.000</button>
                         <button className="saran">30.000.000</button>
                         <button className="saran">40.000.000</button>
