@@ -114,9 +114,11 @@ class HowItWorks extends Component {
 
                         <div className="steps-image">
                             <h5 className="title mb-3 ml-3">Tahapan proses pengajuan bisnis</h5>
-                            <center>
-                                <img src={stepsBisnis} alt="steps-bisnis" />
-                            </center>
+                            <div className="container">
+                                <center>
+                                    <img className="mw-100" src={stepsBisnis} alt="steps-bisnis" />
+                                </center>
+                            </div>
                         </div>
 
                         <center>
