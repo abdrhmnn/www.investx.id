@@ -1,0 +1,32 @@
+.join-investor{
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background: rgb(88,174,223);
+background: linear-gradient(90deg, rgba(88,174,223,1) 31%, rgba(199,214,200,1) 100%);
+  button{
+      border-radius: 10px;
+      padding: 10px 80px;
+      font-size: 15pt;
+      font-weight: bolder;
+      background: white;
+      border: none;
+      -webkit-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
+box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
+  }
+  a{
+      color: blue;
+      text-decoration: underline;
+  }
+  .top{
+      button{
+          padding: 15px 20px;
+          margin-left: 90%;
+      }
+      img{
+          width: 15px;
+          height: 15px;
+      }
+  }
+}

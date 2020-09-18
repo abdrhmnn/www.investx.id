@@ -42,7 +42,6 @@ import CompanyDetail from './components/product/CompanyDetail';
 
 import formBank from './components/withDraw/formBank';
 
-
 class App extends Component {
   render() {
     return (
