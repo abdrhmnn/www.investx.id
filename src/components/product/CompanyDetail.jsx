@@ -40,7 +40,7 @@ class CompanyDetail extends Component {
             slidesToScroll: 1,
             arrows: false
         };
-
+        console.log(this.props);
         return (
             <div className='company-detail'>
             <Navbar />
@@ -121,7 +121,7 @@ class CompanyDetail extends Component {
                                     </div>
                                 </div>
                                 
-                                <Link to='/'>
+                                <Link to={`/company-list/detail/${this.props.match.params.id}/invest`}>
                                     <Button className='start'>Mulai Investasi</Button>
                                 </Link>
                                 <div className="love-share d-flex align-items-center justify-content-center">

@@ -7,6 +7,8 @@ import FilterCheck from './FilterCheck';
 import triangle from '../../images/company/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import greenshield from '../../images/greenshield.svg'
+
 
 import Select from 'react-select'
 
@@ -113,7 +115,7 @@ class CompanyList extends Component {
                     <div className="container"> 
                         <div className="breadcrumb-custom"><Link to='/'>Home</Link>  <span> {`>`} </span><Link to='/company-list'>Company list</Link> </div>
                         <p className="title-company">Find your favourite company. Invest now, or regret later</p>
-                        <p className="desc-company">All companies are rigorously screened & pass due diligence.</p>
+                        <p className="desc-company "> <img src={greenshield} alt=""/> All companies are rigorously screened & pass due diligence.</p>
                     </div>
 
                     <div className={this.state.filterShow ?"container-fluid":"container-fluid"}>

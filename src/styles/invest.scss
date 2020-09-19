@@ -1,0 +1,113 @@
+.invest{
+    padding-top: 74px + 70px;
+    background-color: white;
+    margin-bottom: 100px;
+    .pasal{
+        .title{
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 24px;
+            text-align: center;
+            color: #000000;
+        }
+        .desc{
+            font-size: 12px;
+            line-height: 24px;
+            text-align: justify;
+            color: #757575;
+        }
+    }
+
+    .cal-invest{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // background: skyblue;
+        background-repeat: no-repeat;
+        background-position: bottom left, bottom right;
+        background-size: 22%, 28%;
+        .calculator{
+            width: 391px;
+            background: #F6F6F6;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+            padding: 40px 32px;
+            .title{
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 500;
+                text-align: center;
+                margin-bottom: 0px;
+            }
+            .desc{
+                font-size: 12px;
+                line-height: 24px;
+                text-align: center;
+                color: #979797;
+                margin-bottom: 48px;
+            }
+            .wrap-cal{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 25px;
+                margin-bottom: 10px;
+                button{
+                    width: 41px;
+                    height: 41px;
+                    background: linear-gradient(0deg, #4CB5EF, #4CB5EF), linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+                    font-size: 20px;
+                    font-weight: 400;
+                    border: none;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                input{
+                    height: 47px;
+                    border: unset;
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 600;
+                    width: 152px;
+                    background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+                    border-radius: 9px;
+                }
+            }
+            .info{
+                font-size: 12px;
+                line-height: 24px;
+                text-align: center;
+                color: #F27272;
+                margin-bottom: 45px;
+            }
+            .total{
+                width: 100%;
+                height: 47px;
+                background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #FFFFFF;
+                border-radius: 9px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+                margin-bottom: 30px;
+                font-size: 18px;
+                font-weight: 600;
+                text-align: center;
+                color: #333333;
+            }
+            .beli-saham{
+                width: 100%;
+                background: linear-gradient(0deg, #01579B, #01579B), #FFFFFF;
+                box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.52);
+                border-radius: 9px;
+                font-size: 20px;
+                color: white;
+                height: 47px;
+            }
+        }
+    }
+}

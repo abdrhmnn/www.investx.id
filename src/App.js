@@ -41,6 +41,7 @@ import editNominal from './components/withDraw/editNominal';
 import CompanyDetail from './components/product/CompanyDetail';
 
 import formBank from './components/withDraw/formBank';
+import Invest from './components/invest/Invest';
 
 class App extends Component {
   render() {
@@ -72,6 +73,7 @@ class App extends Component {
 
           <Route exact path='/company-list' component={CompanyList}/>
           <Route exact path='/company-list/detail/:id' component={CompanyDetail}/>
+          <Route exact path='/company-list/detail/:id/invest' component={Invest}/>
 
           <Route exact path='/topup-method' component={MethodTopUp}/>
           <Route exact path='/topup-detail' component={DetailTransaction}/>
