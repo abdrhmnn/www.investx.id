@@ -10,6 +10,7 @@ import Footer from '../shared/Footer';
 import linkedin from '../../images/social/linkedin.svg'
 import twitter from '../../images/social/twitter.svg'
 import gmail from '../../images/social/gmail.svg'
+import top from '../../images/top.svg'
 
 class AboutUs extends Component {
 
@@ -21,7 +22,7 @@ class AboutUs extends Component {
                 <Navbar />
                 <div className='head'>
                     <div className="jumbo" style={{backgroundImage: `url(${aboutbg})`}}>
-                        <div className="container">
+                        <div className="container" id="top">
                             <p className="title">ABOUT US</p>
                             <p className="sub-title">Selamat Datang di INVESTX</p>
                             <p className="desc">Platform Equity Crowdfunding + di Indonesia Yang menghubungkan pelaku Bisnis dan Antar Investor</p>
@@ -86,14 +87,13 @@ class AboutUs extends Component {
                     </div>
                 </div>
 
-                <div className="become">
-                    <p className="title">Invest in highly vetted early-stage companies</p>
-                    <Link to='/'>
-                        <button>Become an Investor</button>
-                    </Link>
-                    <p className="have-acc">Have an account? <Link to='/login'>Log in</Link> </p>
-                    <div className="backtop" onClick={()=> this.toTop()}><img src={backtop} alt="backtop"/></div>
-                </div>
+               
+                 <div className="join-investor">
+                <h2>Invest in Highly vetted early-staged companies</h2><br />
+                <button type='button'>Become an Investor</button>
+                <div className="desc"><br />Have an Account? <a href="#">Log in</a></div>
+                <div className="top"><a href="#top"><button><img src={top}></img></button></a></div>
+            </div>
                 <Footer />
                 <Ojk />
 

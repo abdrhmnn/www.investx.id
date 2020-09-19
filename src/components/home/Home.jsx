@@ -15,7 +15,6 @@ import "slick-carousel/slick/slick-theme.css";
 import CaroHome from './CaroHome';
 import Benefit from './Benefit';
 import JoinNow from './JoinNow';
-import JoinInvestor from './JoinInvestor';
 import CaroQuotes from './CaroQuotes';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 import FAQ from './FAQ';
@@ -58,7 +57,7 @@ class Home extends Component {
                 {this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal} /> : null}
                 <div className='home' style={{ backgroundImage: `url(${x}), url(${zebra})` }}>
                     <Navbar onModal={this.onModal} />
-                    <div className="container p-0 contain-home" id="top">
+                    <div className="container p-0 contain-home">
                         <div className="wrap">
                             <p className="title">EQUITY <br /><span>CROWDFUNDING</span></p>
                             <p className="desc">Mewujudkan era baru dalam berinvestasi Dapatkan pendapatan secara pasif dan pendanaan dengan cepat dengan InvestX.</p>
@@ -102,7 +101,6 @@ class Home extends Component {
                 <CaroQuotes />
                 <JoinNow />
                 <FAQ />
-                <JoinInvestor />
 
                 <Footer />
                 <Ojk />
