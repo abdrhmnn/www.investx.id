@@ -3,16 +3,44 @@ import Navbar from '../shared/Navbar';
 import {Fab, Button} from '@material-ui/core';
 import payment1 from '../../images/invest/payment1.png'
 import payment2 from '../../images/invest/payment2.png'
+import modalinvest from '../../images/invest/modalinvest.svg'
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
+import ModalTemplate from '../shared/ModalTemplate';
+
 
 class Invest extends Component {
     state={
-        lembarSaham: 8
+        lembarSaham: 8,
+        modalConfirm : true,
     }
+
+    investConfirm = ()=>(
+        <div className='modal-confirm-invest'>
+            <i className="fas fa-times" onClick={this.handleModalClose}></i>
+            <img src={modalinvest} alt="modinv"/>
+            <div className="confirm">
+                <p className="title">Konfirmasi pembelian Saham</p>
+                <p className="inliner"> <span>Saham</span> <span className='val'> NetFresh</span></p>
+                <p className="inliner"> <span>Kode Saham</span> <span className='val'> B23445G</span></p>
+                <p className="inliner"> <span>Harga Saham</span> <span className='val'> Rp. 100.000</span></p>
+                <p className="inliner"> <span>Jumlah Saham</span> <span className='val'> 80</span></p>
+                <p className="inliner"> <span>Total</span> <span className='val' style={{fontWeight : 600, color: 'black'}}> Rp. 8.000.000</span></p>
+                <Button>LANJUTKAN</Button>
+            </div>
+        </div>
+    )
+
+    handleModalClose = () => this.setState({modalConfirm : !this.state.modalConfirm})
+
     render() {
         return (
             <>
+            <ModalTemplate 
+                onOpen={this.state.modalConfirm} 
+                // onClose={this.handleModalClose} 
+                component ={this.investConfirm}
+            />
             <Navbar />
             <div className='invest'>
                 <div className="container">
@@ -50,7 +78,7 @@ class Invest extends Component {
                                 <p className="info">Min. 8 lembar</p>
                                 <p className="title">Total Harga saham</p>
                                 <p className="total">Rp. {this.state.lembarSaham * 1000000}</p>
-                                <Button className='beli-saham'>BELI SAHAM</Button>
+                                <Button className='beli-saham' onClick={()=> this.setState({modalConfirm : true})}>BELI SAHAM</Button>
                             </div>
                         </div>
                     </div>

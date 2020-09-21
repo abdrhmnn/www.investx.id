@@ -18,36 +18,18 @@ import {
 } from "@material-ui/core";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
-import { register } from "../../api";
+import API  from "../../api";
 
 class Register extends Component {
   state = {
     showPassword: false,
     re_showPassword: false,
+    isTnc : false,
+    isModalConfirm : false,
+    dataPost : {}
   };
 
-  onSubmit = ({ fields, errors, isValid }) => {
-    console.log("====================================");
-    console.log(fields.phone[0]);
-    console.log("====================================");
-    this.setState({ email: fields.email });
-    if (fields.phone[0] === "0") {
-      var removeZero = fields.phone - 1;
-      var phone = "62" + removeZero;
-      this.setState({ phone: phone });
-    } else {
-      var phone = "62" + fields.phone;
-    }
-    if (isValid) {
-      //   console.log('Everything is good:', fields.email);
-      console.log("Everything is good:", phone);
-      //   console.log('Everything is good:', fields.password);
-      this.setState({ isModalConfirm: true });
-    } else {
-      console.log("Something is wrong:", errors);
-      console.log("Something is wrong:", fields.email);
-    }
-  };
+  // onSubmit = () =>
 
   modalConfirm = () => (
     <div className="over">
@@ -62,18 +44,16 @@ class Register extends Component {
         <div className="box">
           <div className="mailphone">
             {" "}
-            <img src={phoneicon} alt="phone" /> +{this.state.phone}
+            <img src={phoneicon} alt="phone" /> +{this.state.dataPost.phone}
           </div>
           <div className="mailphone">
             {" "}
-            <img src={emailicon} alt="phone" /> {this.state.email}
+            <img src={emailicon} alt="phone" /> {this.state.dataPost.email}
           </div>
         </div>
         <div className="but-all">
           <p onClick={() => this.setState({ isModalConfirm: false })}>Ubah</p>
-          <Link to="/otp">
-            <button>Ya, Lanjutkan</button>
-          </Link>
+            <Button onClick={()=>  API.register(this.state.dataPost) }>Ya, Lanjutkan</Button>
         </div>
       </div>
     </div>
@@ -81,11 +61,10 @@ class Register extends Component {
 
   render() {
     const schemaObj = Yup.object({
-      fullName: Yup.string().required().min(3),
+      full_name: Yup.string().required().min(3),
       email: Yup.string().required().email(),
       phone: Yup.number().required(),
-      password: Yup.string()
-        .required()
+      password: Yup.string().required()
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
           "Must Contain 8 Characters, One Number and one special case Character"
@@ -96,7 +75,7 @@ class Register extends Component {
     });
 
     const initialValuesObj = {
-      fullName: "",
+      full_name: "",
       email: "",
       phone: "",
       password: "",
@@ -123,29 +102,23 @@ class Register extends Component {
                   initialValues={initialValuesObj}
                   validationSchema={schemaObj}
                   onSubmit={(val) => {
-                    register(val);
+                    // API.register(val);
+                    this.setState({dataPost : val , isModalConfirm : true})
                   }}
                 >
-                  {({
-                    errors,
-                    handleSubmit,
-                    touched,
-                    handleChange,
-                    values,
-                    handleBlur,
-                  }) => (
+                  {({errors,handleSubmit,touched,handleChange,values,handleBlur,}) => (
                     <form onSubmit={handleSubmit}>
                       <Field
                         className="custom_text_input"
-                        name="fullName"
+                        name="full_name"
                         variant="outlined"
                         fullWidth={true}
                         label="Full Name ( Same as KTP )"
                         // onBlur={handleBlur}
                         error={
-                          touched.fullName && errors.fullName ? true : false
+                          touched.full_name && errors.full_name ? true : false
                         }
-                        helperText={touched.fullName && errors.fullName}
+                        helperText={touched.full_name && errors.full_name}
                         as={TextField}
                       />
 
@@ -273,15 +246,14 @@ class Register extends Component {
 
                       <div className="w-forgot">
                         <div className="w-check">
-                          <div
-                            className="cbox"
+                          <div className="cbox"
                             onClick={() =>
                               this.setState({
-                                rememberMe: !this.state.rememberMe,
+                                isTnc: !this.state.isTnc,
                               })
                             }
                           >
-                            {this.state.rememberMe ? (
+                            {this.state.isTnc ? (
                               <i className="fas fa-check"></i>
                             ) : null}
                           </div>
@@ -292,7 +264,7 @@ class Register extends Component {
                         </div>
                         {/* <Link to='/' className="forgot">Forgot Password?</Link> */}
                       </div>
-                      <Button className="but-login" type="submit">
+                      <Button className="but-login" type="submit" disabled={!this.state.isTnc}>
                         Sign Up
                       </Button>
                       {/* <div className="error">{this.state.isInvalid? 'Sorry, email or password you entered is incorrect' : null }</div> */}
