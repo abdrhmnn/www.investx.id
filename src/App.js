@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import 'sweetalert2/src/sweetalert2.scss'
 import './styles/App.scss'
+
 import {
   BrowserRouter as Router,
   Switch,

@@ -51,7 +51,7 @@ class Otp extends Component {
                         <p className="title">Verifikasi Kode OTP</p>
                         <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
                         <p className="num">0 8 5 7 * * * * 1 2 1 2</p>
-                        <form onSubmit={this.handleSubmit} id='otp'>
+                    <form onSubmit={this.handleSubmit} id='otp'>
                         <input required ref={(input) => { this.boxFoc1 = input; }}  type='number' maxLength='1' name='box1' value={this.state.box1} onChange={this.handleChange}  />
                         <input required ref={(input) => { this.boxFoc2 = input; }}  type='number' maxLength='1' name='box2' value={this.state.box2} onChange={this.handleChange}  />
                         <input required ref={(input) => { this.boxFoc3 = input; }}  type='number' maxLength='1' name='box3' value={this.state.box3} onChange={this.handleChange}  />

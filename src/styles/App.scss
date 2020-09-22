@@ -22,6 +22,9 @@ $orange: #f29877;
   outline: none;
 }
 
+.swal2-container {
+  z-index: 99999999999999 !important;
+}
 // buttons
 .but-solid {
   background-color: $low-blue;
@@ -59,11 +62,8 @@ button {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-// has float overide
-.w-input-active {
-  border: 1px solid #0288d1 !important;
-}
 
+// overide modal fade react material ui
 .modal_remove_outline{
   &:focus{
     outline: none;

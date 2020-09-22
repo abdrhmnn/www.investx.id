@@ -7,17 +7,25 @@ import modalinvest from '../../images/invest/modalinvest.svg'
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
 import ModalTemplate from '../shared/ModalTemplate';
+import InputPin from './pinComponents/InputPin'
+import ResetPin from './pinComponents/ResetPin'
+import InputOtp from './pinComponents/InputOtp'
+import SecurePin from './pinComponents/SecurePin'
 
 
 class Invest extends Component {
     state={
         lembarSaham: 8,
-        modalConfirm : true,
+        modalConfirm : false,
+        modalInputPin : false,
+        modalInputResetPin : false,
+        modalInputOtp : false,
+        modalInputSecurePin : true
     }
 
     investConfirm = ()=>(
         <div className='modal-confirm-invest'>
-            <i className="fas fa-times" onClick={this.handleModalClose}></i>
+            <i className="fas fa-times" onClick={()=>this.setState({modalConfirm : !this.state.modalConfirm})}></i>
             <img src={modalinvest} alt="modinv"/>
             <div className="confirm">
                 <p className="title">Konfirmasi pembelian Saham</p>
@@ -26,12 +34,15 @@ class Invest extends Component {
                 <p className="inliner"> <span>Harga Saham</span> <span className='val'> Rp. 100.000</span></p>
                 <p className="inliner"> <span>Jumlah Saham</span> <span className='val'> 80</span></p>
                 <p className="inliner"> <span>Total</span> <span className='val' style={{fontWeight : 600, color: 'black'}}> Rp. 8.000.000</span></p>
-                <Button>LANJUTKAN</Button>
+                <Button onClick={()=>this.setState({modalInputPin : true})}>LANJUTKAN</Button>
             </div>
         </div>
     )
 
-    handleModalClose = () => this.setState({modalConfirm : !this.state.modalConfirm})
+    closeModPin = ()=> this.setState({modalInputPin : false})
+    closeModResPin = ()=> this.setState({modalInputResetPin : false})
+    closeModOtp = ()=> this.setState({modalInputOtp : false})
+    closeModSecPin = ()=> this.setState({modalInputSecurePin : false})
 
     render() {
         return (
@@ -41,6 +52,23 @@ class Invest extends Component {
                 // onClose={this.handleModalClose} 
                 component ={this.investConfirm}
             />
+            <ModalTemplate 
+                onOpen={this.state.modalInputPin} 
+                component ={()=>InputPin(this.closeModPin, ()=>this.setState({modalInputResetPin : true}) )}
+            />
+            <ModalTemplate 
+                onOpen={this.state.modalInputResetPin} 
+                component ={()=>ResetPin( this.closeModResPin, ()=>this.setState({modalInputOtp : true}) )}
+            />
+            <ModalTemplate 
+                onOpen={this.state.modalInputOtp} 
+                component ={()=>InputOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+            />
+             <ModalTemplate 
+                onOpen={this.state.modalInputSecurePin} 
+                component ={()=>SecurePin(this.closeModSecPin)}
+            />
+
             <Navbar />
             <div className='invest'>
                 <div className="container">

@@ -18,8 +18,8 @@ class Card extends Component {
                         <i className="far fa-heart"></i>
                     </div>
                     <div className="prog">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress">
+                            <div className="progress-bar" role="progressbar" style={{width: "50%"}} aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div className="num">50%</div>
                     </div>

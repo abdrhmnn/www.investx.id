@@ -6,23 +6,20 @@ const apiBaseUrl = "https://api.staging.investx.id";
 // axios.defaults.baseURL = apiBaseUrl;
 
 const API = {
-  register : async (props) => {
+  register : async (props, callback) => {
       console.log(props)
-      return axios.post(apiBaseUrl +`/authentication/register`, {
+      return axios.post(apiBaseUrl +`/authentication/register/`, {
           full_name: props.full_name,
           phone_number: props.phone,
           password: props.password,
           email: props.email,
-      },{
-        headers : {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        }
       }).then(data =>{
         console.log(data)
+        callback(data)
         return data
       }).catch(err =>{
         console.log(err.response)
+        callback(err.message)
         return err.response
       });
   },

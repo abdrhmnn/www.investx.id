@@ -29,31 +29,26 @@ class Register extends Component {
     dataPost : {}
   };
 
-  // onSubmit = () =>
+  callbackSubmit = (val) =>{
+    console.log(val)
+  }
 
   modalConfirm = () => (
     <div className="over">
       <div className="modal-confirm">
-        <div className="title">
-          Apakah email dan no handphone anda sudah benar?
-        </div>
-        <div className="desc">
-          No hp digunakan untuk mendapatkan kode OTP dan Email digunakan untuk
-          Verifikasi data
-        </div>
+        <div className="title">Apakah email dan no handphone anda sudah benar?</div>
+        <div className="desc">No hp digunakan untuk mendapatkan kode OTP dan Email digunakan untuk Verifikasi data</div>
         <div className="box">
           <div className="mailphone">
-            {" "}
             <img src={phoneicon} alt="phone" /> +{this.state.dataPost.phone}
           </div>
           <div className="mailphone">
-            {" "}
             <img src={emailicon} alt="phone" /> {this.state.dataPost.email}
           </div>
         </div>
         <div className="but-all">
           <p onClick={() => this.setState({ isModalConfirm: false })}>Ubah</p>
-            <Button onClick={()=>  API.register(this.state.dataPost) }>Ya, Lanjutkan</Button>
+            <Button onClick={()=>  API.register(this.state.dataPost, this.callbackSubmit) }>Ya, Lanjutkan</Button>
         </div>
       </div>
     </div>
@@ -64,14 +59,8 @@ class Register extends Component {
       full_name: Yup.string().required().min(3),
       email: Yup.string().required().email(),
       phone: Yup.number().required(),
-      password: Yup.string().required()
-        .matches(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-          "Must Contain 8 Characters, One Number and one special case Character"
-        ),
-      re_password: Yup.string()
-        .required("masukan ulang Kata sandi")
-        .oneOf([Yup.ref("password"), null], "Kata sandi tidak sama"),
+      password: Yup.string().required().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,"Must Contain 8 Characters, One Number and one special case Character"),
+      re_password: Yup.string().required("masukan ulang Kata sandi").oneOf([Yup.ref("password"), null], "Kata sandi tidak sama"),
     });
 
     const initialValuesObj = {
@@ -84,10 +73,7 @@ class Register extends Component {
     return (
       <div>
         {this.state.isModalConfirm ? this.modalConfirm() : null}
-        <div
-          className="signup"
-          style={{ backgroundImage: `url(${bluewoman})` }}
-        >
+        <div className="signup"style={{ backgroundImage: `url(${bluewoman})` }}>
           <div className="container">
             <img className="logo" src={logo} alt="logo" />
             <div className="form-box">
