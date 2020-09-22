@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import logos from '../../images/joinNow/logos.svg'
-import people from '../../images/joinNow/people.svg'
 import { Link } from 'react-router-dom'
 
 class JoinNow extends Component {
@@ -15,13 +14,21 @@ class JoinNow extends Component {
                             </div>
                             <div className="text size1">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</div>
                         </div>
-                        <div className="col-md-6 box-join right">
+                        <div className="col-md-6 box-join right gambar-api">
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
                             <img src={logos} alt=""/>
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-6 box-join left">
-                            <img src={people} alt=""/>
+                        <div className="col-md-6 box-join left gambar-api">
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
+                            <img src={logos} alt=""/>
                         </div>
                         <div className="col-md-6 box-join right">
                             <div className="big-text">
