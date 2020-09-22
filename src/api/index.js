@@ -14,19 +14,19 @@ const apiBaseUrl = "https://api.staging.investx.id";
     ? }
 */
 axios.defaults.baseURL = apiBaseUrl;
-axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
+// axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
 // axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
-export const register = async ({ phoneNumber, password, email, fullName }) => {
+export const register = async ({ phone, password, email, fullName }) => {
   axios
     .post("/authentication/register", {
-      phone_number: phoneNumber,
+      phone_number: phone,
       password: password,
       email: email,
       full_name: fullName,
     })
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => console.log(data.toJSON()))
+    .catch((err) => console.log(err.toJSON()));
 
   //   return response;
 };
