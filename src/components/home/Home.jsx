@@ -73,12 +73,12 @@ class Home extends Component {
                                 arr.map((res, i) => (
                                     <div className="card-last" key={i} onClick={this.props.hahaFunct}>
                                         <img src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png" alt="" />
-                                        <p className="name">
+                                        <div className="name">
                                             John Donal Invested <span>$1000 </span>
                                         in <span>Fleting</span>
                                             <br />
                                             <p className="time">2 hours again</p>
-                                        </p>
+                                        </div>
                                     </div>
                                 ))
                             }

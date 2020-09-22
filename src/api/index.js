@@ -1,32 +1,32 @@
 import axios from "axios";
 
 const localBaseUrl = "http://192.168.0.14:8000";
-
 const apiBaseUrl = "https://api.staging.investx.id";
 
-/*  
-    ! /authentication/register (register user)
-    ? {
-    ? "phone_number": "628581110",
-    ? "password": "password",
-    ? "email": "test@email.app",
-    ? "full_name": "my_full_name",
-    ? }
-*/
-axios.defaults.baseURL = apiBaseUrl;
-// axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
-// axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+// axios.defaults.baseURL = apiBaseUrl;
 
-export const register = async ({ phone, password, email, fullName }) => {
-  axios
-    .post("/authentication/register", {
-      phone_number: phone,
-      password: password,
-      email: email,
-      full_name: fullName,
-    })
-    .then((data) => console.log(data.toJSON()))
-    .catch((err) => console.log(err.toJSON()));
-
-  //   return response;
+const API = {
+  register: async (props, callback) => {
+    console.log(props);
+    return axios
+      .post(apiBaseUrl + `/authentication/register/`, {
+        full_name: props.full_name,
+        phone_number: props.phone,
+        password: props.password,
+        email: props.email,
+      })
+      .then((data) => {
+        console.log(data);
+        callback(data);
+        return data;
+      })
+      .catch((err) => {
+        console.log(err.response);
+        callback(err.message);
+        return err.response;
+      });
+  },
+  string: "lalala",
 };
+
+export default API;

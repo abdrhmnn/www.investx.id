@@ -17,7 +17,7 @@ class HowItWorks extends Component {
                         <div className="con">
                             <p className="title">Cara mudah untuk Investasimu</p>
                             <p className="desc">Apakah kamu seorang Investor ataupun pelaku bisnis, siapapun bisa dengan mudah menggunakan InvestX</p>
-                            <button className='invest'>Start Investing</button>
+                            <button className='how-invest'>Start Investing</button>
                             <button className='fund'>Get Funding</button>
                         </div>
                     </div>
