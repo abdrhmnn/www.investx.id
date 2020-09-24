@@ -20,7 +20,7 @@ class Invest extends Component {
         modalInputPin : false,
         modalInputResetPin : false,
         modalInputOtp : false,
-        modalInputSecurePin : true
+        modalInputSecurePin : false
     }
 
     investConfirm = ()=>(
