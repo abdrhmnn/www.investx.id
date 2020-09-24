@@ -15,6 +15,7 @@ import popnpwp from '../../images/formdokumen/popnpwp.svg'
 
 import { InputText } from '../shared/InputComponents'
 import StepsInvestor from './StepsInvestor';
+import { Button, Fab } from '@material-ui/core';
 
 
 class Dokumen extends Component {
@@ -109,9 +110,7 @@ class Dokumen extends Component {
                     <div className="bg-round"></div>
                 </div>
                 <Link to='/investor-form-pendidikan-pekerjaan'>
-                    <div className="back-button">
-                        <img src={arrowback} alt="" />
-                    </div>
+                    <Fab className="back-button"><img src={arrowback} alt="" /></Fab>
                 </Link>
                 <div className="logo-invest">
                     <img src={logo} alt="" />
@@ -193,7 +192,7 @@ class Dokumen extends Component {
 
                 <div className="foot-data-diri">
                     <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <button type='submit' form='datadiri'>SIMPAN & LANJUTKAN</button>
+                    <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
                 </div>
             </div>
         );

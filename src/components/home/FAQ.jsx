@@ -7,38 +7,36 @@ import Typography from "@material-ui/core/Typography";
 
 class QuestionReveal extends Component {
   state = {
-    reveal: false,
-  };
-
-  setReveal = () => {
-    this.setState({
-      reveal: !this.state.reveal,
-    });
-  };
+    expanded: false,
+  }
 
   render() {
-    const { q, a } = this.props.question;
+    const { q, a } = this.props.data;
     return (
       <div className="question-reveal-wrapper">
-        <div className="question-container d-flex justify-content-between">
-          <p className="question font-weight-bold">{q}</p>
-          {this.state.reveal ? (
-            <i onClick={this.setReveal} className="fas fa-chevron-up ml-2"></i>
-          ) : (
-            <i
-              onClick={this.setReveal}
-              className="fas fa-chevron-down ml-2"
-            ></i>
-          )}
-        </div>
-        {this.state.reveal ? (
-          <Slide down>
-            <p className="answer">&emsp;{a}</p>
-          </Slide>
-        ) : (
-          <div></div>
-        )}
-        <hr />
+        <Accordion
+          className="question-reveal"
+          expanded={this.state.expanded === true}
+          onChange={() => {
+            this.setState({
+              expanded: !this.state.expanded,
+            })
+          }}
+        >
+          <AccordionSummary
+            className="px-0"
+            expandIcon={<i className="icon fas fa-chevron-up ml-2"></i>}
+            aria-controls="panel4bh-content"
+            id="panel4bh-header"
+          >
+            <Typography>{q}</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Typography className="answer">
+              {a}
+            </Typography>
+          </AccordionDetails>
+        </Accordion>
       </div>
     );
   }
@@ -100,48 +98,12 @@ class FAQ extends Component {
         <div className="row justify-content-between">
           <div className="col-md-6">
             {leftQuestion.map((data, index) => (
-              <Accordion
-                expanded={this.state.expanded === index}
-                onChange={handleChange(index)}
-              >
-                <AccordionSummary
-                  expandIcon={<i className="fas fa-chevron-up ml-2"></i>}
-                  aria-controls="panel4bh-content"
-                  id="panel4bh-header"
-                >
-                  <Typography>Personal data</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                    est augue.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
+              <QuestionReveal key={index} data={data} />
             ))}
           </div>
           <div className="col-md-6">
             {rightQuestion.map((data, index) => (
-              <Accordion
-                expanded={this.state.expanded === index}
-                onChange={handleChange(index)}
-              >
-                <AccordionSummary
-                  expandIcon={<i className="fas fa-chevron-up ml-2"></i>}
-                  aria-controls="panel4bh-content"
-                  id="panel4bh-header"
-                >
-                  <Typography>Personal data</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                    Integer sit amet egestas eros, vitae egestas augue. Duis vel
-                    est augue.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
+              <QuestionReveal key={index} data={data} />
             ))}
           </div>
         </div>

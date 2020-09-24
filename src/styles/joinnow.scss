@@ -10,6 +10,7 @@
       background: #01579B;
       color: white;
       margin-left: 40%;
+      margin-bottom: 200px;
       border: none;
       -webkit-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
@@ -60,7 +61,30 @@ box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
             font-size: 16px;
         }
     }
-    
+.gambar-api{
+  width: 300px;
+img{
+  width:100px;
+  height: 100px;
+  display: flex;
+  -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+}
+img:nth-child(2){
+  margin-left:110px;
+}
+img:nth-child(3){
+  margin-left:200px;
+  margin-top: -200px;
+}
+img:nth-child(4){
+  margin-top: 100px;
+}
+img:nth-child(5){
+  margin-left:220px;
+  margin-top:-100px;
+}}
+
     .link-button{
         margin-top: 25px;
         text-align: center;
@@ -69,4 +93,20 @@ box-shadow: -1px 0px 5px 0px rgba(0,0,0,0.75);
         font-weight: bold;
         text-decoration: underline;
     }
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
