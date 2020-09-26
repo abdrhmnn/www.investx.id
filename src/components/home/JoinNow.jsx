@@ -18,15 +18,15 @@ class JoinNow extends Component {
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
                                 <div className="box-baris-1">
-                                    <div className="boxes bg-warning">1</div>
-                                    <div className="boxes bg-info">3</div>
+                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src={logos} />
                                 </div>
                                 <div className="box-baris-2">
-                                    <div className="boxes bg-success">1</div>
+                                    <img className="boxes " src={logos} />
                                 </div>
                                 <div className="box-baris-1">
-                                    <div className="boxes bg-warning">1</div>
-                                    <div className="boxes bg-info">3</div>
+                                    <img className="boxes" src={logos} />
+                                    <img className="boxes" src={logos} />
                                 </div>
                             </div>
                         </div>
@@ -36,15 +36,15 @@ class JoinNow extends Component {
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
                                 <div className="box-baris-1">
-                                    <div className="boxes bg-warning">1</div>
-                                    <div className="boxes bg-info">3</div>
+                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src={logos} />
                                 </div>
                                 <div className="box-baris-2">
-                                    <div className="boxes bg-success">1</div>
+                                    <img className="boxes " src={logos} />
                                 </div>
                                 <div className="box-baris-1">
-                                    <div className="boxes bg-warning">1</div>
-                                    <div className="boxes bg-info">3</div>
+                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src={logos} />
                                 </div>
                             </div>
                         </div>
