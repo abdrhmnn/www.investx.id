@@ -45,6 +45,8 @@ import CompanyDetail from './components/product/CompanyDetail';
 import formBank from './components/withDraw/formBank';
 import Invest from './components/invest/Invest';
 import Profile from './components/profile/Profile';
+import Payment from './components/payment/Payment'
+import PaymentStatus from './components/payment/PaymentStatus';
 
 class App extends Component {
   render() {
@@ -82,13 +84,15 @@ class App extends Component {
           <Route exact path='/topup-detail' component={DetailTransaction}/>
           <Route exact path='/topup-status' component={StatusTopUp}/>
 
+          <Route exact path='/payment' component={Payment}/>
+          <Route exact path='/payment-status' component={PaymentStatus}/>
+
           <Route exact path='/my-wallet' component={Wallet}/>
           <Route exact path='/withdraw' component={withDraw}/>
           <Route exact path='/withdraw-otp' component={withDrawOtp}/>
           <Route exact path='/invoice' component={withDrawInvoice}/>
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
-
 
           <Route exact path='/profile' component={Profile}/>
 
