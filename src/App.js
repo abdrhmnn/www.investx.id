@@ -44,6 +44,7 @@ import CompanyDetail from './components/product/CompanyDetail';
 
 import formBank from './components/withDraw/formBank';
 import Invest from './components/invest/Invest';
+import Profile from './components/profile/Profile';
 
 class App extends Component {
   render() {
@@ -87,6 +88,11 @@ class App extends Component {
           <Route exact path='/invoice' component={withDrawInvoice}/>
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
+
+
+          <Route exact path='/profile' component={Profile}/>
+
+
 
           
           <Route exact path='*' component={emptPage}/>

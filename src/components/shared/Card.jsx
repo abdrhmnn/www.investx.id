@@ -8,7 +8,7 @@ class Card extends Component {
         return (
             <div>
                 <div className="card-sec">
-                    <img src="https://placeimg.com/640/480/tech" alt=""/>
+                    <img src="https://placeimg.com/640/480/tech" alt="card"/>
                     
                     <div className="body-card">
                         <div>
