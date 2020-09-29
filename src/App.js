@@ -61,7 +61,7 @@ class App extends Component {
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
 
-          <Route exact path='/select-form' component={SelectForm}/>
+          <Route exact path='/email-verify/:code' component={SelectForm}/>
           <Route exact path='/investor-form-data-diri' component={DataDiri}/>
           <Route exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
           <Route exact path='/investor-form-dokumen' component={Dokumen}/>

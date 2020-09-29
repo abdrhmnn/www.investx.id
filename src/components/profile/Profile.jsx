@@ -12,14 +12,18 @@ import list from '../../images/profile/list.svg'
 import dividen from '../../images/profile/dividen.svg'
 import logout from '../../images/profile/logout.svg'
 
-import DataDiriProfile from './menus/DataDiriProfile'
+import DataDiriProfile from './profileMenu/DataDiriProfile'
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
+
+import Fade from 'react-reveal/Fade';
+import BusinessIndex from './businessMenu/BusinessIndex';
+import HistoryIndex from './historyMenu/HistoryIndex';
 
 class Profile extends Component {
     state={
         filterShow : false,
-        activeMenu : 'profile'
+        activeMenu : 'history'
     }
 
     handleClick = (e) => this.setState({activeMenu : e.target.id})
@@ -100,7 +104,15 @@ class Profile extends Component {
                             </div>
                         </div>
                         <div className="col-md fbodycon">
+                        <Fade collapse opposite when={this.state.activeMenu === 'profile'}>
                             <DataDiriProfile />
+                        </Fade>
+                        <Fade collapse opposite when={this.state.activeMenu === 'business'}>
+                            <BusinessIndex />
+                        </Fade>
+                        <Fade collapse opposite when={this.state.activeMenu === 'history'}>
+                            <HistoryIndex />
+                        </Fade>
                         </div>
                     </div>
                 </div>

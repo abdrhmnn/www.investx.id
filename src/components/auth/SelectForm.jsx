@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 import select from '../../images/bg/select.jpg'
 import logo from '../../images/logo.svg'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 class SelectForm extends Component {
+    componentDidMount(){
+        console.log('====================================');
+        console.log(this.props.match.params.code);
+        console.log('====================================');
+        axios.post('https://api.staging.investx.id/authentication/verify-email/',
+        {
+            code : this.props.match.params.code
+        })
+        .then(res => console.log(res))
+        .catch(err=> alert(JSON.stringify(err.response)))
+    }
     render() {
         return (
             <div className='selectform' style={{backgroundImage: `url(${select})`}}>

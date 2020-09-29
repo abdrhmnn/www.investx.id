@@ -1,0 +1,102 @@
+.profile-business-menu{
+    padding: 20px 25px;
+    .box-title{
+        // background-color: yellow;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #DEDEDE;
+        margin-bottom: 60px;
+        p{
+            margin-bottom: 0;
+            color: #01579B;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        button{
+            width: 253px;
+            height: 62px;
+            background: #FFFFFF;
+            box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
+            border-radius: 9px;
+            margin-bottom: 18px;
+            text-transform: capitalize;
+            font-size: 18px;
+            color: #0288D1;
+            img{
+                margin-left: 15px;
+            }
+        }
+    }
+    .list-businessbox{
+        margin-bottom: 60px;
+        background: #F1F1F1;
+        box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+        border-radius: 9px;
+        overflow: hidden;
+        .listheader{
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            flex-wrap: wrap;
+            .comp-logo{
+                width: 57px;
+                height: 57px;
+                background: #FFFFFF;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            .box-head{
+                border-right: 1px solid #DEDEDE;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                flex: auto;
+                &:last-of-type{
+                    border-right: unset;
+                }
+                .title{
+                    font-size: 14px;
+                    color: #A5A5A5;
+                    margin-bottom: 0;
+                }
+                .value{
+                    font-size: 16px;
+                    margin-bottom: 0;
+                }
+                .action{
+                    cursor: pointer;
+                    margin: 0;
+                    color: #4CB5EF;
+                    text-decoration-line: underline;
+                    font-size: 16px;
+                    &:last-of-type{
+                        color: #F27272;
+                    }
+                }
+            }
+        }
+
+        .listvalue{
+            // padding: 15px;
+            background-color: white;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            .listval-child{
+                padding: 15px;
+                &:last-of-type{
+                    color: #4CB5EF;
+                    text-decoration-line: underline;
+                }
+            }
+            .listval-stepper{
+                width: 80%;
+            }
+        }
+
+    }
+}
