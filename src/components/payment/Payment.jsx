@@ -4,34 +4,15 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import companyimage from "../../images/company-image.png";
+import companyImage from "../../images/payment/company-image.svg";
 import wallet from "../../images/withdraw/wallet.svg";
-import bank from "../../images/invest/bank.png";
-import addblue from "../../images/add-blue.png";
+import bankIcon from "../../images/payment/bank-icon.svg";
+import addBlueIcon from "../../images/payment/add-blue-icon.svg";
 
 import PaymentMethod from "./PaymentMethod";
 
 class Payment extends Component {
     render() {
-        const methods = [
-            {
-                first: true,
-                toggle: this.setToggleMethods,
-                title: "VIRTUAL ACCOUNT",
-                subtitle: "Dengan Kode Unik Semua Jadi Cepat",
-                logos: [logo, logo, logo],
-            },
-            {
-                title: "VIRTUAL ACCOUNT1",
-                subtitle: "Dengan Kode Unik Semua Jadi Cepat",
-                logos: [logo, logo, logo],
-            },
-            {
-                title: "VIRTUAL ACCOUNT2",
-                subtitle: "Dengan Kode Unik Semua Jadi Cepat",
-                logos: [logo, logo, logo],
-            },
-        ];
         return (
             <div className="all-forms-style payment">
                 <div className="bg">
@@ -53,7 +34,7 @@ class Payment extends Component {
                             <div className="col-md-4">
                                 <img
                                     className="payment-image"
-                                    src={companyimage}
+                                    src={companyImage}
                                     alt="company"
                                 />
                             </div>
@@ -115,8 +96,8 @@ class Payment extends Component {
                                     *Saldo anda tidak mencukupi
                                 </p>
                                 <span>
-                                    <img src={addblue} alt="addblue" />
-                                    <Link>
+                                    <img src={addBlueIcon} alt="addblue" />
+                                    <Link to="/my-wallet">
                                         <a className="text-primary">
                                             Top Up Saldo
                                         </a>
@@ -129,7 +110,11 @@ class Payment extends Component {
 
                 <div className="payment-methods box-form-data">
                     <div className="row">
-                        <img className="bank-icon" src={bank} alt="bank-icon" />
+                        <img
+                            className="bank-icon"
+                            src={bankIcon}
+                            alt="bank-icon"
+                        />
                         <div className="col">
                             <div className="row">
                                 <div className="col">
@@ -146,7 +131,7 @@ class Payment extends Component {
                     <br />
                     <br />
                     <div className="px-5">
-                        <PaymentMethod methods={methods} />
+                        <PaymentMethod />
                     </div>
                 </div>
 
@@ -166,9 +151,11 @@ class Payment extends Component {
                     </div>
                 </div>
 
-                <button className="but-blue bayar" type="submit">
-                    BAYAR
-                </button>
+                <Link to="/payment-status">
+                    <button className="but-blue bayar" type="submit">
+                        BAYAR
+                    </button>
+                </Link>
             </div>
         );
     }

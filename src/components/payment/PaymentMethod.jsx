@@ -1,8 +1,28 @@
 import React, { Component } from "react";
+import { Slide } from "react-reveal";
+
+import bca from "../../images/payment/bca.svg";
+import bni from "../../images/payment/bni.svg";
+import bri from "../../images/payment/bri.svg";
+import gopay from "../../images/payment/gopay.svg";
+import indomaret from "../../images/payment/indomaret.svg";
+import kredit from "../../images/payment/kredit.svg";
+import mandiri from "../../images/payment/mandiri.svg";
+import minimarket from "../../images/payment/minimarket.svg";
+import ovo from "../../images/payment/ovo.svg";
 
 class PaymentMethod extends Component {
-    render() {
-        const { methods } = this.props;
+    state = {
+        toggleAll: false,
+    };
+
+    toggleAllMethod = () => {
+        this.setState({
+            toggleAll: !this.state.toggleAll,
+        });
+    };
+
+    renderMethod = (methods = []) => {
         return (
             <>
                 {methods.map((method, i) => (
@@ -12,7 +32,7 @@ class PaymentMethod extends Component {
                             {methods.length === 1 ? (
                                 <span
                                     className="more-transfer-method"
-                                    onClick={method.toggle}
+                                    onClick={this.toggleAllMethod}
                                 >
                                     Lihat Lainnya
                                     <i className="fas fa-chevron-down ml-2"></i>
@@ -33,6 +53,47 @@ class PaymentMethod extends Component {
                         <br />
                     </div>
                 ))}
+            </>
+        );
+    };
+
+    render() {
+        const methods = [
+            {
+                title: "VIRTUAL ACCOUNT",
+                subtitle: "Dengan Kode Unik Semua Jadi Cepat",
+                logos: [bca, bni, mandiri, bri],
+            },
+            {
+                title: "E-WALLET",
+                subtitle:
+                    "Pembayaran terhubung langsung dengan akun e-walletmu ",
+                logos: [gopay, ovo],
+            },
+            {
+                title: "KARTU KREDIT",
+                subtitle: "Dapat menggunakan berbagai pilihan kartu kredit",
+                logos: [kredit],
+            },
+            {
+                title: "TRANSFER BANK",
+                subtitle:
+                    "Transaksi dengan akhir kode unik untuk verifikasi otomatis",
+                logos: [bca],
+            },
+            {
+                title: "MINIMARKET",
+                subtitle: "Dapat menggunakan berbagai pilihan kartu kredit",
+                logos: [minimarket, indomaret],
+            },
+        ];
+        return (
+            <>
+                {!this.state.toggleAll ? (
+                    this.renderMethod([methods[0]])
+                ) : (
+                    <Slide bottom>{this.renderMethod(methods)}</Slide>
+                )}
             </>
         );
     }
