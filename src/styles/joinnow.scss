@@ -1,4 +1,5 @@
 .join-now{
+  margin-top: 60px;
   .big-text{
     font-size: 20pt;
     font-weight: bolder;
@@ -7,8 +8,8 @@
     color: gray;
   }
   .boxes{
-    -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
-	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+    -webkit-animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
+	        animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
   }
   @-webkit-keyframes fade-in {
   0% {

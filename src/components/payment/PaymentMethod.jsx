@@ -14,11 +14,19 @@ import ovo from "../../images/payment/ovo.svg";
 class PaymentMethod extends Component {
     state = {
         toggleAll: false,
+        checkedRadio: "",
     };
 
     toggleAllMethod = () => {
         this.setState({
             toggleAll: !this.state.toggleAll,
+            checkedRadio: "",
+        });
+    };
+
+    onChecked = (id) => {
+        this.setState({
+            checkedRadio: id,
         });
     };
 
@@ -43,8 +51,20 @@ class PaymentMethod extends Component {
                         </div>
                         <p className="subtitle">{method.subtitle}</p>
                         {method.logos.map((value, j) => (
-                            <div className="radio-bank" key={j}>
-                                <input type="radio" name="bank" />
+                            <div
+                                className={
+                                    "radio-bank " +
+                                    (this.state.checkedRadio === value
+                                        ? "checked"
+                                        : "")
+                                }
+                                key={j}
+                            >
+                                <input
+                                    type="radio"
+                                    name="bank"
+                                    onChange={() => this.onChecked(value)}
+                                />
 
                                 <img src={value} alt="bca" />
                                 <br />

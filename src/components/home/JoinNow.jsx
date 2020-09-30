@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logos from '../../images/joinNow/logos.svg'
 import { Link } from 'react-router-dom'
 import { Button } from '@material-ui/core';
+import loca from '../../images/loca.svg'
+
 
 
 class JoinNow extends Component {
@@ -18,15 +20,15 @@ class JoinNow extends Component {
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
                                 <div className="box-baris-1">
-                                    <img className="boxes " src={logos} />
-                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
                                 </div>
                                 <div className="box-baris-2">
-                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
                                 </div>
                                 <div className="box-baris-1">
-                                    <img className="boxes" src={logos} />
-                                    <img className="boxes" src={logos} />
+                                    <img className="boxes" src="https://placeimg.com/640/480/tech" />
+                                    <img className="boxes" src="https://placeimg.com/640/480/tech" />
                                 </div>
                             </div>
                         </div>
@@ -36,15 +38,15 @@ class JoinNow extends Component {
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
                                 <div className="box-baris-1">
-                                    <img className="boxes " src={logos} />
-                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
                                 </div>
                                 <div className="box-baris-2">
-                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
                                 </div>
                                 <div className="box-baris-1">
-                                    <img className="boxes " src={logos} />
-                                    <img className="boxes " src={logos} />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
+                                    <img className="boxes " src="https://placeimg.com/640/480/tech" />
                                 </div>
                             </div>
                         </div>
@@ -76,20 +78,20 @@ export default JoinNow;
                             <div className="text size1">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</div>
                         </div>
                         <div className="col-md-6 box-join right gambar-api">
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-md-6 box-join left gambar-api">
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
-                            <img src={logos} alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
+                            <img src="https://placeimg.com/640/480/tech" alt=""/>
                         </div>
                         <div className="col-md-6 box-join right">
                             <div className="big-text">

@@ -40,7 +40,7 @@ const InputPin = (close, openResetModal)=> {
                                 <hr/>
                             </form>
                         )}
-                    </Formik>
+                </Formik>
                 <p className="forget-pin">Lupa PIN? <span onClick={openResetModal}>Reset PIN</span></p>
             </div>
 
