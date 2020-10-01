@@ -45,7 +45,9 @@ class Wallet extends Component {
                     <div className="box-form-data">
                         <div className="title-alt" style={{ marginLeft: "-45px" }}>Nominal Top Up</div>
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "400px" }}>
-                            <button className="but-blue" style={{ marginBottom: "10px" }}>Top Up</button>
+                            <Link to="/topup-method">
+                                <button className="but-blue" style={{ marginBottom: "10px" }}>Top Up</button>
+                            </Link>
 
                             <button className="but" style={{ width: "100px", width: "197px", height: "36px", fontSize: "14px", paddingBottom: "25px" }}>WITHDRAW</button>
                         </div>

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";
 import bca from "../../images/withdraw/bca.svg";
-import companyImage from "../../images/company-image.png";
+import companyImage from "../../images/payment/company-image.svg";
 import noticeImage from "../../images/invest/modalinvest.svg";
 
 import ModalTemplate from "../shared/ModalTemplate";
