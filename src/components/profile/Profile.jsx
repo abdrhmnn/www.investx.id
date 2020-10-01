@@ -19,11 +19,12 @@ import Ojk from '../shared/Ojk';
 import Fade from 'react-reveal/Fade';
 import BusinessIndex from './businessMenu/BusinessIndex';
 import HistoryIndex from './historyMenu/HistoryIndex';
+import FavoriteIndex from './favoriteMenu/FavoriteIndex';
 
 class Profile extends Component {
     state={
         filterShow : false,
-        activeMenu : 'history'
+        activeMenu : 'favorite'
     }
 
     handleClick = (e) => this.setState({activeMenu : e.target.id})
@@ -112,6 +113,9 @@ class Profile extends Component {
                         </Fade>
                         <Fade collapse opposite when={this.state.activeMenu === 'history'}>
                             <HistoryIndex />
+                        </Fade>
+                        <Fade collapse opposite when={this.state.activeMenu === 'favorite'}>
+                            <FavoriteIndex />
                         </Fade>
                         </div>
                     </div>
