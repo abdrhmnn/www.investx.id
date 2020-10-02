@@ -6,12 +6,18 @@ import bluewoman from '../../images/bg/bluewoman.jpg'
 import {Button, TextField, OutlinedInput, InputAdornment, InputLabel, FormControl,IconButton, FormHelperText} from '@material-ui/core'
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
+import API  from "../../api";
+
 
 
 class Login extends Component {
     state={
         showPassword : false
     }
+    
+    // callbackSubmit = (res)=>{
+    //     console.log(res)
+    // }
 
     render() {
         const schemaObj = Yup.object({
@@ -38,6 +44,10 @@ class Login extends Component {
                             validationSchema={schemaObj}
                             onSubmit={(val)=>{
                                 console.log(val)
+                                // API.login(val,this.callbackSubmit)
+                                API.login(val)
+                                .then(res=> console.log(res))
+                                .catch(err => console.log(err.response))
 
                             }}
                             >

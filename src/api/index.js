@@ -26,7 +26,10 @@ const API = {
         return err.response;
       });
   },
-  string: "lalala",
+  login: (body) => {
+    console.log(body, 'bodynyta');
+    return axios.post(apiBaseUrl + `/authentication/password/`, body)
+  },
 };
 
 export default API;
