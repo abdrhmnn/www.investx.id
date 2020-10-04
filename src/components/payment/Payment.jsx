@@ -10,9 +10,23 @@ import bankIcon from "../../images/payment/bank-icon.svg";
 import addBlueIcon from "../../images/payment/add-blue-icon.svg";
 
 import PaymentMethod from "./PaymentMethod";
+import { Button } from '@material-ui/core';
+
 
 class Payment extends Component {
     render() {
+        const butBlue = {
+            width: '700px',
+            borderRadius: '9px',
+            height: '36px',
+            fontSize: '14px',
+            textTransform: 'uppercase',
+            color: '#ffffff',
+            background: '#01579b',
+            border: 'none',
+            outline: 'none'
+        };
+
         return (
             <div className="all-forms-style payment">
                 <div className="bg">
@@ -152,9 +166,9 @@ class Payment extends Component {
                 </div>
 
                 <Link to="/payment-status">
-                    <button className="but-blue bayar" type="submit">
+                    <Button style={butBlue} type="submit">
                         BAYAR
-                    </button>
+                    </Button>
                 </Link>
             </div>
         );
