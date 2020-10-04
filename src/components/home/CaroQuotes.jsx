@@ -5,6 +5,9 @@ import x from '../../images/caroQuotes/x.svg'
 import caroback from '../../images/caroback.svg'
 import caronext from '../../images/caronext.svg'
 
+import { Button } from '@material-ui/core';
+
+
 class CaroQuotes extends Component {
     render(){
       const settings = {
@@ -55,8 +58,8 @@ class CaroQuotes extends Component {
                   }
                 </Slider>
                 <div className="arrows">
-                  <button className='back' onClick={()=> this.slider.slickPrev()}> <img src={caroback} alt="back"/> </button>
-                  <button className='next' onClick={()=> this.slider.slickNext()}><img src={caronext} alt="next"/></button>
+                  <Button className='back' onClick={()=> this.slider.slickPrev()}> <img src={caroback} alt="back"/> </Button>
+                  <Button className='next' onClick={()=> this.slider.slickNext()}><img src={caronext} alt="next"/></Button>
                 </div>
               </div>
             </div>

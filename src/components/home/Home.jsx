@@ -9,6 +9,8 @@ import Ojk from '../shared/Ojk';
 import { connect } from 'react-redux';
 import Slider from "react-slick";
 
+import { Button } from '@material-ui/core';
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -52,6 +54,32 @@ class Home extends Component {
             autoplaySpeed: 0,
             cssEase: "linear"
         };
+
+        const butSolid = {
+            width: '205px',
+            height: '52px',
+            background: '#4cb5ef',
+            boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+            borderRadius: '8px',
+            border: 'none',
+            color: 'white',
+            marginRight: '28px',
+            fontWeight: '500',
+            fontSize: '16px'
+        };
+
+        const but = {
+            fontWeight: '500',
+            fontSize: '16px',
+            background: '#ffffff',
+            border: '1px solid #0288d1',
+            boxSizing: 'border-box',
+            boxShadow: '0px 0px 9px #4cb5ef',
+            borderRadius: '8px',
+            width: '205px',
+            height: '52px'
+        };
+
         return (
             <div>
                 {this.state.modalOtp ? <ModalSuccessOtp offModal={this.offModal} /> : null}
@@ -61,8 +89,8 @@ class Home extends Component {
                         <div className="wrap">
                             <p className="title">EQUITY <br /><span>CROWDFUNDING</span></p>
                             <p className="desc">Mewujudkan era baru dalam berinvestasi Dapatkan pendapatan secara pasif dan pendanaan dengan cepat dengan InvestX.</p>
-                            <button className="but-solid">Start Investing</button>
-                            <button className="but">Get Funding</button> <br />
+                            <Button style={butSolid}>Start Investing</Button>
+                            <Button style={but}>Get Funding</Button> <br />
                             <img src={ojk} alt="" />
                         </div>
                     </div>
@@ -93,7 +121,7 @@ class Home extends Component {
                             All companies are rigorously screened & pass due diligence.
                         </div>
                     </div>
-                    <button>See All</button>
+                    <Button>See All</Button>
                 </div>
 
                 <CaroHome />
