@@ -5,10 +5,25 @@ import step2 from '../../images/how/step2.svg';
 import step3 from '../../images/how/step3.svg';
 import stepsBisnis from '../../images/how/steps-bisnis.svg';
 import Footer from '../shared/Footer';
+import { Button } from '@material-ui/core';
+
 import Ojk from '../shared/Ojk';
 
 class HowItWorks extends Component {
     render() {
+        const butSolid = {
+            width: '205px',
+            height: '52px',
+            background: '#4cb5ef',
+            boxShadow: '0px 0px 4px rgba(0, 0, 0, 0.25)',
+            borderRadius: '8px',
+            border: 'none',
+            color: 'white',
+            marginRight: '28px',
+            fontWeight: '500',
+            fontSize: '16px'
+        };
+
         return (
             <div className='how'>
                 <div className="head">
@@ -17,8 +32,8 @@ class HowItWorks extends Component {
                         <div className="con">
                             <p className="title">Cara mudah untuk Investasimu</p>
                             <p className="desc">Apakah kamu seorang Investor ataupun pelaku bisnis, siapapun bisa dengan mudah menggunakan InvestX</p>
-                            <button className='how-invest'>Start Investing</button>
-                            <button className='fund'>Get Funding</button>
+                            <Button className='how-invest'>Start Investing</Button>
+                            <Button className='fund'>Get Funding</Button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +137,7 @@ class HowItWorks extends Component {
                         </div>
 
                         <center>
-                            <button className="but-solid ">Ajukan Bisnis</button>
+                            <Button style={butSolid}>Ajukan Bisnis</Button>
                         </center>
 
                     </div>
