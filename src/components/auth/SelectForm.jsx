@@ -3,6 +3,8 @@ import select from '../../images/bg/select.jpg'
 import logo from '../../images/logo.svg'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { Button } from '@material-ui/core';
+
 
 class SelectForm extends Component {
     componentDidMount(){
@@ -28,17 +30,17 @@ class SelectForm extends Component {
                             <p className="desc">Silakan isi formulir sesuai kebutuhan kamu</p>
                             <div className="wbut">
                                 <Link to='/investor-form-data-diri'>
-                                    <button className='inv'>Saya adalah Investor</button>
+                                    <Button className='inv'>Saya adalah Investor</Button>
                                 </Link>
                                 <Link to='/startup-form-data-diri'>
-                                    <button className='start'>Ajukan Pendanaan</button>
+                                    <Button className='start'>Ajukan Pendanaan</Button>
                                 </Link>
                             </div>
                             <hr className="mid"/>
                             <span className="atau">Atau</span>
                             <br/>
                             <Link to='/how'>
-                                <button className="bfun">Pelajari Selengkapnya</button>
+                                <Button className="bfun">Pelajari Selengkapnya</Button>
                             </Link>
                         </div>
                 </div>
