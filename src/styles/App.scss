@@ -1,15 +1,12 @@
 //   color code
 $grey: #a5a5a5;
 $low-grey: #f4f4f4;
-
 $blue-grey: #455a64;
 $low-blue: #0288d1;
 $blue: #01579b;
-
 $dark-blue: #0288d1;
 $red: #f27272;
 $orange: #f29877;
-
 .but-blue {
     width: 197px;
     height: 36px;
@@ -25,6 +22,7 @@ $orange: #f29877;
 .swal2-container {
     z-index: 99999999999999 !important;
 }
+
 // buttons
 .but-solid {
     background-color: $low-blue;
@@ -68,9 +66,9 @@ button {
     }
 }
 
-.has-float-label input:placeholder-shown:not(:focus) + *,
-.has-float-label select:placeholder-shown:not(:focus) + *,
-.has-float-label textarea:placeholder-shown:not(:focus) + * {
+.has-float-label input:placeholder-shown:not(:focus)+*,
+.has-float-label select:placeholder-shown:not(:focus)+*,
+.has-float-label textarea:placeholder-shown:not(:focus)+* {
     font-size: 14px;
     opacity: 1;
     top: 0;
@@ -95,7 +93,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+
 /* Firefox */
+
 input[type="number"] {
     -moz-appearance: textfield;
 }

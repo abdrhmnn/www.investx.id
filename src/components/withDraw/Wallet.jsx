@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import { Box, Button } from "@material-ui/core";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
@@ -47,10 +46,10 @@ class Wallet extends Component {
                         <div className="title-alt" style={{ marginLeft: "-45px" }}>Nominal Top Up</div>
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "400px" }}>
                             <Link to="/topup-method">
-                                <Button className="but-blue" style={{ marginBottom: "10px" }}>Top Up</Button>
+                                <button className="but-blue" style={{ marginBottom: "10px" }}>Top Up</button>
                             </Link>
 
-                            <Button className="but" style={{ width: "100px", width: "197px", height: "36px", fontSize: "14px", paddingBottom: "25px" }}>WITHDRAW</Button>
+                            <button className="but" style={{ width: "100px", width: "197px", height: "36px", fontSize: "14px", paddingBottom: "25px" }}>WITHDRAW</button>
                         </div>
                         <div className="input-border-underline" style={{ marginLeft: "-45px", width: "420px", marginTop: "-50px" }}>
                             <input
@@ -62,16 +61,16 @@ class Wallet extends Component {
 
 
                         <div style={{ marginLeft: "-50px", maxHeight: "40px", overflowX: "hidden", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
-                            <Button className="saran">20.000.000</Button>
-                            <Button className="saran">30.000.000</Button>
-                            <Button className="saran">40.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
-                            <Button className="saran">50.000.000</Button>
+                            <button className="saran">20.000.000</button>
+                            <button className="saran">30.000.000</button>
+                            <button className="saran">40.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
+                            <button className="saran">50.000.000</button>
 
 
                         </div>
@@ -109,7 +108,7 @@ class Wallet extends Component {
 <p style={{fontSize:"10pt",marginLeft:"30px", fontWeight:"bolder", color: "green"}}>Transaksi Berhasil</p>
 </div>
 <div style={{marginLeft:"460px", marginTop:"-50px"}}>
-    <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"#FFA412", color:"white", border:"none" }}>Top Up Lagi</Button>
+    <button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"#FFA412", color:"white", border:"none" }}>Top Up Lagi</button>
 </div>
 <hr />
 </div>
@@ -136,7 +135,7 @@ class Wallet extends Component {
 <p style={{fontSize:"10pt",marginLeft:"30px", fontWeight:"bolder", color: "red"}}>Transaksi Dibatalkan</p>
 </div>
 <div style={{marginLeft:"460px", marginTop:"-50px"}}>
-    <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"red", color:"white", border:"none" }}>Tarik Uang Lagi</Button>
+    <button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"red", color:"white", border:"none" }}>Tarik Uang Lagi</button>
 </div>
 <hr />
 </div>
