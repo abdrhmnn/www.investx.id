@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import bankRumah from '../../images/bankRumah.svg'
+
+import { Box, Button } from "@material-ui/core";
+
+
 class ModalError extends Component {
     render() {
         // const { 
@@ -31,9 +35,9 @@ class ModalError extends Component {
                             <br />
                             <div className="d-flex justify-content-between">
                                 <div></div>
-                                <button type="submit" className="but-blue" style={{ borderRadius: "5px" }}>
+                                <Button type="submit" className="but-blue" style={{ borderRadius: "5px" }}>
                                     SAVE
-                    </button>
+                    </Button>
                             </div>
                         </div>
                     </div>

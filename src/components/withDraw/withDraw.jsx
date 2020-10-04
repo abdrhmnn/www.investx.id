@@ -6,6 +6,7 @@ import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
 import plus from "../../images/plus.svg";
 
+import { Box, Button } from "@material-ui/core";
 
 
 import formBank from "./formBank";
@@ -147,7 +148,7 @@ class MethodTopUp extends Component {
               
                 <div className="foot-data-diri">
                    <p className="agreement"></p>
-                    <button type='submit' form='datadiri'>LANJUTKAN</button>
+                    <Button type='submit' form='datadiri'>LANJUTKAN</Button>
                </div>
             </div>
         );

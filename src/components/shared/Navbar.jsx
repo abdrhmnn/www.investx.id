@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import HamburgerMenu from 'react-hamburger-menu'
 import logo from '../../images/logo.svg'
 import { Link, NavLink } from 'react-router-dom'
+import { Box, Button } from "@material-ui/core";
 
 class Navbar extends Component {
     state={
@@ -46,7 +47,7 @@ class Navbar extends Component {
                             <li> <NavLink activeClassName='nav-active' to='/how'>How it works</NavLink> </li>
                             <li> <NavLink activeClassName='nav-active' to='/about'>About Us</NavLink> </li>
                             <li> <Link>FAQ</Link> </li>
-                            <li> <Link to='/login'><button className="but">Sign In</button></Link> </li>
+                            <li> <Link to='/login'><Button className="but">Sign In</Button></Link> </li>
                         </ul>
                     </div>
                 </nav>
