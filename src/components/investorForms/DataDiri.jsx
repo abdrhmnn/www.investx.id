@@ -85,7 +85,7 @@ class DataDiri extends Component {
                                         // error ={touched.name && errors.name}
                                     />
                                 </div>
-                                <div className="col-md-12 ">
+                                <div className="col-md-12">
                                     <ButtonGroup className={errors.gender?'button-gender line-error':'button-gender'}>
                                         <Button className={values.gender === 'pria'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'pria')} >Pria</Button>
                                         <Button className={values.gender === 'wanita'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'wanita')} >Wanita</Button>
