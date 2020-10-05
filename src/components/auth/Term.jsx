@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 // import ModalOtp from './Otp';
 import "../../styles/term.scss"
+import { Button } from '@material-ui/core';
 
 class Term extends Component {
     state={
@@ -20,7 +21,7 @@ class Term extends Component {
                         </p>
                     </div>
                     <div className="box-butt">
-                        <button onClick={()=>this.setState({isOtp : true})}>Saya Setuju</button>
+                        <Button onClick={()=>this.setState({isOtp : true})}>Saya Setuju</Button>
                         <Link to='/'>Kebijakan Privasi</Link>
                     </div>
                 </div>

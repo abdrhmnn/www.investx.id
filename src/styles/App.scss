@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+//   color code
+$grey: #a5a5a5;
+$low-grey: #f4f4f4;
+$blue-grey: #455a64;
+$low-blue: #0288d1;
+$blue: #01579b;
+$dark-blue: #0288d1;
+$red: #f27272;
+$orange: #f29877;
+>>>>>>> e424069d04e9012a73519070802a7fcff6b37f66
 .but-blue {
     width: 197px;
     height: 36px;
@@ -13,6 +25,7 @@
 .swal2-container {
     z-index: 99999999999999 !important;
 }
+
 // buttons
 .but-solid {
     background-color:  #0288d1;
@@ -56,9 +69,9 @@ button {
     }
 }
 
-.has-float-label input:placeholder-shown:not(:focus) + *,
-.has-float-label select:placeholder-shown:not(:focus) + *,
-.has-float-label textarea:placeholder-shown:not(:focus) + * {
+.has-float-label input:placeholder-shown:not(:focus)+*,
+.has-float-label select:placeholder-shown:not(:focus)+*,
+.has-float-label textarea:placeholder-shown:not(:focus)+* {
     font-size: 14px;
     opacity: 1;
     top: 0;
@@ -83,7 +96,9 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
+
 /* Firefox */
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
@@ -122,6 +137,7 @@ input[type="number"] {
 @import "./invest.scss";
 @import "./profile.scss";
 @import "./payment.scss";
+<<<<<<< HEAD
 @import "./paymentstatus.scss";
 
 
@@ -132,3 +148,6 @@ input[type="number"] {
         padding-right: 20px !important;
     }
 }
+=======
+@import "./paymentstatus.scss";
+>>>>>>> e424069d04e9012a73519070802a7fcff6b37f66

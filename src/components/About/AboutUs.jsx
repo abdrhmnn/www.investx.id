@@ -12,6 +12,9 @@ import twitter from '../../images/social/twitter.svg'
 import gmail from '../../images/social/gmail.svg'
 import top from '../../images/top.svg'
 
+import { Button } from '@material-ui/core';
+
+
 class AboutUs extends Component {
 
     toTop = ()=> window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -90,9 +93,9 @@ class AboutUs extends Component {
                
                  <div className="join-investor">
                 <h2>Invest in Highly vetted early-staged companies</h2><br />
-                <button type='button'>Become an Investor</button>
+                <Button type='Button'>Become an Investor</Button>
                 <div className="desc"><br />Have an Account? <a href="#">Log in</a></div>
-                <div className="top"><a href="#top"><button><img src={top}></img></button></a></div>
+                <div className="top"><a href="#top"><Button><img src={top}></img></Button></a></div>
             </div>
                 <Footer />
                 <Ojk />

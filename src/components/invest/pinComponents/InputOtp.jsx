@@ -12,7 +12,7 @@ const InputOtp = (close, openModalNewPin)=> {
             <div className="bg">
                 <div className="bg-round"></div>
             </div>
-            <Fab className="back-button" onClick={close}>
+            <Fab className="back-Button" onClick={close}>
                 <img src={arrowback} alt="" />
             </Fab>
             <div className="logo-invest">

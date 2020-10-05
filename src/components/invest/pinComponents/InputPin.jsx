@@ -14,7 +14,7 @@ const InputPin = (close, openResetModal)=> {
             <div className="bg">
                 <div className="bg-round"></div>
             </div>
-            <Fab className="back-button" onClick={close}>
+            <Fab className="back-Button" onClick={close}>
                 <img src={arrowback} alt="" />
             </Fab>
             <div className="logo-invest">
@@ -36,7 +36,7 @@ const InputPin = (close, openResetModal)=> {
                         {({values, handleChange, handleSubmit})=>(
                             <form className="wrapperform" onSubmit={handleSubmit}>
                                 <input type="password" value={values.pin} onChange={handleChange('pin')} placeholder='******' required/>
-                                <Button disabled={values.pin.length < 6} type='submit' className='verif-button'>VERIFIKASI</Button>
+                                <Button disabled={values.pin.length < 6} type='submit' className='verif-Button'>VERIFIKASI</Button>
                                 <hr/>
                             </form>
                         )}

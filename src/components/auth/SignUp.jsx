@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import logo from "../../images/logo-white.svg";
+import logoMobile from '../../images/logo.svg'
+
 import { Link } from "react-router-dom";
 import bluewoman from "../../images/bg/bluewoman.jpg";
 
@@ -16,6 +18,7 @@ import {
   IconButton,
   FormHelperText,
 } from "@material-ui/core";
+
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import API  from "../../api";
@@ -76,6 +79,7 @@ class Register extends Component {
         <div className="signup"style={{ backgroundImage: `url(${bluewoman})` }}>
           <div className="container">
             <img className="logo" src={logo} alt="logo" />
+            <img className="logoMobile" src={logoMobile} alt="logo"/>    
             <div className="form-box">
               <div className="box-form">
                 <div className="well">Register Now</div>

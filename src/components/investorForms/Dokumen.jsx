@@ -52,14 +52,14 @@ class Dokumen extends Component {
                 title: 'Foto Kartu Tanda Penduduk',
                 desc: 'Foto KTP milikmu seperti foto dibawah ini, perhatikan foto tidak terlalu gelap, dan tidak blur',
                 image: popktp,
-                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'ktp')}><button>Ok, Upload Sekarang</button></InputFiles>
+                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'ktp')}><Button>Ok, Upload Sekarang</Button></InputFiles>
             },
             {
                 name: 'selfie',
                 title: 'Foto Selfie KTP',
                 desc: 'Foto diri kamu dengan KTP seperti foto dibawah ini, usahakan foto tidak terlalu gelap dan tidak blur',
                 image: popselfie,
-                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'selfie')}><button>Ok, Upload Sekarang</button></InputFiles>
+                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'selfie')}><Button>Ok, Upload Sekarang</Button></InputFiles>
 
             },
             {
@@ -67,7 +67,7 @@ class Dokumen extends Component {
                 title: 'Foto kartu NPWP',
                 desc: 'Foto NPWP milikmu seperti foto dibawah ini, perhatikan foto tidak terlalu gelap, dan tidak blur',
                 image: popnpwp,
-                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'npwp')}><button>Ok, Upload Sekarang</button></InputFiles>
+                button: () => <InputFiles onChange={files => this.handleFileUpload(files, 'npwp')}><Button>Ok, Upload Sekarang</Button></InputFiles>
 
             }
         ]
@@ -169,15 +169,15 @@ class Dokumen extends Component {
                                         <div className="box-upload-dok col-md-12">
                                             <div>
                                                 <p className="tag">Foto KTP *</p>
-                                                <button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 0 } })}>Choose File <img src={minifile} alt="file" /></button>
+                                                <Button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 0 } })}>Choose File <img src={minifile} alt="file" /></Button>
                                             </div>
                                             <div>
                                                 <p className="tag"> Foto selfie dengan KTP *</p>
-                                                <button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 1 } })}>Choose File <img src={minifile} alt="file" /></button>
+                                                <Button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 1 } })}>Choose File <img src={minifile} alt="file" /></Button>
                                             </div>
                                             <div>
                                                 <p className="tag">NPWP</p>
-                                                <button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 2 } })}>Choose File <img src={minifile} alt="file" /></button>
+                                                <Button type="button" onClick={() => this.setState({ modalFile: { open: true, id: 2 } })}>Choose File <img src={minifile} alt="file" /></Button>
                                             </div>
                                         </div>
 

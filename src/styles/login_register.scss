@@ -10,7 +10,10 @@
     .logo{
         margin: 25px 0px;
         position: absolute;
+    }
 
+    .logoMobile{
+        display: none;
     }
    
     .form-box{
@@ -269,10 +272,45 @@
     }
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 768px) {
    .login{
        background-image: unset !important;
    }
 
    
+=======
+@media only screen and (max-width: 768px){
+    .login, .signup{
+        background-image: unset !important;
+        padding: 20px;
+        text-align: center;
+        .logo{
+            display: none;
+        }
+
+        .logoMobile{
+            display: inline-block;
+            width: 200px;
+            margin-top: 30px;
+            margin-bottom: -80px;
+        }
+
+        .form-box{
+            .well{
+                font-size: 25px !important;
+            }
+            .well-desc, .sign-up{
+                font-size: 14px !important;
+            }
+            input{
+                font-size: 14px !important;
+            }
+        }
+    }
+
+    .signup .logoMobile{
+        margin-bottom: -50px !important;
+    }
+>>>>>>> e424069d04e9012a73519070802a7fcff6b37f66
 }

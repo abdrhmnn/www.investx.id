@@ -8,6 +8,7 @@ import triangle from '../../images/company/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import greenshield from '../../images/greenshield.svg'
+import { Button } from '@material-ui/core';
 
 
 import Select from 'react-select'

@@ -3,6 +3,9 @@ import successotp from '../../images/successotp.svg'
 import emailicon from '../../images/emailicon.svg'
 import { Link } from 'react-router-dom';
 
+import { Button } from '@material-ui/core';
+
+
 
 class ModalSuccessOtp extends Component {
     render() {
@@ -16,10 +19,10 @@ class ModalSuccessOtp extends Component {
                     <p className="email">lallala@email.com</p>
                     <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span>  dalam 47 detik</p>
                     <div className="box-butt">
-                        <button className='back' onClick={this.props.offModal}>Kembali ke Halaman Utama</button>
+                        <Button className='back' onClick={this.props.offModal}>Kembali ke Halaman Utama</Button>
                         {/* sementarta  */}
                         <Link to='/select-form'>
-                            <button className='bmail'> <img src={emailicon} alt="email"/> Buka Email</button>
+                            <Button className='bmail'> <img src={emailicon} alt="email"/> Buka Email</Button>
                         </Link>
                     </div>
                 </div>

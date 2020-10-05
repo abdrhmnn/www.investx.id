@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
+import { Box, Button } from "@material-ui/core";
+
 
 class TopUpDetail extends Component {
     state = {
@@ -95,10 +97,10 @@ class TopUpDetail extends Component {
                             </p>
 
                             <div className="d-flex justify-content-between">
-                                <button className="but">BUTUH BANTUAN</button>
-                                <button className="but-solid" type="submit">
+                                <Button className="but">BUTUH BANTUAN</Button>
+                                <Button className="but-solid" type="submit">
                                     KIRIM BUKTI
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     ) : (
@@ -110,13 +112,13 @@ class TopUpDetail extends Component {
                                 obcaecati eveniet itaque quisquam, hic magni
                                 neque, aperiam unde accusamus harum.
                             </p>
-                            <button
+                            <Button
                                 className="but-solid"
                                 type="submit"
                                 onClick={() => this.setIsInvoice(true)}
                             >
                                 BAYAR TRANSAKSI
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </div>

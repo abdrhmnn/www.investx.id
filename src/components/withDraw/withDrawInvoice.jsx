@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
+import { Box, Button } from "@material-ui/core";
 
 class DetailTransaction extends Component {
 
@@ -17,6 +18,16 @@ class DetailTransaction extends Component {
     }
 
     render() {
+        const butSolid ={
+            backgroundColor: '#0288d1',
+            border: 'none',
+            width: '100%',
+            borderRadius: '8px',
+            color: 'white',
+            fontSize: '16px',
+            outline: 'unset !important'
+        };
+
         return (
             <div className="all-forms-style detail-transaction withdraw">
                 <div className="bg">
@@ -81,15 +92,15 @@ class DetailTransaction extends Component {
                             <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
 
                             <div className="d-flex justify-content-between">
-                                <button className="but">BUTUH BANTUAN</button>
-                                <button className="but-solid" type="submit" >KIRIM BUKTI</button>
+                                <Button className="but">BUTUH BANTUAN</Button>
+                                <Button className="but-solid" type="submit" >KIRIM BUKTI</Button>
                             </div>
 
                         </div>
                         :
                         <div>
                             <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
-                            <button className="but-solid" type="submit" onClick={() => this.setIsInvoice(true)}>Bayar Transaksi</button>
+                            <Button style={butSolid} type="submit" onClick={() => this.setIsInvoice(true)}>Bayar Transaksi</Button>
                         </div>
                     }
 
