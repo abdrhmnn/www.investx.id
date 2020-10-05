@@ -57,11 +57,18 @@ class Register extends Component {
     </div>
   );
 
+  phoneRemoveZero = (pn)=>{
+    console.log('====================================');
+    console.log(pn);
+    console.log('====================================');
+  }
+  
   render() {
+    this.phoneRemoveZero('081525252')
     const schemaObj = Yup.object({
       full_name: Yup.string().required().min(3),
       email: Yup.string().required().email(),
-      phone: Yup.number().required(),
+      phone_number: Yup.number().required(),
       password: Yup.string().required().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,"Must Contain 8 Characters, One Number and one special case Character"),
       re_password: Yup.string().required("masukan ulang Kata sandi").oneOf([Yup.ref("password"), null], "Kata sandi tidak sama"),
     });
@@ -69,7 +76,7 @@ class Register extends Component {
     const initialValuesObj = {
       full_name: "",
       email: "",
-      phone: "",
+      phone_number: "",
       password: "",
       re_password: "",
     };
@@ -127,13 +134,13 @@ class Register extends Component {
                       <Field
                         className="custom_text_input"
                         type="number"
-                        name="phone"
+                        name="phone_number"
                         variant="outlined"
                         fullWidth={true}
-                        label="Phone number"
-                        // placeholder='Phone No. ( Ex : 85720001212 )'}
-                        error={touched.phone && errors.phone ? true : false}
-                        helperText={touched.phone && errors.phone}
+                        label="phone number"
+                        // placeholder='phone_number No. ( Ex : 85720001212 )'}
+                        error={touched.phone_number && errors.phone_number ? true : false}
+                        helperText={touched.phone_number && errors.phone_number}
                         as={TextField}
                       />
 
@@ -237,15 +244,8 @@ class Register extends Component {
                       <div className="w-forgot">
                         <div className="w-check">
                           <div className="cbox"
-                            onClick={() =>
-                              this.setState({
-                                isTnc: !this.state.isTnc,
-                              })
-                            }
-                          >
-                            {this.state.isTnc ? (
-                              <i className="fas fa-check"></i>
-                            ) : null}
+                            onClick={() =>this.setState({isTnc: !this.state.isTnc,})}>
+                            {this.state.isTnc ? (<i className="fas fa-check"></i>) : null}
                           </div>
                           <span>
                             I have read and I agree to InvestX’s Term of Service

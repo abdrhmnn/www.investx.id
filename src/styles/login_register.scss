@@ -272,14 +272,6 @@
     }
 }
 
-<<<<<<< HEAD
-@media only screen and (max-width: 768px) {
-   .login{
-       background-image: unset !important;
-   }
-
-   
-=======
 @media only screen and (max-width: 768px){
     .login, .signup{
         background-image: unset !important;
@@ -312,5 +304,4 @@
     .signup .logoMobile{
         margin-bottom: -50px !important;
     }
->>>>>>> e424069d04e9012a73519070802a7fcff6b37f66
 }

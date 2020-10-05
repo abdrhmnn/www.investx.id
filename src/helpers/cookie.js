@@ -8,7 +8,6 @@ const kuki = {
     get : (key) => cookies.get(key),
     // getAll : () => cookies.getAll(),
     remove : (key) => cookies.remove(key),
-
 }
 
 export default kuki
