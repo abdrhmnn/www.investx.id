@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
+// import ReactLoading from 'react-loading';
 import {Modal, Backdrop, Fade} from '@material-ui/core';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
-class ModalTemplate extends Component {
+
+class Loading extends Component {
     state={
         open : false
     }
@@ -21,7 +23,7 @@ class ModalTemplate extends Component {
                 >
                     <Fade in={this.props.onOpen} className='modal_remove_outline'>
                         <div>
-                            {this.props.component()}
+                            <ScaleLoader color='#fff'  size={150} style={{width: '70px'}}/>
                         </div>
                     </Fade>
                 </Modal>
@@ -30,4 +32,4 @@ class ModalTemplate extends Component {
     }
 }
 
-export default ModalTemplate;
+export default Loading;

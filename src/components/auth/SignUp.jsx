@@ -32,8 +32,14 @@ class Register extends Component {
     dataPost : {}
   };
 
-  callbackSubmit = (val) =>{
-    console.log(val)
+  phoneRemoveZero = (val) =>{
+    if (val[0] === '0' || val[0] === 0) {
+      var x = val.split('')
+      x[0] = '62'
+     return x
+    }else{
+      return val
+    }
   }
 
   modalConfirm = () => (
@@ -43,7 +49,7 @@ class Register extends Component {
         <div className="desc">No hp digunakan untuk mendapatkan kode OTP dan Email digunakan untuk Verifikasi data</div>
         <div className="box">
           <div className="mailphone">
-            <img src={phoneicon} alt="phone" /> +{this.state.dataPost.phone}
+            <img src={phoneicon} alt="phone" /> +{this.state.dataPost.phone_number}
           </div>
           <div className="mailphone">
             <img src={emailicon} alt="phone" /> {this.state.dataPost.email}
@@ -56,19 +62,14 @@ class Register extends Component {
       </div>
     </div>
   );
-
-  phoneRemoveZero = (pn)=>{
-    console.log('====================================');
-    console.log(pn);
-    console.log('====================================');
-  }
   
   render() {
-    this.phoneRemoveZero('081525252')
+    console.log(this.state)
+    
     const schemaObj = Yup.object({
       full_name: Yup.string().required().min(3),
       email: Yup.string().required().email(),
-      phone_number: Yup.number().required(),
+      phone_number: Yup.string().required().matches(/^\d+$/, 'must be a number'),
       password: Yup.string().required().matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,"Must Contain 8 Characters, One Number and one special case Character"),
       re_password: Yup.string().required("masukan ulang Kata sandi").oneOf([Yup.ref("password"), null], "Kata sandi tidak sama"),
     });
@@ -99,8 +100,12 @@ class Register extends Component {
                   initialValues={initialValuesObj}
                   validationSchema={schemaObj}
                   onSubmit={(val) => {
-                    // API.register(val);
-                    this.setState({dataPost : val , isModalConfirm : true})
+                    var body = {
+                      full_name: val.full_name,
+                      email: val.email,
+                      phone_number: this.phoneRemoveZero(val.phone_number),
+                    }
+                    this.setState({dataPost : body , isModalConfirm : true})
                   }}
                 >
                   {({errors,handleSubmit,touched,handleChange,values,handleBlur,}) => (
@@ -133,12 +138,12 @@ class Register extends Component {
 
                       <Field
                         className="custom_text_input"
-                        type="number"
+                        type="text"
                         name="phone_number"
                         variant="outlined"
                         fullWidth={true}
                         label="phone number"
-                        // placeholder='phone_number No. ( Ex : 85720001212 )'}
+                        placeholder='No. ( Ex : 628xxx/08xxxx )'
                         error={touched.phone_number && errors.phone_number ? true : false}
                         helperText={touched.phone_number && errors.phone_number}
                         as={TextField}

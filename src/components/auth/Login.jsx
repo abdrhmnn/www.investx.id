@@ -8,18 +8,18 @@ import {Button, TextField, OutlinedInput, InputAdornment, InputLabel, FormContro
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
 import API  from "../../api";
+import kuki from '../../helpers/cookie'
+import Loading from '../shared/Loading';
+import Swal from 'sweetalert2'
 
 
 
 
 class Login extends Component {
     state={
-        showPassword : false
+        showPassword : false,
+        loading : false
     }
-    
-    // callbackSubmit = (res)=>{
-    //     console.log(res)
-    // }
 
     render() {
         const schemaObj = Yup.object({
@@ -31,9 +31,11 @@ class Login extends Component {
             email : '',
             password : '',
         }
+        console.log(kuki.get('status'))
     
         return (
             <div>
+                <Loading onOpen={this.state.loading} />
               <div className="login" style={{backgroundImage: `url(${bluewoman})`}}>
                   <div className="container">
                     <img className="logo" src={logo} alt="logo"/>    
@@ -48,9 +50,24 @@ class Login extends Component {
                             onSubmit={(val)=>{
                                 console.log(val)
                                 // API.login(val,this.callbackSubmit)
-                                API.login(val)
-                                .then(res=> console.log(res))
-                                .catch(err => console.log(err.response))
+                                this.setState({loading : true})
+                                API.login(val).then(res=>{
+                                    this.setState({loading : false})
+                                    console.log(res)
+                                    const {token, register_status, email} = res.data
+                                    kuki.set('auth', true)
+                                    kuki.set('token', token)
+                                    // kuki.set('email', email)
+                                    kuki.set('status', register_status)
+                                }).catch(err => {
+                                    this.setState({loading : false})
+                                    console.log(err.response) 
+                                    Swal.fire({
+                                      icon: 'error',
+                                      title: 'Oops...',
+                                      text: 'Login Gagal!',
+                                    })
+                                })
 
                             }}
                             >
@@ -68,7 +85,6 @@ class Login extends Component {
                                             helperText={touched.email && errors.email}
                                             as={TextField} 
                                         />
-
                                         <FormControl 
                                         error={touched.password && errors.password? true : false}
                                         className='custom_text_input'
