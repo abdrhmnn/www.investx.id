@@ -34,6 +34,23 @@
                 margin-right: 28px;
                 margin-bottom: 38px;
             }
+            .but-solid {
+                background-color:  #0288d1;
+                border: none;
+                border-radius: 8px;
+                color: white;
+                font-size: 16px;
+                outline: unset !important;
+            }
+            
+            .but {
+                color: black;
+                border-radius: 8px;
+                border: 1px solid  #0288d1;
+                background-color: white;
+                font-size: 16px;
+                outline: unset !important;
+            }
         }
     }
 
@@ -66,7 +83,7 @@
                 font-size: 16px;
                 line-height: normal;
                 width: 205px;
-                color: $grey;
+                color: #a5a5a5;
                 margin-bottom: 0;
                 font-weight: 300;
                 span{
