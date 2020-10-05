@@ -333,7 +333,6 @@
     }
 
     ///dokumen
-
     .info-dok {
         font-size: 12px;
         line-height: 20px;
@@ -485,6 +484,76 @@
                 left: 0;
                 margin: 30px;
                 cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .all-forms-style {
+        padding: 15px;
+
+        .logo-invest{
+            margin-top: 10px;
+            margin-right: 110px;
+        }
+
+        .back-button{
+            margin-top: 10px;
+            margin-left: 10px;
+            background-color: unset;
+            box-shadow: unset;
+        }
+
+        .title{
+            margin-top: 80px;
+        }
+
+        .steps-invest, .steps-startup{
+            width: 100%;
+            ul {
+                display: block;
+                li{
+                    margin-bottom: 20px;
+                    z-index: 1;
+                }
+            }
+            hr{
+                transform: rotate(90deg);
+                width: 48%;
+                top: -130px;
+                margin-left: -19.5%;
+            }
+        }
+
+        .steps-startup{
+            hr{
+                width: 60%;
+                top: -150px;
+                margin-left: -25.5%;
+            }
+        }
+
+        .box-form-data{
+            width: 100%;
+            padding: 20px;
+            margin: 20px;
+            margin-top: -10px;
+            .title{
+                margin-top: 0;
+            }
+            .button-gender{
+                button{
+                    width: 140px !important;
+                }
+            }
+        }
+
+        .foot-data-diri{
+            width: 100%;
+            display: block;
+            .agreement{
+                width: 100%;
             }
         }
     }
