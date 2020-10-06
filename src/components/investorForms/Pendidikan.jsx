@@ -193,7 +193,9 @@ class Pendidikan extends Component {
 
                 <div className="foot-data-diri">
                     <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
+                    <Link to="/investor-form-dokumen">
+                        <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
+                    </Link>
                 </div>
             </div>
         );

@@ -24,7 +24,8 @@ class PaymentStatus extends Component {
                     this.setState({ modalDetail: !this.state.modalDetail })
                 }
             ></i>
-            <div className="box-form-data px-2 py-2 mt-4">
+            <h3 className="modal-title bolder">Detail Transaksi</h3>
+            <div className="box-form-data px-3 py-3 mt-4">
                 <div className="d-flex justify-content-between">
                     <img
                         className="company-image"
@@ -33,25 +34,45 @@ class PaymentStatus extends Component {
                     />
                     <Box flexDirection="column" width="80%" className="px-4">
                         <div className="row">
-                            <p className="bold">PT. Salad Buah</p>
+                            <div className="col-md-12">
+                                <h5 className="bold company-name">
+                                    PT. Salad Buah
+                                </h5>
+                            </div>
                         </div>
-                        <div className="row justify-content-between">
-                            <p className="text-muted">Hargas Saham</p>
-                            <p className="text-muted">Rp. 100.000</p>
+                        <div className="row justify-content-around">
+                            <div className="col-md-6">
+                                <p className="text-muted">Hargas Saham</p>
+                            </div>
+                            <div className="col-md-6">
+                                <p className="text-muted text-right">
+                                    Rp. 100.000
+                                </p>
+                            </div>
                         </div>
-                        <div className="row justify-content-between">
-                            <p className="text-muted">Jumlah Imvestasi</p>
-                            <p className="text-muted">80 Lembar</p>
+                        <div className="row justify-content-around">
+                            <div className="col-md-6">
+                                <p className="text-muted">Jumlah Investasi</p>
+                            </div>
+                            <div className="col-md-6">
+                                <p className="text-muted text-right">
+                                    80 Lembar
+                                </p>
+                            </div>
                         </div>
                         <hr className="text-muted" />
-                        <div className="row justify-content-between">
-                            <p className="bold">Jumlah Imvestasi</p>
-                            <p className="bold">80 Lembar</p>
+                        <div className="row justify-content-around">
+                            <div className="col-md-6">
+                                <p className="bolder">Jumlah Imvestasi</p>
+                            </div>
+                            <div className="col-md-6">
+                                <p className="bolder text-right">80 Lembar</p>
+                            </div>
                         </div>
                     </Box>
                 </div>
             </div>
-            <div className="box-form-data mt-2">
+            <div className="box-form-data py-3 mt-2">
                 <div className="row justify-content-around align-items-center py-2">
                     <p className="bold m-0">Pembayaran</p>
                     <span>
@@ -60,7 +81,11 @@ class PaymentStatus extends Component {
                             Virtual Account
                         </span>
                     </span>
-                    <img src={bca} alt="logo-bank" />
+                    <img
+                        className="payment-logo"
+                        src={bca}
+                        alt="payment-logo"
+                    />
                 </div>
             </div>
         </div>
