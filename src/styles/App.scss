@@ -16,7 +16,7 @@
 
 // buttons
 .but-solid {
-    background-color:  #0288d1;
+    background-color: #0288d1;
     border: none;
     border-radius: 8px;
     color: white;
@@ -27,7 +27,7 @@
 .but {
     color: black;
     border-radius: 8px;
-    border: 1px solid  #0288d1;
+    border: 1px solid #0288d1;
     background-color: white;
     font-size: 16px;
     outline: unset !important;
@@ -57,9 +57,9 @@ button {
     }
 }
 
-.has-float-label input:placeholder-shown:not(:focus)+*,
-.has-float-label select:placeholder-shown:not(:focus)+*,
-.has-float-label textarea:placeholder-shown:not(:focus)+* {
+.has-float-label input:placeholder-shown:not(:focus) + *,
+.has-float-label select:placeholder-shown:not(:focus) + *,
+.has-float-label textarea:placeholder-shown:not(:focus) + * {
     font-size: 14px;
     opacity: 1;
     top: 0;
@@ -83,7 +83,6 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
 
 /* Firefox */
 
@@ -115,8 +114,8 @@ input[type="number"] {
 @import "./emptPage.scss";
 @import "./companylist.scss";
 @import "./card.scss";
-@import "./methodtopup.scss";
-@import "./detailtransaction.scss";
+@import "./topupmethod.scss";
+@import "./topupdetail.scss";
 @import "./topupstatus.scss";
 @import "./companydetail.scss";
 @import "./withdraw.scss";
@@ -126,8 +125,6 @@ input[type="number"] {
 @import "./profile.scss";
 @import "./payment.scss";
 @import "./paymentstatus.scss";
-
-
 
 @media only screen and (max-width: 768px) {
     .container {
