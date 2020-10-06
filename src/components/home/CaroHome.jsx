@@ -5,6 +5,9 @@ import caroback from '../../images/caroback.svg'
 import caronext from '../../images/caronext.svg'
 import Card from '../shared/Card';
 
+import { Fab } from '@material-ui/core';
+
+
 
 class CaroHome extends Component {
     render() {
@@ -70,8 +73,8 @@ class CaroHome extends Component {
                             }
                         </Slider>
                         <div className="arrows">
-                            <button className='back' onClick={()=> this.slider.slickPrev()}> <img src={caroback} alt="back"/> </button>
-                            <button className='next' onClick={()=> this.slider.slickNext()}><img src={caronext} alt="next"/></button>
+                            <Fab className='back' onClick={()=> this.slider.slickPrev()}> <img src={caroback} alt="back"/> </Fab>
+                            <Fab className='next' onClick={()=> this.slider.slickNext()}><img src={caronext} alt="next"/></Fab>
                         </div>
                     </div>
 
@@ -94,8 +97,8 @@ class CaroHome extends Component {
                             }
                         </Slider>
                         <div className="arrows">
-                            <button className='back' onClick={()=> this.slider2.slickPrev()}> <img src={caroback} alt="back"/> </button>
-                            <button className='next' onClick={()=> this.slider2.slickNext()}><img src={caronext} alt="next"/></button>
+                            <Fab className='back' onClick={()=> this.slider2.slickPrev()}> <img src={caroback} alt="back"/> </Fab>
+                            <Fab className='next' onClick={()=> this.slider2.slickNext()}><img src={caronext} alt="next"/></Fab>
                         </div>
                     </div>
 
@@ -118,8 +121,8 @@ class CaroHome extends Component {
                             }
                         </Slider>
                         <div className="arrows">
-                            <button className='back' onClick={()=> this.slider3.slickPrev()}> <img src={caroback} alt="back"/> </button>
-                            <button className='next' onClick={()=> this.slider3.slickNext()}><img src={caronext} alt="next"/></button>
+                            <Fab className='back' onClick={()=> this.slider3.slickPrev()}> <img src={caroback} alt="back"/> </Fab>
+                            <Fab className='next' onClick={()=> this.slider3.slickNext()}><img src={caronext} alt="next"/></Fab>
                         </div>
                     </div>
 

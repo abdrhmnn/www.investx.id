@@ -1,7 +1,8 @@
 import {createStore} from 'redux'
 
 const initialState = {
-    number : 5
+    number : 5,
+    activeTab: "profile"
 }
 
 const reducer = (state = initialState, action ) =>{
@@ -10,6 +11,13 @@ const reducer = (state = initialState, action ) =>{
         return 'hahaha'
     }
 
+    if (action.type === 'CHANGE_TAB') {
+        console.log('ACTAB')
+        return {
+            ...state,
+            activeTab : action.data
+        }
+    }
     return state
 }
 

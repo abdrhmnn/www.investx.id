@@ -15,6 +15,7 @@
         justify-content: flex-end;
         align-items: center;
         position: relative;
+        background-image: unset !important;
         .bglog{
             margin-top: 32px;
             position: absolute;
@@ -91,6 +92,40 @@
                 font-size: 14px;
                 color: #A5A5A5;
                 font-weight: 500;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .selectform{
+        background-image: unset !important;
+        margin: 20px;
+
+        .box-con{
+            margin-top: -150px !important;
+            .bglog{
+                display: none;
+            }
+
+            .box-select{
+                img{
+                    display: inline-block;
+                    justify-content: center;
+                }
+
+                .title{
+                    font-size: 25px !important;
+                }
+
+                .desc{
+                    font-size: 14px;
+                }
+
+                .wbut{
+                    width: 100%;
+                    display: block !important;
+                }
             }
         }
     }

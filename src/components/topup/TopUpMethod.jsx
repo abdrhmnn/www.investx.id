@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
+import { Box, Button, Fab } from "@material-ui/core";
 
 import PaymentMethod from "../payment/PaymentMethod";
 
@@ -23,10 +24,10 @@ class TopUpMethod extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="/select-form/">
-                    <div className="back-button">
+                <Link>
+                    <Fab className="back-button">
                         <img src={arrowback} alt="" />
-                    </div>
+                    </Fab>
                 </Link>
                 <div className="logo-invest">
                     <img src={logo} alt="" />
@@ -63,9 +64,9 @@ class TopUpMethod extends Component {
 
                 <div className="foot-data-diri">
                     <div className="agreement"></div>
-                    <button type="submit" form="datadiri">
+                    <Button type="submit" form="datadiri">
                         BAYAR SEKARANG
-                    </button>
+                    </Button>
                 </div>
             </div>
         );

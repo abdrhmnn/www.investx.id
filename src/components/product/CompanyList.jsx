@@ -8,6 +8,7 @@ import triangle from '../../images/company/triangle.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import greenshield from '../../images/greenshield.svg'
+import { Button } from '@material-ui/core';
 
 
 import Select from 'react-select'
@@ -15,7 +16,7 @@ import Select from 'react-select'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 
-import helper from '../shared/helper'
+import helper from '../../helpers/helper'
 
 import Pagination from "react-js-pagination";
 

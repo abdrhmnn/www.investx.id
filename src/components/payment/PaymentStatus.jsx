@@ -116,8 +116,8 @@ class PaymentStatus extends Component {
                     <p>pada kolom ‘ menunggu pembayaran ‘</p>
                     <p>untuk cek detail pembayaranmu.</p>
                     <div className="row justify-content-between mx-2 mt-5">
-                        <button className="but mr-3">BATAL</button>
-                        <button className="but-solid">KELUAR HALAMAN</button>
+                        <Button className="but mr-3">BATAL</Button>
+                        <Button className="but-solid">KELUAR HALAMAN</Button>
                     </div>
                 </div>
             </div>
@@ -229,8 +229,8 @@ class PaymentStatus extends Component {
                     </div>
 
                     <div className="row justify-content-between mx-2">
-                        <button className="but">INVESTASI LAINYA</button>
-                        <button
+                        <Button className="but">INVESTASI LAINYA</Button>
+                        <Button
                             className="but-blue mr-2"
                             onClick={() =>
                                 this.setState({
@@ -239,7 +239,7 @@ class PaymentStatus extends Component {
                             }
                         >
                             CEK STATUS PEMBAYARAN
-                        </button>
+                        </Button>
                     </div>
 
                     <div className="payment-method justify-content-center">

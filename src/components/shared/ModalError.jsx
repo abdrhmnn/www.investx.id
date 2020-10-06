@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Box, Button } from "@material-ui/core";
 
 import errorImage from '../../images/clip-list-is-empty 1.svg'
 
@@ -21,7 +22,7 @@ class ModalError extends Component {
                         <h2 className="error-title">Mohon Maaf</h2>
                         <h5 className="error-description">Data yang anda masukan salah</h5>
 
-                        <button className="but">Ulangi</button>
+                        <Button className="but">Ulangi</Button>
                     </div>
 
                 </div>

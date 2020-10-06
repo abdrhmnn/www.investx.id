@@ -6,7 +6,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
+
+import kuki from './helpers/cookie'
 
 import Home from './components/home/Home.jsx';
 import Login from './components/auth/Login';
@@ -48,33 +51,57 @@ import Profile from './components/profile/Profile';
 import Payment from './components/payment/Payment'
 import PaymentStatus from './components/payment/PaymentStatus';
 
+const PrivatRoute = ({ component: Component, ...rest }) => {
+  const isAuth = kuki.get('auth');
+  const isToken = kuki.get('token');
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isAuth && isToken ? (
+          <Component {...props} {...rest} />
+        ) : (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: {
+                  // from: props.location
+                }
+              }}
+            />
+          )
+      }
+    />
+  );
+}
+
 class App extends Component {
   render() {
     return (
       <Router>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/login' component={Login}/>
+          <Route path='/login' component={Login} />
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
           <Route path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
 
-          <Route exact path='/email-verify/:code' component={SelectForm}/>
-          <Route exact path='/investor-form-data-diri' component={DataDiri}/>
-          <Route exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
-          <Route exact path='/investor-form-dokumen' component={Dokumen}/>
-          <Route exact path='/investor-form-bank' component={Bank}/>
-          <Route exact path='/investor-form-preference' component={Preference}/>
+          <PrivatRoute exact path='/email-verify/:code' component={SelectForm}/>
+          <PrivatRoute exact path='/investor-form-data-diri' component={DataDiri}/>
+          <PrivatRoute exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
+          <PrivatRoute exact path='/investor-form-dokumen' component={Dokumen}/>
+          <PrivatRoute exact path='/investor-form-bank' component={Bank}/>
+          <PrivatRoute exact path='/investor-form-preference' component={Preference}/>
 
-          <Route exact path='/startup-form-data-diri' component={StartUpDataDiri}/>
-          <Route exact path='/startup-form-dokumen' component={StartUpDokumen}/>
-          <Route exact path='/startup-form-informasi-perusahaan' component={InfoPerusahaan}/>
-          <Route exact path='/startup-form-informasi-finansial' component={InfoFinansial}/>
-          <Route exact path='/startup-form-informasi-nonfinansial' component={InfoNonFinansial}/>
-          <Route exact path='/startup-form-media' component={Media}/>
-          <Route exact path='/startup-form-syarat' component={Syarat}/>
+          <PrivatRoute exact path='/startup-form-data-diri' component={StartUpDataDiri}/>
+          <PrivatRoute exact path='/startup-form-dokumen' component={StartUpDokumen}/>
+          <PrivatRoute exact path='/startup-form-informasi-perusahaan' component={InfoPerusahaan}/>
+          <PrivatRoute exact path='/startup-form-informasi-finansial' component={InfoFinansial}/>
+          <PrivatRoute exact path='/startup-form-informasi-nonfinansial' component={InfoNonFinansial}/>
+          <PrivatRoute exact path='/startup-form-media' component={Media}/>
+          <PrivatRoute exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route exact path='/company-list' component={CompanyList}/>
           <Route exact path='/company-list/detail/:id' component={CompanyDetail}/>
@@ -94,11 +121,8 @@ class App extends Component {
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
 
-          <Route exact path='/profile' component={Profile}/>
+          <PrivatRoute exact path='/profile' component={Profile}/>
 
-
-
-          
           <Route exact path='*' component={emptPage}/>
         </Switch>
       </Router>

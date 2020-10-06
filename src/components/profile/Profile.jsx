@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Navbar from '../shared/Navbar';
 import {Button, Fab,} from '@material-ui/core'
 import walleticon from '../../images/profile/walleticon.svg'
@@ -21,15 +22,17 @@ import BusinessIndex from './businessMenu/BusinessIndex';
 import HistoryIndex from './historyMenu/HistoryIndex';
 import FavoriteIndex from './favoriteMenu/FavoriteIndex';
 
+
 class Profile extends Component {
     state={
         filterShow : false,
-        activeMenu : 'favorite'
     }
 
-    handleClick = (e) => this.setState({activeMenu : e.target.id})
+    handleClick = (e) => this.props.changeTab(e.target.id)
 
+    
     render() {
+        // console.log(this.props)
         return (
             <div className='profile'>
                 <Navbar />
@@ -93,33 +96,35 @@ class Profile extends Component {
                             onMouseEnter={() => this.setState({filterShow : true})} 
                             onMouseLeave={() => this.setState({filterShow : false})}>
                                 <ul>
-                                    <li className={this.state.activeMenu === 'profile'? 'active-menu-profile' : ''} id='profile' onClick={this.handleClick}><img className='proficonmenu' src={profile} alt="menu-icon"/> My Profile</li>
-                                    <li className={this.state.activeMenu === 'business'? 'active-menu-profile' : ''} id='business' onClick={this.handleClick}><img className='proficonmenu' src={busines} alt="menu-icon"/> My Business</li>
-                                    <li className={this.state.activeMenu === 'history'? 'active-menu-profile' : ''} id='history' onClick={this.handleClick}><img className='proficonmenu' src={history} alt="menu-icon"/> History</li>
-                                    <li className={this.state.activeMenu === 'favorite'? 'active-menu-profile' : ''} id='favorite' onClick={this.handleClick}><img className='proficonmenu' src={favorite} alt="menu-icon"/> Favorite</li>
-                                    <li className={this.state.activeMenu === 'list'? 'active-menu-profile' : ''} id='list' onClick={this.handleClick}><img className='proficonmenu' src={list} alt="menu-icon"/> List of Investment</li>
-                                    <li className={this.state.activeMenu === 'dividen'? 'active-menu-profile' : ''} id='dividen' onClick={this.handleClick}><img className='proficonmenu' src={dividen} alt="menu-icon"/> Dividend</li>
+                                    <li className={this.props.activeTab === 'profile'? 'active-menu-profile' : ''} id='profile' onClick={this.handleClick}><img className='proficonmenu' src={profile} alt="menu-icon"/> My Profile</li>
+                                    <li className={this.props.activeTab === 'business'? 'active-menu-profile' : ''} id='business' onClick={this.handleClick}><img className='proficonmenu' src={busines} alt="menu-icon"/> My Business</li>
+                                    <li className={this.props.activeTab === 'history'? 'active-menu-profile' : ''} id='history' onClick={this.handleClick}><img className='proficonmenu' src={history} alt="menu-icon"/> History</li>
+                                    <li className={this.props.activeTab === 'favorite'? 'active-menu-profile' : ''} id='favorite' onClick={this.handleClick}><img className='proficonmenu' src={favorite} alt="menu-icon"/> Favorite</li>
+                                    <li className={this.props.activeTab === 'list'? 'active-menu-profile' : ''} id='list' onClick={this.handleClick}><img className='proficonmenu' src={list} alt="menu-icon"/> List of Investment</li>
+                                    <li className={this.props.activeTab === 'dividen'? 'active-menu-profile' : ''} id='dividen' onClick={this.handleClick}><img className='proficonmenu' src={dividen} alt="menu-icon"/> Dividend</li>
                                         <hr/>
                                     <li><img className='proficonmenu' src={logout} alt="menu-icon"/> Logout</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="col-md fbodycon">
-                        <Fade collapse opposite when={this.state.activeMenu === 'profile'}>
+                        <Fade collapse opposite when={this.props.activeTab === 'profile'}>
                             <DataDiriProfile />
                         </Fade>
-                        <Fade collapse opposite when={this.state.activeMenu === 'business'}>
+                        <Fade collapse opposite when={this.props.activeTab === 'business'}>
                             <BusinessIndex />
                         </Fade>
-                        <Fade collapse opposite when={this.state.activeMenu === 'history'}>
+                        <Fade collapse opposite when={this.props.activeTab === 'history'}>
                             <HistoryIndex />
                         </Fade>
-                        <Fade collapse opposite when={this.state.activeMenu === 'favorite'}>
+                        <Fade collapse opposite when={this.props.activeTab === 'favorite'}>
                             <FavoriteIndex />
                         </Fade>
                         </div>
                     </div>
                 </div>
+                {this.props.data}
+                <Button onClick={()=> this.props.changeTab('history')}>test</Button>
                 <Footer />
                 <Ojk />
             </div>
@@ -127,4 +132,20 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+    return {
+        activeTab: state.activeTab,
+        // number : state.number
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeTab: (data) => dispatch({type:'CHANGE_TAB' , data: data})
+        }
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

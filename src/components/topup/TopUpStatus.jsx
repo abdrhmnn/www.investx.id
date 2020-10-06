@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Box, Button } from "@material-ui/core";
 
 import logoWhite from "../../images/logo-white.svg";
 import paymentImage from "../../images/paymentimage.svg";
@@ -23,7 +24,7 @@ class TopUpStatus extends Component {
                 </p>
                 <br />
 
-                <button className="but-blue">KEMBALI KE PINJAMAN</button>
+                <Button className="but-blue">KEMBALI KE PINJAMAN</Button>
             </div>
         );
     }

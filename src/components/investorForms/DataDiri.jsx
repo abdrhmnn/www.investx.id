@@ -85,7 +85,7 @@ class DataDiri extends Component {
                                         // error ={touched.name && errors.name}
                                     />
                                 </div>
-                                <div className="col-md-12 ">
+                                <div className="col-md-12">
                                     <ButtonGroup className={errors.gender?'button-gender line-error':'button-gender'}>
                                         <Button className={values.gender === 'pria'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'pria')} >Pria</Button>
                                         <Button className={values.gender === 'wanita'? 'act-gen' : null} onClick={()=> setFieldValue('gender', 'wanita')} >Wanita</Button>
@@ -321,7 +321,9 @@ class DataDiri extends Component {
 
                <div className="foot-data-diri">
                    <p className="agreement">*Saya menjamin bahwa informasi yang saya cantumkan diatas adalah benar dan siap bertanggung jawab atas segala konsekuensi yang terjadi di kemudian hari, serta memiliki kemampuan analisis resiko terhadap saham penerbit dan memenuhi kriteria pemodal sesuai peraturan yang berlaku.</p>
-                    <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
+                    <Link to="/investor-form-pendidikan-pekerjaan">
+                        <Button type='submit' form='investorForm'>SIMPAN & LANJUTKAN</Button>
+                    </Link>
                </div>
            </div>
         );

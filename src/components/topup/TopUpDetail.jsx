@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
+import { Box, Button, Fab } from "@material-ui/core";
 
 class TopUpDetail extends Component {
     state = {
@@ -21,10 +22,10 @@ class TopUpDetail extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="/select-form/">
-                    <div className="back-button">
+                <Link>
+                    <Fab className="back-button">
                         <img src={arrowback} alt="" />
-                    </div>
+                    </Fab>
                 </Link>
                 <div className="logo-invest">
                     <img src={logo} alt="" />
@@ -95,10 +96,10 @@ class TopUpDetail extends Component {
                             </p>
 
                             <div className="d-flex justify-content-between">
-                                <button className="but">BUTUH BANTUAN</button>
-                                <button className="but-solid" type="submit">
+                                <Button className="but">BUTUH BANTUAN</Button>
+                                <Button className="but-solid" type="submit">
                                     KIRIM BUKTI
-                                </button>
+                                </Button>
                             </div>
                         </div>
                     ) : (
@@ -110,13 +111,13 @@ class TopUpDetail extends Component {
                                 obcaecati eveniet itaque quisquam, hic magni
                                 neque, aperiam unde accusamus harum.
                             </p>
-                            <button
+                            <Button
                                 className="but-solid"
                                 type="submit"
                                 onClick={() => this.setIsInvoice(true)}
                             >
                                 BAYAR TRANSAKSI
-                            </button>
+                            </Button>
                         </div>
                     )}
                 </div>

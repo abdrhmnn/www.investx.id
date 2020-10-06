@@ -5,6 +5,7 @@ import outlook from '../../images/outlook.svg'
 import Navbar from '../shared/Navbar';
 import mailbox from '../../images/mailbox.png'
 
+import { Box, Button } from "@material-ui/core";
 
 class Otp extends Component {
     state ={
@@ -57,7 +58,7 @@ class Otp extends Component {
                         <input required ref={(input) => { this.boxFoc3 = input; }}  type='number' maxLength='1' name='box3' value={this.state.box3} onChange={this.handleChange}  />
                         <input required ref={(input) => { this.boxFoc4 = input; }}  type='number' maxLength='1' name='box4' value={this.state.box4} onChange={this.handleChange}  />
                         </form>
-                    <button type='submit' form='otp'>Verifikasi</button>
+                    <Button type='submit' form='otp'>Verifikasi</Button>
                     <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
                     </div>
                 </div>
