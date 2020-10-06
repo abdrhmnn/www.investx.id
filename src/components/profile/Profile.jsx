@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../shared/Navbar';
-import {Button, Fab,} from '@material-ui/core'
+import {Button, Fab, Collapse} from '@material-ui/core'
 import walleticon from '../../images/profile/walleticon.svg'
 import plustopup from '../../images/profile/plustopup.svg'
 
@@ -17,15 +17,28 @@ import DataDiriProfile from './profileMenu/DataDiriProfile'
 import Footer from '../shared/Footer';
 import Ojk from '../shared/Ojk';
 
-import Fade from 'react-reveal/Fade';
+// import Fade from 'react-reveal/Fade';
 import BusinessIndex from './businessMenu/BusinessIndex';
 import HistoryIndex from './historyMenu/HistoryIndex';
 import FavoriteIndex from './favoriteMenu/FavoriteIndex';
+
+import API from '../../api'
+import kuki from '../../helpers/cookie'
 
 
 class Profile extends Component {
     state={
         filterShow : false,
+        dataProfile: {}
+    }
+
+    componentDidMount(){
+        API.getProfile().then(res =>{
+            console.log(res)
+            this.setState({dataProfile : res.data})
+        }).catch(err =>{
+            console.log(err.response)
+        })
     }
 
     handleClick = (e) => this.props.changeTab(e.target.id)
@@ -45,7 +58,7 @@ class Profile extends Component {
                                     <i className="fas fa-camera"></i>
                                 </Fab>
                             </figure>
-                            <p className="username">Maria <span><i className="fas fa-pen"></i></span></p>
+                            <p className="username">{this.state.dataProfile.full_name} <span><i className="fas fa-pen"></i></span></p>
                             <p className="since">Member since june 2020</p>
                         </div>
                         <div className="col-md profile-right">
@@ -108,23 +121,21 @@ class Profile extends Component {
                             </div>
                         </div>
                         <div className="col-md fbodycon">
-                        <Fade collapse opposite when={this.props.activeTab === 'profile'}>
+                        <Collapse in={this.props.activeTab === 'profile'}>
                             <DataDiriProfile />
-                        </Fade>
-                        <Fade collapse opposite when={this.props.activeTab === 'business'}>
+                        </Collapse>
+                        <Collapse in={this.props.activeTab === 'business'}>
                             <BusinessIndex />
-                        </Fade>
-                        <Fade collapse opposite when={this.props.activeTab === 'history'}>
+                        </Collapse>
+                        <Collapse in={this.props.activeTab === 'history'}>
                             <HistoryIndex />
-                        </Fade>
-                        <Fade collapse opposite when={this.props.activeTab === 'favorite'}>
+                        </Collapse>
+                        <Collapse in={this.props.activeTab === 'favorite'}>
                             <FavoriteIndex />
-                        </Fade>
+                        </Collapse>
                         </div>
                     </div>
                 </div>
-                {this.props.data}
-                <Button onClick={()=> this.props.changeTab('history')}>test</Button>
                 <Footer />
                 <Ojk />
             </div>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import kuki from '../helpers/cookie'
 
 const localBaseUrl = "http://192.168.0.14:8000";
 const apiBaseUrl = "https://api.staging.investx.id";
@@ -18,6 +19,9 @@ const API = {
   login: (body) => {
     console.log(body, 'bodynyta');
     return axios.post(apiBaseUrl + `/authentication/password/`, body)
+  },
+  getProfile: () => {
+    return axios.get(apiBaseUrl + `/file/account/profile/`, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   },
 };
 

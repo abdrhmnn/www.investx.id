@@ -15,7 +15,7 @@ class FavoriteIndex extends Component {
                 <div className="row">
                 {
                     objCards.map((res,i)=>
-                        <div className="col-md-6 mb-3">
+                        <div className="col-md-6 mb-3" key={i}>
                             <Card name={res.name} />
                         </div>
                     )   

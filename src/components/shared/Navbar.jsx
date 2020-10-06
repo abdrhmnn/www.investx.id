@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 // import HamburgerMenu from 'react-hamburger-menu'
+import { connect } from 'react-redux';
+
 import logo from '../../images/logo.svg'
 import { Link, NavLink } from 'react-router-dom'
-import { Button, Menu, MenuItem, Fade, ClickAwayListener } from "@material-ui/core";
+import { Button, ClickAwayListener } from "@material-ui/core";
 import kuki from '../../helpers/cookie'
 import walletnav from '../../images/walletnav.svg'
 
 class Navbar extends Component {
     state={
         isOpen : false,
-        statusId : 2,
+        statusId : null,
     }
     componentDidMount(){
-        if (window.location.pathname === '/') {
-        }else{
-            this.setState({statusId : 0})
+        const {phone, email} = kuki.get('status') || {phone : false, email : false}
+        const isAuth = kuki.get('auth')
+        if (!phone && isAuth ) {
+            this.setState({statusId : 1})
+        }
+        if (!email && isAuth ) {
+            this.setState({statusId : 2})
+        }
+        if (!email && !phone  && isAuth ) {
+            this.setState({statusId : 1})
         }
     }
 
     handlePop = ()=> this.setState({isOpen : !this.state.isOpen})
+
+    handleClick = (val)=>{
+       this.setState({isOpen : false})
+       this.props.changeTab(val)
+    } 
 
     render() {
         return (
@@ -55,36 +69,39 @@ class Navbar extends Component {
                                 <li className='popovercus'>
                                     <ClickAwayListener onClickAway={()=>this.setState({isOpen : false})}>
                                         <div className='popovercus'>
-                                            <p className="m-0" onClick={this.handlePop}>
-                                                <img className='ava' src='https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png' alt="ava"/> Kemal <i className="ml-2 fas fa-chevron-down"></i>
-                                            </p>
+                                            <Link to='/profile' className='linktoprof'>
+                                                <img className='ava' src='https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png' alt="ava"/> <span>{kuki.get('full_name')}</span>  
+                                            </Link>
+                                            <i onClick={this.handlePop} className="ml-3 fas fa-chevron-down" style={{color: '#A5A5A5'}}></i>
                                             {this.state.isOpen ? (
                                             <div className='menus-pop'>
                                                 <div className="boxsaldo">
                                                     <img src={walletnav} alt="saldo"/>
-                                                    <p className="nominal">saldo  <br/> <span>Rp 1500000</span> </p>
+                                                    <p className="nominal">Saldo  <br/> <span>Rp 1500000</span> </p>
                                                     <Button>
                                                     <i className="fas fa-plus-circle"></i> Top Up
                                                     </Button>
                                                 </div>
-                                                <ul className='menuslistpop'>
-                                                    <li>Notifications</li>
-                                                    <li className='border-bottom'>Invite Friends</li>
-                                                    <li>Profile Saya</li>
-                                                    <li>Bisnis Saya</li>
-                                                    <li>History</li>
-                                                    <li>Favorit</li>
-                                                    <li>List of Investment</li>
-                                                    <li className='border-bottom'>Dividen</li>
-                                                    <li>Settings</li>
-                                                    <li style={{cursor : 'pointer', color:'#4CB5EF', }}
+                                                <div className='menuslistpop'>
+                                                    <a href='/'>Notifications</a>
+                                                    <a href='/' className='border-bottom'>Invite Friends</a>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('profile')}>Profile Saya</Link>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('business')}>Bisnis Saya</Link>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('history')}>History</Link>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('favorite')}>Favorit</Link>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('list')}>List of Investment</Link>
+                                                    <Link to='/profile'  onClick={()=> this.handleClick('dividen')} className='border-bottom'>Dividen</Link>
+                                                    <a href='/'>Settings</a>
+                                                    <a href='/' style={{cursor : 'pointer', color:'#4CB5EF', }}
                                                     onClick={()=>{
                                                         kuki.remove('auth')
                                                         kuki.remove('status')
                                                         kuki.remove('token')
-                                                        window.location.href = '/'
-                                                    }}> <b>Logout</b></li>
-                                                </ul>
+                                                        kuki.remove('full_name')
+                                                        kuki.remove('email')
+                                                        kuki.remove('phone_number')
+                                                    }}> <b>Logout</b></a>
+                                                </div>
                                             </div>
                                             ) : null}
                                         </div>
@@ -96,7 +113,7 @@ class Navbar extends Component {
                         </ul>
                     </div>
                 </nav>
-                    {/* {
+                    {
                         this.state.statusId === 1?
                         <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
                         : this.state.statusId === 2?
@@ -104,10 +121,26 @@ class Navbar extends Component {
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null
-                    } */}
+                    }
             </div>
         );
     }
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+    return {
+        activeTab: state.activeTab,
+        // number : state.number
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeTab: (data) => dispatch({type:'CHANGE_TAB' , data: data})
+        }
+}
+
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

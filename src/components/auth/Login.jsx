@@ -63,14 +63,35 @@ class Login extends Component {
                                     console.log(val)
                                     this.setState({loading : true})
                                     API.login(val).then(res=>{
-                                        this.setState({loading : false})
                                         console.log(res)
-                                        const {token, register_status, email} = res.data
-                                        kuki.set('auth', true)
-                                        kuki.set('token', token)
-                                        // kuki.set('email', email)
-                                        kuki.set('status', register_status)
-                                        window.location.href = '/'
+                                        
+                                        const apiProfile = () =>{
+                                            API.getProfile().then(profile =>{
+                                                this.setState({loading : false})
+                                                const {email, full_name, phone_number} = profile.data
+                                                kuki.set('email', email)
+                                                kuki.set('full_name', full_name)
+                                                kuki.set('phone_number', phone_number)
+                                                window.location.href = '/'
+                                            }).catch(err =>{
+                                                this.setState({loading : false})
+                                                console.log(err.response)
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Oops...',
+                                                    text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+                                                })
+                                            })
+                                        }
+                                        
+                                        var {token, register_status} = res.data
+                                         Promise.all([
+                                            kuki.set('token', token),
+                                            kuki.set('status', register_status),
+                                            kuki.set('auth', true),
+                                            apiProfile(),
+                                        ])
+                                        
                                     }).catch(err => {
                                         this.setState({loading : false})
                                         console.log(err.response) 
@@ -147,7 +168,7 @@ class Login extends Component {
     
                             </div>
                         </div>
-    
+                            
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ class CaroQuotes extends Component {
                 <Slider {...settings} ref={c => (this.slider = c)}>
                   {
                     arr.map((res,i)=>(
-                      <div>
+                      <div key={i}>
                         <div className="row center"> 
                             <div className="col-md-7 ">
                               <span className="header">"Exactly what founders need to be successful"</span> 
