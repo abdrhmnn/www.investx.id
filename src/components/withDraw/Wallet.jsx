@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
+import { Box, Button } from "@material-ui/core";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
@@ -46,10 +47,25 @@ class Wallet extends Component {
                         <div className="title-alt" style={{ marginLeft: "-45px" }}>Nominal Top Up</div>
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "400px" }}>
                             <Link to="/topup-method">
-                                <button className="but-blue" style={{ marginBottom: "10px" }}>Top Up</button>
+                                <Button className="but-blue" style={{
+                                    marginBottom: "10px", width: '197px',
+                                    height: '36px',
+                                    fontSize: '14px',
+                                    textTransform: 'uppercase',
+                                    color: '#ffffff',
+                                    background: '#01579b',
+                                    borderRadius: '24px',
+                                    border: 'none',
+                                    outline: 'none' }}>Top Up</Button>
                             </Link>
 
-                            <button className="but" style={{ width: "100px", width: "197px", height: "36px", fontSize: "14px", paddingBottom: "25px" }}>WITHDRAW</button>
+                            <Button className="but" style={{
+                                width: "100px", width: "197px", height: "36px", fontSize: "14px", color: 'black',
+                                borderRadius: '8px',
+                                border: '1px solid #0288d1',
+                                backgroundColor: 'white',
+                                fontSize: '16px',
+                                outline: 'unset !important'}}>WITHDRAW</Button>
                         </div>
                         <div className="input-border-underline" style={{ marginLeft: "-45px", width: "420px", marginTop: "-50px" }}>
                             <input
@@ -60,85 +76,87 @@ class Wallet extends Component {
                         </div>
 
 
-                        <div style={{ marginLeft: "-50px", maxHeight: "40px", overflowX: "hidden", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
-                            <button className="saran">20.000.000</button>
-                            <button className="saran">30.000.000</button>
-                            <button className="saran">40.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
-                            <button className="saran">50.000.000</button>
+                        <div style={{ marginLeft: "-50px", maxHeight: "60px", overflowX: "hidden", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
+                            <Button className="saran">20.000.000</Button>
+                            <Button className="saran">30.000.000</Button>
+                            <Button className="saran">40.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
+                            <Button className="saran">50.000.000</Button>
 
 
                         </div>
                     </div>
                 </div>
                 <div className="box riwayat">
-                    <div className="title-alt" style={{fontWeight:"bolder", color:"#0288DA", marginLeft:"30px", marginTop:"20px"}}>Riwayat Transaksi</div>
-<div className="menu">
-                    <a style={{background: '#2388D1',
-  color: 'white'}}>Semua</a>
-                    <a style={{marginLeft:"120px"}}>Pembelian</a>
-                    <a style={{marginLeft:"230px"}}>Top Up</a>
-                    <a style={{marginLeft:"320px"}}>With Draw</a>
-</div>
+                    <div className="title-alt" style={{ fontWeight: "bolder", color: "#0288DA", marginLeft: "30px", marginTop: "20px" }}>Riwayat Transaksi</div>
+                    <div className="menu">
+                        <a style={{
+                            background: '#2388D1',
+                            color: 'white'
+                        }}>Semua</a>
+                        <a style={{ marginLeft: "120px" }}>Pembelian</a>
+                        <a style={{ marginLeft: "230px" }}>Top Up</a>
+                        <a style={{ marginLeft: "320px" }}>With Draw</a>
+                    </div>
 
-<p style={{letterSpacing:"-0.5px",marginTop:"70px", fontSize:"9pt",marginLeft:"30px"}}>10 Aug 2020 | 08:30</p>
-<br />
+                    <p style={{ letterSpacing: "-0.5px", marginTop: "70px", fontSize: "9pt", marginLeft: "30px" }}>10 Aug 2020 | 08:30</p>
+                    <br />
 
-<div className="title-alt" style={{fontWeight:"bolder", fontSize:"10pt", color:"#0288DA", marginLeft:"30px", marginTop:"-10px", color:"black"}}>No Transaksi</div>
-<p style={{fontSize:"10pt",marginLeft:"30px"}}>(IVR/200804/XX/VII/469044911)</p>
+                    <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "30px", marginTop: "-10px", color: "black" }}>No Transaksi</div>
+                    <p style={{ fontSize: "10pt", marginLeft: "30px" }}>(IVR/200804/XX/VII/469044911)</p>
 
-<div className="Total" style={{borderLeft:"2px solid black"}}>
-    <div className="title-alt" style={{fontWeight:"bolder", fontSize:"10pt", color:"#0288DA", marginLeft:"460px", marginTop:"-60px", color:"black"}}>Total Pembayaran <span style={{color:"#F27272"}}>Rp. 20.000.000</span></div>
-<p style={{fontSize:"10pt",marginLeft:"460px"}}>Lihat Detail Transaksi</p>
-</div>
-<hr />
-<div>
-    
-    <div className="title-alt" style={{fontWeight:"bold", fontSize:"10pt", color:"#000", marginLeft:"30px", marginTop:"-10px"}}>Top Up</div><img  src={topup}/>
-<p style={{fontSize:"18pt",marginLeft:"30px",marginTop:"-25px", fontWeight:"bolder"}}>+20.000.000</p>
+                    <div className="Total" style={{ borderLeft: "2px solid black" }}>
+                        <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "460px", marginTop: "-60px", color: "black" }}>Total Pembayaran <span style={{ color: "#F27272" }}>Rp. 20.000.000</span></div>
+                        <p style={{ fontSize: "10pt", marginLeft: "460px" }}>Lihat Detail Transaksi</p>
+                    </div>
+                    <hr />
+                    <div>
 
-<div style={{marginLeft:"200px", marginTop:"-80px"}}>
-    <img />
-    <div className="title-alt" style={{fontWeight:"bold", fontSize:"10pt", color:"#000", marginLeft:"30px", marginTop:"-5px"}}>Status</div>
-<p style={{fontSize:"10pt",marginLeft:"30px", fontWeight:"bolder", color: "green"}}>Transaksi Berhasil</p>
-</div>
-<div style={{marginLeft:"460px", marginTop:"-50px"}}>
-    <button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"#FFA412", color:"white", border:"none" }}>Top Up Lagi</button>
-</div>
-<hr />
-</div>
+                        <div className="title-alt" style={{ fontWeight: "bold", fontSize: "10pt", color: "#000", marginLeft: "30px", marginTop: "-10px" }}>Top Up</div><img src={topup} />
+                        <p style={{ fontSize: "18pt", marginLeft: "30px", marginTop: "-25px", fontWeight: "bolder" }}>+20.000.000</p>
 
-<p style={{letterSpacing:"-0.5px",marginTop:"70px", fontSize:"9pt",marginLeft:"30px"}}>12 Aug 2020 | 00:30</p>
-<br />
+                        <div style={{ marginLeft: "200px", marginTop: "-80px" }}>
+                            <img />
+                            <div className="title-alt" style={{ fontWeight: "bold", fontSize: "10pt", color: "#000", marginLeft: "30px", marginTop: "-5px" }}>Status</div>
+                            <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "green" }}>Transaksi Berhasil</p>
+                        </div>
+                        <div style={{ marginLeft: "460px", marginTop: "-50px" }}>
+                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "#FFA412", color: "white", border: "none" }}>Top Up Lagi</Button>
+                        </div>
+                        <hr />
+                    </div>
 
-<div className="title-alt" style={{fontWeight:"bolder", fontSize:"10pt", color:"#0288DA", marginLeft:"30px", marginTop:"-10px", color:"black"}}>No Transaksi</div>
-<p style={{fontSize:"10pt",marginLeft:"30px"}}>(IVR/200804/XX/VII/469044911)</p>
+                    <p style={{ letterSpacing: "-0.5px", marginTop: "70px", fontSize: "9pt", marginLeft: "30px" }}>12 Aug 2020 | 00:30</p>
+                    <br />
 
-<div className="Total" style={{borderLeft:"2px solid black"}}>
-    <div className="title-alt" style={{fontWeight:"bolder", fontSize:"10pt", color:"#0288DA", marginLeft:"460px", marginTop:"-60px", color:"black"}}>Total Pembayaran <span style={{color:"#F27272"}}>Rp. 20.000.000</span></div>
-<p style={{fontSize:"10pt",marginLeft:"460px"}}>Lihat Detail Transaksi</p>
-</div>
-<hr />
-<div>
-    
-    <div className="title-alt" style={{fontWeight:"bold", fontSize:"10pt", color:"#000", marginLeft:"30px", marginTop:"-10px"}}>Top Up</div><img src={tarik} />
-<p style={{fontSize:"18pt",marginLeft:"30px",marginTop:"-25px", fontWeight:"bolder"}}>-20.000.000</p>
+                    <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "30px", marginTop: "-10px", color: "black" }}>No Transaksi</div>
+                    <p style={{ fontSize: "10pt", marginLeft: "30px" }}>(IVR/200804/XX/VII/469044911)</p>
 
-<div style={{marginLeft:"200px", marginTop:"-80px"}}>
-    <img />
-    <div className="title-alt" style={{fontWeight:"bold", fontSize:"10pt", color:"#000", marginLeft:"30px", marginTop:"-5px"}}>Status</div>
-<p style={{fontSize:"10pt",marginLeft:"30px", fontWeight:"bolder", color: "red"}}>Transaksi Dibatalkan</p>
-</div>
-<div style={{marginLeft:"460px", marginTop:"-50px"}}>
-    <button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", paddingBottom: "25px", background:"red", color:"white", border:"none" }}>Tarik Uang Lagi</button>
-</div>
-<hr />
-</div>
+                    <div className="Total" style={{ borderLeft: "2px solid black" }}>
+                        <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "460px", marginTop: "-60px", color: "black" }}>Total Pembayaran <span style={{ color: "#F27272" }}>Rp. 20.000.000</span></div>
+                        <p style={{ fontSize: "10pt", marginLeft: "460px" }}>Lihat Detail Transaksi</p>
+                    </div>
+                    <hr />
+                    <div>
+
+                        <div className="title-alt" style={{ fontWeight: "bold", fontSize: "10pt", color: "#000", marginLeft: "30px", marginTop: "-10px" }}>Top Up</div><img src={tarik} />
+                        <p style={{ fontSize: "18pt", marginLeft: "30px", marginTop: "-25px", fontWeight: "bolder" }}>-20.000.000</p>
+
+                        <div style={{ marginLeft: "200px", marginTop: "-80px" }}>
+                            <img />
+                            <div className="title-alt" style={{ fontWeight: "bold", fontSize: "10pt", color: "#000", marginLeft: "30px", marginTop: "-5px" }}>Status</div>
+                            <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "red" }}>Transaksi Dibatalkan</p>
+                        </div>
+                        <div style={{ marginLeft: "460px", marginTop: "-50px" }}>
+                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "red", color: "white", border: "none" }}>Tarik Uang Lagi</Button>
+                        </div>
+                        <hr />
+                    </div>
 
                 </div>
             </div>

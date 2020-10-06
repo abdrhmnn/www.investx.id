@@ -41,16 +41,16 @@ class PaymentMethod extends Component {
                                     />
 
                                     <img src={value} alt="bca" />
-                                    <div style={{position:"absolute", padding:"6px", border: "2px solid #2388D1", color:"#2388D1", borderRadius:"30px", fontSize:"10pt", paddingLeft:"15px", paddingRight:"15px", marginLeft:"420px"}}>
+                                    <div style={{ position: "absolute", padding: "6px", border: "2px solid #2388D1", color: "#2388D1", borderRadius: "30px", fontSize: "10pt", paddingLeft: "15px", paddingRight: "15px", marginLeft: "420px" }}>
                                         <span>NEW</span>
                                     </div>
                                     <br />
                                 </div>
                             )}
                             <br /> <br /> <br />
-                            <div className="formBanking" style={{cursor: "pointer"}}>
+                            <div className="formBanking" style={{ cursor: "pointer" }}>
                                 <img src={plus} />
-                                <span style={{marginLeft:"9px", color:"#0288D1", fontWeight:"bolder"}}>Tambah Bank</span>
+                                <span style={{ marginLeft: "9px", color: "#0288D1", fontWeight: "bolder" }}>Tambah Bank</span>
                             </div>
                         </div>
                     )
@@ -92,7 +92,7 @@ class MethodTopUp extends Component {
         const methods = [
             {
                 title: 'TRANSFER REKENING',
-               
+
                 logos: [
                     bca,
                     bca,
@@ -101,7 +101,7 @@ class MethodTopUp extends Component {
             },
             {
                 title: 'TRANSFER REKENING',
-               
+
                 logos: [
                     bca,
                     bca,
@@ -145,11 +145,11 @@ class MethodTopUp extends Component {
                     }
                 </div>
 
-              
+
                 <div className="foot-data-diri">
-                   <p className="agreement"></p>
+                    <p className="agreement"></p>
                     <Button type='submit' form='datadiri'>LANJUTKAN</Button>
-               </div>
+                </div>
             </div>
         );
     }

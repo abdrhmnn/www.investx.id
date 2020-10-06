@@ -18,7 +18,7 @@ class DetailTransaction extends Component {
     }
 
     render() {
-        const butSolid ={
+        const butSolid = {
             backgroundColor: '#0288d1',
             border: 'none',
             width: '100%',
