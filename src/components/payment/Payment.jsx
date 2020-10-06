@@ -1,4 +1,4 @@
-import { Switch } from "@material-ui/core";
+import { Fab, Switch } from "@material-ui/core";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -18,11 +18,13 @@ class Payment extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
+
                 <Link to="/select-form/">
-                    <div className="back-button">
+                    <Fab className="back-button">
                         <img src={arrowback} alt="" />
-                    </div>
+                    </Fab>
                 </Link>
+
                 <div className="logo-invest">
                     <img src={logo} alt="logo" />
                 </div>
@@ -132,22 +134,6 @@ class Payment extends Component {
                     <br />
                     <div className="px-5">
                         <PaymentMethod />
-                    </div>
-                </div>
-
-                <p className="box-form-title">Ringkasan Pembayaran</p>
-                <div className="payment-detail box-form-data">
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Harga</p>
-                        <p className="amount">1.000.000</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Biaya Admin</p>
-                        <p className="amount">+1.000</p>
-                    </div>
-                    <div className="d-flex justify-content-between">
-                        <p className="name">Total Pembayaran</p>
-                        <p className="amount h4">1,001.000</p>
                     </div>
                 </div>
 

@@ -50,23 +50,27 @@ class PaymentMethod extends Component {
                             )}
                         </div>
                         <p className="subtitle">{method.subtitle}</p>
-                        {method.logos.map((value, j) => (
+                        {method.logos.map((data) => (
                             <div
+                                key={data.id}
+                                onClick={() => this.onChecked(data.id)}
                                 className={
                                     "radio-bank " +
-                                    (this.state.checkedRadio === value
+                                    (this.state.checkedRadio === data.id
                                         ? "checked"
                                         : "")
                                 }
-                                key={j}
                             >
                                 <input
+                                    checked={
+                                        this.state.checkedRadio === data.id
+                                    }
                                     type="radio"
                                     name="bank"
-                                    onChange={() => this.onChecked(value)}
+                                    value={data.logo}
                                 />
 
-                                <img src={value} alt="bca" />
+                                <img src={data.logo} alt="bca" />
                                 <br />
                             </div>
                         ))}
@@ -82,29 +86,40 @@ class PaymentMethod extends Component {
             {
                 title: "VIRTUAL ACCOUNT",
                 subtitle: "Dengan Kode Unik Semua Jadi Cepat",
-                logos: [bca, bni, mandiri, bri],
+                logos: [
+                    { id: 0, logo: bca },
+                    { id: 1, logo: bni },
+                    { id: 2, logo: mandiri },
+                    { id: 3, logo: bri },
+                ],
             },
             {
                 title: "E-WALLET",
                 subtitle:
                     "Pembayaran terhubung langsung dengan akun e-walletmu ",
-                logos: [gopay, ovo],
+                logos: [
+                    { id: 4, logo: gopay },
+                    { id: 5, logo: ovo },
+                ],
             },
             {
                 title: "KARTU KREDIT",
                 subtitle: "Dapat menggunakan berbagai pilihan kartu kredit",
-                logos: [kredit],
+                logos: [{ id: 6, logo: kredit }],
             },
             {
                 title: "TRANSFER BANK",
                 subtitle:
                     "Transaksi dengan akhir kode unik untuk verifikasi otomatis",
-                logos: [bca],
+                logos: [{ id: 7, logo: bca }],
             },
             {
                 title: "MINIMARKET",
                 subtitle: "Dapat menggunakan berbagai pilihan kartu kredit",
-                logos: [minimarket, indomaret],
+                logos: [
+                    { id: 8, logo: minimarket },
+                    { id: 9, logo: indomaret },
+                ],
             },
         ];
         return (

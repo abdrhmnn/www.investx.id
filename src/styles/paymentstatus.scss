@@ -51,7 +51,7 @@
 .modal-detail-transaction {
     position: relative;
     width: 886px;
-    height: 484px;
+    height: 412px;
     background: #ffffff;
     border-radius: 25px;
     display: flex;
@@ -60,16 +60,51 @@
     align-items: center;
 
     button {
+        width: 429px;
+        height: 48px;
         border-radius: 9px !important;
         padding: 0.3em 0.3em;
-        font-size: 16px;
         width: auto;
         height: auto;
         flex: 1;
+
+        font-weight: 800;
+        font-size: 15px;
+        line-height: 25px;
+        text-align: center;
+    }
+
+    .but {
+        color: #0288d1;
+    }
+
+    .bot-solid {
+        color: #ffffff;
+    }
+
+    .modal-title {
+        font-size: 25px;
+    }
+
+    .company-name {
+        font-size: 22px;
+    }
+
+    .payment-logo {
+        width: 70px;
+    }
+
+    .bolder {
+        font-weight: bolder;
+    }
+
+    .text-muted {
+        margin-bottom: 0.5em;
     }
 
     .desc {
         margin-left: 5em;
+        width: 363px;
         .bolder {
             font-weight: bolder;
         }
@@ -93,7 +128,8 @@
         z-index: 2;
         width: 700px;
         background-color: white;
-        border: 3px solid #f3f3f3;
+        border: 1px solid #a5a5a5;
+        box-sizing: border-box;
         border-radius: 9px;
         transition: 0.3s;
     }
@@ -130,18 +166,6 @@
                     padding-right: 15px;
                 }
             }
-        }
-        button {
-            font-weight: 600;
-            width: 303px;
-            height: 48px;
-            font-size: 18px;
-            line-height: 25px;
-            text-align: center;
-            color: #0288d1;
-            border: 1px solid #0288d1;
-            border-radius: 9px;
-            margin-top: 30px;
         }
     }
 }
