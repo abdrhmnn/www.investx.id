@@ -23,7 +23,7 @@ class Loading extends Component {
                 >
                     <Fade in={this.props.onOpen} className='modal_remove_outline'>
                         <div>
-                            <ScaleLoader color='#fff'  size={150} style={{width: '70px'}}/>
+                            <ScaleLoader color='#fff'  size={150}/>
                         </div>
                     </Fade>
                 </Modal>
