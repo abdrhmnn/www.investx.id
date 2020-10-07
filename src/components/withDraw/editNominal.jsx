@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import bca from "../../images/withdraw/bca.svg";
+import { Box, Button } from "@material-ui/core";
 
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
@@ -80,7 +81,7 @@ class MethodTopUp extends Component {
         const methods = [
             {
                 title: 'TRANSFER REKENING',
-               
+
                 logos: [
                     bca,
                     bca,
@@ -89,7 +90,7 @@ class MethodTopUp extends Component {
             },
             {
                 title: 'TRANSFER REKENING',
-               
+
                 logos: [
                     bca,
                     bca,
@@ -121,17 +122,17 @@ class MethodTopUp extends Component {
                         />
                     </div>
                     <div className="geser">
-                        <button className="saran">20.000.000</button>
-                        <button className="saran">30.000.000</button>
-                        <button className="saran">40.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        <button className="saran">50.000.000</button>
-                        
+                        <Button className="saran">20.000.000</Button>
+                        <Button className="saran">30.000.000</Button>
+                        <Button className="saran">40.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+                        <Button className="saran">50.000.000</Button>
+
 
                     </div>
                 </div>
@@ -147,11 +148,11 @@ class MethodTopUp extends Component {
                     }
                 </div>
 
-              
+
                 <div className="foot-data-diri">
-                   <p className="agreement"></p>
-                    <button type='submit' form='datadiri'>LANJUTKAN</button>
-               </div>
+                    <p className="agreement"></p>
+                    <Button type='submit' form='datadiri'>LANJUTKAN</Button>
+                </div>
             </div>
         );
     }
