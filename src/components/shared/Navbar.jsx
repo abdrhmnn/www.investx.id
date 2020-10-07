@@ -41,37 +41,46 @@ class Navbar extends Component {
         this.props.changeTab(val)
      } 
 
-    commpMenuList = ()=>(
-        <>
-        <div className="boxsaldo">
-            <img src={walletnav} alt="saldo"/>
-            <p className="nominal">Saldo  <br/> <span>Rp 1500000</span> </p>
-            <Button>
-            <i className="fas fa-plus-circle"></i> Top Up
-            </Button>
-        </div>
-        <div className='menuslistpop'>
-            <a href='/'>Notifications</a>
-            <a href='/' className='border-bottom'>Invite Friends</a>
-            <Link to='/profile'  onClick={()=> this.handleClick('profile')}>Profile Saya</Link>
-            <Link to='/profile'  onClick={()=> this.handleClick('business')}>Bisnis Saya</Link>
-            <Link to='/profile'  onClick={()=> this.handleClick('history')}>History</Link>
-            <Link to='/profile'  onClick={()=> this.handleClick('favorite')}>Favorit</Link>
-            <Link to='/profile'  onClick={()=> this.handleClick('list')}>List of Investment</Link>
-            <Link to='/profile'  onClick={()=> this.handleClick('dividen')} className='border-bottom'>Dividen</Link>
-            <a href='/'>Settings</a>
-            <a href='/' style={{cursor : 'pointer', color:'#4CB5EF', }}
-            onClick={()=>{
-                kuki.remove('auth')
-                kuki.remove('status')
-                kuki.remove('token')
-                kuki.remove('full_name')
-                kuki.remove('email')
-                kuki.remove('phone_number')
-            }}> <b>Logout</b></a>
-        </div>
-        </>
-    )
+    commpMenuList = ()=>{
+        const menus = [
+            {id : 'profile', label : 'Profile Saya'},
+            {id : 'business', label : 'Bisnis Saya'},
+            {id : 'history', label : 'History'},
+            {id : 'favorite', label : 'Favorit'},
+            {id : 'list', label : 'List of Investment'},
+            {id : 'dividen', label : 'Dividen'},
+            {id : 'history', label : 'History'},
+        ]
+        
+        return(
+            <>
+            <div className="boxsaldo">
+                <img src={walletnav} alt="saldo"/>
+                <p className="nominal">Saldo  <br/> <span>Rp 1500000</span> </p>
+                <Button>
+                <i className="fas fa-plus-circle"></i> Top Up
+                </Button>
+            </div>
+            <div className='menuslistpop'>
+                <a href='/'>Notifications</a>
+                <a href='/' className='border-bottom'>Invite Friends</a>
+                {
+                    menus.map((res,i)=> <Link to='/profile' key={i}  onClick={()=> this.handleClick(res.id)}>{res.label}</Link>)
+                }
+                <a href='/' className='border-top'>Settings</a>
+                <a href='/' style={{cursor : 'pointer', color:'#4CB5EF', }}
+                onClick={()=>{
+                    kuki.remove('auth')
+                    kuki.remove('status')
+                    kuki.remove('token')
+                    kuki.remove('full_name')
+                    kuki.remove('email')
+                    kuki.remove('phone_number')
+                }}> <b>Logout</b></a>
+            </div>
+            </>
+        )
+    }
 
     responsiveMenuComp = ()=>(
         <div className='menus-pop-res'>
@@ -82,21 +91,9 @@ class Navbar extends Component {
     render() {
         return (
             <div>
-                <ModalTemplate onOpen={this.state.isOpenRes} onClose={()=> this.setState({isOpenRes : !this.state.isOpenRes})} component={this.responsiveMenuComp} />
                   <nav>
                     <div className="left">
-                    <HamburgerMenu
-                        isOpen={this.state.isOpenRes}
-                        menuClicked={()=> this.setState({isOpenRes : !this.state.isOpenRes})}
-                        width={17}
-                        height={12}
-                        strokeWidth={1}
-                        rotate={0}
-                        color='black'
-                        borderRadius={0}
-                        animationDuration={0.3}
-                        className='burger'
-                    />
+                        
                     <Link to='/'>
                         <img src={logo} alt="logo"/>
                     </Link>
@@ -106,6 +103,26 @@ class Navbar extends Component {
                     </ul>
                     </div>
                     <div className="right">
+                        <div className="burger-wrap">
+                            <ModalTemplate onOpen={this.state.isOpenRes} onClose={()=> this.setState({isOpenRes : !this.state.isOpenRes})} component={this.responsiveMenuComp} />
+                            {
+                                kuki.get('auth')?
+                                <HamburgerMenu
+                                    isOpen={this.state.isOpenRes}
+                                    menuClicked={()=> this.setState({isOpenRes : !this.state.isOpenRes})}
+                                    width={17}
+                                    height={12}
+                                    strokeWidth={1}
+                                    rotate={0}
+                                    color='black'
+                                    borderRadius={0}
+                                    animationDuration={0.3}
+                                    className='burger'
+                                />
+                                :
+                                <Link to='/login'><Button className="but-login">Log In</Button></Link>
+                            }
+                        </div>
                         <ul>
                             <li> <NavLink activeClassName='nav-active' to='/how'>How it works</NavLink> </li>
                             <li> <NavLink activeClassName='nav-active' to='/about'>About Us</NavLink> </li>
