@@ -19,6 +19,14 @@ class CaroHome extends Component {
             slidesToScroll: 1,
             speed: 500,
             cssEase: "linear",
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 1
+                }
+              }],
             afterChange: (current, next) =>{ console.log({curr : current, next : next})}
           };
 
@@ -30,6 +38,14 @@ class CaroHome extends Component {
             slidesToScroll: 1,
             speed: 500,
             cssEase: "linear",
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 1
+                }
+            }]
           };
 
           const settings3 = {
@@ -40,6 +56,14 @@ class CaroHome extends Component {
             slidesToScroll: 1,
             speed: 500,
             cssEase: "linear",
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 1
+                }
+            }]
           };
 
           const dummyCards =[
