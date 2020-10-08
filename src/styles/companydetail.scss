@@ -52,6 +52,11 @@
                     border-radius: 9px;
                 }
             }
+            .slick-active{
+                a{
+                    opacity: .6;
+                }
+            }
         }
         .caro-footer-cus{
             border-radius: 0 0 6px 6px;
@@ -505,4 +510,189 @@
     }
 
 
+}
+
+@media only screen and (max-width: 768px){
+    .carousell-detail-wrap{
+        .img-caro-det{
+            height: 230px !important;
+        }
+
+        .slick-thumb{
+            margin-left: -20px;
+        }
+
+        .caro-footer-cus{
+            padding: 0 15px !important;
+        }
+    }
+
+    .stepper{
+        margin-top: 10px;
+        margin-bottom: -100px;
+        .stepper-wrap{
+            .wrapstep{
+                .steps-icons{
+                    width: 45px !important;
+                    height: 45px !important;
+                    i{
+                        font-size: 17px !important;
+                    }
+                }
+                .d-step{
+                    text-align: center;
+                    font-size: 9px !important;
+                }
+            }
+        }
+    }
+
+    .liner{
+        .line-primary{
+            margin-top: -5px !important;
+            width: 250px !important;
+            margin-left: -30px !important;
+        }
+    }
+
+    .tab-custom{
+        .MuiTab-wrapper{
+            font-size: 13px;
+        }
+    }
+
+    .tab-content{
+        padding: 20px !important;
+        .finansial-tab{
+            .title{
+                font-size: 22px !important;
+                font-weight: 500 !important;
+                margin-bottom: 20px !important;
+            }
+            .lab{
+                margin-bottom: 10px !important;
+                font-size: 14px !important;
+            }
+            .val-fin{
+                .lembar{
+                    margin-left: 10px;
+                    width: 100% !important;
+                }
+                .saham{
+                    margin-right: 10px;
+                    width: 100% !important;
+                }
+                p{
+                    font-size: 14px !important;
+                }
+            }
+        }
+    }
+
+    .nominalbox{
+        padding-top: 0 !important;
+        padding-bottom: 20px !important;
+        p.nominal{
+            font-size: 25px !important;
+        }
+        p.avail{
+            font-size: 12px !important;
+        }
+        .prog{
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .wrap-boxes-status{
+        margin-bottom: 0 !important;
+        p{
+            font-size: 14px !important;
+        }
+    }
+
+    .love-share{
+        margin-top: 10px !important;
+        font-size: 12px;
+        img{
+            width: 25px !important;
+        }
+    }
+
+    .start{
+        height: 50px !important;
+        font-size: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .down{
+        height: 50px !important;
+        font-size: 14px !important;
+    }
+
+    .simulasi-tab{
+        .title{
+            font-size: 22px !important;
+            font-weight: 500 !important;
+        }
+
+        .sim-count{
+            display: block !important;
+            p.lab{
+                margin-bottom: 10px !important;
+            }
+
+            .cal{
+                width: 100% !important;
+                p.lab{
+                    white-space: nowrap;
+                }
+            }
+            .inp-count{
+                // width: 290px !important;
+                margin-bottom: 20px;
+            }
+
+            .val-inv{
+                width: 100% !important;
+            }
+        }
+
+        p.lab{
+            font-size: 14px !important;
+            margin-bottom: 0 !important;
+        }
+
+        .val-sim{
+            width: 100% !important;
+            font-size: 14px !important;
+            padding: 10px !important;
+
+            .left{
+                font-size: 12px !important;
+                margin-right: 10px;
+            }
+
+            .right{
+                font-size: 12px !important;
+                margin-left: 10px;
+            }
+
+        }
+        p.nb{
+            padding-top: 0 !important;
+        }
+    }
+
+    .updates{
+        .notif-update{
+            padding: 20px !important;
+            .con{
+                p.link{
+                    a{
+                        word-wrap: break-word;
+                    }
+                }
+            }
+        }
+    }
 }
