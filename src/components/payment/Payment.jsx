@@ -10,21 +10,20 @@ import bankIcon from "../../images/payment/bank-icon.svg";
 import addBlueIcon from "../../images/payment/add-blue-icon.svg";
 
 import PaymentMethod from "./PaymentMethod";
-import { Button } from '@material-ui/core';
-
+import { Button } from "@material-ui/core";
 
 class Payment extends Component {
     render() {
         const butBlue = {
-            width: '700px',
-            borderRadius: '9px',
-            height: '36px',
-            fontSize: '14px',
-            textTransform: 'uppercase',
-            color: '#ffffff',
-            background: '#01579b',
-            border: 'none',
-            outline: 'none'
+            width: "700px",
+            borderRadius: "9px",
+            height: "36px",
+            fontSize: "14px",
+            textTransform: "uppercase",
+            color: "#ffffff",
+            background: "#01579b",
+            border: "none",
+            outline: "none",
         };
 
         return (
@@ -63,7 +62,7 @@ class Payment extends Component {
                                         <div className="col-md-6">
                                             Harga Saham
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 text-right">
                                             Rp. 100.000
                                         </div>
                                     </div>
@@ -71,16 +70,21 @@ class Payment extends Component {
                                         <div className="col-md-6">
                                             Jumlah Investasi
                                         </div>
-                                        <div className="col-md-6">
+                                        <div className="col-md-6 text-right">
                                             80 Lembar
                                         </div>
                                     </div>
-                                    <hr color="white" />
+                                    <hr
+                                        style={{
+                                            "border-color": "white",
+                                            height: "1px",
+                                        }}
+                                    />
                                     <div className="row">
                                         <div className="col-md-6 bold">
                                             <h5>Total</h5>
                                         </div>
-                                        <div className="col-md-6 bold">
+                                        <div className="col-md-6 bold text-right">
                                             <h5>Rp. 8.000.0000</h5>
                                         </div>
                                     </div>
