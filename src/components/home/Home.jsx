@@ -51,6 +51,14 @@ class Home extends Component {
             speed: 5000,
             autoplaySpeed: 0,
             cssEase: "linear",
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  initialSlide: 1
+                }
+              }]
         };
 
         const butSolid = {
@@ -91,7 +99,7 @@ class Home extends Component {
                     <div className="container p-0 contain-home">
                         <div className="wrap">
                             <p className="title">
-                                EQUITY <br />
+                                EQUITY <br className="hideOnMobile" />
                                 <span>CROWDFUNDING</span>
                             </p>
                             <p className="desc">
