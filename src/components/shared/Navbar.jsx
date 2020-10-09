@@ -32,15 +32,12 @@ class Navbar extends Component {
 
     handlePop = ()=> this.setState({isOpen : !this.state.isOpen})
 
+
     handleClick = (val)=>{
-       this.setState({isOpen : false})
+       this.setState({isOpen : false, isOpenRes : false})
        this.props.changeTab(val)
     } 
 
-    handleClickRes = (val)=>{
-        this.setState({isOpenRes : false})
-        this.props.changeTab(val)
-     } 
 
     commpMenuList = ()=>{
         const menus = [
@@ -103,7 +100,7 @@ class Navbar extends Component {
                     </div>
                     <div className="right">
                         <div className="burger-wrap">
-                            <ModalTemplate onOpen={this.state.isOpenRes} onClose={()=> this.setState({isOpenRes : !this.state.isOpenRes})} component={this.responsiveMenuComp} />
+                            <ModalTemplate onOpen={this.state.isOpenRes} onClose={()=> this.setState({isOpenRes : false})} component={this.responsiveMenuComp} />
                             {
                                 kuki.get('auth')?
                                 <HamburgerMenu
