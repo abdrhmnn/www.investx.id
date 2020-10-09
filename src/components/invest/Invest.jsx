@@ -12,11 +12,10 @@ import ResetPin from './pinComponents/ResetPin'
 import InputOtp from './pinComponents/InputOtp'
 import SecurePin from './pinComponents/SecurePin'
 
-
 class Invest extends Component {
     state={
         lembarSaham: 8,
-        modalConfirm : false,
+        modalConfirm : false, 
         modalInputPin : false,
         modalInputResetPin : false,
         modalInputOtp : false,
