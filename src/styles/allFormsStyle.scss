@@ -511,20 +511,39 @@
 
         .steps-invest, .steps-startup{
             width: 100%;
-            ul {
-                display: block;
+            // ul {
+            //     display: block;
+            //     li{
+            //         margin-bottom: 20px;
+            //         z-index: 1;
+            //     }
+            // }
+            // hr{
+            //     transform: rotate(90deg);
+            //     width: 48%;
+            //     top: -130px;
+            //     margin-left: -19.5%;
+            // }
+            ul{
+                overflow: scroll;
                 li{
-                    margin-bottom: 20px;
-                    z-index: 1;
+                    .number{
+                        width: 25px !important;
+                        height: 25px !important;
+                        font-size: 15px !important;
+                        margin: auto;
+                    }
+                    display: block;
+                    margin-right: 10px;
+                    text-align: center;
+                    white-space: nowrap;
                 }
             }
+
             hr{
-                transform: rotate(90deg);
-                width: 48%;
-                top: -130px;
-                margin-left: -19.5%;
+                display: none;
             }
-        }
+       }
 
         .steps-startup{
             hr{

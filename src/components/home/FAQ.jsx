@@ -56,8 +56,8 @@ class FAQ extends Component {
     return (
       <div className="faq">
         <h3 className="bold">Pertanyaan yang sering diajukan</h3>
-        <br />
-        <br />
+        <br className="mobile-hidden" />
+        <br className="mobile-hidden" />
         <div className="row justify-content-between">
           <div className="col-md-6">
             {leftQuestion.map((data, index) => (
