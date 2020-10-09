@@ -223,19 +223,19 @@ class AboutUs extends Component {
                     </div>
                 </div>
 
-                <div className="join-investor">
+                <div className="join-investor beda">
                     <h2>Invest in Highly vetted early-staged companies</h2>
                     <br />
                     <Link to="/investor-form-data-diri">
-                        <Button type="Button">Become an Investor</Button>
+                        <Button type="Button" class="beda">Become an Investor</Button>
                     </Link>
                     <Link to="/login">
-                        <div className="desc">
+                        <div className="desc beda" >
                             <br />
                             Have an Account? <a href="#">Log in</a>
                         </div>
                     </Link>
-                    <div className="top">
+                    <div className="top beda">
                         <a href="#top">
                             <Button>
                                 <img src={top}></img>
