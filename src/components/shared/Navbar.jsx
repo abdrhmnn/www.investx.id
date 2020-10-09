@@ -8,6 +8,7 @@ import { Button, ClickAwayListener } from "@material-ui/core";
 import kuki from '../../helpers/cookie'
 import walletnav from '../../images/walletnav.svg'
 import ModalTemplate from './ModalTemplate';
+import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 
 class Navbar extends Component {
     state={
@@ -51,7 +52,6 @@ class Navbar extends Component {
             {id : 'dividen', label : 'Dividen'},
             {id : 'history', label : 'History'},
         ]
-        
         return(
             <>
             <div className="boxsaldo">
@@ -93,7 +93,6 @@ class Navbar extends Component {
             <div>
                   <nav>
                     <div className="left">
-                        
                     <Link to='/'>
                         <img src={logo} alt="logo"/>
                     </Link>
@@ -150,7 +149,7 @@ class Navbar extends Component {
                         this.state.statusId === 1?
                         <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
                         : this.state.statusId === 2?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <span onClick={this.props.onModal}> Verifikasi sekarang</span> </div>
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <a href='/'> Verifikasi sekarang</a> </div>
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null

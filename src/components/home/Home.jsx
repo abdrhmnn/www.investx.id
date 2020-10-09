@@ -17,24 +17,23 @@ import CaroHome from "./CaroHome";
 import Benefit from "./Benefit";
 import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
-import ModalSuccessOtp from "../auth/ModalSuccessOtp";
 import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
 
 class Home extends Component {
     state = {
-        modalOtp: false,
+        // modalOtp: false,
     };
 
     componentDidMount() {}
 
-    offModal = () => {
-        this.setState({ modalOtp: false });
-    };
+    // offModal = () => {
+    //     this.setState({ modalOtp: false });
+    // };
 
-    onModal = () => {
-        this.setState({ modalOtp: true });
-    };
+    // onModal = () => {
+    //     this.setState({ modalOtp: true });
+    // };
 
     render() {
         const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8];
@@ -80,9 +79,9 @@ class Home extends Component {
 
         return (
             <div>
-                {this.state.modalOtp ? (
+                {/* {this.state.modalOtp ? (
                     <ModalSuccessOtp offModal={this.offModal} />
-                ) : null}
+                ) : null} */}
                 <div
                     className="home"
                     style={{ backgroundImage: `url(${x}), url(${zebra})` }}

@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import {Modal, Backdrop, Fade} from '@material-ui/core';
 
 class ModalTemplate extends Component {
-    state={
-        open : false
-    }
     render() {
         return (
             <div>

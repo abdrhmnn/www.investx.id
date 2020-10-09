@@ -14,6 +14,12 @@
     z-index: 99999999999999 !important;
 }
 
+button{
+    span{
+        text-transform: capitalize;
+    }
+}
+
 // buttons
 .but-solid {
     background-color: #0288d1;
