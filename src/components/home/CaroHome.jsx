@@ -24,7 +24,9 @@ class CaroHome extends Component {
                 settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1,
-                  initialSlide: 1
+                  initialSlide: 1,
+                  centerMode: true,
+                  centerPadding: "30px",
                 }
               }],
             afterChange: (current, next) =>{ console.log({curr : current, next : next})}
@@ -43,7 +45,9 @@ class CaroHome extends Component {
                 settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1,
-                  initialSlide: 1
+                  initialSlide: 1,
+                  centerMode: true,
+                  centerPadding: "30px",
                 }
             }]
           };
@@ -61,7 +65,9 @@ class CaroHome extends Component {
                 settings: {
                   slidesToShow: 1,
                   slidesToScroll: 1,
-                  initialSlide: 1
+                  initialSlide: 1,
+                  centerMode: true,
+                  centerPadding: "30px",
                 }
             }]
           };

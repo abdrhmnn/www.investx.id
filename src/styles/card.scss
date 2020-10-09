@@ -124,3 +124,11 @@
         font-size: 14px;
     }
 }
+
+
+@media only screen and (max-width: 768px){
+    .card-sec{
+        cursor: pointer;
+        margin: 15px 6px;
+    }
+}
