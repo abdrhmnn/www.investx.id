@@ -6,13 +6,27 @@ import { Formik } from "formik";
 import mailbox from '../../../images/mailbox.png'
 
 
-const InputOtp = (close, openModalNewPin)=> {
+const InputOtp = (close, openModalNewPin) => {
+     const backButton = {
+        width: '52px',
+  height: '52px',
+  borderRadius: '50%',
+  backgroundColor: '#dedede',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '80px',
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+    }
     return (
         <div className='pin_components'>
             <div className="bg">
                 <div className="bg-round"></div>
             </div>
-            <Fab className="back-Button" onClick={close}>
+            <Fab className="back-Button" style={backButton} onClick={close}>
                 <img src={arrowback} alt="" />
             </Fab>
             <div className="logo-invest">
