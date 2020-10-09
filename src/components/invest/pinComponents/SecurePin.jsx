@@ -10,13 +10,40 @@ import Swal from 'sweetalert2'
 
 
 
-const SecurePin = (close,)=> {
+const SecurePin = (close,) => {
+    const backButton = {
+        width: '52px',
+  height: '52px',
+  borderRadius: '50%',
+  backgroundColor: '#dedede',
+  position: 'absolute',
+  top: '0',
+  left: '0',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '80px',
+  boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
+    }
+    const verifButton = {
+         width: '100%',
+  height: '48px',
+  backgroundColor: '#01579B',
+  border: '1px solid #01579B',
+  boxSizing: 'border-box',
+  boxShadow: '0px 0px 9px rgba(0, 0, 0, 0.25)',
+  borderRadius: '9px',
+  fontSize: '18px',
+  lineHeight: '25px',
+  color: '#FFFFFF',
+  marginBottom: '20px'
+    }
     return (
         <div className='pin_components'>
             <div className="bg">
                 <div className="bg-round"></div>
             </div>
-            <Fab className="back-button" onClick={close}>
+            <Fab className="back-button" style={backButton} onClick={close}>
                 <img src={arrowback} alt=" back" />
             </Fab>
             <div className="logo-invest">
@@ -58,7 +85,7 @@ const SecurePin = (close,)=> {
                             <form className="wrapperform" onSubmit={handleSubmit}>
                                 <input type="password" value={values.dataInput} onChange={handleChange('newPin')} placeholder='Security Pin' required/>
                                 <input type="password" value={values.dataInput} onChange={handleChange('re_newPin')} placeholder='Konfirmasi Security Pin' required/>
-                                <Button type='submit' className='verif-button'>BUAT PIN</Button>
+                                <Button type='submit' className='verif-button' style={verifButton}>BUAT PIN</Button>
                             </form>
                         )}
                     </Formik>
