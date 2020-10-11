@@ -39,7 +39,7 @@ class Navbar extends Component {
     } 
 
 
-    commpMenuList = ()=>{
+    commpMenuList = (addBarHide)=>{
         const menus = [
             {id : 'profile', label : 'Profile Saya'},
             {id : 'business', label : 'Bisnis Saya'},
@@ -59,6 +59,14 @@ class Navbar extends Component {
                 </Button>
             </div>
             <div className='menuslistpop'>
+                {
+                    addBarHide? 
+                    <>
+                    <Link to='/how'>How it Works</Link>
+                    <Link to='/about'>About Us</Link>
+                    </>
+                    : null
+                }
                 <a href='/'>Notifications</a>
                 <a href='/' className='border-bottom'>Invite Friends</a>
                 {
@@ -81,7 +89,7 @@ class Navbar extends Component {
 
     responsiveMenuComp = ()=>(
         <div className='menus-pop-res'>
-            {this.commpMenuList()}
+            {this.commpMenuList(true)}
         </div>
     )
 
