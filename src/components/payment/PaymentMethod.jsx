@@ -10,7 +10,6 @@ import kredit from "../../images/payment/kredit.svg";
 import mandiri from "../../images/payment/mandiri.svg";
 import minimarket from "../../images/payment/minimarket.svg";
 import ovo from "../../images/payment/ovo.svg";
-import { Button } from "@material-ui/core";
 
 class PaymentMethod extends Component {
     state = {
@@ -50,7 +49,12 @@ class PaymentMethod extends Component {
                                 <div></div>
                             )}
                         </div>
-                        <p className="subtitle">{method.subtitle}</p>
+                        <p
+                            className="subtitle"
+                            style={{ marginBottom: "11px" }}
+                        >
+                            {method.subtitle}
+                        </p>
                         {method.logos.map((data) => (
                             <div
                                 key={data.id}

@@ -78,16 +78,20 @@ class TopUpDetail extends Component {
                         </div>
                     </div>
                     <br />
-                    <div className="d-flex justify-content-between">
+                    <div
+                        className="d-flex justify-content-between"
+                        style={{ marginBottom: "30px" }}
+                    >
                         <p className="name">Batas Waktu</p>
                         <p className="amount">12;34;00</p>
                     </div>
 
-                    <br />
-
                     {this.state.isInvoice ? (
-                        <div>
-                            <p className="note">
+                        <div style={{ marginBottom: "180px" }}>
+                            <p
+                                className="note"
+                                style={{ marginBottom: "34px" }}
+                            >
                                 *Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Error reiciendis culpa quidem.
                                 Aliquam labore totam ea, fuga tenetur fugiat
@@ -104,7 +108,10 @@ class TopUpDetail extends Component {
                         </div>
                     ) : (
                         <div>
-                            <p className="note">
+                            <p
+                                className="note"
+                                style={{ marginBottom: "20px" }}
+                            >
                                 *Lorem ipsum dolor sit amet, consectetur
                                 adipisicing elit. Error reiciendis culpa quidem.
                                 Aliquam labore totam ea, fuga tenetur fugiat

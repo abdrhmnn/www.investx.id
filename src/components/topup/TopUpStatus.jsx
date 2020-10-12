@@ -17,12 +17,13 @@ class TopUpStatus extends Component {
                 />
 
                 <h3 className="payment-status-title">Menunggu Pembayaran</h3>
-                <p className="payment-status-detail">
-                    Transaksi dengan No Invoice I12rr telah berhasil diproses.
-                </p>
-                <p className="payment-status-detail">
-                    Silahkan Lakukan Pembayaran
-                </p>
+                <div className="payment-status-detail">
+                    <p>
+                        Transaksi dengan No Invoice I12rr telah berhasil
+                        diproses.
+                    </p>
+                    <p>Silahkan Lakukan Pembayaran</p>
+                </div>
 
                 <Button className="but-blue">KEMBALI KE PINJAMAN</Button>
             </div>

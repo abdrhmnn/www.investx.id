@@ -7,6 +7,7 @@
 
         font-weight: bold;
         font-size: 16px;
+        line-height: 54px;
         color: rgba(43, 43, 43, 0.8);
     }
 
@@ -47,8 +48,9 @@
             display: flex;
             align-items: center;
             flex-direction: row;
-            margin-bottom: 1em;
-            padding: 2em 20px;
+
+            margin-bottom: 20px;
+            padding: 15px 0 15px 17px;
             border: 1px solid #c4c4c4;
             border-radius: 4px;
 
@@ -58,7 +60,7 @@
             }
 
             img {
-                margin-left: 2em;
+                margin-left: 24px;
             }
         }
 
@@ -89,13 +91,17 @@
             }
             input {
                 padding: 0 30px;
+                padding-left: 45px;
                 height: 100%;
                 width: 100%;
                 border: none;
-                font-size: 14px;
                 background-color: inherit;
-                font-size: 24px;
-                color: #333333;
+
+                font-weight: bold;
+                font-size: 30px;
+                line-height: 54px;
+                color: rgba(43, 43, 43, 0.8);
+
                 &:focus {
                     outline: none;
                 }
