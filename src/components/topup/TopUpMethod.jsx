@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import { Box, Button, Fab } from "@material-ui/core";
+import { Button, Fab } from "@material-ui/core";
 
 import PaymentMethod from "../payment/PaymentMethod";
 
@@ -20,7 +20,7 @@ class TopUpMethod extends Component {
 
     render() {
         return (
-            <div className="all-forms-style">
+            <div className="all-forms-style topup-method">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>

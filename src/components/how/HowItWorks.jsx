@@ -1,23 +1,25 @@
 import React, { Component } from "react";
-import Navbar from "../shared/Navbar";
+import { Button } from "@material-ui/core";
+import { Link } from "react-router-dom";
+
 import step1 from "../../images/how/step1.svg";
 import step2 from "../../images/how/step2.svg";
 import step3 from "../../images/how/step3.svg";
+import documentIcon from "../../images/how/document.svg";
 import stepsBisnis from "../../images/how/steps-bisnis.svg";
-import Footer from "../shared/Footer";
-import { Button } from "@material-ui/core";
 
 import Ojk from "../shared/Ojk";
-import { Link } from "react-router-dom";
+import Navbar from "../shared/Navbar";
+import Footer from "../shared/Footer";
 
 class HowItWorks extends Component {
     render() {
         const butSolid = {
             width: "205px",
             height: "52px",
-            background: "#4cb5ef",
+            background: "#021F59",
             boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
-            borderRadius: "8px",
+            borderRadius: "7px",
             border: "none",
             color: "white",
             marginRight: "28px",
@@ -150,9 +152,9 @@ class HowItWorks extends Component {
                         <div className="documents row">
                             <div className="mr-3">
                                 <img
-                                    src={step2}
-                                    width="50"
-                                    height="50"
+                                    src={documentIcon}
+                                    width="38.08px"
+                                    height="46px"
                                     alt="steps"
                                 />
                             </div>

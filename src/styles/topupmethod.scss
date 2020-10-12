@@ -1,9 +1,10 @@
-.all-forms-style {
+.all-forms-style.topup-method {
     .box-form-title {
         z-index: 1;
         margin-left: 1em;
         width: 700px;
         text-align: left;
+
         font-weight: bold;
         font-size: 16px;
         color: rgba(43, 43, 43, 0.8);
@@ -37,6 +38,7 @@
 
             .amount {
                 font-weight: bold;
+                color: #242424;
             }
         }
 
@@ -72,7 +74,11 @@
             }
             &::before {
                 content: "Rp";
-                font-size: 20px;
+                font-weight: normal;
+                font-size: 24px;
+                text-align: center;
+                color: rgba(43, 43, 43, 0.8);
+
                 position: absolute;
                 top: 10px;
                 left: 0;

@@ -8,12 +8,13 @@ class TopUpStatus extends Component {
     render() {
         return (
             <div className="topup-status">
-                <img src={logoWhite} alt="logo-white" />
-                <br />
-                <br />
+                <img class="logo-white" src={logoWhite} alt="logo-white" />
 
-                <img src={paymentImage} alt="" />
-                <br />
+                <img
+                    class="payment-illustration"
+                    src={paymentImage}
+                    alt="payment-illustration"
+                />
 
                 <h3 className="payment-status-title">Menunggu Pembayaran</h3>
                 <p className="payment-status-detail">
@@ -22,7 +23,6 @@ class TopUpStatus extends Component {
                 <p className="payment-status-detail">
                     Silahkan Lakukan Pembayaran
                 </p>
-                <br />
 
                 <Button className="but-blue">KEMBALI KE PINJAMAN</Button>
             </div>

@@ -2,6 +2,21 @@
     background-color: #f6f6f6;
     padding: 5em;
 
+    .title {
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 48px;
+        color: #000000;
+    }
+
+    .MuiTypography-body1 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 30px;
+        color: #000000;
+    }
+
     .question-reveal-wrapper {
         margin-right: 2em;
         .question-reveal {
