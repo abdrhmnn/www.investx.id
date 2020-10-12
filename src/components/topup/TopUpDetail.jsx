@@ -17,6 +17,22 @@ class TopUpDetail extends Component {
     };
 
     render() {
+        const but = {
+            color: 'black',
+  borderRadius: '8px',
+  border: '1px solid #0288d1',
+  backgroundColor: 'white',
+  fontSize: '16px',
+  outline: 'unset !important'
+        }
+        const butSolid = {
+            backgroundColor: '#0288d1',
+  border: 'none',
+  borderRadius: '8px',
+  color: 'white',
+  fontSize: '16px',
+  outline: 'unset !important'
+        }
         return (
             <div className="all-forms-style detail-transaction">
                 <div className="bg">
@@ -100,8 +116,8 @@ class TopUpDetail extends Component {
                             </p>
 
                             <div className="d-flex justify-content-between">
-                                <Button className="but">BUTUH BANTUAN</Button>
-                                <Button className="but-solid" type="submit">
+                                <Button className="but" style={but}>BUTUH BANTUAN</Button>
+                                <Button className="but-solid" style={butSolid} type="submit">
                                     KIRIM BUKTI
                                 </Button>
                             </div>
@@ -118,7 +134,8 @@ class TopUpDetail extends Component {
                                 obcaecati eveniet itaque quisquam, hic magni
                                 neque, aperiam unde accusamus harum.
                             </p>
-                            <Button
+                                <Button
+                                    style={butSolid}
                                 className="but-solid"
                                 type="submit"
                                 onClick={() => this.setIsInvoice(true)}
