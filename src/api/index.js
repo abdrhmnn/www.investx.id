@@ -13,11 +13,15 @@ const API = {
         full_name: props.full_name,
         phone_number: props.phone,
         password: props.password,
-        email: props.email,
+        email: props.email.toLowerCase(),
       })
   },
-  login: (body) => {
-    console.log(body, 'bodynyta');
+  login: (props) => {
+    console.log(props, 'bodynyta');
+    const body = {
+      email : props.email.toLowerCase(),
+      password : props.password
+    }
     return axios.post(apiBaseUrl + `/authentication/password/`, body)
   },
   getProfile: () => {
