@@ -1,6 +1,7 @@
 .home{
     height: 100vh;
-    background-position: right ;
+    margin-top: 80px;
+    background-position: right;
     background-repeat: no-repeat;
     // background-size: contain;
     background-size: 60%, 41%;
@@ -136,6 +137,7 @@
         background-size: cover;
         background-attachment: fixed;
         height: 650px;
+        margin-top: 60px;
         top: 0 !important;
         bottom: 0 !important;
         
@@ -161,7 +163,7 @@
                 }
                 .title{
                     margin-top: 20px;
-                    font-size: 30px !important;
+                    font-size: 45px !important;
                     .hideOnMobile{
                         display: none;
                     }
@@ -175,6 +177,7 @@
                     margin-bottom: 10px !important;
                     height: 35px !important;
                     font-size: 14px !important;
+                    width: 100% !important;
                 }
 
                 .desc{
