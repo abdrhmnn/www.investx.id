@@ -49,6 +49,16 @@ class Navbar extends Component {
             {id : 'dividen', label : 'Dividen'},
             {id : 'history', label : 'History'},
         ]
+        const butLogin = {
+            textTransform: 'capitalize',
+  fontFamily: '\'Lato\'',
+  fontSize: '16px',
+  width: '106px',
+  height: '42px',
+  border: '1px solid #0288D1',
+  boxSizing: 'border-box',
+  borderRadius: '6px'
+        }
         return(
             <>
             <div className="boxsaldo">
@@ -124,7 +134,7 @@ class Navbar extends Component {
                                     className='burger'
                                 />
                                 :
-                                <Link to='/login'><Button className="but-login">Log In</Button></Link>
+                                <Link to='/login'><Button style={butLogin} className="but-login">Log In</Button></Link>
                             }
                         </div>
                         <ul>
@@ -145,7 +155,7 @@ class Navbar extends Component {
                                     </ClickAwayListener>
                                 </li>
                                 :
-                                <li> <Link to='/login'><Button className="but-login">Log In</Button></Link> </li>
+                                <li> <Link to='/login'><Button style={butLogin}className="but-login">Log In</Button></Link> </li>
                             }
                         </ul>
                     </div>
