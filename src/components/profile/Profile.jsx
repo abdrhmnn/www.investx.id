@@ -46,6 +46,21 @@ class Profile extends Component {
     
     render() {
         // console.log(this.props)
+
+        const ftop = {
+            textTransform: 'capitalize',
+  color: '#0288D1',
+  background: '#FFFFFF',
+  boxShadow: '0px 4px 9px rgba(0, 0, 0, 0.25)',
+  fontSize: '18px'
+        }
+        const fsal = {
+            fontSize: '18px',
+  textTransform: 'capitalize',
+  color: 'white',
+  background: '#021F59',
+  boxShadow: '0px 4px 9px rgba(0, 0, 0, 0.25)'
+        }
         return (
             <div className='profile'>
                 <Navbar />
@@ -83,8 +98,8 @@ class Profile extends Component {
                                         </div>
                                     </div>
                                     <div className="pbuttons">
-                                        <Button className='ftop'> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
-                                        <Button className='fsal'>Withdraw</Button>
+                                        <Button style={ftop} className='ftop'> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
+                                        <Button style={fsal} className='fsal'>Withdraw</Button>
                                     </div>
                                 </div>
                                 <div className="col-md">
