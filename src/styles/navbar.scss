@@ -96,7 +96,7 @@ nav{
                     border-radius: 6px;
                     cursor: default;
                     .boxsaldo{
-                        margin: 25px 20px;
+                        margin: 15px 20px;
                         background: #FFFFFF;
                         box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
                         border-radius: 6px;
@@ -115,7 +115,7 @@ nav{
                             }
                         }
                         button{
-                            height: 70px;
+                            height: 60px;
                             background: #FFFFFF;
                             border: 1px solid #AFE843;
                             box-sizing: border-box;
@@ -143,9 +143,10 @@ nav{
                             width: 100%;
                             margin: 0;
                             padding: 0 20px;
-                            height: 45px;
+                            height: 30px;
                             display: flex;
                             align-items: center;
+                            font-size: 15px;
                             cursor: pointer;
                             &:hover{
                                 transition: .3s;
