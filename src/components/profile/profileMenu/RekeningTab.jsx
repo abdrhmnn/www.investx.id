@@ -33,10 +33,10 @@ class RekeningTab extends Component {
             {
                 this.state.objListBank.map((res,i)=> 
                     <div className=' item-rektab row' key={i}>
-                        <div className="box-rektab col-md text-center"><p className='title-bank'>Bank</p> <b>{res.bank}</b> </div>
-                        <div className="box-rektab col-md"><p className='title-bank  text-left'>A/n</p> {res.an}</div>
-                        <div className="box-rektab col-md"><p className='title-bank'>No.Rek</p> {res.norek}</div>
-                        <div className="box-rektab col-md text-center">{res.logoBank}</div>
+                        <div className="box-rektab col-md-3 col-6"><p className='title-bank'>Bank</p> <b>{res.bank}</b> </div>
+                        <div className="box-rektab col-md-3 col-6"><p className='title-bank  text-left'>A/n</p> {res.an}</div>
+                        <div className="box-rektab col-md-3 col-6"><p className='title-bank'>No.Rek</p> {res.norek}</div>
+                        <div className="box-rektab col-md-3 col-6 text-center">{res.logoBank}</div>
                     </div>
                 )
             }

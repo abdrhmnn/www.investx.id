@@ -41,26 +41,12 @@ class Profile extends Component {
         })
     }
 
-    handleClick = (e) => this.props.changeTab(e.target.id)
+    handleClick = (stringMenu) => this.props.changeTab(stringMenu)
 
     
     render() {
         // console.log(this.props)
 
-        const ftop = {
-            textTransform: 'capitalize',
-  color: '#0288D1',
-  background: '#FFFFFF',
-  boxShadow: '0px 4px 9px rgba(0, 0, 0, 0.25)',
-  fontSize: '18px'
-        }
-        const fsal = {
-            fontSize: '18px',
-  textTransform: 'capitalize',
-  color: 'white',
-  background: '#021F59',
-  boxShadow: '0px 4px 9px rgba(0, 0, 0, 0.25)'
-        }
         return (
             <div className='profile'>
                 <Navbar />
@@ -98,8 +84,8 @@ class Profile extends Component {
                                         </div>
                                     </div>
                                     <div className="pbuttons">
-                                        <Button style={ftop} className='ftop'> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
-                                        <Button style={fsal} className='fsal'>Withdraw</Button>
+                                        <Button className='ftop'> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
+                                        <Button className='fsal'>Withdraw</Button>
                                     </div>
                                 </div>
                                 <div className="col-md">
@@ -124,14 +110,14 @@ class Profile extends Component {
                             onMouseEnter={() => this.setState({filterShow : true})} 
                             onMouseLeave={() => this.setState({filterShow : false})}>
                                 <ul>
-                                    <li className={this.props.activeTab === 'profile'? 'active-menu-profile' : ''} id='profile' onClick={this.handleClick}><img className='proficonmenu' src={profile} alt="menu-icon"/> My Profile</li>
-                                    <li className={this.props.activeTab === 'business'? 'active-menu-profile' : ''} id='business' onClick={this.handleClick}><img className='proficonmenu' src={busines} alt="menu-icon"/> My Business</li>
-                                    <li className={this.props.activeTab === 'history'? 'active-menu-profile' : ''} id='history' onClick={this.handleClick}><img className='proficonmenu' src={history} alt="menu-icon"/> History</li>
-                                    <li className={this.props.activeTab === 'favorite'? 'active-menu-profile' : ''} id='favorite' onClick={this.handleClick}><img className='proficonmenu' src={favorite} alt="menu-icon"/> Favorite</li>
-                                    <li className={this.props.activeTab === 'list'? 'active-menu-profile' : ''} id='list' onClick={this.handleClick}><img className='proficonmenu' src={list} alt="menu-icon"/> List of Investment</li>
-                                    <li className={this.props.activeTab === 'dividen'? 'active-menu-profile' : ''} id='dividen' onClick={this.handleClick}><img className='proficonmenu' src={dividen} alt="menu-icon"/> Dividend</li>
-                                        <hr/>
-                                    <li><img className='proficonmenu' src={logout} alt="menu-icon"/> Logout</li>
+                                    <li className={this.props.activeTab === 'profile'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('profile')}><img className='proficonmenu' src={profile} alt="menu-icon"/> <span> My Profile</span></li>
+                                    <li className={this.props.activeTab === 'business'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('business')}><img className='proficonmenu' src={busines} alt="menu-icon"/> <span>My Business</span> </li>
+                                    <li className={this.props.activeTab === 'history'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('history')}><img className='proficonmenu' src={history} alt="menu-icon"/> <span>History</span> </li>
+                                    <li className={this.props.activeTab === 'favorite'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('favorite')}><img className='proficonmenu' src={favorite} alt="menu-icon"/> <span>Favorite</span> </li>
+                                    <li className={this.props.activeTab === 'list'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('list')}><img className='proficonmenu' src={list} alt="menu-icon"/> <span>List of Investment</span> </li>
+                                    <li className={this.props.activeTab === 'dividen'? 'active-menu-profile' : ''}  onClick={()=>this.handleClick('dividen')}><img className='proficonmenu' src={dividen} alt="menu-icon"/> <span>Dividend</span> </li>
+                                        {/* <hr/> */}
+                                    {/* <li><img className='proficonmenu' src={logout} alt="menu-icon"/> Logout</li> */}
                                 </ul>
                             </div>
                         </div>
