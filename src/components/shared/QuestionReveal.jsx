@@ -26,7 +26,7 @@ class QuestionReveal extends Component {
                     <AccordionSummary
                         className="px-0"
                         expandIcon={
-                            <i className="icon fas fa-chevron-up ml-2"></i>
+                            <i className="icon fas fa-chevron-up"></i>
                         }
                         aria-controls="panel4bh-content"
                         id="panel4bh-header"

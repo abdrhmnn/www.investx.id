@@ -58,7 +58,6 @@ class Navbar extends Component {
             {id : 'favorite', label : 'Favorit'},
             {id : 'list', label : 'List of Investment'},
             {id : 'dividen', label : 'Dividen'},
-            {id : 'history', label : 'History'},
         ]
         return(
             <>
