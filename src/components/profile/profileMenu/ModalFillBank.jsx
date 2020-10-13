@@ -76,9 +76,8 @@ const ModalFillBank = (close, open)=> {
                             />
                         </div>
                         <div className="w-100 text-right">
-                            <Button style="" className='savebank' type='submit'>save</Button>
+                            <Button style={{ height: '40px', width: '25%' }} className='savebank' type='submit'>save</Button>
                         </div>
-
                     </form>
                 )}
         </Formik>
