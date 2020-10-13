@@ -1,14 +1,11 @@
 
-ojk{
-    display: flex;
-    height: 470px; //di figma 470px
+.ojk{
     background-color: white;
     font-size: 10px;
     line-height: 20px;
     width: 100%;
-    justify-content: space-between;
-    align-items: center;
     text-align: left;
+    padding: 20px;
     
     color: black;
 
@@ -29,25 +26,19 @@ ojk{
 }
 
 @media only screen and (max-width: 768px){
-    ojk{
-        display: flex;
-        height: 470px;
-        background-color: white;
+    .ojk{
         font-size: 10px;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        
-        color: black;
     
         .border-right {
-            border-right: 1px solid grey;
+            border-right: unset !important;
         }
 
         header{
             font-weight: bold; 
             padding-bottom: 5px;
+        }
+        img{
+            height: 50px;
         }
     
         p{

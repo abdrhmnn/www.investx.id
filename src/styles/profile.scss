@@ -354,14 +354,17 @@
 
 // modal fill bank 
 .fill-bank-profile{
-    img{
-        margin-bottom: 80px;
-    }
     background: #FFFFFF;
     border-radius: 9px;
     width: 702px;
     padding: 55px 90px 45px;
     filter: drop-shadow(0px 2px 9px rgba(0, 0, 0, 0.25));
+    img{
+        margin-bottom: 80px;
+    }
+    .cancel-fill-bank{
+        display: none;
+    }
     .savebank{
         margin-top: 20px;
         width: 200px;
@@ -379,6 +382,7 @@
 
 @media only screen and (max-width: 768px){
     .profile{
+        padding-top: 80px;
        .head-profile{
            figure{
                 .change-photo{
@@ -482,13 +486,6 @@
                             height: 20px;
                         }
                     }
-                    // hr{
-                    //     background-color: #fff;
-                    //     width: 85%;
-                    //     position: relative;
-                    //     right: -15px;
-                    //     margin-top: 15px;
-                    // }
                 }
            }
     
@@ -518,34 +515,8 @@
                     .pbuttonsub{
                         width: 100% !important;
                         height: 40px !important;
-                        // background: #01579B;
-                        // box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
-                        // border-radius: 7px;
                         margin-bottom: 40px;
-                        // &:disabled{
-                        //     background: #ECEFF4;
-                        //     color: #757575;
-                        // }
                     }
-                    // .MuiTabs-indicator {
-                    //     background-color: #01579B;
-                    //     height: 5px;
-                    // }
-                    // .Mui-selected{
-                    //     color: #01579B;
-                    //     font-weight: 500;
-                    // }
-                    // input{
-                    //     &:disabled{
-                    //         background-color: unset;
-                    //     }
-                    // }
-                    // button{
-                    //     &:disabled{
-                    //         color: #757575;
-                    //     }
-                    // }
-                    
                     .editprofile{
                         margin: 20px 0;
                         // display: flex;
@@ -655,6 +626,12 @@
         img{
             margin-bottom: 40px;
             margin-top: unset;
+        }
+        .cancel-fill-bank{
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: underline;
         }
         .wrapperform{
             width: 100%;

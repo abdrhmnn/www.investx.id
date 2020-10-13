@@ -40,15 +40,18 @@ footer{
 @media only screen and (max-width: 768px){
     footer{
         display: flex;
-        height: 336px;
-        background-color: skyblue;
+        height: auto;
+        // background-color: skyblue;
         width: 100%;
         justify-content: space-between;
-        padding: 0 25px;
+        padding: 25px 25px;
         align-items: center;
         text-align: left;
-        
+        font-size: 12px;
         color: white;
+        img{
+            height: 45px;
+        }
     
         header{
             color: #F27272;

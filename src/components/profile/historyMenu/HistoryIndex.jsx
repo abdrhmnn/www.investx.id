@@ -21,7 +21,7 @@ class HistoryIndex extends Component {
     listComp = ()=>{
         return(
             this.state.objListHistories.map((res,i)=>
-                <div className="listhistory">
+                <div className="listhistory" key={i}>
                     <p className="date ">
                         {res.date} <br/>
                         {res.time}

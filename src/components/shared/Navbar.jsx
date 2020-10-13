@@ -144,7 +144,7 @@ class Navbar extends Component {
                             {
                                kuki.get('auth') ? 
                                 <li className=''>
-                                    <ClickAwayListener className='awaylistener' onClickAway={()=>this.setState({isOpen : false})}>
+                                    <ClickAwayListener  onClickAway={()=>this.setState({isOpen : false})}>
                                         <div className='popovercus'>
                                             <Link to='/profile' className='linktoprof'>
                                                 <img className='ava' src='https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png' alt="ava"/> <span>{kuki.get('full_name')}</span>  
