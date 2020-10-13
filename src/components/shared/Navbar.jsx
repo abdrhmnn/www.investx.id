@@ -10,6 +10,17 @@ import walletnav from '../../images/walletnav.svg'
 import ModalTemplate from './ModalTemplate';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 
+const butLogin = {
+    textTransform: 'capitalize',
+    fontFamily: '\'Lato\'',
+    fontSize: '16px',
+    width: '106px',
+    height: '42px',
+    border: '1px solid #0288D1',
+    boxSizing: 'border-box',
+    borderRadius: '6px'
+}
+
 class Navbar extends Component {
     state={
         isOpen : false,
@@ -49,16 +60,6 @@ class Navbar extends Component {
             {id : 'dividen', label : 'Dividen'},
             {id : 'history', label : 'History'},
         ]
-        const butLogin = {
-            textTransform: 'capitalize',
-  fontFamily: '\'Lato\'',
-  fontSize: '16px',
-  width: '106px',
-  height: '42px',
-  border: '1px solid #0288D1',
-  boxSizing: 'border-box',
-  borderRadius: '6px'
-        }
         return(
             <>
             <div className="boxsaldo">
