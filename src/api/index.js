@@ -27,6 +27,13 @@ const API = {
   getProfile: () => {
     return axios.get(apiBaseUrl + `/file/account/profile/`, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   },
+  otp : (code) =>{
+    const body = {
+      "phone_number": kuki.get('phone_number'),
+      "code": code
+    }
+    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body)
+  }
 };
 
 export default API;

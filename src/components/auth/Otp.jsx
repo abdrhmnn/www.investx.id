@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 // import gmail from '../../images/gmail.svg'
 // import outlook from '../../images/outlook.svg'
-import Navbar from '../shared/Navbar';
+// import Navbar from '../shared/Navbar';
 import mailbox from '../../images/mailbox.png'
 
 import { Button } from '@material-ui/core';
@@ -10,6 +10,12 @@ import ModalTemplate from '../shared/ModalTemplate';
 
 import successotp from '../../images/successotp.svg'
 import emailicon from '../../images/emailicon.svg'
+import API  from "../../api";
+import kuki from '../../helpers/cookie'
+import Swal from 'sweetalert2'
+
+
+
 
 
 
@@ -43,10 +49,27 @@ class Otp extends Component {
     }
     handleSubmit = (e)=>{
         var {box1, box2, box3, box4, box5, box6 } = this.state
-        let inCode = box1 + box2 + box3 + box4 + box5 + box6
+        let otpCode = box1 + box2 + box3 + box4 + box5 + box6
         console.log(this.state);
         // window.location.href = '/select-form'
         this.setState({onOpenModal : true})
+        API.otp(otpCode).then(res=>{
+            console.log(res)
+            Swal.fire({
+                icon: 'success',
+                title: 'Verifikasi OTP berhasil!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              kuki.set('status', {phone : true, email : kuki.get('status').email})
+        }).catch(err =>{
+            console.log(err.response)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `Verifikasi OTP gagal!` ,
+            })
+        })
         e.preventDefault()
     }
 
@@ -85,7 +108,7 @@ class Otp extends Component {
                         <img src={mailbox} alt=""/>
                         <p className="title">Verifikasi Kode OTP</p>
                         <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
-                        <p className="num">0 8 5 7 * * * * 1 2 1 2</p>
+                        <p className="num">{kuki.get('phone_number')}</p>
                         <form onSubmit={this.handleSubmit} id='otp'>
                             <input required ref={(input) => { this.boxFoc1 = input; }}  type='number' maxLength='1' name='box1' value={this.state.box1} onChange={this.handleChange}  />
                             <input required ref={(input) => { this.boxFoc2 = input; }}  type='number' maxLength='1' name='box2' value={this.state.box2} onChange={this.handleChange}  />
