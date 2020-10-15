@@ -21,10 +21,11 @@ import Ojk from '../shared/Ojk';
 import BusinessIndex from './businessMenu/BusinessIndex';
 import HistoryIndex from './historyMenu/HistoryIndex';
 import FavoriteIndex from './favoriteMenu/FavoriteIndex';
+import ListOfInvestmentIndex from './listOfInvestmentMenu/ListOfInvestmentIndex';
+import DividendIndex from './dividendMenu/DividendIndex';
 
 import API from '../../api'
 import kuki from '../../helpers/cookie'
-
 
 class Profile extends Component {
     state={
@@ -133,6 +134,12 @@ class Profile extends Component {
                         </Collapse>
                         <Collapse in={this.props.activeTab === 'favorite'}>
                             <FavoriteIndex />
+                        </Collapse>
+                        <Collapse in={this.props.activeTab === 'list'}>
+                            <ListOfInvestmentIndex />
+                        </Collapse>
+                        <Collapse in={this.props.activeTab === 'dividen'}>
+                            <DividendIndex />
                         </Collapse>
                         </div>
                     </div>
