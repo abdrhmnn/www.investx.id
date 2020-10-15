@@ -164,3 +164,89 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px){
+    .how{
+        .head{
+            height: 450px;
+            padding-top: 30px;
+            .jumbo{
+                .con{
+                    p.title{
+                        font-size: 25px;
+                        line-height: unset;
+                    }
+
+                    p.desc{
+                        font-size: 14px;
+                        margin-bottom: 40px;
+                    }
+                    
+                    .how-invest{
+                        width: 100%;
+                        margin-bottom: 20px;
+                        font-size: 14px;
+                        height: 35px;
+                    }
+
+                    .fund{
+                        width: 100%;
+                        font-size: 14px;
+                        height: 35px;
+                    }
+                }
+            }
+        }
+
+        .cara{
+            height: 100%;
+            padding: 20px;
+
+            p.desc{
+                font-size: 14px;
+            }
+        }
+
+        .kartu{
+            padding: 30px 0;
+        }
+
+        .steps{
+            flex-wrap: wrap;
+            .step-box{
+                margin-bottom: 40px;
+
+                li{
+                    font-size: 14px !important;
+                }
+            }
+        }
+
+        .cara-mengajukan{
+            .steps{
+                padding: 20px !important;
+                .documents{
+                    img{
+                        margin-bottom: 10px;
+                    }
+                    margin: 0 !important;
+                    padding: 20px !important;
+                }
+
+                button{
+                    width: 100% !important;
+                    font-size: 14px;
+                    height: 35px;
+                }
+            }
+
+            .steps-image{
+                padding: 40px 0;
+
+                img{
+                    margin: 20px 0;
+                }
+            }
+        }
+    }
+}
