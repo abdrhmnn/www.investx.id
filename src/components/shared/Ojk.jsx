@@ -5,7 +5,7 @@ import logoOJK from '../../images/ojk.svg'
 class Ojk extends Component {
     render(){
         return (
-            <ojk>
+            <div className="ojk">
                 <div className="container">
                     <header> Attention </header>
                     <div className="row">
@@ -38,8 +38,8 @@ class Ojk extends Component {
                     </div>
                     <p>© 2020 InvestX.id All Rights Reserved</p>
                 </div>
-           
-            </ojk>
+
+            </div>
         );
     }
   }

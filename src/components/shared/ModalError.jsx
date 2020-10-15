@@ -5,6 +5,14 @@ import errorImage from "../../images/clip-list-is-empty 1.svg";
 
 class ModalError extends Component {
     render() {
+        const But = {
+            color: 'black',
+  borderRadius: '8px',
+  border: '1px solid #0288d1',
+  backgroundColor: 'white',
+  fontSize: '16px',
+  outline: 'unset !important'
+        }
         return (
             <div className="modal-error-container">
                 <div className="modal-error-body">
@@ -20,7 +28,7 @@ class ModalError extends Component {
                             Data yang anda masukan salah
                         </h5>
 
-                        <Button className="but">Ulangi</Button>
+                        <Button style={But} className="but">Ulangi</Button>
                     </div>
                 </div>
             </div>

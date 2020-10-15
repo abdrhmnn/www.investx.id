@@ -10,6 +10,17 @@ import walletnav from '../../images/walletnav.svg'
 import ModalTemplate from './ModalTemplate';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 
+const butLogin = {
+    textTransform: 'capitalize',
+    fontFamily: '\'Lato\'',
+    fontSize: '16px',
+    width: '106px',
+    height: '42px',
+    border: '1px solid #0288D1',
+    boxSizing: 'border-box',
+    borderRadius: '6px'
+}
+
 class Navbar extends Component {
     state={
         isOpen : false,
@@ -47,7 +58,6 @@ class Navbar extends Component {
             {id : 'favorite', label : 'Favorit'},
             {id : 'list', label : 'List of Investment'},
             {id : 'dividen', label : 'Dividen'},
-            {id : 'history', label : 'History'},
         ]
         return(
             <>
@@ -124,7 +134,7 @@ class Navbar extends Component {
                                     className='burger'
                                 />
                                 :
-                                <Link to='/login'><Button className="but-login">Log In</Button></Link>
+                                <Link to='/login'><Button style={butLogin} className="but-login">Log In</Button></Link>
                             }
                         </div>
                         <ul>
@@ -134,7 +144,7 @@ class Navbar extends Component {
                             {
                                kuki.get('auth') ? 
                                 <li className=''>
-                                    <ClickAwayListener className='awaylistener' onClickAway={()=>this.setState({isOpen : false})}>
+                                    <ClickAwayListener  onClickAway={()=>this.setState({isOpen : false})}>
                                         <div className='popovercus'>
                                             <Link to='/profile' className='linktoprof'>
                                                 <img className='ava' src='https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png' alt="ava"/> <span>{kuki.get('full_name')}</span>  
@@ -145,7 +155,7 @@ class Navbar extends Component {
                                     </ClickAwayListener>
                                 </li>
                                 :
-                                <li> <Link to='/login'><Button className="but-login">Log In</Button></Link> </li>
+                                <li> <Link to='/login'><Button style={butLogin}className="but-login">Log In</Button></Link> </li>
                             }
                         </ul>
                     </div>

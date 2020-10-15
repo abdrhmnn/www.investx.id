@@ -6,6 +6,7 @@ import paymentImage from "../../images/paymentimage.svg";
 
 class TopUpStatus extends Component {
     render() {
+        const butBlue = { width: '197px', height: '36px', fontSize: '14px', textTransform: 'uppercase', color: '#ffffff', background: '#01579b', borderRadius: '24px', border: 'none', outline: 'none' }
         return (
             <div className="topup-status">
                 <img class="logo-white" src={logoWhite} alt="logo-white" />
@@ -25,7 +26,7 @@ class TopUpStatus extends Component {
                     <p>Silahkan Lakukan Pembayaran</p>
                 </div>
 
-                <Button className="but-blue">KEMBALI KE PINJAMAN</Button>
+                <Button className="but-blue" style={butBlue}>KEMBALI KE PINJAMAN</Button>
             </div>
         );
     }

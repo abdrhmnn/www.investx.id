@@ -28,7 +28,7 @@ class CaroQuotes extends Component {
                   {
                     arr.map((res,i)=>(
                       <div key={i}>
-                        <div className="row center"> 
+                        <div className="row center row-mobile"> 
                             <div className="col-md-7 ">
                               <span className="header">"Exactly what founders need to be successful"</span> 
                             </div>

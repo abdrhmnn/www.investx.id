@@ -233,3 +233,94 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px){
+    .aboutus{
+        .head{
+            padding: 0;
+            .jumbo{
+                p.title{
+                    font-size: 35px;
+                }
+  
+                p.sub-title{
+                    font-size: 16px;
+                } 
+                
+                p.desc{
+                    font-size: 14px;
+                }
+            }
+            p.jfot{
+                margin: 20px;
+                padding-top: 40px;
+            }
+        }
+        .whatis{
+            img{
+                display: none;
+            }
+  
+            .parag{
+                padding: 20px;
+                .con{
+                    p.title{
+                        font-size: 20px;
+                        text-indent: 0;
+                    }
+                    p.desc{
+                        max-width: unset;
+                    }
+                }
+            }
+        }
+    
+        .weare{
+            padding-top: 70px;
+            padding-bottom: 70px;
+            p.title{
+                font-size: 35px !important;
+            }
+            p.sub{
+                font-size: 16px !important;
+            }
+            p.desc{
+                font-size: 14px;
+            }
+            .cards{
+                flex-wrap: wrap;
+                .card-profile{
+                    margin: 0;
+                    margin-top: 40px;
+                    
+                    p.title{
+                        text-align: center;
+                        font-size: 20px !important;
+                    }
+                }
+            }
+        }
+  
+        .addmap{
+            padding: 20px;
+            padding-bottom: 25px;
+        }
+  
+        .join-investor{
+            padding: 100px 20px;
+            a{
+                font-size: 14px;
+            }
+            h2{
+                font-size: 20px;
+            }
+            button{
+                width: 100%;
+                font-size: 14px;
+            }
+            .top{
+                display: none;
+            }
+        }
+    }
+}
