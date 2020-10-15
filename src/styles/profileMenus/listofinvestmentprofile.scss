@@ -1,0 +1,109 @@
+.list-of-investment-menu {
+    padding: 20px 25px 100px;
+    .title {
+        font-size: 14px;
+        line-height: 54px;
+        color: #01579b;
+        font-weight: 500;
+    }
+    hr {
+        margin-bottom: 34px;
+    }
+
+    .card-item {
+        padding: 18px 12px;
+        margin-bottom: 12px;
+
+        width: 754px;
+        height: 138px;
+        background: #ffffff;
+        border: 1px solid #f4f4f4;
+        box-sizing: border-box;
+        border-radius: 6px;
+
+        .company-image {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+            margin-right: 12px;
+            margin-left: 12px;
+        }
+
+        .company-name {
+            margin-bottom: 0px;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 24px;
+            color: #333333;
+        }
+
+        .company-location {
+            .location-icon {
+                width: 12px;
+                height: 12px;
+                margin-right: 6px;
+            }
+            .location-name {
+                font-size: 10px;
+                line-height: 12px;
+                color: #333333;
+            }
+        }
+
+        .invest-status {
+            .status-name {
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 18px;
+                color: #ffa412;
+                margin-bottom: 6px;
+            }
+
+            .deadline {
+                font-size: 12px;
+                line-height: 18px;
+                color: #333333;
+            }
+
+            .view-detail {
+                font-size: 14px;
+                line-height: 18px;
+                color: #4cb5ef;
+            }
+        }
+
+        .invest-detail {
+            .detail-value {
+                width: 1px;
+                height: 42px;
+                border-right: 1px solid #f4f4f4;
+
+                .name {
+                    font-size: 12px;
+                    line-height: 18px;
+                    color: #333333;
+                    margin-bottom: 6px;
+                }
+
+                .value {
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #000000;
+                    margin-bottom: 0px;
+                }
+
+                .row {
+                    .value {
+                        margin-left: -24px;
+                    }
+                }
+            }
+
+            .no-border {
+                border: none;
+            }
+        }
+    }
+}
