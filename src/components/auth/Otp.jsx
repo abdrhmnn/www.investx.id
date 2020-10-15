@@ -52,7 +52,7 @@ class Otp extends Component {
         let otpCode = box1 + box2 + box3 + box4 + box5 + box6
         console.log(this.state);
         // window.location.href = '/select-form'
-        this.setState({onOpenModal : true})
+        // this.setState({onOpenModal : true})
         API.otp(otpCode).then(res=>{
             console.log(res)
             Swal.fire({
