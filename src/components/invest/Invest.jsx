@@ -105,7 +105,10 @@ class Invest extends Component {
                                 <p className="info">Min. 8 lembar</p>
                                 <p className="title">Total Harga saham</p>
                                 <p className="total">Rp. {this.state.lembarSaham * 1000000}</p>
-                                <Button className='beli-saham' onClick={()=> this.setState({modalConfirm : true})}>BELI SAHAM</Button>
+                                <Button classes={{
+                                    root : "beli-saham",
+                                    }} 
+                                    onClick={()=> this.setState({modalConfirm : true})}>BELI SAHAM</Button>
                             </div>
                         </div>
                     </div>

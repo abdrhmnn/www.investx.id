@@ -2,6 +2,34 @@
     padding-top: 74px + 70px;
     background-color: white;
     margin-bottom: 100px;
+    @media screen and (max-width:700px) {
+        .calculator{
+            margin-top: 20px;
+            margin-bottom: 200px;
+        }
+    }
+    @media screen and (max-width: 425px) {
+        .pasal{
+            margin-top: -30px;
+        }
+        .wrap-cal > Button{
+            margin: 10px;
+        }
+        .calculator{
+            margin-bottom: 160px;
+        }
+    }
+    @media screen and (max-width: 325px){
+        .calculator{
+       width: 250px;
+       padding: 20px 15px;
+       margin-left: 50px;
+       margin-right: 50px;
+        }
+        .beli-saham, .total{
+            padding: 10px;
+        }
+    }
     .pasal{
         .title{
             font-weight: 500;
