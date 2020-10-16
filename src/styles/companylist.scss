@@ -9,6 +9,9 @@
             margin: 0 10px;
         }
     }
+    .title-filter-mobile{
+        display: none;
+    }
     .title-company{
         text-align: center;
         font-weight: 900;
@@ -53,7 +56,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                width: 25%;
+                width: 290px;
                 .selfil{
                     width: 210px;
                 }
@@ -273,5 +276,101 @@
     .check-label{
         font-size: 14px;
         // font-weight: 300;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .company-list{
+        .title-company{
+            font-size: 25px;
+            line-height: unset;
+        }
+        
+        .desc-company{
+            font-size: 14px;
+            margin: 20px 0;
+        }
+
+        .breadcrumb-custom{
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        
+        .container-fluid{
+            padding: 0;
+        }
+        .list-boxes{
+            .header-list-company{
+                padding: 10px 20px;
+                display: block;
+
+                .filad{
+                    flex-wrap: wrap;
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+
+            .box-row{
+                margin: 40px 15px;
+                .mb-5{
+                    margin-bottom: 0 !important;
+                }
+            }
+
+            .pagination_cus{
+                padding: 0 20px !important;
+                ul{
+                    width: 100%;
+                    justify-content: space-between;
+                }
+            }
+        }
+
+        .title-filter{
+            display: none !important;
+        }
+
+        .title-filter-mobile{
+            display: inline;
+            background-color: #4CB5EF;
+            color: white;
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+            padding: 5px 10px;
+        }
+
+        .filter-box-mobile{
+            ul{
+                display: flex !important;
+                flex-wrap: wrap;
+                margin-left: -35px;
+                justify-content: space-between;
+
+                li{
+                    display: inline;
+                    margin-bottom: 10px;
+                    .filter-check{
+                        .check-label{
+                            width: 120px;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+            }
+        }
+
+        .city-select{
+            padding-right: unset !important;
+        }
+
+        .title-check{
+            margin-bottom: 10px;
+        }
+
+        .wrap-disp{
+            display: flex !important;
+            justify-content: space-between;
+        }
     }
 }

@@ -33,9 +33,12 @@ class CompanyList extends Component {
         page : 1
 
     }
-
+    
     componentDidMount(){
         window.scrollTo(0, 0)
+        if(window.screen.width <= 768){
+            this.setState({filterShow : false})
+        }
     }
     handlePageChange = (pageNumber) => {
         console.log(`active page is ${pageNumber}`);
@@ -73,7 +76,6 @@ class CompanyList extends Component {
             console.log(this.state.industriesCount);
         }
     }
-
     render() {
         console.log(this.state);
         const filterCheck = [
@@ -129,6 +131,84 @@ class CompanyList extends Component {
                                     <i className={this.state.filterShow ?"fas fa-caret-right mr-2":"fas fa-caret-left mr-2"}></i>Filter
                                 </div>
 
+                                <div className="title-filter-mobile" data-toggle="modal" data-target="#modalFilterMobile">
+                                    <i className="fas fa-caret-left mr-2"></i>Filter
+                                </div>
+
+                                <div class="modal fade" id="modalFilterMobile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div className="filter-box-mobile">
+                                                    <ul>
+                                                        {filterCheck.map((res,i)=>
+                                                            <li key={i}>
+                                                                <FilterCheck label={res.name}
+                                                                isCheck={this.state[`${res.name}`]} onClick={()=>this.handleCheckFilter(res.name, !this.state[`${res.name}`] )} 
+                                                                />
+                                                            </li>
+                                                        )}
+                                                    </ul>
+
+                                                    <hr/>
+
+                                                    <div className="title-check">City </div>
+                                                    <div className='w-100 pr-3 city-select'>
+                                                        <Select  options={options} />
+                                                    </div>
+
+                                                    <hr/>
+
+                                                    <div className="title-check">Industries <img src={triangle} alt="triangle"/></div>
+                                                    <ul className='industries-check-mobile'>
+                                                        {filterCheckIndustries.map((res,i)=>
+                                                            <li key={i}>
+                                                                <FilterCheck label={res.name} 
+                                                                isCheck={this.state[`${res.name}`]} 
+                                                                onClick={()=>this.handleCheckIndustries(res.name, !this.state[`${res.name}`], res.id )} 
+                                                                />
+                                                            </li>
+                                                        )}
+                                                    </ul> 
+
+                                                    <hr/>
+
+                                                    <div className="title-check text-center justify-content-center pr-4">Investment amount ( Rp )</div>
+
+                                                    <div className="filter-amount-mobile">
+                                                        <div className="wrap-disp">
+                                                            <div className="amount-disp">
+                                                                <div className="label">Min. ammount</div>
+                                                                <div className="value-amount">{helper.idr(this.state.amount.min * 1000000)}</div>
+                                                            </div>
+                                                            <span>-</span>
+                                                            <div className="amount-disp">
+                                                                <div className="label">Max. ammount</div>
+                                                                <div className="value-amount">{helper.idr(this.state.amount.max * 1000000)}</div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div className="range-wrap mb-3 mt-4">
+                                                            <InputRange
+                                                            // formatLabel={value => `${value}Jt`}
+                                                            maxValue={15}
+                                                            minValue={1}
+                                                            value={this.state.amount}
+                                                            onChange={value => this.setState({ amount : value })} />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <Slide right when={this.state.filterShow} > 
                                     <div className={this.state.filterShow? "filter-box1" : 'filter-box1 filter-hidden'}>
                                         <ul>
@@ -139,7 +219,7 @@ class CompanyList extends Component {
                                                     />
                                                 </li>
                                             )}
-                                        </ul> 
+                                        </ul>
 
                                         <hr/>
 
@@ -209,7 +289,7 @@ class CompanyList extends Component {
                                     </div>
                                 </div>
 
-                                <div className=" row no-gutters">
+                                <div className="row box-row no-gutters">
                                 {
                                     dummyCards.map((res,i)=>
                                         <div className="mb-5 col-md-4 " key={i}>
