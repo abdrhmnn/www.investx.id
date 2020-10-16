@@ -351,11 +351,24 @@
 
         .title-filter-mobile{
             display: inline;
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            margin: 0 auto !important;
+            z-index: 999;
             background-color: #4CB5EF;
             color: white;
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-            padding: 5px 10px;
+            border-radius: 50%;
+            width: 50px;
+            padding: 15px;
+
+            i{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+            }
         }
 
         .filter-box-mobile{

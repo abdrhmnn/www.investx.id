@@ -132,7 +132,7 @@ class CompanyList extends Component {
                                 </div>
 
                                 <div className="title-filter-mobile" data-toggle="modal" data-target="#modalFilterMobile">
-                                    <i className="fas fa-caret-left mr-2"></i>Filter
+                                    <i class="fas fa-filter"></i>
                                 </div>
 
                                 <div class="modal fade" id="modalFilterMobile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
