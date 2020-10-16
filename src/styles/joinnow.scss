@@ -7,6 +7,17 @@
   .gray{
     color: gray;
   }
+  @media screen and (max-width:"425px"){
+    p{
+      margin-bottom: 20px;
+    }
+    .big-text{
+      margin-bottom: 10px;
+    }
+    .lets-join{
+      padding: 10px;
+    }
+  }
   .boxes{
     -webkit-animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
 	        animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;

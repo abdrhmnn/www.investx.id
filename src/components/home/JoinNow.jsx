@@ -15,7 +15,7 @@ class JoinNow extends Component {
                     <div className="row">
                         <div className="col-md-7 align-items-center">
                             <p className="big-text mt-5"><span className="gray">Temukan</span> <span className="black">Startup & Entrepreneur</span> <span className="gray"> se-Indonesia</span></p>
-                            <p className="text size1">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</p>
+                            <p className="text size1 br">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</p>
                         </div>
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
@@ -60,7 +60,7 @@ class JoinNow extends Component {
 
                 </div>
                 <div className="d-flex justify-content-center">
-                    <Button className="tombol-join link-button">Join Now</Button>
+                    <Button className="tombol-join link-button lets-join">Join Now</Button>
                 </div>
             </div>
         );
