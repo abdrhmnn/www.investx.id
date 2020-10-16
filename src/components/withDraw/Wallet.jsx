@@ -28,23 +28,26 @@ class Wallet extends Component {
                 </div>
                 <div className="box saldo">
                     <img className="wallet" src={wallet} alt="" />
-                    <span style={{ background: "#0288D1", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "40px" }}>Total Saldo</span>
-                    <div className="uang">Rp. <span className="jumlah">20.000.000</span></div>
+                    <span style={{ background: "#4CB5EF", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "40px" }}>Total Saldo</span>
+                    <div className="uang" style={{color: "#01579b"}}>Rp. <span className="jumlah">20.000.000</span></div>
                     <div className="wallet-bawah">
                         <div className="kiri" style={{ marginTop: "70px", marginLeft: "-90px" }}>
-                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah">Saldo Rupiah</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{fontWeight: "400"}}>Saldo Rupiah</span></div>
                             <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
                         </div>
 
                         <div className="kiri" style={{ marginTop: "-10px", marginLeft: "60px" }}>
-                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah">Total Rupiah</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{ fontWeight: "400" }}>Total Rupiah</span></div>
                             <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
+                        </div>
+                        <div className="">
+
                         </div>
                     </div>
                 </div>
                 <div className="box nominal">
                     <div className="box-form-data">
-                        <div className="title-alt" style={{ marginLeft: "-45px" }}>Nominal Top Up</div>
+                        <div className="title-alt" style={{ marginLeft: "-45px", color: "#01579b",fontWeight:"500" }}>Nominal Top Up.</div>
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "400px" }}>
                             <Link to="/topup-method">
                                 <Button className="but-blue" style={{
@@ -54,13 +57,13 @@ class Wallet extends Component {
                                     textTransform: 'uppercase',
                                     color: '#ffffff',
                                     background: '#01579b',
-                                    borderRadius: '24px',
+                                    borderRadius: '8px',
                                     border: 'none',
-                                    outline: 'none' }}>Top Up</Button>
+                                    outline: 'none' }}>TOP UP</Button>
                             </Link>
 
                             <Button className="but" style={{
-                                width: "100px", width: "197px", height: "36px", fontSize: "14px", color: 'black',
+                                width: "100px", width: "197px", height: "36px", fontSize: "14px", color: '#0288d1',
                                 borderRadius: '8px',
                                 border: '1px solid #0288d1',
                                 backgroundColor: 'white',
@@ -96,7 +99,7 @@ class Wallet extends Component {
                     <div className="title-alt" style={{ fontWeight: "bolder", color: "#0288DA", marginLeft: "30px", marginTop: "20px" }}>Riwayat Transaksi</div>
                     <div className="menu">
                         <a style={{
-                            background: '#2388D1',
+                            background: '#4CB5EF',
                             color: 'white'
                         }}>Semua</a>
                         <a style={{ marginLeft: "120px" }}>Pembelian</a>
