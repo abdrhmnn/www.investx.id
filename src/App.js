@@ -121,7 +121,7 @@ class App extends Component {
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
 
-          <Route exact path='/profile' component={Profile}/>
+          <PrivatRoute exact path='/profile' component={Profile}/>
 
           <Route exact path='*' component={emptPage}/>
         </Switch>
