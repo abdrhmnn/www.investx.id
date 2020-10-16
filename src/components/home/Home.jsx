@@ -151,7 +151,7 @@ class Home extends Component {
                             diligence.
                         </div>
                     </div>
-                    <Link to="/comapany-list">
+                    <Link to="/company-list">
                         <Button>See All</Button>
                     </Link>
                 </div>
