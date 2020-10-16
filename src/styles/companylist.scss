@@ -327,6 +327,24 @@
             }
         }
 
+        .filter-popup{
+            margin: 0;
+        }
+
+        .modal-header{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 10 !important;
+            background-color: white !important;
+        }
+        
+        .modal-body{
+            margin-top: 70px;
+            height: 100vh;
+        }
+
         .title-filter{
             display: none !important;
         }
@@ -342,11 +360,8 @@
 
         .filter-box-mobile{
             ul{
-                display: flex !important;
-                flex-wrap: wrap;
                 margin-left: -35px;
-                justify-content: space-between;
-
+               
                 li{
                     display: inline;
                     margin-bottom: 10px;
