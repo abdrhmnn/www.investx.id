@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 // import gmail from '../../images/gmail.svg'
 // import outlook from '../../images/outlook.svg'
-// import Navbar from '../shared/Navbar';
+import Navbar from '../shared/Navbar';
 import mailbox from '../../images/mailbox.png'
 
 import { Button } from '@material-ui/core';
@@ -102,7 +102,7 @@ class Otp extends Component {
         return (
             <div>
                 <ModalTemplate onOpen={this.state.onOpenModal} component={this.compModalSuccessOtp}/>
-                {/* <Navbar/> */}
+                <Navbar/>
                 <div className='otp'>
                     <div className="box-otp">
                         <img src={mailbox} alt=""/>

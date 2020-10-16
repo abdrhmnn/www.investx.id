@@ -100,3 +100,142 @@
 
     }
 }
+
+@media only screen and (max-width: 768px){
+    .profile-business-menu{
+        padding: 0;
+        .box-title{
+            // background-color: yellow;
+            // display: flex;
+            flex-wrap: wrap;
+            // justify-content: space-between;
+            // align-items: center;
+            // border-bottom: 1px solid #DEDEDE;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            p{
+                margin-bottom: 0;
+                color: #01579B;
+                font-weight: 500;
+                font-size: 14px;
+            }
+            button{
+                width: auto;
+                height: 50px;
+                background: #FFFFFF;
+                box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.25);
+                border-radius: 9px;
+                margin-bottom: 0;
+                text-transform: capitalize;
+                font-size: 14px;
+                color: #0288D1;
+                img{
+                    height: 30px;
+                    margin-left: 15px;
+                }
+            }
+        }
+        .list-businessbox{
+            margin-bottom: 60px;
+            background: #F1F1F1;
+            box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.25);
+            border-radius: 9px;
+            overflow: hidden;
+            .listheader{
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                text-align: center;
+                flex-wrap: wrap;
+                .comp-logo{
+                    width: 57px;
+                    height: 57px;
+                    background: #FFFFFF;
+                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                .box-head{
+                    // border-right: 1px solid #DEDEDE;
+                    // display: flex;
+                    // align-items: center;
+                    // flex-direction: column;
+                    // justify-content: center;
+                    // flex: auto;
+
+                    border: 1px solid #DEDEDE;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: center;
+                    /* flex: 1; */
+                    padding: 5px 0px;
+                    margin-bottom: 5px;
+                    width: 37%;
+                    &:last-of-type{
+                        // border-right: 1px solid #DEDEDE;
+                    }
+                    .title{
+                        font-size: 10px;
+                        // color: #A5A5A5;
+                        // margin-bottom: 0;
+                    }
+                    .value{
+                        font-size: 14px;
+                        // margin-bottom: 0;
+                    }
+                    // .action{
+                    //     cursor: pointer;
+                    //     margin: 0;
+                    //     color: #4CB5EF;
+                    //     text-decoration-line: underline;
+                    //     font-size: 16px;
+                    //     &:last-of-type{
+                    //         color: #F27272;
+                    //     }
+                    // }
+                }
+            }
+    
+            .listvalue{
+                // padding: 15px;
+                background-color: white;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                padding: 10px;
+                .MuiStepper-root {
+                    padding: 0px;
+                    .MuiStepLabel-label.MuiStepLabel-alternativeLabel {
+                        margin-top: 5px;
+                        text-align: center;
+                    }
+                    .MuiStep-completed{
+                        display: block !important;
+                    }
+                    .MuiStep-root{
+                        display: none;
+                    }
+                }
+                .listval-child{
+                    flex: 1;
+                    padding: unset;
+                    font-size: 12px;
+                    font-style: italic;
+                    margin-bottom: 10px;
+                    // &:last-of-type{
+                    //     color: #4CB5EF;
+                    //     text-decoration-line: underline;
+                    // }
+                }
+                .listval-stepper{
+                    flex: 1;
+
+                    width: 80%;
+                }
+            }
+    
+        }
+    }
+}
