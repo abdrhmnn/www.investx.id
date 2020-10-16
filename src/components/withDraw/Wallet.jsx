@@ -33,17 +33,17 @@ class Wallet extends Component {
                     <div className="wallet-bawah">
                         <div className="kiri" style={{ marginTop: "70px", marginLeft: "-90px" }}>
                             <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{fontWeight: "400"}}>Saldo Rupiah</span></div>
-                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">15.000.000</span></div>
                         </div>
 
                         <div className="kiri" style={{ marginTop: "-10px", marginLeft: "60px" }}>
                             <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{ fontWeight: "400" }}>Total Rupiah</span></div>
-                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
-                        </div>
-                        <div className="">
-
-                        </div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">5.000.000</span></div>
+                        </div><br /> 
+                        <div className="know-more" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{ fontWeight: "400" }}>Pelajari Lebih Lanjut</span>
+                        <a href="#" style={{ color: "#01579B", fontWeight: "500" }}> disini</a></div>
                     </div>
+                    
                 </div>
                 <div className="box nominal">
                     <div className="box-form-data">
@@ -79,7 +79,7 @@ class Wallet extends Component {
                         </div>
 
 
-                        <div style={{ marginLeft: "-50px", maxHeight: "60px", overflowX: "hidden", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
+                        <div style={{ marginLeft: "-50px", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
                             <Button className="saran">20.000.000</Button>
                             <Button className="saran">30.000.000</Button>
                             <Button className="saran">40.000.000</Button>
@@ -106,7 +106,8 @@ class Wallet extends Component {
                         <a style={{ marginLeft: "230px" }}>Top Up</a>
                         <a style={{ marginLeft: "320px" }}>With Draw</a>
                     </div>
-
+                    
+                  
                     <p style={{ letterSpacing: "-0.5px", marginTop: "70px", fontSize: "9pt", marginLeft: "30px" }}>10 Aug 2020 | 08:30</p>
                     <br />
 
@@ -156,11 +157,12 @@ class Wallet extends Component {
                             <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "red" }}>Transaksi Dibatalkan</p>
                         </div>
                         <div style={{ marginLeft: "460px", marginTop: "-50px" }}>
-                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "red", color: "white", border: "none" }}>Tarik Uang Lagi</Button>
-                        </div>
+                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "#F27272", color: "white", border: "none" }}>Tarik Uang Lagi</Button>
+                            </div>
+                           
                         <hr />
                     </div>
-
+                
                 </div>
             </div>
         );
