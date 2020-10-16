@@ -13,6 +13,8 @@ import share from '../../images/company/share.svg'
 import StepSaham from './StepSaham';
 import TabsComp from './tab/TabsComp';
 import EmbedMap from './EmbedMap';
+import Footer from '../shared/Footer';
+import Ojk from '../shared/Ojk';
 
 class CompanyDetail extends Component {
     render() {
@@ -42,6 +44,7 @@ class CompanyDetail extends Component {
         };
         console.log(this.props);
         return (
+            <>
             <div className='company-detail'>
             <Navbar />
                 <div className="container">
@@ -148,6 +151,9 @@ class CompanyDetail extends Component {
                     </div>
                 </div>
             </div>
+            <Footer />
+                <Ojk />
+            </>
         );
     }
 }

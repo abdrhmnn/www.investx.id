@@ -56,28 +56,32 @@ class PaymentMethod extends Component {
                             {method.subtitle}
                         </p>
                         {method.logos.map((data) => (
-                            <div
+                            <label
+                                htmlFor={data.id}
                                 key={data.id}
-                                onClick={() => this.onChecked(data.id)}
                                 className={
                                     "radio-bank " +
                                     (this.state.checkedRadio === data.id
                                         ? "checked"
                                         : "")
                                 }
+                                style={{cursor : 'pointer'}}
                             >
                                 <input
+                                    id={data.id}
                                     checked={
                                         this.state.checkedRadio === data.id
                                     }
+                                    onClick={() => this.onChecked(data.id)}
                                     type="radio"
                                     name="bank"
                                     value={data.logo}
+                                    // disabled
                                 />
 
                                 <img src={data.logo} alt="bca" />
                                 <br />
-                            </div>
+                            </label>
                         ))}
                         <br />
                     </div>
