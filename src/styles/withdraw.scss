@@ -27,7 +27,7 @@ cursor: pointer;
     left: 140px;
     top: 190px;    
     width: 340px;
-    height: 190px;    
+    height: 230px;    
     border-bottom: 8px solid #0288D1;
 }
 .nominal, .riwayat{
@@ -56,11 +56,14 @@ cursor: pointer;
     margin-left: 130px;
     margin-top: -40px;
 }
+
 .saran {
     display: inline-block;
     border: none;
     margin-top: 20px;
     margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     background: #DEDEDE;
     font-size: 9pt;
 }
@@ -70,10 +73,11 @@ font-weight: bolder
 }
 
 .geser{
-    max-height: 40px;
-overflow-x: hidden;
+    max-height: 70px;
 overflow-y: hidden;
+overflow-x: hidden;
 white-space: nowrap;
+
 }
 .error-image{
 width: auto;
@@ -84,5 +88,7 @@ height: 60px
 font-size: 12pt;
 margin-bottom: 15px
 }
-
+.know-more{
+    margin-left: 150px;
+}
 }
