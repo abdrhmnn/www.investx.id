@@ -323,7 +323,8 @@
                 font-size: 14px;
             }
             .top{
-                display: none;
+                display: block;
+                position: fixed;
             }
         }
     }

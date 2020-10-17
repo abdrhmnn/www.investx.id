@@ -239,7 +239,7 @@ class AboutUs extends Component {
                             <span style={{color:"black"}}>Have an Account?</span> <a href="#">Log in</a>
                         </div>
                     </Link>
-                    <div className="top ">
+                    <div className="top">
                         <a href="#top">
                             <Button>
                                 <img src={top}></img>
