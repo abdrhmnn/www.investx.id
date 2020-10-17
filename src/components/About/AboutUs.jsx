@@ -18,6 +18,10 @@ class AboutUs extends Component {
     toTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
     render() {
+        const beda = {
+            textDecoration: "none",
+            borderBottom: "none"
+        }
         return (
             <div className="aboutus">
                 <Navbar />
@@ -223,19 +227,19 @@ class AboutUs extends Component {
                     </div>
                 </div>
 
-                <div className="join-investor beda">
+                <div className="join-investor" style={beda}>
                     <h2>Invest in Highly vetted early-staged companies</h2>
                     <br />
-                    <Link to="/investor-form-data-diri">
-                        <Button type="Button" class="beda">Become an Investor</Button>
+                    <Link to="/investor-form-data-diri" style={beda}>
+                        <Button>Become an Investor</Button>
                     </Link>
-                    <Link to="/login">
-                        <div className="desc beda" >
+                    <Link to="/login" style={beda}>
+                        <div className="desc">
                             <br />
-                            Have an Account? <a href="#">Log in</a>
+                            <span style={{color:"black"}}>Have an Account?</span> <a href="#">Log in</a>
                         </div>
                     </Link>
-                    <div className="top beda">
+                    <div className="top ">
                         <a href="#top">
                             <Button>
                                 <img src={top}></img>
