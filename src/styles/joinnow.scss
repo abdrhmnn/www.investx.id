@@ -8,14 +8,13 @@
     color: gray;
   }
   @media screen and (max-width:"425px"){
-    p{
-      margin-bottom: 20px;
+    .kanan{
+      text-align: right;
+      margin-top: 40px;
+      margin-right: 20px;
     }
-    .big-text{
-      margin-bottom: 10px;
-    }
-    .lets-join{
-      padding: 10px;
+    .join-now-button{
+      padding: 80px;
     }
   }
   .boxes{
