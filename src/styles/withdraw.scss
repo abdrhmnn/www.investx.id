@@ -1,4 +1,12 @@
 .withdraw{
+    .total-saldo{
+        background: #4CB5EF;
+border-radius: 20px;
+color: white;
+font-size: 7pt;
+padding: 5px;
+margin-left: 40px
+    }
     .menu a{
     position: absolute;
 margin-top: 20px;
@@ -60,6 +68,17 @@ cursor: pointer;
     margin-left: 130px;
     margin-top: -40px;
 }
+.jumlah-uang{
+    color: #01579b;
+}
+.uang-jumlah-saldo{
+    font-size: 10pt;
+color: grey;
+}
+.uang-saldo-rupiah{
+    margin-top: 70px;
+margin-left: -90px
+}
 
 .saran {
     display: inline-block;
@@ -71,17 +90,141 @@ cursor: pointer;
     background: #DEDEDE;
     font-size: 9pt;
 }
+.status-ku{
+    font-weight: bold;
+font-size: 10pt;
+color: #000;
+margin-left: 30px;
+margin-top: -5px;
+}
+.berhasil{
+    font-size: 10pt;
+margin-left: 30px;
+font-weight: bolder;
+color: black;
+}
+.pinggir-sikit{
+    margin-left: 460px;
+margin-top: -50px;
+}
+.satu-link{
+    margin-left: "120px";
+}
+.dua-link{
+    margin-left: "230px";
+}
+.tiga-link{
+    margin-left: "320px";
+}
+.total-pemb{
+    font-weight: bolder;
+font-size: 10pt;
+color: black;
+margin-left: 460px;
+margin-top: -60px;
+}
+.gagal{
+    font-size: 10pt;
+margin-left: 30px;
+font-weight: bolder;
+color: red;
+}
+.status{
+    margin-left: 200px;
+margin-top: -80px;
+}
+.nominal-topupx{
+    font-size: 18pt;
+margin-left: 30px;
+margin-top: -25px;
+font-weight: bolder;
+}
+.topup-yu{
+    font-weight: bold;
+font-size: 10pt;
+color: #000;
+margin-left: 30px;
+margin-top: -10px;
+}
+.lihat-detail-trans{
+    font-size: 10pt;
+margin-left: 460px;
+}
+.kode{
+    font-size: 10pt;
+margin-left: 30px;
+}
+.no-trans{
+    font-weight: bolder;
+font-size: 10pt;
+color: black;
+margin-left: 30px;
+margin-top: -10px;
+}
+.tanggal-now{
+    letter-spacing: -0.5px;
+margin-top: 70px;
+font-size: 9pt;
+margin-left: 30px;
+}
 .more-transfer-method{
     color: red;
 font-weight: bolder
 }
-
+.inputan-uang{
+    margin-left: -45px;
+width: 420px;
+margin-top: -50px;
+}
+.riwayat-trans{
+    font-weight: bolder;
+color: #0288DA;
+margin-left: 30px;
+margin-top: 20px;
+}
+.button-saran-nih{
+    margin-left: -50px;
+overflow-y: hidden;
+white-space: nowrap;
+}
 .geser{
     max-height: 70px;
 overflow-y: hidden;
 overflow-x: hidden;
 white-space: nowrap;
 
+}
+.topup-div{
+    display: flex;
+flex-direction: column;
+margin-left: 400px;
+}
+.nomina{
+    margin-left: -45px;
+color: #01579b;
+font-weight: 500;
+}
+.uang-lagi{
+    font-size: 10pt;
+color: grey;
+}
+.ku-ada{
+    font-size: 10pt;
+color: grey;
+}
+.ku-kan{
+    font-size: 10pt;
+color: black;
+margin-top: -1px;
+}
+.uang-ku{
+    margin-top: -10px;
+margin-left: 60px;
+}
+.uang-saldo-black{
+    font-size: 10pt;
+color: black;
+margin-top: -1px;
 }
 .error-image{
 width: auto;
