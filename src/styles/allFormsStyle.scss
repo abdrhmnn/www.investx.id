@@ -65,6 +65,7 @@
         z-index: 2;
     }
     .steps-invest {
+        display: inline;
         width: 700px;
         position: relative;
         ul {
@@ -156,6 +157,11 @@
             margin-bottom: 0;
         }
     }
+
+    .steps-invest-mobile{
+        display: none;
+    }
+
     .box-form-data {
         z-index: 2;
         width: 700px;
@@ -511,20 +517,8 @@
 
         .steps-invest, .steps-startup{
             width: 100%;
-            // ul {
-            //     display: block;
-            //     li{
-            //         margin-bottom: 20px;
-            //         z-index: 1;
-            //     }
-            // }
-            // hr{
-            //     transform: rotate(90deg);
-            //     width: 48%;
-            //     top: -130px;
-            //     margin-left: -19.5%;
-            // }
             ul{
+                display: none;
                 overflow: scroll;
                 li{
                     .number{
@@ -543,6 +537,15 @@
             hr{
                 display: none;
             }
+       }
+
+       .steps-invest-mobile{
+           display: inline-flex;
+           align-items: center;
+           z-index: 1;
+           margin-bottom: 30px;
+           width: 100%;
+           color: #c0c0c0;
        }
 
         .steps-startup{
