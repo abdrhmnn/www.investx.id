@@ -55,7 +55,7 @@
         .head {
             margin: 0;
             max-width: 100%;
-            padding: 1em 2em;
+            padding: 23px 46px 20px 38px;
             border-bottom: 1px solid #c4c4c4;
 
             .bank-name {
@@ -108,20 +108,16 @@
                 margin-bottom: 0;
             }
 
-            .action-button {
-                height: 36px;
-                padding: 0;
-                margin-top: 12px;
-            }
-
             .text-button {
+                cursor: pointer;
                 font-weight: bold;
                 font-size: 16px;
                 line-height: 24px;
                 text-align: center;
                 text-decoration-line: underline;
                 color: #0288d1;
-                width: 150px;
+                width: 140px;
+                margin-top: 20px;
             }
         }
     }

@@ -153,9 +153,11 @@ class PaymentStatus extends Component {
                             >
                                 BATAL
                             </Button>
-                            <Button style={{ ...butBlue }}>
-                                KELUAR HALAMAN
-                            </Button>
+                            <Link to="/my-wallet">
+                                <Button style={{ ...butBlue }}>
+                                    KELUAR HALAMAN
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -264,15 +266,7 @@ class PaymentStatus extends Component {
                                     <p className="value">872376200655</p>
                                 </div>
                                 <div>
-                                    <Button
-                                        variant="text"
-                                        className="text-button"
-                                        classes={{
-                                            root: "action-button",
-                                        }}
-                                    >
-                                        Salin
-                                    </Button>
+                                    <p className="text-button">Salin</p>
                                 </div>
                             </div>
 
@@ -282,12 +276,8 @@ class PaymentStatus extends Component {
                                     <p className="total">Rp. 8.000.000</p>
                                 </div>
                                 <div>
-                                    <Button
-                                        variant="text"
+                                    <p
                                         className="text-button"
-                                        classes={{
-                                            root: "action-button",
-                                        }}
                                         onClick={() =>
                                             this.setState({
                                                 modalDetail: true,
@@ -295,25 +285,17 @@ class PaymentStatus extends Component {
                                         }
                                     >
                                         Lihat Detail
-                                    </Button>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div className="button-container">
+                        <Link to="/profile">
+                            <Button style={but}>INVESTASI LAINNYA</Button>
+                        </Link>
                         <Button
-                            classes={{
-                                root: "but",
-                            }}
-                            style={but}
-                        >
-                            INVESTASI LAINYA
-                        </Button>
-                        <Button
-                            classes={{
-                                root: "but-blue",
-                            }}
                             style={butBlue}
                             onClick={() =>
                                 this.setState({

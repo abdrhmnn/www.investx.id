@@ -52,24 +52,14 @@
         }
 
         .invest-status {
-            .status-name {
-                font-weight: bold;
-                font-size: 14px;
-                line-height: 18px;
-                color: #ffa412;
-                margin-bottom: 6px;
-            }
-
-            .deadline {
-                font-size: 12px;
-                line-height: 18px;
-                color: #333333;
-            }
-
             .view-detail {
                 font-size: 14px;
                 line-height: 18px;
                 color: #4cb5ef;
+                margin-bottom: 0;
+                margin-top: 12px;
+                margin-right: 60px;
+                text-align: end;
             }
         }
 
@@ -94,10 +84,12 @@
                     margin-bottom: 0px;
                 }
 
-                .row {
-                    .value {
-                        margin-left: -24px;
-                    }
+                .status-name {
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #ffa412;
+                    margin-bottom: 6px;
                 }
             }
 
