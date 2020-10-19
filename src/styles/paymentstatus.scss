@@ -151,6 +151,7 @@
             font-size: 18px;
             line-height: 54px;
             color: rgba(43, 43, 43, 0.8);
+            margin-bottom: 30px;
         }
 
         .question-reveal {
@@ -254,11 +255,26 @@
         margin-left: 16px;
         margin-top: 34px;
         width: 429px;
+
+        .title {
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 54px;
+            text-align: center;
+            color: #000000;
+            margin-bottom: 17px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            color: #000000;
+            margin: 0;
+        }
+
         .bolder {
             font-weight: bolder;
-        }
-        p {
-            margin: 0;
         }
     }
 
