@@ -310,6 +310,11 @@
                 padding: 10px 20px;
                 display: flex;
                 flex-wrap: wrap;
+                height: 105px;
+
+                .tags{
+                    margin-top: 10px;
+                }
 
                 .filad{
                     flex-wrap: wrap;
@@ -319,7 +324,7 @@
             }
 
             .box-row{
-                margin: 60px 15px;
+                margin: 40px 15px;
                 .mb-5{
                     margin-bottom: 0 !important;
                 }
