@@ -20,10 +20,6 @@ import helper from '../../helpers/helper'
 
 import Pagination from "react-js-pagination";
 
-
-
-
-
 class CompanyList extends Component {
     state={
         filterShow : true,
@@ -132,7 +128,7 @@ class CompanyList extends Component {
                                 </div>
 
                                 <div className="title-filter-mobile" data-toggle="modal" data-target="#modalFilterMobile">
-                                    <i class="fas fa-filter"></i>
+                                    <i class="fas fa-filter"></i> Filter
                                 </div>
 
                                 <div class="modal fade" id="modalFilterMobile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
