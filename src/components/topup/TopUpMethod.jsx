@@ -20,19 +20,19 @@ class TopUpMethod extends Component {
 
     render() {
         const butSolid = {
-            backgroundColor: '#0288d1',
-  border: 'none',
-  borderRadius: '8px',
-  color: 'white',
-  fontSize: '16px',
-  outline: 'unset !important'
-        }
+            backgroundColor: "#0288d1",
+            border: "none",
+            borderRadius: "8px",
+            color: "white",
+            fontSize: "16px",
+            outline: "unset !important",
+        };
         return (
             <div className="all-forms-style topup-method">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link>
+                <Link to="my-wallet">
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>
@@ -72,9 +72,11 @@ class TopUpMethod extends Component {
 
                 <div className="foot-data-diri">
                     <div className="agreement"></div>
-                    <Button type="submit" style={butSolid} form="datadiri">
-                        BAYAR SEKARANG
-                    </Button>
+                    <Link to="topup-detail">
+                        <Button type="submit" style={butSolid} form="datadiri">
+                            BAYAR SEKARANG
+                        </Button>
+                    </Link>
                 </div>
             </div>
         );

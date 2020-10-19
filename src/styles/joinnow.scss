@@ -7,6 +7,16 @@
   .gray{
     color: gray;
   }
+  @media screen and (max-width:"425px"){
+    .kanan{
+      text-align: right;
+      margin-top: 40px;
+      margin-right: 20px;
+    }
+    .join-now-button{
+      padding: 80px;
+    }
+  }
   .boxes{
     -webkit-animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;
 	        animation: fade-in 2.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite both;

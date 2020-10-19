@@ -28,23 +28,26 @@ class Wallet extends Component {
                 </div>
                 <div className="box saldo">
                     <img className="wallet" src={wallet} alt="" />
-                    <span style={{ background: "#0288D1", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "40px" }}>Total Saldo</span>
-                    <div className="uang">Rp. <span className="jumlah">20.000.000</span></div>
+                    <span style={{ background: "#4CB5EF", borderRadius: "20px", color: "white", fontSize: "7pt", padding: "5px", marginLeft: "40px" }}>Total Saldo</span>
+                    <div className="uang" style={{color: "#01579b"}}>Rp. <span className="jumlah">20.000.000</span></div>
                     <div className="wallet-bawah">
                         <div className="kiri" style={{ marginTop: "70px", marginLeft: "-90px" }}>
-                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah">Saldo Rupiah</span></div>
-                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{fontWeight: "400"}}>Saldo Rupiah</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">15.000.000</span></div>
                         </div>
 
                         <div className="kiri" style={{ marginTop: "-10px", marginLeft: "60px" }}>
-                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah">Total Rupiah</span></div>
-                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">20.000.000</span></div>
-                        </div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{ fontWeight: "400" }}>Total Rupiah</span></div>
+                            <div className="uang" style={{ fontSize: "10pt", color: "black", marginTop: "-1px" }}>Rp. <span className="jumlah">5.000.000</span></div>
+                        </div><br /> 
+                        <div className="know-more" style={{ fontSize: "10pt", color: "grey" }}><span className="jumlah" style={{ fontWeight: "400" }}>Pelajari Lebih Lanjut</span>
+                        <a href="#" style={{ color: "#01579B", fontWeight: "500" }}> disini</a></div>
                     </div>
+                    
                 </div>
                 <div className="box nominal">
                     <div className="box-form-data">
-                        <div className="title-alt" style={{ marginLeft: "-45px" }}>Nominal Top Up</div>
+                        <div className="title-alt" style={{ marginLeft: "-45px", color: "#01579b",fontWeight:"500" }}>Nominal Top Up.</div>
                         <div style={{ display: "flex", flexDirection: "column", marginLeft: "400px" }}>
                             <Link to="/topup-method">
                                 <Button className="but-blue" style={{
@@ -54,13 +57,13 @@ class Wallet extends Component {
                                     textTransform: 'uppercase',
                                     color: '#ffffff',
                                     background: '#01579b',
-                                    borderRadius: '24px',
+                                    borderRadius: '8px',
                                     border: 'none',
-                                    outline: 'none' }}>Top Up</Button>
+                                    outline: 'none' }}>TOP UP</Button>
                             </Link>
 
                             <Button className="but" style={{
-                                width: "100px", width: "197px", height: "36px", fontSize: "14px", color: 'black',
+                                width: "100px", width: "197px", height: "36px", fontSize: "14px", color: '#0288d1',
                                 borderRadius: '8px',
                                 border: '1px solid #0288d1',
                                 backgroundColor: 'white',
@@ -76,7 +79,7 @@ class Wallet extends Component {
                         </div>
 
 
-                        <div style={{ marginLeft: "-50px", maxHeight: "60px", overflowX: "hidden", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
+                        <div style={{ marginLeft: "-50px", overflowY: "hidden", whiteSpace: "nowrap" }} className="geser">
                             <Button className="saran">20.000.000</Button>
                             <Button className="saran">30.000.000</Button>
                             <Button className="saran">40.000.000</Button>
@@ -96,21 +99,22 @@ class Wallet extends Component {
                     <div className="title-alt" style={{ fontWeight: "bolder", color: "#0288DA", marginLeft: "30px", marginTop: "20px" }}>Riwayat Transaksi</div>
                     <div className="menu">
                         <a style={{
-                            background: '#2388D1',
+                            background: '#4CB5EF',
                             color: 'white'
                         }}>Semua</a>
                         <a style={{ marginLeft: "120px" }}>Pembelian</a>
                         <a style={{ marginLeft: "230px" }}>Top Up</a>
                         <a style={{ marginLeft: "320px" }}>With Draw</a>
                     </div>
-
-                    <p style={{ letterSpacing: "-0.5px", marginTop: "70px", fontSize: "9pt", marginLeft: "30px" }}>10 Aug 2020 | 08:30</p>
+                    
+                    <div className="card-history">
+                        <p style={{ letterSpacing: "-0.5px", marginTop: "70px", fontSize: "9pt", marginLeft: "30px" }}>10 Aug 2020 | 08:30</p>
                     <br />
 
                     <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "30px", marginTop: "-10px", color: "black" }}>No Transaksi</div>
                     <p style={{ fontSize: "10pt", marginLeft: "30px" }}>(IVR/200804/XX/VII/469044911)</p>
 
-                    <div className="Total" style={{ borderLeft: "2px solid black" }}>
+                    <div className="Total" style={{ borderLeft: "" }}>
                         <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "460px", marginTop: "-60px", color: "black" }}>Total Pembayaran <span style={{ color: "#F27272" }}>Rp. 20.000.000</span></div>
                         <p style={{ fontSize: "10pt", marginLeft: "460px" }}>Lihat Detail Transaksi</p>
                     </div>
@@ -123,7 +127,7 @@ class Wallet extends Component {
                         <div style={{ marginLeft: "200px", marginTop: "-80px" }}>
                             <img />
                             <div className="title-alt" style={{ fontWeight: "bold", fontSize: "10pt", color: "#000", marginLeft: "30px", marginTop: "-5px" }}>Status</div>
-                            <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "green" }}>Transaksi Berhasil</p>
+                            <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "black" }}>Transaksi Berhasil</p>
                         </div>
                         <div style={{ marginLeft: "460px", marginTop: "-50px" }}>
                             <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "#FFA412", color: "white", border: "none" }}>Top Up Lagi</Button>
@@ -137,7 +141,7 @@ class Wallet extends Component {
                     <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "30px", marginTop: "-10px", color: "black" }}>No Transaksi</div>
                     <p style={{ fontSize: "10pt", marginLeft: "30px" }}>(IVR/200804/XX/VII/469044911)</p>
 
-                    <div className="Total" style={{ borderLeft: "2px solid black" }}>
+                    <div className="Total">
                         <div className="title-alt" style={{ fontWeight: "bolder", fontSize: "10pt", color: "#0288DA", marginLeft: "460px", marginTop: "-60px", color: "black" }}>Total Pembayaran <span style={{ color: "#F27272" }}>Rp. 20.000.000</span></div>
                         <p style={{ fontSize: "10pt", marginLeft: "460px" }}>Lihat Detail Transaksi</p>
                     </div>
@@ -153,11 +157,15 @@ class Wallet extends Component {
                             <p style={{ fontSize: "10pt", marginLeft: "30px", fontWeight: "bolder", color: "red" }}>Transaksi Dibatalkan</p>
                         </div>
                         <div style={{ marginLeft: "460px", marginTop: "-50px" }}>
-                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "red", color: "white", border: "none" }}>Tarik Uang Lagi</Button>
-                        </div>
-                        <hr />
+                            <Button className="but" style={{ width: "197px", height: "20px", fontSize: "14px", padding: "20px", background: "#F27272", color: "white", border: "none" }}>Tarik Uang Lagi</Button>
+                            </div>
+                            <hr />
                     </div>
-
+                    
+                           
+                     
+                    </div>
+                
                 </div>
             </div>
         );

@@ -13,9 +13,9 @@ class JoinNow extends Component {
                 <div className="container mb-5  wrap-join-boxes">
 
                     <div className="row">
-                        <div className="col-md-7 align-items-center">
+                        <div className="col-md-7 align-items-center kiri">
                             <p className="big-text mt-5"><span className="gray">Temukan</span> <span className="black">Startup & Entrepreneur</span> <span className="gray"> se-Indonesia</span></p>
-                            <p className="text size1">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</p>
+                            <p className="text size1 br">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</p>
                         </div>
                         <div className="col-md-5 wrap-gambar-join">
                             <div className="box-image-wrap">
@@ -51,7 +51,7 @@ class JoinNow extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-7 pt-5">
+                        <div className="col-md-7 pt-5 kanan">
                             <p className="big-text mt-5"><span className="gray">Bergabung bersama</span> <span className="black">Ribuan Investor</span> <span className="gray">di Indonesia</span></p>
                             <p className="text size1">Rekomendasikan perusahaan tempat anda berinvestasi kepada teman anda. Pelajari strategi dan berkembang bersama para investor berpengalaman seluruh Indonesia</p>
                         </div>
@@ -59,8 +59,8 @@ class JoinNow extends Component {
 
 
                 </div>
-                <div className="d-flex justify-content-center">
-                    <Button className="tombol-join link-button">Join Now</Button>
+                <div className="d-flex justify-content-center join-now-button">
+                    <Button className="tombol-join link-button lets-join">Join Now</Button>
                 </div>
             </div>
         );

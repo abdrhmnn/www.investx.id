@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import { Button } from "@material-ui/core";
-
 import QuestionReveal from "../shared/QuestionReveal";
 
 class FAQ extends Component {
@@ -54,7 +52,7 @@ class FAQ extends Component {
 
         return (
             <div className="faq">
-                <h3 className="title">Pertanyaan yang sering diajukan</h3>
+                <h1 className="title">Pertanyaan yang sering diajukan</h1>
                 <br className="mobile-hidden" />
                 <br className="mobile-hidden" />
                 <div className="row justify-content-between">

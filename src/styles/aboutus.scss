@@ -65,6 +65,10 @@
                     color: #2c1313;   
                     text-indent: 30px;
                 }
+                .beda{
+                    text-decoration: none;
+                    border-bottom: none;
+                }
                 .desc{
                     font-weight: normal;
                     font-size: 14px;
@@ -319,7 +323,8 @@
                 font-size: 14px;
             }
             .top{
-                display: none;
+                display: block;
+                position: fixed;
             }
         }
     }

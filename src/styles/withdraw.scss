@@ -3,7 +3,7 @@
     position: absolute;
 margin-top: 20px;
 padding: 6px;
-border: 2px solid #2388D1;
+border: 2px solid #4CB5EF;
 color: #2388D1;
 border-radius: 30px;
 font-size: 10pt;
@@ -13,7 +13,7 @@ margin-left: 30px;
 cursor: pointer;
 }
 .menu a:hover{
-    background: #2388D1;
+    background: #4CB5EF;
     color:white;
 }
 .box{
@@ -27,7 +27,7 @@ cursor: pointer;
     left: 140px;
     top: 190px;    
     width: 340px;
-    height: 190px;    
+    height: 230px;    
     border-bottom: 8px solid #0288D1;
 }
 .nominal, .riwayat{
@@ -50,17 +50,24 @@ cursor: pointer;
 .geser{
     -webkit-overflow-scrolling: touch;
 }
+.card-history{
+    margin: 10px;
+    padding: 4px;
+}
 .uang{
     font-weight: bolder;
     font-size: 20pt;
     margin-left: 130px;
     margin-top: -40px;
 }
+
 .saran {
     display: inline-block;
     border: none;
     margin-top: 20px;
     margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     background: #DEDEDE;
     font-size: 9pt;
 }
@@ -70,10 +77,11 @@ font-weight: bolder
 }
 
 .geser{
-    max-height: 40px;
-overflow-x: hidden;
+    max-height: 70px;
 overflow-y: hidden;
+overflow-x: hidden;
 white-space: nowrap;
+
 }
 .error-image{
 width: auto;
@@ -84,5 +92,7 @@ height: 60px
 font-size: 12pt;
 margin-bottom: 15px
 }
-
+.know-more{
+    margin-left: 150px;
+}
 }

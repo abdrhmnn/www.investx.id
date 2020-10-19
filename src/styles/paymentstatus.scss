@@ -1,22 +1,142 @@
 .payment-status {
     background-color: white;
+
+    .status {
+        .payment-image {
+            width: 200px;
+            height: 119.05px;
+            margin-bottom: 15px;
+        }
+
+        .status-title {
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 24px;
+            text-align: center;
+            color: #000000;
+            margin-bottom: 18px;
+        }
+
+        .status-time {
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: center;
+            color: #f27272;
+            margin-bottom: 25px;
+        }
+        .deadline-container {
+            margin-bottom: 19px;
+            .title {
+                font-size: 12px;
+                line-height: 16px;
+                text-align: center;
+                color: #757575;
+                margin-bottom: 16px;
+            }
+
+            .date {
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 24px;
+                text-align: center;
+                color: #000000;
+            }
+
+            .time {
+                color: #a5a5a5;
+            }
+        }
+    }
+
     .bank-status.box-form-data {
         padding: 0;
 
         .head {
             margin: 0;
-            margin-bottom: 1em;
             max-width: 100%;
             padding: 1em 2em;
             border-bottom: 1px solid #c4c4c4;
+
+            .bank-name {
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 24px;
+                color: #000000;
+            }
+
+            .bank-type {
+                color: #656565;
+            }
+
+            .bank-logo {
+                margin-top: 5px;
+                width: 76px;
+                height: 17px;
+            }
+        }
+
+        .payment-detail {
+            padding: 9px 32px 16px 32px;
+
+            .row {
+                margin-left: 5px;
+            }
+
+            .name {
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+                color: #757575;
+                margin-bottom: 9px;
+            }
+
+            .value {
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+                color: #000000;
+                margin-bottom: 17px;
+            }
+
+            .total {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+                color: #f27272;
+                margin-bottom: 0;
+            }
+
+            .action-button {
+                height: 36px;
+                padding: 0;
+                margin-top: 12px;
+            }
+
+            .text-button {
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 24px;
+                text-align: center;
+                text-decoration-line: underline;
+                color: #0288d1;
+                width: 150px;
+            }
         }
     }
 
-    button {
-        border-radius: 9px !important;
-        padding: 0.5em 2em;
-        width: auto;
-        height: auto;
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        width: 700px;
+
+        button {
+            border-radius: 9px !important;
+            padding: 12px 0;
+            width: 303px;
+            height: 48px;
+        }
     }
 
     .payment-method {
@@ -26,13 +146,41 @@
         width: 700px;
         transition: 0.3s;
 
+        .payment-method-title {
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 54px;
+            color: rgba(43, 43, 43, 0.8);
+        }
+
         .question-reveal {
             box-shadow: none !important;
             padding: 0.3em 0;
             border-radius: 0;
 
+            .MuiCollapse-entered {
+                .MuiCollapse-wrapperInner {
+                    border-bottom: 1px solid #c4c4c4 !important;
+                }
+            }
+
+            .item {
+                min-height: fit-content;
+            }
+
+            .MuiAccordionSummary-content {
+                margin: 0;
+            }
+
             .icon {
                 font-size: medium;
+            }
+
+            .question {
+                font-weight: bold;
+                font-size: 16px;
+                text-align: center;
+                color: #757575;
             }
 
             .answer {
@@ -103,8 +251,9 @@
     }
 
     .desc {
-        margin-left: 5em;
-        width: 363px;
+        margin-left: 16px;
+        margin-top: 34px;
+        width: 429px;
         .bolder {
             font-weight: bolder;
         }
@@ -116,6 +265,8 @@
     .notice-image {
         width: 319px;
         height: 239px;
+        margin-left: 34px;
+        margin-top: 24px;
     }
 
     .company-image {

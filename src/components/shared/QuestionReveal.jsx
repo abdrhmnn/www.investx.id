@@ -24,14 +24,12 @@ class QuestionReveal extends Component {
                     }}
                 >
                     <AccordionSummary
-                        className="px-0"
-                        expandIcon={
-                            <i className="icon fas fa-chevron-up"></i>
-                        }
+                        className="px-0 item"
+                        expandIcon={<i className="icon fas fa-chevron-up"></i>}
                         aria-controls="panel4bh-content"
                         id="panel4bh-header"
                     >
-                        <Typography>{q}</Typography>
+                        <Typography className="question">{q}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography className="answer">{a}</Typography>

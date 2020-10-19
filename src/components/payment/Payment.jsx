@@ -1,4 +1,4 @@
-import { Fab, Switch } from "@material-ui/core";
+import { Fab, Switch, withStyles } from "@material-ui/core";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,16 @@ import PaymentMethod from "./PaymentMethod";
 import { Button } from "@material-ui/core";
 
 class Payment extends Component {
+    state = {
+        bank: true,
+    };
+
+    changePaymentMethod = () => {
+        this.setState({
+            bank: !this.state.bank,
+        });
+    };
+
     render() {
         const butBlue = {
             width: "700px",
@@ -25,6 +35,62 @@ class Payment extends Component {
             border: "none",
             outline: "none",
         };
+
+        const IOSSwitch = withStyles((theme) => ({
+            root: {
+                width: 42,
+                height: 26,
+                padding: 0,
+                margin: theme.spacing(1),
+            },
+            switchBase: {
+                padding: 1,
+                "&$checked": {
+                    transform: "translateX(16px)",
+                    color: theme.palette.common.white,
+                    "& + $track": {
+                        backgroundColor: "#01579B",
+                        opacity: 1,
+                        border: "none",
+                    },
+                },
+                "&$focusVisible $thumb": {
+                    color: "#52d869",
+                    border: "6px solid #fff",
+                },
+            },
+            thumb: {
+                width: 24,
+                height: 24,
+            },
+            track: {
+                borderRadius: 26 / 2,
+                border: `1px solid ${theme.palette.grey[400]}`,
+                backgroundColor: "#C4C4C4",
+                opacity: 1,
+                transition: theme.transitions.create([
+                    "background-color",
+                    "border",
+                ]),
+            },
+            checked: {},
+            focusVisible: {},
+        }))(({ classes, ...props }) => {
+            return (
+                <Switch
+                    focusVisibleClassName={classes.focusVisible}
+                    disableRipple
+                    classes={{
+                        root: classes.root,
+                        switchBase: classes.switchBase,
+                        thumb: classes.thumb,
+                        track: classes.track,
+                        checked: classes.checked,
+                    }}
+                    {...props}
+                />
+            );
+        });
 
         return (
             <div className="all-forms-style payment">
@@ -97,7 +163,7 @@ class Payment extends Component {
                 <p className="box-form-title">Pilih Metode Pembayaran</p>
 
                 <div className="wallet-payment box-form-data">
-                    <div className="row">
+                    <div className="row wallet-payment-container">
                         <img
                             className="wallet-icon"
                             src={wallet}
@@ -109,7 +175,11 @@ class Payment extends Component {
                                     <h5>Saldo Dompet</h5>
                                     <p>Rp. 3.500.000</p>
                                 </div>
-                                <Switch />
+                                <IOSSwitch
+                                    checked={!this.state.bank}
+                                    onChange={this.changePaymentMethod}
+                                    name="bank"
+                                />
                             </div>
                             <div className="row ml-1">
                                 <p className="text-danger mr-4">
@@ -129,7 +199,7 @@ class Payment extends Component {
                 </div>
 
                 <div className="payment-methods box-form-data">
-                    <div className="row">
+                    <div className="row head">
                         <img
                             className="bank-icon"
                             src={bankIcon}
@@ -138,21 +208,32 @@ class Payment extends Component {
                         <div className="col">
                             <div className="row">
                                 <div className="col">
-                                    <h5>Transfer Bank - Virtual</h5>
-                                    <p className="text-primary">
+                                    <p className="payment-title">
+                                        Transfer Bank - Virtual
+                                    </p>
+                                    <p className="payment-selected">
                                         BCA Virtual Account
                                     </p>
                                 </div>
-                                <Switch />
+                                <IOSSwitch
+                                    checked={this.state.bank}
+                                    onChange={this.changePaymentMethod}
+                                    name="bank"
+                                />
                             </div>
                         </div>
                     </div>
-                    <hr />
-                    <br />
-                    <br />
-                    <div className="px-5">
-                        <PaymentMethod />
-                    </div>
+                    <hr
+                        className="hr-payment-methods"
+                        style={{ marginBottom: "58px", marginTop: "16px" }}
+                    />
+                    {this.state.bank ? (
+                        <div className="payments-container">
+                            <PaymentMethod />
+                        </div>
+                    ) : (
+                        <div></div>
+                    )}
                 </div>
 
                 <Link to="/payment-status">
