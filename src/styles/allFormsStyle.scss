@@ -158,7 +158,7 @@
         }
     }
 
-    .steps-invest-mobile{
+    .steps-invest-mobile, .steps-startup-mobile{
         display: none;
     }
 
@@ -516,30 +516,10 @@
         }
 
         .steps-invest, .steps-startup{
-            width: 100%;
-            ul{
-                display: none;
-                overflow: scroll;
-                li{
-                    .number{
-                        width: 25px !important;
-                        height: 25px !important;
-                        font-size: 15px !important;
-                        margin: auto;
-                    }
-                    display: block;
-                    margin-right: 10px;
-                    text-align: center;
-                    white-space: nowrap;
-                }
-            }
-
-            hr{
-                display: none;
-            }
+            display: none;
        }
 
-       .steps-invest-mobile{
+       .steps-invest-mobile, .steps-startup-mobile{
            display: inline-flex;
            align-items: center;
            z-index: 1;
