@@ -1,10 +1,17 @@
-import { Button } from "@material-ui/core";
 import React, { Component } from "react";
 
-import walletIcon from "../../../images/withdraw/wallet.svg";
+import walletIcon from "../../../images/profile/walleticon.svg";
 
 class DividendIndex extends Component {
-    renderCardItem = () => {
+    renderCardItem = ({
+        companyImage = "https://placeimg.com/640/480/tech",
+        companyName = "MOONFAB",
+        companyLocation = "Jakarta",
+        stockDate = "12/3/2020",
+        stockCode = "a1b2c3d4",
+        stockValue = "1,000,000",
+        devidendStatus = "Devidend Status",
+    }) => {
         return (
             <>
                 <div className="card-item col">
@@ -13,17 +20,19 @@ class DividendIndex extends Component {
                             <div className="row">
                                 <div>
                                     <img
-                                        src="https://placeimg.com/640/480/tech"
+                                        src={companyImage}
                                         alt="company"
                                         className="company-image"
                                     />
                                 </div>
                                 <div>
-                                    <p className="company-name">MOONFAB</p>
+                                    <p className="company-name">
+                                        {companyName}
+                                    </p>
                                     <p className="company-location">
                                         <i class="fas fa-map-marker-alt location-icon"></i>
                                         <span className="location-name">
-                                            Jakarta
+                                            {companyLocation}
                                         </span>
                                     </p>
                                 </div>
@@ -50,20 +59,20 @@ class DividendIndex extends Component {
                     <div className="row invest-detail">
                         <div className="col detail-value">
                             <p className="name">Tanggal</p>
-                            <p className="value">12/3/2020</p>
+                            <p className="value">{stockDate}</p>
                         </div>
                         <div className="col detail-value">
                             <p className="name">Kode Saham</p>
-                            <p className="value">a1b2c3d4</p>
+                            <p className="value">{stockCode}</p>
                         </div>
                         <div className="col detail-value">
                             <p className="name">Nominal</p>
-                            <p className="value">Rp. 1,000,000</p>
+                            <p className="value">Rp. {stockValue}</p>
                         </div>
                         <div className="col detail-value no-border">
                             <p className="name">Ended in 30 Days left</p>
                             <p className="value" style={{ color: "#09BF15" }}>
-                                Devidend Status
+                                {devidendStatus}
                             </p>
                         </div>
                     </div>
@@ -106,7 +115,7 @@ class DividendIndex extends Component {
                 <div className="riwayat-dividend">
                     <p className="label-dividend">Riwayat Dividend</p>
 
-                    {this.renderCardItem()}
+                    {this.renderCardItem({})}
 
                     <hr style={{ marginTop: "40px", marginBottom: "12px" }} />
                     <div className="ketentuan-bagi-hasil">

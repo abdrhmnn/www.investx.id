@@ -9,7 +9,6 @@ import noticeImage from "../../images/invest/modalinvest.svg";
 
 import ModalTemplate from "../shared/ModalTemplate";
 import QuestionReveal from "../shared/QuestionReveal";
-import { Link } from "react-router-dom";
 
 class PaymentStatus extends Component {
     state = {
@@ -264,15 +263,7 @@ class PaymentStatus extends Component {
                                     <p className="value">872376200655</p>
                                 </div>
                                 <div>
-                                    <Button
-                                        variant="text"
-                                        className="text-button"
-                                        classes={{
-                                            root: "action-button",
-                                        }}
-                                    >
-                                        Salin
-                                    </Button>
+                                    <p className="text-button">Salin</p>
                                 </div>
                             </div>
 
@@ -282,12 +273,8 @@ class PaymentStatus extends Component {
                                     <p className="total">Rp. 8.000.000</p>
                                 </div>
                                 <div>
-                                    <Button
-                                        variant="text"
+                                    <p
                                         className="text-button"
-                                        classes={{
-                                            root: "action-button",
-                                        }}
                                         onClick={() =>
                                             this.setState({
                                                 modalDetail: true,
@@ -295,7 +282,7 @@ class PaymentStatus extends Component {
                                         }
                                     >
                                         Lihat Detail
-                                    </Button>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +295,7 @@ class PaymentStatus extends Component {
                             }}
                             style={but}
                         >
-                            INVESTASI LAINYA
+                            INVESTASI LAINNYA
                         </Button>
                         <Button
                             classes={{
