@@ -275,8 +275,10 @@
 @media only screen and (max-width: 768px){
     .login, .signup{
         background-image: unset !important;
-        padding: 20px;
         text-align: center;
+        height: 100%;
+        overflow: hidden;
+
         .logo{
             display: none;
         }
@@ -298,6 +300,13 @@
             input{
                 font-size: 14px !important;
             }
+        }
+    }
+
+    .signup {
+        .cbox{
+            width: 35px !important;
+            height: 30px;
         }
     }
 
