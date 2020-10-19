@@ -181,16 +181,20 @@ class Payment extends Component {
                                     name="bank"
                                 />
                             </div>
-                            <div className="row ml-1">
-                                <p className="text-danger mr-4">
+                            <div className="row saldo-row">
+                                <p className="saldo-status">
                                     *Saldo anda tidak mencukupi
                                 </p>
                                 <span>
-                                    <img src={addBlueIcon} alt="addblue" />
+                                    <img
+                                        className="add-icon"
+                                        src={addBlueIcon}
+                                        alt="addblue"
+                                    />
                                     <Link to="/my-wallet">
-                                        <a className="text-primary">
+                                        <span className="topup-label">
                                             Top Up Saldo
-                                        </a>
+                                        </span>
                                     </Link>
                                 </span>
                             </div>
