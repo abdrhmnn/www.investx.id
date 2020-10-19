@@ -136,7 +136,7 @@ class PaymentStatus extends Component {
                         />
                     </div>
                     <div className="desc">
-                        <h4 className="bold mb-4">Keluar dari halaman ini?</h4>
+                        <p className="title">Keluar dari halaman ini?</p>
                         <p>Setelah keluar kamu akan diarahkan ke halaman</p>
                         <p className="bolder">Riwayat Transaksi</p>
                         <p>pada kolom ‘ menunggu pembayaran ‘</p>
