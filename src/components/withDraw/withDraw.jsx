@@ -41,7 +41,7 @@ class PaymentMethod extends Component {
                                     />
 
                                     <img src={value} alt="bca" />
-                                    <div style={{ position: "absolute", padding: "6px", border: "2px solid #2388D1", color: "#2388D1", borderRadius: "30px", fontSize: "10pt", paddingLeft: "15px", paddingRight: "15px", marginLeft: "420px" }}>
+                                    <div className="new">
                                         <span>NEW</span>
                                     </div>
                                     <br />
@@ -50,7 +50,7 @@ class PaymentMethod extends Component {
                             <br /> <br /> <br />
                             <div className="formBanking" style={{ cursor: "pointer" }}>
                                 <img src={plus} />
-                                <span style={{ marginLeft: "9px", color: "#0288D1", fontWeight: "bolder" }}>Tambah Bank</span>
+                                <span className="add-bank">Tambah Bank</span>
                             </div>
                         </div>
                     )
