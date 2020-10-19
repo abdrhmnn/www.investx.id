@@ -65,7 +65,7 @@ class PaymentMethod extends Component {
                                         ? "checked"
                                         : "")
                                 }
-                                style={{cursor : 'pointer'}}
+                                style={{ cursor: "pointer" }}
                             >
                                 <input
                                     id={data.id}
@@ -83,7 +83,6 @@ class PaymentMethod extends Component {
                                 <br />
                             </label>
                         ))}
-                        <br />
                     </div>
                 ))}
             </>

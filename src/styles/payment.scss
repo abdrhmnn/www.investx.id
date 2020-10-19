@@ -23,23 +23,48 @@
     }
 
     .wallet-payment.box-form-data {
-        padding: 1em 3em;
+        padding: 0;
+        .wallet-payment-container {
+            margin: 25px 41px 15px 24px;
+        }
         .wallet-icon {
             width: 38px;
             height: 38px;
         }
     }
 
-    .payment-methods.box-form-data {
-        padding: 1em 3em;
-        .bank-icon {
-            width: 38px;
-            height: 38px;
+    .payment-methods {
+        padding: 0;
+        .head {
+            margin: 24px 41px 0 24px;
+            .bank-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .payment-title {
+                font-weight: normal;
+                font-size: 22px;
+                color: #000000;
+                margin-bottom: 8px;
+            }
+
+            .payment-selected {
+                font-weight: bold;
+                font-size: 14px;
+                color: #01579b;
+            }
+        }
+
+        .payments-container {
+            margin: 0 90px 62px 90px;
+        }
+
+        .hr-payment-methods {
+            margin: 16px 37px 58px 37px;
         }
     }
 }
 
-
 @media only screen and (max-width: 768px) {
-    
 }
