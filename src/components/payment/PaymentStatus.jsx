@@ -9,6 +9,7 @@ import noticeImage from "../../images/invest/modalinvest.svg";
 
 import ModalTemplate from "../shared/ModalTemplate";
 import QuestionReveal from "../shared/QuestionReveal";
+import { Link } from "react-router-dom";
 
 class PaymentStatus extends Component {
     state = {
@@ -152,9 +153,11 @@ class PaymentStatus extends Component {
                             >
                                 BATAL
                             </Button>
-                            <Button style={{ ...butBlue }}>
-                                KELUAR HALAMAN
-                            </Button>
+                            <Link to="/my-wallet">
+                                <Button style={{ ...butBlue }}>
+                                    KELUAR HALAMAN
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -289,18 +292,10 @@ class PaymentStatus extends Component {
                     </div>
 
                     <div className="button-container">
+                        <Link to="/profile">
+                            <Button style={but}>INVESTASI LAINNYA</Button>
+                        </Link>
                         <Button
-                            classes={{
-                                root: "but",
-                            }}
-                            style={but}
-                        >
-                            INVESTASI LAINNYA
-                        </Button>
-                        <Button
-                            classes={{
-                                root: "but-blue",
-                            }}
                             style={butBlue}
                             onClick={() =>
                                 this.setState({

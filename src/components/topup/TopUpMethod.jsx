@@ -19,14 +19,6 @@ class TopUpMethod extends Component {
     };
 
     render() {
-        const butSolid = {
-            backgroundColor: "#0288d1",
-            border: "none",
-            borderRadius: "8px",
-            color: "white",
-            fontSize: "16px",
-            outline: "unset !important",
-        };
         return (
             <div className="all-forms-style topup-method">
                 <div className="bg">
@@ -73,7 +65,7 @@ class TopUpMethod extends Component {
                 <div className="foot-data-diri">
                     <div className="agreement"></div>
                     <Link to="topup-detail">
-                        <Button type="submit" style={butSolid} form="datadiri">
+                        <Button type="submit" form="datadiri">
                             BAYAR SEKARANG
                         </Button>
                     </Link>

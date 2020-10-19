@@ -98,7 +98,7 @@ class Payment extends Component {
                     <div className="bg-round"></div>
                 </div>
 
-                <Link to="/select-form/">
+                <Link to="/my-wallet">
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>
