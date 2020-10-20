@@ -109,7 +109,7 @@ class Wallet extends Component {
           <div className="box-form-data">
             <div className="title-alt nomina">Nominal Top Up.</div>
             <div className="topup-div">
-              <Link to="/topup-method">
+              <Link to="/topup">
                 <Button className="but-blue" style={butBlue}>
                   TOP UP
                 </Button>

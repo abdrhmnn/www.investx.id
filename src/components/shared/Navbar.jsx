@@ -64,9 +64,11 @@ class Navbar extends Component {
             <div className="boxsaldo">
                 <img src={walletnav} alt="saldo"/>
                 <p className="nominal">Saldo  <br/> <span>Rp 1500000</span> </p>
+                    <Link to='/topup'>
                 <Button>
-                <i className="fas fa-plus-circle"></i> Top Up
+                        <i className="fas fa-plus-circle"></i> Top Up
                 </Button>
+                    </Link>
             </div>
             <div className='menuslistpop'>
                 {
