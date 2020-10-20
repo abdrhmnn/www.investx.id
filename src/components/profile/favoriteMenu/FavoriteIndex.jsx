@@ -10,7 +10,7 @@ class FavoriteIndex extends Component {
         ]
         return (
             <div className='favourite-menu'>
-                <p className="title">FAVOURITE</p>
+                <p className="title">FAVORITE</p>
                 <hr/>
                 <div className="row">
                 {
