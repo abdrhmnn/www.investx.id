@@ -82,9 +82,38 @@ class DividendIndex extends Component {
     };
 
     render() {
+        const dividends = [
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "MOONFAB",
+                companyLocation: "Jakarta",
+                stockDate: "12/3/2020",
+                stockCode: "a1b2c3d4",
+                stockValue: "1,000,000",
+                devidendStatus: "Devidend Status",
+            },
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "KANZEN",
+                companyLocation: "Bandung",
+                stockDate: "12/3/2020",
+                stockCode: "a1b2c3d4",
+                stockValue: "1,000,000",
+                devidendStatus: "Devidend Status",
+            },
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "ASYNC",
+                companyLocation: "Bandung",
+                stockDate: "12/3/2020",
+                stockCode: "a1b2c3d4",
+                stockValue: "1,000,000",
+                devidendStatus: "Devidend Status",
+            },
+        ];
         return (
             <div className="dividend-menu">
-                <p className="title">Dividend</p>
+                <p className="title">DIVIDEND</p>
                 <hr />
 
                 <div className="total-dividend">
@@ -115,7 +144,7 @@ class DividendIndex extends Component {
                 <div className="riwayat-dividend">
                     <p className="label-dividend">Riwayat Dividend</p>
 
-                    {this.renderCardItem({})}
+                    {dividends.map((data) => this.renderCardItem(data))}
 
                     <hr style={{ marginTop: "40px", marginBottom: "12px" }} />
                     <div className="ketentuan-bagi-hasil">

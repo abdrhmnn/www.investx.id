@@ -183,7 +183,7 @@ class Bank extends Component {
                         penerbit dan memenuhi kriteria pemodal sesuai peraturan
                         yang berlaku.
                     </p>
-                    <Link to="/investor-form- preference">
+                    <Link to="/investor-form-preference">
                         <Button type="submit" form="investorForm">
                             SIMPAN & LANJUTKAN
                         </Button>

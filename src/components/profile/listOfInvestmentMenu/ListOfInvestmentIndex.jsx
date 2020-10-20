@@ -66,12 +66,42 @@ class ListOfInvestmentIndex extends Component {
     };
 
     render() {
+        const investments = [
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "MOONFAB",
+                companyLocation: "Jakarta",
+                totalStock: "7",
+                investedValue: "1.234.500",
+                status: false,
+                oneYearEst: "1.234.500",
+            },
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "KANZEN",
+                companyLocation: "Bandung",
+                totalStock: "5",
+                investedValue: "1.234.500",
+                status: true,
+                oneYearEst: "1.234.500",
+            },
+            {
+                companyImage: "https://placeimg.com/640/480/tech",
+                companyName: "ASYNC",
+                companyLocation: "Bandung",
+                totalStock: "6",
+                investedValue: "1.234.500",
+                status: true,
+                oneYearEst: "1.234.500",
+            },
+        ];
+
         return (
             <div className="list-of-investment-menu">
-                <p className="title">List Of Investment</p>
+                <p className="title">LIST OF INVESTMENT</p>
                 <hr />
 
-                {this.renderCardItem({})}
+                {investments.map((data) => this.renderCardItem(data))}
             </div>
         );
     }
