@@ -500,6 +500,7 @@
         padding: 15px;
 
         .logo-invest{
+            display: none;
             margin-top: 10px;
             margin-right: 110px;
         }
@@ -512,7 +513,7 @@
         }
 
         .title{
-            margin-top: 80px;
+            margin-top: 50px;
         }
 
         .steps-invest, .steps-startup{
@@ -557,6 +558,38 @@
             .agreement{
                 width: 100%;
             }
+
+            button{
+                width: 100%;
+            }
+        }
+
+        .tit-unggah{
+            display: flex;
+            div{
+                margin-left: 10px;
+            }
+        }
+
+        .box-upload-dok{
+            flex-wrap: wrap;
+            
+            p.tag{
+                text-align: unset;
+            }
+
+            div{
+                width: 100%;
+                margin-bottom: 20px;
+
+                button{
+                    width: 100%;
+                }
+            }
+        }
+
+        .custom_text_input label{
+            font-size: 11px;
         }
     }
 }
