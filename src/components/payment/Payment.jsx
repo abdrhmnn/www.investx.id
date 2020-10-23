@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import companyImage from "../../images/payment/company-image.svg";
 import wallet from "../../images/withdraw/wallet.svg";
 import bankIcon from "../../images/payment/bank-icon.svg";
 import addBlueIcon from "../../images/payment/add-blue-icon.svg";
@@ -115,7 +114,7 @@ class Payment extends Component {
                             <div className="col-md-4">
                                 <img
                                     className="payment-image"
-                                    src={companyImage}
+                                    src="https://placeimg.com/640/480/tech"
                                     alt="company"
                                 />
                             </div>

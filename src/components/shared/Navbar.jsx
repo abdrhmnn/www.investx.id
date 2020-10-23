@@ -114,8 +114,8 @@ class Navbar extends Component {
                         <img src={logo} alt="logo"/>
                     </Link>
                     <ul>
-                        <li><Link to='/'>Start Investing</Link> </li>
-                        <li><Link to='/'>Get Funding</Link> </li>
+                        <li><Link to="/investor-form-data-diri">Start Investing</Link> </li>
+                        <li><Link to="/startup-form-data-diri">Get Funding</Link> </li>
                     </ul>
                     </div>
                     <div className="right">

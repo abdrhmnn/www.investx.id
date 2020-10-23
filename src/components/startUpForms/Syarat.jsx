@@ -112,7 +112,7 @@ class Syarat extends Component {
                         penerbit dan memenuhi kriteria pemodal sesuai peraturan
                         yang berlaku.
                     </p>
-                    <Link to="/startup-form-syarat">
+                    <Link to="/#modal-terimakasih">
                         <Button type="submit" form="datadiri">
                             SUBMIT
                         </Button>

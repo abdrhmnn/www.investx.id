@@ -19,17 +19,31 @@ import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
 import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
+import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
     state = {
         // modalOtp: false,
+        modalTerimakasih: false,
     };
 
-    componentDidMount() {}
+    componentDidMount() {
+        console.log(this.props.location.hash === "#modal-terimakasih");
+        if (this.props.location.hash === "#modal-terimakasih") {
+            this.setState({
+                modalTerimakasih: true,
+            });
+        }
+    }
 
     // offModal = () => {
     //     this.setState({ modalOtp: false });
     // };
+
+    offModalTerimakasih = () => {
+        this.setState({ modalTerimakasih: false });
+        window.location.hash = "";
+    };
 
     // onModal = () => {
     //     this.setState({ modalOtp: true });
@@ -50,14 +64,16 @@ class Home extends Component {
             speed: 5000,
             autoplaySpeed: 0,
             cssEase: "linear",
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  initialSlide: 1
-                }
-              }]
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        initialSlide: 1,
+                    },
+                },
+            ],
         };
 
         const butSolid = {
@@ -90,11 +106,17 @@ class Home extends Component {
                 {/* {this.state.modalOtp ? (
                     <ModalSuccessOtp offModal={this.offModal} />
                 ) : null} */}
+
                 <div
                     className="home"
                     style={{ backgroundImage: `url(${x}), url(${zebra})` }}
                 >
                     <Navbar onModal={this.onModal} />
+
+                    {this.state.modalTerimakasih ? (
+                        <PopSuccessForm offModal={this.offModalTerimakasih} />
+                    ) : null}
+
                     <div className="container p-0 contain-home">
                         <div className="wrap">
                             <p className="title">
@@ -142,7 +164,12 @@ class Home extends Component {
                         </Slider>
                     </div>
                 </div>
-                <div className="butraise container">
+                <div
+                    onBlur={() => {
+                        window.location.hash = "#fadil";
+                    }}
+                    className="butraise container"
+                >
                     <div className="left">
                         <p className="tit">COMPANIES FUNDRAISING</p>
                         <div className="desc">
@@ -160,7 +187,9 @@ class Home extends Component {
                 <Benefit />
                 <CaroQuotes />
                 <JoinNow />
-                <FAQ />
+                <div>
+                    <FAQ />
+                </div>
 
                 <Footer />
                 <Ojk />

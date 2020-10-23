@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";
 import bca from "../../images/withdraw/bca.svg";
-import companyImage from "../../images/payment/company-image.svg";
 import noticeImage from "../../images/invest/modalinvest.svg";
 
 import ModalTemplate from "../shared/ModalTemplate";
@@ -30,7 +29,7 @@ class PaymentStatus extends Component {
                 <div className="d-flex justify-content-between">
                     <img
                         className="company-image"
-                        src={companyImage}
+                        src="https://placeimg.com/640/480/tech"
                         alt="company"
                     />
                     <Box flexDirection="column" width="80%" className="px-4">
@@ -153,7 +152,7 @@ class PaymentStatus extends Component {
                             >
                                 BATAL
                             </Button>
-                            <Link to="/my-wallet">
+                            <Link to="/profile">
                                 <Button style={{ ...butBlue }}>
                                     KELUAR HALAMAN
                                 </Button>
