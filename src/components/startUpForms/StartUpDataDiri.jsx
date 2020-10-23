@@ -58,7 +58,7 @@ class StartUpDataDiri extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="/select-form/">
+                <Link to="/">
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>
