@@ -81,8 +81,11 @@ class HistoryIndex extends Component {
         const optionsStatus = [
             { value: '', label: 'Semua' },
             { value: 'berhasil', label: 'Berhasil' },
-            { value: 'withdraw', label: 'Dikembalikan' },
-            { value: 'pembelian', label: 'Dibeli' }
+            { value: 'dikembalikan', label: 'Dikembalikan' },
+            { value: 'menunggu pembayaran', label: 'Menunggu Pembayaran' },
+            { value: 'dikembalikan', label: 'Dikembalikan' },
+            { value: 'dibatalkan', label: 'Dibatalkan' },
+            { value: 'ditolak', label: 'Ditolak' },
         ]
 
         return (
