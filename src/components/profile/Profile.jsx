@@ -60,7 +60,10 @@ class Profile extends Component {
                                     <i className="fas fa-camera"></i>
                                 </Fab>
                             </figure>
-                            <p className="username">{this.state.dataProfile.full_name} <span><i className="fas fa-pen"></i></span></p>
+                            <p className="username">
+                                {this.state.dataProfile.full_name} 
+                                {/* <span><i className="fas fa-pen"></i></span> */}
+                            </p>
                             <p className="since">Member since june 2020</p>
                         </div>
                         <div className="col-md profile-right">

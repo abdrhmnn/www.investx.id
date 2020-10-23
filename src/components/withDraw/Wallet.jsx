@@ -23,45 +23,89 @@ class Wallet extends Component {
       return <Button>{saran}</Button>;
     });
 
-    const butBlue = {
-      marginBottom: "10px",
-      width: "197px",
-      height: "36px",
-      fontSize: "14px",
-      textTransform: "uppercase",
-      color: "#ffffff",
-      background: "#01579b",
-      borderRadius: "8px",
-      border: "none",
-      outline: "none",
-    };
-    const but = {
-      width: "100px",
-      width: "197px",
-      height: "36px",
-      fontSize: "14px",
-      color: "#0288d1",
-      borderRadius: "8px",
-      border: "1px solid #0288d1",
-      backgroundColor: "white",
-      fontSize: "16px",
-      outline: "unset !important",
-    };
+    // const butBlue = {
+    //   marginBottom: "10px",
+    //   width: "197px",
+    //   height: "36px",
+    //   fontSize: "14px",
+    //   textTransform: "uppercase",
+    //   color: "#ffffff",
+    //   background: "#01579b",
+    //   borderRadius: "8px",
+    //   border: "none",
+    //   outline: "none",
+    // };
+    // const but = {
+    //   width: "100px",
+    //   width: "197px",
+    //   height: "36px",
+    //   fontSize: "14px",
+    //   color: "#0288d1",
+    //   borderRadius: "8px",
+    //   border: "1px solid #0288d1",
+    //   backgroundColor: "white",
+    //   fontSize: "16px",
+    //   outline: "unset !important",
+    // };
     return (
-      <div className="all-forms-style detail-transaction withdraw">
+      <div className="all-forms-style">
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link to="/select-form/">
+        <Link to="/">
           <div className="back-button">
             <img src={arrowback} alt="" />
           </div>
         </Link>
         <div className="logo-invest">
           <img src={logo} alt="" />
-          <p className="title">MY WALLET</p>
         </div>
-        <div className="box saldo">
+        <div className="container withdraw">
+        <p className="title-wallet">MY WALLET</p>
+          <div className="row">
+            <div className="col-md-4 ">
+              <div className=" box-left p-3">
+
+                <div className="box-saldo">
+                  <div className=""><img className="" src={wallet} alt="" /></div>
+                  <div className="ml-3 total">
+                    <span className="total-saldo m-0">Total Saldo</span>
+                      <p className="mb-0"> Rp. 20.000.000</p>
+                  </div>
+                </div>
+
+                <div className="box-detail-saldo">
+                  <p className="saldo-detail">
+                    saldo Rupiah <br/> Rp. 15,000.000
+                  </p>
+                  <p className="saldo-detail">
+                    Toal Saham <br/> Rp. 5,000.000
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div className="col-md-8 ">
+              <div className="box-right">
+                <div className="row">
+                  <div className="col-md-9 input-nominal">
+                    <p className="title-input">Nominal Top Up</p>
+                    <div className="box-input">
+                      <p>Rp</p>
+                      <input type="number"/>
+                    </div>
+                  </div>
+                  <div className="col-md buttons-topup">
+                    <Button className='blue'>TOP UP</Button>
+                    <Button className='line-blue'>TOP UP</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* <div className="box saldo">
           <img className="wallet" src={wallet} alt="" />
           <span className="total-saldo">Total Saldo</span>
           <div className="uang jumlah-uang">
@@ -104,8 +148,8 @@ class Wallet extends Component {
               </a>
             </div>
           </div>
-        </div>
-        <div className="box nominal">
+        </div> */}
+        {/* <div className="box nominal">
           <div className="box-form-data">
             <div className="title-alt nomina">Nominal Top Up.</div>
             <div className="topup-div">
@@ -125,8 +169,8 @@ class Wallet extends Component {
 
             <div className="geser button-saran-nih">{listSaran}</div>
           </div>
-        </div>
-        <div className="box riwayat">
+        </div> */}
+        {/* <div className="box riwayat">
           <div className="title-alt riwayat-trans">Riwayat Transaksi</div>
           <div className="menu">
             <a
@@ -209,7 +253,7 @@ class Wallet extends Component {
               <hr />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
