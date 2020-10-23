@@ -105,6 +105,7 @@ class Wallet extends Component {
             </div>
           </div>
         </div>
+        
         <div className="box nominal">
           <div className="box-form-data">
             <div className="title-alt nomina">Nominal Top Up.</div>

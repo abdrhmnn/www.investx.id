@@ -10,6 +10,7 @@ import { Box, Button } from "@material-ui/core";
 
 
 import formBank from "./formBank";
+import "../payment/PaymentMethod";
 import PropTypes from 'prop-types';
 import { Slide } from "react-reveal";
 
