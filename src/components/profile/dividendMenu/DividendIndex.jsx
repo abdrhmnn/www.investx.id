@@ -16,7 +16,7 @@ class DividendIndex extends Component {
             <>
                 <div className="card-item col">
                     <div className="row">
-                        <div className="col-md-6">
+                        <div className="col-md-6 col-6">
                             <div className="row">
                                 <div>
                                     <img
@@ -38,7 +38,7 @@ class DividendIndex extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 ">
+                        <div className="col-md-6 col-6">
                             <div className="row justify-content-end">
                                 <svg
                                     width="24px"
@@ -57,19 +57,19 @@ class DividendIndex extends Component {
                         </div>
                     </div>
                     <div className="row invest-detail">
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Tanggal</p>
                             <p className="value">{stockDate}</p>
                         </div>
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Kode Saham</p>
                             <p className="value">{stockCode}</p>
                         </div>
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Nominal</p>
                             <p className="value">Rp. {stockValue}</p>
                         </div>
-                        <div className="col detail-value no-border">
+                        <div className="col-md col-6 detail-value no-border">
                             <p className="name">Ended in 30 Days left</p>
                             <p className="value" style={{ color: "#09BF15" }}>
                                 {devidendStatus}
@@ -137,7 +137,7 @@ class DividendIndex extends Component {
                             src={walletIcon}
                             alt="wallet"
                         />
-                        <p className="value">Rp. 1,234,567</p>
+                        <p className="value price">Rp. 1,234,567</p>
                     </div>
                 </div>
 
