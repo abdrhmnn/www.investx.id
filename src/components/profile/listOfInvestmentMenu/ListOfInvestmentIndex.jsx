@@ -14,7 +14,7 @@ class ListOfInvestmentIndex extends Component {
             <>
                 <div className="card-item col">
                     <div className="row ">
-                        <div className="col-md-6">
+                        <div className="col-md-6 col-8">
                             <div className="row justify-space-between">
                                 <div>
                                     <img
@@ -36,26 +36,26 @@ class ListOfInvestmentIndex extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 invest-status">
+                        <div className="col-md-6 col-4 invest-status">
                             <p className="view-detail">View Detail</p>
                         </div>
                     </div>
                     <div className="row invest-detail">
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Jumlah saham</p>
                             <p className="value">{totalStock}</p>
                         </div>
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Invested 12/03/2020</p>
                             <p className="value">Rp. {investedValue}</p>
                         </div>
-                        <div className="col detail-value">
+                        <div className="col-md col-6 detail-value">
                             <p className="name">Status</p>
                             <p className="status-name">
                                 {status ? "Collecting" : "Submitted"}
                             </p>
                         </div>
-                        <div className="col detail-value no-border">
+                        <div className="col-md col-6 detail-value no-border">
                             <p className="name">Estimasi dalam 1 tahun</p>
                             <p className="value">Rp. {oneYearEst}</p>
                         </div>
