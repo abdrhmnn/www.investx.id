@@ -3,6 +3,7 @@ import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import { Button, Fab } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 class Syarat extends Component {
     state = {
@@ -26,6 +27,19 @@ class Syarat extends Component {
         console.log(name);
         console.log("====================================");
         this.setState({ modalFile: {} });
+    };
+
+    onSubmit = () => {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                this.props.history.push("/");
+            }
+        });
     };
 
     render() {
@@ -112,11 +126,9 @@ class Syarat extends Component {
                         penerbit dan memenuhi kriteria pemodal sesuai peraturan
                         yang berlaku.
                     </p>
-                    <Link to="/#modal-terimakasih">
-                        <Button type="submit" form="datadiri">
-                            SUBMIT
-                        </Button>
-                    </Link>
+                    <Button onClick={this.onSubmit} form="datadiri">
+                        SUBMIT
+                    </Button>
                 </div>
             </div>
         );

@@ -142,7 +142,6 @@ class Navbar extends Component {
                         <ul>
                             <li> <NavLink activeClassName='nav-active' to='/how'>How it works</NavLink> </li>
                             <li> <NavLink activeClassName='nav-active' to='/about'>About Us</NavLink> </li>
-                            <li> <Link to='/'>FAQ</Link> </li>
                             {
                                kuki.get('auth') ? 
                                 <li className=''>

@@ -88,20 +88,20 @@ class App extends Component {
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
 
-          <PrivatRoute exact path='/email-verify/:code' component={SelectForm}/>
-          <PrivatRoute exact path='/investor-form-data-diri' component={DataDiri}/>
-          <PrivatRoute exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
-          <PrivatRoute exact path='/investor-form-dokumen' component={Dokumen}/>
-          <PrivatRoute exact path='/investor-form-bank' component={Bank}/>
-          <PrivatRoute exact path='/investor-form-preference' component={Preference}/>
+          <Route exact path='/email-verify/:code' component={SelectForm}/>
+          <Route exact path='/investor-form-data-diri' component={DataDiri}/>
+          <Route exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
+          <Route exact path='/investor-form-dokumen' component={Dokumen}/>
+          <Route exact path='/investor-form-bank' component={Bank}/>
+          <Route exact path='/investor-form-preference' component={Preference}/>
 
-          <PrivatRoute exact path='/startup-form-data-diri' component={StartUpDataDiri}/>
-          <PrivatRoute exact path='/startup-form-dokumen' component={StartUpDokumen}/>
-          <PrivatRoute exact path='/startup-form-informasi-perusahaan' component={InfoPerusahaan}/>
-          <PrivatRoute exact path='/startup-form-informasi-finansial' component={InfoFinansial}/>
-          <PrivatRoute exact path='/startup-form-informasi-nonfinansial' component={InfoNonFinansial}/>
-          <PrivatRoute exact path='/startup-form-media' component={Media}/>
-          <PrivatRoute exact path='/startup-form-syarat' component={Syarat}/>
+          <Route exact path='/startup-form-data-diri' component={StartUpDataDiri}/>
+          <Route exact path='/startup-form-dokumen' component={StartUpDokumen}/>
+          <Route exact path='/startup-form-informasi-perusahaan' component={InfoPerusahaan}/>
+          <Route exact path='/startup-form-informasi-finansial' component={InfoFinansial}/>
+          <Route exact path='/startup-form-informasi-nonfinansial' component={InfoNonFinansial}/>
+          <Route exact path='/startup-form-media' component={Media}/>
+          <Route exact path='/startup-form-syarat' component={Syarat}/>
 
           <Route exact path='/company-list' component={CompanyList}/>
           <Route exact path='/company-list/detail/:id' component={CompanyDetail}/>
@@ -121,7 +121,7 @@ class App extends Component {
           <Route exact path='/editNominal' component={editNominal}/>
           <Route exact path='/tambah-bank' component={formBank}/>
 
-          <PrivatRoute exact path='/profile' component={Profile}/>
+          <Route exact path='/profile' component={Profile}/>
 
           <Route exact path='*' component={emptPage}/>
         </Switch>

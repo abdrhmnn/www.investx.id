@@ -1,5 +1,6 @@
 import { Box, Button } from "@material-ui/core";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";
@@ -145,14 +146,16 @@ class PaymentStatus extends Component {
                                 style={but}
                                 onClick={() =>
                                     this.setState({
-                                        modalPaymentStatus: !this.state
-                                            .modalPaymentStatus,
+                                        modalPaymentStatus: !this.state.modalPaymentStatus,
                                     })
                                 }
                             >
                                 BATAL
                             </Button>
-                            <Link to="/profile">
+                            <Link
+                                to="/profile"
+                                onClick={() => this.props.changeTab("history")}
+                            >
                                 <Button style={{ ...butBlue }}>
                                     KELUAR HALAMAN
                                 </Button>
@@ -160,7 +163,7 @@ class PaymentStatus extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     };
 
@@ -291,7 +294,10 @@ class PaymentStatus extends Component {
                     </div>
 
                     <div className="button-container">
-                        <Link to="/profile">
+                        <Link
+                            to="/profile"
+                            onClick={() => this.props.changeTab("list")}
+                        >
                             <Button style={but}>INVESTASI LAINNYA</Button>
                         </Link>
                         <Button
@@ -323,4 +329,17 @@ class PaymentStatus extends Component {
     }
 }
 
-export default PaymentStatus;
+const mapStateToProps = (state) => {
+    return {
+        activeTab: state.activeTab,
+        // number : state.number
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeTab: (data) => dispatch({ type: "CHANGE_TAB", data: data }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentStatus);
