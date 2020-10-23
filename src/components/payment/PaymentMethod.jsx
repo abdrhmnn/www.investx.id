@@ -79,7 +79,7 @@ class PaymentMethod extends Component {
                                     // disabled
                                 />
 
-                                <img src={data.logo} alt="bca" />
+                                <img src={data.logo} className={data.class} alt="bca" />
                                 <br />
                             </label>
                         ))}
@@ -125,7 +125,7 @@ class PaymentMethod extends Component {
                 title: "MINIMARKET",
                 subtitle: "Dapat menggunakan berbagai pilihan kartu kredit",
                 logos: [
-                    { id: 8, logo: minimarket },
+                    { id: 8, logo: minimarket, class: 'minimarket' },
                     { id: 9, logo: indomaret },
                 ],
             },
