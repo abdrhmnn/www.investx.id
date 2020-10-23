@@ -61,7 +61,7 @@ class Profile extends Component {
                                 </Fab>
                             </figure>
                             <p className="username">
-                                {this.state.dataProfile.full_name} 
+                                {this.state.dataProfile.full_name}
                                 {/* <span><i className="fas fa-pen"></i></span> */}
                             </p>
                             <p className="since">Member since june 2020</p>
@@ -88,8 +88,8 @@ class Profile extends Component {
                                         </div>
                                     </div>
                                     <div className="pbuttons">
-                                        <Button className='ftop'> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
-                                        <Button className='fsal'>Withdraw</Button>
+                                        <Button className='ftop' onClick={() => this.props.history.push('/topup')}> <img className='mr-2' src={plustopup} alt="topup"/> Top Up Saldo</Button>
+                                        <Button className='fsal' onClick={() => this.props.history.push('/withdraw')}>Withdraw</Button>
                                     </div>
                                 </div>
                                 <div className="col-md">

@@ -3,6 +3,7 @@ import {Button} from '@material-ui/core'
 import penarikanicon from '../../../images/profile/penarikanicon.svg'
 import topupicon from '../../../images/profile/topupicon.svg'
 import pendanaanicon from '../../../images/profile/pendanaanicon.svg'
+import Select from 'react-select'
 
 class HistoryIndex extends Component {
     state = {
@@ -70,18 +71,47 @@ class HistoryIndex extends Component {
         )
     }
     render() {
+        const optionsTransaction = [
+            { value: '', label: 'Semua' },
+            { value: 'topup', label: 'Topup' },
+            { value: 'withdraw', label: 'Withdraw' },
+            { value: 'pembelian', label: 'Pembelian' }
+        ]
+
+        const optionsStatus = [
+            { value: '', label: 'Semua' },
+            { value: 'berhasil', label: 'Berhasil' },
+            { value: 'withdraw', label: 'Dikembalikan' },
+            { value: 'pembelian', label: 'Dibeli' }
+        ]
+
         return (
             <div className='history-profile'>
                 <p className="title">RIWAYAT TRANSAKSI</p>
                 <hr/>
                 <div className="hisbox-parent">
-                    <div className="filter-history">
+                    {/* <div className="filter-history">
                         <Button>Semua</Button>
                         <Button>Berhasil</Button>
                         <Button>Menunggu Pembayaran</Button>
                         <Button>Dikembalikan</Button>
                         <Button>Dibatalkan</Button>
-                        <Button>Ditolak</Button>
+                        <Button>Ditolak</Button>                       
+                    </div> */}
+                    <div className="row mb-4 filter-history">
+                        <div className="col-md-6 col-sm-12 mb-2">
+                            <label>Status</label>
+                            <div className="w-100">
+                                <Select  options={optionsStatus} />
+                            </div>
+                        </div>
+
+                        <div className="col-md-6 col-sm-12">
+                            <label>Transaksi</label>
+                            <div className="w-100">
+                                <Select  options={optionsTransaction} />
+                            </div>
+                        </div>
                     </div>
                 {this.listComp()}
 
