@@ -56,6 +56,12 @@
                 }
             }
         }
+        
+        .list-saran{
+            width: 750px;
+            height: 70px;
+            overflow-y: hidden;
+        }
         .buttons-topup{
             button{
                 height: 36px;
@@ -79,40 +85,20 @@
 
     }
 
-
-
-
-
-
-
-
-    .add-bank{
-        margin-left: 9px;
-color: #0288D1;
-font-weight: bolder;
+    .box-isi{
+        box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        overflow: hidden;
+        padding: 30px 20px;
+        background-color: white;
+        margin-top: 15px;
+        .batal{
+            margin-top: 10px;
+        }
     }
-    .new{
-        position: absolute;
-padding: 6px;
-border: 2px solid #2388D1;
-color: #2388D1;
-border-radius: 30px;
-font-size: 10pt;
-padding-left: 15px;
-padding-right: 15px;
-margin-left: 420px;
-    }
-    .total-saldo{
-        background: #4CB5EF;
-border-radius: 20px;
-color: white;
-font-size: 7pt;
-padding: 5px;
-margin-left: 40px
-    }
-    .menu a{
-    position: absolute;
-margin-top: 20px;
+    .menu{
+            a{
+margin-top: -10px;
 padding: 6px;
 border: 2px solid #4CB5EF;
 color: #2388D1;
@@ -120,225 +106,79 @@ border-radius: 30px;
 font-size: 10pt;
 padding-left: 15px;
 padding-right: 15px;
-margin-left: 30px;
+margin-left: 20px;
 cursor: pointer;
-}
-.menu a:hover{
+&:hover{
     background: #4CB5EF;
     color:white;
 }
-.box{
-    position: absolute;
-    width: 372px;
-    background: white;
-    height: 240px;
-    
-}
-.saldo{
-    left: 140px;
-    top: 190px;    
-    width: 340px;
-    height: 230px;    
-    border-bottom: 8px solid #0288D1;
-}
-.nominal,.riwayat{
-    width: 700px;
-    left: 500px;
-    top: 192px;
-}
-.title{
-    position: absolute;
-    left: -550px;
-    top: -1px;
-}
-.riwayat{
-    top: 450px;
-}
-.wallet{
-    margin-top: 40px;
-    margin-left: 40px;
-} 
-.geser{
-    -webkit-overflow-scrolling: touch;
-}
-.card-history{
-    margin: 10px;
-    padding: 4px;
-}
-.uang{
-    font-weight: bolder;
-    font-size: 20pt;
-    margin-left: 130px;
-    margin-top: -40px;
-}
-.jumlah-uang{
-    color: #01579b;
-}
-.uang-jumlah-saldo{
-    font-size: 10pt;
-color: grey;
-}
-.uang-saldo-rupiah{
-    margin-top: 70px;
-margin-left: -90px
 }
 
-.saran {
-    display: inline-block;
-    border: none;
-    margin-top: 20px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background: #DEDEDE;
-    font-size: 9pt;
-}
-.status-ku{
-    font-weight: bold;
-font-size: 10pt;
-color: #000;
-margin-left: 30px;
-margin-top: -5px;
-}
-.berhasil{
-    font-size: 10pt;
-margin-left: 30px;
-font-weight: bolder;
-color: black;
-}
-.pinggir-sikit{
-    margin-left: 460px;
-margin-top: -50px;
-}
-.satu-link{
-    margin-left: "120px";
-}
-.dua-link{
-    margin-left: "230px";
-}
-.tiga-link{
-    margin-left: "320px";
-}
-.total-pemb{
-    font-weight: bolder;
-font-size: 10pt;
-color: black;
-margin-left: 460px;
-margin-top: -60px;
-}
-.gagal{
-    font-size: 10pt;
-margin-left: 30px;
-font-weight: bolder;
-color: red;
-}
-.status{
-    margin-left: 200px;
-margin-top: -80px;
-}
-.nominal-topupx{
-    font-size: 18pt;
-margin-left: 30px;
-margin-top: -25px;
-font-weight: bolder;
-}
-.topup-yu{
-    font-weight: bold;
-font-size: 10pt;
-color: #000;
-margin-left: 30px;
-margin-top: -10px;
-}
-.lihat-detail-trans{
-    font-size: 10pt;
-margin-left: 460px;
-}
-.kode{
-    font-size: 10pt;
-margin-left: 30px;
-}
-.no-trans{
-    font-weight: bolder;
-font-size: 10pt;
-color: black;
-margin-left: 30px;
-margin-top: -10px;
+    }
+@media screen and (max-width: 425px) {
+    .menu{
+        width: 400px;
+        a{
+            width: 100px;
+            margin: 5px;
+        }
+    }
 }
 .tanggal-now{
     letter-spacing: -0.5px;
-margin-top: 70px;
 font-size: 9pt;
-margin-left: 30px;
+font-weight: 400;
 }
-.more-transfer-method{
-    color: red;
-font-weight: bolder
 }
-.inputan-uang{
-    margin-left: -45px;
-width: 420px;
-margin-top: -50px;
+.box-isi{
+    .input-nominal{
+        margin-top: -20px;
+    }
+    .title-transaksi{
+        font-size: 10pt;
+        font-weight: bolder;;
+    }
+    .no-transaksi{
+        font-size: 10pt;
+        font-weight: 500;
+        margin-top: -10px;
+    }
+    .total-pemb{
+        border-left: 1px solid black;
+    }
+    .kotak{
+        border-bottom: 1px solid #000;
+    }
+    .detail-kotak{
+        .title-nominal{
+            font-size: 10pt;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        .jumlah-nominal{
+            font-size: 11pt;font-weight: bolder;
+            margin-left: 33px;
+            margin-top: -10px;
+        }
+        .status-nom{
+            font-size: 10pt;
+            font-weight: 500;
+            margin-left: 34px;
+        }
+        .status-{
+            font-size: 11pt;font-weight: bolder;
+            margin-left: 33px;
+        }
+        .topup-but{
+            background-color: chocolate;
+            color: white;
+            border-radius: 4px;
+                font-weight: bold;
+                font-size: 14px;
+                color: #FFFDFD;
+                margin-top: 10px;
+                width: 100%;
+        }
+    }
 }
-.riwayat-trans{
-    font-weight: bolder;
-color: #0288DA;
-margin-left: 30px;
-margin-top: 20px;
-}
-.button-saran-nih{
-    margin-left: -50px;
-overflow-y: hidden;
-white-space: nowrap;
-}
-.geser{
-    max-height: 70px;
-overflow-y: hidden;
-overflow-x: hidden;
-white-space: nowrap;
 
-}
-.topup-div{
-    display: flex;
-flex-direction: column;
-margin-left: 400px;
-}
-.nomina{
-    margin-left: -45px;
-color: #01579b;
-font-weight: 500;
-}
-.uang-lagi{
-    font-size: 10pt;
-color: grey;
-}
-.ku-ada{
-    font-size: 10pt;
-color: grey;
-}
-.ku-kan{
-    font-size: 10pt;
-color: black;
-margin-top: -1px;
-}
-.uang-ku{
-    margin-top: -10px;
-margin-left: 60px;
-}
-.uang-saldo-black{
-    font-size: 10pt;
-color: black;
-margin-top: -1px;
-}
-.error-image{
-width: auto;
-height: 60px
-}
-.error-title{
-    margin-top: 10px;
-font-size: 12pt;
-margin-bottom: 15px
-}
-.know-more{
-    margin-left: 150px;
-}
-}
