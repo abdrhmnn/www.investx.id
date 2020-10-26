@@ -8,6 +8,9 @@
     color: gray;
   }
   @media screen and (max-width:"425px"){
+    .kiri{
+      text-align: left;
+    }
     .kanan{
       text-align: right;
       margin-top: 40px;
@@ -15,6 +18,15 @@
     }
     .join-now-button{
       padding: 80px;
+    }
+  }
+  @media screen and (max-width:"768px"){
+    .wrap-join-boxes{
+      text-align: center;
+    }
+    .row{
+      display: flex;
+      justify-content: center;
     }
   }
   .boxes{

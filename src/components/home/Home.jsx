@@ -130,12 +130,12 @@ class Home extends Component {
                             </p>
 
                             <Link to="/investor-form-data-diri">
-                                <Button style={butSolid}>
+                                <Button style={butSolid} className="start-invest-but">
                                     Start Investing
                                 </Button>
                             </Link>
                             <Link to="/startup-form-data-diri">
-                                <Button style={but}>Get Funding</Button> <br />
+                                <Button style={but} className="get-fund-but">Get Funding</Button> <br />
                             </Link>
                             <img src={ojk} alt="" />
                         </div>
