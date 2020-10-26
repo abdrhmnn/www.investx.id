@@ -591,5 +591,19 @@
         .custom_text_input label{
             font-size: 11px;
         }
+
+        .box-mod{
+            width: 100% !important;
+            border-radius: 0 !important;
+
+            p.title-mod{
+                font-size: 27px !important;
+                margin: 0 20px !important;
+                margin-bottom: 20px !important;
+            }
+            p.desc-mod{
+                margin: 0 20px !important;
+            }
+        }
     }
 }
