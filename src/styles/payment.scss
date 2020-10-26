@@ -99,4 +99,32 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .payment{
+        .payment-company.box-form-data{
+            .payment-image{
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 20px !important;
+                width: 100%;
+                height: 150px;
+            }
+
+            .price{
+                margin-top: -30px !important;
+            }
+        }
+        
+        .payment-methods{
+            .hr-payment-methods{
+                margin-bottom: 20px !important;
+            }
+            .payments-container{
+                margin: 0 20px !important;
+            }
+        }
+
+        button{
+            width: 320px !important;
+        }
+    }
 }

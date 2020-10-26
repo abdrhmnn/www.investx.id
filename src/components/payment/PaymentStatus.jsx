@@ -127,7 +127,7 @@ class PaymentStatus extends Component {
                         })
                     }
                 ></i>
-                <div className="row justify-content-between text-center">
+                <div className="row justify-content-between text-center box-modal-content">
                     <div className="notice-image-container">
                         <img
                             className="notice-image"
@@ -141,7 +141,7 @@ class PaymentStatus extends Component {
                         <p className="bolder">Riwayat Transaksi</p>
                         <p>pada kolom ‘ menunggu pembayaran ‘</p>
                         <p>untuk cek detail pembayaranmu.</p>
-                        <div className="row justify-content-between mx-2 mt-5">
+                        <div className="row justify-content-between mx-2 mt-5 box-button">
                             <Button
                                 style={but}
                                 onClick={() =>
