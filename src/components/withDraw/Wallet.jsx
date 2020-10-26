@@ -19,7 +19,6 @@ class Wallet extends Component {
       paddingRight: '20px',
       background: '#DEDEDE',
       fontSize: '9pt',
-      whiteSpace: 'nowrap'
     }
 
     const jumlahSaran = [
@@ -49,7 +48,7 @@ class Wallet extends Component {
           <img src={logo} alt="" />
         </div>
         <div className="container withdraw">
-        <p className="title-wallet">MY WALLET</p>
+        <p className="title-wallet title">MY WALLET</p>
           <div className="row">
             <div className="col-md-4 ">
               <div className=" box-left p-3">
@@ -64,12 +63,17 @@ class Wallet extends Component {
 
                 <div className="box-detail-saldo">
                   <p className="saldo-detail">
-                    saldo Rupiah <br/> Rp. 15,000.000
+                    Saldo Rupiah <br/> <span>Rp. 15,000.000</span>
                   </p>
                   <p className="saldo-detail">
-                    Toal Saham <br/> Rp. 5,000.000
+                    Total Saham <br/> <span>Rp. 5,000.000</span>
                   </p>
                 </div>
+
+                <div className="know-more">
+                  <span>Pelajari Lebih Lanjut</span>
+                        <a href="#"> disini</a></div>
+
 
               </div>
             </div>
@@ -86,14 +90,14 @@ class Wallet extends Component {
                   </div>
                   <div className="col-md buttons-topup">
                     <Button className='blue'>TOP UP</Button>
-                    <Button className='line-blue'>TOP UP</Button>
+                    <Button className='line-blue'>WITHDRAW</Button>
                   </div>
                 </div>
                 <div className="list-saran">{listSaran}</div>
               </div>
 
               <div className="box-right mt-4">
-               <div className="title-alt riwayat-trans">Riwayat Transaksi</div> <br />
+               <div className="title-alt riwayat-trans"> <b>Riwayat Transaksi</b> </div> <br />
                 <div className="menu">
                   <a
                     style={{
@@ -139,8 +143,8 @@ class Wallet extends Component {
                       <span className="status-nom"> Status</span>
                       <p className="status-">Transaksi Berhasil</p>
                         </div>
-                    <div className="col-md">
-                       <Button className='topup-but'>TOP UP</Button>
+                    <div className="col-md but-topup">
+                       <Button className='topup-but'>Top Up Lagi</Button>
                         </div>
                     </div>
                   </div>
@@ -166,17 +170,17 @@ class Wallet extends Component {
 
                    <div className="detail-kotak row mt-2">
                       <div className="col-md-4">
-                      <img src={topup} className="mt-3" alt="" />
-                      <span className="title-nominal">Top Up</span>
+                      <img src={tarik} className="mt-3" alt="" />
+                      <span className="title-nominal">Penarikan</span>
                       <p className="jumlah-nominal">+20.000.000</p>
 
                         </div>
                     <div className="col-md-4 total-pemb">
                       <span className="status-nom"> Status</span>
-                      <p className="status-">Transaksi Berhasil</p>
+                      <p className="status-">Transaksi Dibatalkan</p>
                         </div>
                     <div className="col-md">
-                       <Button className='topup-but'>TOP UP</Button>
+                       <Button className='topup-but'>Tarik Ulang Lagi</Button>
                         </div>
                     </div>
                   </div>
