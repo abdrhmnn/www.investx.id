@@ -99,6 +99,14 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .all-forms-style .back-button{
+        width: 50px !important;
+    }
+
+    .logo-invest{
+        display: none;
+    }
+
     .payment{
         .payment-company.box-form-data{
             .payment-image{
