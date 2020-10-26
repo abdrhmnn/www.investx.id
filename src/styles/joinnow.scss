@@ -21,12 +21,19 @@
     }
   }
   @media screen and (max-width:"768px"){
-    .wrap-join-boxes{
-      text-align: center;
-    }
     .row{
       display: flex;
-      justify-content: center;
+      width: 700px;
+    }
+    .col-md-7{
+      justify-content: start;
+      text-align: left;
+      width: 300px;
+    }
+    .kanan{
+      text-align: right;
+      margin-left: 300px;
+      width: 400px;
     }
   }
   .boxes{
