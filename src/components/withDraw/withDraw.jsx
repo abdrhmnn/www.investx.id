@@ -60,6 +60,7 @@ class MethodTopUp extends Component {
                 <div className="logo-invest">
                     <img src={logo} alt="" />
                 </div>
+                
                 <p className="title">WITHDRAW</p>
 
                 <div className="box-form-data">

@@ -49,7 +49,7 @@ class Otp extends Component {
                     <div className="box-otp">
                         <img src={mailbox} alt="" />
                         <h2>Verifikasi Kode OTP</h2>
-                        <p>Hi, Maria.. untuk melanjutkan transaksi kamu harus memasukkan kode OTP</p>
+                        <p>Hi, Maria.. untuk melanjutkan transaksi,  kamu harus memasukkan kode OTP</p>
                         <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
                         <p className="num">0 8 5 7 * * * * 1 2 1 2</p>
                         <form onSubmit={this.handleSubmit} id='otp'>
@@ -58,7 +58,7 @@ class Otp extends Component {
                             <input required ref={(input) => { this.boxFoc3 = input; }} type='number' maxLength='1' name='box3' value={this.state.box3} onChange={this.handleChange} />
                             <input required ref={(input) => { this.boxFoc4 = input; }} type='number' maxLength='1' name='box4' value={this.state.box4} onChange={this.handleChange} />
                         </form>
-                        <Button type='submit' form='otp'>Verifikasi</Button>
+                        <Button type='submit' form='otp' className="verif">Verifikasi</Button>
                         <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
                     </div>
                 </div>
