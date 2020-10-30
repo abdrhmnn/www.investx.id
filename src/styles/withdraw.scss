@@ -276,15 +276,39 @@
     }
 }
 
-.editNominal{
+.editNominal {
     .list-saran {
-            max-height: 70px;
-            overflow-y: hidden;
-            overflow-x: hidden;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+        max-height: 70px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
 
-        }
+    }
 
 }
 
+.tambahBank {
+    .modal-error-detail {
+        padding-top: 10px;
+
+        .error-image {
+            width: auto;
+            height: 40px
+        }
+
+        .error-title {
+            margin-top: 10px;
+            margin-bottom: 15px
+        }
+
+        .form-box {
+            width: 400px;
+            .form-control {
+                width: 100%;
+            }
+        }
+
+    }
+
+}
