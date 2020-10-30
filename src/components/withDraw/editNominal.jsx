@@ -78,6 +78,30 @@ class MethodTopUp extends Component {
     }
 
     render() {
+
+          const styleSaran = {
+      display: 'inline-block',
+      border: 'none',
+      marginTop: '20px',
+      marginRight: '20px',
+      paddingLeft: '20px',
+      paddingRight: '20px',
+      background: '#DEDEDE',
+      fontSize: '9pt',
+    }
+
+    const jumlahSaran = [
+      "20.000.000",
+      "30.000.000",
+      "40.000.000",
+      "50.000.000",
+      "60.000.000",
+      "70.000.000",
+    ];
+
+    const listSaran = jumlahSaran.map((saran) => {
+      return <Button style={styleSaran}>{saran}</Button>;
+    });
         const methods = [
             {
                 title: 'TRANSFER REKENING',
@@ -99,7 +123,7 @@ class MethodTopUp extends Component {
             },
         ]
         return (
-            <div className="all-forms-style withdraw">
+            <div className="all-forms-style editNominal">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
@@ -121,20 +145,7 @@ class MethodTopUp extends Component {
                             name="username" placeholder="1.000.000"
                         />
                     </div>
-                    <div className="geser">
-                        <Button className="saran">20.000.000</Button>
-                        <Button className="saran">30.000.000</Button>
-                        <Button className="saran">40.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-                        <Button className="saran">50.000.000</Button>
-
-
-                    </div>
+                     <div className="list-saran">{listSaran}</div>
                 </div>
 
                 <p className="box-form-title">Pilih Metode Pembayaran</p>

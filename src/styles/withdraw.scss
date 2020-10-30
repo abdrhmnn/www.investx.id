@@ -275,3 +275,16 @@
         }
     }
 }
+
+.editNominal{
+    .list-saran {
+            max-height: 70px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+
+        }
+
+}
+
