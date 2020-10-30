@@ -289,6 +289,7 @@
 }
 
 .tambahBank {
+
     .modal-error-detail {
         padding-top: 10px;
 
@@ -304,11 +305,33 @@
 
         .form-box {
             width: 400px;
+            .save{
+                margin-left: 250px;
+            }
+
             .form-control {
                 width: 100%;
             }
         }
 
+    }
+     @media screen and (max-width: 768px) {
+        .save{
+                    margin-left: 250px;
+                }
+    }
+
+    @media screen and (max-width: 425px) {
+        .modal-error-body {
+            width: 300px;
+
+            .form-box {
+                width: 250px;
+                .save{
+                    margin-left: 100px;
+                }
+            }
+        }
     }
 
 }

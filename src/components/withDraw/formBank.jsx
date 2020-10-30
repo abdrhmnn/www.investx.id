@@ -15,8 +15,7 @@ class ModalError extends Component {
             border: "none",
             outline: "none",
             borderRadius: "5px",
-            marginLeft: "250px",
-            marginTop: "-20px"
+            marginTop: "-20px",
         };
         // const {     onClose = () => {},     image = errorImage,     title = 'Mohon
         // Maaf',     description = 'Data yang anda masukan salah',     onAction = () =>
@@ -48,10 +47,11 @@ class ModalError extends Component {
                                 placeholder="Nama Pemilik Rekening"/>
                             <br/>
                             <input type="text" class="form-control" id="pwd" placeholder="No Rekening"/>
-                            <br/>
-                            <Button type="submit" className="but-blue" style={butBlue}>
+                            <br />
+                            <div className="save">
+                            <Button type="submit" style={butBlue}>
                                 SAVE</Button>
-
+                            </div>
                         </div>
                     </div>
                 </div>
