@@ -4,7 +4,7 @@
 
     .title-wallet {
         text-align: center;
-        margin-bottom: 80px;
+        margin-bottom: 20px;
     }
 
     .box-left {
@@ -116,10 +116,12 @@
         .list-saran {
             max-height: 70px;
             overflow-y: hidden;
-            overflow-x: hidden;
+            overflow-x: scroll;
             white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
 
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         .buttons-topup {
@@ -169,6 +171,13 @@
     }
 
     .menu {
+        overflow-x: scroll;
+        padding: 15px 0;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
         a {
             margin-top: -10px;
             padding: 6px;
@@ -191,7 +200,8 @@
 
     @media screen and (max-width: 425px) {
         .menu {
-            width: 400px;
+            white-space: nowrap;
+            width: 300px;
 
             a {
                 width: 100px;
@@ -351,6 +361,10 @@
     }
 
     @media screen and (max-width: 768px) {
+        .withdraw{
+            padding: 0 !important;
+        }
+
         .dompet-img {
             width: 40px;
             height: 40px;
