@@ -7,6 +7,8 @@ import bluewoman from "../../images/bg/bluewoman.jpg";
 
 import phoneicon from "../../images/phoneicon.svg";
 import emailicon from "../../images/emailicon.svg";
+import Swal from 'sweetalert2'
+
 
 import {
   Button,
@@ -45,7 +47,17 @@ class Register extends Component {
   submitRegister = () =>{
     API.register(this.state.dataPost).then(res=>{
        console.log(res)
-    }).catch(err => console.log(err.response))
+      //  this.setState({sModalConfirm : false}, ()=>{
+
+      //  })
+
+    }).catch(err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+      })
+    })
 
   }
 
