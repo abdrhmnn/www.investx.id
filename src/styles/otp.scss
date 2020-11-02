@@ -1,6 +1,11 @@
 .otp{
-    height: 100vh;
+    // height: 100vh;
     // position: fixed ;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +17,7 @@
     }
     .box-otp{
         // width: 933px;
-        padding: 50px 0px;
+        padding: 30px 0px;
         width: 769px;
         background-color: white;
         border-radius: 20px;
@@ -22,72 +27,6 @@
         flex-direction: column;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
         border-radius: 25px;
-        @media screen and (max-width: 768px) {
-            width: 600px;
-            height: 520px;
-            padding: 20px 10px;
-            p{
-                font-size: 12pt;
-            }
-        }
-        @media screen and (max-width: 425px) {
-            width: 350px;
-            height: 420px;
-            padding: 5px 10px;
-            p{
-                font-size: 10pt;
-                text-align: center;
-            }
-            h2{
-                font-size: 12pt;
-                text-align: center;
-                margin-top: 10px;
-            }
-            .desc{
-                text-align: center;
-            }
-            .verif{
-                margin-top: -30px;
-            }
-            .info{
-                margin-top: 20px;
-                width: 300px;
-                margin-bottom: 70px;
-            }
-        }
-        @media screen and (max-width: 375px) {
-            width: 350px;
-            height: 530px;
-            margin-top: 50px;
-            padding: 5px 10px;
-            p{
-                font-size: 12pt;
-            }
-            img{
-                margin-top: 20px;
-            }
-            .verif{
-                padding: 2px 8px;
-            }
-        }
-         @media screen and (max-width: 320px) {
-            width: 295px;
-            height: 550px;
-            margin-top: 70px;
-            padding: 5px 10px;
-            p{
-                font-size: 12pt;
-            }
-            img{
-                margin-top: 20px;
-            }
-            .verif{
-                width: 200px;
-            }
-            .info{
-                width: 250px;
-            }
-        }
         .title{
             font-weight: bold;
             font-size: 30px;
@@ -108,13 +47,13 @@
             letter-spacing: 3px;
         }
         form{
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             input{
                 border: 1px solid rgba(36, 36, 36, 0.4);
                 box-sizing: border-box;
                 border-radius: 4px;
                 width: 50px;
-                height: 61.4px;
+                height: 50px;
                 margin: 0 9px;
                 text-align: center;
                 font-size: 24px;
@@ -241,3 +180,25 @@
 
     }
 // }
+
+
+@media screen and (max-width: 768px) {
+    .otp{
+        .box-otp{
+            padding: 30px;
+            form{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                input{
+                    margin: 0;
+                    width: 45px;
+                    height: 45px;
+                }
+            }
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

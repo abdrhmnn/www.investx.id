@@ -48,9 +48,13 @@ class Register extends Component {
   }
 
   submitRegister = () =>{
+    this.setState({loading : true})
     API.register(this.state.dataPost).then(res=>{
       console.log(res)
       this.setState({sModalConfirm : false ,loading : false})
+      kuki.set('token', res.data.token)
+      kuki.set('status', {phone : '', email : ''})
+      kuki.set('auth', true)
       kuki.set('email', res.data.email)
       kuki.set('full_name', res.data.full_name)
       kuki.set('phone_number', res.data.phone_number)
