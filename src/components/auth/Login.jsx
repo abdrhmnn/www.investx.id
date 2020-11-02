@@ -66,23 +66,23 @@ class Login extends Component {
                                         console.log(res)
                                         // const apiProfile = () =>{
                                         //     API.getProfile().then(profile =>{
-                                        //         this.setState({loading : false})
-                                        //         const {email, full_name, phone_number} = profile.data
-                                        //         kuki.set('email', email)
-                                        //         kuki.set('full_name', full_name)
-                                        //         kuki.set('phone_number', phone_number)
-                                        //         window.location.href = '/'
-                                        //     }).catch(err =>{
-                                        //         this.setState({loading : false})
-                                        //         console.log(err.response, 'ini profile')
-                                        //         Swal.fire({
-                                        //             icon: 'error',
-                                        //             title: 'Oops...',
-                                        //             text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
-                                        //         })
-                                        //     })
-                                        // }
-                                        
+                                            //         const {email, full_name, phone_number} = profile.data
+                                            //         kuki.set('email', email)
+                                            //         kuki.set('full_name', full_name)
+                                            //         kuki.set('phone_number', phone_number)
+                                            //         window.location.href = '/'
+                                            //     }).catch(err =>{
+                                                //         this.setState({loading : false})
+                                                //         console.log(err.response, 'ini profile')
+                                                //         Swal.fire({
+                                                    //             icon: 'error',
+                                                    //             title: 'Oops...',
+                                                    //             text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+                                                    //         })
+                                                    //     })
+                                                    // }
+                                                    
+                                        this.setState({loading : false})
                                         var {token, register_status, email, full_name, phone_number} = res.data
                                         kuki.set('email', email)
                                         kuki.set('full_name', full_name)
