@@ -107,6 +107,7 @@ class Register extends Component {
                     var body = {
                       full_name: val.full_name,
                       email: val.email,
+                      password : val.password,
                       phone_number: this.phoneRemoveZero(val.phone_number),
                     }
                     this.setState({dataPost : body , isModalConfirm : true})
