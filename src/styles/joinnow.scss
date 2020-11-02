@@ -22,26 +22,18 @@
     }
 
     .join-now-button {
-      padding: 80px;
+      padding: 20px;
     }
   }
 
   @media screen and (max-width:"768px") {
     .row {
       display: flex;
-      width: 700px;
     }
 
     .col-md-7 {
       justify-content: start;
       text-align: left;
-      width: 300px;
-    }
-
-    .kanan {
-      text-align: right;
-      margin-left: 300px;
-      width: 400px;
     }
   }
 
