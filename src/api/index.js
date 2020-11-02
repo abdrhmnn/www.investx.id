@@ -32,7 +32,7 @@ const API = {
       "phone_number": kuki.get('phone_number'),
       "code": code
     }
-    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body)
+    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   }
 };
 
