@@ -53,7 +53,7 @@ class Register extends Component {
       console.log(res)
       this.setState({sModalConfirm : false ,loading : false})
       kuki.set('token', res.data.token)
-      kuki.set('status', {phone : '', email : ''})
+      kuki.set('status', {phone : false, email : false})
       kuki.set('auth', true)
       kuki.set('email', res.data.email)
       kuki.set('full_name', res.data.full_name)

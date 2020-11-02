@@ -64,34 +64,32 @@ class Login extends Component {
                                     this.setState({loading : true})
                                     API.login(val).then(res=>{
                                         console.log(res)
+                                        // const apiProfile = () =>{
+                                        //     API.getProfile().then(profile =>{
+                                        //         this.setState({loading : false})
+                                        //         const {email, full_name, phone_number} = profile.data
+                                        //         kuki.set('email', email)
+                                        //         kuki.set('full_name', full_name)
+                                        //         kuki.set('phone_number', phone_number)
+                                        //         window.location.href = '/'
+                                        //     }).catch(err =>{
+                                        //         this.setState({loading : false})
+                                        //         console.log(err.response, 'ini profile')
+                                        //         Swal.fire({
+                                        //             icon: 'error',
+                                        //             title: 'Oops...',
+                                        //             text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+                                        //         })
+                                        //     })
+                                        // }
                                         
-                                        const apiProfile = () =>{
-                                            API.getProfile().then(profile =>{
-                                                this.setState({loading : false})
-                                                const {email, full_name, phone_number} = profile.data
-                                                kuki.set('email', email)
-                                                kuki.set('full_name', full_name)
-                                                kuki.set('phone_number', phone_number)
-                                                window.location.href = '/'
-                                            }).catch(err =>{
-                                                this.setState({loading : false})
-                                                console.log(err.response, 'ini profile')
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Oops...',
-                                                    text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
-                                                })
-                                            })
-                                        }
-                                        
-                                        var {token, register_status} = res.data
-                                         Promise.all([
-                                            kuki.set('token', token),
-                                            kuki.set('status', register_status),
-                                            kuki.set('auth', true),
-                                            apiProfile(),
-                                        ])
-                                        
+                                        var {token, register_status, email, full_name, phone_number} = res.data
+                                        kuki.set('email', email)
+                                        kuki.set('full_name', full_name)
+                                        kuki.set('phone_number', phone_number)
+                                        kuki.set('token', token)
+                                        kuki.set('status', register_status)
+                                        kuki.set('auth', true)
                                     }).catch(err => {
                                         this.setState({loading : false})
                                         console.log(err.response) 
