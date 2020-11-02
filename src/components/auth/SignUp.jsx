@@ -42,6 +42,10 @@ class Register extends Component {
     }
   }
 
+  submitRegister = () =>{
+    API.register(this.state.dataPost).then(res=> console.log(res)).err(err => console.log(err.response))
+  }
+
   modalConfirm = () => (
     <div className="over">
       <div className="modal-confirm">
@@ -57,7 +61,7 @@ class Register extends Component {
         </div>
         <div className="but-all">
           <p onClick={() => this.setState({ isModalConfirm: false })}>Ubah</p>
-            <Button onClick={()=>  API.register(this.state.dataPost, this.callbackSubmit) }>Ya, Lanjutkan</Button>
+            <Button onClick={this.submitRegister}>Ya, Lanjutkan</Button>
         </div>
       </div>
     </div>
