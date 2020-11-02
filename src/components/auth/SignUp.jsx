@@ -43,7 +43,10 @@ class Register extends Component {
   }
 
   submitRegister = () =>{
-    API.register(this.state.dataPost).then(res=> console.log(res)).err(err => console.log(err.response))
+    API.register(this.state.dataPost).then(res=>{
+       console.log(res)
+    }).catch(err => console.log(err.response))
+
   }
 
   modalConfirm = () => (
