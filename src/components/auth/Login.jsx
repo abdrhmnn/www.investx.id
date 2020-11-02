@@ -70,7 +70,6 @@ class Login extends Component {
                                             //         kuki.set('email', email)
                                             //         kuki.set('full_name', full_name)
                                             //         kuki.set('phone_number', phone_number)
-                                            //         window.location.href = '/'
                                             //     }).catch(err =>{
                                                 //         this.setState({loading : false})
                                                 //         console.log(err.response, 'ini profile')
@@ -82,14 +81,15 @@ class Login extends Component {
                                                     //     })
                                                     // }
                                                     
-                                        this.setState({loading : false})
-                                        var {token, register_status, email, full_name, phone_number} = res.data
-                                        kuki.set('email', email)
-                                        kuki.set('full_name', full_name)
-                                        kuki.set('phone_number', phone_number)
-                                        kuki.set('token', token)
-                                        kuki.set('status', register_status)
-                                        kuki.set('auth', true)
+                                    this.setState({loading : false})
+                                    var {token, register_status, email, full_name, phone_number} = res.data
+                                    kuki.set('email', email)
+                                    kuki.set('full_name', full_name)
+                                    kuki.set('phone_number', phone_number)
+                                    kuki.set('token', token)
+                                    kuki.set('status', register_status)
+                                    kuki.set('auth', true)
+                                    window.location.href = '/'
                                     }).catch(err => {
                                         this.setState({loading : false})
                                         console.log(err.response) 
