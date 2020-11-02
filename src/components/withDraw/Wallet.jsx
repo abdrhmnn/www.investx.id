@@ -35,7 +35,7 @@ class Wallet extends Component {
     });
 
     return (
-      <div className="all-forms-style">
+      <div className="all-forms-style wallet">
         <div className="bg">
           <div className="bg-round"></div>
         </div>
@@ -54,7 +54,7 @@ class Wallet extends Component {
               <div className=" box-left p-3">
 
                 <div className="box-saldo">
-                  <div className=""><img className="" src={wallet} alt="" /></div>
+                  <div className=""><img className="dompet-img" src={wallet} alt="" /></div>
                   <div className="ml-3 total">
                     <span className="total-saldo m-0">Total Saldo</span>
                       <p className="mb-0"> Rp. 20.000.000</p>
@@ -89,8 +89,8 @@ class Wallet extends Component {
                     </div>
                   </div>
                   <div className="col-md buttons-topup">
-                    <Button className='blue'>TOP UP</Button>
-                    <Button className='line-blue'>WITHDRAW</Button>
+                    <Button className='blue'><span>TOP UP</span></Button>
+                    <Button className='line-blue'><span>WITHDRAW</span></Button>
                   </div>
                 </div>
                 <div className="list-saran">{listSaran}</div>
@@ -109,7 +109,7 @@ class Wallet extends Component {
                   </a>
                   <a>Pembelian</a>
                   <a>Top Up</a>
-                <a>With Draw</a>
+                <a>WithDraw</a>
                 </div>
 
                 <div className="box-isi">
