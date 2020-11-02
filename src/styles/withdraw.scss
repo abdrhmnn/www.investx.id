@@ -305,7 +305,8 @@
 
         .form-box {
             width: 400px;
-            .save{
+
+            .save {
                 margin-left: 250px;
             }
 
@@ -315,10 +316,11 @@
         }
 
     }
-     @media screen and (max-width: 768px) {
-        .save{
-                    margin-left: 250px;
-                }
+
+    @media screen and (max-width: 768px) {
+        .save {
+            margin-left: 250px;
+        }
     }
 
     @media screen and (max-width: 425px) {
@@ -327,11 +329,71 @@
 
             .form-box {
                 width: 250px;
-                .save{
+
+                .save {
                     margin-left: 100px;
                 }
             }
         }
     }
 
+}
+
+.wallet {
+    @media screen and (max-width: 1024px) {
+        .withdraw .box-left .box-saldo .mb-0 {
+            font-size: 15pt;
+        }
+
+        .withdraw .box-left .know-more span {
+            margin-left: 90px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .dompet-img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .withdraw .box-left .box-saldo .mb-0 {
+            font-size: 12pt;
+        }
+
+        .withdraw .box-left .know-more span {
+            margin-left: 5px;
+        }
+
+        .withdraw .box-left .box-detail-saldo .saldo-detail {
+            padding-left: 5px;
+            font-size: 7pt;
+        }
+
+        .withdraw .box-left .know-more {
+            font-size: 7pt;
+        }
+        .withdraw .title-input, .withdraw .title-alt{
+            font-size: 10pt;
+        }
+        .withdraw .box-right .input-nominal .box-input p{
+            font-size: 15pt;
+        }
+
+        .withdraw .box-right .input-nominal .box-input input{
+            font-size: 15pt;
+        }
+        button span{
+            font-size: 8pt;
+        }
+        .list-saran button{
+            padding: 2px 3px;
+        }
+        .buttons-topup span{
+            font-size: 9pt;
+        }
+        .menu a{
+            margin: 5px;
+            width: 100px;   
+            max-height: 110px;     }
+    }
 }
