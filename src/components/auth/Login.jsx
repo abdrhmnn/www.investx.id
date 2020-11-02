@@ -79,7 +79,7 @@ class Login extends Component {
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
-                                                    // text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+                                                    text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
                                                 })
                                             })
                                         }
