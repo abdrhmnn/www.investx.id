@@ -75,7 +75,7 @@ class Login extends Component {
                                                 window.location.href = '/'
                                             }).catch(err =>{
                                                 this.setState({loading : false})
-                                                console.log(err.response)
+                                                console.log(err.response, 'ini profile')
                                                 Swal.fire({
                                                     icon: 'error',
                                                     title: 'Oops...',
@@ -98,7 +98,7 @@ class Login extends Component {
                                         Swal.fire({
                                             icon: 'error',
                                             title: 'Oops...',
-                                            // text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+                                            text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
                                         })
                                     })
     
