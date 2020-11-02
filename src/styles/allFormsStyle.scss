@@ -605,5 +605,24 @@
                 margin: 0 20px !important;
             }
         }
+
+        .box-suk{
+            margin: 20px;
+            width: 100%;
+            height: 60% !important;
+
+            img{
+                width: 150px;
+            }
+
+            .titlepf{
+                font-size: 35px !important;
+            }
+
+            .descpf{
+                font-size: 22px !important;
+                line-height: unset !important;
+            }
+        }
     }
 }
