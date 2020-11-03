@@ -181,7 +181,6 @@
 @media only screen and (max-width: 768px) {
     .home {
         background-size: cover;
-        background-attachment: fixed;
         height: 650px;
         margin-top: 60px;
         top: 0 !important;
@@ -284,7 +283,7 @@
             background-image: url("https://placeimg.com/640/480/tech/grayscale");
             background-size: cover;
             color: white !important;
-            background-attachment: fixed;
+            // background-attachment: fixed;
             background-position: center;
 
             &::before {
