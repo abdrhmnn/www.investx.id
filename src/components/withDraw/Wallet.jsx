@@ -39,7 +39,7 @@ class Wallet extends Component {
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link to="/">
+        <Link onClick={() => this.props.history.goBack()}>
           <div className="back-button">
             <img src={arrowback} alt="" />
           </div>

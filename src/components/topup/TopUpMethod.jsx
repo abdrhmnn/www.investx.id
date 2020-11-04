@@ -24,7 +24,7 @@ class TopUpMethod extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="my-wallet">
+                <Link onClick={() => this.props.history.goBack()}>
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>

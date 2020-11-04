@@ -39,7 +39,7 @@ class TopUpDetail extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link>
+                <Link onClick={() => this.props.history.goBack()}>
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>
@@ -135,27 +135,27 @@ class TopUpDetail extends Component {
                             </div>
                         </div>
                     ) : (
-                        <div>
-                            <p
-                                className="note"
-                                style={{ marginBottom: "20px" }}
-                            >
-                                *Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit. Error reiciendis culpa quidem.
-                                Aliquam labore totam ea, fuga tenetur fugiat
-                                obcaecati eveniet itaque quisquam, hic magni
-                                neque, aperiam unde accusamus harum.
+                            <div>
+                                <p
+                                    className="note"
+                                    style={{ marginBottom: "20px" }}
+                                >
+                                    *Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Error reiciendis culpa quidem.
+                                    Aliquam labore totam ea, fuga tenetur fugiat
+                                    obcaecati eveniet itaque quisquam, hic magni
+                                    neque, aperiam unde accusamus harum.
                             </p>
-                            <Button
-                                style={butSolid}
-                                className="but-solid"
-                                type="submit"
-                                onClick={() => this.setIsInvoice(true)}
-                            >
-                                BAYAR TRANSAKSI
+                                <Button
+                                    style={butSolid}
+                                    className="but-solid"
+                                    type="submit"
+                                    onClick={() => this.setIsInvoice(true)}
+                                >
+                                    BAYAR TRANSAKSI
                             </Button>
-                        </div>
-                    )}
+                            </div>
+                        )}
                 </div>
             </div>
         );

@@ -48,7 +48,7 @@ class MethodTopUp extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="/select-form/">
+                <Link onClick={() => this.props.history.goBack()}>
                     <div className="back-button">
                         <img src={arrowback} alt="" />
                     </div>
