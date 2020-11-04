@@ -1,6 +1,11 @@
 .otp{
-    height: 100vh;
+    // height: 100vh;
     // position: fixed ;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +17,7 @@
     }
     .box-otp{
         // width: 933px;
-        padding: 50px 0px;
+        padding: 30px 0px;
         width: 769px;
         background-color: white;
         border-radius: 20px;
@@ -42,13 +47,13 @@
             letter-spacing: 3px;
         }
         form{
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             input{
                 border: 1px solid rgba(36, 36, 36, 0.4);
                 box-sizing: border-box;
                 border-radius: 4px;
-                width: 63.08px;
-                height: 61.4px;
+                width: 50px;
+                height: 50px;
                 margin: 0 9px;
                 text-align: center;
                 font-size: 24px;
@@ -175,3 +180,25 @@
 
     }
 // }
+
+
+@media screen and (max-width: 768px) {
+    .otp{
+        .box-otp{
+            padding: 30px;
+            form{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                input{
+                    margin: 0;
+                    width: 45px;
+                    height: 45px;
+                }
+            }
+            button{
+                width: 100%;
+            }
+        }
+    }
+}

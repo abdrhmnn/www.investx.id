@@ -1,4 +1,11 @@
-.home{
+.home {
+    .content-home-desktop{
+        display: inline !important;
+    }
+    .content-home-mobile{
+        display: none;
+    }
+
     height: 100vh;
     // margin-top: 80px;
     background-position: right;
@@ -8,46 +15,93 @@
     position: relative;
     padding: 75px 0 120px;
     background-origin: padding-box;
-    .contain-home{
+
+    // POPUP SUCCESS FORM
+    .popsukform {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 1001;
+        .box-suk {
+            background-color: white;
+            width: 908px;
+            height: 626px;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .titlepf {
+                font-weight: 600;
+                font-size: 50px;
+                line-height: 54px;
+                color: #000000;
+            }
+            .descpf {
+                font-size: 30px;
+                line-height: 54px;
+                text-align: center;
+                color: #757575;
+            }
+            .fa-times {
+                font-size: 30px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                margin: 30px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .contain-home {
         display: flex;
         padding: 75px 0 120px !important;
         align-items: center;
         height: 100%;
-        .wrap{
+        .wrap {
             margin-top: 72px;
-            .title{
+            .title {
                 font-weight: 900;
                 font-size: 70px;
                 line-height: 50px;
-                span{
+                span {
                     font-size: 40px;
                 }
             }
-            .desc{
+            .desc {
                 max-width: 50%;
                 font-weight: 300;
                 font-size: 16px;
                 line-height: 30px;
             }
-            button{
+            button {
                 width: 205px;
                 height: 52px;
                 margin-right: 28px;
                 margin-bottom: 38px;
             }
             .but-solid {
-                background-color:  #0288d1;
+                background-color: #0288d1;
                 border: none;
                 border-radius: 8px;
                 color: white;
                 font-size: 16px;
                 outline: unset !important;
             }
-            
+
             .but {
                 color: black;
                 border-radius: 8px;
-                border: 1px solid  #0288d1;
+                border: 1px solid #0288d1;
                 background-color: white;
                 font-size: 16px;
                 outline: unset !important;
@@ -55,7 +109,7 @@
         }
     }
 
-    .last-invest{
+    .last-invest {
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
         background-color: white;
         padding: 15px 0;
@@ -63,36 +117,36 @@
         width: 100%;
         bottom: 0;
 
-        .card-last{
+        .card-last {
             // background-color: maroon;
-            border-right: 1px solid #DEDEDE !important;
+            border-right: 1px solid #dedede !important;
             display: flex !important;
             // width: 300px;
             justify-content: center;
-            padding: 12px; 
-            &:last-of-type{
+            padding: 12px;
+            &:last-of-type {
                 border-right: 0;
             }
-            img{
+            img {
                 height: 38px;
                 width: 38px;
                 margin-right: 10px;
                 border-radius: 5px;
                 object-fit: cover;
             }
-            .name{
+            .name {
                 font-size: 16px;
                 line-height: normal;
                 width: 205px;
                 color: #a5a5a5;
                 margin-bottom: 0;
                 font-weight: 300;
-                span{
+                span {
                     color: black;
                 }
-                .time{
+                .time {
                     margin-top: 5px;
-                    margin-bottom: 0px ;
+                    margin-bottom: 0px;
                     font-size: 12px;
                 }
             }
@@ -100,209 +154,233 @@
     }
 }
 
-
-.butraise{
+.butraise {
     padding: 50px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .tit{
+    .tit {
         font-weight: 900;
         font-size: 35px;
         margin-bottom: 10px;
     }
-    .desc{
+    .desc {
         display: flex;
         align-items: center;
-        img{
+        img {
             margin-right: 5px;
             font-size: 16px;
         }
     }
-    button{
+    button {
         width: 344px;
         height: 59px;
         font-weight: 900;
         font-size: 18px;
-        background: #FFFFFF;
-        border: 1px solid #4CB5EF;
+        background: #ffffff;
+        border: 1px solid #4cb5ef;
         box-sizing: border-box;
         border-radius: 8px;
         filter: drop-shadow(0px 0px 9px rgba(0, 0, 0, 0.25));
     }
 }
 
-@media only screen and (max-width: 768px){
-    .home{
-        background-size: cover;
-        background-attachment: fixed;
-        height: 650px;
-        margin-top: 60px;
-        top: 0 !important;
-        bottom: 0 !important;
-        
-        &::before{
-            content: "";
-            position: absolute;
-            left: 0; right: 0;
-            top: 0; bottom: 0;
-            background: rgba(0, 0, 0, .4);
+@media only screen and (max-width: 768px) {
+    .home {
+        .content-home-desktop{
+            display: none !important;
+        }
+        .content-home-mobile{
+            display: inline;
         }
 
-        .contain-home{
+        background-image: unset !important;
+        height: 650px;
+        padding-top: 60px;
+        top: 0 !important;
+        bottom: 0 !important;
+
+        .carousel-content{
+            background-size: cover;
+            height: 520px;
+       
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .start-invest-but, .get-fund-but{
+            padding: 5px;
+        }
+        .start-invest-but{
+            margin-left: 0;
+        }
+    
+        .contain-home {
             padding: 20px !important;
-            .wrap{
+            .wrap {
                 z-index: 10 !important;
                 margin-top: -120px !important;
                 color: white;
-                text-shadow: 1px 2px 2px rgba(0, 0, 0, .4);
-                img{
+                text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+                img {
                     border-radius: 5px;
                     width: 100px;
-                    margin-top: 20px;
+                    margin-top: 40px;
                 }
-                .title{
-                    margin-top: 20px;
+                .title {
+                    margin-top: 70px;
+                    margin-bottom: 30px;
                     font-size: 45px !important;
-                    .hideOnMobile{
+                    .hideOnMobile {
                         display: none;
                     }
-                    span{
+                    span {
                         font-size: 20px !important;
                     }
                 }
-                
-                button{
+
+                button {
                     margin-right: 0 !important;
                     margin-top: 10px;
                     margin-bottom: 10px !important;
-                    height: 35px !important;
+                    height: 40px !important;
                     font-size: 14px !important;
                     width: 100% !important;
                 }
 
-                .desc{
+                .desc {
                     max-width: 100% !important;
                     font-size: 14px;
                 }
             }
         }
-        .last-invest{
-            .card-last{
+        .last-invest {
+            z-index: 999;
+            .card-last {
                 align-items: center;
-                padding: 5px; 
-                .name{
+                padding: 5px;
+                .name {
                     font-size: 12px;
                 }
             }
         }
     }
 
-    .butraise{
+    .butraise {
         display: block;
         font-size: 14px;
-        p.tit{
+        p.tit {
             font-size: 23px;
         }
 
-        button{
+        button {
             width: 100% !important;
-            height: 35px;
+            height: 40px !important;
+            height: 55px;
             margin-top: 20px;
             font-size: 14px !important;
         }
     }
 
-    .carohome{
+    .carohome {
         overflow: hidden;
-        .slick-track{
+        .slick-track {
             display: block !important;
         }
-        .arrows{
+        .arrows {
             display: none !important;
         }
     }
 
-    .benefit{
-        .benefit-list{
+    .benefit {
+        .benefit-list {
             position: relative;
-            background-image: url('https://placeimg.com/640/480/tech/grayscale');
+            background-image: url("https://placeimg.com/640/480/tech/grayscale");
             background-size: cover;
             color: white !important;
-            background-attachment: fixed;
+            // background-attachment: fixed;
             background-position: center;
 
-            &::before{
+            &::before {
                 content: "";
                 position: absolute;
-                left: 0; right: 0;
-                top: 0; bottom: 0;
-                background: rgba(0, 0, 0, .5) !important;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5) !important;
             }
 
-            .parag{
-                text-shadow: rgba(0, 0, 0, .5);
+            .parag {
+                text-shadow: rgba(0, 0, 0, 0.5);
                 padding: 20px !important;
                 z-index: 10;
-                p.title{
+                p.title {
                     color: white !important;
                     font-size: 25px;
                 }
-                p.desc{
+                p.desc {
                     color: white !important;
                     font-size: 14px !important;
                 }
-                ul{
+                ul {
                     margin-left: -40px !important;
-                    li{
-                        .fa-star{
+                    li {
+                        .fa-star {
                             margin-right: 10px !important;
                         }
                         font-size: 13px !important;
                     }
                 }
             }
-            img{
+            img {
                 display: none;
             }
         }
 
-        .box-ben{
+        .box-ben {
             margin-bottom: 30px !important;
         }
     }
 
-    .caro-quotes{
+    .caro-quotes {
         height: 400px !important;
         margin: 0 !important;
-        
-        .row-mobile{
+
+        .row-mobile {
             width: unset !important;
             margin-bottom: 20px;
         }
 
-        span.header{
+        span.header {
             font-size: 30px !important;
         }
-        .name{
+        .name {
             font-size: 18px !important;
         }
-        .details{
+        .details {
             font-size: 20px !important;
         }
 
-        .arrows{
-            button{
+        .arrows {
+            button {
                 background: unset !important;
             }
 
-            .back{
+            .back {
                 background: unset;
                 // box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
                 margin: 0 !important;
             }
 
-            .next{
+            .next {
                 width: 100%;
                 background: unset;
                 // box-shadow: 1px 2px 2px rgba(0, 0, 0, .5);
@@ -311,30 +389,31 @@
         }
     }
 
-    .join-now{
+    .join-now {
         overflow: hidden;
-        .wrap-join-boxes{
+        .wrap-join-boxes {
             margin-top: -50px !important;
-            .wrap-gambar-join{
+            .wrap-gambar-join {
                 display: none !important;
             }
-            p.big-text{
+            p.big-text {
                 font-size: 25px;
             }
-            p.text{
+            p.text {
+                text-align: justify;
                 font-size: 14px;
             }
 
-            .pt-5{
+            .pt-5 {
                 padding-top: 1rem !important;
             }
 
-            .gray{
-                color:black !important;
+            .gray {
+                color: black !important;
                 font-weight: 400;
             }
         }
-        button{
+        button {
             height: 35px !important;
             font-size: 14px !important;
             margin-top: -20px !important;
@@ -342,29 +421,29 @@
         }
     }
 
-    .faq{
+    .faq {
         padding: 20px !important;
-        h3{
+        h3 {
             font-size: 22px;
         }
-        .question-reveal-wrapper{
+        .question-reveal-wrapper {
             margin: 0 !important;
         }
-        .mobile-hidden{
+        .mobile-hidden {
             display: none;
         }
     }
 
-    footer{
+    footer {
         padding-top: 20px !important;
         height: 100% !important;
 
-        .left{
+        .left {
             margin-bottom: 20px;
         }
     }
 
-    ojk{
+    ojk {
         height: 100% !important;
         margin-top: 20px;
     }

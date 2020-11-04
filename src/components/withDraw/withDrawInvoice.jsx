@@ -29,7 +29,7 @@ class DetailTransaction extends Component {
         };
 
         return (
-            <div className="all-forms-style detail-transaction withdraw">
+            <div className="all-forms-style detail-transaction">
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>

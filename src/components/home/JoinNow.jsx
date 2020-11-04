@@ -13,7 +13,7 @@ class JoinNow extends Component {
                 <div className="container mb-5  wrap-join-boxes">
 
                     <div className="row">
-                        <div className="col-md-7 align-items-center kiri">
+                        <div className="col-md-7 kiri">
                             <p className="big-text mt-5"><span className="gray">Temukan</span> <span className="black">Startup & Entrepreneur</span> <span className="gray"> se-Indonesia</span></p>
                             <p className="text size1 br">Bersama mendorong UKM dan startup di Indonesia tanpa melewatkan peluang keuntungan untuk anda. InvestX percaya kita semua bisa memajukan UKM dan startup di Indonesia</p>
                         </div>

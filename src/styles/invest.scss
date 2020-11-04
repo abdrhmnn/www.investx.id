@@ -2,23 +2,7 @@
     padding-top: 74px + 70px;
     background-color: white;
     margin-bottom: 100px;
-    @media screen and (max-width:700px) {
-        .calculator{
-            margin-top: 20px;
-            margin-bottom: 200px;
-        }
-    }
-    @media screen and (max-width: 425px) {
-        .pasal{
-            margin-top: -30px;
-        }
-        .wrap-cal > Button{
-            margin: 10px;
-        }
-        .calculator{
-            margin-bottom: 160px;
-        }
-    }
+   
     .pasal{
         .title{
             font-weight: 500;
@@ -383,6 +367,70 @@
                 font-weight: 500;
                 color: #0288D1;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .invest{
+        padding-top: 90px;
+        .cal-invest{
+            background-image: unset !important;
+            
+            .calculator{
+                width: 100% !important;
+                padding: 20px !important;
+                margin-top: 40px;
+    
+                .wrap-cal{
+                    padding: 0 !important;
+                }
+            }
+        }
+
+    }
+
+    .modal-confirm-invest{
+        width: 100%;
+        padding: 50px !important;
+        
+        i{
+            font-size: 20px;
+            width: 80%;
+            text-align: right !important;
+        }
+
+        button{
+            width: 100% !important;
+        }
+
+        img{
+            display: none !important;
+        }
+
+        .confirm{
+            margin-left: unset !important;
+            p.title{
+                text-align: unset !important;
+                font-size: 18px !important;
+            }
+        }
+    }
+
+    .pin_components{
+        .back-button{
+            margin-top: 10px !important;
+            margin-left: 20px;
+        }
+
+        .logo-invest{
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+
+        .box_inp_pin{
+            margin: 20px;
+            padding: 20px;
         }
     }
 }

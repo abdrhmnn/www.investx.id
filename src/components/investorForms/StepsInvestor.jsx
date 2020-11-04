@@ -15,6 +15,8 @@ class StepsInvestor extends Component {
         const whereStep = steps[active - 1]
         const percentage = steps.map((res, i) => active === i + 1 ? active * 20 : null)
         
+        const onPage = active + '/' + steps.length
+
         return (
             <Fragment>
                 <div className="steps-invest">
@@ -42,7 +44,7 @@ class StepsInvestor extends Component {
                     </div>
 
                     <div>
-                        <div style={{ fontSize: '14px' }}>{whereStep}</div>
+                        <div style={{ fontSize: '14px' }}>{whereStep} ({onPage})</div>
                     </div>
                 </div>
             </Fragment>

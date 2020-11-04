@@ -155,3 +155,36 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px){
+    .dividend-menu{
+        padding: 0 !important;
+        .wallet-icon{
+            width: 50px !important;
+        }
+
+        .price{
+            font-size: 25px !important;
+        }
+
+        .label-dividend{
+            margin-bottom: 10px !important;
+        }
+
+        .total-dividend{
+            margin-bottom: 20px !important;
+        }
+
+        .card-item{
+            height: 100% !important;
+            padding-bottom: 0;
+
+            .invest-detail{
+                margin-top: 10px;
+                .detail-value{
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,8 @@ class StepsStartUp extends Component {
         const percentage = steps.map((res, i) => active === i + 1 ? active * 16.6 : null)
         const finalPercentage = Math.round(percentage[active - 1])
 
+        const onPage = active + '/' + steps.length
+
         return (
             <Fragment>
                 <div className="steps-startup">
@@ -42,7 +44,7 @@ class StepsStartUp extends Component {
                     </div>
 
                     <div>
-                        <div style={{ fontSize: '14px' }}>{whereStep}</div>
+                        <div style={{ fontSize: '14px' }}>{whereStep} ({onPage})</div>
                     </div>
                 </div>
             </Fragment>

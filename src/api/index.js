@@ -10,10 +10,10 @@ const API = {
   register: (props) => {
     console.log(props);
     return axios.post(apiBaseUrl + `/authentication/register/`, {
-        full_name: props.full_name,
-        phone_number: props.phone,
+        phone_number: props.phone_number,
         password: props.password,
         email: props.email.toLowerCase(),
+        full_name: props.full_name,
       })
   },
   login: (props) => {
@@ -32,7 +32,7 @@ const API = {
       "phone_number": kuki.get('phone_number'),
       "code": code
     }
-    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body)
+    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   }
 };
 

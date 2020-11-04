@@ -1,10 +1,10 @@
 import { Box, Button } from "@material-ui/core";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";
 import bca from "../../images/withdraw/bca.svg";
-import companyImage from "../../images/payment/company-image.svg";
 import noticeImage from "../../images/invest/modalinvest.svg";
 
 import ModalTemplate from "../shared/ModalTemplate";
@@ -18,22 +18,22 @@ class PaymentStatus extends Component {
     };
 
     modalDetail = () => (
-        <div className="modal-detail-transaction">
+        <div className="modal-detail-transaction modal-payment-status">
             <i
-                className="fas fa-times"
+                className="fas fa-times close-payment-status-modal"
                 onClick={() =>
                     this.setState({ modalDetail: !this.state.modalDetail })
                 }
             ></i>
             <h3 className="modal-title bolder">Detail Transaksi</h3>
             <div className="box-form-data px-3 py-3 mt-4">
-                <div className="d-flex justify-content-between">
+                <div className="box-content-status d-flex justify-content-between">
                     <img
                         className="company-image"
-                        src={companyImage}
+                        src="https://placeimg.com/640/480/tech"
                         alt="company"
                     />
-                    <Box flexDirection="column" width="80%" className="px-4">
+                    <Box flexDirection="column" width="80%" className="px-4 box-fill">
                         <div className="row">
                             <div className="col-md-12">
                                 <h5 className="bold company-name">
@@ -43,7 +43,7 @@ class PaymentStatus extends Component {
                         </div>
                         <div className="row justify-content-around">
                             <div className="col-md-6">
-                                <p className="text-muted">Hargas Saham</p>
+                                <p className="text-muted left-span">Harga Saham</p>
                             </div>
                             <div className="col-md-6">
                                 <p className="text-muted text-right">
@@ -53,7 +53,7 @@ class PaymentStatus extends Component {
                         </div>
                         <div className="row justify-content-around">
                             <div className="col-md-6">
-                                <p className="text-muted">Jumlah Investasi</p>
+                                <p className="text-muted left-span">Jumlah Investasi</p>
                             </div>
                             <div className="col-md-6">
                                 <p className="text-muted text-right">
@@ -74,7 +74,7 @@ class PaymentStatus extends Component {
                 </div>
             </div>
             <div className="box-form-data py-3 mt-2">
-                <div className="row justify-content-around align-items-center py-2">
+                <div className="row payment-bank-status justify-content-around align-items-center py-2">
                     <p className="bold m-0">Pembayaran</p>
                     <span>
                         <span className="h5 bold">BCA </span>
@@ -127,7 +127,7 @@ class PaymentStatus extends Component {
                         })
                     }
                 ></i>
-                <div className="row justify-content-between text-center">
+                <div className="row justify-content-between text-center box-modal-content">
                     <div className="notice-image-container">
                         <img
                             className="notice-image"
@@ -141,19 +141,21 @@ class PaymentStatus extends Component {
                         <p className="bolder">Riwayat Transaksi</p>
                         <p>pada kolom ‘ menunggu pembayaran ‘</p>
                         <p>untuk cek detail pembayaranmu.</p>
-                        <div className="row justify-content-between mx-2 mt-5">
+                        <div className="row justify-content-between mx-2 mt-5 box-button">
                             <Button
                                 style={but}
                                 onClick={() =>
                                     this.setState({
-                                        modalPaymentStatus: !this.state
-                                            .modalPaymentStatus,
+                                        modalPaymentStatus: !this.state.modalPaymentStatus,
                                     })
                                 }
                             >
                                 BATAL
                             </Button>
-                            <Link to="/my-wallet">
+                            <Link
+                                to="/profile"
+                                onClick={() => this.props.changeTab("history")}
+                            >
                                 <Button style={{ ...butBlue }}>
                                     KELUAR HALAMAN
                                 </Button>
@@ -161,7 +163,7 @@ class PaymentStatus extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         );
     };
 
@@ -292,7 +294,10 @@ class PaymentStatus extends Component {
                     </div>
 
                     <div className="button-container">
-                        <Link to="/profile">
+                        <Link
+                            to="/profile"
+                            onClick={() => this.props.changeTab("list")}
+                        >
                             <Button style={but}>INVESTASI LAINNYA</Button>
                         </Link>
                         <Button
@@ -324,4 +329,17 @@ class PaymentStatus extends Component {
     }
 }
 
-export default PaymentStatus;
+const mapStateToProps = (state) => {
+    return {
+        activeTab: state.activeTab,
+        // number : state.number
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeTab: (data) => dispatch({ type: "CHANGE_TAB", data: data }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentStatus);

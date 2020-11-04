@@ -99,3 +99,27 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px){
+    .list-of-investment-menu{
+        padding: 0 !important;
+        .card-item{
+            height: 100% !important;
+            padding-bottom: 0 !important;
+            
+            .invest-status{
+                .view-detail{
+                    white-space: nowrap;
+                }
+            }
+        }
+        
+        .invest-detail{
+            flex-wrap: wrap;
+            .detail-value{
+                width: 100% !important;
+                margin-bottom: 15px;
+            }
+        }
+    }
+}

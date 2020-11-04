@@ -308,9 +308,33 @@
             width: 35px !important;
             height: 30px;
         }
+
+        .w-check span {
+            text-align: left;
+        }
     }
 
     .signup .logoMobile{
         margin-bottom: -50px !important;
+    }
+
+    .modal-confirm{
+        width: 100% !important;
+        padding: 20px !important;
+        border-radius: 0 !important;
+        
+        .title{
+            font-size: 18px !important;
+        }
+
+        .box{
+            flex-wrap: wrap !important;
+            margin-bottom: 20px !important;
+            justify-content: unset !important;
+        
+            .mailphone{
+                margin-bottom: 20px !important;
+            }
+        }
     }
 }

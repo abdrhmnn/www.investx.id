@@ -150,7 +150,7 @@ class Payment extends Component {
                                             <h5>Total</h5>
                                         </div>
                                         <div className="col-md-6 bold text-right">
-                                            <h5>Rp. 8.000.0000</h5>
+                                            <h5 className="price">Rp. 8.000.0000</h5>
                                         </div>
                                     </div>
                                 </div>

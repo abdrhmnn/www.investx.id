@@ -519,7 +519,18 @@
         }
 
         .slick-thumb{
-            margin-left: -20px;
+            display: flex !important;
+            padding-left: 20px;
+            padding-right: 50px;
+            justify-content: space-between;
+
+            li{
+                margin: 0 !important;
+            }
+            .thumb-caro{
+                width: 50px !important;
+                height: 40px !important;
+            }
         }
 
         .caro-footer-cus{

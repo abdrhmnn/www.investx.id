@@ -7,6 +7,9 @@ import bluewoman from "../../images/bg/bluewoman.jpg";
 
 import phoneicon from "../../images/phoneicon.svg";
 import emailicon from "../../images/emailicon.svg";
+import Swal from 'sweetalert2'
+import kuki from '../../helpers/cookie'
+
 
 import {
   Button,
@@ -22,6 +25,7 @@ import {
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import API  from "../../api";
+import Loading from "../shared/Loading";
 
 class Register extends Component {
   state = {
@@ -29,7 +33,8 @@ class Register extends Component {
     re_showPassword: false,
     isTnc : false,
     isModalConfirm : false,
-    dataPost : {}
+    dataPost : {},
+    loading : false
   };
 
   phoneRemoveZero = (val) =>{
@@ -40,6 +45,29 @@ class Register extends Component {
     }else{
       return val
     }
+  }
+
+  submitRegister = () =>{
+    this.setState({loading : true})
+    API.register(this.state.dataPost).then(res=>{
+      console.log(res)
+      this.setState({sModalConfirm : false ,loading : false})
+      kuki.set('token', res.data.token)
+      kuki.set('status', {phone : false, email : false})
+      kuki.set('auth', true)
+      kuki.set('email', res.data.email)
+      kuki.set('full_name', res.data.full_name)
+      kuki.set('phone_number', res.data.phone_number)
+      window.location.href = '/'
+    }).catch(err => {
+      this.setState({loading : false})
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
+      })
+    })
+
   }
 
   modalConfirm = () => (
@@ -57,7 +85,7 @@ class Register extends Component {
         </div>
         <div className="but-all">
           <p onClick={() => this.setState({ isModalConfirm: false })}>Ubah</p>
-            <Button onClick={()=>  API.register(this.state.dataPost, this.callbackSubmit) }>Ya, Lanjutkan</Button>
+            <Button onClick={this.submitRegister}>Ya, Lanjutkan</Button>
         </div>
       </div>
     </div>
@@ -84,6 +112,7 @@ class Register extends Component {
     return (
       <div>
         {this.state.isModalConfirm ? this.modalConfirm() : null}
+        <Loading onOpen={this.state.loading} />
         <div className="signup"style={{ backgroundImage: `url(${bluewoman})` }}>
           <div className="container">
             <img className="logo" src={logo} alt="logo" />
@@ -103,6 +132,7 @@ class Register extends Component {
                     var body = {
                       full_name: val.full_name,
                       email: val.email,
+                      password : val.password,
                       phone_number: this.phoneRemoveZero(val.phone_number),
                     }
                     this.setState({dataPost : body , isModalConfirm : true})

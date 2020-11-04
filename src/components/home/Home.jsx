@@ -19,17 +19,31 @@ import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
 import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
+import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
     state = {
         // modalOtp: false,
+        modalTerimakasih: false,
     };
 
-    componentDidMount() {}
+    componentDidMount() {
+        console.log(this.props.location.hash === "#modal-terimakasih");
+        if (this.props.location.hash === "#modal-terimakasih") {
+            this.setState({
+                modalTerimakasih: true,
+            });
+        }
+    }
 
     // offModal = () => {
     //     this.setState({ modalOtp: false });
     // };
+
+    offModalTerimakasih = () => {
+        this.setState({ modalTerimakasih: false });
+        window.location.hash = "";
+    };
 
     // onModal = () => {
     //     this.setState({ modalOtp: true });
@@ -50,14 +64,16 @@ class Home extends Component {
             speed: 5000,
             autoplaySpeed: 0,
             cssEase: "linear",
-            responsive: [{
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                  initialSlide: 1
-                }
-              }]
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        initialSlide: 1,
+                    },
+                },
+            ],
         };
 
         const butSolid = {
@@ -90,34 +106,139 @@ class Home extends Component {
                 {/* {this.state.modalOtp ? (
                     <ModalSuccessOtp offModal={this.offModal} />
                 ) : null} */}
+
                 <div
                     className="home"
                     style={{ backgroundImage: `url(${x}), url(${zebra})` }}
                 >
                     <Navbar onModal={this.onModal} />
-                    <div className="container p-0 contain-home">
-                        <div className="wrap">
-                            <p className="title">
-                                EQUITY <br className="hideOnMobile" />
-                                <span>CROWDFUNDING</span>
-                            </p>
-                            <p className="desc">
-                                Mewujudkan era baru dalam berinvestasi Dapatkan
-                                pendapatan secara pasif dan pendanaan dengan
-                                cepat dengan InvestX.
-                            </p>
 
-                            <Link to="/investor-form-data-diri">
-                                <Button style={butSolid}>
-                                    Start Investing
-                                </Button>
-                            </Link>
-                            <Link to="/startup-form-data-diri">
-                                <Button style={but}>Get Funding</Button> <br />
-                            </Link>
-                            <img src={ojk} alt="" />
+                    {this.state.modalTerimakasih ? (
+                        <PopSuccessForm offModal={this.offModalTerimakasih} />
+                    ) : null}
+
+                    {/* awal content home jumbotron desktop */}
+                    <div className="content-home-desktop">
+                        <div className="container p-0 contain-home">
+                            <div className="wrap">
+                                <p className="title">
+                                    EQUITY <br className="hideOnMobile" />
+                                    <span>CROWDFUNDING</span>
+                                </p>
+                                <p className="desc">
+                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                    pendapatan secara pasif dan pendanaan dengan
+                                    cepat dengan InvestX.
+                                </p>
+
+                                <Link to="/investor-form-data-diri">
+                                    <Button style={butSolid} className="start-invest-but">
+                                        Start Investing
+                                    </Button>
+                                </Link>
+                                <Link to="/startup-form-data-diri">
+                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
+                                </Link>
+                                <img src={ojk} alt="" />
+                            </div>
                         </div>
                     </div>
+                    {/* akhir content home jumbotron desktop */}
+                    
+                    {/* awal content home jumbotron mobile */}
+                    <div className="content-home-mobile">
+                        <div id="carouselHome" className="carousel slide carousel-fade" data-ride="carousel">
+                            <ol className="carousel-indicators">
+                                <li data-target="#carouselHome" data-slide-to="0" className="active"></li>
+                                <li data-target="#carouselHome" data-slide-to="1"></li>
+                                <li data-target="#carouselHome" data-slide-to="2"></li>
+                            </ol>
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <div className="carousel-content" style={{ backgroundImage: `url(${x}), url(${zebra})` }}>
+                                        <div className="container p-0 contain-home">
+                                            <div className="wrap">
+                                                <p className="title">
+                                                    EQUITY <br className="hideOnMobile" />
+                                                    <span>CROWDFUNDING</span>
+                                                </p>
+                                                <p className="desc">
+                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    pendapatan secara pasif dan pendanaan dengan
+                                                    cepat dengan InvestX.
+                                                </p>
+
+                                                <Link to="/investor-form-data-diri">
+                                                    <Button style={butSolid} className="start-invest-but">
+                                                        Start Investing
+                                                    </Button>
+                                                </Link>
+                                                <Link to="/startup-form-data-diri">
+                                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
+                                                </Link>
+                                                <img src={ojk} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-item">
+                                    <div className="carousel-content" style={{ backgroundImage: `url(https://i.pinimg.com/originals/36/31/25/363125df0f728983311938f7b1f1d01a.jpg` }}>
+                                        <div className="container p-0 contain-home">
+                                            <div className="wrap">
+                                                <p className="title">
+                                                    EQUITY <br className="hideOnMobile" />
+                                                    <span>CROWDFUNDING</span>
+                                                </p>
+                                                <p className="desc">
+                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    pendapatan secara pasif dan pendanaan dengan
+                                                    cepat dengan InvestX.
+                                                </p>
+
+                                                <Link to="/investor-form-data-diri">
+                                                    <Button style={butSolid} className="start-invest-but">
+                                                        Start Investing
+                                                    </Button>
+                                                </Link>
+                                                <Link to="/startup-form-data-diri">
+                                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
+                                                </Link>
+                                                <img src={ojk} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-item">
+                                    <div className="carousel-content" style={{ backgroundImage: `url(https://p1.pxfuel.com/preview/281/36/859/people-walking-men-work.jpg)` }}>
+                                        <div className="container p-0 contain-home">
+                                            <div className="wrap">
+                                                <p className="title">
+                                                    EQUITY <br className="hideOnMobile" />
+                                                    <span>CROWDFUNDING</span>
+                                                </p>
+                                                <p className="desc">
+                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    pendapatan secara pasif dan pendanaan dengan
+                                                    cepat dengan InvestX.
+                                                </p>
+
+                                                <Link to="/investor-form-data-diri">
+                                                    <Button style={butSolid} className="start-invest-but">
+                                                        Start Investing
+                                                    </Button>
+                                                </Link>
+                                                <Link to="/startup-form-data-diri">
+                                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
+                                                </Link>
+                                                <img src={ojk} alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* akhir content home jumbotron mobile */}
 
                     <div className="last-invest">
                         <Slider {...settings}>
@@ -142,7 +263,12 @@ class Home extends Component {
                         </Slider>
                     </div>
                 </div>
-                <div className="butraise container">
+                <div
+                    onBlur={() => {
+                        window.location.hash = "#fadil";
+                    }}
+                    className="butraise container"
+                >
                     <div className="left">
                         <p className="tit">COMPANIES FUNDRAISING</p>
                         <div className="desc">
@@ -160,7 +286,9 @@ class Home extends Component {
                 <Benefit />
                 <CaroQuotes />
                 <JoinNow />
-                <FAQ />
+                <div>
+                    <FAQ />
+                </div>
 
                 <Footer />
                 <Ojk />

@@ -169,8 +169,10 @@
     .how{
         .head{
             height: 450px;
-            padding-top: 30px;
+            padding-top: 90px;
+
             .jumbo{
+                overflow: hidden;
                 .con{
                     p.title{
                         font-size: 25px;
@@ -212,6 +214,7 @@
         }
 
         .steps{
+            overflow: hidden;
             flex-wrap: wrap;
             .step-box{
                 margin-bottom: 40px;

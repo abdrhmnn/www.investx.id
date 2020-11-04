@@ -102,8 +102,8 @@ class Otp extends Component {
         return (
             <div>
                 <ModalTemplate onOpen={this.state.onOpenModal} component={this.compModalSuccessOtp}/>
-                <Navbar/>
-                <div className='otp'>
+                <Navbar removePopUp/>
+                <div className='otp mt-5'>
                     <div className="box-otp">
                         <img src={mailbox} alt=""/>
                         <p className="title">Verifikasi Kode OTP</p>

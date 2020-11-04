@@ -114,8 +114,8 @@ class Navbar extends Component {
                         <img src={logo} alt="logo"/>
                     </Link>
                     <ul>
-                        <li><Link to='/'>Start Investing</Link> </li>
-                        <li><Link to='/'>Get Funding</Link> </li>
+                        <li><Link to="/investor-form-data-diri">Start Investing</Link> </li>
+                        <li><Link to="/startup-form-data-diri">Get Funding</Link> </li>
                     </ul>
                     </div>
                     <div className="right">
@@ -142,7 +142,6 @@ class Navbar extends Component {
                         <ul>
                             <li> <NavLink activeClassName='nav-active' to='/how'>How it works</NavLink> </li>
                             <li> <NavLink activeClassName='nav-active' to='/about'>About Us</NavLink> </li>
-                            <li> <Link to='/'>FAQ</Link> </li>
                             {
                                kuki.get('auth') ? 
                                 <li className=''>
@@ -162,7 +161,8 @@ class Navbar extends Component {
                         </ul>
                     </div>
                 </nav>
-                    {
+                {!this.props.removePopUp ?
+                    <>{
                         this.state.statusId === 1?
                         <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
                         : this.state.statusId === 2?
@@ -170,7 +170,9 @@ class Navbar extends Component {
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null
-                    }
+                    }</>
+                    : null
+                }
             </div>
         );
     }
