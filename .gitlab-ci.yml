@@ -27,6 +27,6 @@ build:
 #     - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
 #     - chmod 600 ~/.ssh/id_dsa
 #     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-#     - rsync -ravO build/ ssh root@172.104.40.167:/var/www/html/
+#     - rsync -ravO build/ ssh root@172.104.40.167:/var/www/www.investx.id/
 #   only:
 #     - production
