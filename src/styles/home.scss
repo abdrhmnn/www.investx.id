@@ -1,4 +1,11 @@
 .home {
+    .content-home-desktop{
+        display: inline !important;
+    }
+    .content-home-mobile{
+        display: none;
+    }
+
     height: 100vh;
     // margin-top: 80px;
     background-position: right;
@@ -180,21 +187,34 @@
 
 @media only screen and (max-width: 768px) {
     .home {
-        background-size: cover;
+        .content-home-desktop{
+            display: none !important;
+        }
+        .content-home-mobile{
+            display: inline;
+        }
+
+        background-image: unset !important;
         height: 650px;
-        margin-top: 60px;
+        padding-top: 60px;
         top: 0 !important;
         bottom: 0 !important;
 
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+        .carousel-content{
+            background-size: cover;
+            height: 520px;
+       
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.4);
+            }
         }
+
         .start-invest-but, .get-fund-but{
             padding: 5px;
         }
@@ -212,10 +232,11 @@
                 img {
                     border-radius: 5px;
                     width: 100px;
-                    margin-top: 20px;
+                    margin-top: 40px;
                 }
                 .title {
-                    margin-top: 20px;
+                    margin-top: 70px;
+                    margin-bottom: 30px;
                     font-size: 45px !important;
                     .hideOnMobile {
                         display: none;
@@ -241,6 +262,7 @@
             }
         }
         .last-invest {
+            z-index: 999;
             .card-last {
                 align-items: center;
                 padding: 5px;
