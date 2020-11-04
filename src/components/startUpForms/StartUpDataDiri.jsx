@@ -58,7 +58,7 @@ class StartUpDataDiri extends Component {
                 <div className="bg">
                     <div className="bg-round"></div>
                 </div>
-                <Link to="/select-form/">
+                <Link onClick={() => this.props.history.goBack()}>
                     <Fab className="back-button">
                         <img src={arrowback} alt="" />
                     </Fab>
@@ -94,444 +94,444 @@ class StartUpDataDiri extends Component {
                             touched,
                             setFieldValue,
                         }) => (
-                            <form onSubmit={handleSubmit} id="startupForm">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <Field
-                                            as={InputText}
-                                            label="Name"
-                                            type="text"
-                                            name="name"
-                                            placeholder="Nama Lengkap"
-                                            disabled={true}
+                                <form onSubmit={handleSubmit} id="startupForm">
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <Field
+                                                as={InputText}
+                                                label="Name"
+                                                type="text"
+                                                name="name"
+                                                placeholder="Nama Lengkap"
+                                                disabled={true}
                                             // errorsMessage={touched.name && errors.name}
                                             // error ={touched.name && errors.name}
-                                        />
-                                    </div>
-                                    <div className="col-md-12 ">
-                                        <ButtonGroup
-                                            className={
-                                                errors.gender
-                                                    ? "button-gender line-error"
-                                                    : "button-gender"
-                                            }
-                                        >
-                                            <Button
-                                                className={
-                                                    values.gender === "pria"
-                                                        ? "act-gen"
-                                                        : null
-                                                }
-                                                onClick={() =>
-                                                    setFieldValue(
-                                                        "gender",
-                                                        "pria"
-                                                    )
-                                                }
-                                            >
-                                                Pria
-                                            </Button>
-                                            <Button
-                                                className={
-                                                    values.gender === "wanita"
-                                                        ? "act-gen"
-                                                        : null
-                                                }
-                                                onClick={() =>
-                                                    setFieldValue(
-                                                        "gender",
-                                                        "wanita"
-                                                    )
-                                                }
-                                            >
-                                                Wanita
-                                            </Button>
-                                        </ButtonGroup>
-                                        <FormHelperText
-                                            className="help-gender"
-                                            error={
-                                                touched.gender && errors.gender
-                                                    ? true
-                                                    : false
-                                            }
-                                            id="my-helper-text"
-                                        >
-                                            {errors.gender}
-                                        </FormHelperText>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <Field
-                                            as={InputText}
-                                            label="Tempat Lahir"
-                                            type="text"
-                                            name="born"
-                                            placeholder="Tempat Lahir *"
-                                            helperText={
-                                                touched.born && errors.born
-                                            }
-                                            error={
-                                                touched.born && errors.born
-                                                    ? true
-                                                    : false
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <Field
-                                            name="tanggalLahir"
-                                            type="date"
-                                            // defaultValue="2017-05-24"
-                                            label="Tanggal Lahir *"
-                                            helperText={
-                                                touched.tanggalLahir &&
-                                                errors.tanggalLahir
-                                            }
-                                            error={
-                                                touched.tanggalLahir &&
-                                                errors.tanggalLahir
-                                                    ? true
-                                                    : false
-                                            }
-                                            as={InputText}
-                                        />
-                                    </div>
-                                    <div className="col-md-12">
-                                        <InputSelect
-                                            label="Status Pernikahan *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <InputSelect
-                                            label="Status Kewarganegaraan *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <Field
-                                            as={InputText}
-                                            label="Phone"
-                                            type="text"
-                                            name="phone"
-                                            // placeholder='Nama Lengkap'
-                                            disabled={true}
-                                            // errorsMessage={touched.name && errors.name}
-                                            // error ={touched.name && errors.name}
-                                        />
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <Field
-                                            as={InputText}
-                                            label="No Telepon Rumah"
-                                            type="text"
-                                            name="phone"
-                                            // placeholder=''
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <Field
-                                            as={InputTextArea}
-                                            label="Alamat Sesuai KTP *"
-                                            type="text"
-                                            name="address"
-                                            rows={5}
-                                            // placeholder=''
-                                            helperText={
-                                                touched.address &&
-                                                errors.address
-                                            }
-                                            error={
-                                                touched.address &&
-                                                errors.address
-                                                    ? true
-                                                    : false
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <InputSelect
-                                            label="Provinsi *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <InputSelect
-                                            label="Kota/ Kabupaten *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <InputSelect
-                                            label="Kecamatan *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-6">
-                                        <InputSelect
-                                            label="Kode Pos *"
-                                            name="dummy"
-                                            getOptionLabel={(val) => val.label}
-                                            options={top100Films}
-                                            helperText={
-                                                touched.dummy && errors.dummy
-                                            }
-                                            error={
-                                                touched.dummy && errors.dummy
-                                                    ? true
-                                                    : false
-                                            }
-                                            value={values.dummy}
-                                            onBlur={handleBlur}
-                                            onChange={(e, val) =>
-                                                setFieldValue("dummy", val)
-                                            }
-                                        />
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <Field
-                                            as={InputTextArea}
-                                            label="Alamat Tinggal Sekarang"
-                                            type="text"
-                                            name="address"
-                                            rows={5}
-                                            // placeholder=''
-                                            helperText={
-                                                touched.address &&
-                                                errors.address
-                                            }
-                                            error={
-                                                touched.address &&
-                                                errors.address
-                                                    ? true
-                                                    : false
-                                            }
-                                        />
-                                    </div>
-                                    <div className="col-md-12 mb-3">
-                                        <label
-                                            className="d-inline mb-4"
-                                            style={{
-                                                fontSize: 14,
-                                                cursor: "pointer",
-                                            }}
-                                        >
-                                            <Checkbox
-                                                id="same"
-                                                style={{
-                                                    color: "#01579B",
-                                                    marginBottom: 3,
-                                                }}
-                                                name="isSameAdd"
-                                                onChange={handleChange}
                                             />
-                                            Sama Seperti KTP
-                                        </label>
-                                    </div>
-                                    <Fade
-                                        cascade
-                                        duration={500}
-                                        when={!values.isSameAdd}
-                                    >
-                                        <div
-                                            className="col-md-6"
-                                            style={
-                                                values.isSameAdd
-                                                    ? { display: "none" }
-                                                    : null
-                                            }
-                                        >
+                                        </div>
+                                        <div className="col-md-12 ">
+                                            <ButtonGroup
+                                                className={
+                                                    errors.gender
+                                                        ? "button-gender line-error"
+                                                        : "button-gender"
+                                                }
+                                            >
+                                                <Button
+                                                    className={
+                                                        values.gender === "pria"
+                                                            ? "act-gen"
+                                                            : null
+                                                    }
+                                                    onClick={() =>
+                                                        setFieldValue(
+                                                            "gender",
+                                                            "pria"
+                                                        )
+                                                    }
+                                                >
+                                                    Pria
+                                            </Button>
+                                                <Button
+                                                    className={
+                                                        values.gender === "wanita"
+                                                            ? "act-gen"
+                                                            : null
+                                                    }
+                                                    onClick={() =>
+                                                        setFieldValue(
+                                                            "gender",
+                                                            "wanita"
+                                                        )
+                                                    }
+                                                >
+                                                    Wanita
+                                            </Button>
+                                            </ButtonGroup>
+                                            <FormHelperText
+                                                className="help-gender"
+                                                error={
+                                                    touched.gender && errors.gender
+                                                        ? true
+                                                        : false
+                                                }
+                                                id="my-helper-text"
+                                            >
+                                                {errors.gender}
+                                            </FormHelperText>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Field
+                                                as={InputText}
+                                                label="Tempat Lahir"
+                                                type="text"
+                                                name="born"
+                                                placeholder="Tempat Lahir *"
+                                                helperText={
+                                                    touched.born && errors.born
+                                                }
+                                                error={
+                                                    touched.born && errors.born
+                                                        ? true
+                                                        : false
+                                                }
+                                            />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <Field
+                                                name="tanggalLahir"
+                                                type="date"
+                                                // defaultValue="2017-05-24"
+                                                label="Tanggal Lahir *"
+                                                helperText={
+                                                    touched.tanggalLahir &&
+                                                    errors.tanggalLahir
+                                                }
+                                                error={
+                                                    touched.tanggalLahir &&
+                                                        errors.tanggalLahir
+                                                        ? true
+                                                        : false
+                                                }
+                                                as={InputText}
+                                            />
+                                        </div>
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label="Status Pernikahan *"
+                                                name="dummy"
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={
+                                                    touched.dummy && errors.dummy
+                                                }
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) =>
+                                                    setFieldValue("dummy", val)
+                                                }
+                                            />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <InputSelect
+                                                label="Status Kewarganegaraan *"
+                                                name="dummy"
+                                                getOptionLabel={(val) => val.label}
+                                                options={top100Films}
+                                                helperText={
+                                                    touched.dummy && errors.dummy
+                                                }
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
+                                                onBlur={handleBlur}
+                                                onChange={(e, val) =>
+                                                    setFieldValue("dummy", val)
+                                                }
+                                            />
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <Field
+                                                as={InputText}
+                                                label="Phone"
+                                                type="text"
+                                                name="phone"
+                                                // placeholder='Nama Lengkap'
+                                                disabled={true}
+                                            // errorsMessage={touched.name && errors.name}
+                                            // error ={touched.name && errors.name}
+                                            />
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <Field
+                                                as={InputText}
+                                                label="No Telepon Rumah"
+                                                type="text"
+                                                name="phone"
+                                                // placeholder=''
+                                                helperText={
+                                                    touched.dummy && errors.dummy
+                                                }
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                            />
+                                        </div>
+
+                                        <div className="col-md-12">
+                                            <Field
+                                                as={InputTextArea}
+                                                label="Alamat Sesuai KTP *"
+                                                type="text"
+                                                name="address"
+                                                rows={5}
+                                                // placeholder=''
+                                                helperText={
+                                                    touched.address &&
+                                                    errors.address
+                                                }
+                                                error={
+                                                    touched.address &&
+                                                        errors.address
+                                                        ? true
+                                                        : false
+                                                }
+                                            />
+                                        </div>
+                                        <div className="col-md-6">
                                             <InputSelect
                                                 label="Provinsi *"
                                                 name="dummy"
-                                                getOptionLabel={(val) =>
-                                                    val.label
-                                                }
+                                                getOptionLabel={(val) => val.label}
                                                 options={top100Films}
                                                 helperText={
-                                                    touched.dummy &&
-                                                    errors.dummy
+                                                    touched.dummy && errors.dummy
                                                 }
-                                                // error ={touched.dummy && errors.dummy? true : false}
-                                                // value={values.dummy}
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
                                                 onBlur={handleBlur}
                                                 onChange={(e, val) =>
                                                     setFieldValue("dummy", val)
                                                 }
                                             />
                                         </div>
-                                        <div
-                                            className="col-md-6"
-                                            style={
-                                                values.isSameAdd
-                                                    ? { display: "none" }
-                                                    : null
-                                            }
-                                        >
+                                        <div className="col-md-6">
                                             <InputSelect
                                                 label="Kota/ Kabupaten *"
                                                 name="dummy"
-                                                getOptionLabel={(val) =>
-                                                    val.label
-                                                }
+                                                getOptionLabel={(val) => val.label}
                                                 options={top100Films}
                                                 helperText={
-                                                    touched.dummy &&
-                                                    errors.dummy
+                                                    touched.dummy && errors.dummy
                                                 }
-                                                // error ={touched.dummy && errors.dummy? true : false}
-                                                // value={values.dummy}
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
                                                 onBlur={handleBlur}
                                                 onChange={(e, val) =>
                                                     setFieldValue("dummy", val)
                                                 }
                                             />
                                         </div>
-                                        <div
-                                            className="col-md-6"
-                                            style={
-                                                values.isSameAdd
-                                                    ? { display: "none" }
-                                                    : null
-                                            }
-                                        >
+                                        <div className="col-md-6">
                                             <InputSelect
                                                 label="Kecamatan *"
                                                 name="dummy"
-                                                getOptionLabel={(val) =>
-                                                    val.label
-                                                }
+                                                getOptionLabel={(val) => val.label}
                                                 options={top100Films}
                                                 helperText={
-                                                    touched.dummy &&
-                                                    errors.dummy
+                                                    touched.dummy && errors.dummy
                                                 }
-                                                // error ={touched.dummy && errors.dummy? true : false}
-                                                // value={values.dummy}
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
                                                 onBlur={handleBlur}
                                                 onChange={(e, val) =>
                                                     setFieldValue("dummy", val)
                                                 }
                                             />
                                         </div>
-                                        <div
-                                            className="col-md-6"
-                                            style={
-                                                values.isSameAdd
-                                                    ? { display: "none" }
-                                                    : null
-                                            }
-                                        >
+                                        <div className="col-md-6">
                                             <InputSelect
                                                 label="Kode Pos *"
                                                 name="dummy"
-                                                getOptionLabel={(val) =>
-                                                    val.label
-                                                }
+                                                getOptionLabel={(val) => val.label}
                                                 options={top100Films}
                                                 helperText={
-                                                    touched.dummy &&
-                                                    errors.dummy
+                                                    touched.dummy && errors.dummy
                                                 }
-                                                // error ={touched.dummy && errors.dummy? true : false}
-                                                // value={values.dummy}
+                                                error={
+                                                    touched.dummy && errors.dummy
+                                                        ? true
+                                                        : false
+                                                }
+                                                value={values.dummy}
                                                 onBlur={handleBlur}
                                                 onChange={(e, val) =>
                                                     setFieldValue("dummy", val)
                                                 }
                                             />
                                         </div>
-                                    </Fade>
-                                </div>
-                            </form>
-                        )}
+
+                                        <div className="col-md-12">
+                                            <Field
+                                                as={InputTextArea}
+                                                label="Alamat Tinggal Sekarang"
+                                                type="text"
+                                                name="address"
+                                                rows={5}
+                                                // placeholder=''
+                                                helperText={
+                                                    touched.address &&
+                                                    errors.address
+                                                }
+                                                error={
+                                                    touched.address &&
+                                                        errors.address
+                                                        ? true
+                                                        : false
+                                                }
+                                            />
+                                        </div>
+                                        <div className="col-md-12 mb-3">
+                                            <label
+                                                className="d-inline mb-4"
+                                                style={{
+                                                    fontSize: 14,
+                                                    cursor: "pointer",
+                                                }}
+                                            >
+                                                <Checkbox
+                                                    id="same"
+                                                    style={{
+                                                        color: "#01579B",
+                                                        marginBottom: 3,
+                                                    }}
+                                                    name="isSameAdd"
+                                                    onChange={handleChange}
+                                                />
+                                            Sama Seperti KTP
+                                        </label>
+                                        </div>
+                                        <Fade
+                                            cascade
+                                            duration={500}
+                                            when={!values.isSameAdd}
+                                        >
+                                            <div
+                                                className="col-md-6"
+                                                style={
+                                                    values.isSameAdd
+                                                        ? { display: "none" }
+                                                        : null
+                                                }
+                                            >
+                                                <InputSelect
+                                                    label="Provinsi *"
+                                                    name="dummy"
+                                                    getOptionLabel={(val) =>
+                                                        val.label
+                                                    }
+                                                    options={top100Films}
+                                                    helperText={
+                                                        touched.dummy &&
+                                                        errors.dummy
+                                                    }
+                                                    // error ={touched.dummy && errors.dummy? true : false}
+                                                    // value={values.dummy}
+                                                    onBlur={handleBlur}
+                                                    onChange={(e, val) =>
+                                                        setFieldValue("dummy", val)
+                                                    }
+                                                />
+                                            </div>
+                                            <div
+                                                className="col-md-6"
+                                                style={
+                                                    values.isSameAdd
+                                                        ? { display: "none" }
+                                                        : null
+                                                }
+                                            >
+                                                <InputSelect
+                                                    label="Kota/ Kabupaten *"
+                                                    name="dummy"
+                                                    getOptionLabel={(val) =>
+                                                        val.label
+                                                    }
+                                                    options={top100Films}
+                                                    helperText={
+                                                        touched.dummy &&
+                                                        errors.dummy
+                                                    }
+                                                    // error ={touched.dummy && errors.dummy? true : false}
+                                                    // value={values.dummy}
+                                                    onBlur={handleBlur}
+                                                    onChange={(e, val) =>
+                                                        setFieldValue("dummy", val)
+                                                    }
+                                                />
+                                            </div>
+                                            <div
+                                                className="col-md-6"
+                                                style={
+                                                    values.isSameAdd
+                                                        ? { display: "none" }
+                                                        : null
+                                                }
+                                            >
+                                                <InputSelect
+                                                    label="Kecamatan *"
+                                                    name="dummy"
+                                                    getOptionLabel={(val) =>
+                                                        val.label
+                                                    }
+                                                    options={top100Films}
+                                                    helperText={
+                                                        touched.dummy &&
+                                                        errors.dummy
+                                                    }
+                                                    // error ={touched.dummy && errors.dummy? true : false}
+                                                    // value={values.dummy}
+                                                    onBlur={handleBlur}
+                                                    onChange={(e, val) =>
+                                                        setFieldValue("dummy", val)
+                                                    }
+                                                />
+                                            </div>
+                                            <div
+                                                className="col-md-6"
+                                                style={
+                                                    values.isSameAdd
+                                                        ? { display: "none" }
+                                                        : null
+                                                }
+                                            >
+                                                <InputSelect
+                                                    label="Kode Pos *"
+                                                    name="dummy"
+                                                    getOptionLabel={(val) =>
+                                                        val.label
+                                                    }
+                                                    options={top100Films}
+                                                    helperText={
+                                                        touched.dummy &&
+                                                        errors.dummy
+                                                    }
+                                                    // error ={touched.dummy && errors.dummy? true : false}
+                                                    // value={values.dummy}
+                                                    onBlur={handleBlur}
+                                                    onChange={(e, val) =>
+                                                        setFieldValue("dummy", val)
+                                                    }
+                                                />
+                                            </div>
+                                        </Fade>
+                                    </div>
+                                </form>
+                            )}
                     </Formik>
                 </div>
 

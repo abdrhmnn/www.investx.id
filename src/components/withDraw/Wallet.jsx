@@ -115,9 +115,11 @@ class Wallet extends Component {
                 </Button>
               </Link>
 
-              <Button className="but" style={but}>
-                WITHDRAW
+              <Link to="/withdraw">
+                <Button className="but" style={but}>
+                  WITHDRAW
               </Button>
+              </Link>
             </div>
             <div className="input-border-underline inputan-uang">
               <input type="number" name="username" />
@@ -210,7 +212,7 @@ class Wallet extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
