@@ -41,7 +41,7 @@ class Register extends Component {
     if (val[0] === '0' || val[0] === 0) {
       var x = val.split('')
       x[0] = '62'
-     return x
+     return x.join("")
     }else{
       return val
     }

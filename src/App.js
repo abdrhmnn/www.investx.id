@@ -88,7 +88,7 @@ class App extends Component {
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
 
-          <PrivatRoute exact path='/email-verify/:code' component={SelectForm}/>
+          <Route exact path='/email-verify/:code' component={SelectForm}/>
           <PrivatRoute exact path='/investor-form-data-diri' component={DataDiri}/>
           <PrivatRoute exact path='/investor-form-pendidikan-pekerjaan' component={Pendidikan}/>
           <PrivatRoute exact path='/investor-form-dokumen' component={Dokumen}/>

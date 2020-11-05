@@ -33,6 +33,9 @@ const API = {
       "code": code
     }
     return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
+  },
+  verifyEmail : (props) =>{
+    return axios.post(apiBaseUrl + `/authentication/verify-email/`, props)
   }
 };
 

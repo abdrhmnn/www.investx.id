@@ -166,7 +166,7 @@ class Navbar extends Component {
                         this.state.statusId === 1?
                         <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
                         : this.state.statusId === 2?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <a href='/'> Verifikasi sekarang</a> </div>
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <a target='__blank' href='https://mail.google.com/mail/u/0/#inbox'> Verifikasi sekarang</a> </div>
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null

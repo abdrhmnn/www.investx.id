@@ -60,8 +60,9 @@ class Otp extends Component {
                 title: 'Verifikasi OTP berhasil!',
                 showConfirmButton: false,
                 timer: 1500
-              })
-              kuki.set('status', {phone : true, email : kuki.get('status').email})
+            })
+            window.location.href = '/'
+            kuki.set('status', {phone : true, email : kuki.get('status').email})
         }).catch(err =>{
             console.log(err.response)
             Swal.fire({

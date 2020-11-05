@@ -4,23 +4,59 @@ import logo from '../../images/logo.svg'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { Button } from '@material-ui/core';
+import kuki from '../../helpers/cookie'
+import API  from "../../api";
+import Loading from '../shared/Loading';
+import Swal from 'sweetalert2'
+
+
 
 
 class SelectForm extends Component {
+    state={
+        loading : false
+    }
     componentDidMount(){
         console.log('====================================');
         console.log(this.props.match.params.code);
         console.log('====================================');
-        axios.post('https://api.staging.investx.id/authentication/verify-email/',
-        {
-            code : this.props.match.params.code
-        })
-        .then(res => console.log(res))
-        .catch(err=> alert(JSON.stringify(err.response)))
+        this.apiVerify()
     }
+    
+    apiVerify = ()=>{
+        const body = {code : this.props.match.params.code}
+        this.setState({loading : true})
+        API.verifyEmail(body).then(res => {
+            console.log(res)
+            console.log(res.data)
+            Swal.fire({
+                icon: 'success',
+                title: 'Verifikasi Email berhasil!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            kuki.set('status', {phone : kuki.get('status').phone, email : true})
+            this.setState({loading : false})
+        }).catch(err=> {
+            Swal.fire({
+                icon: 'error',
+                title: 'Verify Email gagal!',
+              }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                  window.location.href ='/000'
+                }
+              })
+        })
+
+        console.log(kuki.get('status'))
+        console.log(this.props.match.params.code)
+    }
+
     render() {
         return (
             <div className='selectform' style={{backgroundImage: `url(${select})`}}>
+                <Loading onOpen={this.state.loading} />
                 <div className="container box-con">
                 <img className='bglog' src={logo} alt="icon"/>
 
