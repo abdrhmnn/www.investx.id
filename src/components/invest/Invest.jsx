@@ -9,7 +9,7 @@ import Ojk from '../shared/Ojk';
 import ModalTemplate from '../shared/ModalTemplate';
 import InputPin from './pinComponents/InputPin'
 import ResetPin from './pinComponents/ResetPin'
-import InputOtp from './pinComponents/InputOtp'
+import VerifyOtp from '../shared/VerifyOtp'
 import SecurePin from './pinComponents/SecurePin'
 
 class Invest extends Component {
@@ -61,7 +61,7 @@ class Invest extends Component {
             />
             <ModalTemplate 
                 onOpen={this.state.modalInputOtp} 
-                component ={()=>InputOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
             />
              <ModalTemplate 
                 onOpen={this.state.modalInputSecurePin} 

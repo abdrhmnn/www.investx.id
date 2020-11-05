@@ -1,12 +1,13 @@
 import React from 'react';
-import arrowback from '../../../images/arrowback.svg'
-import logo from '../../../images/logo.svg'
+import arrowback from '../../images/arrowback.svg'
+import logo from '../../images/logo.svg'
 import {Button, Fab} from '@material-ui/core'
 import { Formik } from "formik";
-import mailbox from '../../../images/mailbox.png'
+import mailbox from '../../images/mailbox.png'
+import kuki from '../../helpers/cookie'
 
 
-const InputOtp = (close, openModalNewPin) => {
+const VerifyOtp = (close, openModalNewPin) => {
     
     return (
         <div className='pin_components'>
@@ -24,7 +25,7 @@ const InputOtp = (close, openModalNewPin) => {
                 <img src={mailbox} alt=""/>
                 <p className="title">Verifikasi Kode OTP</p>
                 <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
-                <p className="num">0 8 5 7 * * * * 1 2 1 2</p>
+                <p className="num">+{kuki.get('phone_number')}</p>
                 <Formik
                 initialValues={{
                     box1 : '',
@@ -58,4 +59,4 @@ const InputOtp = (close, openModalNewPin) => {
     );
 }
 
-export default InputOtp;
+export default VerifyOtp;

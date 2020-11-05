@@ -9,6 +9,8 @@ import kuki from '../../helpers/cookie'
 import walletnav from '../../images/walletnav.svg'
 import ModalTemplate from './ModalTemplate';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
+import VerifyOtp from './VerifyOtp';
+import VerifyEmail from './VerifyEmail';
 
 const butLogin = {
     textTransform: 'capitalize',
@@ -18,7 +20,7 @@ const butLogin = {
     height: '42px',
     border: '1px solid #0288D1',
     boxSizing: 'border-box',
-    borderRadius: '6px'
+    borderRadius: '6px',
 }
 
 class Navbar extends Component {
@@ -26,6 +28,8 @@ class Navbar extends Component {
         isOpen : false,
         isOpenRes : false,
         statusId : null,
+        modalInputOtp : false,
+        modalInputEmail : false,
     }
     componentDidMount(){
         const {phone, email} = kuki.get('status') || {phone : false, email : false}
@@ -105,9 +109,21 @@ class Navbar extends Component {
         </div>
     )
 
+    closeModOtp = ()=> this.setState({modalInputOtp : false})
+
+
     render() {
         return (
             <div>
+                <ModalTemplate 
+                    onOpen={this.state.modalInputOtp} 
+                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                />
+                
+                <ModalTemplate 
+                    onOpen={this.state.modalInputOtp} 
+                    component ={()=>VerifyEmail(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                />
                   <nav>
                     <div className="left">
                     <Link to='/'>
@@ -164,9 +180,9 @@ class Navbar extends Component {
                 {!this.props.removePopUp ?
                     <>{
                         this.state.statusId === 1?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <Link to='/otp'> Verifikasi sekarang</Link> </div>
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span> </div>
                         : this.state.statusId === 2?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <a target='__blank' href='https://mail.google.com/mail/u/0/#inbox'> Verifikasi sekarang</a> </div>
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span></div>
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null
