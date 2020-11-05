@@ -183,7 +183,7 @@ class Navbar extends Component {
                         this.state.statusId === 1?
                         <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span> </div>
                         : this.state.statusId === 2?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span></div>
+                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email, jika email verifikasi belum di terima silahkan verifikasi ulang <span onClick={()=> this.setState({modalInputEmail : true})}> Verifikasi ulang sekarang</span></div>
                         :this.state.statusId === 3?
                         <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null

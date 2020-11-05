@@ -324,8 +324,14 @@ nav{
     }
     .drop{
         padding: 20px;
-        font-size: 14px;
+        font-size: 12px;
         top: 60px;
         overflow: hidden;
+        a,span{
+            text-decoration-line: underline;
+            color: #4CB5EF;
+            cursor: pointer;
+            margin-left: 10px;
+        }
     }
 }
