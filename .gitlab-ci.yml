@@ -10,12 +10,11 @@ build:
     - npm install
     - npm build
     - echo "Successfull to build the App"
+  artifacts:
+    paths:
+    - build/
   only:
     - development
-  
-artifacts:
-  paths:
-  - build/
 
 deploy:
   stage: deploy
