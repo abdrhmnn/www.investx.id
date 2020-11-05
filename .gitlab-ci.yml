@@ -14,7 +14,7 @@ build:
     paths:
     - build
   only:
-    - development
+    - staging
 
 deploy:
   stage: deploy
@@ -27,4 +27,4 @@ deploy:
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - rsync -ravO build/ ssh root@172.104.40.167:/var/www/www.investx.id/
   only:
-    - development
+    - staging
