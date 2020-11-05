@@ -110,6 +110,7 @@ class Navbar extends Component {
     )
 
     closeModOtp = ()=> this.setState({modalInputOtp : false})
+    closeModEmail = ()=> this.setState({modalInputEmail : false})
 
 
     render() {
@@ -121,8 +122,8 @@ class Navbar extends Component {
                 />
                 
                 <ModalTemplate 
-                    onOpen={this.state.modalInputOtp} 
-                    component ={()=>VerifyEmail(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                    onOpen={this.state.modalInputEmail} 
+                    component ={()=>VerifyEmail(this.closeModEmail, ()=>this.setState({modalInputSecurePin : true}))}
                 />
                   <nav>
                     <div className="left">

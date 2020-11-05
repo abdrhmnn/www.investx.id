@@ -10,8 +10,8 @@ import ModalTemplate from '../shared/ModalTemplate';
 
 import successotp from '../../images/successotp.svg'
 import emailicon from '../../images/emailicon.svg'
-import API  from "../../api";
 import kuki from '../../helpers/cookie'
+import API  from "../../api";
 import Swal from 'sweetalert2'
 
 

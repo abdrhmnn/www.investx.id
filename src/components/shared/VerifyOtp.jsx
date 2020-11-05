@@ -5,6 +5,8 @@ import {Button, Fab} from '@material-ui/core'
 import { Formik } from "formik";
 import mailbox from '../../images/mailbox.png'
 import kuki from '../../helpers/cookie'
+import API  from "../../api";
+import Swal from 'sweetalert2'
 
 
 const VerifyOtp = (close, openModalNewPin) => {
@@ -25,7 +27,7 @@ const VerifyOtp = (close, openModalNewPin) => {
                 <img src={mailbox} alt=""/>
                 <p className="title">Verifikasi Kode OTP</p>
                 <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
-                <p className="num">+{kuki.get('phone_number')}</p>
+                <p className="num"> <b>+{kuki.get('phone_number')}</b> </p>
                 <Formik
                 initialValues={{
                     box1 : '',
@@ -37,7 +39,27 @@ const VerifyOtp = (close, openModalNewPin) => {
                 }}
                 onSubmit={(val)=>{
                     openModalNewPin()
-                    console.log(val)
+                    var {box1, box2, box3, box4, box5, box6 } = val
+                    let otpCode = `${box1}${box2}${box3}${box4}${box5}${box6}`
+                    console.log(otpCode)
+                    API.otp(otpCode).then(res=>{
+                        console.log(res)
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Verifikasi OTP berhasil!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        window.location.href = '/'
+                        kuki.set('status', {phone : true, email : kuki.get('status').email})
+                    }).catch(err =>{
+                        console.log(err.response)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: `Verifikasi OTP gagal!` ,
+                        })
+                    })
                 }}
                 >
                     {({values, handleChange, handleSubmit})=>(
