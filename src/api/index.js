@@ -25,7 +25,7 @@ const API = {
     return axios.post(apiBaseUrl + `/authentication/password/`, body)
   },
   getProfile: () => {
-    return axios.get(apiBaseUrl + `/file/account/profile/`, {headers : {Authorization : `Token ${kuki.get('token')}`}})
+    return axios.get(apiBaseUrl + `/account/profile/`, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   },
   otp : (code) =>{
     const body = {
