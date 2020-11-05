@@ -14,8 +14,8 @@ build:
     - development
   
 artifacts:
-    paths:
-    - build/
+  paths:
+  - build/
 
 deploy:
   stage: deploy
