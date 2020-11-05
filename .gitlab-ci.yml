@@ -12,7 +12,7 @@ build:
     - echo "Successfull to build the App"
   artifacts:
     paths:
-    - build/
+    - build
   only:
     - development
 
