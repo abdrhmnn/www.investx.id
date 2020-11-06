@@ -52,7 +52,7 @@ class InfoNonFinansial extends Component {
                 <StepsStartUp active={5} />
 
                 <div className="box-form-data">
-                    <p className="title">Informasi Finansial</p>
+                    <p className="title">Informasi Non Finansial</p>
                     <Formik
                         initialValues={initialValueObj}
                         validationSchema={schemaObj}
