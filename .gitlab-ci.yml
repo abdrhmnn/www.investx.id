@@ -32,9 +32,9 @@
 #         - development
 
 
-# stages:
-#   - build
-#   - deploy
+stages:
+  # - build
+  - deploy
 
 # build_react:
 #   image: node:alpine
@@ -52,14 +52,14 @@
 #     paths:
 #       - build
 
-# deploy_react:
-#   image: alpine
-#   stage: deploy
-#   script:
-#     - echo 'test kemal'
-#     - ssh $TARGET_SERVER_USER_HOST
-#     - ssh $PASSWORD_USER
-#     - echo 'test kemal END'
+deploy_react:
+  image: node:alpine
+  stage: deploy
+  script:
+    - echo 'test kemal'
+    - ssh $TARGET_SERVER_USER_HOST
+    - ssh $PASSWORD_USER
+    - echo 'test kemal END'
     # - echo "====== Deploy to production server ======"
     # - apk update && apk upgrade
     # - apk add openssh bash rsync
@@ -74,20 +74,7 @@
     # - echo "====== Sync local and remote directory ======"
     # # Ending "/" in string "./build/" is important!
     # - rsync -azPq -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete ./build/ "$TARGET_SERVER_USER_HOST:$TARGET_SERVER_PATH"
-  # only:
-  # - development
+  only:
+  - development
 
 
-  image: node:v14.4.0
-
-  stages: 
-    - deploy
-  
-  deploy:
-    script:
-    - echo 'test kemal'
-    - ssh $TARGET_SERVER_USER_HOST
-    - $PASSWORD_USER
-    - echo 'test kemal END'
-    only:
-      - development
