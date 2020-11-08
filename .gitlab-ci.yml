@@ -72,6 +72,7 @@ deploy:
     - ls
     - pwd
     - whoami
+    - ls ~
     # - cp -rv build/* ../var/www/www.investx.id/build/
     - echo "Deployed"
   #   - npm i
