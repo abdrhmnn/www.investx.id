@@ -53,13 +53,17 @@ stages:
 
 build:
   stage: build
-  script:
-      - echo "Building deploy package"
-      - npm install
-      - npm run build
-      - echo "Build successful"
+    - echo "====== Install dependencied ======"
+    - CI=false npm i
+    - echo "====== Build react APP ======"
+    - CI=false npm run build
 
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build
 
+      
 deploy:
   stage: deploy
   script:
