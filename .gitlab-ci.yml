@@ -69,7 +69,7 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying to server"
-    - cp -rv build/* /var/www/www.investx.id/build/
+    - cp -rv build/* ../var/www/www.investx.id/build/
     - echo "Deployed"
   #   - npm i
   #   - npm run build
