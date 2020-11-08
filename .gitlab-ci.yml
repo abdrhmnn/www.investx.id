@@ -81,11 +81,13 @@
   image: node:v14.4.0
 
   stages: 
-    - build
+    - deploy
   
-  build:
-    artifacts:
-      paths:
-        - build
-      # name: panel-build
-      # expire_in: 1 hour
+  deploy:
+    script:
+    - echo 'test kemal'
+    - ssh $TARGET_SERVER_USER_HOST
+    - $PASSWORD_USER
+    - echo 'test kemal END'
+    only:
+      - development
