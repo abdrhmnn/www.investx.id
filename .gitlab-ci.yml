@@ -67,15 +67,16 @@ stages:
 
 deploy:
   stage: deploy
-  script:
-    - echo "Deploying to server"
+  before_script:
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
+
+  script:
+    - echo "Deploying to server"
     - cp -rv * root@172.104.40.167:/var/www/www.investx.id/build/
-    - echo "Deployed"
   # #   - npm i
   # #   - npm run build
   # #   - cp -R dist/* /var/www/www.investx.id/build; fi
