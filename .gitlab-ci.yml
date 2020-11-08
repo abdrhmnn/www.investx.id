@@ -51,7 +51,8 @@ stages:
   - build
   - deploy
 
-stage: build
+build:
+  stage: build
   tags: 
       - <tag you provided while registering the token>
       - <second tag>
