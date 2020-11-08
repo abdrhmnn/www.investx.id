@@ -73,7 +73,7 @@ deploy:
   #   - pwd
   #   - whoami
   #   - ls ~
-    - cp /* root@172.104.40.167:/var/www/www.investx.id/build/
+    - cp * root@172.104.40.167:/var/www/www.investx.id/build/
     - echo "Deployed"
   # #   - npm i
   # #   - npm run build
