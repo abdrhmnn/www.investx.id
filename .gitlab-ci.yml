@@ -48,7 +48,7 @@
 
 image: node:latest
 stages: 
-  - build
+  # - build
   - deploy
 
 build:
@@ -69,7 +69,9 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying to server"
-    - cp -rv build/* ../var/www/www.investx.id/build/
+    - ls
+    # - cp -rv build/* ../var/www/www.investx.id/build/
+
     - echo "Deployed"
   #   - npm i
   #   - npm run build
