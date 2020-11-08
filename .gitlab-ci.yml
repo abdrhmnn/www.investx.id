@@ -48,21 +48,21 @@
 
 image: node:latest
 stages: 
-  # - build
+  - build
   - deploy
 
-# build:
-#   stage: build
-#   script:
-#     - echo "====== Install dependencied ======"
-#     - CI=false npm i
-#     - echo "====== Build react APP ======"
-#     - CI=false npm run build
+build:
+  stage: build
+  script:
+    - echo "====== Install dependencied ======"
+    - CI=false npm i
+    - echo "====== Build react APP ======"
+    - CI=false npm run build
 
-#   artifacts:
-#     expire_in: 1 hour
-#     paths:
-#       - build
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build
 
 
 deploy:
