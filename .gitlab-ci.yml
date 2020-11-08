@@ -46,7 +46,7 @@
 #   only:
 #   - development
 
-
+image: node:latest
 stages: 
   - deploy
 deploy:
