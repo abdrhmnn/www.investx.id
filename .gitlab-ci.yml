@@ -33,27 +33,27 @@
 
 
 stages:
-  # - build
+  - build
   - deploy
 
-# build_react:
-#   image: node:alpine
-#   stage: build
+build_react:
+  image: node:alpine
+  stage: build
 
-#   script:
-#     - echo "====== Install dependencied ======"
-#     - npm i
-#     - echo "====== Build react APP ======"
-#     - npm run build
+  script:
+    - echo "====== Install dependencied ======"
+    - npm i
+    - echo "====== Build react APP ======"
+    - npm run build
 
-#   artifacts:
-#     name: panel-build
-#     expire_in: 1 hour
-#     paths:
-#       - build
+  artifacts:
+    name: panel-build
+    expire_in: 1 hour
+    paths:
+      - build
 
 deploy_react:
-  image: node:alpine
+  image: alpine
   stage: deploy
   script:
     - echo 'test kemal'
