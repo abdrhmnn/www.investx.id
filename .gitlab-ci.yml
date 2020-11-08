@@ -31,7 +31,7 @@
 #     only:
 #         - development
 
-image: node:v14.4.0
+image: node:latest
 
 stages:
   - build
