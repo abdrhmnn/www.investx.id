@@ -53,6 +53,7 @@ stages:
 
 build:
   stage: build
+  script:
     - echo "====== Install dependencied ======"
     - CI=false npm i
     - echo "====== Build react APP ======"
@@ -63,7 +64,7 @@ build:
     paths:
       - build
 
-      
+
 deploy:
   stage: deploy
   script:
