@@ -69,11 +69,12 @@ deploy:
   stage: deploy
   script:
     - echo "Deploying to server"
-  #   - ls
-  #   - pwd
-  #   - whoami
-  #   - ls ~
-    # - cp * root@172.104.40.167:/var/www/www.investx.id/build/
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cp -rv * root@172.104.40.167:/var/www/www.investx.id/build/
     - echo "Deployed"
   # #   - npm i
   # #   - npm run build
@@ -85,7 +86,6 @@ deploy:
   #   - chmod 600 ~/.ssh/id_dsa
   #   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   #   - rsync -rav --delete build/ root@172.104.40.167:/var/www/www.investx.id/build/
-    - cp -rv * ~/var/www/www.investx.id/build/
     - echo "Deployed"
   environment:
     name: staging
