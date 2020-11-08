@@ -67,23 +67,23 @@ stages:
 
 deploy:
   stage: deploy
-  # script:
-  #   - echo "Deploying to server"
+  script:
+    - echo "Deploying to server"
   #   - ls
   #   - pwd
   #   - whoami
   #   - ls ~
-  #   # - cp -rv build/* ../var/www/www.investx.id/build/
-  #   - echo "Deployed"
+    - cp /* root@172.104.40.167:/var/www/www.investx.id/build/
+    - echo "Deployed"
   # #   - npm i
   # #   - npm run build
   # #   - cp -R dist/* /var/www/www.investx.id/build; fi
-  script:
-    - apk add --no-cache rsync openssh
-    - mkdir -p ~/.ssh
-    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
-    - chmod 600 ~/.ssh/id_dsa
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - rsync -rav --delete build/ root@172.104.40.167:/var/www/www.investx.id/build/
+  # script:
+  #   - apk add --no-cache rsync openssh
+  #   - mkdir -p ~/.ssh
+  #   - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_dsa
+  #   - chmod 600 ~/.ssh/id_dsa
+  #   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  #   - rsync -rav --delete build/ root@172.104.40.167:/var/www/www.investx.id/build/
   only:
     - development
