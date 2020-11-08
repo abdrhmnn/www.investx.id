@@ -48,12 +48,28 @@
 
 image: node:latest
 stages: 
+  - build
   - deploy
+
+stage: build
+  tags: 
+      - <tag you provided while registering the token>
+      - <second tag>
+  script:
+      - echo "Building deploy package"
+      - CI=false npm install
+      - CI=false npm run build
+      - echo "Build successful"
+
+
 deploy:
   stage: deploy
   script:
-    - npm i
-    - npm run build
-    - cp -R dist/* /var/www/www.investx.id/build; fi
+    - echo "Deploying to server"
+    - cp -rv build/* /var/www/www.investx.id/build/
+    - echo "Deployed"
+  #   - npm i
+  #   - npm run build
+  #   - cp -R dist/* /var/www/www.investx.id/build; fi
   only:
     - development
