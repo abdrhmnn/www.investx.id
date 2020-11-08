@@ -49,7 +49,7 @@
 
 stages: 
   - deploy
-deploy"
+deploy:
   stage: deploy
   script:
     - npm i
