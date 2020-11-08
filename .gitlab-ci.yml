@@ -70,6 +70,7 @@ deploy:
   script:
     - echo "Deploying to server"
     - ls
+    - pwd
     # - cp -rv build/* ../var/www/www.investx.id/build/
     - echo "Deployed"
   #   - npm i
