@@ -56,4 +56,4 @@ deploy:
     - npm run build
     - cp -R dist/* /var/www/www.investx.id/build; fi
   only:
-  - development
+    - development
