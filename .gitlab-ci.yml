@@ -58,8 +58,8 @@ build:
       - <second tag>
   script:
       - echo "Building deploy package"
-      - CI=false npm install
-      - CI=false npm run build
+      - npm install
+      - npm run build
       - echo "Build successful"
 
 
