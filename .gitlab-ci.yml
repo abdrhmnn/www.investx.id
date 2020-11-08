@@ -85,5 +85,10 @@ deploy:
   #   - chmod 600 ~/.ssh/id_dsa
   #   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   #   - rsync -rav --delete build/ root@172.104.40.167:/var/www/www.investx.id/build/
+    - cp -rv build/* /var/www/html/<destination_folder>/
+    - echo "Deployed"
+  environment:
+    name: staging
+    url: https://staging.investx.id/
   only:
     - development
