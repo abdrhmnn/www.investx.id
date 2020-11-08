@@ -117,4 +117,4 @@ deploy_production:
     - ls
     - sshpass -V
     - export SSHPASS=$USER_PASS
-    - sshpass -e rsync -r --omit-dir-times -e "ssh -o StrictHostKeyChecking=no" . $USER_NAME@$SERVER_IP:/var/www/www.investx.id/
+    - sshpass -e rsync -r --omit-dir-times -e "ssh -o StrictHostKeyChecking=no" . $USER_NAME@$SERVER_IP:/var/www/www.investx.id/build/
