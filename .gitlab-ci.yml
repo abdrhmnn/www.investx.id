@@ -31,29 +31,30 @@
 #     only:
 #         - development
 
+image: node:v14.4.0
 
 stages:
   - build
   - deploy
 
-build_react:
-  image: node:alpine
-  stage: build
+cache: 
+  paths:
+    - node_modules/
 
+build_react:
+  stage: build
   script:
     - echo "====== Install dependencied ======"
-    - npm i
+    - CI=false npm i
     - echo "====== Build react APP ======"
-    - npm run build
+    - CI=false npm run build
 
   artifacts:
-    name: panel-build
     expire_in: 1 hour
     paths:
       - build
 
 deploy_react:
-  image: alpine
   stage: deploy
   script:
     - echo 'test kemal'
