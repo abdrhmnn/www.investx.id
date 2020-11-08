@@ -53,9 +53,6 @@ stages:
 
 build:
   stage: build
-  tags: 
-      - <tag you provided while registering the token>
-      - <second tag>
   script:
       - echo "Building deploy package"
       - npm install
