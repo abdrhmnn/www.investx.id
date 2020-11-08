@@ -111,8 +111,8 @@ deploy_production:
   stage: deploy
   environment: Production
   script:
-    - yarn install
-    - yarn build
+    - npm install
+    - npm run build
     - cd build/
     - ls
     - sshpass -V
