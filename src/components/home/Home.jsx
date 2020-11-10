@@ -101,61 +101,46 @@ class Home extends Component {
             height: "52px",
         };
 
+        const carouselItem = [
+            {
+                "image": zebra,
+            },
+            {
+                "image": "https://i.pinimg.com/originals/36/31/25/363125df0f728983311938f7b1f1d01a.jpg",
+            },
+            {
+                "image": "https://images.unsplash.com/photo-1538384823779-80c3e445d1a4?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9",
+            }
+        ]
+
         return (
             <div>
                 {/* {this.state.modalOtp ? (
                     <ModalSuccessOtp offModal={this.offModal} />
                 ) : null} */}
 
-                <div
-                    className="home"
-                    style={{ backgroundImage: `url(${x}), url(${zebra})` }}
-                >
-                    <Navbar onModal={this.onModal} />
+                <Navbar onModal={this.onModal} />
 
-                    {this.state.modalTerimakasih ? (
-                        <PopSuccessForm offModal={this.offModalTerimakasih} />
-                    ) : null}
+                {this.state.modalTerimakasih ? (
+                    <PopSuccessForm offModal={this.offModalTerimakasih} />
+                ) : null}
 
-                    {/* awal content home jumbotron desktop */}
-                    <div className="content-home-desktop">
-                        <div className="container p-0 contain-home">
-                            <div className="wrap">
-                                <p className="title">
-                                    EQUITY <br className="hideOnMobile" />
-                                    <span>CROWDFUNDING</span>
-                                </p>
-                                <p className="desc">
-                                    Mewujudkan era baru dalam berinvestasi Dapatkan
-                                    pendapatan secara pasif dan pendanaan dengan
-                                    cepat dengan InvestX.
-                                </p>
-
-                                <Link to="/investor-form-data-diri">
-                                    <Button style={butSolid} className="start-invest-but">
-                                        Start Investing
-                                    </Button>
-                                </Link>
-                                <Link to="/startup-form-data-diri">
-                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
-                                </Link>
-                                <img src={ojk} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                    {/* akhir content home jumbotron desktop */}
-                    
-                    {/* awal content home jumbotron mobile */}
-                    <div className="content-home-mobile">
-                        <div id="carouselHome" className="carousel slide carousel-fade" data-ride="carousel">
-                            <ol className="carousel-indicators">
-                                <li data-target="#carouselHome" data-slide-to="0" className="active"></li>
-                                <li data-target="#carouselHome" data-slide-to="1"></li>
-                                <li data-target="#carouselHome" data-slide-to="2"></li>
-                            </ol>
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <div className="carousel-content" style={{ backgroundImage: `url(${x}), url(${zebra})` }}>
+                <div id="carouselHome" className="carousel slide carousel-fade" data-ride="carousel">
+                    <ol className="carousel-indicators">
+                        {
+                            carouselItem.map((res, i) => (
+                                <li data-target="#carouselHome" data-slide-to={i.toString()} className={`indicator-color ${i === 0 ? 'active' : ''}}`}></li>
+                            ))
+                        }
+                    </ol>
+                    <div className="carousel-inner">
+                        {
+                            carouselItem.map((res, i) => (
+                                <div className={`carousel-item ${i === 0 ? 'active' : ''}`}>
+                                    <div
+                                        className="home"
+                                        style={{ backgroundImage: `url(${x}), url(${res.image})` }}
+                                    >
                                         <div className="container p-0 contain-home">
                                             <div className="wrap">
                                                 <p className="title">
@@ -181,88 +166,34 @@ class Home extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="carousel-item">
-                                    <div className="carousel-content" style={{ backgroundImage: `url(https://i.pinimg.com/originals/36/31/25/363125df0f728983311938f7b1f1d01a.jpg` }}>
-                                        <div className="container p-0 contain-home">
-                                            <div className="wrap">
-                                                <p className="title">
-                                                    EQUITY <br className="hideOnMobile" />
-                                                    <span>CROWDFUNDING</span>
-                                                </p>
-                                                <p className="desc">
-                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
-                                                    pendapatan secara pasif dan pendanaan dengan
-                                                    cepat dengan InvestX.
-                                                </p>
-
-                                                <Link to="/investor-form-data-diri">
-                                                    <Button style={butSolid} className="start-invest-but">
-                                                        Start Investing
-                                                    </Button>
-                                                </Link>
-                                                <Link to="/startup-form-data-diri">
-                                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
-                                                </Link>
-                                                <img src={ojk} alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="carousel-item">
-                                    <div className="carousel-content" style={{ backgroundImage: `url(https://p1.pxfuel.com/preview/281/36/859/people-walking-men-work.jpg)` }}>
-                                        <div className="container p-0 contain-home">
-                                            <div className="wrap">
-                                                <p className="title">
-                                                    EQUITY <br className="hideOnMobile" />
-                                                    <span>CROWDFUNDING</span>
-                                                </p>
-                                                <p className="desc">
-                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
-                                                    pendapatan secara pasif dan pendanaan dengan
-                                                    cepat dengan InvestX.
-                                                </p>
-
-                                                <Link to="/investor-form-data-diri">
-                                                    <Button style={butSolid} className="start-invest-but">
-                                                        Start Investing
-                                                    </Button>
-                                                </Link>
-                                                <Link to="/startup-form-data-diri">
-                                                    <Button style={but} className="get-fund-but">Get Funding</Button> <br />
-                                                </Link>
-                                                <img src={ojk} alt="" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* akhir content home jumbotron mobile */}
-
-                    <div className="last-invest">
-                        <Slider {...settings}>
-                            {arr.map((res, i) => (
-                                <div
-                                    className="card-last"
-                                    key={i}
-                                    onClick={this.props.hahaFunct}
-                                >
-                                    <img
-                                        src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png"
-                                        alt=""
-                                    />
-                                    <div className="name">
-                                        John Donal Invested <span>$1000 </span>
-                                        in <span>Fleting</span>
-                                        <br />
-                                        <p className="time">2 hours again</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </Slider>
+                            ))
+                        }
                     </div>
                 </div>
+                
+                <div className="last-invest">
+                    <Slider {...settings}>
+                        {arr.map((res, i) => (
+                            <div
+                                className="card-last"
+                                key={i}
+                                onClick={this.props.hahaFunct}
+                            >
+                                <img
+                                    src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png"
+                                    alt=""
+                                />
+                                <div className="name">
+                                    John Donal Invested <span>$1000 </span>
+                                    in <span>Fleting</span>
+                                    <br />
+                                    <p className="time">2 hours again</p>
+                                </div>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
+
                 <div
                     onBlur={() => {
                         window.location.hash = "#fadil";
