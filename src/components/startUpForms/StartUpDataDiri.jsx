@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import arrowback from "../../images/arrowback.svg";
-import logo from "../../images/logo.svg";
+
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 // import moment from 'moment'
@@ -17,10 +16,9 @@ import {
     ButtonGroup,
     Button,
     FormHelperText,
-    Fab,
 } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
-import StepsStartUp from "./StepsStartUp";
+import HeaderStartupForm from "./HeaderStartupForm";
 
 class StartUpDataDiri extends Component {
     state = {};
@@ -55,26 +53,7 @@ class StartUpDataDiri extends Component {
 
         return (
             <div className="all-forms-style">
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link onClick={() => this.props.history.goBack()}>
-                    <Fab className="back-button">
-                        <img src={arrowback} alt="" />
-                    </Fab>
-                </Link>
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc">
-                    {" "}
-                    Terima kasih telah mendaftar di InvestX. <br /> Silahkan
-                    lengkapi daftar diri anda untuk mulai berinvestasi
-                </p>
-
-                <StepsStartUp active={1} />
+                <HeaderStartupForm activeStep={1}/>
 
                 <div className="box-form-data">
                     <p className="title">Data Diri</p>

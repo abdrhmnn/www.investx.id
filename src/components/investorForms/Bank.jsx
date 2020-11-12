@@ -4,11 +4,8 @@ import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { InputText, InputSelect } from "../shared/InputComponents";
 
-import arrowback from "../../images/arrowback.svg";
-import logo from "../../images/logo.svg";
-
-import StepsInvestor from "./StepsInvestor";
-import { Button, Fab } from "@material-ui/core";
+import { Button } from "@material-ui/core";
+import HeaderInvestForm from "./HeaderInvestForm";
 
 class Bank extends Component {
     borderBlue = (e) => {
@@ -54,26 +51,8 @@ class Bank extends Component {
 
         return (
             <div className="all-forms-style">
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link to="/investor-form-dokumen">
-                    <Fab className="back-button">
-                        <img src={arrowback} alt="" />
-                    </Fab>
-                </Link>
+                <HeaderInvestForm activeStep={4} />
 
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc">
-                    {" "}
-                    Terima kasih telah mendaftar di InvestX. <br /> Silahkan
-                    lengkapi daftar diri anda untuk mulai berinvestasi
-                </p>
-
-                <StepsInvestor active={4} />
 
                 <div className="box-form-data">
                     {/* ///////////////////FORMS//////////////////// */}

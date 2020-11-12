@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import { Formik } from "formik";
 import * as Yup from 'yup'
 
-import arrowback from '../../images/arrowback.svg'
-import logo from '../../images/logo.svg'
-
-import StepsInvestor from './StepsInvestor';
 import { InputSelect } from '../shared/InputComponents'
-import { Button, Fab } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import HeaderInvestForm from './HeaderInvestForm';
 
 class Pendidikan extends Component {
     state = {
@@ -89,20 +86,7 @@ class Pendidikan extends Component {
         };
         return (
             <div className="all-forms-style">
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link to='/investor-form-data-diri'>
-                    <Fab className="back-button"><img src={arrowback} alt="" /></Fab>
-                </Link>
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-
-                <StepsInvestor active={2} />
-
+                <HeaderInvestForm activeStep={2} />
                 <div className="box-form-data">
                     {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Pendidikan dan Pekerjaan</p>

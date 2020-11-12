@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import arrowback from '../../images/arrowback.svg'
-import logo from '../../images/logo.svg'
 
-import { Link } from 'react-router-dom';
 import PopSuccessForm from '../shared/PopSuccessForm';
 import { Formik } from "formik";
 import * as Yup from 'yup'
 import { InputSelect } from '../shared/InputComponents'
-import StepsInvestor from './StepsInvestor';
-import { Button, Fab } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import HeaderInvestForm from './HeaderInvestForm';
 
 
 class Preference extends Component {
@@ -68,20 +65,8 @@ class Preference extends Component {
         return (
             <div className="all-forms-style">
                 {this.state.successSubmit ? <PopSuccessForm offModal={this.offModal} /> : null}
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link to='/investor-form-bank'>
-                    <Fab className="back-button"><img src={arrowback} alt="" /></Fab>
-                </Link>
+                <HeaderInvestForm activeStep={5} />
 
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-
-                <StepsInvestor active={5} />
 
                 <div className="box-form-data">
                     {/* ///////////////////FORMS//////////////////// */}

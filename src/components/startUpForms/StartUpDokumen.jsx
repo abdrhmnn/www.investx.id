@@ -1,19 +1,17 @@
 import React, { Component, Fragment } from "react";
-import arrowback from "../../images/arrowback.svg";
-import logo from "../../images/logo.svg";
 import minifile from "../../images/formdokumen/minifile.svg";
 import popktp from "../../images/formdokumen/popktp.svg";
 import popselfie from "../../images/formdokumen/popselfie.svg";
 import popnpwp from "../../images/formdokumen/popnpwp.svg";
 
-import StepsStartUp from "./StepsStartUp";
 import InputFiles from "react-input-files";
 import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import { InputText } from "../shared/InputComponents";
-import { Fab, Button, Fade } from "@material-ui/core";
+import { Button, Fade } from "@material-ui/core";
+import HeaderStartupForm from "./HeaderStartupForm";
 // import Fade from 'react-reveal/Fade';
 
 class StartUpDokumen extends Component {
@@ -133,24 +131,7 @@ class StartUpDokumen extends Component {
         return (
             <div className="all-forms-style">
                 {this.state.modalFile.open ? this.modalFileComp() : null}
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link to="/startup-form-data-diri">
-                    <Fab className="back-button">
-                        <img src={arrowback} alt="" />
-                    </Fab>
-                </Link>
-                <div className="logo-invest">
-                    <img src={logo} alt="" />
-                </div>
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc">
-                    {" "}
-                    Terima kasih telah mendaftar di InvestX. <br /> Silahkan
-                    lengkapi daftar diri anda untuk untuk mengajukan funding
-                </p>
-                <StepsStartUp active={2} />
+                <HeaderStartupForm activeStep={2}/>
                 <div className="box-form-data">
                     {/* ///////////////////FORMS//////////////////// */}
                     <p className="title">Dokumen Calon Penerbit</p>

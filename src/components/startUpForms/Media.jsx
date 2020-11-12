@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import arrowback from '../../images/arrowback.svg'
-import logo from '../../images/logo.svg'
 
 import { Link } from 'react-router-dom';
 import InputFiles from 'react-input-files';
@@ -8,8 +6,8 @@ import InputFiles from 'react-input-files';
 import { Formik , Field} from "formik";
 import * as Yup from 'yup'
 import {InputText} from '../shared/InputComponents'
-import {Button, Fab} from '@material-ui/core'
-import StepsStartUp from './StepsStartUp';
+import {Button} from '@material-ui/core'
+import HeaderStartupForm from './HeaderStartupForm';
 
 
 
@@ -37,21 +35,8 @@ class Media extends Component {
 
         return (
            <div className="all-forms-style" >
-                <div className="bg">
-                        <div className="bg-round"></div> 
-                </div>
-                <Link to='/startup-form-informasi-nonfinansial'>
-                        <Fab className="back-button">
-                            <img src={arrowback} alt="arrback"/>
-                        </Fab>
-                </Link>
-                <div className="logo-invest">
-                    <img src={logo} alt=""/>
-                </div>
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br/> Silahkan lengkapi daftar diri anda untuk untuk mengajukan funding</p>
-                
-                <StepsStartUp active={6} />
+                <HeaderStartupForm activeStep={6}/>
+
 
                 
                <div className="box-form-data">

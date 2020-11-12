@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import arrowback from '../../images/arrowback.svg'
-import logo from '../../images/logo.svg'
+
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 // import moment from 'moment'
@@ -8,9 +7,9 @@ import { Link } from 'react-router-dom';
 import { Formik, Field } from "formik";
 import * as Yup from 'yup'
 import { InputText, InputSelect, InputTextArea } from '../shared/InputComponents'
-import { Checkbox, ButtonGroup, Button, FormHelperText, Fab } from '@material-ui/core'
+import { Checkbox, ButtonGroup, Button, FormHelperText } from '@material-ui/core'
 import Fade from 'react-reveal/Fade';
-import StepsInvestor from './StepsInvestor';
+import HeaderInvestForm from './HeaderInvestForm';
 
 
 class DataDiri extends Component {
@@ -48,19 +47,7 @@ class DataDiri extends Component {
 
         return (
             <div className="all-forms-style">
-                <div className="bg">
-                    <div className="bg-round"></div>
-                </div>
-                <Link onClick={() => this.props.history.goBack()}>
-                    <Fab className="back-button"><img src={arrowback} alt="" /></Fab>
-                </Link>
-                <div className="logo-invest"><img src={logo} alt="" /></div>
-
-                <p className="title">Selamat datang Cecillia</p>
-                <p className="desc"> Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi daftar diri anda untuk mulai berinvestasi</p>
-
-                <StepsInvestor active={1} />
-
+                <HeaderInvestForm activeStep={1}/>
                 <div className="box-form-data">
                     <p className="title">Data Diri</p>
                     <Formik

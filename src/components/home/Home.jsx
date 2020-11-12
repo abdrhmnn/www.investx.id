@@ -126,9 +126,9 @@ class Home extends Component {
                                     <span>CROWDFUNDING</span>
                                 </p>
                                 <p className="desc">
-                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                    InvestX mewujudkan era baru dalam berinvestasi, Dapatkan
                                     pendapatan secara pasif dan pendanaan dengan
-                                    cepat dengan InvestX.
+                                    cepat melalui InvestX.
                                 </p>
 
                                 <Link to="/investor-form-data-diri">
@@ -163,9 +163,9 @@ class Home extends Component {
                                                     <span>CROWDFUNDING</span>
                                                 </p>
                                                 <p className="desc">
-                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    InvestX mewujudkan era baru dalam berinvestasi, Dapatkan
                                                     pendapatan secara pasif dan pendanaan dengan
-                                                    cepat dengan InvestX.
+                                                    cepat melalui InvestX.
                                                 </p>
 
                                                 <Link to="/investor-form-data-diri">
@@ -190,9 +190,9 @@ class Home extends Component {
                                                     <span>CROWDFUNDING</span>
                                                 </p>
                                                 <p className="desc">
-                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    InvestX mewujudkan era baru dalam berinvestasi Dapatkan
                                                     pendapatan secara pasif dan pendanaan dengan
-                                                    cepat dengan InvestX.
+                                                    cepat melalui InvestX.
                                                 </p>
 
                                                 <Link to="/investor-form-data-diri">
@@ -217,9 +217,9 @@ class Home extends Component {
                                                     <span>CROWDFUNDING</span>
                                                 </p>
                                                 <p className="desc">
-                                                    Mewujudkan era baru dalam berinvestasi Dapatkan
+                                                    InvestX mewujudkan era baru dalam berinvestasi, Dapatkan
                                                     pendapatan secara pasif dan pendanaan dengan
-                                                    cepat dengan InvestX.
+                                                    cepat melalui InvestX.
                                                 </p>
 
                                                 <Link to="/investor-form-data-diri">
