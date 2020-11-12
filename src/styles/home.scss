@@ -1,122 +1,127 @@
-.home {
-    .content-home-desktop{
-        display: inline !important;
-    }
-    .content-home-mobile{
-        display: none;
-    }
+.indicator-color{
+    background-color: #343a40 !important;
+}
 
+.jumbo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 100vh;
-    // margin-top: 80px;
-    background-position: right;
-    background-repeat: no-repeat;
-    // background-size: contain;
-    background-size: 60%, 41%;
-    position: relative;
-    padding: 75px 0 120px;
-    background-origin: padding-box;
-
-    // POPUP SUCCESS FORM
-    .popsukform {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.65);
-        z-index: 1001;
-        .box-suk {
-            background-color: white;
-            width: 908px;
-            height: 626px;
-            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-            border-radius: 20px;
+    .home {
+        // margin-top: 80px;
+        background-position: right;
+        background-repeat: no-repeat;
+        // background-size: contain;
+        background-size: 60%, 41%;
+        position: relative;
+        padding: 75px 0 120px;
+        background-origin: padding-box;
+    
+        // POPUP SUCCESS FORM
+        .popsukform {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            position: relative;
-            .titlepf {
-                font-weight: 600;
-                font-size: 50px;
-                line-height: 54px;
-                color: #000000;
-            }
-            .descpf {
-                font-size: 30px;
-                line-height: 54px;
-                text-align: center;
-                color: #757575;
-            }
-            .fa-times {
-                font-size: 30px;
-                position: absolute;
-                top: 0;
-                left: 0;
-                margin: 30px;
-                cursor: pointer;
-            }
-        }
-    }
-
-    .contain-home {
-        display: flex;
-        padding: 75px 0 120px !important;
-        align-items: center;
-        height: 100%;
-        .wrap {
-            margin-top: 72px;
-            .title {
-                font-weight: 900;
-                font-size: 70px;
-                line-height: 50px;
-                span {
-                    font-size: 40px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1001;
+            .box-suk {
+                background-color: white;
+                width: 908px;
+                height: 626px;
+                filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                border-radius: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                .titlepf {
+                    font-weight: 600;
+                    font-size: 50px;
+                    line-height: 54px;
+                    color: #000000;
+                }
+                .descpf {
+                    font-size: 30px;
+                    line-height: 54px;
+                    text-align: center;
+                    color: #757575;
+                }
+                .fa-times {
+                    font-size: 30px;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin: 30px;
+                    cursor: pointer;
                 }
             }
-            .desc {
-                max-width: 50%;
-                font-weight: 300;
-                font-size: 16px;
-                line-height: 30px;
-            }
-            button {
-                width: 205px;
-                height: 52px;
-                margin-right: 28px;
-                margin-bottom: 38px;
-            }
-            .but-solid {
-                background-color: #0288d1;
-                border: none;
-                border-radius: 8px;
-                color: white;
-                font-size: 16px;
-                outline: unset !important;
-            }
-
-            .but {
-                color: black;
-                border-radius: 8px;
-                border: 1px solid #0288d1;
-                background-color: white;
-                font-size: 16px;
-                outline: unset !important;
+        }
+    
+        .contain-home {
+            display: flex;
+            padding: 75px 0 120px !important;
+            align-items: center;
+            height: 100%;
+            .wrap {
+                margin-top: 72px;
+                .title {
+                    font-weight: 900;
+                    font-size: 70px;
+                    line-height: 50px;
+                    span {
+                        font-size: 40px;
+                    }
+                }
+                .desc {
+                    max-width: 50%;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 30px;
+                }
+                button {
+                    width: 205px;
+                    height: 52px;
+                    margin-right: 28px;
+                    margin-bottom: 38px;
+                }
+                .but-solid {
+                    background-color: #0288d1;
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 16px;
+                    outline: unset !important;
+                }
+    
+                .but {
+                    color: black;
+                    border-radius: 8px;
+                    border: 1px solid #0288d1;
+                    background-color: white;
+                    font-size: 16px;
+                    outline: unset !important;
+                }
             }
         }
+    
+        
     }
 
     .last-invest {
         box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
         background-color: white;
         padding: 15px 0;
-        position: absolute !important;
+        position: relative !important;
+        z-index: 1;
         width: 100%;
-        bottom: 0;
-
+        // height: 111px;
+        // overflow: hidden;
         .card-last {
             // background-color: maroon;
             border-right: 1px solid #dedede !important;
@@ -154,8 +159,11 @@
     }
 }
 
+
+
 .butraise {
     padding: 50px 0;
+    // padding-top: 150px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -186,83 +194,82 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .home {
-        .content-home-desktop{
-            display: none !important;
-        }
-        .content-home-mobile{
-            display: inline;
-        }
-
-        background-image: unset !important;
-        height: 650px;
-        padding-top: 60px;
-        top: 0 !important;
-        bottom: 0 !important;
-
-        .carousel-content{
+    .indicator-color{
+        background-color: #ffffff!important;
+    }
+    .jumbo{
+        .home {
             background-size: cover;
-            height: 520px;
-       
-            &::before {
-                content: "";
+            // height: 550px;
+            padding-top: 60px;
+            z-index: unset !important;
+    
+            &::after{
                 position: absolute;
+                content: '';
+                width: 100%;
+                height: 100%;
                 left: 0;
-                right: 0;
                 top: 0;
                 bottom: 0;
-                background: rgba(0, 0, 0, 0.4);
+                background-color: black;
+                opacity: .4;
             }
-        }
-
-        .start-invest-but, .get-fund-but{
-            padding: 5px;
-        }
-        .start-invest-but{
-            margin-left: 0;
-        }
     
-        .contain-home {
-            padding: 20px !important;
-            .wrap {
-                z-index: 10 !important;
-                margin-top: -120px !important;
-                color: white;
-                text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
-                img {
-                    border-radius: 5px;
-                    width: 100px;
-                    margin-top: 40px;
-                }
-                .title {
-                    margin-top: 70px;
-                    margin-bottom: 30px;
-                    font-size: 45px !important;
-                    .hideOnMobile {
-                        display: none;
+            .start-invest-but, .get-fund-but{
+                padding: 5px;
+            }
+            .start-invest-but{
+                margin-left: 0;
+            }
+        
+            .contain-home {
+                padding: 20px !important;
+                height: 100vh;
+                .wrap {
+                    z-index: 10 !important;
+                    margin-top: 0 !important;
+                    margin-bottom: 50%;
+                    color: white;
+                    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.4);
+                    img {
+                        border-radius: 5px;
+                        width: 100px;
+                        margin-top: 40px;
                     }
-                    span {
-                        font-size: 20px !important;
+                    .title {
+                        margin-top: 70px;
+                        margin-bottom: 30px;
+                        font-size: 45px !important;
+                        .hideOnMobile {
+                            display: none;
+                        }
+                        span {
+                            font-size: 20px !important;
+                        }
                     }
-                }
-
-                button {
-                    margin-right: 0 !important;
-                    margin-top: 10px;
-                    margin-bottom: 10px !important;
-                    height: 40px !important;
-                    font-size: 14px !important;
-                    width: 100% !important;
-                }
-
-                .desc {
-                    max-width: 100% !important;
-                    font-size: 14px;
+    
+                    button {
+                        margin-right: 0 !important;
+                        margin-top: 10px;
+                        margin-bottom: 10px !important;
+                        height: 40px !important;
+                        font-size: 14px !important;
+                        width: 100% !important;
+                    }
+    
+                    .desc {
+                        max-width: 100% !important;
+                        font-size: 14px;
+                        text-shadow: 1px 2px 3px rgba(0, 0, 0, .5);
+                    }
                 }
             }
         }
+
         .last-invest {
             z-index: 999;
+            bottom: unset !important;
             .card-last {
                 align-items: center;
                 padding: 5px;
@@ -273,11 +280,17 @@
         }
     }
 
+
     .butraise {
         display: block;
         font-size: 14px;
+        // padding-top: 100px;
         p.tit {
             font-size: 23px;
+            text-align: center;
+        }
+        .desc{
+            font-size: 12px;
         }
 
         button {
@@ -443,7 +456,7 @@
         }
     }
 
-    ojk {
+    .ojk {
         height: 100% !important;
         margin-top: 20px;
     }

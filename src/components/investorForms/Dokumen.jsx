@@ -107,7 +107,7 @@ class Dokumen extends Component {
                     <p className="title-mod">{codeModal[indCode].title}</p>
                     <p className="desc-mod">{codeModal[indCode].desc}</p>
                     <img
-                        className="popic"
+                        className={`popic ${codeModal[indCode].title}`}
                         src={codeModal[indCode].image}
                         alt="ktp"
                     />
