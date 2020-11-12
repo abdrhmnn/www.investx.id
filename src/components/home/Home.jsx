@@ -19,7 +19,7 @@ import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
 import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
-import PopSuccessForm from "../shared/PopSuccessForm";
+// import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
     state = {
