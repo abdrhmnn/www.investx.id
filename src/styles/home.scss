@@ -2,6 +2,10 @@
     background-color: #343a40 !important;
 }
 
+.carousel-indicators{
+    bottom: 100px;
+}
+
 .jumbo{
     display: flex;
     flex-direction: column;
@@ -197,6 +201,11 @@
     .indicator-color{
         background-color: #ffffff!important;
     }
+
+    .carousel-indicators{
+        bottom: 80px;
+    }
+
     .jumbo{
         .home {
             background-size: cover;

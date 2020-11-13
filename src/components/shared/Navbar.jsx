@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import HamburgerMenu from 'react-hamburger-menu'
 import { connect } from 'react-redux';
+import Countdown, { zeroPad } from 'react-countdown';
 
 import logo from '../../images/logo.svg'
+import API from '../../api';
 import { Link, NavLink } from 'react-router-dom'
 import { Button, ClickAwayListener } from "@material-ui/core";
 import kuki from '../../helpers/cookie'
@@ -11,6 +13,7 @@ import ModalTemplate from './ModalTemplate';
 import ModalSuccessOtp from '../auth/ModalSuccessOtp';
 import VerifyOtp from './VerifyOtp';
 import VerifyEmail from './VerifyEmail';
+import Loading from './Loading';
 
 const butLogin = {
     textTransform: 'capitalize',
@@ -30,6 +33,8 @@ class Navbar extends Component {
         statusId : null,
         modalInputOtp : false,
         modalInputEmail : false,
+        completeOtp: false,
+        loading: false
     }
     componentDidMount(){
         const {phone, email} = kuki.get('status') || {phone : false, email : false}
@@ -112,13 +117,41 @@ class Navbar extends Component {
     closeModOtp = ()=> this.setState({modalInputOtp : false})
     closeModEmail = ()=> this.setState({modalInputEmail : false})
 
+    otpAgain = () => {
+        this.setState({
+            loading: true, 
+            completeOtp: false
+        })
+        
+        API.resendOtp().then(res => {
+            console.log(res)
+            this.setState({loading: false})
+        }).catch(err => {
+            console.log(err)
+            this.setState({loading: false})
+        })
+    }
+
+    waktu = ({ seconds, completed }) => {
+        if (completed || this.state.completeOtp) {
+            return <span onClick={this.otpAgain}>Kirim Ulang</span>
+        } else {
+            if(zeroPad(seconds) === 0){
+                this.setState({
+                    completeOtp: true
+                })
+            }
+            return <span>{zeroPad(seconds)} detik</span>
+        }
+    }
 
     render() {
         return (
             <div>
+                <Loading onOpen={this.state.loading} />
                 <ModalTemplate 
                     onOpen={this.state.modalInputOtp} 
-                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), <Countdown date={Date.now() + 5000} renderer={this.waktu} />)}
                 />
                 
                 <ModalTemplate 
@@ -181,11 +214,11 @@ class Navbar extends Component {
                 {!this.props.removePopUp ?
                     <>{
                         this.state.statusId === 1?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi kode OTP. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span> </div>
+                        <div className="drop">Hi {kuki.get('full_name')}, Anda belum melakukan verifikasi kode OTP. <span onClick={()=> this.setState({modalInputOtp : true})}> Verifikasi sekarang</span> </div>
                         : this.state.statusId === 2?
-                        <div className="drop">Hi Maria, Anda belum melakukan verifikasi email, jika email verifikasi belum di terima silahkan verifikasi ulang <span onClick={()=> this.setState({modalInputEmail : true})}> Verifikasi ulang sekarang</span></div>
+                        <div className="drop">Hi {kuki.get('full_name')}, Anda belum melakukan verifikasi email, jika email verifikasi belum di terima silahkan verifikasi ulang <span onClick={()=> this.setState({modalInputEmail : true})}> Verifikasi ulang sekarang</span></div>
                         :this.state.statusId === 3?
-                        <div className="drop">Hi Maria! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
+                        <div className="drop">Hi {kuki.get('full_name')}! Anda belum mengisi data. Silakan lengkapi data anda untuk memulai Investasi atau mendapatkan funding. <Link to='/select-form'>Isi data sekarang</Link> </div>
                         : null
                     }</>
                     : null

@@ -36,6 +36,12 @@ const API = {
   },
   verifyEmail : (props) =>{
     return axios.post(apiBaseUrl + `/authentication/verify-email/`, props)
+  },
+  resendOtp: () => {
+    const body = {
+      "phone_number": kuki.get('phone_number')
+    }
+    return axios.post(apiBaseUrl + `/authentication/resend-otp/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   }
 };
 

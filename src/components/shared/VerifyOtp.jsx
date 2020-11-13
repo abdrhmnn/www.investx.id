@@ -9,7 +9,7 @@ import API  from "../../api";
 import Swal from 'sweetalert2'
 
 
-const VerifyOtp = (close, openModalNewPin) => {
+const VerifyOtp = (close, openModalNewPin, counterSend) => {
     
     return (
         <div className='pin_components'>
@@ -74,7 +74,7 @@ const VerifyOtp = (close, openModalNewPin) => {
                     )}
                 </Formik>
                 <Button type='submit' form='otp'>Verifikasi</Button>
-                <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
+                <p className="info">Belum menerima email aktivasi? {counterSend}</p>
             </div>
 
         </div>
