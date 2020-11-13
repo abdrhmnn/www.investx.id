@@ -34,7 +34,9 @@ class Navbar extends Component {
         modalInputOtp : false,
         modalInputEmail : false,
         completeOtp: false,
-        loading: false
+        loading: false,
+        counterStart: false,
+        dateNow: Date.now()
     }
     componentDidMount(){
         const {phone, email} = kuki.get('status') || {phone : false, email : false}
@@ -119,29 +121,29 @@ class Navbar extends Component {
 
     otpAgain = () => {
         this.setState({
-            loading: true, 
-            completeOtp: false
+            // loading: true, 
+            completeOtp: false,
+            counterStart: true,
+            dateNow: Date.now()
         })
         
-        API.resendOtp().then(res => {
-            console.log(res)
-            this.setState({loading: false})
-        }).catch(err => {
-            console.log(err)
-            this.setState({loading: false})
-        })
+        // API.resendOtp().then(res => {
+        //     console.log(res)
+        //     this.setState({loading: false})
+        // }).catch(err => {
+        //     console.log(err)
+        //     this.setState({loading: false})
+        // })
     }
 
     waktu = ({ seconds, completed }) => {
-        if (completed || this.state.completeOtp) {
-            return <span onClick={this.otpAgain}>Kirim Ulang</span>
-        } else {
-            if(zeroPad(seconds) === 0){
-                this.setState({
-                    completeOtp: true
-                })
+        if (completed && this.state.completeOtp ) {
+            if(zeroPad(seconds) == '00'){
+                console.log('oo beres');
             }
             return <span>{zeroPad(seconds)} detik</span>
+        } else {
+            return <span onClick={this.otpAgain}>Kirim Ulang</span>
         }
     }
 
@@ -151,7 +153,7 @@ class Navbar extends Component {
                 <Loading onOpen={this.state.loading} />
                 <ModalTemplate 
                     onOpen={this.state.modalInputOtp} 
-                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), <Countdown date={Date.now() + 5000} renderer={this.waktu} />)}
+                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), <Countdown date={this.state.dateNow + 5000} renderer={this.waktu} />)}
                 />
                 
                 <ModalTemplate 
