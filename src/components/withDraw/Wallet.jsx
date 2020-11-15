@@ -31,7 +31,7 @@ class Wallet extends Component {
         ];
 
         const listSaran = jumlahSaran.map((saran) => {
-            return <Button style={styleSaran}>{saran}</Button>;
+            return <Button style={styleSaran} value={saran}>{saran}</Button>;
         });
 
         return (
@@ -76,7 +76,7 @@ class Wallet extends Component {
                                 </div>
 
                                 <div className="know-more">
-                                    <span>Pelajari Lebih Lanjut</span>
+                                    <span>Pelajari Lebih Lanjut </span> 
                                     <a href="#">
                                         disini</a>
                                 </div>
@@ -91,7 +91,7 @@ class Wallet extends Component {
                                         <p className="title-input">Nominal Top Up</p>
                                         <div className="box-input">
                                             <p>Rp</p>
-                                            <input type="number"/>
+                                            <input type="number" id="input-saran" />
                                         </div>
                                     </div>
                                     <div className="list-saran-mobile">{listSaran}</div>
@@ -157,8 +157,8 @@ class Wallet extends Component {
                                                 </p>
                                             </div>
                                             <div className="col-md total-pemb">
-                                                <p className="title-transaksi">Total Pembayaran
-                                                    <span>Rp 20.000.000</span>
+                                                <p className="title-transaksi">Total Pembayaran 
+                                                    <span> Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
@@ -196,8 +196,8 @@ class Wallet extends Component {
                                                 </p>
                                             </div>
                                             <div className="col-md total-pemb">
-                                                <p className="title-transaksi">Total Pembayaran
-                                                    <span>Rp 20.000.000</span>
+                                                <p className="title-transaksi">Total Pembayaran 
+                                                    <span> Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
