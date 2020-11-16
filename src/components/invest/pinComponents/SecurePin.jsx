@@ -8,8 +8,6 @@ import successimg from '../../../images/invest/successimg.svg'
 import Swal from 'sweetalert2'
 
 
-
-
 const SecurePin = (close,) => {
     return (
         <div className='pin_components'>
@@ -48,7 +46,7 @@ const SecurePin = (close,) => {
                             showConfirmButton: false,
                             timer: 1500,
                             onClose: () => {
-                               window.location.href= '/'
+                               window.location.href= '/payment'
                             }
                         })
                         console.log(val)

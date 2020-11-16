@@ -135,7 +135,7 @@ class MethodTopUp extends Component {
                 <div className="logo-invest">
                     <img src={logo} alt="" />
                 </div>
-                <p className="title">Top Up</p>
+                <p className="title">WITHDRAW</p>
 
                 <div className="box-form-data">
                     <div className="title-alt">Jumlah Nominal</div>

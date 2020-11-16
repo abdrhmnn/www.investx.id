@@ -119,7 +119,7 @@ class Otp extends Component {
                             <input required ref={(input) => { this.boxFoc6 = input; }}  type='number' maxLength='1' name='box6' value={this.state.box6} onChange={this.handleChange}  />
                         </form>
                         <Button type='submit' form='otp'>Verifikasi</Button>
-                        <p className="info">Belum menerima email aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
+                        <p className="info">Belum menerima otp aktivasi? <span>kirim ulang</span> dalam 30 detik</p>
                     </div>
                 </div>
             </div>

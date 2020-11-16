@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HamburgerMenu from 'react-hamburger-menu'
 import { connect } from 'react-redux';
-import Countdown, { zeroPad } from 'react-countdown';
 
 import logo from '../../images/logo.svg'
 import API from '../../api';
@@ -137,14 +136,6 @@ class Navbar extends Component {
         // })
     }
 
-    waktu = ({ seconds, completed }) => {
-        if (completed) {
-            return <span onClick={this.otpAgain}>Kirim Ulang</span>
-        } else {
-            return <span>{zeroPad(seconds)} detik</span>
-        }
-    }
-
     counterReset = ()=>this.setState({counterResetAdd : this.state.counterResetAdd + 1})
 
     render() {
@@ -159,7 +150,7 @@ class Navbar extends Component {
                 
                 <ModalTemplate 
                     onOpen={this.state.modalInputEmail} 
-                    component ={()=>VerifyEmail(this.closeModEmail, ()=>this.setState({modalInputSecurePin : true}))}
+                    component ={()=>VerifyEmail(this.closeModEmail)}
                 />
                   <nav>
                     <div className="left">
