@@ -74,7 +74,7 @@ const VerifyOtp = (close, openModalNewPin, counterSend) => {
                     )}
                 </Formik>
                 <Button type='submit' form='otp'>Verifikasi</Button>
-                <p className="info">Belum menerima email aktivasi? {counterSend}</p>
+                <p className="info">Belum menerima otp aktivasi? {counterSend}</p>
             </div>
 
         </div>
