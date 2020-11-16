@@ -152,7 +152,7 @@ class TopUpDetail extends Component {
                                     type="submit"
                                     onClick={() => this.setIsInvoice(true)}
                                 >
-                                    BAYAR TRANSAKSI
+                                    BAYAR
                             </Button>
                             </div>
                         )}
