@@ -92,8 +92,8 @@ class DetailTransaction extends Component {
                             <p className="note">*Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur fugiat obcaecati eveniet itaque quisquam, hic magni neque, aperiam unde accusamus harum.</p>
 
                             <div className="d-flex justify-content-between">
-                                <Button className="but">BUTUH BANTUAN</Button>
-                                <Button className="but-solid" type="submit" >KIRIM BUKTI</Button>
+                                <Button className="but btn-need-help">BUTUH BANTUAN</Button>
+                                <Button className="but-solid btn-send-proff" type="submit" >KIRIM BUKTI</Button>
                             </div>
 
                         </div>
