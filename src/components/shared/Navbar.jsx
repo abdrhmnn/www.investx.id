@@ -36,7 +36,8 @@ class Navbar extends Component {
         completeOtp: false,
         loading: false,
         counterStart: false,
-        dateNow: Date.now()
+        dateNow: Date.now(),
+        counterResetAdd : 0
     }
     componentDidMount(){
         const {phone, email} = kuki.get('status') || {phone : false, email : false}
@@ -137,15 +138,14 @@ class Navbar extends Component {
     }
 
     waktu = ({ seconds, completed }) => {
-        if (completed && this.state.completeOtp ) {
-            if(zeroPad(seconds) == '00'){
-                console.log('oo beres');
-            }
-            return <span>{zeroPad(seconds)} detik</span>
-        } else {
+        if (completed) {
             return <span onClick={this.otpAgain}>Kirim Ulang</span>
+        } else {
+            return <span>{zeroPad(seconds)} detik</span>
         }
     }
+
+    counterReset = ()=>this.setState({counterResetAdd : this.state.counterResetAdd + 1})
 
     render() {
         return (
@@ -153,7 +153,8 @@ class Navbar extends Component {
                 <Loading onOpen={this.state.loading} />
                 <ModalTemplate 
                     onOpen={this.state.modalInputOtp} 
-                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), <Countdown date={this.state.dateNow + 5000} renderer={this.waktu} />)}
+                    // component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), this.counterReset, this.state.counterResetAdd)}
+                    component ={()=><VerifyOtp close={this.closeModOtp}/>}
                 />
                 
                 <ModalTemplate 
