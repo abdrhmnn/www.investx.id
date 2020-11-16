@@ -136,6 +136,9 @@ class HowItWorks extends Component {
                             </div>
                         </div>
                     </div>
+                    <center>
+                        <Button className="button-discovery">Discover Company</Button>
+                    </center>
                 </div>
 
                 <div className="cara-mengajukan">
@@ -198,6 +201,8 @@ class HowItWorks extends Component {
                         </center>
                     </div>
                 </div>
+
+
 
                 <Footer />
                 <Ojk />
