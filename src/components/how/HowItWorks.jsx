@@ -13,7 +13,7 @@ import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
 
 class HowItWorks extends Component {
-    render() {
+    render(props) {
         const butSolid = {
             width: "205px",
             height: "52px",
@@ -137,7 +137,9 @@ class HowItWorks extends Component {
                         </div>
                     </div>
                     <center>
-                        <Button className="button-discovery">Discover Company</Button>
+                        <Link to="/company-list">
+                            <Button className="button-discovery">Discover Company</Button>
+                        </Link>
                     </center>
                 </div>
 
