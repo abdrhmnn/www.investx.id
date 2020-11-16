@@ -1,6 +1,7 @@
 import { Box, Button } from "@material-ui/core";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Clipboard from 'clipboard';
 
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";
@@ -64,10 +65,10 @@ class PaymentStatus extends Component {
                         <hr className="text-muted" />
                         <div className="row justify-content-around">
                             <div className="col-md-6">
-                                <p className="bolder">Jumlah Imvestasi</p>
+                                <p className="bolder">TOTAL</p>
                             </div>
                             <div className="col-md-6">
-                                <p className="bolder text-right">80 Lembar</p>
+                                <p className="bolder text-right">Rp. 8.000.000</p>
                             </div>
                         </div>
                     </Box>
@@ -117,6 +118,7 @@ class PaymentStatus extends Component {
             width: "204px",
             height: "48px",
         };
+
         return (
             <div className="modal-detail-transaction">
                 <i
@@ -215,6 +217,9 @@ class PaymentStatus extends Component {
             border: "none",
             outline: "none",
         };
+        
+
+        var clipboard = new Clipboard('.copy-value');
 
         return (
             <div className="all-forms-style payment-status">
@@ -265,10 +270,10 @@ class PaymentStatus extends Component {
                             <div className="row justify-content-between">
                                 <div>
                                     <p className="name">No Virtual Account</p>
-                                    <p className="value">872376200655</p>
+                                    <p className="value" id="value">872376200655</p>
                                 </div>
                                 <div>
-                                    <p className="text-button">Salin</p>
+                                    <p className="text-button copy-value" data-clipboard-target="#value">Salin</p>
                                 </div>
                             </div>
 
