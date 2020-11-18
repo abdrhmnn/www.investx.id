@@ -21,6 +21,13 @@ const helper = {
                 return has
             }
         }
+    },
+    counter : (time, countdown, reset)=>{
+        var int = setInterval(()=> countdown() ,1000)
+        setTimeout(() => {
+            clearInterval(int)
+            reset(time)
+        }, time * 1000);
     }
     
 }
