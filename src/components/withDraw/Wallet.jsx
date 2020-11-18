@@ -76,7 +76,8 @@ class Wallet extends Component {
                                 </div>
 
                                 <div className="know-more">
-                                    <span>Pelajari Lebih Lanjut </span> 
+                                    <span>Pelajari Lebih Lanjut
+                                    </span>
                                     <a href="#">
                                         disini</a>
                                 </div>
@@ -91,7 +92,7 @@ class Wallet extends Component {
                                         <p className="title-input">Nominal Top Up</p>
                                         <div className="box-input">
                                             <p>Rp</p>
-                                            <input type="number" id="input-saran" />
+                                            <input type="number" id="input-saran"/>
                                         </div>
                                     </div>
                                     <div className="list-saran-mobile">{listSaran}</div>
@@ -117,11 +118,7 @@ class Wallet extends Component {
                                 </div>
                                 <br/>
                                 <div className="menu">
-                                    <a
-                                        style={{
-                                        background: "#4CB5EF",
-                                        color: "white"
-                                    }}>
+                                    <a>
                                         Semua
                                     </a>
                                     <a>Pembelian</a>
@@ -130,13 +127,8 @@ class Wallet extends Component {
                                 </div>
 
                                 <div className="menu-mobile">
-                                    <a
-                                        class="dropdown"
-                                        style={{
-                                        background: "#4CB5EF",
-                                        color: "white"
-                                    }}>
-                                        Semua
+                                    <a>
+                                        All
                                     </a>
                                     <a>Pembelian</a>
                                     <a>Top Up</a>
@@ -157,8 +149,9 @@ class Wallet extends Component {
                                                 </p>
                                             </div>
                                             <div className="col-md total-pemb">
-                                                <p className="title-transaksi">Total Pembayaran 
-                                                    <span> Rp 20.000.000</span>
+                                                <p className="title-transaksi">Total Pembayaran
+                                                    <span>
+                                                        Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
@@ -196,8 +189,9 @@ class Wallet extends Component {
                                                 </p>
                                             </div>
                                             <div className="col-md total-pemb">
-                                                <p className="title-transaksi">Total Pembayaran 
-                                                    <span> Rp 20.000.000</span>
+                                                <p className="title-transaksi">Total Pembayaran
+                                                    <span>
+                                                        Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
