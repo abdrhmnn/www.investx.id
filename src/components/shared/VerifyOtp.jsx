@@ -7,10 +7,11 @@ import mailbox from '../../images/mailbox.png'
 import kuki from '../../helpers/cookie'
 import API  from "../../api";
 import Swal from 'sweetalert2'
+import helper from '../../helpers/helper'
+
 class VerifyOtp extends React.Component {
     state={
-        onStartCount : 5,
-        timing : 5,
+        onStartCount : 30,
     }
     
     counting = ()=>{
@@ -19,12 +20,9 @@ class VerifyOtp extends React.Component {
         }).catch(err => {
             console.log(err)
         })
-
-        this.count = setInterval(()=>this.setState({onStartCount : this.state.onStartCount - 1}),1000)
-        setTimeout(() => {
-            clearInterval(this.count)
-            this.setState({onStartCount : this.state.timing})
-        }, this.state.timing * 1000);
+        const countdown = ()=> this.setState({onStartCount : this.state.onStartCount - 1})
+        const reset = (t)=> this.setState({onStartCount :t})
+        helper.counter(this.state.onStartCount, countdown, reset)
     }
     
 
@@ -97,7 +95,7 @@ class VerifyOtp extends React.Component {
                 <p className="info">
                     Belum menerima email aktivasi? 
                     {
-                        this.state.onStartCount === this.state.timing?
+                        this.state.onStartCount === 30?
                         <span onClick={this.counting} style={{ cursor: 'pointer' }}> Kirim Ulang</span>
                         :
                         <span> {this.state.onStartCount} Detik</span>
