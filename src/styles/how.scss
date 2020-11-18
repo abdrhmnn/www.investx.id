@@ -221,30 +221,14 @@
                     background-repeat: no-repeat;
                     position: relative;
                     padding: 20px;
-
-                    &::after{
-                        position: absolute;
-                        content: '';
-                        height: 100vh;
-                        width: 100%;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        background-color: black;
-                        opacity: .4;
-                    }
                     
                     .title-jumbo{
-                        position: relative;
-                        z-index: 10;
                         font-size: 35px;
                         margin-top: 50px !important;
                         text-shadow: 1px 1px 1px rgba(252, 252, 252, .5);
                     }
     
                     .desc-jumbo{
-                        position: relative;
-                        z-index: 10;
                         width: 100%;
                         text-shadow: 1px 1px 1px rgba(252, 252, 252, .5);
                     }
