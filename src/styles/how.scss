@@ -206,21 +206,22 @@
 @media only screen and (max-width: 768px){
     .how{
         .head{
-            height: 450px;
+            // height: 70vh;
             padding-top: 90px;
 
             .jumbo{
                 overflow: hidden;
                 margin-top: -95px !important;
                 padding: 0 !important;
-                height: 453px;
+                height: 60vh !important;
                 .how-jumbo-content{           
-                    background-position: unset !important;
-                    background-size: 200%;
-                    height: 100% !important;
+                    background-position: bottom !important;
+                    background-size: 100%;
+                    // height: 100% !important;
                     background-repeat: no-repeat;
                     position: relative;
                     padding: 20px;
+                    margin-bottom: 0;
                     
                     .title-jumbo{
                         font-size: 35px;
