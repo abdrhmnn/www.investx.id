@@ -133,7 +133,7 @@ class Bank extends Component {
                                     <div className="col-md-12">
                                         <Field
                                             as={InputText}
-                                            label="No Rekening"
+                                            label="No Rekening *"
                                             type="text"
                                             name="norekening"
                                             errorsMessage={

@@ -7,12 +7,32 @@ import mailbox from '../../images/mailbox.png'
 import kuki from '../../helpers/cookie'
 import API  from "../../api";
 import Swal from 'sweetalert2'
-
-
-const VerifyOtp = (close, openModalNewPin, counterSend) => {
+class VerifyOtp extends React.Component {
+    state={
+        onStartCount : 5,
+        timing : 5,
+    }
     
-    return (
-        <div className='pin_components'>
+    counting = ()=>{
+        API.resendOtp().then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+
+        this.count = setInterval(()=>this.setState({onStartCount : this.state.onStartCount - 1}),1000)
+        setTimeout(() => {
+            clearInterval(this.count)
+            this.setState({onStartCount : this.state.timing})
+        }, this.state.timing * 1000);
+    }
+    
+
+    render() {
+        const {close} = this.props
+
+        return (
+            <div className='pin_components'>
             <div className="bg">
                 <div className="bg-round"></div>
             </div>
@@ -38,7 +58,7 @@ const VerifyOtp = (close, openModalNewPin, counterSend) => {
                     box6 : '',
                 }}
                 onSubmit={(val)=>{
-                    openModalNewPin()
+                    // openModalNewPin()
                     var {box1, box2, box3, box4, box5, box6 } = val
                     let otpCode = `${box1}${box2}${box3}${box4}${box5}${box6}`
                     console.log(otpCode)
@@ -74,11 +94,20 @@ const VerifyOtp = (close, openModalNewPin, counterSend) => {
                     )}
                 </Formik>
                 <Button type='submit' form='otp'>Verifikasi</Button>
-                <p className="info">Belum menerima email aktivasi? {counterSend}</p>
+                <p className="info">
+                    Belum menerima email aktivasi? 
+                    {
+                        this.state.onStartCount === this.state.timing?
+                        <span onClick={this.counting} style={{ cursor: 'pointer' }}> Kirim Ulang</span>
+                        :
+                        <span> {this.state.onStartCount} Detik</span>
+                    }
+                </p>
             </div>
 
         </div>
-    );
+        );
+    }
 }
 
 export default VerifyOtp;

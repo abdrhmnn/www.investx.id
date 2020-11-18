@@ -84,7 +84,6 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Register}/>
           <Route path='/term' component={Term}/>
-          <PrivatRoute path='/otp' component={Otp}/>
           <Route path='/about' component={AboutUs}/>
           <Route path='/how' component={HowItWorks}/>
 

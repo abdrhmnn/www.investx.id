@@ -61,7 +61,7 @@ class Invest extends Component {
             />
             <ModalTemplate 
                 onOpen={this.state.modalInputOtp} 
-                component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}))}
+                component ={()=> <VerifyOtp close={this.closeModOtp} openModalNewPin={() => this.setState({modalInputSecurePin : true})} />}
             />
              <ModalTemplate 
                 onOpen={this.state.modalInputSecurePin} 

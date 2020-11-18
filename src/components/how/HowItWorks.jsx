@@ -13,7 +13,7 @@ import Navbar from "../shared/Navbar";
 import Footer from "../shared/Footer";
 
 class HowItWorks extends Component {
-    render() {
+    render(props) {
         const butSolid = {
             width: "205px",
             height: "52px",
@@ -32,24 +32,9 @@ class HowItWorks extends Component {
                 <div className="head">
                     <Navbar />
                     <div className="container jumbo">
-                        <div className="con">
-                            <p className="title">
-                                Cara mudah untuk Investasimu
-                            </p>
-                            <p className="desc">
-                                Apakah kamu seorang Investor ataupun pelaku
-                                bisnis, siapapun bisa dengan mudah menggunakan
-                                InvestX
-                            </p>
-
-                            <Link to="/investor-form-data-diri">
-                                <Button className="how-invest">
-                                    Start Investing
-                                </Button>
-                            </Link>
-                            <Link to="/startup-form-data-diri">
-                                <Button className="fund">Get Funding</Button>
-                            </Link>
+                        <div className="how-jumbo-content">
+                            <div className="title-jumbo">Mudah dan Cepat !</div>
+                            <div className="desc-jumbo">Apakah kamu seorang Investor ataupun pelaku bisnis, siapapun bisa dengan mudah menggunakan InvestX</div>
                         </div>
                     </div>
                 </div>
@@ -136,6 +121,11 @@ class HowItWorks extends Component {
                             </div>
                         </div>
                     </div>
+                    <center>
+                        <Link to="/company-list">
+                            <Button className="button-discovery">Discover Company</Button>
+                        </Link>
+                    </center>
                 </div>
 
                 <div className="cara-mengajukan">
@@ -198,6 +188,8 @@ class HowItWorks extends Component {
                         </center>
                     </div>
                 </div>
+
+
 
                 <Footer />
                 <Ojk />

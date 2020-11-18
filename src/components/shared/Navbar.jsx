@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import HamburgerMenu from 'react-hamburger-menu'
 import { connect } from 'react-redux';
-import Countdown, { zeroPad } from 'react-countdown';
 
 import logo from '../../images/logo.svg'
-import API from '../../api';
 import { Link, NavLink } from 'react-router-dom'
 import { Button, ClickAwayListener } from "@material-ui/core";
 import kuki from '../../helpers/cookie'
@@ -36,7 +34,8 @@ class Navbar extends Component {
         completeOtp: false,
         loading: false,
         counterStart: false,
-        dateNow: Date.now()
+        dateNow: Date.now(),
+        counterResetAdd : 0
     }
     componentDidMount(){
         const {phone, email} = kuki.get('status') || {phone : false, email : false}
@@ -136,16 +135,7 @@ class Navbar extends Component {
         // })
     }
 
-    waktu = ({ seconds, completed }) => {
-        if (completed && this.state.completeOtp ) {
-            if(zeroPad(seconds) == '00'){
-                console.log('oo beres');
-            }
-            return <span>{zeroPad(seconds)} detik</span>
-        } else {
-            return <span onClick={this.otpAgain}>Kirim Ulang</span>
-        }
-    }
+    counterReset = ()=>this.setState({counterResetAdd : this.state.counterResetAdd + 1})
 
     render() {
         return (
@@ -153,12 +143,13 @@ class Navbar extends Component {
                 <Loading onOpen={this.state.loading} />
                 <ModalTemplate 
                     onOpen={this.state.modalInputOtp} 
-                    component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), <Countdown date={this.state.dateNow + 5000} renderer={this.waktu} />)}
+                    // component ={()=>VerifyOtp(this.closeModOtp, ()=>this.setState({modalInputSecurePin : true}), this.counterReset, this.state.counterResetAdd)}
+                    component ={()=><VerifyOtp close={this.closeModOtp}/>}
                 />
                 
                 <ModalTemplate 
                     onOpen={this.state.modalInputEmail} 
-                    component ={()=>VerifyEmail(this.closeModEmail, ()=>this.setState({modalInputSecurePin : true}))}
+                    component ={()=><VerifyEmail close={this.closeModEmail} />}
                 />
                   <nav>
                     <div className="left">
