@@ -3,7 +3,6 @@ import HamburgerMenu from 'react-hamburger-menu'
 import { connect } from 'react-redux';
 
 import logo from '../../images/logo.svg'
-import API from '../../api';
 import { Link, NavLink } from 'react-router-dom'
 import { Button, ClickAwayListener } from "@material-ui/core";
 import kuki from '../../helpers/cookie'
@@ -150,7 +149,7 @@ class Navbar extends Component {
                 
                 <ModalTemplate 
                     onOpen={this.state.modalInputEmail} 
-                    component ={()=>VerifyEmail(this.closeModEmail)}
+                    component ={()=><VerifyEmail close={this.closeModEmail} />}
                 />
                   <nav>
                     <div className="left">
