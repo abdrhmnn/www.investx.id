@@ -76,10 +76,8 @@ class Wallet extends Component {
                                 </div>
 
                                 <div className="know-more">
-                                    <span>Pelajari Lebih Lanjut
-                                    </span>
-                                    <a href="#">
-                                        disini</a>
+                                    <span>Pelajari Lebih Lanjut</span> 
+                                    <a href="#"> disini</a>
                                 </div>
 
                             </div>
@@ -92,7 +90,7 @@ class Wallet extends Component {
                                         <p className="title-input">Nominal Top Up</p>
                                         <div className="box-input">
                                             <p>Rp</p>
-                                            <input type="number" id="input-saran"/>
+                                            <input  class="textview" name="textview" type="number" id="input-saran"/>
                                         </div>
                                     </div>
                                     <div className="list-saran-mobile">{listSaran}</div>
@@ -150,8 +148,7 @@ class Wallet extends Component {
                                             </div>
                                             <div className="col-md total-pemb">
                                                 <p className="title-transaksi">Total Pembayaran
-                                                    <span>
-                                                        Rp 20.000.000</span>
+                                                    <span> Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
@@ -189,9 +186,8 @@ class Wallet extends Component {
                                                 </p>
                                             </div>
                                             <div className="col-md total-pemb">
-                                                <p className="title-transaksi">Total Pembayaran
-                                                    <span>
-                                                        Rp 20.000.000</span>
+                                                <p className="title-transaksi">Total Pembayaran 
+                                                    <span> Rp 20.000.000</span>
                                                 </p>
                                                 <p className="no-transaksi">
                                                     Lihat Detail Transaksi
