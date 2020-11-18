@@ -416,6 +416,7 @@
             width: 100px;
             max-height: 110px;
         }
+
     }
 
     @media screen and (max-width: 425px) {
@@ -428,6 +429,8 @@
         }
 
         .list-saran-mobile {
+            margin-left: 15px;
+            margin-right: 15px;
             max-height: 70px;
             overflow-y: hidden;
             overflow-x: scroll;
@@ -439,19 +442,25 @@
             }
         }
 
-        .menu-mobile a {
+        .menu-mobile {
             padding: 6px;
             margin-right: 3px;
             border: 2px solid #4CB5EF;
             color: #2388D1;
             border-radius: 30px;
             font-size: 10pt;
-            padding-left: 15px;
-            padding-right: 15px;
             cursor: pointer;
-            &:hover{
-                background-color: #4CB5EF;
-                color: white;
+
+            a {
+                color: blue;
+                padding: 5px;
+
+                &:hover
+                {
+                    color: white;
+                                background-color: #4CB5EF;
+border-radius: 30px;
+                }
             }
         }
 
@@ -467,13 +476,6 @@
 
         .menu-mobile {
             display: none;
-        }
-    }
-
-    @media screen and (max-width: 375px) {
-        .menu-mobile{
-           display: flex;
-           flex-direction: column;
         }
     }
 }
