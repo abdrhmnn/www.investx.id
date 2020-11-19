@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from "react";
+import React, {Component, useState, Fragment} from "react";
 import {Link} from "react-router-dom";
 import {Box, Button, Card} from "@material-ui/core";
 
@@ -9,6 +9,12 @@ import tarik from "../../images/withdraw/tarik.svg";
 import topup from "../../images/withdraw/topup.svg";
 
 class Wallet extends Component {
+    constructor(props) {
+    super(props);
+    this.state = {
+      input: 0
+    };
+  }
     render() {
         const styleSaran = {
             display: 'inline-block',
@@ -20,19 +26,6 @@ class Wallet extends Component {
             background: '#DEDEDE',
             fontSize: '9pt'
         }
-
-        const jumlahSaran = [
-            "20.000.000",
-            "30.000.000",
-            "40.000.000",
-            "50.000.000",
-            "60.000.000",
-            "70.000.000"
-        ];
-
-        const listSaran = jumlahSaran.map((saran) => {
-            return <Button style={styleSaran} value={saran}>{saran}</Button>;
-        });
 
         return (
             <div className="all-forms-style wallet">
@@ -90,10 +83,17 @@ class Wallet extends Component {
                                         <p className="title-input">Nominal Top Up</p>
                                         <div className="box-input">
                                             <p>Rp</p>
-                                            <input  class="textview" name="textview" type="number" id="input-saran"/>
+                                            <input  class="textview" name="textview" value={this.state.input} id="input-saran"/>
                                         </div>
                                     </div>
-                                    <div className="list-saran-mobile">{listSaran}</div>
+                                    <div className="list-saran-mobile">
+                                         <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 30000000 })}>30.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 40000000 })}>40.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 50000000 })}>50.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 60000000 })}>60.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 70000000 })}>70.000.000</Button>
+                                    </div>
                                     <div className="col-md buttons-topup">
                                         <Link to="/topup">
                                             <Button className='blue'>
@@ -107,7 +107,14 @@ class Wallet extends Component {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="list-saran">{listSaran}</div>
+                                <div class="list-saran">
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 30000000 })}>30.000.000</Button>
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 40000000 })}>40.000.000</Button>
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 50000000 })}>50.000.000</Button>
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 60000000 })}>60.000.000</Button>
+                                    <Button style={styleSaran} onClick={() => this.setState({ input: 70000000 })}>70.000.000</Button>
+                                </div>
                             </div>
 
                             <div className="box-right mt-4">

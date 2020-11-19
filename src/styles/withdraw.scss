@@ -449,17 +449,17 @@
             color: #2388D1;
             border-radius: 30px;
             font-size: 10pt;
-            cursor: pointer;
 
             a {
-                color: blue;
+                color: #4CB5EF;
+                cursor: pointer;
+
                 padding: 5px;
 
-                &:hover
-                {
+                &:hover {
                     color: white;
-                                background-color: #4CB5EF;
-border-radius: 30px;
+                    background-color: #4CB5EF;
+                    border-radius: 30px;
                 }
             }
         }
