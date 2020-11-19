@@ -453,15 +453,26 @@
             a {
                 color: #4CB5EF;
                 cursor: pointer;
-
                 padding: 5px;
 
                 &:hover {
                     color: white;
-                    background-color: #4CB5EF;
+                    animation: color-change-2x 2s linear infinite alternate both;
                     border-radius: 30px;
+                    background: #4CB5EF;
                 }
             }
+
+            @keyframes color-change-2x {
+                0% {
+                    background: #19dcea;
+                }
+
+                100% {
+                    background: #b22cff;
+                }
+            }
+
         }
 
         .menu {
