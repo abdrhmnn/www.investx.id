@@ -54,7 +54,6 @@ class Wallet extends Component {
                     <p className="mb-0">Rp. 20.000.000</p>
                   </div>
                 </div>
-
                 <div className="box-detail-saldo">
                   <p className="saldo-detail">
                     Saldo Rupiah

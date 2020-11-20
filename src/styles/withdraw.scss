@@ -361,6 +361,10 @@
     }
 
     @media screen and (max-width: 768px) {
+        .box-saldo {
+            margin-left: 0;
+        }
+
         .withdraw {
             padding: 0 !important;
         }
@@ -453,15 +457,19 @@
 
             a {
                 color: #4CB5EF;
-                cursor: pointer;
-                padding: 5px;
+                padding: 8px;
 
                 &:hover {
                     color: white;
                     animation: color-change-2x 2s linear infinite alternate both;
-                    border-radius: 30px;
                     background: #4CB5EF;
                 }
+
+                &:first-child {
+                    margin-left: 5px;
+
+                }
+
             }
 
             @keyframes color-change-2x {
@@ -488,6 +496,19 @@
 
         .menu-mobile {
             display: none;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .menu-mobile {
+            a {
+                padding: 5px;
+
+                &:first-child {
+                    margin-left: 5px;
+                }
+
+            }
         }
     }
 }
