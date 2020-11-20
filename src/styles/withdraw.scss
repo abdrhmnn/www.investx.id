@@ -361,9 +361,10 @@
     }
 
     @media screen and (max-width: 768px) {
-        .box-saldo{
+        .box-saldo {
             margin-left: 0;
         }
+
         .withdraw {
             padding: 0 !important;
         }
@@ -467,13 +468,9 @@
 
                 &:first-child {
                     margin-left: 5px;
-                    border-radius: 100px 0px 0px 100px;
 
                 }
-                &:last-child{
-                    border-radius: 100px 0px 0px 100px;
 
-                }
             }
 
             @keyframes color-change-2x {
@@ -510,13 +507,8 @@
 
                 &:first-child {
                     margin-left: 5px;
-                    border-radius: 100px 0px 0px 100px;
                 }
 
-                &:last-child{
-                    border-radius: 0px 100px 100px 0px;
-
-                }
             }
         }
     }
