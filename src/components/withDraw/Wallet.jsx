@@ -83,7 +83,7 @@ class Wallet extends Component {
                                         <p className="title-input">Nominal Top Up</p>
                                         <div className="box-input">
                                             <p>Rp</p>
-                                            <input  class="textview" name="textview" value={this.state.input} id="input-saran"/>
+                                            <input type="number" class="textview" name="textview" value={this.state.input} id="input-saran"/>
                                         </div>
                                     </div>
                                     <div className="list-saran-mobile">
