@@ -42,6 +42,12 @@ const API = {
       "phone_number": kuki.get('phone_number')
     }
     return axios.post(apiBaseUrl + `/authentication/resend-otp/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
+  },
+  resendEmail: () => {
+    const body = {
+      "email": kuki.get('email'),
+    }
+    return axios.post(apiBaseUrl + `/authentication/resend-email/`, body, {headers : {Authorization : `Token ${kuki.get('token')}`}})
   }
 };
 

@@ -17,8 +17,18 @@ class VerifyOtp extends React.Component {
     counting = ()=>{
         API.resendOtp().then(res => {
             console.log(res)
+            Swal.fire({
+                icon: 'success',
+                title: 'Sukses',
+                text: 'OTP berhasil dikirim ke nomor anda!'
+            })
         }).catch(err => {
             console.log(err)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'OTP gagal dikirim ke nomor anda!'
+            })
         })
         const countdown = ()=> this.setState({onStartCount : this.state.onStartCount - 1})
         const reset = (t)=> this.setState({onStartCount :t})
@@ -27,7 +37,7 @@ class VerifyOtp extends React.Component {
     
 
     render() {
-        const {close} = this.props
+        const {close, openModalNewPin} = this.props
 
         return (
             <div className='pin_components'>
@@ -68,7 +78,12 @@ class VerifyOtp extends React.Component {
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        window.location.href = '/'
+
+                        if(openModalNewPin){
+                            openModalNewPin()
+                        }else{
+                            window.location.href = '/'
+                        }
                         kuki.set('status', {phone : true, email : kuki.get('status').email})
                     }).catch(err =>{
                         console.log(err.response)
@@ -93,7 +108,7 @@ class VerifyOtp extends React.Component {
                 </Formik>
                 <Button type='submit' form='otp'>Verifikasi</Button>
                 <p className="info">
-                    Belum menerima email aktivasi? 
+                    Belum menerima OTP aktivasi? 
                     {
                         this.state.onStartCount === 30?
                         <span onClick={this.counting} style={{ cursor: 'pointer' }}> Kirim Ulang</span>
