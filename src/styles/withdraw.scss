@@ -361,6 +361,9 @@
     }
 
     @media screen and (max-width: 768px) {
+        .box-saldo{
+            margin-left: 0;
+        }
         .withdraw {
             padding: 0 !important;
         }

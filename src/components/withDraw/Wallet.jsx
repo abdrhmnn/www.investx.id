@@ -54,80 +54,6 @@ class Wallet extends Component {
                     <p className="mb-0">Rp. 20.000.000</p>
                   </div>
                 </div>
-
-<<<<<<< HEAD
-                            </div>
-                        </div>
-
-                        <div className="col-md-8 ">
-                            <div className="box-right topup-box">
-                                <div className="row">
-                                    <div className="col-md-9 input-nominal">
-                                        <p className="title-input">Nominal Top Up</p>
-                                        <div className="box-input">
-                                            <p>Rp</p>
-                                            <input type="number" class="textview" name="textview" value={this.state.input} id="input-saran"/>
-                                        </div>
-                                    </div>
-                                    <div className="list-saran-mobile">
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 30000000 })}>30.000.000</Button>
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 40000000 })}>40.000.000</Button>
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 50000000 })}>50.000.000</Button>
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 60000000 })}>60.000.000</Button>
-                                        <Button style={styleSaran} onClick={() => this.setState({ input: 70000000 })}>70.000.000</Button>
-                                    </div>
-                                    <div className="col-md buttons-topup">
-                                        <Link to="/topup">
-                                            <Button className='blue'>
-                                                <span>TOP UP</span>
-                                            </Button>
-                                        </Link>
-                                        <Link to="/withdraw">
-                                            <Button className='line-blue'>
-                                                <span>WITHDRAW</span>
-                                            </Button>
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div class="list-saran">
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 30000000 })}>30.000.000</Button>
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 40000000 })}>40.000.000</Button>
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 50000000 })}>50.000.000</Button>
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 60000000 })}>60.000.000</Button>
-                                    <Button style={styleSaran} onClick={() => this.setState({ input: 70000000 })}>70.000.000</Button>
-                                </div>
-                            </div>
-
-                            <div className="box-right mt-4">
-                                <div className="title-alt riwayat-trans">
-                                    <b>Riwayat Transaksi</b>
-                                </div>
-                                <br/>
-                                <div className="menu">
-                                    <a>
-                                        Semua
-                                    </a>
-                                    <a>Pembelian</a>
-                                    <a>Top Up</a>
-                                    <a>WithDraw</a>
-                                </div>
-
-                                <div className="menu-mobile">
-                                    <a>
-                                        All
-                                    </a>
-                                    <a>Pembelian</a>
-                                    <a>Top Up</a>
-                                    <a>WithDraw</a>
-
-                                </div>
-
-                                <div className="box-isi">
-
-                                    <div className="kotak berhasil">
-=======
                 <div className="box-detail-saldo">
                   <p className="saldo-detail">
                     Saldo Rupiah
@@ -140,7 +66,6 @@ class Wallet extends Component {
                     <span>Rp. 5,000.000</span>
                   </p>
                 </div>
->>>>>>> bba4184fcfd6bb4ad2c437687e0d10f015fcb59c
 
                 <div className="know-more">
                   <span>Pelajari Lebih Lanjut</span>
