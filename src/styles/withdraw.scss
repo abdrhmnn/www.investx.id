@@ -454,13 +454,22 @@
             a {
                 color: #4CB5EF;
                 cursor: pointer;
-                padding: 5px;
+                padding: 8px;
 
                 &:hover {
                     color: white;
                     animation: color-change-2x 2s linear infinite alternate both;
-                    border-radius: 30px;
                     background: #4CB5EF;
+                }
+
+                &:first-child {
+                    margin-left: 5px;
+                    border-radius: 100px 0px 0px 100px;
+
+                }
+                &:last-child{
+                    border-radius: 100px 0px 0px 100px;
+
                 }
             }
 
@@ -488,6 +497,24 @@
 
         .menu-mobile {
             display: none;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .menu-mobile {
+            a {
+                padding: 5px;
+
+                &:first-child {
+                    margin-left: 5px;
+                    border-radius: 100px 0px 0px 100px;
+                }
+
+                &:last-child{
+                    border-radius: 0px 100px 100px 0px;
+
+                }
+            }
         }
     }
 }

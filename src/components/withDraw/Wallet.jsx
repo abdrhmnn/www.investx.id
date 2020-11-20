@@ -87,7 +87,7 @@ class Wallet extends Component {
                                         </div>
                                     </div>
                                     <div className="list-saran-mobile">
-                                         <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
+                                        <Button style={styleSaran} onClick={() => this.setState({ input: 20000000 })}>20.000.000</Button>
                                         <Button style={styleSaran} onClick={() => this.setState({ input: 30000000 })}>30.000.000</Button>
                                         <Button style={styleSaran} onClick={() => this.setState({ input: 40000000 })}>40.000.000</Button>
                                         <Button style={styleSaran} onClick={() => this.setState({ input: 50000000 })}>50.000.000</Button>
