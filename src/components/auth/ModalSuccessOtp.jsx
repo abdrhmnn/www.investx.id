@@ -5,8 +5,6 @@
 
 // import { Button } from '@material-ui/core';
 
-
-
 // const ModalSuccessOtp = (p) =>  {
 //     return (
 //         // <div className='overlay-success-otp'>

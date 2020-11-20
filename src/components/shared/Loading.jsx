@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import ReactLoading from 'react-loading';
-import {Modal, Backdrop, Fade} from '@material-ui/core';
+import { Modal, Backdrop, Fade } from "@material-ui/core";
 import ScaleLoader from "react-spinners/ScaleLoader";
 
-
 class Loading extends Component {
-    state={
-        open : false
-    }
-    render() {
-        return (
+  state = {
+    open: false,
+  };
+  render() {
+    return (
+      <div>
+        <Modal
+          className="d-flex justify-content-center align-items-center"
+          open={this.props.onOpen}
+          onClose={this.props.onClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={this.props.onOpen} className="modal_remove_outline">
             <div>
-                <Modal
-                    className='d-flex justify-content-center align-items-center'
-                    open={this.props.onOpen}
-                    onClose={this.props.onClose}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                        timeout: 500,
-                    }}
-                >
-                    <Fade in={this.props.onOpen} className='modal_remove_outline'>
-                        <div>
-                            <ScaleLoader color='#fff'  size={150}/>
-                        </div>
-                    </Fade>
-                </Modal>
+              <ScaleLoader color="#fff" size={150} />
             </div>
-        );
-    }
+          </Fade>
+        </Modal>
+      </div>
+    );
+  }
 }
 
 export default Loading;
