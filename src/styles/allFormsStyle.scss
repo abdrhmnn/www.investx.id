@@ -307,8 +307,15 @@
                     font-size: 12px;
                 }
             }
-         
-            ///////////
+        }
+
+        .MuiButton-label{
+            color: #0288D1 !important;
+            font-weight: 700 !important;
+            
+            img{
+                margin-right: 10px !important;
+            }
         }
     }
 
