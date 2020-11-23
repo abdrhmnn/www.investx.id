@@ -15,7 +15,6 @@ deploy_staging:
   stage: deploy
   environment: Production
   script:
-    - rm -rf node_modules/ && npm cache clean
     - npm install
     - npm run build
     - cd build/
