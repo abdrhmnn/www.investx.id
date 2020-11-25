@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Slide } from "react-reveal";
 
 import bca from "../../images/payment/bca.svg";
@@ -10,6 +10,8 @@ import kredit from "../../images/payment/kredit.svg";
 import mandiri from "../../images/payment/mandiri.svg";
 import minimarket from "../../images/payment/minimarket.svg";
 import ovo from "../../images/payment/ovo.svg";
+
+import RekeningModal from "./RekeningModal";
 
 class PaymentMethod extends Component {
   state = {
@@ -126,7 +128,10 @@ class PaymentMethod extends Component {
         {!this.state.toggleAll ? (
           this.renderMethod([methods[0]])
         ) : (
-          <Slide bottom>{this.renderMethod(methods)}</Slide>
+          <Fragment>
+            <Slide bottom>{this.renderMethod(methods)}</Slide>
+            <RekeningModal />
+          </Fragment>
         )}
       </>
     );

@@ -307,8 +307,15 @@
                     font-size: 12px;
                 }
             }
-         
-            ///////////
+        }
+
+        .MuiButton-label{
+            color: #0288D1 !important;
+            font-weight: 700 !important;
+            
+            img{
+                margin-right: 10px !important;
+            }
         }
     }
 
@@ -331,7 +338,7 @@
             text-transform: uppercase;
             color: #ffffff;
             background: #01579b;
-            border-radius: 9px;
+            border-radius: 30px;
             margin-bottom: 20px;
             border: none;
             outline: none;
