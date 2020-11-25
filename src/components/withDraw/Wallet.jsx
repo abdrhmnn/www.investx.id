@@ -27,6 +27,49 @@ class Wallet extends Component {
       fontSize: "9pt",
     };
 
+    const menu = [
+      {
+        id: 1,
+        category: "topup",
+        tanggal: "10 Aug 2020",
+        jam: "08:30",
+        transaksi:"(IVR/204151525/XX/VII/3333222626)",
+        pemb:"20.000.000",
+        nom:"20.000.000",
+        status:"berhasil",
+      },
+      {
+        id: 2,
+        category: "pembelian",
+        tanggal: "10 Aug 2020",
+        jam: "08:30",
+        transaksi:"(IVR/204151525/XX/VII/3333222626)",
+        pemb:"20.000.000",
+        nom:"20.000.000",
+        status:"Dibatalkan",
+      },
+      {
+        id: 3,
+        category: "pembelian",
+        tanggal: "10 Aug 2020",
+        jam: "08:30",
+        transaksi:"(IVR/204151525/XX/VII/3333222626)",
+        pemb:"20.000.000",
+        nom:"20.000.000",
+        status:"Dibatalkan",
+      },
+      {
+        id: 4,
+        category: "topup",
+        tanggal: "10 Aug 2020",
+        jam: "08:30",
+        transaksi:"(IVR/204151525/XX/VII/3333222626)",
+        pemb:"20.000.000",
+        nom:"20.000.000",
+        status:"Dibatalkan",
+      }
+    ];
+
     return (
       <div className="all-forms-style wallet">
         <div className="bg">
@@ -186,18 +229,18 @@ class Wallet extends Component {
                   <b>Riwayat Transaksi</b>
                 </div>
                 <br />
-                <div className="menu">
-                  <a>Semua</a>
-                  <a>Pembelian</a>
-                  <a>Top Up</a>
-                  <a>WithDraw</a>
+                 <div className="menu">
+                  <Button type="button" data-id="semua" />Semua</Button>
+                  <Button type="button" data-id="pembelian" />Pembelian</Button>
+                  <Button type="button" data-id="topup" />Top Up</Button>
+                  <Button type="button" data-id="withdraw" />WithDraw</Button>
                 </div>
 
                 <div className="menu-mobile">
-                  <a>All</a>
-                  <a>Pembelian</a>
-                  <a>Top Up</a>
-                  <a>WithDraw</a>
+                 <Button type="button" data-id="semua" />All</Button>
+                  <Button type="button" data-id="pembelian" />Pembelian</Button>
+                  <Button type="button" data-id="topup" />Top Up</Button>
+                  <Button type="button" data-id="withdraw" />WithDraw</Button>
                 </div>
 
                 <div className="box-isi">
@@ -260,7 +303,7 @@ class Wallet extends Component {
                       <div className="col-md-4">
                         <img src={tarik} className="mt-3" alt="" />
                         <span className="title-nominal">Penarikan</span>
-                        <p className="jumlah-nominal">+20.000.000</p>
+                        <p className="jumlah-nominal">-20.000.000</p>
                       </div>
                       <div className="col-md-4 total-pemb">
                         <span className="status-nom">Status</span>
