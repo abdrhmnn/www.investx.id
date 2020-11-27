@@ -230,18 +230,19 @@ class Wallet extends Component {
                 </div>
                 <br />
                  <div className="menu">
-                  <Button type="button" data-id="semua" />Semua</Button>
-                  <Button type="button" data-id="pembelian" />Pembelian</Button>
-                  <Button type="button" data-id="topup" />Top Up</Button>
-                  <Button type="button" data-id="withdraw" />WithDraw</Button>
+                  <a>Semua</a>
+                  <a>Pembelian</a>
+                  <a>Top Up</a>
+                  <a>WithDraw</a>
                 </div>
 
                 <div className="menu-mobile">
-                 <Button type="button" data-id="semua" />All</Button>
-                  <Button type="button" data-id="pembelian" />Pembelian</Button>
-                  <Button type="button" data-id="topup" />Top Up</Button>
-                  <Button type="button" data-id="withdraw" />WithDraw</Button>
+                  <a>All</a>
+                  <a>Pembelian</a>
+                  <a>Top Up</a>
+                  <a>WithDraw</a>
                 </div>
+
 
                 <div className="box-isi">
                   <div className="kotak berhasil">
