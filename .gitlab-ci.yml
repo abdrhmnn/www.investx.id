@@ -15,6 +15,7 @@ deploy_staging:
   stage: deploy
   environment: Production
   script:
+    - npm install --global eslint
     - npm install
     - npm run build
     - cd build/
