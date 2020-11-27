@@ -48,8 +48,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "react-app",
-      "plugin:prettier/recommended"
+      "react-app"
     ],
     "plugins": [
       "unused-imports"
@@ -80,9 +79,6 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-unused-imports": "^1.0.0",
-    "prettier": "^2.1.2"
+    "eslint-plugin-unused-imports": "^1.0.0"
   }
 }
