@@ -27,48 +27,48 @@ class Wallet extends Component {
       fontSize: "9pt",
     };
 
-    const menu = [
-      {
-        id: 1,
-        category: "topup",
-        tanggal: "10 Aug 2020",
-        jam: "08:30",
-        transaksi:"(IVR/204151525/XX/VII/3333222626)",
-        pemb:"20.000.000",
-        nom:"20.000.000",
-        status:"berhasil",
-      },
-      {
-        id: 2,
-        category: "pembelian",
-        tanggal: "10 Aug 2020",
-        jam: "08:30",
-        transaksi:"(IVR/204151525/XX/VII/3333222626)",
-        pemb:"20.000.000",
-        nom:"20.000.000",
-        status:"Dibatalkan",
-      },
-      {
-        id: 3,
-        category: "pembelian",
-        tanggal: "10 Aug 2020",
-        jam: "08:30",
-        transaksi:"(IVR/204151525/XX/VII/3333222626)",
-        pemb:"20.000.000",
-        nom:"20.000.000",
-        status:"Dibatalkan",
-      },
-      {
-        id: 4,
-        category: "topup",
-        tanggal: "10 Aug 2020",
-        jam: "08:30",
-        transaksi:"(IVR/204151525/XX/VII/3333222626)",
-        pemb:"20.000.000",
-        nom:"20.000.000",
-        status:"Dibatalkan",
-      }
-    ];
+    // const menu = [
+    //   {
+    //     id: 1,
+    //     category: "topup",
+    //     tanggal: "10 Aug 2020",
+    //     jam: "08:30",
+    //     transaksi: "(IVR/204151525/XX/VII/3333222626)",
+    //     pemb: "20.000.000",
+    //     nom: "20.000.000",
+    //     status: "berhasil",
+    //   },
+    //   {
+    //     id: 2,
+    //     category: "pembelian",
+    //     tanggal: "10 Aug 2020",
+    //     jam: "08:30",
+    //     transaksi: "(IVR/204151525/XX/VII/3333222626)",
+    //     pemb: "20.000.000",
+    //     nom: "20.000.000",
+    //     status: "Dibatalkan",
+    //   },
+    //   {
+    //     id: 3,
+    //     category: "pembelian",
+    //     tanggal: "10 Aug 2020",
+    //     jam: "08:30",
+    //     transaksi: "(IVR/204151525/XX/VII/3333222626)",
+    //     pemb: "20.000.000",
+    //     nom: "20.000.000",
+    //     status: "Dibatalkan",
+    //   },
+    //   {
+    //     id: 4,
+    //     category: "topup",
+    //     tanggal: "10 Aug 2020",
+    //     jam: "08:30",
+    //     transaksi: "(IVR/204151525/XX/VII/3333222626)",
+    //     pemb: "20.000.000",
+    //     nom: "20.000.000",
+    //     status: "Dibatalkan",
+    //   },
+    // ];
 
     return (
       <div className="all-forms-style wallet">
@@ -229,7 +229,7 @@ class Wallet extends Component {
                   <b>Riwayat Transaksi</b>
                 </div>
                 <br />
-                 <div className="menu">
+                <div className="menu">
                   <a>Semua</a>
                   <a>Pembelian</a>
                   <a>Top Up</a>
@@ -242,7 +242,6 @@ class Wallet extends Component {
                   <a>Top Up</a>
                   <a>WithDraw</a>
                 </div>
-
 
                 <div className="box-isi">
                   <div className="kotak berhasil">
