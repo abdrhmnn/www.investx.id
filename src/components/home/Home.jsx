@@ -28,12 +28,12 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props.location.hash === "#modal-terimakasih");
-    if (this.props.location.hash === "#modal-terimakasih") {
-      this.setState({
-        modalTerimakasih: true,
-      });
-    }
+    // console.log(this.props.location.hash === "#modal-terimakasih");
+    // if (this.props.location.hash === "#modal-terimakasih") {
+    //   this.setState({
+    //     modalTerimakasih: true,
+    //   });
+    // }
   }
 
   // offModal = () => {
@@ -133,6 +133,7 @@ class Home extends Component {
           <ol className="carousel-indicators">
             {carouselItem.map((res, i) => (
               <li
+                key={i}
                 data-target="#carouselHome"
                 data-slide-to={i.toString()}
                 className={`indicator-color ${i === 0 ? "active" : ""}}`}
