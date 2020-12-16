@@ -17,7 +17,7 @@ import CaroHome from "./CaroHome";
 import Benefit from "./Benefit";
 import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
-import FAQ from "./FAQ";
+// import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
@@ -223,7 +223,7 @@ class Home extends Component {
         <CaroQuotes />
         <JoinNow />
         <div>
-          <FAQ />
+          {/* <FAQ /> */}
         </div>
 
         <Footer />
