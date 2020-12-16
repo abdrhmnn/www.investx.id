@@ -17,7 +17,7 @@ import CaroHome from "./CaroHome";
 import Benefit from "./Benefit";
 import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
-// import FAQ from "./FAQ";
+import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
@@ -28,26 +28,8 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    // console.log(this.props.location.hash === "#modal-terimakasih");
-    // if (this.props.location.hash === "#modal-terimakasih") {
-    //   this.setState({
-    //     modalTerimakasih: true,
-    //   });
-    // }
   }
 
-  // offModal = () => {
-  //     this.setState({ modalOtp: false });
-  // };
-
-  // offModalTerimakasih = () => {
-  //     this.setState({ modalTerimakasih: false });
-  //     window.location.hash = "";
-  // };
-
-  // onModal = () => {
-  //     this.setState({ modalOtp: true });
-  // };
 
   render() {
     const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8];
@@ -224,7 +206,7 @@ class Home extends Component {
         <CaroQuotes />
         <JoinNow />
         <div>
-          {/* <FAQ /> */}
+          <FAQ />
         </div>
 
         <Footer />
