@@ -142,7 +142,7 @@ class Home extends Component {
           </ol>
           <div className="carousel-inner">
             {carouselItem.map((res, i) => (
-              <div className={`carousel-item ${i === 0 ? "active" : ""}`}>
+              <div key={i} className={`carousel-item ${i === 0 ? "active" : ""}`}>
                 <div
                   className="home"
                   style={{ backgroundImage: `url(${x}), url(${res.image})` }}
