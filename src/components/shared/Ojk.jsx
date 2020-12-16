@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import logoOJK from "../../images/ojk.svg";
+// import logoOJK from "../../images/ojk.svg";
 
 class Ojk extends Component {
   render() {
@@ -80,7 +80,7 @@ class Ojk extends Component {
                 investasi termasuk resiko kehilangan sebagian atau seluruh
                 modal.
               </p>
-              <img src={logoOJK} alt="logo" />
+              {/* <img src={logoOJK} alt="logo" /> */}
             </div>
           </div>
           <p>© 2020 InvestX.id All Rights Reserved</p>
