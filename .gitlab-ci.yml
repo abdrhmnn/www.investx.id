@@ -16,7 +16,7 @@ deploy_staging:
   environment: Production
   script:
     - npm install
-    - CI=false npm run build
+    - npm run build
     - cd build/
     - ls
     - sshpass -v
