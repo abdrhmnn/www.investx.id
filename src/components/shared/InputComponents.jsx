@@ -95,26 +95,29 @@ function InputSelect(props) {
     getOptionLabel,
     error,
     helperText,
+    getOptionSelected,
   } = props;
   const filterOpt = { ...props };
   delete filterOpt.getOptionLabel;
+  delete filterOpt.getOptionSelected;
+  delete filterOpt.value;
   return (
     <Autocomplete
       popupIcon={
         <img style={{ margin: "0 8px" }} src={chevroninput} alt="chevron" />
       }
       id={name}
-      autoComplete
       openOnFocus
       options={options}
       getOptionLabel={getOptionLabel}
+      getOptionSelected ={getOptionSelected}
       onChange={onChange}
       style={{ width: "100%" }}
       disabled={disabled}
       value={value}
       renderInput={(params) => (
         <TextField
-          {...params}
+        {...params}
           className="custom_text_input"
           variant="outlined"
           helperText={helperText}
@@ -141,6 +144,7 @@ function InputCheckbox(props) {
     helperText,
     legend,
     id,
+    disabled
   } = props;
   return (
     <FormControl error={error} style={{ marginBottom: 20 }}>
@@ -154,6 +158,7 @@ function InputCheckbox(props) {
         label={label}
         labelPlacement={labelPlacement}
         id={id}
+        disabled={disabled}
       />
       <FormHelperText>{helperText}</FormHelperText>
     </FormControl>

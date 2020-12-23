@@ -14,13 +14,13 @@ class HeaderInvestForm extends Component {
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link onClick={() => this.props.history.goBack()}>
+        <Link to='/'>
           <Fab className="back-button">
-            <img src={arrowback} alt="" />
+            <img src={arrowback} alt="back" />
           </Fab>
         </Link>
         <div className="logo-invest">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </div>
 
         <p className="title">Selamat datang {kuki.get("full_name")}</p>

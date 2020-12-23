@@ -57,6 +57,37 @@ const API = {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
+
+  ///API LOCATIONS
+  getProvince: () => {
+    return axios.get(apiBaseUrl + `/reference/province/`, {
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  getRegency: (data) => {
+    return axios.get(apiBaseUrl + `/reference/regency/`, {
+      params : {province_id : data},
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  getDistrict: (data) => {
+    return axios.get(apiBaseUrl + `/reference/district/`, {
+      params : {regency_id : data},
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  getVillage: (data) => {
+    return axios.get(apiBaseUrl + `/reference/kelurahan/`, {
+      params : {district_id : data},
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+  
+  
+
 };
 
 export default API;

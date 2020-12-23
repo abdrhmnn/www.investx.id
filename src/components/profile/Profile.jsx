@@ -30,15 +30,15 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    API.getProfile()
-      .then((res) => {
+    API.getProfile().then((res) => {
         console.log(res);
         this.setState({ dataProfile: res.data });
-      })
-      .catch((err) => {
+      }).catch((err) => {
         console.log(err.response);
       });
+
   }
+
 
   handleClick = (stringMenu) => this.props.changeTab(stringMenu);
 
