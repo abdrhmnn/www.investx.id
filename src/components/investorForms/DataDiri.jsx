@@ -246,16 +246,14 @@ class DataDiri extends Component {
                   <div className="col-md-6">
                     <Field
                       name="birth_date"
-                      type={this.state.isBlurDate ? "date" : 'text'}
+                      type="date"
                       required
                       label="Tanggal Lahir"
                       helperText={touched.birth_date && errors.birth_date}
-                      error={
-                        touched.birth_date && errors.birth_date
-                          ? true
-                          : false
-                      }
-                      onClick={()=> this.setState({isBlurDate : true})}
+                      error={touched.birth_date && errors.birth_date? true: false}
+                      InputLabelProps={{
+                        shrink: true
+                      }}
                       as={InputText}
                     />
                   </div>
@@ -441,13 +439,15 @@ class DataDiri extends Component {
                   <div className="col-md-12 mb-3">
                     <label
                       className="d-inline mb-4"
-                      style={{ fontSize: 14, cursor: "pointer" }}
+                      style={{ fontSize: 14, cursor : !values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ? 'not-allowed' : 'pointer'}}
                     >
                       <Checkbox
-                        style={{ 
-                          color: !values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ? "" :"#01579B", 
-                          marginBottom: 3 
-                        }}
+                        style={
+                          !values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ?  
+                          { marginBottom: 3 }
+                          :
+                          { color: "#01579B", marginBottom: 3 } 
+                        }
                         name="isSameAdd"
                         disabled = {!values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code}
                         onChange={(e)=>{
