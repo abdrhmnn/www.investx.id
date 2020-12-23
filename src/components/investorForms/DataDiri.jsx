@@ -427,7 +427,6 @@ class DataDiri extends Component {
                       label="Kode Pos"
                       type="text"
                       name="postal_code"
-                      required
                       helperText={touched.postal_code && errors.postal_code}
                       error={touched.postal_code && errors.postal_code ? true : false}
                     />
@@ -611,7 +610,6 @@ class DataDiri extends Component {
                       label="Kode Pos"
                       type="text"
                       name="postal_codeOcc"
-                      required
                       helperText={touched.postal_codeOcc && errors.postal_codeOcc}
                       error={touched.postal_codeOcc && errors.postal_codeOcc ? true : false}
                     />
