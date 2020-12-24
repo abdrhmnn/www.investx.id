@@ -85,7 +85,24 @@ const API = {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
+
+  getProfileCheck: () => {
+    return axios.get(apiBaseUrl + `/account/me/`, {
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
   
+  postPersonalAccount : (body) =>{
+    return axios.post(apiBaseUrl + `/account/personal/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  postEducation : (body) =>{
+    return axios.post(apiBaseUrl + `/account/education/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
   
 
 };

@@ -20,9 +20,13 @@ import Fade from "react-reveal/Fade";
 import HeaderInvestForm from "./HeaderInvestForm";
 import kuki from '../../helpers/cookie'
 import API from "../../api";
+import Loading from "../shared/Loading";
+import Swal from "sweetalert2";
+
 
 class DataDiri extends Component {
   state = {
+    loading : false,
     isBlurDate : false,
     provinceData : [],
     provinceId: null,
@@ -43,7 +47,27 @@ class DataDiri extends Component {
   };
 
   componentDidMount(){
+    this.checkProfile()
     this.apiProvince()
+  }
+
+  checkProfile = () =>{
+    this.setState({loading : true})
+    const nextLink = '/investor-form-pendidikan-pekerjaan'
+    const keyCheck = 'is_personal_id_complete'
+    API.getProfileCheck().then(res=>{
+      if (res.data.profile[`${keyCheck}`]) {
+          this.props.history.push(nextLink)
+      }else{
+        this.setState({loading : false})
+      }
+    }).catch(()=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error 500',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
   }
   
   apiProvince = ()=>{
@@ -122,13 +146,15 @@ class DataDiri extends Component {
   render() {
     // console.log(this.state, 'THIS.STATE')
     const maritalOpt = [
-      { label: "Lajang", value: 0 },
-      { label: "Menikah", value: 1 },
+      { label: "Lajang", value: 1 },
+      { label: "Menikah", value: 2 },
+      { label: "Duda", value: 3 },
+      { label: "Janda", value: 4 },
     ];
 
     const citizenshipOpt =[
       { label: "Warga Negara Indonesia", value: 1 },
-      { label: "Warga Negara Asing", value: 0 },
+      { label: "Warga Negara Asing", value: 2 },
     ];
 
     const initialValueObj = {
@@ -175,6 +201,7 @@ class DataDiri extends Component {
 
     return (
       <div className="all-forms-style">
+        <Loading onOpen={this.state.loading}/>
         <HeaderInvestForm activeStep={1} />
         <div className="box-form-data">
           <p className="title">Data Diri</p>
@@ -182,7 +209,51 @@ class DataDiri extends Component {
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
-              console.log(val);
+              let idCardAddress = {
+                "address": val.address,
+                "postal_code": val.postal_code,
+                "province": val.province.id,
+                "regency": val.regency.id,
+                "district": val.district.id,
+                "kelurahan" : val.village.id
+              }
+              let occupationAddress = {
+                "address": val.addressOcc,
+                "postal_code": val.postal_codeOcc,
+                "province": val.provinceOcc.id,
+                "regency": val.regencyOcc.id,
+                "district": val.districtOcc.id,
+                "kelurahan" : val.villageOcc.id
+              }
+
+              let data = {
+                "gender": val.gender,
+                "birth_place": val.birth_place,
+                "birth_date": val.birth_date,
+                "marital_status": val.marital_status.value,
+                "citizenship": val.citizenship.value,
+                "id_card_address": idCardAddress,
+                "occupation_address": val.isSameAdd ? idCardAddress : occupationAddress
+              }
+              API.postPersonalAccount(data).then(res =>{
+                this.setState({loading : true})
+                console.log(res)
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Data Diri berhasil di simpan',
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then(()=> this.props.history.push('/investor-form-pendidikan-pekerjaan'))
+              }).catch(err =>{
+                this.setState({loading : false})
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Data Diri gagal di simpan!',
+                  text : `${Object.entries(err.response.data)} \n`
+                })
+                // console.log(err.response)
+              })
+              // console.log(data)
             }}
           >
             {({handleBlur,handleSubmit,errors,values,touched,setFieldValue,}) => (
@@ -216,9 +287,9 @@ class DataDiri extends Component {
                       </Button>
                       <Button
                         className={
-                          values.gender === 0 ? "act-gen" : null
+                          values.gender === 2 ? "act-gen" : null
                         }
-                        onClick={() => setFieldValue("gender", 0)}
+                        onClick={() => setFieldValue("gender", 2)}
                       >
                         Wanita
                       </Button>
