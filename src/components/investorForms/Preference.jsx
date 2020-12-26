@@ -23,7 +23,7 @@ class Preference extends Component {
   }
 
   checkProfileAll = () =>{
-    // this.setState({loading : true})
+    this.setState({loading : true})
     const arrCheckAll = [
       { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
       { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
@@ -41,7 +41,7 @@ class Preference extends Component {
           }
         }else{
           this.props.history.push(keyCheck.link)
-          console.log('nonpnppp')
+          // console.log('nonpnppp')
         }
 
       }
