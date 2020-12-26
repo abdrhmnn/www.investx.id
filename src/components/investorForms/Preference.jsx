@@ -7,63 +7,98 @@ import { InputSelect } from "../shared/InputComponents";
 import { Button } from "@material-ui/core";
 import HeaderInvestForm from "./HeaderInvestForm";
 
+import API from "../../api";
+import Loading from "../shared/Loading";
+import Swal from "sweetalert2";
+
 class Preference extends Component {
   state = {
-    borderActive: "",
-    gender: "",
-    tanggalLahir: null,
-    successSubmit: false,
+    pageName : 'preference',
+    completeInvestFormModal : false,
+    loading : false
   };
 
-  borderBlue = (e) => {
-    if (e.target.id.length !== 0) {
-      console.log(e.target.id);
-      this.setState({ borderActive: e.target.id });
-      console.log();
-    } else {
-      console.log(e.target.id);
-      console.log("kosong");
-    }
-  };
+  componentDidMount(){
+    this.checkProfileAll()
+  }
 
-  onSubmit = ({ errors, isValid }) => {
-    if (isValid) {
-    } else {
-      // `errors` is also an object!
-      console.log("Something is wrong:", errors);
-    }
-  };
+  checkProfileAll = () =>{
+    // this.setState({loading : true})
+    // const nextLink = '/investor-form-pendidikan-pekerjaan'
+    // const keyCheck = 'is_preference_complete'
+    // const arrCheckAll = [
+    //   { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
+    //   { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
+    //   { key : 'is_document_complete', link : '/investor-form-dokumen'}, 
+    //   { key : 'bank_accounts.number', link : '/investor-form-bank'}, 
+    //   { key : 'is_preference_complete', link : '/investor-form-preference'}, 
+    // ]
+    API.getProfileCheck().then(res=>{
+      console.log(res.data.profile.bank_accounts.number)
+      // for (const keyCheck of arrCheckAll) {
+      //   console.log(keyCheck);
+      //   if (res.data.profile[`${keyCheck.key}`]) {
+      //       this.props.history.push(keyCheck.link)
+      //   }else{
+      //     this.setState({loading : false})
+      //   }
+      
+      // }
+    }).catch(()=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error 500',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
+  }
 
-  offModal = () =>
-    this.setState({ successSubmit: false }, () => (window.location.href = "/"));
+
+
+  offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/"));
 
   render() {
-    const top100Films = [
-      { label: "The Shawshank Redemption", year: 1994, value: "lala" },
-      { label: "The Godfather", year: 1972 },
-      { label: "The Godfather: Part II", year: 1974 },
-      { label: "The Dark Knight", year: 2008 },
+    const budgetObj = [
+      { label: "<10.000.000", value: 1 },
+      { label: ">10.000.000", value: 2 },
+      // { label: "300.000", value: 2 },
+      // { label: "400.000", value: 3 },
+      // { label: "500.000", value: 4 },
+    ];
+
+    const riskObj = [
+      { label: "Rendah", value: 1 },
+      { label: "Sedang", value: 2 },
+      { label: "Tinggi", value: 3 },
+    ];
+
+    const sourceObj = [
+      { label: "Otomotiv", value: 1 },
+      { label: "Finansial", value: 2 },
+      { label: "Travel", value: 3 },
+      { label: "Pertanian", value: 4 },
+      // { label: "Teknologi", value: 5 },
+      // { label: "Pertanian", value: 6 },
+      // { label: "Penginapan", value: 7 },
+      // { label: "Retail", value: 0 },
     ];
 
     const initialValueObj = {
-      pendidikan: null,
-      pekerjaan: null,
-      industri: null,
-      pendapatan: null,
-      sumberpendapatan: null,
-    };
+        "budget_preference": null,
+        "risk_preference": null,
+        "information_source": null
+      }
 
     const schemaObj = Yup.object({
-      pendidikan: Yup.object().nullable().required(),
-      pekerjaan: Yup.object().nullable().required(),
-      industri: Yup.object().nullable().required(),
-      pendapatan: Yup.object().nullable().required(),
-      sumberpendapatan: Yup.object().nullable().required(),
+      budget_preference: Yup.object().nullable().required(),
+      risk_preference: Yup.object().nullable().required(),
+      information_source: Yup.object().nullable().required(),
     });
 
     return (
       <div className="all-forms-style">
-        {this.state.successSubmit ? (
+        <Loading onOpen={this.state.loading}/>
+        {this.state.completeInvestFormModal ? (
           <PopSuccessForm offModal={this.offModal} />
         ) : null}
         <HeaderInvestForm activeStep={5} />
@@ -76,13 +111,36 @@ class Preference extends Component {
             validationSchema={schemaObj}
             onSubmit={(val) => {
               console.log(val);
+              const body = {
+                "budget_preference": val.budget_preference.value,
+                "risk_preference": val.risk_preference.value,
+                "information_source": val.information_source.value
+              }
+              API.postPreference(body).then(res =>{
+                this.setState({loading : true})
+                console.log(res)
+                Swal.fire({
+                  icon: 'success',
+                  title: `Data ${this.state.pageName} berhasil di simpan`,
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then(()=> this.setState({completeInvestFormModal : true, loading : false}))
+              }).catch(err =>{
+                this.setState({loading : false})
+                Swal.fire({
+                  icon: 'error',
+                  title: `Data ${this.state.pageName} gagal di simpan`,
+                  text : `${Object.entries(err.response.data)} \n`
+                })
+                console.log(err.response)
+              })
             }}
           >
             {({
               handleBlur,
               handleSubmit,
               errors,
-              values,
+              // values,
               touched,
               setFieldValue,
             }) => (
@@ -90,48 +148,48 @@ class Preference extends Component {
                 <div className="row">
                   <div className="col-md-12">
                     <InputSelect
-                      label="Budget Investasi *"
-                      name="pendidikan"
+                      label="Budget Investasi"
+                      required
+                      name="budget_preference"
                       getOptionLabel={(val) => val.label}
-                      options={top100Films}
-                      helperText={touched.pendidikan && errors.pendidikan}
+                      options={budgetObj}
+                      helperText={touched.budget_preference && errors.budget_preference}
                       error={
-                        touched.pendidikan && errors.pendidikan ? true : false
+                        touched.budget_preference && errors.budget_preference ? true : false
                       }
-                      value={values.pendidikan}
                       onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("pendidikan", val)}
+                      onChange={(e, val) => setFieldValue("budget_preference", val)}
                     />
                   </div>
                   <div className="col-md-12">
                     <InputSelect
-                      label="Preferensi Resiko Investasi *"
-                      name="pekerjaan"
+                      label="Preferensi Resiko Investasi"
+                      required
+                      name="risk_preference"
                       getOptionLabel={(val) => val.label}
-                      options={top100Films}
-                      helperText={touched.pekerjaan && errors.pekerjaan}
+                      options={riskObj}
+                      helperText={touched.risk_preference && errors.risk_preference}
                       error={
-                        touched.pekerjaan && errors.pekerjaan ? true : false
+                        touched.risk_preference && errors.risk_preference ? true : false
                       }
-                      value={values.pekerjaan}
                       onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("pekerjaan", val)}
+                      onChange={(e, val) => setFieldValue("risk_preference", val)}
                     />
                   </div>
                   <div className="col-md-12">
                     <InputSelect
-                      label="Preferensi Investasi *"
-                      name="industri"
+                      label="Preferensi Investasi"
+                      required
+                      name="information_source"
                       getOptionLabel={(val) => val.label}
-                      options={top100Films}
-                      helperText={touched.industri && errors.industri}
-                      error={touched.industri && errors.industri ? true : false}
-                      value={values.industri}
+                      options={sourceObj}
+                      helperText={touched.information_source && errors.information_source}
+                      error={touched.information_source && errors.information_source ? true : false}
                       onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("industri", val)}
+                      onChange={(e, val) => setFieldValue("information_source", val)}
                     />
                   </div>
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <InputSelect
                       label="Darimana anda mengetahui tentang Invest X ? *"
                       name="sumberpendapatan"
@@ -151,7 +209,7 @@ class Preference extends Component {
                         setFieldValue("sumberpendapatan", val)
                       }
                     />
-                  </div>
+                  </div> */}
                 </div>
               </form>
             )}
@@ -172,7 +230,7 @@ class Preference extends Component {
           <Button
             type="submit"
             form="investorForm"
-            onClick={() => this.setState({ successSubmit: true })}
+            // onClick={() => this.setState({ completeInvestFormModal: true })}
           >
             SIMPAN & LANJUTKAN
           </Button>

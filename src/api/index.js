@@ -4,7 +4,6 @@ import kuki from "../helpers/cookie";
 // const localBaseUrl = "http://192.168.0.14:8000";
 const apiBaseUrl = "https://api.staging.investx.id";
 
-// axios.defaults.baseURL = apiBaseUrl;
 
 const API = {
   register: (props) => {
@@ -100,6 +99,31 @@ const API = {
 
   postEducation : (body) =>{
     return axios.post(apiBaseUrl + `/account/education/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  postDocument : (body) =>{
+    return axios.post(apiBaseUrl + `/account/document/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  postBank : (body) =>{
+    return axios.post(apiBaseUrl + `/account/bank/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  postPreference: (body) =>{
+    return axios.post(apiBaseUrl + `/account/preference/`, body,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
+  //REFERENCE FILE
+  refPostFile : (body) =>{
+    return axios.post(apiBaseUrl + `/reference/file/`, body,{
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
