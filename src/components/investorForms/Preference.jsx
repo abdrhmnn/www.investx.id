@@ -24,26 +24,27 @@ class Preference extends Component {
 
   checkProfileAll = () =>{
     // this.setState({loading : true})
-    // const nextLink = '/investor-form-pendidikan-pekerjaan'
-    // const keyCheck = 'is_preference_complete'
-    // const arrCheckAll = [
-    //   { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
-    //   { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
-    //   { key : 'is_document_complete', link : '/investor-form-dokumen'}, 
-    //   { key : 'bank_accounts.number', link : '/investor-form-bank'}, 
-    //   { key : 'is_preference_complete', link : '/investor-form-preference'}, 
-    // ]
+    const arrCheckAll = [
+      { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
+      { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
+      { key : 'is_document_complete', link : '/investor-form-dokumen'}, 
+      { key : 'bank_accounts.number', link : '/investor-form-bank'}, 
+      { key : 'is_preference_complete', link : '/investor-form-preference'}, 
+    ]
     API.getProfileCheck().then(res=>{
-      console.log(res.data.profile.bank_accounts.number)
-      // for (const keyCheck of arrCheckAll) {
-      //   console.log(keyCheck);
-      //   if (res.data.profile[`${keyCheck.key}`]) {
-      //       this.props.history.push(keyCheck.link)
-      //   }else{
-      //     this.setState({loading : false})
-      //   }
-      
-      // }
+      for (const keyCheck of arrCheckAll) {
+        console.log(keyCheck);
+        if (res.data.profile[`${keyCheck.key}`] === true && res.data.profile[`${keyCheck.key}`] !== "") {
+          // console.log(res.data.profile[`${keyCheck.key}`]=== true)
+          if (res.data.profile[`${keyCheck.key}`] === true && keyCheck.key === 'is_preference_complete') {
+              this.setState({completeInvestFormModal : true, loading : false})
+          }
+        }else{
+          this.props.history.push(keyCheck.link)
+          console.log('nonpnppp')
+        }
+
+      }
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
