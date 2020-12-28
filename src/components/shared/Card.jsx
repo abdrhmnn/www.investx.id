@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import loca from "../../images/loca.svg";
 
+const dummyImag = 'https://picsum.photos/280/180'
+
 class Card extends Component {
   render() {
     const { name } = this.props;
     return (
       <div>
         <div className="card-sec">
-          <img src="https://placeimg.com/640/480/tech" alt="card" />
+          <img src={dummyImag} alt="card" />
 
           <div className="body-card">
             <div>
