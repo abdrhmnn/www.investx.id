@@ -14,11 +14,29 @@ import Swal from "sweetalert2";
 class Bank extends Component {
   state ={
     loading : false,
-    pageName : 'bank'
+    pageName : 'bank',
+    dataBanks : [],
   }
 
   componentDidMount(){
     this.checkProfile()
+    this.getBanks()
+  }
+
+  getBanks = () =>{
+    const param = {
+      limit : 200
+    }
+    API.refBanks(param).then(res=>{
+     console.log(res.data)
+     this.setState({dataBanks : res.data.results})
+    }).catch(()=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error get banks',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
   }
 
   checkProfile = () =>{
@@ -26,7 +44,7 @@ class Bank extends Component {
     const nextLink = '/investor-form-preference'
     // const keyCheck = 'is_educational_complete'
     API.getProfileCheck().then(res=>{
-      if (res.data.profile.bank_accounts.number !== "") {
+      if (res.data.profile.bank_accounts.length !== 0) {
         this.props.history.push(nextLink)
       }else{
         this.setState({loading : false})
@@ -41,12 +59,6 @@ class Bank extends Component {
   }
   
   render() {
-    const objBanks = [
-      { label: "BCA", value: 0 },
-      { label: "BNI", value: 1 },
-      { label: "BRI", value: 2 },
-      { label: "Mandiri", value: 3 },
-    ];
 
     const initialValueObj = {
       "bank": null,
@@ -76,7 +88,7 @@ class Bank extends Component {
               console.log(val.bank.value)
               console.log(typeof(val.bank.value))
               const body = {
-                "bank": parseInt(val.bank.value),
+                "bank": parseInt(val.bank.id),
                 "number": val.number,
                 "name": val.name,
                 "branch": val.branch
@@ -117,9 +129,9 @@ class Bank extends Component {
                       label="Nama Bank"
                       required
                       name="bank"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={objBanks}
+                      getOptionLabel={(val) => val.display_name}
+                      getOptionSelected={(option, value) => option.display_name === value.display_name}
+                      options={this.state.dataBanks}
                       helperText={touched.bank && errors.bank}
                       error={touched.bank && errors.bank ? true : false}
                       // value={values.bank}

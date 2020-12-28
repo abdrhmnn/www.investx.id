@@ -28,23 +28,24 @@ class Preference extends Component {
       { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
       { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
       { key : 'is_document_complete', link : '/investor-form-dokumen'}, 
-      { key : 'bank_accounts.number', link : '/investor-form-bank'}, 
+      { key : 'bank_accounts', link : '/investor-form-bank'}, 
       { key : 'is_preference_complete', link : '/investor-form-preference'}, 
     ]
     API.getProfileCheck().then(res=>{
       for (const keyCheck of arrCheckAll) {
         console.log(keyCheck);
-        if (res.data.profile[`${keyCheck.key}`] === true && res.data.profile[`${keyCheck.key}`] !== "") {
+        if (res.data.profile[`${keyCheck.key}`] === true && res.data.profile[`${keyCheck.key}`].length !== 0) {
           // console.log(res.data.profile[`${keyCheck.key}`]=== true)
           if (res.data.profile[`${keyCheck.key}`] === true && keyCheck.key === 'is_preference_complete') {
               this.setState({completeInvestFormModal : true, loading : false})
           }
         }else{
-          this.props.history.push(keyCheck.link)
+          // this.props.history.push(keyCheck.link)
           // console.log('nonpnppp')
         }
 
       }
+      this.setState({loading : false})
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
@@ -56,7 +57,7 @@ class Preference extends Component {
 
 
 
-  offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/"));
+  offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/company-list"));
 
   render() {
     const budgetObj = [

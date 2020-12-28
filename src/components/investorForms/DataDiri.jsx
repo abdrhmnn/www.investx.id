@@ -29,20 +29,14 @@ class DataDiri extends Component {
     loading : false,
     isBlurDate : false,
     provinceData : [],
-    provinceId: null,
     regencyData : [],
-    regencyId: null,
     districtData: [],
-    districtId: null,
     villageData : [],
 
     //////OCCUPATION//////
     provinceDataOccupation : [],
-    provinceIdOccupation: '',
     regencyDataOccupation : [],
-    regencyIdOccupation: '',
     districtDataOccupation: [],
-    districtIdOccupation: '',
     villageDataOccupation : []
   };
 
@@ -82,65 +76,42 @@ class DataDiri extends Component {
     });
   }
   
-  apiRegency = (occupation)=>{
-    if (occupation) {
-      const id = this.state.provinceIdOccupation !== null? this.state.provinceIdOccupation.id : ''
-      return API.getRegency(id).then((res) => {
-        // console.log(res.data.results,'regency');
+  apiRegency = (occupation,id)=>{
+    return API.getRegency(id).then((res) => {
+      if (occupation) {
+        // console.log('IM TRUUUUU')
         this.setState({ regencyDataOccupation: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }else{
-      // console.log('running HEREEE!!')
-      const id = this.state.provinceId !== null? this.state.provinceId.id : ''
-      return API.getRegency(id).then((res) => {
-        // console.log(res.data.results,'regency');
+      }else{
+        // console.log('IM FALSE')
         this.setState({ regencyData: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }
+      }
+    }).catch((err) => {
+      console.log(err.response);
+    });
   }
 
-  apiDistrict = (occupation)=>{
-    if (occupation) {
-      const id = this.state.regencyIdOccupation !== null? this.state.regencyIdOccupation.id : ''
-      API.getDistrict(id).then((res) => {
-        // console.log(res.data.results,'distric');
+  apiDistrict = (occupation, id)=>{
+    API.getDistrict(id).then((res) => {
+      if (occupation) {
         this.setState({ districtDataOccupation: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }else{
-      const id = this.state.regencyId !== null? this.state.regencyId.id : ''
-      API.getDistrict(id).then((res) => {
-        // console.log(res.data.results,'distric');
+      }else{
         this.setState({ districtData: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }
+      }
+    }).catch((err) => {
+      console.log(err.response);
+    });
   }
 
-  apiVillage = (occupation)=>{
-    if (occupation) {
-      const id = this.state.districtIdOccupation !== null? this.state.districtIdOccupation.id : ''
-      API.getVillage(id).then((res) => {
-        // console.log(res.data.results,'village/desa');
+  apiVillage = (occupation, id)=>{
+    API.getVillage(id).then((res) => {
+      if (occupation) {
         this.setState({ villageDataOccupation: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }else{
-      const id = this.state.districtId !== null? this.state.districtId.id : ''
-      API.getVillage(id).then((res) => {
-        // console.log(res.data.results,'village/desa');
+      }else{
         this.setState({ villageData: res.data.results });
-      }).catch((err) => {
-        console.log(err.response);
-      });
-    }
+      }
+    }).catch((err) => {
+      console.log(err.response);
+    });
   }
 
   render() {
@@ -167,7 +138,7 @@ class DataDiri extends Component {
       phone: kuki.get('phone_number'),
       address: "",
 
-      province : this.state.provinceId,
+      province : null,
       regency : null,
       district : null,
       village : null,
@@ -198,6 +169,19 @@ class DataDiri extends Component {
       postal_code : Yup.string().required(),
 
     });
+
+    const locationInputForms =[
+      {key : 'province', label : 'Provinsi', data : this.state.provinceData, getData : (id)=>this.apiRegency(false, id), clearData : ['regency', 'district', 'village']},
+      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiDistrict(false,id), clearData : ['district', 'village'] },
+      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiVillage(false, id), clearData : ['village']},
+      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : ()=> null, clearData : []},
+    ]
+    const locationInputFormsOcc =[
+      {key : 'provinceOcc', label : 'Provinsi', data : this.state.provinceDataOccupation, getData : (id)=>this.apiRegency(true, id), clearData : ['regency', 'district', 'village']},
+      {key : 'regencyOcc', label : 'Kota/Kabupaten', data : this.state.regencyDataOccupation, getData : (id)=>this.apiDistrict(true,id), clearData : ['district', 'village'] },
+      {key : 'districtOcc', label : 'Kecamatan', data : this.state.districtDataOccupation, getData : (id)=>this.apiVillage(true, id), clearData : ['village']},
+      {key : 'villageOcc', label : 'Kelurahan', data : this.state.villageDataOccupation, getData : ()=> null, clearData : []},
+    ]
 
     return (
       <div className="all-forms-style">
@@ -337,7 +321,7 @@ class DataDiri extends Component {
                       options={maritalOpt}
                       helperText={touched.marital_status && errors.marital_status}
                       error={touched.marital_status && errors.marital_status ? true : false}
-                      value={values.marital_status}
+                      // value={values.marital_status}
                       onBlur={handleBlur}
                       onChange={(e, val) => setFieldValue("marital_status", val)}
                     />
@@ -350,7 +334,7 @@ class DataDiri extends Component {
                       options={citizenshipOpt}
                       helperText={touched.citizenship && errors.citizenship}
                       error={touched.citizenship && errors.citizenship ? true : false}
-                      value={values.citizenship}
+                      // value={values.citizenship}
                       onBlur={handleBlur}
                       required
                       onChange={(e, val) => setFieldValue("citizenship", val)}
@@ -378,116 +362,51 @@ class DataDiri extends Component {
                       error={touched.address && errors.address ? true : false}
                     />
                   </div>
-                  <div className="col-md-6">
-                    <InputSelect
-                      label="Provinsi"
-                      required
-                      name="province"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.provinceData}
-                      helperText={touched.province && errors.province}
-                      error={touched.province && errors.province ? true : false}
-                      value={values.province}
-                      onBlur={handleBlur}
-                      onChange={(e, val) => {
-                       
-                        if (val === null) {
-                          setFieldValue("province", '')
-                          setFieldValue("regency", '')
-                          setFieldValue("district", '')
-                          setFieldValue("village", '')
-                          setFieldValue("postal_code", '')
-                          this.setState({
-                            regencyData : [],
-                            districtData : [],
-                            villageData : []
-                          })
-                        }else{
-                          setFieldValue("province", val)
-                          this.setState({provinceId : val})
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <InputSelect
-                      label="Kota/Kabupaten"
-                      required
-                      name="regency"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.regencyData}
-                      helperText={touched.regency && errors.regency}
-                      error={touched.regency && errors.regency ? true : false}
-                      value={values.regency}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                        if (val === null) {
-                          setFieldValue("regency", '')
-                          setFieldValue("district", '')
-                          setFieldValue("village", '')
-                          setFieldValue("postal_code", '')
-                          this.setState({
-                            districtData : [],
-                            villageData : []
-                          })
-                        }else{
-                          setFieldValue("regency", val)
-                          this.setState({regencyId : val})
-                        }
-                      }}
-                      onClick={()=>this.apiRegency(false)}
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <InputSelect
-                      label="Kecamatan"
-                      required
-                      name="district"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.districtData}
-                      helperText={touched.district && errors.district}
-                      error={touched.district && errors.district ? true : false}
-                      value={values.district}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                        if (val === null) {
-                          setFieldValue("district", '')
-                          setFieldValue("village", '')
-                          setFieldValue("postal_code", '')
-                          this.setState({
-                            villageData : []
-                          })
-                        }else{
-                          setFieldValue("district", val)
-                          this.setState({districtId : val})
-                        }
-                      }}
-                      onClick={()=>this.apiDistrict(false)}
-                    />
-                  </div>
+                  
+                  {/* ////TEST//// */}
+                  {
+                    locationInputForms.map((res,i)=>{
+                      return(
+                        <div className="col-md-6" key={i}>
+                        <InputSelect
+                          label={res.label}
+                          required
+                          name={res.key}
+                          getOptionLabel={(val) => val? val.name : ""}
+                          getOptionSelected ={(option, val) => option.name  === val.name  }
+                          options={res.data}
+                          helperText={touched[`${res.key}`] && errors[`${res.key}`]}
+                          error={touched[`${res.key}`] && errors[`${res.key}`] ? true : false}
+                          onBlur={handleBlur}
+                          value={values[`${res.key}`] || ""}
+                          onChange={(e, val, reason)=>{
+                            if (reason === "clear") {
+                              setFieldValue(`${res.key}`, '')
+                              for (const c of res.clearData) {
+                                // console.log(c)
+                                setFieldValue(`${c}`, '')
+                                setFieldValue("postal_code", '')
+                                this.setState({[`${c}Data`] : [] })
+                              }
+                            }
+                            if (reason === "select-option") {
+                              setFieldValue(`${res.key}`, val)
+                              if (val.postal_code) {
+                                setFieldValue("postal_code", val.postal_code)
+                              }
+                              res.getData(val.id)
+                            }
+                            console.log(reason)
+                          }}
+                        />
+                        </div>
+                      )
+                    })
+                  }
 
-                  <div className="col-md-6">
-                    <InputSelect
-                      label="Kelurahan"
-                      required
-                      name="village"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.villageData}
-                      helperText={touched.village && errors.village}
-                      error={touched.village && errors.village ? true : false}
-                      value={values.village}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                        if (val === null) {
-                          setFieldValue("postal_code", '')
-                        }else{
-                          setFieldValue("village", val)
-                          setFieldValue("postal_code", val ? val.postal_code : '')
-                        }
-                      }}
-                      onClick={()=>this.apiVillage(false)}
-                    />
-                  </div>
+
+                  {/* ///////END TEST /////  */}
+                 
 
                   <div className="col-md-6">
                     <Field
@@ -502,9 +421,9 @@ class DataDiri extends Component {
                   </div>
 
 
-                  {/* <pre>
+                  <pre>
                     {JSON.stringify(values, null, 4)}
-                  </pre> */}
+                  </pre>
 
                   
                   <div className="col-md-12 mb-3">
@@ -546,145 +465,74 @@ class DataDiri extends Component {
 
 
               {/* ///// OCCUPATION ADDRESS  */}
+              
 
-                  <Fade cascade duration={500} when={!values.isSameAdd} >
-                    <div className="col-md-12" style={values.isSameAdd ? { display: "none" } : null}>
+              <Fade cascade duration={500} when={!values.isSameAdd} >
+                  <div className="col-md-12" style={values.isSameAdd ? { display: "none" } : null}>
+                    <Field
+                      as={InputTextArea}
+                      label="Alamat Tinggal Sekarang"
+                      type="text"
+                      name="addressOcc"
+                      required
+                      rows={5}
+                      // placeholder=''
+                      helperText={touched.addressOcc && errors.addressOcc}
+                      error={touched.addressOcc && errors.addressOcc ? true : false}
+                    />
+                  </div>
+
+
+                  {
+                    locationInputFormsOcc.map((res,i)=>{
+                      return(
+                        <div className="col-md-6" key={i} style={values.isSameAdd ? { display: "none" } : null}>
+                        <InputSelect
+                          label={res.label}
+                          required
+                          name={res.key}
+                          getOptionLabel={(val) => val? val.name : ""}
+                          getOptionSelected ={(option, val) => option.name  === val.name  }
+                          options={res.data}
+                          helperText={touched[`${res.key}`] && errors[`${res.key}`]}
+                          error={touched[`${res.key}`] && errors[`${res.key}`] ? true : false}
+                          onBlur={handleBlur}
+                          value={values[`${res.key}`] || ""}
+                          onChange={(e, val, reason)=>{
+                            if (reason === "clear") {
+                              setFieldValue(`${res.key}`, '')
+                              for (const c of res.clearData) {
+                                setFieldValue("postal_codeOcc", '')
+                                setFieldValue(`${c}Occ`, '')
+                                this.setState({[`${c}DataOccupation`] : [] })
+                              }
+                            }
+                            if (reason === "select-option") {
+                              setFieldValue(`${res.key}`, val)
+                              if (val.postal_code) {
+                                setFieldValue("postal_codeOcc", val.postal_code)
+                              }
+                              res.getData(val.id)
+                            }
+                            console.log(reason)
+                          }}
+                        />
+                        </div>
+                      )
+                    })
+                  }
+
+                    <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
                       <Field
-                        as={InputTextArea}
-                        label="Alamat Tinggal Sekarang"
-                        type="text"
-                        name="addressOcc"
+                        as={InputText}
                         required
-                        rows={5}
-                        // placeholder=''
-                        helperText={touched.addressOcc && errors.addressOcc}
-                        error={touched.addressOcc && errors.addressOcc ? true : false}
+                        label="Kode Pos"
+                        type="text"
+                        name="postal_codeOcc"
+                        helperText={touched.postal_codeOcc && errors.postal_codeOcc}
+                        error={touched.postal_codeOcc && errors.postal_codeOcc ? true : false}
                       />
                     </div>
-                    
-                    <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
-                    <InputSelect
-                      label="Provinsi"
-                      required
-                      name="provinceOcc"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      // getOptionSelected={(option, value) => option.id === value.id}
-                      options={this.state.provinceDataOccupation}
-                      helperText={touched.provinceOcc && errors.provinceOcc}
-                      error={touched.provinceOcc && errors.provinceOcc ? true : false}
-                      value={values.provinceOcc }
-                      onBlur={handleBlur}
-                      onChange={(e, val) => {
-                        
-                        if (val === null) {
-                          setFieldValue("provinceOcc", '')
-                          setFieldValue("regencyOcc", '')
-                          setFieldValue("districtOcc", '')
-                          setFieldValue("villageOcc", '')
-                          setFieldValue("postal_codeOcc", '')
-                          this.setState({
-                            regencyDataOccupation : [],
-                            districtDataOccupation : [],
-                            villageDataOccupation : []
-                          })
-                        }else{
-                          setFieldValue("provinceOcc", val)
-                          this.setState({provinceIdOccupation : val})
-                        }
-                      }}
-                    />
-                  </div>
-                  <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
-                    <InputSelect
-                      label="Kota/Kabupaten"
-                      required
-                      name="regencyOcc"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.regencyDataOccupation}
-                      helperText={touched.regencyOcc && errors.regencyOcc}
-                      error={touched.regencyOcc && errors.regencyOcc ? true : false}
-                      value={values.regencyOcc}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                           if (val === null) {
-                            setFieldValue("regencyOcc", '')
-                            setFieldValue("districtOcc", '')
-                            setFieldValue("villageOcc", '')
-                            setFieldValue("postal_codeOcc", '')
-                            this.setState({
-                              districtDataOccupation : [],
-                              villageDataOccupation : []
-                            })
-                          }else{
-                            setFieldValue("regencyOcc", val)
-                            this.setState({regencyIdOccupation : val})
-                          }
-                      }}
-                      onClick={()=>this.apiRegency(true)}
-                    />
-                  </div>
-                  <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
-                    <InputSelect
-                      label="Kecamatan"
-                      required
-                      name="districtOcc"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.districtDataOccupation}
-                      helperText={touched.districtOcc && errors.districtOcc}
-                      error={touched.districtOcc && errors.districtOcc ? true : false}
-                      value={values.districtOcc}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                        if (val === null) {
-                          setFieldValue("districtOcc", '')
-                          setFieldValue("villageOcc", '')
-                          setFieldValue("postal_codeOcc", '')
-                          this.setState({
-                            villageDataOccupation : []
-                          })
-                        }else{
-                          setFieldValue("districtOcc", val)
-                          this.setState({districtIdOccupation : val})
-                        }
-                      }}
-                      onClick={()=>this.apiDistrict(true)}
-                    />
-                  </div>
-
-                  <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
-                    <InputSelect
-                      label="Kelurahan"
-                      required
-                      name="villageOcc"
-                      getOptionLabel={(val) => val? val.name : ''}
-                      options={this.state.villageDataOccupation}
-                      helperText={touched.villageOcc && errors.villageOcc}
-                      error={touched.villageOcc && errors.villageOcc ? true : false}
-                      value={values.villageOcc}
-                      onBlur={handleBlur}
-                      onChange={(e, val) =>{
-                        if (val === null) {
-                          setFieldValue("postal_codeOcc", "")
-                        }else{
-                          setFieldValue("villageOcc", val)
-                          setFieldValue("postal_codeOcc", val ? val.postal_code : '')
-                        }
-                      }}
-                      onClick={()=>this.apiVillage(true)}
-                    />
-                  </div>
-
-                  <div className="col-md-6" style={values.isSameAdd ? { display: "none" } : null}>
-                    <Field
-                      as={InputText}
-                      required
-                      label="Kode Pos"
-                      type="text"
-                      name="postal_codeOcc"
-                      helperText={touched.postal_codeOcc && errors.postal_codeOcc}
-                      error={touched.postal_codeOcc && errors.postal_codeOcc ? true : false}
-                    />
-                  </div>
 
                   </Fade>
                 </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import kuki from "../helpers/cookie";
+import REFERENCE from './reference'
 
 // const localBaseUrl = "http://192.168.0.14:8000";
 const apiBaseUrl = "https://api.staging.investx.id";
@@ -122,11 +123,8 @@ const API = {
   },
 
   //REFERENCE FILE
-  refPostFile : (body) =>{
-    return axios.post(apiBaseUrl + `/reference/file/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
+  ...REFERENCE
+  
   
 
 };

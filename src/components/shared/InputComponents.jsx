@@ -96,25 +96,34 @@ function InputSelect(props) {
     error,
     helperText,
     getOptionSelected,
+    onOpen,
+    onInputChange,
+    defaultValue
   } = props;
   const filterOpt = { ...props };
   delete filterOpt.getOptionLabel;
   delete filterOpt.getOptionSelected;
   delete filterOpt.value;
+  delete filterOpt.onInputChange;
+  delete filterOpt.onOpen;
+  delete filterOpt.defaultValue;
   return (
     <Autocomplete
       popupIcon={
         <img style={{ margin: "0 8px" }} src={chevroninput} alt="chevron" />
       }
       id={name}
+      onOpen = {onOpen}
       openOnFocus
       options={options}
       getOptionLabel={getOptionLabel}
       getOptionSelected ={getOptionSelected}
+      onInputChange={onInputChange}
       onChange={onChange}
       style={{ width: "100%" }}
       disabled={disabled}
       value={value}
+      defaultValue={defaultValue}
       renderInput={(params) => (
         <TextField
         {...params}
