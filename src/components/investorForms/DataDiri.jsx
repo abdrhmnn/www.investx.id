@@ -28,6 +28,10 @@ class DataDiri extends Component {
   state = {
     loading : false,
     isBlurDate : false,
+    objMaritalStatus : [],
+    objGender : [],
+    objCitizen :[],
+
     provinceData : [],
     regencyData : [],
     districtData: [],
@@ -37,12 +41,13 @@ class DataDiri extends Component {
     provinceDataOccupation : [],
     regencyDataOccupation : [],
     districtDataOccupation: [],
-    villageDataOccupation : []
+    villageDataOccupation : [],
   };
 
   componentDidMount(){
     this.checkProfile()
     this.apiProvince()
+    this.getObjOpt()
   }
 
   checkProfile = () =>{
@@ -74,6 +79,17 @@ class DataDiri extends Component {
     }).catch((err) => {
       console.log(err.response);
     });
+  }
+
+  getObjOpt = () =>{
+    API.refInvPersonal().then(res=>{
+      // console.log(res)
+      this.setState({ 
+        objMaritalStatus : res.data.marital_status,
+        objGender : res.data.gender,
+        objCitizen :res.data.citizenship
+      })
+    }).catch(err => console.log(err.response))
   }
   
   apiRegency = (occupation,id)=>{
@@ -116,17 +132,17 @@ class DataDiri extends Component {
 
   render() {
     // console.log(this.state, 'THIS.STATE')
-    const maritalOpt = [
-      { label: "Lajang", value: 1 },
-      { label: "Menikah", value: 2 },
-      { label: "Duda", value: 3 },
-      { label: "Janda", value: 4 },
-    ];
+    // const maritalOpt = [
+    //   { label: "Lajang", value: 1 },
+    //   { label: "Menikah", value: 2 },
+    //   { label: "Duda", value: 3 },
+    //   { label: "Janda", value: 4 },
+    // ];
 
-    const citizenshipOpt =[
-      { label: "Warga Negara Indonesia", value: 1 },
-      { label: "Warga Negara Asing", value: 2 },
-    ];
+    // const citizenshipOpt =[
+    //   { label: "Warga Negara Indonesia", value: 1 },
+    //   { label: "Warga Negara Asing", value: 2 },
+    // ];
 
     const initialValueObj = {
       name: kuki.get('full_name'),
@@ -214,8 +230,8 @@ class DataDiri extends Component {
                 "gender": val.gender,
                 "birth_place": val.birth_place,
                 "birth_date": val.birth_date,
-                "marital_status": val.marital_status.value,
-                "citizenship": val.citizenship.value,
+                "marital_status": val.marital_status.id,
+                "citizenship": val.citizenship.id,
                 "id_card_address": idCardAddress,
                 "occupation_address": val.isSameAdd ? idCardAddress : occupationAddress
               }
@@ -293,6 +309,7 @@ class DataDiri extends Component {
                       type="text"
                       name="birth_place"
                       placeholder="Tempat Lahir"
+                      onBlur={handleBlur}
                       required
                       helperText={touched.birth_place && errors.birth_place}
                       error={touched.birth_place && errors.birth_place ? true : false}
@@ -309,6 +326,7 @@ class DataDiri extends Component {
                       InputLabelProps={{
                         shrink: true
                       }}
+                      onBlur={handleBlur}
                       as={InputText}
                     />
                   </div>
@@ -317,8 +335,9 @@ class DataDiri extends Component {
                       label="Status Pernikahan"
                       name="marital_status"
                       required
-                      getOptionLabel={(val) => val.label}
-                      options={maritalOpt}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected ={(option, val) => option.text  === val.text  }
+                      options={this.state.objMaritalStatus}
                       helperText={touched.marital_status && errors.marital_status}
                       error={touched.marital_status && errors.marital_status ? true : false}
                       // value={values.marital_status}
@@ -330,8 +349,9 @@ class DataDiri extends Component {
                     <InputSelect
                       label="Status Kewarganegaraan"
                       name="citizenship"
-                      getOptionLabel={(val) => val.label}
-                      options={citizenshipOpt}
+                      getOptionLabel={(val) => val.text.toString()}
+                      getOptionSelected ={(option, val) => option.text  === val.text  }
+                      options={this.state.objCitizen}
                       helperText={touched.citizenship && errors.citizenship}
                       error={touched.citizenship && errors.citizenship ? true : false}
                       // value={values.citizenship}
@@ -421,9 +441,9 @@ class DataDiri extends Component {
                   </div>
 
 
-                  <pre>
+                  {/* <pre>
                     {JSON.stringify(values, null, 4)}
-                  </pre>
+                  </pre> */}
 
                   
                   <div className="col-md-12 mb-3">

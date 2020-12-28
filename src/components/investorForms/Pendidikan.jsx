@@ -13,11 +13,17 @@ import Swal from "sweetalert2";
 class Pendidikan extends Component {
   state = {
     loading : false,
-    pageName : 'Pendidikan dan Pekerjaan'
+    pageName : 'Pendidikan dan Pekerjaan',
+    lastEdu : [],
+    profession : [],
+    jobIndustry : [],
+    monthlySalary : [],
+    incomeSource : []
   };
 
   componentDidMount(){
     this.checkProfile()
+    this.getObjOpt()
   }
 
   checkProfile = () =>{
@@ -39,36 +45,22 @@ class Pendidikan extends Component {
     })
   }
 
+  getObjOpt = () =>{
+    API.refInvEducation().then(res=>{
+      // console.log(res)
+      this.setState({ 
+        lastEdu : res.data.last_education,
+        profession : res.data.profession,
+        jobIndustry : res.data.job_industry,
+        monthlySalary : res.data.monthly_salary,
+        incomeSource : res.data.income_source
+      })
+    }).catch(err => console.log(err.response))
+  }
+
 
 
   render() {
-
-    const lastEdd = [
-      { label: "Sekolah Menengah Pertama", id: 1 },
-      { label: "Sekolah Menengah Atas", id: 2 },
-      { label: "Sekolah Menengah Kejuruan", id: 3 },
-      { label: "Strata I", id: 4 },
-    ];
-    
-    const jobOpt = new Array(23).fill().map((r, i)=>({label : `Job ${i+1}`, id : i+1}))
-    
-    const professionOpt = [
-      { label: "IT", id: 1 },
-      { label: "Pertambangan", id: 2 },
-      { label: "Travaling", id: 3 },
-      { label: "Host", id: 4 },
-      { label: "Administrasi", id: 5 },
-      { label: "Perpajakan", id: 6 },
-    ];
-    const monthSalaryOpt = [
-      { label: "< 10.000.000", id: 1 },
-      { label: "> 10.000.000", id: 2 },
-    ];
-    const incomeOpt = [
-      { label: "Gaji", id: 1 },
-      { label: "Saham", id: 2 },
-      { label: "Lainnya", id: 3 },
-    ];
 
     const initialValueObj = {
       "last_education":null,
@@ -138,9 +130,9 @@ class Pendidikan extends Component {
                     <InputSelect
                       label="Pendikan Terakhir"
                       name="last_education"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={lastEdd}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected={(option, value) => option.text === value.text}
+                      options={this.state.lastEdu}
                       helperText={touched.last_education && errors.last_education}
                       error={touched.last_education && errors.last_education ? true : false}
                       onBlur={handleBlur}
@@ -151,9 +143,9 @@ class Pendidikan extends Component {
                     <InputSelect
                       label="Pekerjaan Saat Ini"
                       name="profession"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={professionOpt}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected={(option, value) => option.text === value.text}
+                      options={this.state.profession}
                       helperText={touched.profession && errors.profession}
                       error={touched.profession && errors.profession ? true : false}
                       onBlur={handleBlur}
@@ -164,9 +156,9 @@ class Pendidikan extends Component {
                     <InputSelect
                       label="Industri Pekerjaan"
                       name="job_industry"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={jobOpt}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected={(option, value) => option.text === value.text}
+                      options={this.state.jobIndustry}
                       helperText={touched.job_industry && errors.job_industry}
                       error={touched.job_industry && errors.job_industry ? true : false}
                       onBlur={handleBlur}
@@ -177,9 +169,9 @@ class Pendidikan extends Component {
                     <InputSelect
                       label="Pendapatan Perbulan"
                       name="monthly_salary"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={monthSalaryOpt}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected={(option, value) => option.text === value.text}
+                      options={this.state.monthlySalary}
                       helperText={touched.monthly_salary && errors.monthly_salary}
                       error={touched.monthly_salary && errors.monthly_salary ? true : false}
                       onBlur={handleBlur}
@@ -190,9 +182,9 @@ class Pendidikan extends Component {
                     <InputSelect
                       label="Sumber Pendapatan"
                       name="income_source"
-                      getOptionLabel={(val) => val.label}
-                      getOptionSelected={(option, value) => option.label === value.label}
-                      options={incomeOpt}
+                      getOptionLabel={(val) => val.text}
+                      getOptionSelected={(option, value) => option.text === value.text}
+                      options={this.state.incomeSource}
                       helperText={touched.income_source && errors.income_source}
                       error={touched.income_source && errors.income_source ? true : false}
                       onBlur={handleBlur}

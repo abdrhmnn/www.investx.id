@@ -11,41 +11,47 @@ import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 
+
 class Preference extends Component {
   state = {
     pageName : 'preference',
     completeInvestFormModal : false,
-    loading : false
+    loading : false,
+    budgetOpt : [],
+    infoOpt : [],
+    riskOpt : [],
+
   };
 
   componentDidMount(){
     this.checkProfileAll()
+    this.getObjOpt()
   }
 
   checkProfileAll = () =>{
-    this.setState({loading : true})
     const arrCheckAll = [
-      { key : 'is_personal_id_complete', link : '/investor-form-preference'}, 
-      { key : 'is_educational_complete', link : '/investor-form-pendidikan-pekerjaan'}, 
-      { key : 'is_document_complete', link : '/investor-form-dokumen'}, 
-      { key : 'bank_accounts', link : '/investor-form-bank'}, 
-      { key : 'is_preference_complete', link : '/investor-form-preference'}, 
+      { key : 'is_personal_id_complete', link : ()=>this.props.history.push('/investor-form-data-diri')}, 
+      { key : 'is_educational_complete', link : ()=>this.props.history.push('/investor-form-pendidikan-pekerjaan')}, 
+      { key : 'is_document_complete', link : ()=>this.props.history.push('/investor-form-dokumen')}, 
+      { key : 'bank_accounts', link : ()=>this.props.history.push('/investor-form-bank')}, 
+      { key : 'is_preference_complete', link : ()=> {}}, 
     ]
+    
     API.getProfileCheck().then(res=>{
+      this.setState({loading : true})
       for (const keyCheck of arrCheckAll) {
-        console.log(keyCheck);
-        if (res.data.profile[`${keyCheck.key}`] === true && res.data.profile[`${keyCheck.key}`].length !== 0) {
+        // console.log(keyCheck);
+        if (!res.data.profile[`${keyCheck.key}`] || res.data.profile[`${keyCheck.key}`].length === 0 ) {
           // console.log(res.data.profile[`${keyCheck.key}`]=== true)
-          if (res.data.profile[`${keyCheck.key}`] === true && keyCheck.key === 'is_preference_complete') {
-              this.setState({completeInvestFormModal : true, loading : false})
-          }
+          // console.log(keyCheck, 'IM HERE')
+          return keyCheck.link()
         }else{
-          // this.props.history.push(keyCheck.link)
-          // console.log('nonpnppp')
+          this.setState({loading : false},)
         }
-
       }
-      this.setState({loading : false})
+      if(res.data.profile.is_preference_complete){
+        return this.setState({completeInvestFormModal : true, loading : false},)
+      }
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
@@ -55,46 +61,45 @@ class Preference extends Component {
     })
   }
 
+  getObjOpt = () =>{
+    API.refInvPreference().then(res=>{
+      console.log(res)
+      this.setState({ 
+        budgetOpt : res.data.budget_preference,
+        infoOpt : res.data.information_source,
+        riskOpt : res.data.risk_preference,
+      })
+    }).catch(err => console.log(err.response))
+  }
+
 
 
   offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/company-list"));
 
   render() {
-    const budgetObj = [
-      { label: "<10.000.000", value: 1 },
-      { label: ">10.000.000", value: 2 },
-      // { label: "300.000", value: 2 },
-      // { label: "400.000", value: 3 },
-      // { label: "500.000", value: 4 },
-    ];
-
-    const riskObj = [
-      { label: "Rendah", value: 1 },
-      { label: "Sedang", value: 2 },
-      { label: "Tinggi", value: 3 },
-    ];
-
-    const sourceObj = [
-      { label: "Otomotiv", value: 1 },
-      { label: "Finansial", value: 2 },
-      { label: "Travel", value: 3 },
-      { label: "Pertanian", value: 4 },
-      // { label: "Teknologi", value: 5 },
-      // { label: "Pertanian", value: 6 },
-      // { label: "Penginapan", value: 7 },
-      // { label: "Retail", value: 0 },
+    const invOpt = [
+      { text: "Otomotiv", id: 1 },
+      { text: "Finansial", id: 2 },
+      { text: "Travel", id: 3 },
+      { text: "Pertanian", id: 4 },
+      { text: "Teknologi", id: 5 },
+      { text: "Pertanian", id: 6 },
+      { text: "Penginapan", id: 7 },
+      { text: "Retail", id: 0 },
     ];
 
     const initialValueObj = {
         "budget_preference": null,
         "risk_preference": null,
-        "information_source": null
+        "information_source": null,
+        investment_preference : []
       }
 
     const schemaObj = Yup.object({
       budget_preference: Yup.object().nullable().required(),
       risk_preference: Yup.object().nullable().required(),
       information_source: Yup.object().nullable().required(),
+      investment_preference : Yup.array().min(1, 'Harus di isi minimal 1')
     });
 
     return (
@@ -112,12 +117,13 @@ class Preference extends Component {
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
-              console.log(val);
               const body = {
-                "budget_preference": val.budget_preference.value,
-                "risk_preference": val.risk_preference.value,
-                "information_source": val.information_source.value
+                "budget_preference": val.budget_preference.id,
+                "risk_preference": val.risk_preference.id,
+                "information_source": val.information_source.id,
+                "investment_preference" :val.investment_preference.map(res=> res.id)
               }
+              console.log(body);
               API.postPreference(body).then(res =>{
                 this.setState({loading : true})
                 console.log(res)
@@ -142,7 +148,7 @@ class Preference extends Component {
               handleBlur,
               handleSubmit,
               errors,
-              // values,
+              values,
               touched,
               setFieldValue,
             }) => (
@@ -151,10 +157,10 @@ class Preference extends Component {
                   <div className="col-md-12">
                     <InputSelect
                       label="Budget Investasi"
-                      required
+                      // required
                       name="budget_preference"
-                      getOptionLabel={(val) => val.label}
-                      options={budgetObj}
+                      getOptionLabel={(val) => val.text}
+                      options={this.state.budgetOpt}
                       helperText={touched.budget_preference && errors.budget_preference}
                       error={
                         touched.budget_preference && errors.budget_preference ? true : false
@@ -166,10 +172,10 @@ class Preference extends Component {
                   <div className="col-md-12">
                     <InputSelect
                       label="Preferensi Resiko Investasi"
-                      required
+                      // required
                       name="risk_preference"
-                      getOptionLabel={(val) => val.label}
-                      options={riskObj}
+                      getOptionLabel={(val) => val.text}
+                      options={this.state.riskOpt}
                       helperText={touched.risk_preference && errors.risk_preference}
                       error={
                         touched.risk_preference && errors.risk_preference ? true : false
@@ -181,37 +187,46 @@ class Preference extends Component {
                   <div className="col-md-12">
                     <InputSelect
                       label="Preferensi Investasi"
-                      required
-                      name="information_source"
-                      getOptionLabel={(val) => val.label}
-                      options={sourceObj}
-                      helperText={touched.information_source && errors.information_source}
-                      error={touched.information_source && errors.information_source ? true : false}
+                      // required
+                      multiple
+                      filterSelectedOptions
+                      name="investment_preference"
+                      getOptionLabel={(val) => val.text}
+                      options={invOpt}
+                      helperText={touched.investment_preference && errors.investment_preference}
+                      error={touched.investment_preference && errors.investment_preference ? true : false}
                       onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("information_source", val)}
+                      value={values.investment_preference}
+                      onChange={(e, val) => {
+                        setFieldValue("investment_preference", val)
+                      }}
                     />
                   </div>
-                  {/* <div className="col-md-12">
+                  {/* <pre>
+                    {JSON.stringify(values, null, 4)}
+                  </pre> */}
+                  <div className="col-md-12">
                     <InputSelect
                       label="Darimana anda mengetahui tentang Invest X ? *"
-                      name="sumberpendapatan"
-                      getOptionLabel={(val) => val.label}
-                      options={top100Films}
+                      name="information_source"
+                      // required
+                      getOptionLabel={(val) => val.text}
+                      options={this.state.infoOpt}
                       helperText={
-                        touched.sumberpendapatan && errors.sumberpendapatan
+                        touched.information_source && errors.information_source
                       }
                       error={
-                        touched.sumberpendapatan && errors.sumberpendapatan
+                        touched.information_source && errors.information_source
                           ? true
                           : false
                       }
-                      value={values.sumberpendapatan}
+                      // value={values.information_source}
                       onBlur={handleBlur}
                       onChange={(e, val) =>
-                        setFieldValue("sumberpendapatan", val)
+                        setFieldValue("information_source", val)
                       }
                     />
-                  </div> */}
+                  </div>
                 </div>
               </form>
             )}

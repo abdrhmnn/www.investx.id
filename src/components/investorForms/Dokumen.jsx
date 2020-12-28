@@ -62,7 +62,6 @@ class Dokumen extends Component {
       "name": name,
       "file_base64": value
     }
-    this.setState({loading: true})
     API.refPostFile(body).then(res =>{
       console.log(res.data.url, 'INI HASIL URLNYA')
       this.setState({
@@ -82,12 +81,13 @@ class Dokumen extends Component {
   }
 
   handleFileUpload = (file, name) => {
+    this.setState({loading: true})
     console.log(file[0].name);
     const initialName = file[0].name
-    // const maxWidth = 200
-    // const maxHeight = 200
-    // const quality = 0.8
-    imageFileToBase64(file[0]).then((res)=>{
+    const maxWidth = 800
+    const maxHeight = 400
+    const quality = 0.9
+    imageFileToBase64(file[0], maxWidth, maxHeight, quality).then((res)=>{
       this.apiFileToLink(name, res, initialName )
           // console.log(res)
     })
