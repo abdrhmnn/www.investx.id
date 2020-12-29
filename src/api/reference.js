@@ -33,6 +33,13 @@ const REFERENCE = {
         });
     },
 
+    refTags: () =>{
+        return axios.get(apiBaseUrl + `/reference/tags/`,{
+        //   params : props, 
+          headers: { Authorization: `Token ${kuki.get("token")}` },
+        });
+    },
+
     refBanks: (props) =>{
         return axios.get(apiBaseUrl + `/reference/bank/`,{
           params : props, 

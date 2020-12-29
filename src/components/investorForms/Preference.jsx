@@ -20,6 +20,7 @@ class Preference extends Component {
     budgetOpt : [],
     infoOpt : [],
     riskOpt : [],
+    invOpt : []
 
   };
 
@@ -70,6 +71,12 @@ class Preference extends Component {
         riskOpt : res.data.risk_preference,
       })
     }).catch(err => console.log(err.response))
+    API.refTags().then(res=>{
+      console.log(res)
+      this.setState({ 
+        invOpt : res.data,
+      })
+    }).catch(err => console.log(err.response))
   }
 
 
@@ -77,16 +84,16 @@ class Preference extends Component {
   offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/company-list"));
 
   render() {
-    const invOpt = [
-      { text: "Otomotiv", id: 1 },
-      { text: "Finansial", id: 2 },
-      { text: "Travel", id: 3 },
-      { text: "Pertanian", id: 4 },
-      { text: "Teknologi", id: 5 },
-      { text: "Pertanian", id: 6 },
-      { text: "Penginapan", id: 7 },
-      { text: "Retail", id: 0 },
-    ];
+    // const invOpt = [
+    //   { text: "Otomotiv", id: 1 },
+    //   { text: "Finansial", id: 2 },
+    //   { text: "Travel", id: 3 },
+    //   { text: "Pertanian", id: 4 },
+    //   { text: "Teknologi", id: 5 },
+    //   { text: "Pertanian", id: 6 },
+    //   { text: "Penginapan", id: 7 },
+    //   { text: "Retail", id: 0 },
+    // ];
 
     const initialValueObj = {
         "budget_preference": null,
@@ -191,8 +198,8 @@ class Preference extends Component {
                       multiple
                       filterSelectedOptions
                       name="investment_preference"
-                      getOptionLabel={(val) => val.text}
-                      options={invOpt}
+                      getOptionLabel={(val) => val.name}
+                      options={this.state.invOpt}
                       helperText={touched.investment_preference && errors.investment_preference}
                       error={touched.investment_preference && errors.investment_preference ? true : false}
                       onBlur={handleBlur}
