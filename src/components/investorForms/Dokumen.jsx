@@ -23,6 +23,7 @@ import Swal from "sweetalert2";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
 
 class Dokumen extends Component {
   state = {
@@ -31,7 +32,9 @@ class Dokumen extends Component {
     "npwp": null,
     modalFile: {},
     loading : false,
-    pageName: 'Dokumen'
+    pageName: 'Dokumen',
+    pageNameStartUp: 'Dokumen Calon Penerbit',
+    isStartUp : window.location.pathname === "/startup-form-dokumen"
   };
 
   componentDidMount(){
@@ -41,10 +44,11 @@ class Dokumen extends Component {
   checkProfile = () =>{
     this.setState({loading : true})
     const nextLink = '/investor-form-bank'
+    const nextLinkStartUp = '/startup-form-informasi-perusahaan'
     const keyCheck = 'is_document_complete'
     API.getProfileCheck().then(res=>{
       if (res.data.profile[`${keyCheck}`]) {
-        this.props.history.push(nextLink)
+        this.props.history.push(this.state.isStartUp ? nextLinkStartUp : nextLink)
       }else{
         this.setState({loading : false})
       }
@@ -173,10 +177,15 @@ class Dokumen extends Component {
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading} />
         {this.state.modalFile.open ? this.modalFileComp() : null}
-        <HeaderInvestForm activeStep={3} />
+        {
+          this.state.isStartUp ?
+          <HeaderStartupForm activeStep={2} />
+          :
+          <HeaderInvestForm activeStep={3} />
+        }
         <div className="box-form-data">
           {/* ///////////////////FORMS//////////////////// */}
-          <p className="title">Dokumen</p>
+          <p className="title">{this.state.isStartUp ? this.state.pageNameStartUp : this.state.pageName}</p>
           <Formik
             initialValues={initialValueObj}
             validationSchema={schemaObj}
@@ -194,15 +203,15 @@ class Dokumen extends Component {
                   console.log(res)
                   Swal.fire({
                     icon: 'success',
-                    title: `Data ${this.state.pageName} berhasil di simpan`,
+                    title: `Data ${this.state.isStartUp ? this.state.pageNameStartUp : this.state.pageName} berhasil di simpan`,
                     showConfirmButton: false,
                     timer: 1500
-                  }).then(()=> this.props.history.push('/investor-form-bank'))
+                  }).then(()=> this.props.history.push( this.state.isStartUp ? '/startup-form-informasi-perusahaan' : '/investor-form-bank'))
                 }).catch(err =>{
                   this.setState({loading : false})
                   Swal.fire({
                     icon: 'error',
-                    title: `Data ${this.state.pageName} gagal di simpan`,
+                    title: `Data ${this.state.isStartUp ? this.state.pageNameStartUp : this.state.pageName} gagal di simpan`,
                     text : `${Object.entries(err.response.data)} \n`
                   })
                   console.log(err.response)

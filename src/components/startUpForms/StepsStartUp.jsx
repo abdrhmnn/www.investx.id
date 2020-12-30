@@ -38,11 +38,11 @@ class StepsStartUp extends Component {
         </div>
 
         <div className="steps-startup-mobile">
-          <div class={`c100 p${finalPercentage} small`}>
+          <div className={`c100 p${finalPercentage} small`}>
             <span>{finalPercentage}%</span>
-            <div class="slice">
-              <div class="bar"></div>
-              <div class="fill"></div>
+            <div className="slice">
+              <div className="bar"></div>
+              <div className="fill"></div>
             </div>
           </div>
 

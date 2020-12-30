@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import chevroninput from "../../images/chevroninput.svg";
+import CurrencyTextField from '@unicef/material-ui-currency-textfield'
+
 
 function InputText(props) {
   const {
@@ -22,6 +24,7 @@ function InputText(props) {
     disabled,
     error,
     handleBlur,
+    pattern,
     onFocus,
   } = props;
   return (
@@ -30,6 +33,7 @@ function InputText(props) {
       type={type}
       name={name}
       error={error}
+      pattern={pattern}
       id={name}
       label={label}
       variant="outlined"
@@ -41,6 +45,18 @@ function InputText(props) {
       placeholder={placeholder}
       onBlur={handleBlur}
       onFocus={onFocus}
+      {...props}
+    />
+  );
+}
+
+function InputTextCurrency(props) {
+  return (
+    <CurrencyTextField
+      className="custom_text_input"
+      variant="outlined"
+      outputFormat="number"
+      fullWidth={true}
       {...props}
     />
   );
@@ -183,4 +199,4 @@ function InputCheckbox(props) {
   );
 }
 
-export { InputText, InputSelect, InputTextArea, InputCheckbox };
+export { InputText, InputSelect, InputTextArea, InputCheckbox, InputTextCurrency };

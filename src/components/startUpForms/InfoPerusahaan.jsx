@@ -33,13 +33,31 @@ class InfoPerusahaan extends Component {
     ];
 
     const initialValueObj = {
-      dummyText: "",
-      address: "",
-      dummy: null,
-    };
+      // "nonce": "string",
+      "name": "",
+      "trademark": "",
+      "business_type": null,
+      "business_subtype": "",
+      "city": "string",
+      "address": {
+        "address": "string",
+        "postal_code": "string",
+        "province": 0,
+        "regency": 0,
+        "district": 0,
+        "kelurahan": 0
+      },
+      "type": 1,
+      "company_age": 0,
+      "number_of_branches": 0,
+      "number_of_employees": 0,
+      "description": "string",
+      "logo": "string"
+    }
 
     const schemaObj = Yup.object({
-      dummyText: Yup.string().required(),
+      name: Yup.string().required(),
+      trademark: Yup.string().required(),
       address: Yup.string().required(),
       dummy: Yup.object().nullable().required(),
     });

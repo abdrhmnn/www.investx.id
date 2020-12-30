@@ -14,7 +14,7 @@ class HeaderStartupForm extends Component {
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link onClick={() => this.props.history.goBack()}>
+        <Link to="/">
           <Fab className="back-button">
             <img src={arrowback} alt="" />
           </Fab>
@@ -27,7 +27,7 @@ class HeaderStartupForm extends Component {
         <p className="desc">
           {" "}
           Terima kasih telah mendaftar di InvestX. <br /> Silahkan lengkapi
-          daftar diri anda untuk untuk mengajukan funding
+          daftar diri anda untuk mengajukan funding
         </p>
 
         <StepsStartUp active={activeStep} />

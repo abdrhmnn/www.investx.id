@@ -25,8 +25,8 @@ import Pendidikan from "./components/investorForms/Pendidikan";
 import Dokumen from "./components/investorForms/Dokumen";
 import Bank from "./components/investorForms/Bank";
 import Preference from "./components/investorForms/Preference";
-import StartUpDataDiri from "./components/startUpForms/StartUpDataDiri";
-import StartUpDokumen from "./components/startUpForms/StartUpDokumen";
+
+
 import InfoPerusahaan from "./components/startUpForms/InfoPerusahaan";
 import InfoFinansial from "./components/startUpForms/InfoFinansial";
 import InfoNonFinansial from "./components/startUpForms/InfoNonFinansial";
@@ -93,8 +93,8 @@ class App extends Component {
           <PrivatRoute exact path="/investor-form-bank" component={Bank} />
           <PrivatRoute exact path="/investor-form-preference" component={Preference}/>
 
-          <PrivatRoute exact path="/startup-form-data-diri" component={StartUpDataDiri}/>
-          <PrivatRoute exact path="/startup-form-dokumen" component={StartUpDokumen}/>
+          <PrivatRoute exact path="/startup-form-data-diri" component={DataDiri}/>
+          <PrivatRoute exact path="/startup-form-dokumen" component={Dokumen}/>
           <PrivatRoute exact path="/startup-form-informasi-perusahaan" component={InfoPerusahaan}/>
           <PrivatRoute exact path="/startup-form-informasi-finansial" component={InfoFinansial}/>
           <PrivatRoute exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>

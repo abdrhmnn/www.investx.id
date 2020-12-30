@@ -40,6 +40,13 @@ const REFERENCE = {
         });
     },
 
+    refCompanyNonFinancial: () =>{
+        return axios.get(apiBaseUrl + `/reference/company/nonfinancial/`,{
+        //   params : props, 
+          headers: { Authorization: `Token ${kuki.get("token")}` },
+        });
+    },
+
     refBanks: (props) =>{
         return axios.get(apiBaseUrl + `/reference/bank/`,{
           params : props, 

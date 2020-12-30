@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
-// import moment from 'moment'
-// import { Link } from "react-router-dom";
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import {
@@ -22,6 +18,7 @@ import kuki from '../../helpers/cookie'
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
+import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
 
 
 class DataDiri extends Component {
@@ -42,6 +39,7 @@ class DataDiri extends Component {
     regencyDataOccupation : [],
     districtDataOccupation: [],
     villageDataOccupation : [],
+    isStartUp : window.location.pathname === "/startup-form-data-diri"
   };
 
   componentDidMount(){
@@ -52,11 +50,12 @@ class DataDiri extends Component {
 
   checkProfile = () =>{
     this.setState({loading : true})
-    const nextLink = '/investor-form-pendidikan-pekerjaan'
+    const nextLinkInvest = '/investor-form-pendidikan-pekerjaan'
+    const nextLinkStartup = '/startup-form-dokumen'
     const keyCheck = 'is_personal_id_complete'
     API.getProfileCheck().then(res=>{
       if (res.data.profile[`${keyCheck}`]) {
-          this.props.history.push(nextLink)
+          this.props.history.push(this.state.isStartUp ?nextLinkStartup : nextLinkInvest)
       }else{
         this.setState({loading : false})
       }
@@ -131,19 +130,7 @@ class DataDiri extends Component {
   }
 
   render() {
-    // console.log(this.state, 'THIS.STATE')
-    // const maritalOpt = [
-    //   { label: "Lajang", value: 1 },
-    //   { label: "Menikah", value: 2 },
-    //   { label: "Duda", value: 3 },
-    //   { label: "Janda", value: 4 },
-    // ];
-
-    // const citizenshipOpt =[
-    //   { label: "Warga Negara Indonesia", value: 1 },
-    //   { label: "Warga Negara Asing", value: 2 },
-    // ];
-
+  
     const initialValueObj = {
       name: kuki.get('full_name'),
       gender: "",
@@ -202,7 +189,12 @@ class DataDiri extends Component {
     return (
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading}/>
-        <HeaderInvestForm activeStep={1} />
+        {
+          this.state.isStartUp ?
+          <HeaderStartupForm activeStep={1} />
+          :
+          <HeaderInvestForm activeStep={1} />
+        }
         <div className="box-form-data">
           <p className="title">Data Diri</p>
           <Formik
@@ -243,7 +235,7 @@ class DataDiri extends Component {
                   title: 'Data Diri berhasil di simpan',
                   showConfirmButton: false,
                   timer: 1500
-                }).then(()=> this.props.history.push('/investor-form-pendidikan-pekerjaan'))
+                }).then(()=> this.props.history.push( this.state.isStartUp ? '/startup-form-dokumen' : '/investor-form-pendidikan-pekerjaan'))
               }).catch(err =>{
                 this.setState({loading : false})
                 Swal.fire({

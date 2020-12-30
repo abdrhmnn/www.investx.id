@@ -84,16 +84,6 @@ class Preference extends Component {
   offModal = () =>this.setState({ completeInvestFormModal: false }, () => (window.location.href = "/company-list"));
 
   render() {
-    // const invOpt = [
-    //   { text: "Otomotiv", id: 1 },
-    //   { text: "Finansial", id: 2 },
-    //   { text: "Travel", id: 3 },
-    //   { text: "Pertanian", id: 4 },
-    //   { text: "Teknologi", id: 5 },
-    //   { text: "Pertanian", id: 6 },
-    //   { text: "Penginapan", id: 7 },
-    //   { text: "Retail", id: 0 },
-    // ];
 
     const initialValueObj = {
         "budget_preference": null,
