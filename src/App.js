@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "sweetalert2/src/sweetalert2.scss";
 import "./styles/App.scss";
 
+// toast css 
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import {
   BrowserRouter as Router,
   Switch,

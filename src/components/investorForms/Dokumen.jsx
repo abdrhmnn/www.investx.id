@@ -22,7 +22,6 @@ import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
 
 class Dokumen extends Component {
