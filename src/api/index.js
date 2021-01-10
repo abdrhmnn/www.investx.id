@@ -1,8 +1,13 @@
 import axios from "axios";
 import kuki from "../helpers/cookie";
+
 import REFERENCE from './reference'
+import FUNDRAISE from './fundraise'
+import FORM_COMPANY from './formCompany'
+import FORM_INVESTOR from './formInvestor'
 
 // const localBaseUrl = "http://192.168.0.14:8000";
+// const apiBaseUrl = process.env.BASE_URL;
 const apiBaseUrl = "https://api.staging.investx.id";
 
 
@@ -86,44 +91,13 @@ const API = {
     });
   },
 
-  getProfileCheck: () => {
-    return axios.get(apiBaseUrl + `/account/me/`, {
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
-  
-  postPersonalAccount : (body) =>{
-    return axios.post(apiBaseUrl + `/account/personal/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
 
-  postEducation : (body) =>{
-    return axios.post(apiBaseUrl + `/account/education/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
+  //IMPORTED APIS
+  ...FORM_INVESTOR,
+  ...FORM_COMPANY,
+  ...REFERENCE,
+  ...FUNDRAISE,
 
-  postDocument : (body) =>{
-    return axios.post(apiBaseUrl + `/account/document/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
-
-  postBank : (body) =>{
-    return axios.post(apiBaseUrl + `/account/bank/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
-
-  postPreference: (body) =>{
-    return axios.post(apiBaseUrl + `/account/preference/`, body,{
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
-
-  //REFERENCE FILE
-  ...REFERENCE
   
   
 

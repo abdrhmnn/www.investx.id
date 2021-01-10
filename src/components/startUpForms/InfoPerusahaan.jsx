@@ -23,6 +23,7 @@ import Swal from "sweetalert2";
 
 class InfoPerusahaan extends Component {
   state = {
+    pageName : 'Informasi Perusahaan',
     business_type : [],
     company_type : [],
     information_source : [],
@@ -35,13 +36,54 @@ class InfoPerusahaan extends Component {
     "logo": null,
     modalFile: {},
     loading : false,
-    uuid : uuid()
+    uuid : uuid(),
+    checkPoinData:  []
   };
 
   componentDidMount(){
     this.getObjOpt()
     this.apiProvince()
+    this.checkall()
   }
+  
+  checkall =()=>{
+    API.refCheckCompanyMe().then(res=>{
+      this.setState({checkPoinData : res.data.results})
+      const data = res.data.results[0]
+      const checkArr = [
+        {label :'is_general_complete'},
+        {label :'is_financial_complete'},
+        {label :'is_nonfinancial_complete'}, 
+        {label :'is_media_complete'},
+      ]
+      for (const val of checkArr) {
+        if (!data[`${val.label}`]) {
+          this.checkFormCompany()
+        }
+      }
+    }).catch(err => {
+      console.log(err.response)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error 500',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
+  }
+
+  checkFormCompany = ()=>{
+
+      const data = this.state.checkPoinData[0]
+      const checkArr = [
+        {label :'is_general_complete', isCompleteLink : '/startup-form-informasi-finansial'},
+      ]
+      for (const val of checkArr) {
+        if (data[`${val.label}`]) {
+            this.props.history.push(val.isCompleteLink)
+        }
+      }
+  }
+
 
   getObjOpt = () =>{
     API.refCompanyGeneral().then(res=>{
@@ -126,13 +168,6 @@ class InfoPerusahaan extends Component {
   };
 
   render() {
-    // const top100Films = [
-    //   { label: "The Shawshank Redemption", year: 1994, value: "lala" },
-    //   { label: "The Godfather", year: 1972 },
-    //   { label: "The Godfather: Part II", year: 1974 },
-    //   { label: "The Dark Knight", year: 2008 },
-    // ];
-
     const initialValueObj = {
       // "nonce": this.state.uuid,
       "name": "",
@@ -218,9 +253,26 @@ class InfoPerusahaan extends Component {
                 "logo": this.state.logo ? this.state.logo.url : toast.warn("Silahkan isi Foto KTP dahulu")
               }
               if (this.state.logo) {
-                localStorage.setItem("uuid", this.state.uuid);
-                console.log('run api')
-                console.log(body)
+                this.setState({loading : true})
+                API.postCompanyGeneral(body).then(res =>{
+                  localStorage.setItem("uuid", this.state.uuid);
+                  this.setState({loading : false})
+                  console.log(res)
+                  Swal.fire({
+                    icon: 'success',
+                    title: `Data ${this.state.pageName} berhasil di simpan`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  }).then(()=> this.props.history.push('/startup-form-informasi-finansial'))
+                }).catch(err =>{
+                  this.setState({loading : false})
+                  Swal.fire({
+                    icon: 'error',
+                    title: `Data ${this.state.pageName} gagal di simpan`,
+                    text : `${Object.entries(err.response.data)} \n`
+                  })
+                  console.log(err.response)
+                })
               }
 
             }}
@@ -447,12 +499,12 @@ class InfoPerusahaan extends Component {
                     />
                   </div>
 
-                  <pre>
+                  {/* <pre>
                     {JSON.stringify(values, null, 4)}
                   </pre>
                   <pre>
                     {JSON.stringify(errors, null, 4)}
-                  </pre>
+                  </pre> */}
                   <ToastContainer />
                   <div className="col-md-12 startup-company-logo">
                     <div className="label-cus">Logo perusahaan *</div>

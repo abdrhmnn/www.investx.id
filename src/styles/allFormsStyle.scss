@@ -343,6 +343,10 @@
             border: none;
             outline: none;
             cursor: pointer;
+            &:disabled{
+                background-color: #e3e3e3;
+                color: grey;
+            }
         }
     }
 

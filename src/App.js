@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "sweetalert2/src/sweetalert2.scss";
 import "./styles/App.scss";
-
 // toast css 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -54,6 +53,7 @@ import Profile from "./components/profile/Profile";
 import Payment from "./components/payment/Payment";
 import PaymentStatus from "./components/payment/PaymentStatus";
 
+
 const PrivatRoute = ({ component: Component, ...rest }) => {
   const isAuth = kuki.get("auth");
   const isToken = kuki.get("token");
@@ -80,6 +80,7 @@ const PrivatRoute = ({ component: Component, ...rest }) => {
 
 class App extends Component {
   render() {
+    // console.log(process.env.REACT_APP_NOT_SECRET_CODE)
     return (
       <Router>
         <Switch>

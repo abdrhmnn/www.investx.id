@@ -61,6 +61,13 @@ const REFERENCE = {
       });
     },
 
+    refCheckCompanyMe: () =>{
+      return axios.get(apiBaseUrl + `/company/me/`,{
+        // params : props, 
+        headers: { Authorization: `Token ${kuki.get("token")}` },
+      });
+    },
+
 }
 
 export default REFERENCE

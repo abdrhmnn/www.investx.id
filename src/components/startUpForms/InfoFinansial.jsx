@@ -14,11 +14,41 @@ import Swal from "sweetalert2";
 
 class InfoFinansial extends Component {
   state = {
-    dataBanks : []
+    pageName : "Informasi Finansial",
+    dataBanks : [],
+    dataCompanyBefore : [],
+    loading : false
   };
 
   componentDidMount(){
     this.getBanks()
+    this.checkFormCompany()
+  }
+  
+  checkFormCompany = ()=>{
+    API.refCheckCompanyMe().then(res=>{
+      console.log(res.data.results[0], 'CHECK')
+      this.setState({dataCompanyBefore : res.data.results})
+      const data = res.data.results[0]
+      const checkArr = [
+        // {label :'is_general_complete', isCompleteLink : '/startup-form-informasi-finansial'},
+        {label :'is_financial_complete', isCompleteLink : '/startup-form-informasi-nonfinansial'},
+        // {label :'is_nonfinancial_complete',  isCompleteLink : '/startup'},
+        // {label :'is_media_complete', isCompleteLink : '/startup'},
+      ]
+      for (const val of checkArr) {
+        if (data[`${val.label}`]) {
+            this.props.history.push(val.isCompleteLink)
+        }
+      }
+    }).catch(err => {
+      console.log(err.response)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error 500',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
   }
 
   getBanks = () =>{
@@ -90,6 +120,7 @@ class InfoFinansial extends Component {
     return (
       <div className="all-forms-style">
         <HeaderStartupForm activeStep={4} />
+        <Loading onOpen={this.state.loading}/>
 
         <div className="box-form-data">
           <p className="title">Informasi Finansial</p>
@@ -98,6 +129,43 @@ class InfoFinansial extends Component {
             validationSchema={schemaObj}
             onSubmit={(val) => {
               console.log(val);
+              const body = {
+                "nonce": this.state.dataCompanyBefore[0].nonce,
+                "investment_needed": val.investment_needed,
+                "average_monthly_turnover": val.average_monthly_turnover,
+                "average_monthly_profit": val.average_monthly_profit,
+                "average_monthly_turnover_last_year": val.average_monthly_turnover_last_year,
+                "average_monthly_profit_last_year": val.average_monthly_profit_last_year,
+                "total_debt": val.total_debt,
+                "bank_account": {
+                  "bank": val.bank.id,
+                  "number": val.number ,
+                  "name": val.name ,
+                  "branch": val.branch 
+                },
+                "paid_up_capital": val.paid_up_capital,
+                "book_value_per_share": val.book_value_per_share
+              }
+
+              API.postCompanyFinancial(body).then(res =>{
+                this.setState({loading : true})
+                console.log(res)
+                Swal.fire({
+                  icon: 'success',
+                  title: `Data ${this.state.pageName} berhasil di simpan`,
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then(()=> this.props.history.push('/startup-form-informasi-nonfinansial') )
+              }).catch(err =>{
+                this.setState({loading : false})
+                Swal.fire({
+                  icon: 'error',
+                  title: `Data ${this.state.pageName} gagal di simpan`,
+                  text : `${Object.entries(err.response.data)} \n`
+                })
+                console.log(err.response)
+              })
+              console.log(body)
             }}
           >
             {({ 

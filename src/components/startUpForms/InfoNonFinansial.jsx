@@ -21,11 +21,41 @@ class InfoNonFinansial extends Component {
     "location_status": [],
     "competition_level": [],
     "managerial_skill": [],
-    "technical_skill": []
+    "technical_skill": [],
+    dataCompanyBefore : [],
+    pageName : "Informasi Non Finansial",
   };
 
   componentDidMount(){
     this.getObjOpt()
+    this.checkFormCompany()
+  }
+
+  checkFormCompany = ()=>{
+    API.refCheckCompanyMe().then(res=>{
+      console.log(res.data.results[0], 'CHECK')
+      this.setState({dataCompanyBefore : res.data.results})
+      const data = res.data.results[0]
+      const checkArr = [
+        // {label :'is_general_complete', isCompleteLink : '/startup-form-informasi-finansial'},
+        // {label :'is_financial_complete', isCompleteLink : '/startup-form-informasi-nonfinansial'},
+        {label :'is_nonfinancial_complete',  isCompleteLink : '/startup-form-media'},
+        // {label :'is_media_complete', isCompleteLink : '/startup'},
+      ]
+      for (const val of checkArr) {
+        if (data[`${val.label}`]) {
+            this.props.history.push(val.isCompleteLink)
+            console.log(val.isCompleteLink)
+        }
+      }
+    }).catch(err => {
+      console.log(err.response)
+      Swal.fire({
+        icon: 'error',
+        title: 'Error 500',
+        showConfirmButton: true,
+      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+    })
   }
 
   getObjOpt = () =>{
@@ -78,6 +108,7 @@ class InfoNonFinansial extends Component {
       {label :'Kemampuan Manajerial', key : 'managerial_skill'},
       {label :'Kemampuan Teknis', key : 'technical_skill'},
     ]
+    
 
     return (
       <div className="all-forms-style">
@@ -90,6 +121,7 @@ class InfoNonFinansial extends Component {
             validationSchema={schemaObj}
             onSubmit={(val) => {
               const body = { 
+                "nonce": this.state.dataCompanyBefore[0].nonce,
                 "financial_data_collection_system": val.financial_data_collection_system.id,
                 "credit_reputation": val.credit_reputation.id,
                 "market_position": val.market_position.id,
@@ -100,6 +132,24 @@ class InfoNonFinansial extends Component {
                 "technical_skill": val.technical_skill.id
               }
               console.log(val);
+              API.postCompanyNonFinancial(body).then(res =>{
+                this.setState({loading : true})
+                console.log(res)
+                Swal.fire({
+                  icon: 'success',
+                  title: `Data ${this.state.pageName} berhasil di simpan`,
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then(()=> this.props.history.push('/startup-form-media') )
+              }).catch(err =>{
+                this.setState({loading : false})
+                Swal.fire({
+                  icon: 'error',
+                  title: `Data ${this.state.pageName} gagal di simpan`,
+                  text : `${Object.entries(err.response.data)} \n`
+                })
+                console.log(err.response)
+              })
               console.log(body);
             }}
           >
