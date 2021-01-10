@@ -17,6 +17,10 @@ import helper from "../../helpers/helper";
 
 import Pagination from "react-js-pagination";
 
+import API from "../../api";
+// import Loading from "../shared/Loading";
+// import Swal from "sweetalert2";
+
 class CompanyList extends Component {
   state = {
     filterShow: true,
@@ -24,6 +28,7 @@ class CompanyList extends Component {
     industriesCount: [],
     amount: { min: 2, max: 10 },
     page: 1,
+    data : []
   };
 
   componentDidMount() {
@@ -31,7 +36,19 @@ class CompanyList extends Component {
     if (window.screen.width <= 768) {
       this.setState({ filterShow: false });
     }
+    this.getObjOpt()
   }
+
+  getObjOpt = () =>{
+    API.fundraise().then(res=>{
+      console.log(res)
+      this.setState({ 
+        data : res.data.results,
+      })
+    }).catch(err => console.log(err.response))
+  }
+
+
   handlePageChange = (pageNumber) => {
     console.log(`active page is ${pageNumber}`);
     this.setState({ page: pageNumber });
@@ -94,15 +111,6 @@ class CompanyList extends Component {
       { id: 5, name: "Food" },
     ];
 
-    const dummyCards = [
-      { id: 0, name: "Bukalapak" },
-      { id: 1, name: "Tokopedia" },
-      { id: 2, name: "Facebook" },
-      { id: 3, name: "Travelio" },
-      { id: 4, name: "Alkulaku" },
-      { id: 5, name: "Spotify" },
-    ];
-
     const options = [
       { value: "bandung", label: "Bandung" },
       { value: "jakarta", label: "Jakarta" },
@@ -161,32 +169,32 @@ class CompanyList extends Component {
                   data-toggle="modal"
                   data-target="#modalFilterMobile"
                 >
-                  <i class="fas fa-filter"></i> Filter
+                  <i className="fas fa-filter"></i> Filter
                 </div>
 
                 <div
-                  class="modal fade"
+                  className="modal fade"
                   id="modalFilterMobile"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="exampleModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog filter-popup">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
+                  <div className="modal-dialog filter-popup">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">
                           Filter
                         </h5>
                         <button
                           type="button"
-                          class="close"
+                          className="close"
                           data-dismiss="modal"
                           aria-label="Close"
                         >
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <div class="modal-body">
+                      <div className="modal-body">
                         <div className="filter-box-mobile">
                           <ul>
                             {filterCheck.map((res, i) => (
@@ -386,10 +394,10 @@ class CompanyList extends Component {
                 </div>
 
                 <div className="row box-row no-gutters">
-                  {dummyCards.map((res, i) => (
+                  {this.state.data.map((res, i) => (
                     <div className="mb-5 col-md-4 " key={i}>
-                      <Link to={`/company-list/detail/${res.id}`}>
-                        <Card name={res.name} />
+                      <Link to={`/company-list/detail/${res.id62}`}>
+                        <Card data={res} />
                       </Link>
                     </div>
                   ))}

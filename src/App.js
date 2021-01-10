@@ -105,6 +105,7 @@ class App extends Component {
           <PrivatRoute exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
           <PrivatRoute exact path="/startup-form-media" component={Media} />
           <PrivatRoute exact path="/startup-form-syarat" component={Syarat} />
+          
           <Route exact path="/company-list" component={CompanyList} />
           <Route exact path="/company-list/detail/:id" component={CompanyDetail}/>
           <Route exact path="/company-list/detail/:id/invest" component={Invest}/>

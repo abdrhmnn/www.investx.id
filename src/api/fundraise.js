@@ -6,8 +6,9 @@ const apiBaseUrl = "https://api.staging.investx.id";
 
 
 const FUNDRAISE = {
-    refPostFile : (body) =>{
-        return axios.post(apiBaseUrl + `/reference/file/`, body,{
+    fundraise : (props) =>{
+        return axios.get(apiBaseUrl + `/investment/fundraise/`,{
+            params : {props},
             headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
