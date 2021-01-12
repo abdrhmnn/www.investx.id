@@ -7,7 +7,26 @@ import Card from "../shared/Card";
 
 import { Fab } from "@material-ui/core";
 
+
+import API from "../../api";
+// import Loading from "../shared/Loading";
+// import Swal from "sweetalert2";
+
 class CaroHome extends Component {
+  state={
+    data : []
+  }
+  componentDidMount(){
+    this.getObj()
+  }
+  getObj = () =>{
+    API.fundraise().then(res=>{
+      console.log(res)
+      this.setState({ 
+        data : res.data.results,
+      })
+    }).catch(err => console.log(err.response))
+  }
   render() {
     const settings = {
       dots: false,
@@ -78,32 +97,7 @@ class CaroHome extends Component {
       ],
     };
 
-    const dummyCards = [
-      {
-        id: 0,
-        name: "Bukalapak",
-      },
-      {
-        id: 1,
-        name: "Tokopedia",
-      },
-      {
-        id: 2,
-        name: "Facebook",
-      },
-      {
-        id: 3,
-        name: "Travelio",
-      },
-      {
-        id: 4,
-        name: "Alkulaku",
-      },
-      {
-        id: 5,
-        name: "Spotify",
-      },
-    ];
+    
     return (
       <div className="carohome">
         <div className="container">
@@ -119,9 +113,9 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings} ref={(c) => (this.slider = c)}>
-              {dummyCards.map((res, i) => (
+              {this.state.data.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id}`}>
-                  <Card name={res.name} />
+                  <Card data={res} />
                 </Link>
               ))}
             </Slider>
@@ -147,9 +141,9 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings2} ref={(c) => (this.slider2 = c)}>
-              {dummyCards.map((res, i) => (
+              {this.state.data.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id}`}>
-                  <Card name={res.name} />
+                  <Card data={res} />
                 </Link>
               ))}
             </Slider>
@@ -175,9 +169,9 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings3} ref={(c) => (this.slider3 = c)}>
-              {dummyCards.map((res, i) => (
+              {this.state.data.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id}`}>
-                  <Card name={res.name} />
+                  <Card data={res} />
                 </Link>
               ))}
             </Slider>
