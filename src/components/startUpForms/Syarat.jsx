@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import arrowback from "../../images/arrowback.svg";
-import logo from "../../images/logo.svg";
+// import logo from "../../images/logo.svg";
 import { Button, Fab } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 class Syarat extends Component {
   state = {

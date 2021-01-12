@@ -20,7 +20,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
-import ModalTemplate from "../shared/ModalTemplate";
+// import ModalTemplate from "../shared/ModalTemplate";
 import Syarat from "./Syarat";
 
 class InfoPerusahaan extends Component {
