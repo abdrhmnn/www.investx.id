@@ -21,7 +21,7 @@ class Media extends Component {
     "cover": "",
     "video_url": "",
     loading : false,
-    isAgree : false,
+    // isAgree : false,
     dataCompanyBefore : []
   }
 
@@ -116,6 +116,8 @@ class Media extends Component {
     API.postCompanyMedia(body).then(res =>{
       this.setState({loading : true})
       console.log(res)
+      //remove agreement back to begin
+      localStorage.removeItem('formAgree')
       Swal.fire({
         icon: 'success',
         title: `Data ${this.state.pageName} berhasil di simpan`,
@@ -183,7 +185,7 @@ class Media extends Component {
                     </p>
                   </div>
 
-                  <div className="col-md-12 syarat">
+                  {/* <div className="col-md-12 syarat">
                     <p className="title"> <b>Pernyataan Informasi</b> </p>
                     <p>
                       1. Dengan ini saya menyatakan bahwa informasi yang saya
@@ -202,9 +204,9 @@ class Media extends Component {
                     <p className="mt-5">
                       Apakah anda setuju dengan Syarat dan ketentuan diatas?
                     </p>
-                  </div>
+                  </div> */}
 
-                  <div className="col-md-12">
+                  {/* <div className="col-md-12">
                     <div className="w-addnow">
                       <div className="w-check">
                         <div
@@ -222,7 +224,7 @@ class Media extends Component {
                         <span>Ya, saya setuju</span>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   
                 </div>
               </form>
@@ -241,7 +243,7 @@ class Media extends Component {
             peraturan yang berlaku.
           </p>
           {/* <Link to="startup-form-syarat"> */}
-            <Button type="submit" form="startupForm" disabled={!this.state.isAgree}>
+            <Button type="submit" form="startupForm" >
               SIMPAN
             </Button>
           {/* </Link> */}

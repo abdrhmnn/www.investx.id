@@ -20,6 +20,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
+import ModalTemplate from "../shared/ModalTemplate";
+import Syarat from "./Syarat";
 
 class InfoPerusahaan extends Component {
   state = {
@@ -37,7 +39,9 @@ class InfoPerusahaan extends Component {
     modalFile: {},
     loading : false,
     uuid : uuid(),
-    checkPoinData:  []
+    checkPoinData:  [],
+
+    modalSyarat : true
   };
 
   componentDidMount(){
@@ -169,12 +173,9 @@ class InfoPerusahaan extends Component {
 
   render() {
     const initialValueObj = {
-      // "nonce": this.state.uuid,
       "name": "",
       "trademark": "",
       "business_type": null,
-      // "business_subtype": "",
-      // "city": "string",
       "address": "",
       "postal_code": "",
       "province": null,
@@ -187,7 +188,6 @@ class InfoPerusahaan extends Component {
       "number_of_branches": '',
       "number_of_employees": '',
       "description": "",
-      // "logo": "logo here"
     }
 
     const schemaObj = Yup.object({
@@ -203,10 +203,7 @@ class InfoPerusahaan extends Component {
       company_age: Yup.number().typeError("value have to be number").required(),
       number_of_branches: Yup.number().typeError("value have to be number").required(),
       number_of_employees: Yup.number().typeError("value have to be number").required(),
-
       description: Yup.string().required(),
-      // logo: Yup.string().required(),
-      
     });
 
     const locationInputForms =[
@@ -222,6 +219,7 @@ class InfoPerusahaan extends Component {
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading}/>
         <HeaderStartupForm activeStep={3} />
+        {this.state.modalSyarat ? <Syarat onClose={()=>this.setState({modalSyarat : false})}/> : null}
 
         <div className="box-form-data">
           <p className="title">Informasi Perusahaan</p>
