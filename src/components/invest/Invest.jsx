@@ -12,6 +12,13 @@ import ResetPin from "./pinComponents/ResetPin";
 import VerifyOtp from "../shared/VerifyOtp";
 import SecurePin from "./pinComponents/SecurePin";
 
+// import { connect } from "react-redux";
+import API from "../../api";
+import Loading from "../shared/Loading";
+import Swal from "sweetalert2";
+
+
+
 class Invest extends Component {
   state = {
     lembarSaham: 8,
@@ -20,49 +27,97 @@ class Invest extends Component {
     modalInputResetPin: false,
     modalInputOtp: false,
     modalInputSecurePin: false,
+    data : {},
+    company : {},
+    loading : false
   };
 
-  investConfirm = () => (
-    <div className="modal-confirm-invest">
-      <i
-        className="fas fa-times"
-        onClick={() =>
-          this.setState({ modalConfirm: !this.state.modalConfirm })
-        }
-      ></i>
-      <img src={modalinvest} alt="modinv" />
-      <div className="confirm">
-        <p className="title">Konfirmasi pembelian Saham</p>
-        <p className="inliner">
-          {" "}
-          <span>Saham</span> <span className="val"> NetFresh</span>
-        </p>
-        <p className="inliner">
-          {" "}
-          <span>Kode Saham</span> <span className="val"> B23445G</span>
-        </p>
-        <p className="inliner">
-          {" "}
-          <span>Harga Saham</span> <span className="val"> Rp. 100.000</span>
-        </p>
-        <p className="inliner">
-          {" "}
-          <span>Jumlah Saham</span> <span className="val"> 80</span>
-        </p>
-        <p className="inliner">
-          {" "}
-          <span>Total</span>{" "}
-          <span className="val" style={{ fontWeight: 600, color: "black" }}>
+  
+
+  componentDidMount(){
+    this.getData()
+  }
+
+  getData = () =>{
+    let id = this.props.match.params.id
+    API.fundraiseDetail(id).then(res=>{
+      console.log(res)
+      this.setState({ 
+        data : res.data,
+        company : res.data.company,
+      })
+    }).catch(err => console.log(err.response))
+  }
+
+  onBuySaham = (amount)=>{
+    const data = {"amount": amount}
+    const id = this.props.match.params.id
+    API.investFundraise(id, data).then(res =>{
+      this.setState({loading : true})
+      console.log(res)
+      Swal.fire({
+        icon: 'success',
+        title: `Saham berhasil di beli`,
+        showConfirmButton: false,
+        timer: 1500
+      }).then(()=> this.props.history.push('/company-list') )
+    }).catch(err =>{
+      this.setState({loading : false})
+      Swal.fire({
+        icon: 'error',
+        title: `Saham gagal di beli`,
+        text : `${Object.entries(err.response.data)} \n`
+      })
+      console.log(err.response)
+    })
+  }
+
+  investConfirm = () => {
+    const {name} = this.state.company
+    const {code, price_per_share, shares_remaining} = this.state.data
+    return(
+      <div className="modal-confirm-invest">
+        <i
+          className="fas fa-times"
+          onClick={() =>
+            this.setState({ modalConfirm: !this.state.modalConfirm })
+          }
+        ></i>
+        <img src={modalinvest} alt="modinv" />
+        <div className="confirm">
+          <p className="title">Konfirmasi pembelian Saham</p>
+          <p className="inliner">
             {" "}
-            Rp. 8.000.000
-          </span>
-        </p>
-        <Button onClick={() => this.setState({ modalInputPin: true })}>
-          LANJUTKAN
-        </Button>
+            <span>Saham</span> <span className="val"> {name}</span>
+          </p>
+          <p className="inliner">
+            {" "}
+            <span>Kode Saham</span> <span className="val"> {code}</span>
+          </p>
+          <p className="inliner">
+            {" "}
+            <span>Harga Saham</span> <span className="val"> Rp. {Math.round(price_per_share)}</span>
+          </p>
+          <p className="inliner">
+            {" "}
+            <span>Jumlah Saham</span> <span className="val"> {shares_remaining}</span>
+          </p>
+          <p className="inliner">
+            {" "}
+            <span>Total</span>{" "}
+            <span className="val" style={{ fontWeight: 600, color: "black" }}>
+              {" "}
+              Rp. {this.state.lembarSaham * Math.round(price_per_share)}
+            </span>
+          </p>
+          {/* <Button onClick={() => this.setState({ modalInputPin: true })}> */}
+          <Button onClick={() => this.onBuySaham(this.state.lembarSaham * Math.round(price_per_share))}>
+            LANJUTKAN
+          </Button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 
   closeModPin = () => this.setState({ modalInputPin: false });
   closeModResPin = () => this.setState({ modalInputResetPin: false });
@@ -70,8 +125,12 @@ class Invest extends Component {
   closeModSecPin = () => this.setState({ modalInputSecurePin: false });
 
   render() {
+    const {price_per_share} = this.state.data
+    console.log(this.state.data)
     return (
       <>
+        <Loading onOpen={this.state.loading} />
+
         <ModalTemplate
           onOpen={this.state.modalConfirm}
           // onClose={this.handleModalClose}
@@ -170,7 +229,7 @@ class Invest extends Component {
                     >
                       <i className="fas fa-minus"></i>
                     </Fab>
-                    <input type="number" value={this.state.lembarSaham} />
+                    <input type="number" readOnly value={this.state.lembarSaham} />
                     <Fab
                       onClick={() =>
                         this.setState({
@@ -184,7 +243,7 @@ class Invest extends Component {
                   <p className="info">Min. 8 lembar</p>
                   <p className="title">Total Harga saham</p>
                   <p className="total">
-                    Rp. {this.state.lembarSaham * 1000000}
+                    Rp. {this.state.lembarSaham * Math.round(price_per_share)}
                   </p>
                   <Button
                     classes={{
@@ -206,4 +265,31 @@ class Invest extends Component {
   }
 }
 
-export default Invest;
+// const mapStateToProps = (state) => {
+//   return {
+//     dataDetail :  state.dataDetail,
+//     // dataDetailCompany :  state.dataDetailCompany,
+//     // dataDetailTags :  state.dataDetailTags,
+//   };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     sendDetail: (data) => {
+//       const action = { type: "POST_DETAIL", data : data };
+//       dispatch(action);
+//     },
+//     sendDetailCompany: (data) => {
+//       const action = { type: "POST_DETAIL_COMPANY", data : data };
+//       dispatch(action);
+//     },
+//     sendDetailTags: (data) => {
+//       const action = { type: "POST_DETAIL_TAGS", data : data };
+//       dispatch(action);
+//     },
+//   };
+// };
+
+// export default connect(mapStateToProps, ()=>{})(Invest);
+export default Invest
+

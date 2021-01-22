@@ -26,6 +26,12 @@ const FUNDRAISE = {
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
+
+    investFundraise: (id, data) =>{
+        return axios.post(apiBaseUrl + `/investment/fundraise/${id}/invest/`, data,{
+            headers: { Authorization: `Token ${kuki.get("token")}` },
+        });
+    },
     
 }
 

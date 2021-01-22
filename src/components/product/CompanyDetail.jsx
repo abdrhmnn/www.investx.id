@@ -62,7 +62,7 @@ class CompanyDetail extends Component {
           </a>
         );
       },
-      dots: true,
+      dots: false,
       dotsClass: "slick-dots slick-thumb",
       infinite: true,
       speed: 500,
@@ -74,16 +74,6 @@ class CompanyDetail extends Component {
     const company = this.props.dataDetailCompany
     const {name, trademark, logo, cover} = company
     const {regency, amount, progress, min_invest_amount, status, end_date, investor_count, price_per_share, shares_remaining, shares, } = this.props.dataDetail
-    // const finansialTabData = {
-    //   shares : shares,
-    //   shares_remaining : shares_remaining,
-    //   shares_sold : shares_sold,
-
-    //   amount : amount,
-    //   amount_remaining : amount_remaining,
-    //   amount_sold : amount_sold,
-    // }
-    // this.props.sendDataFinansialTab(finansialTabData)
     return (
       <>
         <div className="company-detail">
