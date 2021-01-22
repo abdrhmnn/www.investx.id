@@ -50,10 +50,10 @@ class Invest extends Component {
   }
 
   onBuySaham = (amount)=>{
+    this.setState({modalConfirm : false, loading : true})
     const data = {"amount": amount}
     const id = this.props.match.params.id
     API.investFundraise(id, data).then(res =>{
-      this.setState({loading : true})
       console.log(res)
       Swal.fire({
         icon: 'success',

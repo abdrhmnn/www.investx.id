@@ -9,7 +9,7 @@ class Loading extends Component {
   };
   render() {
     return (
-      <div>
+      <div >
         <Modal
           className="d-flex justify-content-center align-items-center"
           open={this.props.onOpen}
