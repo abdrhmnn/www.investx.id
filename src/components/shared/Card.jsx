@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Clock, Tag } from "react-feather";
 import loca from "../../images/loca.svg";
-import moment from 'moment'
+// import moment from 'moment'
+import millify from 'millify'
+// const millify = require('millify')
+
 
 // const dummyImag = 'https://picsum.photos/280/180'
 
@@ -11,8 +14,8 @@ class Card extends Component {
       name,
       amount,
       progress,
-      logo,
-      tags,
+      cover,
+       industry,
       investor_count,
       min_invest_amount,
       regency,
@@ -22,7 +25,7 @@ class Card extends Component {
     return (
       <div>
         <div className="card-sec">
-          <img src={logo} alt="card" />
+          <img src={cover} alt="card" />
 
           <div className="body-card">
             <div>
@@ -36,22 +39,22 @@ class Card extends Component {
               <div
                 className="progress-bar"
                 role="progressbar"
-                style={{ width: progress }}
+                style={{ width: progress * 100 }}
                 aria-valuemin="0"
                 aria-valuemax="100"
               ></div>
             </div>
-            <div className="num">{progress}</div>
+            <div className="num">{progress * 100}%</div>
           </div>
           <div className="raised">
             <div className="box-raised text-center">
               <p className="nom">
-                Rp. {amount} <br /> <span>Raised</span>
+                Rp. {millify(amount)} <br /> <span>Raised</span>
               </p>
             </div>
             <div className="box-raised border-left border-right text-center">
               <p className="nom">
-                Rp. {min_invest_amount} <br /> <span>Min. Invest</span>
+                Rp. {millify(min_invest_amount)} <br /> <span>Min. Invest</span>
               </p>
             </div>
             <div className="box-raised text-center">
@@ -64,14 +67,17 @@ class Card extends Component {
             <div className="name">
               {/* <img src={} alt="" /> */}
               <Tag size='18' className='mr-1'/>
-              {tags[0]}
+              { industry}
             </div>
             <div className="name">
               <img src={loca} alt="" />
               {regency}
             </div>
           </div>
-          <div className="foot-card"><Clock size='18' className='mr-1'/>Berakhir pada {moment(end_date).format('DD MMMM YYYY')}</div>
+          <div className="foot-card"><Clock size='18' className='mr-1'/>
+            {(new Date(end_date).getDate()) - (new Date().getDate())} hari lagi
+           
+          </div>
           {/* <div className="foot-card-done">
                         Pendanaan Selesai
                     </div> */}

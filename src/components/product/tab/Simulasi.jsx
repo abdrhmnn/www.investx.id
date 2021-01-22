@@ -24,7 +24,7 @@ class Simulasi extends Component {
               >
                 -
               </Fab>
-              <input type="number" min="1" value={this.state.count} />
+              <input type="number" min="1" onChange={()=>{}} value={this.state.count} />
               <Fab
                 onClick={() => this.setState({ count: this.state.count + 1 })}
               >

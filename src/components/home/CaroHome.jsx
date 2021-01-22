@@ -114,7 +114,7 @@ class CaroHome extends Component {
           <div className="carousell-sec">
             <Slider {...settings} ref={(c) => (this.slider = c)}>
               {this.state.data.map((res, i) => (
-                <Link key={i} to={`company-list/detail/${res.id}`}>
+                <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
               ))}
@@ -142,7 +142,7 @@ class CaroHome extends Component {
           <div className="carousell-sec">
             <Slider {...settings2} ref={(c) => (this.slider2 = c)}>
               {this.state.data.map((res, i) => (
-                <Link key={i} to={`company-list/detail/${res.id}`}>
+                <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
               ))}
@@ -170,7 +170,7 @@ class CaroHome extends Component {
           <div className="carousell-sec">
             <Slider {...settings3} ref={(c) => (this.slider3 = c)}>
               {this.state.data.map((res, i) => (
-                <Link key={i} to={`company-list/detail/${res.id}`}>
+                <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
               ))}

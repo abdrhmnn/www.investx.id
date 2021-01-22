@@ -21,14 +21,23 @@ import API from "../../api";
 // import Loading from "../shared/Loading";
 // import Swal from "sweetalert2";
 
+
 class CompanyList extends Component {
   state = {
     filterShow: true,
     most_funded: false,
-    industriesCount: [],
+    tipeBisnisCount: [],
     amount: { min: 2, max: 10 },
-    page: 1,
-    data : []
+    data : [],
+
+    dataCity : [],
+    bisnisType : [],
+    //filter
+    cityFil : null,
+    limit : 9,
+    page : 1,
+    totalData : null
+
   };
 
   componentDidMount() {
@@ -37,21 +46,52 @@ class CompanyList extends Component {
       this.setState({ filterShow: false });
     }
     this.getObjOpt()
+    this.getData()
+  }
+
+  getData = () =>{
+    console.log(this.state.cityFil)
+    let params = {
+      limit : this.state.limit,
+      offset : (this.state.page -1) * this.state.limit,
+      city : this.state.cityFil ? this.state.cityFil.value : '',
+      
+    }
+    API.fundraise(params).then(res=>{
+      console.log(res, 'DATA FUNDRAISE')
+      this.setState({ 
+        data : res.data.results,
+        totalData : res.data.count,
+      })
+    }).catch(err => console.log(err.response))
   }
 
   getObjOpt = () =>{
-    API.fundraise().then(res=>{
+    const params = {
+      limit : 600
+    }
+    API.getRegencyFund(params).then(res=>{
       console.log(res)
       this.setState({ 
-        data : res.data.results,
+        dataCity : res.data.results.map(res=>({label: res.name, value : res.name})),
+      })
+    }).catch(err => console.log(err.response))
+
+    API.refCompanyGeneral().then(res=>{
+      console.log(res)
+      this.setState({ 
+        bisnisType : res.data.business_type,
       })
     }).catch(err => console.log(err.response))
   }
 
 
+  handleSelectCity = (val)=> this.setState({cityFil : val}, this.getData)
+
+
   handlePageChange = (pageNumber) => {
     console.log(`active page is ${pageNumber}`);
-    this.setState({ page: pageNumber });
+    this.setState({ page: pageNumber }, this.getData);
   };
 
   handleCheckFilter = (name, value) => {
@@ -59,19 +99,21 @@ class CompanyList extends Component {
     console.log(this.state);
   };
 
-  handleCheckIndustries = (name, value, id) => {
-    if (this.state.industriesCount.length < 3 && value === true) {
+  handleTipeBisnis = (name, value, id) => {
+    if (this.state.tipeBisnisCount.length < 3 && value === true) {
       this.setState({
         [name]: value,
-        industriesCount: [
-          ...this.state.industriesCount,
+        tipeBisnisCount: [
+          ...this.state.tipeBisnisCount,
           { id: id, name: name, value: value },
         ],
       });
     }
 
-    if (this.state.industriesCount.length >= 3 && value) {
-      toast.warn("Pilihan Industri Maksimal 3!", {
+    console.log(this.state, 'industries')
+
+    if (this.state.tipeBisnisCount.length >= 3 && value) {
+      toast.warn("Pilihan Tipe Bisnis Maksimal 3!", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
@@ -82,19 +124,19 @@ class CompanyList extends Component {
       });
     }
 
-    if (!this.state.industriesCount.length < 3 && !value) {
-      const arrRemove = this.state.industriesCount.filter(
+    if (!this.state.tipeBisnisCount.length < 3 && !value) {
+      const arrRemove = this.state.tipeBisnisCount.filter(
         (res) => res.id !== id
       );
       this.setState({
         [name]: value,
-        industriesCount: arrRemove,
+        tipeBisnisCount: arrRemove,
       });
-      console.log(this.state.industriesCount);
+      console.log(this.state.tipeBisnisCount);
     }
   };
   render() {
-    console.log(this.state);
+    console.log(this.state, 'INI STATE');
     const filterCheck = [
       { id: 0, name: "Most Funded" },
       { id: 1, name: "Recently launched" },
@@ -142,12 +184,11 @@ class CompanyList extends Component {
             }
           >
             <div className="row list-boxes no-gutters">
-              <div
-                className="col-md-2 d-flex align-items-end flex-column overflow-hidden "
+
+              <div className="col-md-2 d-flex align-items-end flex-column overflow-hidden "
                 onMouseLeave={() => this.setState({ filterShow: false })}
               >
-                <div
-                  className={
+                <div className={
                     this.state.filterShow
                       ? "title-filter-active"
                       : "title-filter"
@@ -171,6 +212,8 @@ class CompanyList extends Component {
                 >
                   <i className="fas fa-filter"></i> Filter
                 </div>
+
+                {/* MOBILE START  */}
 
                 <div
                   className="modal fade"
@@ -217,7 +260,7 @@ class CompanyList extends Component {
 
                           <div className="title-check">City </div>
                           <div className="w-100 pr-3 city-select">
-                            <Select options={options} />
+                            <Select options={this.state.dataCity} />
                           </div>
 
                           <hr />
@@ -232,7 +275,7 @@ class CompanyList extends Component {
                                   label={res.name}
                                   isCheck={this.state[`${res.name}`]}
                                   onClick={() =>
-                                    this.handleCheckIndustries(
+                                    this.handleTipeBisnis(
                                       res.name,
                                       !this.state[`${res.name}`],
                                       res.id
@@ -282,7 +325,9 @@ class CompanyList extends Component {
                     </div>
                   </div>
                 </div>
+                {/* MOBILE END  */}
 
+                {/* ////////////// DESK START //////////  */}
                 <Slide right when={this.state.filterShow}>
                   <div
                     className={
@@ -312,24 +357,28 @@ class CompanyList extends Component {
 
                     <div className="title-check">City </div>
                     <div className="w-100 pr-3 city-select">
-                      <Select options={options} />
+                      <Select 
+                      options={this.state.dataCity}
+                      isClearable
+                      onChange={this.handleSelectCity}
+                       />
                     </div>
 
                     <hr />
 
                     <div className="title-check">
-                      Industries <img src={triangle} alt="triangle" />
+                      Tipe Bisnis <img src={triangle} alt="triangle" />
                     </div>
                     <ul className="industries-check">
-                      {filterCheckIndustries.map((res, i) => (
+                      {this.state.bisnisType.map((res, i) => (
                         <li key={i}>
                           <FilterCheck
-                            label={res.name}
-                            isCheck={this.state[`${res.name}`]}
+                            label={res.text}
+                            isCheck={this.state[`${res.text}`]}
                             onClick={() =>
-                              this.handleCheckIndustries(
-                                res.name,
-                                !this.state[`${res.name}`],
+                              this.handleTipeBisnis(
+                                res.text,
+                                !this.state[`${res.text}`],
                                 res.id
                               )
                             }
@@ -377,11 +426,11 @@ class CompanyList extends Component {
               <div className="col-md-10 bg-light">
                 <div className="header-list-company">
                   <span>
-                    Discover <span style={{ color: "#4CB5EF" }}> 6 </span>
+                    Discover <span style={{ color: "#4CB5EF" }}> {this.state.totalData} </span>
                     Investments
                   </span>
                   <div className="tags">
-                    {this.state.industriesCount.map((res, i) => (
+                    {this.state.tipeBisnisCount.map((res, i) => (
                       <div className="box-tag" key={i}>
                         #{res.name}
                       </div>
@@ -395,7 +444,7 @@ class CompanyList extends Component {
 
                 <div className="row box-row no-gutters">
                   {this.state.data.map((res, i) => (
-                    <div className="mb-5 col-md-4 " key={i}>
+                    <div className="mb-5 col-md-4 col-sm-6" key={i}>
                       <Link to={`/company-list/detail/${res.id62}`}>
                         <Card data={res} />
                       </Link>
@@ -407,8 +456,8 @@ class CompanyList extends Component {
                   <Pagination
                     hideDisabled
                     activePage={this.state.page}
-                    itemsCountPerPage={10}
-                    totalItemsCount={450}
+                    itemsCountPerPage={this.state.limit}
+                    totalItemsCount={this.state.totalData}
                     pageRangeDisplayed={5}
                     onChange={this.handlePageChange}
                     activeClass="activeClass"
