@@ -311,12 +311,14 @@ class DataDiri extends Component {
                     <Field
                       name="birth_date"
                       type="date"
+                      id='birth_date'
+                      InputProps={{inputProps: { min: "1945-01-01", max: `${new Date().getFullYear() - 17}-01-01`} }}
                       required
                       label="Tanggal Lahir"
                       helperText={touched.birth_date && errors.birth_date}
                       error={touched.birth_date && errors.birth_date? true: false}
                       InputLabelProps={{
-                        shrink: true
+                        shrink: true,
                       }}
                       onBlur={handleBlur}
                       as={InputText}
