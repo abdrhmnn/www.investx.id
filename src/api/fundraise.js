@@ -9,14 +9,14 @@ const FUNDRAISE = {
     fundraise : (props) =>{
         return axios.get(apiBaseUrl + `/investment/fundraise/`,{
             params : props,
-            headers: { Authorization: `Token ${kuki.get("token")}` },
+            // headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     fundraiseDetail : (id) =>{
         return axios.get(apiBaseUrl + `/investment/fundraise/${id}/`,{
             // params : {props},
-            headers: { Authorization: `Token ${kuki.get("token")}` },
+            // headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 

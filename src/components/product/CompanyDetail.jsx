@@ -26,6 +26,7 @@ class CompanyDetail extends Component {
   }
   componentDidMount(){
     this.getData()
+    window.scrollTo({ top: 0 });
   }
 
   getData = () =>{
@@ -129,7 +130,7 @@ class CompanyDetail extends Component {
                 <div className="top-bar">
                   <div className="nominalbox">
                     <p className="label">Dana Terkumpul</p>
-                    <p className="nominal">Rp. {Math.floor(amount)}</p>
+                    <p className="nominal">Rp. {Math.round(amount)}</p>
                     <div className="prog d-flex align-items-center">
                       <LinearProgress
                         variant="determinate"
@@ -156,12 +157,12 @@ class CompanyDetail extends Component {
 
                   <div className="d-flex wrap-boxes-status align-items-center">
                     <div className="col-md">
-                      <p className="num">Rp. {Math.floor(price_per_share)}</p>
+                      <p className="num">Rp. {Math.round(price_per_share)}</p>
                       <p className="paper">( 10 Lembar )</p>
                       <p className="inf">Harga per-saham</p>
                     </div>
                     <div className="col-md">
-                      <p className="num">Rp. {Math.floor(min_invest_amount)}</p>
+                      <p className="num">Rp. {Math.round(min_invest_amount)}</p>
                       <p className="paper">( 8 Lembar )</p>
                       <p className="inf">Min. pembelian</p>
                     </div>

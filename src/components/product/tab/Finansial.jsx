@@ -43,7 +43,7 @@ class Finansial extends Component {
           <p className="lembar">{shares_remaining} lembar</p>
         </div>
 
-        <hr />
+        {/* <hr />
 
         <p className="lab">Total Keuntungan per Tahun berdasarkan historis</p>
         <div className="val-fin">
@@ -53,7 +53,7 @@ class Finansial extends Component {
         <p className="lab">Jangka waktu pembagian keuntungan dari pengelola</p>
         <div className="val-fin">
           <p className="saham">3 Bulan</p>
-        </div>
+        </div> */}
       </div>
     );
   }
