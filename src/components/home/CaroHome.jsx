@@ -21,7 +21,7 @@ class CaroHome extends Component {
   }
   getObj = () =>{
     API.fundraise().then(res=>{
-      console.log(res)
+      console.log(res, 'data fundraise')
       this.setState({ 
         data : res.data.results,
       })

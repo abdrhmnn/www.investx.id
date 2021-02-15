@@ -49,7 +49,7 @@ class Card extends Component {
           <div className="raised">
             <div className="box-raised text-center">
               <p className="nom">
-                Rp. {millify(amount)} <br /> <span>Raised</span>
+                Rp. {amount !== undefined ? millify(amount) : null} <br /> <span>Raised</span>
               </p>
             </div>
             <div className="box-raised border-left border-right text-center">
