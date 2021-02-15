@@ -12,7 +12,7 @@ class Card extends Component {
   render() {
     const { 
       name,
-      amount,
+      amount_sold,
       progress,
       cover,
        industry,
@@ -49,7 +49,7 @@ class Card extends Component {
           <div className="raised">
             <div className="box-raised text-center">
               <p className="nom">
-                Rp. {amount !== undefined ? millify(amount) : null} <br /> <span>Raised</span>
+                Rp. {amount_sold !== undefined ? millify(amount_sold) : null} <br /> <span>Raised</span>
               </p>
             </div>
             <div className="box-raised border-left border-right text-center">
