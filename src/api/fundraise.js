@@ -23,7 +23,7 @@ const FUNDRAISE = {
     getRegencyFund: (data) => {
         return axios.get(apiBaseUrl + `/reference/regency/`, {
           params : data,
-          headers: { Authorization: `Token ${kuki.get("token")}` },
+        //   headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
