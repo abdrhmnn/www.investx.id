@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import finan from "../../../images/tabDetailCompany/finan.svg";
 import { connect } from "react-redux";
+import helper from "../../../helpers/helper";
 
 
 class Finansial extends Component {
+
+  rupiahFormat = (number)=>{
+    const result = helper.idr(Math.round(number))
+    return result
+  }
+
   render() {
     console.log(this.props.dataDetail, 'PROPS TAB FINANSIAL')
     const {amount,amount_remaining, amount_sold, shares_remaining, shares, shares_sold} = this.props.dataDetail
@@ -27,19 +34,19 @@ class Finansial extends Component {
         </div>
         <p className="lab">Total Saham</p>
         <div className="val-fin">
-          <p className="saham">Rp. {amount}</p>=
+          <p className="saham">Rp. {this.rupiahFormat(amount)}</p>=
           <p className="lembar">{shares} lembar</p>
         </div>
 
         <p className="lab">Saham Terjual</p>
         <div className="val-fin">
-          <p className="saham">Rp. {amount_sold}</p>=
+          <p className="saham">Rp. {this.rupiahFormat(amount_sold)}</p>=
           <p className="lembar">{shares_sold} lembar</p>
         </div>
 
         <p className="lab">Saham Tersisa</p>
         <div className="val-fin">
-          <p className="saham">Rp. {amount_remaining}</p>=
+          <p className="saham">Rp. {this.rupiahFormat(amount_remaining)}</p>=
           <p className="lembar">{shares_remaining} lembar</p>
         </div>
 
@@ -84,7 +91,4 @@ const mapStateToProps = (state) => {
 //   };
 // };
 
-export default connect(mapStateToProps, ()=>{})(Finansial);
-
-
-// export default Finansial;
+export default connect(mapStateToProps, {})(Finansial);

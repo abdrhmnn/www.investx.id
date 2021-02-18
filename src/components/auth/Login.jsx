@@ -27,6 +27,51 @@ class Login extends Component {
     loading: false,
   };
 
+  handleLoginSubmit = (val)=>{
+    console.log(val);
+  this.setState({ loading: true });
+  API.login(val)
+    .then((res) => {
+      const {token,register_status,email,full_name,phone_number,} = res.data
+      kuki.set("email", email);
+      kuki.set("full_name", full_name);
+      kuki.set("phone_number", phone_number);
+      kuki.set("token", token);
+      kuki.set("status", register_status);
+      kuki.set("auth", true);
+
+        API.getProfileCheck().then(result =>{
+          if (result.data.profile.is_investor_approved) {
+            kuki.set("isInvestorComplete", result.data.profile.is_investor_approved);
+          }else{
+            kuki.remove("isInvestorComplete")
+          }
+            console.log(result.data.profile, 'data profile')
+            this.setState({loading : false})
+            window.location.href = "/";
+          }).catch(err =>{
+              this.setState({loading : false})
+              console.log(err.response, 'ini profile')
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${Object.entries(err.response.data)}` ,
+              })
+          })
+              
+    })
+    .catch((err) => {
+      this.setState({ loading: false });
+      console.log(err.response);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${Object.entries(err.response.data)}`,
+      });
+    });
+
+  }
+
   render() {
     const schemaObj = Yup.object({
       email: Yup.string().required(),
@@ -73,55 +118,7 @@ class Login extends Component {
                     initialValues={initialValuesObj}
                     validationSchema={schemaObj}
                     onSubmit={(val) => {
-                      console.log(val);
-                      this.setState({ loading: true });
-                      API.login(val)
-                        .then((res) => {
-                          console.log(res);
-                          // const apiProfile = () =>{
-                          //     API.getProfile().then(profile =>{
-                          //         const {email, full_name, phone_number} = profile.data
-                          //         kuki.set('email', email)
-                          //         kuki.set('full_name', full_name)
-                          //         kuki.set('phone_number', phone_number)
-                          //     }).catch(err =>{
-                          //         this.setState({loading : false})
-                          //         console.log(err.response, 'ini profile')
-                          //         Swal.fire({
-                          //             icon: 'error',
-                          //             title: 'Oops...',
-                          //             text: `Error ${Object.keys(err.response.data)}, "${Object.values(err.response.data)}" ` ,
-                          //         })
-                          //     })
-                          // }
-
-                          this.setState({ loading: false });
-                          var {
-                            token,
-                            register_status,
-                            email,
-                            full_name,
-                            phone_number,
-                          } = res.data;
-                          kuki.set("email", email);
-                          kuki.set("full_name", full_name);
-                          kuki.set("phone_number", phone_number);
-                          kuki.set("token", token);
-                          kuki.set("status", register_status);
-                          kuki.set("auth", true);
-                          window.location.href = "/";
-                        })
-                        .catch((err) => {
-                          this.setState({ loading: false });
-                          console.log(err.response);
-                          Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: `Error ${Object.keys(
-                              err.response.data
-                            )}, "${Object.values(err.response.data)}" `,
-                          });
-                        });
+                      this.handleLoginSubmit(val)
                     }}
                   >
                     {({

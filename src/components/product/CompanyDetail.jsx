@@ -18,6 +18,10 @@ import Ojk from "../shared/Ojk";
 import { connect } from "react-redux";
 
 import API from "../../api";
+import moment from "moment";
+import 'moment/locale/id';
+import helper from "../../helpers/helper";
+import kuki from "../../helpers/cookie";
 // import Loading from "../shared/Loading";
 // import Swal from "sweetalert2";
 
@@ -44,9 +48,56 @@ class CompanyDetail extends Component {
     }).catch(err => console.log(err.response))
   }
 
+  getCountdown = (endDate) =>{
+    // var xxx = '2021-02-18'
+    var endInvest = moment(endDate);
+    var now = moment();
+    var result =  endInvest.diff(now, 'days')  + 1
+    return result 
+  }
+
+  rupiahFormat = (number)=>{
+    const result = helper.idr(Math.round(number))
+    return result
+  }
+
+  checkCookies = ()=>{
+    if (kuki.get('auth') && kuki.get('isInvestorComplete')) {
+      return window.location.href = `/company-list/detail/${this.props.match.params.id}/invest`
+    }
+
+    if (kuki.get('auth') && !kuki.get('isInvestorComplete')) {
+      return  window.location.href = `/investor-form-data-diri`
+    }
+
+    if (!kuki.get('auth')) {
+      return window.location.href = `/login`
+    }
+  }
+  
+  buttonInvest = (end_date) =>{
+    const isDisabledInvest = this.getCountdown(end_date) <= 0 
+    return(
+      // <Link
+      //   style={{cursor : isDisabledInvest? 'default' : 'pointer'}}
+      //   to={isDisabledInvest ? "#" : `/company-list/detail/${this.props.match.params.id}/invest`}
+      // >
+        <Button 
+        className="start" 
+        variant="contained"
+        disabled={isDisabledInvest? true : false}
+        onClick={this.checkCookies}
+        >
+          MULAI INVESTASI
+        </Button>
+      // </Link>
+    )
+  }
+
 
   render() {
     console.log(this.props.dataDetailCompany)
+    console.log(this.props.dataDetail, 'DATA DETAIL')
     const images = [
       "https://placeimg.com/640/480/tech",
       "https://placeimg.com/640/480/tech",
@@ -72,9 +123,21 @@ class CompanyDetail extends Component {
       arrows: false,
     };
     console.log(this.props);
-    const company = this.props.dataDetailCompany
-    const {name, trademark, logo, cover} = company
-    const {regency, amount, progress, min_invest_amount, status, end_date, investor_count, price_per_share, shares_remaining, shares, } = this.props.dataDetail
+
+    const {name, trademark, logo, cover, website_url, address} = this.props.dataDetailCompany
+    const {
+      regency, 
+      amount, 
+      progress, 
+      min_invest_amount, 
+      status, 
+      end_date, 
+      investor_count, 
+      price_per_share, 
+      shares_remaining, 
+      shares,
+      min_invest_share
+    } = this.props.dataDetail
     return (
       <>
         <div className="company-detail">
@@ -111,9 +174,13 @@ class CompanyDetail extends Component {
                       <div className="loca">
                         <img src={locacaro} alt="loc" /> {regency}
                       </div>
-                      <a className="web" href="http://">
-                        <img src={website} alt="website" /> website
-                      </a>
+                      {
+                        website_url !==null ? 
+                        <a className="web" href={website_url} target='_blank'  rel="noreferrer">
+                          <img src={website} alt="website" /> website
+                        </a>
+                        : null
+                      }
                     </div>
 
                       <div className="wrap_tag">
@@ -130,7 +197,7 @@ class CompanyDetail extends Component {
                 <div className="top-bar">
                   <div className="nominalbox">
                     <p className="label">Dana Terkumpul</p>
-                    <p className="nominal">Rp. {Math.round(amount)}</p>
+                    <p className="nominal">Rp. {this.rupiahFormat(amount)}</p>
                     <div className="prog d-flex align-items-center">
                       <LinearProgress
                         variant="determinate"
@@ -150,29 +217,29 @@ class CompanyDetail extends Component {
                       <p className="inf">Investor</p>
                     </div>
                     <div className="col-md">
-                      <p className="num">{(new Date(end_date).getDate()) - (new Date().getDate())}</p>
+                      <p className="num">{this.getCountdown(end_date) <= 0 ? 'Waktu habis' : this.getCountdown(end_date)}</p>
                       <p className="inf">Sisa waktu</p>
                     </div>
                   </div>
 
                   <div className="d-flex wrap-boxes-status align-items-center">
                     <div className="col-md">
-                      <p className="num">Rp. {Math.round(price_per_share)}</p>
+                      <p className="num">Rp. {this.rupiahFormat(price_per_share * 10)}</p>
                       <p className="paper">( 10 Lembar )</p>
                       <p className="inf">Harga per-saham</p>
                     </div>
                     <div className="col-md">
-                      <p className="num">Rp. {Math.round(min_invest_amount)}</p>
-                      <p className="paper">( 8 Lembar )</p>
+                      <p className="num">Rp. {this.rupiahFormat(min_invest_amount * min_invest_share)}</p>
+                      <p className="paper">( {min_invest_share} Lembar )</p>
                       <p className="inf">Min. pembelian</p>
                     </div>
                   </div>
 
-                  <Link
-                    to={`/company-list/detail/${this.props.match.params.id}/invest`}
-                  >
-                    <Button className="start">Mulai Investasi</Button>
-                  </Link>
+                  {
+                    this.buttonInvest(end_date)
+                  }
+                      {/* {kuki.get('auth') ? 'ada' : 'tidak ada kooki'} */}
+
                   <div className="love-share d-flex align-items-center justify-content-center">
                     <div className="love d-flex align-items-center">
                       <img src={love} alt="love" /> 200
@@ -180,18 +247,21 @@ class CompanyDetail extends Component {
                     <img src={share} alt="share" />
                   </div>
                   <Link to="/">
-                    <Button className="down">Download PROPOSAL</Button>
+                    <Button className="down" disabled>DOWNLOAD PROSPEKTUS</Button>
                   </Link>
                 </div>
 
                 <div className="bottom-bar pt-4">
                   <p>Location</p>
                   <EmbedMap />
-                  <p className="desc-address">
-                    Cyber2 Tower, Lantai 17 Unit D-E, Blok X5 no 13, Jl. H. R.
-                    Rasuna Said, RT.7/RW.2, Kuningan, Kecamatan Setiabudi, Kota
-                    Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12950
-                  </p>
+                    { address ?
+                      address.map((res, i)=>(
+                        <p className="desc-address" key={i}>
+                          {`${res.address} Kel/Desa ${res.kelurahan} Kecamatan ${res.district}, Kab/Kota ${res.regency}, Provinsi ${res.province}`}
+                        </p>
+                      ))
+                      : null
+                    }
                 </div>
               </div>
             </div>

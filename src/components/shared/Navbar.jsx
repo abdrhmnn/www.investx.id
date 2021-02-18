@@ -53,6 +53,28 @@ class Navbar extends Component {
     }
   }
 
+  handleLogout = ()=>{
+    const myPromise = new Promise((resolve, reject) => {  
+      let arrRemoved = [];  
+      const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
+      for (const c of arrKuki) {
+        kuki.remove(c)
+        arrRemoved.push(c)
+      }
+      if(arrRemoved.length === 7) {    
+          resolve('Promise is resolved successfully.'); 
+        } else {    
+          reject('Promise is rejected');  
+        }
+    })
+
+    myPromise.then(res =>{ 
+      window.location.href = '/' 
+      // alert(res)
+      console.log(res)
+    }).catch(err=> alert(err))
+  }
+
   handlePop = () => this.setState({ isOpen: !this.state.isOpen });
 
   handleClick = (val) => {
@@ -106,17 +128,10 @@ class Navbar extends Component {
             Settings
           </a>
           <a
-            href="/"
+            onClick={this.handleLogout}
+            href="#"
             style={{ cursor: "pointer", color: "#4CB5EF" }}
-            onClick={() => {
-              kuki.remove("auth");
-              kuki.remove("status");
-              kuki.remove("token");
-              kuki.remove("full_name");
-              kuki.remove("email");
-              kuki.remove("phone_number");
-            }}
-          >
+            >
             {" "}
             <b>Logout</b>
           </a>

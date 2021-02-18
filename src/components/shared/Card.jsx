@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Clock, Tag } from "react-feather";
 import loca from "../../images/loca.svg";
-// import moment from 'moment'
+import moment from 'moment'
 import millify from 'millify'
 // const millify = require('millify')
 
@@ -9,6 +9,13 @@ import millify from 'millify'
 // const dummyImag = 'https://picsum.photos/280/180'
 
 class Card extends Component {
+  getCountdown = (endDate) =>{
+    // var xxx = '2021-02-18'
+    var endInvest = moment(endDate);
+    var now = moment();
+    var result =  endInvest.diff(now, 'days')  + 1
+    return result 
+  }
   render() {
     const { 
       name,
@@ -74,13 +81,16 @@ class Card extends Component {
               {regency}
             </div>
           </div>
-          <div className="foot-card"><Clock size='18' className='mr-1'/>
-            {(new Date(end_date).getDate()) - (new Date().getDate())} hari lagi
-           
-          </div>
-          {/* <div className="foot-card-done">
-                        Pendanaan Selesai
-                    </div> */}
+          {
+            this.getCountdown(end_date) <= 0 ? 
+            <div className="foot-card-done">
+                Pendanaan Selesai
+            </div>
+            :
+            <div className="foot-card"><Clock size='18' className='mr-1'/>
+              {this.getCountdown(end_date)} hari lagi
+            </div>
+          }
         </div>
       </div>
     );

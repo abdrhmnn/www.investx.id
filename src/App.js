@@ -108,7 +108,8 @@ class App extends Component {
           
           <Route exact path="/company-list" component={CompanyList} />
           <Route exact path="/company-list/detail/:id" component={CompanyDetail}/>
-          <Route exact path="/company-list/detail/:id/invest" component={Invest}/>
+          {/* //redirect  */}
+          <PrivatRoute exact path="/company-list/detail/:id/invest" component={Invest}/>
 
           <Route exact path="/topup" component={TopUpMethod} />
           <Route exact path="/topup-detail" component={TopUpDetail} />
