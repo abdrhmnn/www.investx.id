@@ -28,6 +28,20 @@ class CaroHome extends Component {
     }).catch(err => console.log(err.response))
   }
   render() {
+    const responsiveStyle = [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          // initialSlide: 2,
+          centerMode: true,
+          infinite: true,
+          centerPadding: "30px",
+        },
+      },
+    ]
+
     const settings = {
       dots: false,
       arrows: false,
@@ -36,18 +50,7 @@ class CaroHome extends Component {
       slidesToScroll: 1,
       speed: 500,
       cssEase: "linear",
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 1,
-            centerMode: true,
-            centerPadding: "30px",
-          },
-        },
-      ],
+      responsive: responsiveStyle,
       afterChange: (current, next) => {
         console.log({ curr: current, next: next });
       },
@@ -61,18 +64,7 @@ class CaroHome extends Component {
       slidesToScroll: 1,
       speed: 500,
       cssEase: "linear",
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 1,
-            centerMode: true,
-            centerPadding: "30px",
-          },
-        },
-      ],
+      responsive: responsiveStyle
     };
 
     const settings3 = {
@@ -83,18 +75,7 @@ class CaroHome extends Component {
       slidesToScroll: 1,
       speed: 500,
       cssEase: "linear",
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 1,
-            centerMode: true,
-            centerPadding: "30px",
-          },
-        },
-      ],
+      responsive: responsiveStyle
     };
 
     
