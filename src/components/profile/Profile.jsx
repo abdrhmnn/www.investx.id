@@ -30,7 +30,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    API.getProfile().then((res) => {
+    API.getProfileCheck().then((res) => {
         console.log(res);
         this.setState({ dataProfile: res.data });
       }).catch((err) => {

@@ -68,7 +68,29 @@ class Invest extends Component {
       this.setState({
         tokenPayment : res.data.payment_detail.token,
         loading : false
-      }, ()=> window.snap.pay(this.state.tokenPayment) )
+      }, ()=>{
+        window.snap.pay(this.state.tokenPayment,{
+          onSuccess: function(result){
+            console.log('success');
+            console.log(result);
+          },
+          onPending: function(result){
+            console.log('pending');
+            console.log(result);
+          },
+          onError: function(result){
+            console.log('error');
+            console.log(result);
+          },
+          onClose: function(){
+            console.log('customer closed the popup without finishing the payment');
+            window.location.reload()
+            // document.body.style = null;
+            // document.body.style.overflowX = "auto";
+            // document.body.style.overflow = "auto";
+          }
+        })
+      })
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({
@@ -78,7 +100,6 @@ class Invest extends Component {
       })
       // console.log(err.response)
     })
-    // window.snap.pay('2ce824f1-507b-420f-acf1-a2d613b92f02')
   }
 
   onBuySaham = (amount)=>{
@@ -94,14 +115,6 @@ class Invest extends Component {
         paymentNumber : res.data.data.number,
         modalConfirm : true,
       })
-      // console.log(res, 'QUOTASI')
-      // Swal.fire({
-      //   icon: 'success',
-      //   title: `produk berhasil`,
-      //   showConfirmButton: false,
-      //   timer: 1500
-      // }).then(()=>
-      // )
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({
@@ -147,7 +160,7 @@ class Invest extends Component {
           </p>
 
           <Button onClick={this.handlePaySaham}>
-            Bayar
+            Pilih Pembayaran
           </Button>
         </div>
       </div>
