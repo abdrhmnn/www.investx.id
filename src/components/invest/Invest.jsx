@@ -20,6 +20,8 @@ import helper from "../../helpers/helper";
 
 
 
+
+
 class Invest extends Component {
   state = {
     lembarSaham: 0,
@@ -30,7 +32,10 @@ class Invest extends Component {
     modalInputSecurePin: false,
     data : {},
     company : {},
-    loading : false
+    loading : false,
+
+    paymentNumber : '',
+    tokenPayment : ''
   };
 
   
@@ -52,27 +57,56 @@ class Invest extends Component {
     }).catch(err => console.log(err.response))
   }
 
-  onBuySaham = (amount)=>{
+  handlePaySaham = ()=>{
     this.setState({modalConfirm : false, loading : true})
-    const data = {
-      "amount": amount, 
-      "share" : this.state.lembarSaham 
+    const idPayment = this.state.paymentNumber
+    const data ={
+      "channel": "snap",
     }
-    const id = this.props.match.params.id
-    API.investFundraise(id, data).then(res =>{
-      Swal.fire({
-        icon: 'success',
-        title: `Saham berhasil di beli`,
-        showConfirmButton: false,
-        timer: 1500
-      }).then(()=> {
-        console.log(res)
-      } )
+    API.investPayment(idPayment, data).then(res=>{
+      console.log(res, 'token payment')
+      this.setState({
+        tokenPayment : res.data.payment_detail.token,
+        loading : false
+      }, ()=> window.snap.pay(this.state.tokenPayment) )
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({
         icon: 'error',
-        title: `Saham gagal di beli`,
+        title: `Checkout gagal`,
+        text : `${Object.entries(err.response.data)} \n`
+      })
+      // console.log(err.response)
+    })
+    // window.snap.pay('2ce824f1-507b-420f-acf1-a2d613b92f02')
+  }
+
+  onBuySaham = (amount)=>{
+    this.setState({modalConfirm : false, loading : true})
+    const id = this.props.match.params.id
+    const data = {
+      "amount": amount, 
+      "share" : this.state.lembarSaham 
+    }
+    API.investFundraise(id, data).then(res =>{
+      this.setState({
+        loading : false,
+        paymentNumber : res.data.data.number,
+        modalConfirm : true,
+      })
+      // console.log(res, 'QUOTASI')
+      // Swal.fire({
+      //   icon: 'success',
+      //   title: `produk berhasil`,
+      //   showConfirmButton: false,
+      //   timer: 1500
+      // }).then(()=>
+      // )
+    }).catch(err =>{
+      this.setState({loading : false})
+      Swal.fire({
+        icon: 'error',
+        title: `Checkout gagal`,
         text : `${Object.entries(err.response.data)} \n`
       })
       console.log(err.response)
@@ -94,37 +128,38 @@ class Invest extends Component {
         <div className="confirm">
           <p className="title">Konfirmasi pembelian Saham</p>
           <p className="inliner">
-            {" "}
             <span>Saham</span> <span className="val"> {name}</span>
           </p>
           <p className="inliner">
-            {" "}
             <span>Kode Saham</span> <span className="val"> {code}</span>
           </p>
           <p className="inliner">
-            {" "}
             <span>Harga Saham</span> <span className="val"> Rp. {Math.round(price_per_share)}</span>
           </p>
           <p className="inliner">
-            {" "}
             <span>Jumlah Saham</span> <span className="val"> {shares_remaining}</span>
           </p>
           <p className="inliner">
-            {" "}
-            <span>Total</span>{" "}
+            <span>Total</span>
             <span className="val" style={{ fontWeight: 600, color: "black" }}>
-              {" "}
               Rp. {this.state.lembarSaham * Math.round(price_per_share)}
             </span>
           </p>
-          {/* <Button onClick={() => this.setState({ modalInputPin: true })}> */}
-          <Button onClick={() => this.onBuySaham(this.state.lembarSaham * price_per_share)}>
-            LANJUTKAN
+
+          <Button onClick={this.handlePaySaham}>
+            Bayar
           </Button>
         </div>
       </div>
     );
   }
+
+  // midtrans = ()=>(
+  //   <ReactMidtrans clienttKey={'SB-Mid-client-BiP4Rpf3B1lBAwY_'} >
+  //           <button> My Button For PayMe </button>
+  //         </ReactMidtrans>
+
+  // )
 
   closeModPin = () => this.setState({ modalInputPin: false });
   closeModResPin = () => this.setState({ modalInputResetPin: false });
@@ -242,11 +277,9 @@ class Invest extends Component {
                   <p className="total">
                     Rp. { helper.idr(Math.round(this.state.lembarSaham *price_per_share))}
                   </p>
-                  <Button
-                    classes={{
-                      root: "beli-saham",
-                    }}
-                    onClick={() => this.setState({ modalConfirm: true })}
+                  <Button className='beli-saham'
+                    onClick={() => this.onBuySaham(this.state.lembarSaham * price_per_share)}
+                    // onClick={() => this.setState({ modalConfirm: true })}
                   >
                     BELI SAHAM
                   </Button>
@@ -262,31 +295,6 @@ class Invest extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     dataDetail :  state.dataDetail,
-//     // dataDetailCompany :  state.dataDetailCompany,
-//     // dataDetailTags :  state.dataDetailTags,
-//   };
-// };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     sendDetail: (data) => {
-//       const action = { type: "POST_DETAIL", data : data };
-//       dispatch(action);
-//     },
-//     sendDetailCompany: (data) => {
-//       const action = { type: "POST_DETAIL_COMPANY", data : data };
-//       dispatch(action);
-//     },
-//     sendDetailTags: (data) => {
-//       const action = { type: "POST_DETAIL_TAGS", data : data };
-//       dispatch(action);
-//     },
-//   };
-// };
-
-// export default connect(mapStateToProps, {})(Invest);
 export default Invest
 

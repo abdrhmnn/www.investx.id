@@ -32,6 +32,13 @@ const FUNDRAISE = {
             headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
+
+    //payment fundraising
+    investPayment: (id, data) =>{
+        return axios.post(apiBaseUrl + `/transaction/invoice/${id}/pay/`, data,{
+            headers: { Authorization: `Token ${kuki.get("token")}` },
+        });
+    },
     
 }
 
