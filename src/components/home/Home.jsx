@@ -15,7 +15,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CaroHome from "./CaroHome";
 import Benefit from "./Benefit";
-import JoinNow from "./JoinNow";
+// import JoinNow from "./JoinNow";
 import CaroQuotes from "./CaroQuotes";
 // import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
@@ -205,7 +205,7 @@ class Home extends Component {
         <CaroHome />
         <Benefit />
         <CaroQuotes />
-        <JoinNow />
+        {/* <JoinNow /> */}
         {/* <div>
           <FAQ />
         </div> */}

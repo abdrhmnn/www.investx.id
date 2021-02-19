@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import HamburgerMenu from "react-hamburger-menu";
 import { connect } from "react-redux";
+import kuki from "../../helpers/cookie";
 
 import logo from "../../images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { Button, ClickAwayListener } from "@material-ui/core";
-import kuki from "../../helpers/cookie";
 import walletnav from "../../images/walletnav.svg";
 import ModalTemplate from "./ModalTemplate";
 import VerifyOtp from "./VerifyOtp";
 import VerifyEmail from "./VerifyEmail";
 import Loading from "./Loading";
+// import API from "../../api";
 
 const butLogin = {
   textTransform: "capitalize",
@@ -54,25 +55,21 @@ class Navbar extends Component {
   }
 
   handleLogout = ()=>{
-    const myPromise = new Promise((resolve, reject) => {  
-      let arrRemoved = [];  
-      const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
-      for (const c of arrKuki) {
-        kuki.remove(c)
-        arrRemoved.push(c)
-      }
-      if(arrRemoved.length === 7) {    
-          resolve('Promise is resolved successfully.'); 
-        } else {    
-          reject('Promise is rejected');  
-        }
-    })
-
-    myPromise.then(res =>{ 
-      window.location.href = '/' 
-      // alert(res)
-      console.log(res)
-    }).catch(err=> alert(err))
+    // API.logout().then(res=>alert(res))
+    // .catch(err=> alert(err))
+    // alert('hahah')
+    // const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
+      kuki.remove("auth")
+      kuki.remove("status")
+      kuki.remove("token")
+      kuki.remove("full_name")
+      kuki.remove("email")
+      kuki.remove("phone_number")
+      kuki.remove("isInvestorComplete")
+      window.location.href= '/'
+    // for (let i in arrKuki) {
+    //   kuki.remove(arrKuki[i], { path: '/' })
+    // }
   }
 
   handlePop = () => this.setState({ isOpen: !this.state.isOpen });
@@ -127,12 +124,10 @@ class Navbar extends Component {
           <a href="/" className="border-top">
             Settings
           </a>
-          <a
+          <a href='#'
             onClick={this.handleLogout}
-            href="#"
             style={{ cursor: "pointer", color: "#4CB5EF" }}
             >
-            {" "}
             <b>Logout</b>
           </a>
         </div>
@@ -164,8 +159,7 @@ class Navbar extends Component {
     // })
   };
 
-  counterReset = () =>
-    this.setState({ counterResetAdd: this.state.counterResetAdd + 1 });
+  counterReset = () => this.setState({ counterResetAdd: this.state.counterResetAdd + 1 });
 
   render() {
     return (

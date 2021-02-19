@@ -29,11 +29,22 @@ const API = {
     };
     return axios.post(apiBaseUrl + `/authentication/password/`, body);
   },
-  getProfile: () => {
-    return axios.get(apiBaseUrl + `/account/profile/`, {
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
-  },
+  // logout: () => {
+  //   const myPromise = new Promise((resolve, reject) => {  
+  //     var arrRemoved = [];  
+  //     const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
+  //     for (const c of arrKuki) {
+  //       kuki.remove(c)
+  //       arrRemoved.push(c)
+  //     }
+  //     if(arrRemoved.length === 7) {    
+  //         resolve('logout'); 
+  //       } else {    
+  //         reject('Logout is rejected');  
+  //       }
+  //   })
+  //   return myPromise
+  // },
   otp: (code) => {
     const body = {
       phone_number: kuki.get("phone_number"),

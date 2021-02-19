@@ -7,7 +7,7 @@ const kuki = {
   set: (key, value, url) => cookies.set(key, value, url),
   get: (key) => cookies.get(key),
   // getAll : () => cookies.getAll(),
-  remove: (key) => cookies.remove(key),
+  remove: (key) => cookies.remove(key, {path : '/'}),
 };
 
 export default kuki;
