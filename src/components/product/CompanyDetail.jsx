@@ -253,14 +253,16 @@ class CompanyDetail extends Component {
 
                 <div className="bottom-bar pt-4">
                   <p>Location</p>
-                  <EmbedMap />
                     { address ?
                       address.map((res, i)=>(
+                        <>
+                        <EmbedMap address= {`${res.address} ${res.kelurahan} ${res.district} ${res.regency} ${res.province}`}/>
                         <p className="desc-address" key={i}>
                           {`${res.address} Kel/Desa ${res.kelurahan} Kecamatan ${res.district}, Kab/Kota ${res.regency}, Provinsi ${res.province}`}
                         </p>
+                        </>
                       ))
-                      : null
+                      : <EmbedMap />
                     }
                 </div>
               </div>

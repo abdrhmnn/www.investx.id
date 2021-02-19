@@ -444,7 +444,7 @@ class CompanyList extends Component {
 
                 <div className="row box-row no-gutters">
                   {this.state.data.map((res, i) => (
-                    <div className="mb-5 col-md-4 col-sm-6" key={i}>
+                    <div className="mb-5 col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-4" key={i}>
                       <Link to={`/company-list/detail/${res.id62}`}>
                         <Card data={res} />
                       </Link>

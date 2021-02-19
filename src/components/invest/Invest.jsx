@@ -16,12 +16,13 @@ import SecurePin from "./pinComponents/SecurePin";
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
+import helper from "../../helpers/helper";
 
 
 
 class Invest extends Component {
   state = {
-    lembarSaham: 8,
+    lembarSaham: 0,
     modalConfirm: false,
     modalInputPin: false,
     modalInputResetPin: false,
@@ -45,22 +46,28 @@ class Invest extends Component {
       this.setState({ 
         data : res.data,
         company : res.data.company,
+        lembarSaham : res.data.min_invest_share,
+
       })
     }).catch(err => console.log(err.response))
   }
 
   onBuySaham = (amount)=>{
     this.setState({modalConfirm : false, loading : true})
-    const data = {"amount": amount}
+    const data = {
+      "amount": amount, 
+      "share" : this.state.lembarSaham 
+    }
     const id = this.props.match.params.id
     API.investFundraise(id, data).then(res =>{
-      console.log(res)
       Swal.fire({
         icon: 'success',
         title: `Saham berhasil di beli`,
         showConfirmButton: false,
         timer: 1500
-      }).then(()=> this.props.history.push('/company-list') )
+      }).then(()=> {
+        console.log(res)
+      } )
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({
@@ -111,7 +118,7 @@ class Invest extends Component {
             </span>
           </p>
           {/* <Button onClick={() => this.setState({ modalInputPin: true })}> */}
-          <Button onClick={() => this.onBuySaham(this.state.lembarSaham * Math.round(price_per_share))}>
+          <Button onClick={() => this.onBuySaham(this.state.lembarSaham * price_per_share)}>
             LANJUTKAN
           </Button>
         </div>
@@ -125,8 +132,9 @@ class Invest extends Component {
   closeModSecPin = () => this.setState({ modalInputSecurePin: false });
 
   render() {
-    const {price_per_share} = this.state.data
+
     console.log(this.state.data)
+    const {min_invest_share,price_per_share} = this.state.data
     return (
       <>
         <Loading onOpen={this.state.loading} />
@@ -204,8 +212,7 @@ class Invest extends Component {
                   usaha
                 </p>
               </div>
-              <div
-                className="col-md cal-invest"
+              <div className="col-md cal-invest"
                 style={{
                   backgroundImage: `url(${payment1}), url(${payment2})`,
                 }}
@@ -219,31 +226,21 @@ class Invest extends Component {
                     contoh : 8, 16, 32 dan seterusnya.
                   </p>
                   <div className="wrap-cal">
-                    <Fab
-                      onClick={() =>
-                        this.setState({
-                          lembarSaham: this.state.lembarSaham / 2,
-                        })
-                      }
-                      disabled={this.state.lembarSaham <= 8}
+                    <Fab onClick={() => this.setState({ lembarSaham: this.state.lembarSaham / 2,})}
+                      disabled={this.state.lembarSaham <= min_invest_share}
                     >
                       <i className="fas fa-minus"></i>
                     </Fab>
                     <input type="number" readOnly value={this.state.lembarSaham} />
-                    <Fab
-                      onClick={() =>
-                        this.setState({
-                          lembarSaham: this.state.lembarSaham * 2,
-                        })
-                      }
+                    <Fab onClick={() =>this.setState({lembarSaham: this.state.lembarSaham * 2,})}
                     >
                       <i className="fas fa-plus"></i>
                     </Fab>
                   </div>
-                  <p className="info">Min. 8 lembar</p>
+                  <p className="info">Min. {min_invest_share} lembar</p>
                   <p className="title">Total Harga saham</p>
                   <p className="total">
-                    Rp. {this.state.lembarSaham * Math.round(price_per_share)}
+                    Rp. { helper.idr(Math.round(this.state.lembarSaham *price_per_share))}
                   </p>
                   <Button
                     classes={{
@@ -290,6 +287,6 @@ class Invest extends Component {
 //   };
 // };
 
-// export default connect(mapStateToProps, ()=>{})(Invest);
+// export default connect(mapStateToProps, {})(Invest);
 export default Invest
 
