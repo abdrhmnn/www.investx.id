@@ -5,6 +5,7 @@ import REFERENCE from './reference'
 import FUNDRAISE from './fundraise'
 import FORM_COMPANY from './formCompany'
 import FORM_INVESTOR from './formInvestor'
+import INVOICE from "./invoice";
 
 // const localBaseUrl = "http://192.168.0.14:8000";
 // const apiBaseUrl = process.env.BASE_URL;
@@ -108,9 +109,7 @@ const API = {
   ...FORM_COMPANY,
   ...REFERENCE,
   ...FUNDRAISE,
-
-  
-  
+  ...INVOICE,
 
 };
 

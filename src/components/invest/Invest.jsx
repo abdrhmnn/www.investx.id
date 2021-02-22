@@ -57,11 +57,11 @@ class Invest extends Component {
     }).catch(err => console.log(err.response))
   }
 
-  handlePaySaham = ()=>{
+  handlePaySaham = (channelVal)=>{
     this.setState({modalConfirm : false, loading : true})
     const idPayment = this.state.paymentNumber
     const data ={
-      "channel": "snap",
+      "channel": channelVal
     }
     API.investPayment(idPayment, data).then(res=>{
       console.log(res, 'token payment')
@@ -69,36 +69,46 @@ class Invest extends Component {
         tokenPayment : res.data.payment_detail.token,
         loading : false
       }, ()=>{
-        window.snap.pay(this.state.tokenPayment,{
-          onSuccess: function(result){
-            console.log('success');
-            console.log(result);
-          },
-          onPending: function(result){
-            console.log('pending');
-            console.log(result);
-          },
-          onError: function(result){
-            console.log('error');
-            console.log(result);
-          },
-          onClose: function(){
-            console.log('customer closed the popup without finishing the payment');
-            window.location.reload()
-            // document.body.style = null;
-            // document.body.style.overflowX = "auto";
-            // document.body.style.overflow = "auto";
-          }
-        })
+        if (channelVal=== 'snap') {
+            window.snap.pay(this.state.tokenPayment,{
+              onSuccess: function(result){
+                console.log('success');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+              },
+              onPending: function(result){
+                console.log('pending');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+
+              },
+              onError: function(result){
+                console.log('error');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+              },
+              onClose: function(){
+                console.log('customer closed the popup without finishing the payment');
+                window.location.reload()
+                // document.body.style = null;
+                // document.body.style.overflowX = "auto";
+                // document.body.style.overflow = "auto";
+              }
+            })
+        }
+        if (channelVal=== 'wallet') {
+            window.location.href = `/invoice/${idPayment}`
+        }
       })
+
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({
         icon: 'error',
         title: `Checkout gagal`,
-        text : `${Object.entries(err.response.data)} \n`
+        // text : `${Object.entries(err.response.data)} \n`
       })
-      // console.log(err.response)
+      console.log(err.response)
     })
   }
 
@@ -158,10 +168,14 @@ class Invest extends Component {
               Rp. {this.state.lembarSaham * Math.round(price_per_share)}
             </span>
           </p>
-
-          <Button onClick={this.handlePaySaham}>
-            Pilih Pembayaran
-          </Button>
+          <div className="buttons-choose">
+            <Button onClick={()=>this.handlePaySaham('wallet')}>
+              Bayar menggunakan saldo investx
+            </Button>
+            <Button onClick={()=>this.handlePaySaham('snap')}>
+              Bayar menggunakan transfer bank/e-money
+            </Button>
+          </div>
         </div>
       </div>
     );

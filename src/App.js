@@ -3,6 +3,8 @@ import "sweetalert2/src/sweetalert2.scss";
 import "./styles/App.scss";
 // toast css 
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
+
 
 
 import {
@@ -52,6 +54,7 @@ import Invest from "./components/invest/Invest";
 import Profile from "./components/profile/Profile";
 import Payment from "./components/payment/Payment";
 import PaymentStatus from "./components/payment/PaymentStatus";
+import Invoice from "./components/invest/Invoice";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -108,6 +111,7 @@ class App extends Component {
           
           <Route exact path="/company-list" component={CompanyList} />
           <Route exact path="/company-list/detail/:id" component={CompanyDetail}/>
+          <Route exact path="/invoice/:idTransaction" component={Invoice}/>
           {/* //redirect  */}
           <PrivatRoute exact path="/company-list/detail/:id/invest" component={Invest}/>
 

@@ -155,17 +155,20 @@
                 }
             }
         }
-        button{
-            font-weight: 600;
-            width: 303px;
-            height: 48px;
-            font-size: 18px;
-            line-height: 25px;
-            text-align: center;
-            color: #0288D1;
-            border: 1px solid #0288D1;
-            border-radius: 9px;
-            margin-top: 30px;
+        .buttons-choose{
+            // background-color: #01579B;
+            button{
+                font-weight: 600;
+                width: 90%;
+                height: 48px;
+                font-size: 18px;
+                line-height: 25px;
+                text-align: center;
+                color: #0288D1;
+                border: 1px solid #0288D1;
+                border-radius: 9px;
+                margin-top: 15px;
+            }
         }
     }
 
