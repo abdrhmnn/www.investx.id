@@ -46,12 +46,12 @@ class Card extends Component {
               <div
                 className="progress-bar"
                 role="progressbar"
-                style={{ width: progress * 100 }}
+                style={{ width: Math.round(progress * 100) }}
                 aria-valuemin="0"
                 aria-valuemax="100"
               ></div>
             </div>
-            <div className="num">{progress * 100}%</div>
+            <div className="num">{Math.round(progress * 100)}%</div>
           </div>
           <div className="raised">
             <div className="box-raised text-center">

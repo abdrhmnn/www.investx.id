@@ -202,9 +202,9 @@ class CompanyDetail extends Component {
                       <LinearProgress
                         variant="determinate"
                         className="bar"
-                        value={progress*100}
+                        value={Math.round(progress*100)}
                       />
-                      <span>{progress*100}%</span>
+                      <span>{Math.round(progress*100)}%</span>
                     </div>
                     <p className="avail">
                       Lembar Saham Tersedia <span>{shares_remaining}</span> Dari {shares}
