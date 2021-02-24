@@ -53,35 +53,37 @@ class InfoPerusahaan extends Component {
   checkall =()=>{
     API.refCheckCompanyMe().then(res=>{
       this.setState({checkPoinData : res.data.results})
-      const data = res.data.results[0]
-      const checkArr = [
-        {label :'is_general_complete'},
-        {label :'is_financial_complete'},
-        {label :'is_nonfinancial_complete'}, 
-        {label :'is_media_complete'},
-      ]
-      for (const val of checkArr) {
-        if (!data[`${val.label}`]) {
-          this.checkFormCompany()
+      if (res.data.results.length !== 0) {
+        const data = res.data.results[0]
+        // console.log(res)
+        const checkArr = [
+          {label :'is_general_complete'},
+          {label :'is_financial_complete'},
+          {label :'is_nonfinancial_complete'}, 
+          {label :'is_media_complete'},
+        ]
+        for (const val of checkArr) {
+          if (!data[`${val.label}`] ) {
+            this.checkFormCompany()
+          }
         }
       }
     }).catch(err => {
       console.log(err.response)
       Swal.fire({
         icon: 'error',
-        title: 'Error 500',
+        title: 'Error 5000',
         showConfirmButton: true,
       }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
     })
   }
 
   checkFormCompany = ()=>{
-
       const data = this.state.checkPoinData[0]
       const checkArr = [
         {label :'is_general_complete', isCompleteLink : '/startup-form-informasi-finansial'},
       ]
-      for (const val of checkArr) {
+      for (const val of checkArr ) {
         if (data[`${val.label}`]) {
             this.props.history.push(val.isCompleteLink)
         }
