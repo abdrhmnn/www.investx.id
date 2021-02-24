@@ -19,6 +19,7 @@ import Benefit from "./Benefit";
 import CaroQuotes from "./CaroQuotes";
 // import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
+import kuki from "../../helpers/cookie";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
@@ -142,7 +143,7 @@ class Home extends Component {
                         dengan InvestX.
                       </p>
 
-                      <Link to="/investor-form-data-diri">
+                      <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>
                         <Button style={butSolid} className="start-invest-but">
                           Start Investing
                         </Button>
