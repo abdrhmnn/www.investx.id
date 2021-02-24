@@ -250,6 +250,7 @@ class InfoPerusahaan extends Component {
                 "number_of_branches": val.number_of_branches,
                 "number_of_employees": val.number_of_employees,
                 "description": val.description,
+                "website_url" : val.website_url,
                 "logo": this.state.logo ? this.state.logo.url : toast.warn("Silahkan isi Foto KTP dahulu")
               }
               if (this.state.logo) {
@@ -332,34 +333,6 @@ class InfoPerusahaan extends Component {
                     />
                   </div>
 
-                  {/* <div className="col-md-12 ">
-                    <InputSelect
-                      label="Sub Jenis Usaha *"
-                      name="dummy"
-                      getOptionLabel={(val) => val.label}
-                      options={top100Films}
-                      helperText={touched.dummy && errors.dummy}
-                      error={touched.dummy && errors.dummy ? true : false}
-                      value={values.dummy}
-                      onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("dummy", val)}
-                    />
-                  </div> */}
-
-                  {/* <div className="col-md-12 ">
-                    <InputSelect
-                      label="Kota Lokasi Usaha *"
-                      name="dummy"
-                      getOptionLabel={(val) => val.label}
-                      options={top100Films}
-                      helperText={touched.dummy && errors.dummy}
-                      error={touched.dummy && errors.dummy ? true : false}
-                      value={values.dummy}
-                      onBlur={handleBlur}
-                      onChange={(e, val) => setFieldValue("dummy", val)}
-                    />
-                  </div> */}
-
                   <div className="col-md-12 ">
                     <Field
                       as={InputTextArea}
@@ -441,6 +414,8 @@ class InfoPerusahaan extends Component {
                     />
                   </div>
 
+                 
+
                   <div className="col-md-12">
                     <Field
                       as={InputText}
@@ -496,6 +471,15 @@ class InfoPerusahaan extends Component {
                       // placeholder=''
                       helperText={touched.description && errors.description}
                       error={touched.description && errors.description ? true : false}
+                    />
+                  </div>
+
+                  <div className="col-md-12">
+                    <Field
+                      as={InputText}
+                      label="Website Perusahaan"
+                      type="text"
+                      name="website_url"
                     />
                   </div>
 
