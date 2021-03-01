@@ -73,7 +73,7 @@ class CompanyList extends Component {
     API.getRegencyFund(params).then(res=>{
       console.log(res)
       this.setState({ 
-        dataCity : res.data.results.map(res=>({label: res.name, value : res.name})),
+        dataCity : res.data.results.map(val=>({label: val.name, value : val.name})),
       })
     }).catch(err => console.log(err.response))
 
@@ -178,11 +178,7 @@ class CompanyList extends Component {
             </p>
           </div>
 
-          <div
-            className={
-              this.state.filterShow ? "container-fluid" : "container-fluid"
-            }
-          >
+          <div >
             <div className="row list-boxes no-gutters">
 
               <div className="col-md-2 d-flex align-items-end flex-column overflow-hidden "

@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import { Button, Fab } from "@material-ui/core";
 import { Formik } from "formik";
 import mailbox from "../../images/mailbox.png";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 import API from "../../api";
 import Swal from "sweetalert2";
 import helper from "../../helpers/helper";

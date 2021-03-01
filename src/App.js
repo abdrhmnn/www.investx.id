@@ -14,11 +14,11 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import kuki from "./helpers/cookie";
+import kuki from "./helpers/kuki";
 
 import Home from "./components/home/Home.jsx";
 import Login from "./components/auth/Login";
-import Register from "./components/auth/SignUp";
+import Register from "./components/auth/Register";
 
 import Term from "./components/auth/Term";
 import SelectForm from "./components/auth/SelectForm";
@@ -49,7 +49,7 @@ import withDrawInvoice from "./components/withDraw/withDrawInvoice";
 import editNominal from "./components/withDraw/editNominal";
 import CompanyDetail from "./components/product/CompanyDetail";
 
-import formBank from "./components/withDraw/formBank";
+import formBank from "./components/withDraw/FormBank";
 import Invest from "./components/invest/Invest";
 import Profile from "./components/profile/Profile";
 import Payment from "./components/payment/Payment";

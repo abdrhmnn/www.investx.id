@@ -21,7 +21,7 @@ import API from "../../api";
 import moment from "moment";
 import 'moment/locale/id';
 import helper from "../../helpers/helper";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 // import Loading from "../shared/Loading";
 // import Swal from "sweetalert2";
 

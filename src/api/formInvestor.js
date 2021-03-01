@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import kuki from "../helpers/cookie";
+import kuki from "../helpers/kuki";
 
 const apiBaseUrl = "https://api.staging.investx.id";
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HamburgerMenu from "react-hamburger-menu";
 import { connect } from "react-redux";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 
 import logo from "../../images/logo.svg";
 import { Link, NavLink } from "react-router-dom";

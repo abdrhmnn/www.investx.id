@@ -5,7 +5,7 @@ import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import { Button } from "@material-ui/core";
 
-class DetailTransaction extends Component {
+class withDrawInvoice extends Component {
   state = {
     isInvoice: false,
   };
@@ -131,4 +131,4 @@ class DetailTransaction extends Component {
   }
 }
 
-export default DetailTransaction;
+export default withDrawInvoice;

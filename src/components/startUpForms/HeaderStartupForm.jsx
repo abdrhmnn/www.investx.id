@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import { Fab } from "@material-ui/core";
 import StepsStartUp from "./StepsStartUp";
 import { Link } from "react-router-dom";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 
 class HeaderStartupForm extends Component {
   render() {

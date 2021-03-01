@@ -4,7 +4,7 @@ import logo from "../../images/logo.svg";
 import StepsInvestor from "./StepsInvestor";
 import { Fab } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 
 class HeaderInvestForm extends Component {
   render() {

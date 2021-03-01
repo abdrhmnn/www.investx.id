@@ -1,5 +1,5 @@
 import axios from "axios";
-import kuki from "../helpers/cookie";
+import kuki from "../helpers/kuki";
 
 import REFERENCE from './reference'
 import FUNDRAISE from './fundraise'

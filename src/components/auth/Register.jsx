@@ -8,7 +8,7 @@ import bluewoman from "../../images/bg/bluewoman.jpg";
 import phoneicon from "../../images/phoneicon.svg";
 import emailicon from "../../images/emailicon.svg";
 import Swal from "sweetalert2";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 
 import {
   Button,

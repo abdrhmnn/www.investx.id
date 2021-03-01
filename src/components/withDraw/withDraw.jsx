@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 
 import PaymentMethod from "../payment/PaymentMethod";
 
-class MethodTopUp extends Component {
+class withDraw extends Component {
   state = {
     toggleMethods: false,
   };
@@ -60,4 +60,4 @@ class MethodTopUp extends Component {
   }
 }
 
-export default MethodTopUp;
+export default withDraw;

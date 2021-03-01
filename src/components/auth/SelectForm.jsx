@@ -3,7 +3,7 @@ import select from "../../images/bg/select.jpg";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { Button } from "@material-ui/core";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";

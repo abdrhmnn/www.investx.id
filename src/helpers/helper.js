@@ -12,7 +12,8 @@ const helper = {
           h.push(".");
         }
       }
-      var has = h.reverse().join("");
+      var hasRev = h.reverse();
+      var has = hasRev.join("");
       if (has.startsWith(".")) {
         var x = has.split("");
         x.shift();

@@ -55,7 +55,7 @@ PaymentMethod.propTypes = {
   ).isRequired,
 };
 
-class MethodTopUp extends Component {
+class editNominal extends Component {
   state = {
     toggleMethods: false,
   };
@@ -147,4 +147,4 @@ class MethodTopUp extends Component {
   }
 }
 
-export default MethodTopUp;
+export default editNominal;

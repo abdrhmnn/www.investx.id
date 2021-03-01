@@ -19,7 +19,7 @@ import Benefit from "./Benefit";
 import CaroQuotes from "./CaroQuotes";
 // import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {

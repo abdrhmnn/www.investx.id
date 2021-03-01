@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
 import HeaderInvestForm from "./HeaderInvestForm";
-import kuki from '../../helpers/cookie'
+import kuki from '../../helpers/kuki'
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";

@@ -38,18 +38,18 @@ class Otp extends Component {
       {
         [e.target.name]: val == null ? "" : e.target.value,
       },
-      () => {
-        var { box1, box2, box3, box4, box5, box6 } = this.state;
-        if (
-          box1 !== "" &&
-          box2 !== "" &&
-          box3 !== "" &&
-          box4 !== "" &&
-          box5 !== "" &&
-          box6 !== ""
-        ) {
-        }
-      }
+      // () => {
+      //   // var { box1, box2, box3, box4, box5, box6 } = this.state;
+      //   // if (
+      //   //   box1 !== "" &&
+      //   //   box2 !== "" &&
+      //   //   box3 !== "" &&
+      //   //   box4 !== "" &&
+      //   //   box5 !== "" &&
+      //   //   box6 !== ""
+      //   // ) {
+      //   // }
+      // }
     );
   };
   handleSubmit = (e) => {

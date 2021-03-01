@@ -4,7 +4,7 @@ import mailbox from "../../images/mailbox.png";
 import { Button } from "@material-ui/core";
 import Swal from "sweetalert2";
 
-class Otp extends Component {
+class withDrawOtp extends Component {
   state = {
     box1: "",
     box2: "",
@@ -25,11 +25,11 @@ class Otp extends Component {
       {
         [e.target.name]: val == null ? "" : e.target.value,
       },
-      () => {
-        var { box1, box2, box3, box4 } = this.state;
-        if (box1 !== "" && box2 !== "" && box3 !== "" && box4 !== "") {
-        }
-      }
+      // () => {
+      //   var { box1, box2, box3, box4 } = this.state;
+      //   if (box1 !== "" && box2 !== "" && box3 !== "" && box4 !== "") {
+      //   }
+      // }
     );
   };
   handleSubmit = (e) => {
@@ -122,4 +122,4 @@ class Otp extends Component {
   }
 }
 
-export default Otp;
+export default withDrawOtp;

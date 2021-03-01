@@ -17,7 +17,7 @@ import {
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
 import API from "../../api";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 

@@ -3,7 +3,7 @@ import bankRumah from "../../images/bankRumah.svg";
 
 import { Button } from "@material-ui/core";
 
-class ModalError extends Component {
+class FormBank extends Component {
   render() {
     const butBlue = {
       width: "150px",
@@ -72,4 +72,4 @@ class ModalError extends Component {
     );
   }
 }
-export default ModalError;
+export default FormBank;
