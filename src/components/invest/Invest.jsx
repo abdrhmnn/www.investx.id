@@ -43,6 +43,12 @@ class Invest extends Component {
 
   componentDidMount(){
     this.getData()
+    const script = document.createElement("script");
+
+    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.async = true;
+    script["data-client-key"] = "SB-Mid-client-BiP4Rpf3B1lBAwY_"; //key mor save with queryreact
+    document.body.appendChild(script);
   }
 
   getData = () =>{
