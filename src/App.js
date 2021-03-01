@@ -49,7 +49,7 @@ import withDrawInvoice from "./components/withDraw/withDrawInvoice";
 import editNominal from "./components/withDraw/editNominal";
 import CompanyDetail from "./components/product/CompanyDetail";
 
-import FormBank from "./components/withDraw/FormBank";
+// import FormBank from "./components/withDraw/FormBank";
 import Invest from "./components/invest/Invest";
 import Profile from "./components/profile/Profile";
 import Payment from "./components/payment/Payment";
@@ -127,7 +127,7 @@ class App extends Component {
           <Route exact path="/withdraw-otp" component={withDrawOtp} />
           <Route exact path="/invoice" component={withDrawInvoice} />
           <Route exact path="/editNominal" component={editNominal} />
-          <Route exact path="/tambah-bank" component={FormBank} />
+          {/* <Route exact path="/tambah-bank" component={FormBank} /> */}
 
           <PrivatRoute exact path="/profile" component={Profile} />
 
