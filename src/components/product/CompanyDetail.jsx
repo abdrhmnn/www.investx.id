@@ -224,12 +224,12 @@ class CompanyDetail extends Component {
 
                   <div className="d-flex wrap-boxes-status align-items-center">
                     <div className="col-md">
-                      <p className="num">Rp. {this.rupiahFormat(price_per_share * 10)}</p>
-                      <p className="paper">( 10 Lembar )</p>
+                      <p className="num">Rp. {this.rupiahFormat(price_per_share )}</p>
+                      <p className="paper"> &nbsp;</p>
                       <p className="inf">Harga per-saham</p>
                     </div>
                     <div className="col-md">
-                      <p className="num">Rp. {this.rupiahFormat(min_invest_amount * min_invest_share)}</p>
+                      <p className="num">Rp. {this.rupiahFormat(min_invest_amount )}</p>
                       <p className="paper">( {min_invest_share} Lembar )</p>
                       <p className="inf">Min. pembelian</p>
                     </div>

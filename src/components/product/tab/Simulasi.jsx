@@ -1,12 +1,28 @@
 import React, { Component } from "react";
 import simulasiIcon from "../../../images/tabDetailCompany/simulasiIcon.svg";
 import { Fab } from "@material-ui/core";
+import { connect } from "react-redux";
+import helper from "../../../helpers/helper";
+
 
 class Simulasi extends Component {
   state = {
     count: 1,
   };
   render() {
+    const {
+      // regency, 
+      // amount, 
+      // progress, 
+      // min_invest_amount, 
+      // status, 
+      // end_date, 
+      // investor_count, 
+      price_per_share, 
+      // shares_remaining, 
+      // shares,
+      min_invest_share
+    } = this.props.dataDetail
     return (
       <div className="simulasi-tab">
         <div className="title">
@@ -24,7 +40,7 @@ class Simulasi extends Component {
               >
                 -
               </Fab>
-              <input type="number" min="1" onChange={()=>{}} value={this.state.count} />
+              <input type="number"  onChange={()=>{}} value={this.state.count * (min_invest_share)} />
               <Fab
                 onClick={() => this.setState({ count: this.state.count + 1 })}
               >
@@ -35,7 +51,7 @@ class Simulasi extends Component {
 
           <div className="val-inv">
             <p className="lab">Nilai Investasi</p>
-            <p className="right">Rp. 5.000.000</p>
+            <p className="right">{helper.idr(Math.round((price_per_share * min_invest_share) * this.state.count))}</p>
           </div>
         </div>
 
@@ -61,4 +77,30 @@ class Simulasi extends Component {
   }
 }
 
-export default Simulasi;
+const mapStateToProps = (state) => {
+  return {
+    dataDetail :  state.dataDetail,
+    dataDetailCompany :  state.dataDetailCompany,
+    dataDetailTags :  state.dataDetailTags,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendDetail: (data) => {
+      const action = { type: "POST_DETAIL", data : data };
+      dispatch(action);
+    },
+    sendDetailCompany: (data) => {
+      const action = { type: "POST_DETAIL_COMPANY", data : data };
+      dispatch(action);
+    },
+    sendDetailTags: (data) => {
+      const action = { type: "POST_DETAIL_TAGS", data : data };
+      dispatch(action);
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Simulasi);
+

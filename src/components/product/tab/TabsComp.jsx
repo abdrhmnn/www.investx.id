@@ -3,7 +3,7 @@ import { Tabs, Tab, Collapse } from "@material-ui/core";
 import Finansial from "./Finansial";
 import Simulasi from "./Simulasi";
 import Updates from "./Updates";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 
 class TabsComp extends Component {
   state = {
@@ -55,7 +55,7 @@ class TabsComp extends Component {
             }}
             label="Updates"
           />
-          <Tab
+          {/* <Tab
             style={{
               fontSize: 14,
               minWidth: "10%",
@@ -63,7 +63,7 @@ class TabsComp extends Component {
               fontFamily: "Lato",
             }}
             label="Comments"
-          />
+          /> */}
         </Tabs>
 
         <Collapse in={tabActive === 0}>
@@ -85,11 +85,11 @@ class TabsComp extends Component {
           </div>
         </Collapse>
 
-        <Collapse in={tabActive === 3}>
+        {/* <Collapse in={tabActive === 3}>
           <div className="tab-content">
             <Comments />
           </div>
-        </Collapse>
+        </Collapse> */}
       </div>
     );
   }

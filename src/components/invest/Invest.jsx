@@ -22,6 +22,7 @@ import helper from "../../helpers/helper";
 
 
 
+
 class Invest extends Component {
   state = {
     lembarSaham: 0,
@@ -181,6 +182,11 @@ class Invest extends Component {
     );
   }
 
+  handleSubmit= (e, pricePerShare ) => {
+    this.onBuySaham(this.state.lembarSaham * pricePerShare)
+    e.preventDefault()
+  }
+
   // midtrans = ()=>(
   //   <ReactMidtrans clienttKey={'SB-Mid-client-BiP4Rpf3B1lBAwY_'} >
   //           <button> My Button For PayMe </button>
@@ -284,28 +290,35 @@ class Invest extends Component {
                     Masukan Jumlah saham yang ingin dibeli
                   </p>
                   <p className="desc">
-                    *Jumlah saham yang dapat di beli Berlaku kelipatan <br />{" "}
-                    contoh : 8, 16, 32 dan seterusnya.
+                    *Jumlah saham yang dapat di beli Berlaku kelipatan <br />
+                    {/* contoh : 8, 16, 32 dan seterusnya. */}
                   </p>
-                  <div className="wrap-cal">
+                  <form className="wrap-cal" id='calculator-invest' onSubmit={(e)=>this.handleSubmit(e, price_per_share)}>
                     <Fab onClick={() => this.setState({ lembarSaham: this.state.lembarSaham / 2,})}
                       disabled={this.state.lembarSaham <= min_invest_share}
                     >
                       <i className="fas fa-minus"></i>
                     </Fab>
-                    <input type="number" readOnly value={this.state.lembarSaham} />
+                    <input 
+                      type="number" 
+                      min={min_invest_share} 
+                      value={this.state.lembarSaham} 
+                      onChange={(e)=> this.setState({lembarSaham : e.target.value})}
+                    />
                     <Fab onClick={() =>this.setState({lembarSaham: this.state.lembarSaham * 2,})}
                     >
                       <i className="fas fa-plus"></i>
                     </Fab>
-                  </div>
+                  </form>
                   <p className="info">Min. {min_invest_share} lembar</p>
                   <p className="title">Total Harga saham</p>
                   <p className="total">
                     Rp. { helper.idr(Math.round(this.state.lembarSaham *price_per_share))}
                   </p>
                   <Button className='beli-saham'
-                    onClick={() => this.onBuySaham(this.state.lembarSaham * price_per_share)}
+                    type='submit'
+                    form='calculator-invest'
+                    // onClick={}
                     // onClick={() => this.setState({ modalConfirm: true })}
                   >
                     BELI SAHAM
