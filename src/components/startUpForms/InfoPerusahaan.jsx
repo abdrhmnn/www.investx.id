@@ -36,6 +36,7 @@ class InfoPerusahaan extends Component {
     villageData : [],
 
     "logo": null,
+    "prospectus" : null,
     modalFile: {},
     loading : false,
     uuid : uuid(),
@@ -251,7 +252,8 @@ class InfoPerusahaan extends Component {
                 "number_of_employees": val.number_of_employees,
                 "description": val.description,
                 "website_url" : val.website_url,
-                "logo": this.state.logo ? this.state.logo.url : toast.warn("Silahkan isi Foto KTP dahulu")
+                "prospectus": this.state.prospectus ? this.state.prospectus.url : toast.warn("Silahkan isi prospectus dahulu"),
+                "logo": this.state.logo ? this.state.logo.url : toast.warn("Silahkan isi foto KTP dahulu"),
               }
               if (this.state.logo) {
                 this.setState({loading : true})
@@ -490,6 +492,23 @@ class InfoPerusahaan extends Component {
                     {JSON.stringify(errors, null, 4)}
                   </pre> */}
                   <ToastContainer />
+                  <div className="col-md-12 startup-company-logo mb-4">
+                    <div className="label-cus">Prospectus *</div>
+                    <div className="file-frame">
+                      <span>{this.state.prospectus ? this.state.prospectus.name : 'Select File...' }</span>
+                      <InputFiles
+                        onChange={(files) =>
+                          this.handleFileUpload(files, "prospectus")
+                        }
+                      >
+                        <Button type="button">Browse</Button>
+                      </InputFiles>
+                    </div>
+                    <p className="info-file mb-0">
+                      *File data <span>Pdf / Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>
+                    </p>
+                  </div>
+
                   <div className="col-md-12 startup-company-logo">
                     <div className="label-cus">Logo perusahaan *</div>
                     <div className="file-frame">
@@ -502,14 +521,14 @@ class InfoPerusahaan extends Component {
                         <Button type="button">Browse</Button>
                       </InputFiles>
                     </div>
-                    <div className="error-input p-0">
-                      {/* {submitted && errors.born && <div className="error">{errors.born}</div>} */}
-                    </div>
+                    {/* <div className="error-input p-0">
+                      {submitted && errors.born && <div className="error">{errors.born}</div>}
+                    </div> */}
                     <p className="info-file">
-                      *File data <span>Pdf / Jpeg / PNG</span> dan tidak lebih
-                      dari <span>5MB</span>{" "}
+                      *File data <span>Pdf / Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>{" "}
                     </p>
                   </div>
+
                 </div>
               </form>
             )}
