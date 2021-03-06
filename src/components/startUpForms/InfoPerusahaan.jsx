@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import InputFiles from "react-input-files";
 import imageFileToBase64 from 'image-file-to-base64-exif'
+import pdf2base64 from 'pdf-to-base64'
 
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
@@ -163,11 +164,23 @@ class InfoPerusahaan extends Component {
   handleFileUpload = (file, name) => {
     this.setState({loading: true})
     console.log(file[0].name);
+    console.log(file);
     const initialName = file[0].name
     const maxWidth = 800
     const maxHeight = 400
     const quality = 0.9
     imageFileToBase64(file[0], maxWidth, maxHeight, quality).then((res)=>{
+      this.apiFileToLink(name, res, initialName )
+          // console.log(res)
+    })
+    this.setState({ modalFile: {} });
+  };
+
+  handleFileUploadPdf = (file, name) => {
+    this.setState({loading: true})
+    console.log(file);
+    const initialName = file[0].name
+    pdf2base64(file[0]).then((res)=>{
       this.apiFileToLink(name, res, initialName )
           // console.log(res)
     })
@@ -499,7 +512,7 @@ class InfoPerusahaan extends Component {
                       <InputFiles
                         accept="application/pdf"
                         onChange={(files) =>
-                          this.handleFileUpload(files, "prospectus")
+                          this.handleFileUploadPdf(files, "prospectus")
                         }
                       >
                         <Button type="button">Browse</Button>
