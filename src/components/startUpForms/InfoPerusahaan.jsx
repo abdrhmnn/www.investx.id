@@ -497,6 +497,7 @@ class InfoPerusahaan extends Component {
                     <div className="file-frame">
                       <span>{this.state.prospectus ? this.state.prospectus.name : 'Select File...' }</span>
                       <InputFiles
+                        accept="application/pdf"
                         onChange={(files) =>
                           this.handleFileUpload(files, "prospectus")
                         }
@@ -505,7 +506,7 @@ class InfoPerusahaan extends Component {
                       </InputFiles>
                     </div>
                     <p className="info-file mb-0">
-                      *File data <span>Pdf / Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>
+                      *File data <span>Pdf</span> dan tidak lebih dari <span>5MB</span>
                     </p>
                   </div>
 
@@ -525,7 +526,7 @@ class InfoPerusahaan extends Component {
                       {submitted && errors.born && <div className="error">{errors.born}</div>}
                     </div> */}
                     <p className="info-file">
-                      *File data <span>Pdf / Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>{" "}
+                      *File data <span>Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>{" "}
                     </p>
                   </div>
 

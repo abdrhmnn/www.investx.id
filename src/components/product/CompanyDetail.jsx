@@ -124,7 +124,7 @@ class CompanyDetail extends Component {
     };
     console.log(this.props);
 
-    const {name, trademark, logo, cover, website_url, address} = this.props.dataDetailCompany
+    const {name, trademark, logo, cover, website_url, address, prospectus} = this.props.dataDetailCompany
     const {
       regency, 
       amount, 
@@ -246,9 +246,9 @@ class CompanyDetail extends Component {
                     </div>
                     <img src={share} alt="share" />
                   </div>
-                  <Link to="/">
-                    <Button className="down" disabled>DOWNLOAD PROSPEKTUS</Button>
-                  </Link>
+                  <a href={prospectus !== null ? prospectus : ''} download>
+                    <Button className="down" disabled={prospectus !== null} >DOWNLOAD PROSPEKTUS</Button>
+                  </a>
                 </div>
 
                 <div className="bottom-bar pt-4">
