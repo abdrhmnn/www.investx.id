@@ -10,6 +10,11 @@ const INVOICE = {
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
+    getTransaction: () =>{
+      return axios.get(apiBaseUrl + `/transaction/invoice/`,{
+        headers: { Authorization: `Token ${kuki.get("token")}` },
+      });
+  },
 }
 
 export default INVOICE

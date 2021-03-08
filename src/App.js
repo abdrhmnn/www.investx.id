@@ -55,6 +55,7 @@ import Profile from "./components/profile/Profile";
 import Payment from "./components/payment/Payment";
 import PaymentStatus from "./components/payment/PaymentStatus";
 import Invoice from "./components/invest/Invoice";
+import Cart from "./components/cart/Cart";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -108,6 +109,8 @@ class App extends Component {
           <PrivatRoute exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
           <PrivatRoute exact path="/startup-form-media" component={Media} />
           <PrivatRoute exact path="/startup-form-syarat" component={Syarat} />
+
+          <PrivatRoute exact path="/cart" component={Cart} />
           
           <Route exact path="/company-list" component={CompanyList} />
           <Route exact path="/company-list/detail/:id" component={CompanyDetail}/>

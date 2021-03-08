@@ -11,6 +11,7 @@ import ModalTemplate from "./ModalTemplate";
 import VerifyOtp from "./VerifyOtp";
 import VerifyEmail from "./VerifyEmail";
 import Loading from "./Loading";
+import { ShoppingCart } from "react-feather";
 // import API from "../../api";
 
 const butLogin = {
@@ -93,7 +94,7 @@ class Navbar extends Component {
         <div className="boxsaldo">
           <img src={walletnav} alt="saldo" />
           <p className="nominal">
-            Saldo <br /> <span>Rp 1500000</span>{" "}
+            Saldo <br /> <span>Rp 1500000</span>
           </p>
           <Link to="/topup">
             <Button>
@@ -182,10 +183,10 @@ class Navbar extends Component {
             </Link>
             <ul>
               <li>
-                <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>Start Investing</Link>{" "}
+                <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>Start Investing</Link>
               </li>
               <li>
-                <Link to="/startup-form-data-diri">Get Funding</Link>{" "}
+                <Link to="/startup-form-data-diri">Get Funding</Link>
               </li>
             </ul>
           </div>
@@ -221,18 +222,23 @@ class Navbar extends Component {
             </div>
             <ul>
               <li>
-                {" "}
+                
                 <NavLink activeClassName="nav-active" to="/how">
                   How it works
-                </NavLink>{" "}
+                </NavLink>
               </li>
               <li>
-                {" "}
+                
                 <NavLink activeClassName="nav-active" to="/about">
                   About Us
-                </NavLink>{" "}
+                </NavLink>
               </li>
-              {kuki.get("auth") ? (
+              {kuki.get("auth") ? 
+              <>
+              <Link to='/cart' className='ml-4' >
+                <ShoppingCart />
+              </Link>
+
                 <li className="">
                   <ClickAwayListener
                     onClickAway={() => this.setState({ isOpen: false })}
@@ -243,7 +249,7 @@ class Navbar extends Component {
                           className="ava"
                           src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png"
                           alt="ava"
-                        />{" "}
+                        />
                         <span>{kuki.get("full_name")}</span>
                       </Link>
                       <i
@@ -257,16 +263,16 @@ class Navbar extends Component {
                     </div>
                   </ClickAwayListener>
                 </li>
-              ) : (
+                </>
+              :
                 <li>
-                  {" "}
                   <Link to="/login">
                     <Button style={butLogin} className="but-login">
                       Log In
                     </Button>
-                  </Link>{" "}
+                  </Link>
                 </li>
-              )}
+              }
             </ul>
           </div>
         </nav>
@@ -275,19 +281,19 @@ class Navbar extends Component {
             {this.state.statusId === 1 ? (
               <div className="drop">
                 Hi {kuki.get("full_name")}, Anda belum melakukan verifikasi kode
-                OTP.{" "}
+                OTP.
                 <span onClick={() => this.setState({ modalInputOtp: true })}>
-                  {" "}
+                  
                   Verifikasi sekarang
-                </span>{" "}
+                </span>
               </div>
             ) : this.state.statusId === 2 ? (
               <div className="drop">
                 Hi {kuki.get("full_name")}, Anda belum melakukan verifikasi
                 email, jika email verifikasi belum di terima silahkan verifikasi
-                ulang{" "}
+                ulang
                 <span onClick={() => this.setState({ modalInputEmail: true })}>
-                  {" "}
+                  
                   Verifikasi ulang sekarang
                 </span>
               </div>
@@ -295,7 +301,7 @@ class Navbar extends Component {
               <div className="drop">
                 Hi {kuki.get("full_name")}! Anda belum mengisi data. Silakan
                 lengkapi data anda untuk memulai Investasi atau mendapatkan
-                funding. <Link to="/select-form">Isi data sekarang</Link>{" "}
+                funding. <Link to="/select-form">Isi data sekarang</Link>
               </div>
             ) : null}
           </>
