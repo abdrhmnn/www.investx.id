@@ -246,9 +246,14 @@ class CompanyDetail extends Component {
                     </div>
                     <img src={share} alt="share" />
                   </div>
-                  <a href={prospectus !== null ? prospectus : ''} download>
-                    <Button className="down" disabled={prospectus !== null} >DOWNLOAD PROSPEKTUS</Button>
-                  </a>
+                  {
+                    prospectus !== null ?
+                      <a href={prospectus} download>
+                        <Button className="down" >DOWNLOAD PROSPEKTUS</Button>
+                      </a>
+                      : 
+                      <Button className="down" disabled >DOWNLOAD PROSPEKTUS</Button>
+                  }
                 </div>
 
                 <div className="bottom-bar pt-4">
