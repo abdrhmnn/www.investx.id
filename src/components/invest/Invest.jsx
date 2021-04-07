@@ -11,6 +11,8 @@ import InputPin from "./pinComponents/InputPin";
 import ResetPin from "./pinComponents/ResetPin";
 import VerifyOtp from "../shared/VerifyOtp";
 import SecurePin from "./pinComponents/SecurePin";
+import { ShoppingCart } from "react-feather";
+
 
 // import { connect } from "react-redux";
 import API from "../../api";
@@ -25,7 +27,7 @@ import helper from "../../helpers/helper";
 
 class Invest extends Component {
   state = {
-    lembarSaham: 0,
+    lembarSaham: 1,
     modalConfirm: false,
     modalInputPin: false,
     modalInputResetPin: false,
@@ -137,6 +139,32 @@ class Invest extends Component {
       Swal.fire({
         icon: 'error',
         title: `Checkout gagal`,
+        text : `${Object.entries(err.response.data)} \n`
+      })
+      console.log(err.response)
+    })
+  }
+
+  handleAddCart = ()=>{
+    this.setState({ loading : true})
+    const id = this.props.match.params.id
+    const data = {
+      "qty": this.state.lembarSaham , 
+    }
+    API.addCart(id, data).then(res =>{
+      console.log(res)
+      Swal.fire({
+        icon: 'success',
+        title: `Berhasil di tambahkan ke keranjang`,
+        // text : `${Object.entries(err.response.data)} \n`
+      }).then(()=>{
+        this.setState({modalConfirm : false, loading : false})
+      })
+    }).catch(err =>{
+      this.setState({loading : false})
+      Swal.fire({
+        icon: 'error',
+        title: `Tambahkan ke keranjang gagal`,
         text : `${Object.entries(err.response.data)} \n`
       })
       console.log(err.response)
@@ -327,7 +355,10 @@ class Invest extends Component {
                     // onClick={}
                     // onClick={() => this.setState({ modalConfirm: true })}
                   >
-                    BELI SAHAM
+                    BELI LANGSUNG
+                  </Button>
+                  <Button className='beli-saham mt-2' onClick={this.handleAddCart}>
+                    TAMBAH KE KERANJANG &nbsp; <ShoppingCart />
                   </Button>
                 </div>
               </div>
