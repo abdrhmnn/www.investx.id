@@ -44,6 +44,9 @@ function InputText(props) {
       onChange={onChange}
       placeholder={placeholder}
       onBlur={handleBlur}
+      inputProps={{
+        autoComplete : "chrome-off",
+      }}
       onFocus={onFocus}
       {...props}
     />
@@ -79,6 +82,9 @@ function InputTextArea(props) {
   return (
     <TextField
       className="custom_text_input"
+      inputProps={{
+        autoComplete : "chrome-off",
+      }}
       type={type}
       name={name}
       error={error}

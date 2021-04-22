@@ -8,13 +8,13 @@ import kuki from "../../helpers/kuki";
 
 class HeaderInvestForm extends Component {
   render() {
-    const { activeStep } = this.props;
+    const { activeStep, backPath } = this.props;
     return (
       <>
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link to='/'>
+        <Link to={backPath}>
           <Fab className="back-button">
             <img src={arrowback} alt="back" />
           </Fab>

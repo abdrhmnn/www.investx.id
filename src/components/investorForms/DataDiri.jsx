@@ -39,7 +39,32 @@ class DataDiri extends Component {
     regencyDataOccupation : [],
     districtDataOccupation: [],
     villageDataOccupation : [],
-    isStartUp : window.location.pathname === "/startup-form-data-diri"
+    isStartUp : window.location.pathname === "/startup-form-data-diri",
+
+    // data 
+    gender: "",
+    birth_place : '',
+    birth_date: "",
+    marital_status : null,
+    citizenship : null,
+    address: "",
+    "province": null,
+    "regency": null,
+    "district": null,
+    "village" : null,
+    "postal_code": "",
+
+    ////OCCUPATION/////
+    addressOcc: "",
+    // provinceOcc : this.state.provinceIdOccupation,
+    provinceOcc : null,
+    regencyOcc : null,
+    districtOcc : null,
+    villageOcc : null,
+    postal_codeOcc : '',
+
+    isSameAdd: false,
+    isEdit : false
   };
 
   componentDidMount(){
@@ -50,15 +75,25 @@ class DataDiri extends Component {
 
   checkProfile = () =>{
     this.setState({loading : true})
-    const nextLinkInvest = '/investor-form-pendidikan-pekerjaan'
-    const nextLinkStartup = '/startup-form-dokumen'
-    const keyCheck = 'is_personal_id_complete'
     API.getProfileCheck().then(res=>{
-      if (res.data.profile[`${keyCheck}`]) {
-          this.props.history.push(this.state.isStartUp ?nextLinkStartup : nextLinkInvest)
-      }else{
-        this.setState({loading : false})
-      }
+      console.log(res)
+      this.setState({
+        ...res.data.profile,
+        ...res.data.profile.id_card_address,
+        village : res.data.profile.id_card_address.kelurahan,
+        isSameAdd : JSON.stringify(res.data.profile.id_card_address) === JSON.stringify(res.data.profile.occupation_address),
+        // data occupation
+        addressOcc: res.data.profile.occupation_address.address,
+        provinceOcc : res.data.profile.occupation_address.province,
+        regencyOcc : res.data.profile.occupation_address.regency,
+        districtOcc : res.data.profile.occupation_address.district,
+        villageOcc : res.data.profile.occupation_address.kelurahan,
+        postal_codeOcc : res.data.profile.occupation_address.postal_code,
+
+        isEdit : res.data.profile.is_personal_id_complete,
+
+        loading : false
+      })
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
@@ -82,7 +117,7 @@ class DataDiri extends Component {
 
   getObjOpt = () =>{
     API.refInvPersonal().then(res=>{
-      // console.log(res)
+      console.log(res.data)
       this.setState({ 
         objMaritalStatus : res.data.marital_status,
         objGender : res.data.gender,
@@ -133,29 +168,29 @@ class DataDiri extends Component {
   
     const initialValueObj = {
       name: kuki.get('full_name'),
-      gender: "",
-      birth_place : '',
-      birth_date: "",
-      marital_status : null,
-      citizenship : null,
+      gender: this.state.gender === 'Male' ? 1 :this.state.gender === 'Female'? 2 : 0,
+      birth_place : this.state.birth_place,
+      birth_date: this.state.birth_date,
+      marital_status : this.state.marital_status,
+      citizenship : this.state.citizenship,
       phone: kuki.get('phone_number'),
-      address: "",
+      address: this.state.address,
 
-      province : null,
-      regency : null,
-      district : null,
-      village : null,
-      postal_code : '',
+      province : this.state.province,
+      regency : this.state.regency,
+      district : this.state.district,
+      village : this.state.village,
+      postal_code : this.state.postal_code,
 
       ////OCCUPATION/////
-      addressOcc: "",
-      provinceOcc : this.state.provinceIdOccupation,
-      regencyOcc : null,
-      districtOcc : null,
-      villageOcc : null,
-      postal_codeOcc : '',
+      addressOcc: this.state.addressOcc,
+      provinceOcc : this.state.provinceOcc,
+      regencyOcc : this.state.regencyOcc,
+      districtOcc : this.state.districtOcc,
+      villageOcc : this.state.villageOcc,
+      postal_codeOcc : this.state.postal_codeOcc,
 
-      isSameAdd: false,
+      isSameAdd: this.state.isSameAdd,
     };
 
     const schemaObj = Yup.object({
@@ -174,16 +209,17 @@ class DataDiri extends Component {
     });
 
     const locationInputForms =[
-      {key : 'province', label : 'Provinsi', data : this.state.provinceData, getData : (id)=>this.apiRegency(false, id), clearData : ['regency', 'district', 'village']},
-      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiDistrict(false,id), clearData : ['district', 'village'] },
-      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiVillage(false, id), clearData : ['village']},
-      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : ()=> null, clearData : []},
+      {key : 'province', label : 'Provinsi', data : this.state.provinceData,getData : null, clearData : ['regency', 'district', 'village'],  prevId : null },
+      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiRegency(false, id), clearData : ['district', 'village'], prevId : 'province' },
+      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiDistrict(false,id), clearData : ['village'], prevId : 'regency'},
+      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : (id)=>this.apiVillage(false, id), clearData : [], prevId : 'district'},
+      
     ]
     const locationInputFormsOcc =[
-      {key : 'provinceOcc', label : 'Provinsi', data : this.state.provinceDataOccupation, getData : (id)=>this.apiRegency(true, id), clearData : ['regency', 'district', 'village']},
-      {key : 'regencyOcc', label : 'Kota/Kabupaten', data : this.state.regencyDataOccupation, getData : (id)=>this.apiDistrict(true,id), clearData : ['district', 'village'] },
-      {key : 'districtOcc', label : 'Kecamatan', data : this.state.districtDataOccupation, getData : (id)=>this.apiVillage(true, id), clearData : ['village']},
-      {key : 'villageOcc', label : 'Kelurahan', data : this.state.villageDataOccupation, getData : ()=> null, clearData : []},
+      {key : 'provinceOcc', label : 'Provinsi', data : this.state.provinceDataOccupation, getData : (id)=>this.apiRegency(true, id), clearData : ['regency', 'district', 'village'],  prevId : null },
+      {key : 'regencyOcc', label : 'Kota/Kabupaten', data : this.state.regencyDataOccupation,  getData : (id)=>this.apiRegency(true, id), clearData : ['district', 'village'], prevId : 'province' },
+      {key : 'districtOcc', label : 'Kecamatan', data : this.state.districtDataOccupation,  getData : (id)=>this.apiDistrict(true,id), clearData : ['village'], prevId : 'regency'},
+      {key : 'villageOcc', label : 'Kelurahan', data : this.state.villageDataOccupation,  getData : (id)=>this.apiVillage(true, id), clearData : [], prevId : 'district'},
     ]
 
     return (
@@ -191,13 +227,14 @@ class DataDiri extends Component {
         <Loading onOpen={this.state.loading}/>
         {
           this.state.isStartUp ?
-          <HeaderStartupForm activeStep={1} />
+          <HeaderStartupForm backPath='/' activeStep={1} />
           :
-          <HeaderInvestForm activeStep={1} />
+          <HeaderInvestForm backPath='/' activeStep={1} />
         }
         <div className="box-form-data">
           <p className="title">Data Diri</p>
           <Formik
+            enableReinitialize
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
@@ -227,6 +264,7 @@ class DataDiri extends Component {
                 "id_card_address": idCardAddress,
                 "occupation_address": val.isSameAdd ? idCardAddress : occupationAddress
               }
+
               API.postPersonalAccount(data).then(res =>{
                 this.setState({loading : true})
                 console.log(res)
@@ -249,7 +287,7 @@ class DataDiri extends Component {
             }}
           >
             {({handleBlur,handleSubmit,errors,values,touched,setFieldValue,}) => (
-              <form onSubmit={handleSubmit} id="dataDiriForm" autoComplete="off">
+              <form onSubmit={handleSubmit} id="dataDiriForm">
                 <div className="row">
                   <div className="col-md-12">
                     <Field
@@ -271,14 +309,12 @@ class DataDiri extends Component {
                           : "button-gender"
                       }
                     >
-                      <Button
-                        className={values.gender === 1 ? "act-gen" : null}
+                      <Button className={values.gender === 1 ? "act-gen" : null}
                         onClick={() => setFieldValue("gender", 1)}
                       >
                         Pria
                       </Button>
-                      <Button
-                        className={
+                      <Button className={
                           values.gender === 2 ? "act-gen" : null
                         }
                         onClick={() => setFieldValue("gender", 2)}
@@ -329,6 +365,7 @@ class DataDiri extends Component {
                       label="Status Pernikahan"
                       name="marital_status"
                       required
+                      value={values.marital_status}
                       getOptionLabel={(val) => val.text}
                       getOptionSelected ={(option, val) => option.text  === val.text  }
                       options={this.state.objMaritalStatus}
@@ -343,6 +380,7 @@ class DataDiri extends Component {
                     <InputSelect
                       label="Status Kewarganegaraan"
                       name="citizenship"
+                      value={values.citizenship}
                       getOptionLabel={(val) => val.text.toString()}
                       getOptionSelected ={(option, val) => option.text  === val.text  }
                       options={this.state.objCitizen}
@@ -371,13 +409,14 @@ class DataDiri extends Component {
                       required
                       type="text"
                       name="address"
+                      value={values.address}
                       rows={5}
                       helperText={touched.address && errors.address}
                       error={touched.address && errors.address ? true : false}
                     />
                   </div>
                   
-                  {/* ////TEST//// */}
+                  {/* ////LOCATION//// */}
                   {
                     locationInputForms.map((res,i)=>{
                       return(
@@ -388,18 +427,18 @@ class DataDiri extends Component {
                           name={res.key}
                           getOptionLabel={(val) => val? val.name : ""}
                           getOptionSelected ={(option, val) => option.name  === val.name  }
-                          options={res.data}
+                          options={res.data.length === 0 ? [{name : 'Loading...'}] : res.data}
                           helperText={touched[`${res.key}`] && errors[`${res.key}`]}
                           error={touched[`${res.key}`] && errors[`${res.key}`] ? true : false}
                           onBlur={handleBlur}
-                          value={values[`${res.key}`] || ""}
+                          value={values[`${res.key}`]}
                           onChange={(e, val, reason)=>{
                             if (reason === "clear") {
-                              setFieldValue(`${res.key}`, '')
+                              setFieldValue(`${res.key}`, null)
+                              setFieldValue("postal_code", '')
                               for (const c of res.clearData) {
                                 // console.log(c)
                                 setFieldValue(`${c}`, '')
-                                setFieldValue("postal_code", '')
                                 this.setState({[`${c}Data`] : [] })
                               }
                             }
@@ -408,10 +447,15 @@ class DataDiri extends Component {
                               if (val.postal_code) {
                                 setFieldValue("postal_code", val.postal_code)
                               }
-                              res.getData(val.id)
+                            }
+                            for (const c of res.clearData) {
+                              // console.log(c)
+                              setFieldValue(`${c}`, '')
+                              this.setState({[`${c}Data`] : [] })
                             }
                             console.log(reason)
                           }}
+                          onOpen={()=> res.prevId !== null && res.getData !== null && values[res.prevId] !== null ? res.getData(values[res.prevId].id): null}
                         />
                         </div>
                       )
@@ -437,46 +481,48 @@ class DataDiri extends Component {
 
                   {/* <pre>
                     {JSON.stringify(values, null, 4)}
+                  </pre>
+                  <pre>
+                    {JSON.stringify(errors, null, 4)}
                   </pre> */}
 
-                  
-                  <div className="col-md-12 mb-3">
-                    <label
-                      className="d-inline mb-4"
-                      style={{ fontSize: 14, cursor : !values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ? 'not-allowed' : 'pointer'}}
-                    >
-                      <Checkbox
-                        style={
-                          !values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ?  
-                          { marginBottom: 3 }
-                          :
-                          { color: "#01579B", marginBottom: 3 } 
-                        }
-                        name="isSameAdd"
-                        disabled = {!values.address || !values.province || !values.regency || !values.district || !values.village || !values.postal_code}
-                        onChange={(e)=>{
-                          setFieldValue("isSameAdd", e.target.checked)
-                          if (e.target.checked) {
-                            setFieldValue("addressOcc", values.address)
-                            setFieldValue("provinceOcc", values.province)
-                            setFieldValue("regencyOcc", values.regency)
-                            setFieldValue("districtOcc", values.district)
-                            setFieldValue("villageOcc", values.village)
-                            setFieldValue("postal_codeOcc", values.postal_code)
-                          } else {
-                            setFieldValue("addressOcc", '')
-                            setFieldValue("provinceOcc", '')
-                            setFieldValue("regencyOcc", '')
-                            setFieldValue("districtOcc", '')
-                            setFieldValue("villageOcc", '')
-                            setFieldValue("postal_codeOcc", '')
-                          }
-                        }}
-                      />
-                      Sama Seperti KTP
-                    </label>
-                  </div>
 
+              <div className="col-md-12 mb-3">
+                <label className="d-inline mb-4"
+                  style={{ fontSize: 14, cursor : values.address.length === 0 || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ? 'not-allowed' : 'pointer'}}
+                >
+                        <Checkbox
+                          style={
+                            values.address.length === 0 || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ?  
+                            { marginBottom: 3 }
+                            :
+                            { color: "#01579B", marginBottom: 3 } 
+                          }
+                          name="isSameAdd"
+                          disabled={values.address.length === 0 || !values.province || !values.regency || !values.district || !values.village || !values.postal_code}
+                          onChange={(e)=>{
+                            setFieldValue("isSameAdd", e.target.checked)
+                            if (e.target.checked) {
+                              setFieldValue("addressOcc", values.address)
+                              setFieldValue("provinceOcc", values.province)
+                              setFieldValue("regencyOcc", values.regency)
+                              setFieldValue("districtOcc", values.district)
+                              setFieldValue("villageOcc", values.village)
+                              setFieldValue("postal_codeOcc", values.postal_code)
+                            } else {
+                              setFieldValue("addressOcc", null)
+                              setFieldValue("provinceOcc", null)
+                              setFieldValue("regencyOcc", null)
+                              setFieldValue("districtOcc", null)
+                              setFieldValue("villageOcc", null)
+                              setFieldValue("postal_codeOcc", '')
+                            }
+                          }}
+                          checked={values.isSameAdd}
+                        />
+                  Sama Seperti KTP
+                </label>
+              </div>
 
               {/* ///// OCCUPATION ADDRESS  */}
               
@@ -507,16 +553,17 @@ class DataDiri extends Component {
                           name={res.key}
                           getOptionLabel={(val) => val? val.name : ""}
                           getOptionSelected ={(option, val) => option.name  === val.name  }
-                          options={res.data}
+                          options={res.data.length === 0 ? [{name : 'Loading...'}] : res.data}
                           helperText={touched[`${res.key}`] && errors[`${res.key}`]}
                           error={touched[`${res.key}`] && errors[`${res.key}`] ? true : false}
                           onBlur={handleBlur}
-                          value={values[`${res.key}`] || ""}
+                          value={values[`${res.key}`]}
                           onChange={(e, val, reason)=>{
                             if (reason === "clear") {
-                              setFieldValue(`${res.key}`, '')
+                              setFieldValue(`${res.key}`, null)
+                              setFieldValue("postal_codeOcc", '')
                               for (const c of res.clearData) {
-                                setFieldValue("postal_codeOcc", '')
+                                // console.log(c)
                                 setFieldValue(`${c}Occ`, '')
                                 this.setState({[`${c}DataOccupation`] : [] })
                               }
@@ -526,10 +573,15 @@ class DataDiri extends Component {
                               if (val.postal_code) {
                                 setFieldValue("postal_codeOcc", val.postal_code)
                               }
-                              res.getData(val.id)
+                              // res.getData(val.id)
+                            }
+                            for (const c of res.clearData) {
+                              setFieldValue(`${c}Occ`, '')
+                              this.setState({[`${c}DataOccupation`] : [] })
                             }
                             console.log(reason)
                           }}
+                          onOpen={()=> res.prevId !== null && res.getData !== null && values[`${res.prevId}Occ`] !== null ? res.getData(values[`${res.prevId}Occ`].id): null}
                         />
                         </div>
                       )
@@ -564,7 +616,7 @@ class DataDiri extends Component {
             peraturan yang berlaku.
           </p>
             <Button type="submit" form="dataDiriForm">
-              SIMPAN & LANJUTKAN
+              {this.state.isEdit ? "UBAH" : "SIMPAN"} & LANJUTKAN
             </Button>
         </div>
       </div>

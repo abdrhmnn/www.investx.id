@@ -15,10 +15,17 @@ class Pendidikan extends Component {
     loading : false,
     pageName : 'Pendidikan dan Pekerjaan',
     lastEdu : [],
-    profession : [],
+    professionObj : [],
     jobIndustry : [],
     monthlySalary : [],
-    incomeSource : []
+    incomeSource : [],
+
+    "last_education":null,
+    "profession":null,
+    "job_industry":null,
+    "monthly_salary":null,
+    "income_source":null,
+    isEdit : false
   };
 
   componentDidMount(){
@@ -28,14 +35,17 @@ class Pendidikan extends Component {
 
   checkProfile = () =>{
     this.setState({loading : true})
-    const nextLink = '/investor-form-dokumen'
-    const keyCheck = 'is_educational_complete'
     API.getProfileCheck().then(res=>{
-      if (res.data.profile[`${keyCheck}`]) {
-        this.props.history.push(nextLink)
-      }else{
-        this.setState({loading : false})
-      }
+      console.log(res)
+      this.setState({
+        "last_education": res.data.profile.last_education,
+        "profession": res.data.profile.profession,
+        "job_industry": res.data.profile.job_industry,
+        "monthly_salary": res.data.profile.monthly_salary,
+        "income_source": res.data.profile.income_source,
+        isEdit : res.data.profile.is_educational_complete,
+        loading : false
+      })
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
@@ -50,7 +60,7 @@ class Pendidikan extends Component {
       // console.log(res)
       this.setState({ 
         lastEdu : res.data.last_education,
-        profession : res.data.profession,
+        professionObj : res.data.profession,
         jobIndustry : res.data.job_industry,
         monthlySalary : res.data.monthly_salary,
         incomeSource : res.data.income_source
@@ -63,11 +73,11 @@ class Pendidikan extends Component {
   render() {
 
     const initialValueObj = {
-      "last_education":null,
-      "profession":null,
-      "job_industry":null,
-      "monthly_salary":null,
-      "income_source":null
+      "last_education": this.state.last_education,
+      "profession": this.state.profession,
+      "job_industry": this.state.job_industry,
+      "monthly_salary": this.state.monthly_salary,
+      "income_source": this.state.income_source
     };
 
     const schemaObj = Yup.object({
@@ -81,11 +91,12 @@ class Pendidikan extends Component {
     return (
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading}/>
-        <HeaderInvestForm activeStep={2} />
+        <HeaderInvestForm backPath='/investor-form-data-diri' activeStep={2} />
         <div className="box-form-data">
           {/* ///////////////////FORMS//////////////////// */}
           <p className="title">{this.state.pageName}</p>
           <Formik
+            enableReinitialize
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
@@ -116,19 +127,13 @@ class Pendidikan extends Component {
               })
             }}
           >
-            {({
-              handleBlur,
-              handleSubmit,
-              errors,
-              // values,
-              touched,
-              setFieldValue,
-            }) => (
+            {({handleBlur, handleSubmit, errors, touched, values, setFieldValue }) => (
               <form onSubmit={handleSubmit} id="investorForm">
                 <div className="row">
                   <div className="col-md-12">
                     <InputSelect
                       label="Pendikan Terakhir"
+                      value={values.last_education}
                       name="last_education"
                       getOptionLabel={(val) => val.text}
                       getOptionSelected={(option, value) => option.text === value.text}
@@ -142,10 +147,11 @@ class Pendidikan extends Component {
                   <div className="col-md-6">
                     <InputSelect
                       label="Pekerjaan Saat Ini"
+                      value={values.profession}
                       name="profession"
                       getOptionLabel={(val) => val.text}
                       getOptionSelected={(option, value) => option.text === value.text}
-                      options={this.state.profession}
+                      options={this.state.professionObj}
                       helperText={touched.profession && errors.profession}
                       error={touched.profession && errors.profession ? true : false}
                       onBlur={handleBlur}
@@ -155,6 +161,7 @@ class Pendidikan extends Component {
                   <div className="col-md-6">
                     <InputSelect
                       label="Industri Pekerjaan"
+                      value={values.job_industry}
                       name="job_industry"
                       getOptionLabel={(val) => val.text}
                       getOptionSelected={(option, value) => option.text === value.text}
@@ -168,6 +175,7 @@ class Pendidikan extends Component {
                   <div className="col-md-6">
                     <InputSelect
                       label="Pendapatan Perbulan"
+                      value={values.monthly_salary}
                       name="monthly_salary"
                       getOptionLabel={(val) => val.text}
                       getOptionSelected={(option, value) => option.text === value.text}
@@ -180,7 +188,8 @@ class Pendidikan extends Component {
                   </div>
                   <div className="col-md-6">
                     <InputSelect
-                      label="Sumber Pendapatan"
+                      label="Sumber Pendapatan" 
+                      value={values.income_source}
                       name="income_source"
                       getOptionLabel={(val) => val.text}
                       getOptionSelected={(option, value) => option.text === value.text}
@@ -211,7 +220,7 @@ class Pendidikan extends Component {
           </p>
           {/* <Link to="/investor-form-dokumen"> */}
             <Button type="submit" form="investorForm">
-              SIMPAN & LANJUTKAN
+              {this.state.isEdit ? "UBAH":"SIMPAN"} & LANJUTKAN
             </Button>
           {/* </Link> */}
         </div>

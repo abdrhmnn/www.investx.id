@@ -36,14 +36,23 @@ class InfoPerusahaan extends Component {
     districtData: [],
     villageData : [],
 
+    "address": "",
+    "province": null,
+    "regency": null,
+    "district": null,
+    "village" : null,
+    "postal_code": "",
+
     "logo": null,
     "prospectus" : null,
     modalFile: {},
     loading : false,
     uuid : uuid(),
-    checkPoinData:  [],
+    // checkPoinData:  [],
 
-    modalSyarat : true
+    modalSyarat : false,
+
+    isEdit : false,
   };
 
   componentDidMount(){
@@ -54,22 +63,36 @@ class InfoPerusahaan extends Component {
   
   checkall =()=>{
     API.refCheckCompanyMe().then(res=>{
-      this.setState({checkPoinData : res.data.results})
-      if (res.data.results.length !== 0) {
-        const data = res.data.results[0]
-        // console.log(res)
-        const checkArr = [
-          {label :'is_general_complete'},
-          {label :'is_financial_complete'},
-          {label :'is_nonfinancial_complete'}, 
-          {label :'is_media_complete'},
-        ]
-        for (const val of checkArr) {
-          if (!data[`${val.label}`] ) {
-            this.checkFormCompany()
-          }
-        }
+      if (res.data.results[0].is_general_complete) {
+        // console.log(res.data.results[0].nonce)
+        var nonce = res.data.results[0].nonce
+        API.getCompanyDetail(res.data.results[0].id62).then(res=>{
+          this.setState({
+            ...this.state,
+            ...res.data.address[0],
+            village : res.data.address[0].kelurahan,
+          })
+          console.log(res)
+          console.log(nonce)
+        }).catch(err=>{
+          console.log(err.response)
+        })
       }
+      // if (res.data.results.length !== 0) {
+      //   const data = res.data.results[0]
+      //   // console.log(res)
+      //   const checkArr = [
+      //     {label :'is_general_complete'},
+      //     {label :'is_financial_complete'},
+      //     {label :'is_nonfinancial_complete'}, 
+      //     {label :'is_media_complete'},
+      //   ]
+      //   for (const val of checkArr) {
+      //     if (!data[`${val.label}`] ) {
+      //       this.checkFormCompany()
+      //     }
+      //   }
+      // }
     }).catch(err => {
       console.log(err.response)
       Swal.fire({
@@ -192,12 +215,13 @@ class InfoPerusahaan extends Component {
       "name": "",
       "trademark": "",
       "business_type": null,
-      "address": "",
-      "postal_code": "",
-      "province": null,
-      "regency": null,
-      "district": null,
-      "kelurahan": null,
+
+      address: this.state.address,
+      province : this.state.province,
+      regency : this.state.regency,
+      district : this.state.district,
+      village : this.state.village,
+      postal_code : this.state.postal_code,
 
       "type": null,
       "company_age": '',
@@ -222,11 +246,18 @@ class InfoPerusahaan extends Component {
       description: Yup.string().required(),
     });
 
+    // const locationInputForms =[
+    //   {key : 'province', label : 'Provinsi', data : this.state.provinceData, getData : (id)=>this.apiRegency(id), clearData : ['regency', 'district', 'kelurahan']},
+    //   {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiDistrict(id), clearData : ['district', 'kelurahan'] },
+    //   {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiVillage(id), clearData : ['kelurahan']},
+    //   {key : 'kelurahan', label : 'Kelurahan', data : this.state.villageData, getData : ()=> null, clearData : []},
+    // ]
     const locationInputForms =[
-      {key : 'province', label : 'Provinsi', data : this.state.provinceData, getData : (id)=>this.apiRegency(id), clearData : ['regency', 'district', 'kelurahan']},
-      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiDistrict(id), clearData : ['district', 'kelurahan'] },
-      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiVillage(id), clearData : ['kelurahan']},
-      {key : 'kelurahan', label : 'Kelurahan', data : this.state.villageData, getData : ()=> null, clearData : []},
+      {key : 'province', label : 'Provinsi', data : this.state.provinceData,getData : null, clearData : ['regency', 'district', 'village'],  prevId : null },
+      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiRegency(false, id), clearData : ['district', 'village'], prevId : 'province' },
+      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiDistrict(false,id), clearData : ['village'], prevId : 'regency'},
+      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : (id)=>this.apiVillage(false, id), clearData : [], prevId : 'district'},
+      
     ]
 
     console.log(this.state, 'STATE')
@@ -240,6 +271,7 @@ class InfoPerusahaan extends Component {
         <div className="box-form-data">
           <p className="title">Informasi Perusahaan</p>
           <Formik
+            enableReinitialize
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
@@ -372,18 +404,18 @@ class InfoPerusahaan extends Component {
                           name={res.key}
                           getOptionLabel={(val) => val? val.name : ""}
                           getOptionSelected ={(option, val) => option.name  === val.name  }
-                          options={res.data}
+                          options={res.data.length === 0 ? [{name : 'Loading...'}] : res.data}
                           helperText={touched[`${res.key}`] && errors[`${res.key}`]}
                           error={touched[`${res.key}`] && errors[`${res.key}`] ? true : false}
                           onBlur={handleBlur}
-                          value={values[`${res.key}`] || ""}
+                          value={values[`${res.key}`]}
                           onChange={(e, val, reason)=>{
                             if (reason === "clear") {
-                              setFieldValue(`${res.key}`, '')
+                              setFieldValue(`${res.key}`, null)
+                              setFieldValue("postal_code", '')
                               for (const c of res.clearData) {
                                 // console.log(c)
                                 setFieldValue(`${c}`, '')
-                                setFieldValue("postal_code", '')
                                 this.setState({[`${c}Data`] : [] })
                               }
                             }
@@ -392,10 +424,15 @@ class InfoPerusahaan extends Component {
                               if (val.postal_code) {
                                 setFieldValue("postal_code", val.postal_code)
                               }
-                              res.getData(val.id)
+                            }
+                            for (const c of res.clearData) {
+                              // console.log(c)
+                              setFieldValue(`${c}`, '')
+                              this.setState({[`${c}Data`] : [] })
                             }
                             console.log(reason)
                           }}
+                          onOpen={()=> res.prevId !== null && res.getData !== null && values[res.prevId] !== null ? res.getData(values[res.prevId].id): null}
                         />
                         </div>
                       )

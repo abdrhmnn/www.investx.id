@@ -180,7 +180,7 @@ class Dokumen extends Component {
           this.state.isStartUp ?
           <HeaderStartupForm activeStep={2} />
           :
-          <HeaderInvestForm activeStep={3} />
+          <HeaderInvestForm backPath='/investor-form-pendidikan-pekerjaan' activeStep={3} />
         }
         <div className="box-form-data">
           {/* ///////////////////FORMS//////////////////// */}

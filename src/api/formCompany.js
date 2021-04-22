@@ -13,6 +13,12 @@ const FORM_COMPANY = {
     });
   },
 
+  getCompanyDetail: (id) =>{
+    return axios.get(apiBaseUrl + `/company/me/${id}/`,{
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
+  },
+
   postCompanyFinancial: (body) =>{
     return axios.post(apiBaseUrl + `/company/financial/`, body,{
       headers: { Authorization: `Token ${kuki.get("token")}` },
