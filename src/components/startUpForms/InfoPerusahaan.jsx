@@ -12,7 +12,7 @@ import {
   InputSelect,
   InputTextArea,
 } from "../shared/InputComponents";
-import { Button } from "@material-ui/core";
+import { Button, InputAdornment } from "@material-ui/core";
 import HeaderStartupForm from "./HeaderStartupForm";
 
 import uuid from 'react-uuid'
@@ -48,16 +48,16 @@ class InfoPerusahaan extends Component {
     "village" : null,
     "postal_code": "",
 
+    "prospectus" : null,
+    "logo": null,
     "type": null,
     "company_age": '',
     "number_of_branches": '',
     "number_of_employees": '',
     "description": "",
     "website_url" : "",
-    "prospectus" : "",
 
     ///
-    "logo": null,
     modalFile: {},
     loading : false,
     uuid : uuid(),
@@ -75,20 +75,26 @@ class InfoPerusahaan extends Component {
   }
   
   checkall =()=>{
+    this.setState({loading : true})
     API.refCheckCompanyMe().then(res=>{
+      console.log(res, 'ARRAY')
       if (res.data.results[0].is_general_complete) {
-        // console.log(res.data.results[0].nonce)
+        console.log(res.data.results[0].nonce)
         var nonce = res.data.results[0].nonce
-        API.getCompanyDetail(res.data.results[0].id62).then(res=>{
+        API.getCompanyDetail(res.data.results[0].id62).then(val=>{
           this.setState({
             ...this.state,
-            ...res.data,
-            ...res.data.address[0],
-            village : res.data.address[0].kelurahan,
+            ...val.data,
+            ...val.data.address[0],
+            village : val.data.address[0].kelurahan,
+            isEdit : true,
+            uuid : nonce,
+            loading : false
           })
-          console.log(res)
+          console.log(val)
           console.log(nonce)
         }).catch(err=>{
+          this.setState({loading : false})
           console.log(err.response)
         })
       }
@@ -108,6 +114,7 @@ class InfoPerusahaan extends Component {
       //   }
       // }
     }).catch(err => {
+      this.setState({loading : false})
       console.log(err.response)
       Swal.fire({
         icon: 'error',
@@ -176,14 +183,15 @@ class InfoPerusahaan extends Component {
     });
   }
 
-  apiFileToLink = (name , value, setFieldValue)=>{
+  apiFileToLink = (name , value, initialName, setFieldValue)=>{
     const body ={
       "name": name,
       "file_base64": value
     }
     API.refPostFile(body).then(res =>{
       console.log(res.data.url, 'INI HASIL URLNYA')
-      setFieldValue(name , res.data.url)
+
+      setFieldValue(name , {name : initialName, url : res.data.url})
 
       this.setState({loading: false})
       // this.setState({
@@ -201,7 +209,7 @@ class InfoPerusahaan extends Component {
     })
   }
 
-  handleFileUpload = (file, name, ) => {
+  handleFileUpload = (file, name,setFieldValue ) => {
     this.setState({loading: true})
     console.log(file[0].name);
     console.log(file);
@@ -210,19 +218,17 @@ class InfoPerusahaan extends Component {
     const maxHeight = 400
     const quality = 0.9
     imageFileToBase64(file[0], maxWidth, maxHeight, quality).then((res)=>{
-      this.apiFileToLink(name, res, initialName )
-          // console.log(res)
+      this.apiFileToLink(name, res, initialName, setFieldValue )
     })
     this.setState({ modalFile: {} });
   };
 
   handleFileUploadPdf = (file, name, setFieldValue) => {
     this.setState({loading: true})
-    console.log(file);
-    // const initialName = file[0].name
+    console.log(file, 'INI FILE PDF');
+    const initialName = file[0].name
     pdf2base64(file[0]).then((res)=>{
-      this.apiFileToLink(name, res, setFieldValue )
-          // console.log(res)
+      this.apiFileToLink(name, res, initialName, setFieldValue )
     })
     this.setState({ modalFile: {} });
   };
@@ -246,7 +252,8 @@ class InfoPerusahaan extends Component {
       "number_of_employees": this.state.number_of_employees,
       "description": this.state.description,
       "website_url" : this.state.website_url,
-      "prospectus" : this.state.prospectus
+      "prospectus" : this.state.prospectus,
+      "logo" : this.state.logo,
     }
 
     const schemaObj = Yup.object({
@@ -259,18 +266,14 @@ class InfoPerusahaan extends Component {
       district: Yup.object().nullable().required(),
       village: Yup.object().nullable().required(),
 
+      prospectus: Yup.object().nullable().required(),
+      logo: Yup.object().nullable().required(),
       company_age: Yup.number().typeError("value have to be number").required(),
       number_of_branches: Yup.number().typeError("value have to be number").required(),
       number_of_employees: Yup.number().typeError("value have to be number").required(),
       description: Yup.string().required(),
     });
 
-    // const locationInputForms =[
-    //   {key : 'province', label : 'Provinsi', data : this.state.provinceData, getData : (id)=>this.apiRegency(id), clearData : ['regency', 'district', 'kelurahan']},
-    //   {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiDistrict(id), clearData : ['district', 'kelurahan'] },
-    //   {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiVillage(id), clearData : ['kelurahan']},
-    //   {key : 'kelurahan', label : 'Kelurahan', data : this.state.villageData, getData : ()=> null, clearData : []},
-    // ]
     const locationInputForms =[
       {key : 'province', label : 'Provinsi', data : this.state.provinceData,getData : null, clearData : ['regency', 'district', 'village'],  prevId : null },
       {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiRegency(id), clearData : ['district', 'village'], prevId : 'province' },
@@ -284,7 +287,7 @@ class InfoPerusahaan extends Component {
     return (
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading}/>
-        <HeaderStartupForm activeStep={3} />
+        <HeaderStartupForm backPath='/' activeStep={3} />
         {this.state.modalSyarat ? <Syarat onClose={()=>this.setState({modalSyarat : false})}/> : null}
 
         <div className="box-form-data">
@@ -316,8 +319,8 @@ class InfoPerusahaan extends Component {
                 "number_of_employees": val.number_of_employees,
                 "description": val.description,
                 "website_url" : val.website_url,
-                "prospectus": this.state.prospectus ? this.state.prospectus.url : toast.warn("Silahkan isi prospectus dahulu"),
-                "logo": this.state.logo ? this.state.logo.url : toast.warn("Silahkan isi foto KTP dahulu"),
+                "prospectus": val.prospectus,
+                "logo": val.logo
               }
               if (this.state.logo) {
                 this.setState({loading : true})
@@ -558,12 +561,11 @@ class InfoPerusahaan extends Component {
                   <pre>
                     {JSON.stringify(errors, null, 4)}
                   </pre> */}
-                  <ToastContainer />
-                  <div className="col-md-12 startup-company-logo mb-4">
+
+                  {/* <div className="col-md-12 startup-company-logo mb-4">
                     <div className="label-cus">Prospectus *</div>
                     <div className="file-frame">
-                      {/* <span>{this.state.prospectus ? this.state.prospectus.name : 'Select File...' }</span> */}
-                      <span>{values.prospectus ? values.prospectus : 'Select File...' }</span>
+                      <span>{values.prospectus ? values.prospectus.name : 'Select File...' }</span>
                       <InputFiles
                         accept="application/pdf"
                         onChange={(files) =>
@@ -579,23 +581,82 @@ class InfoPerusahaan extends Component {
                   </div>
 
                   <div className="col-md-12 startup-company-logo">
+                    {
+                      values.logo?
+                      <img src={values.logo.url} alt="logo" style={{width : '40%'}}/>
+                      : null
+                    }
                     <div className="label-cus">Logo perusahaan *</div>
                     <div className="file-frame">
-                      <span>{this.state.logo ? this.state.logo.name : 'Select File...' }</span>
-                      <InputFiles
-                        onChange={(files) =>
-                          this.handleFileUpload(files, "logo")
-                        }
-                      >
+                    <span>{values.logo ? values.logo.name : 'Select File...' }</span>
+                      <InputFiles onChange={(files) => this.handleFileUpload(files, "logo", setFieldValue)} onClick={(e)=> { e.currentTarget.value = null}}>
                         <Button type="button">Browse</Button>
                       </InputFiles>
                     </div>
-                    {/* <div className="error-input p-0">
-                      {submitted && errors.born && <div className="error">{errors.born}</div>}
-                    </div> */}
                     <p className="info-file">
                       *File data <span>Jpeg / PNG</span> dan tidak lebih dari <span>5MB</span>{" "}
                     </p>
+                  </div> */}
+
+                  <div className="col-md-12" >
+                    <Field
+                        as={InputText}
+                        label="Prospectus"
+                        required
+                        type="text"
+                        name="prospectus"
+                        value={values.prospectus?values.prospectus.name:''}
+                        helperText={touched.prospectus && errors.prospectus}
+                        error={touched.prospectus && errors.prospectus ? true : false}
+                        InputProps={{
+                          readOnly: true,
+                          endAdornment: (
+                              <InputAdornment position="end">
+                                <InputFiles
+                                  accept="application/pdf"
+                                  onChange={(files) =>
+                                    this.handleFileUploadPdf(files, "prospectus", setFieldValue)
+                                  }
+                                >
+                                  <Button >Browse</Button>
+                                </InputFiles>
+                              </InputAdornment>
+                          )
+                      }}
+                      />
+                  </div>
+
+                  <div className="col-md-12" >
+                    {
+                      values.logo?
+                      <img src={values.logo.url} alt="logo" style={{width : '40%', marginBottom : 20, borderRadius: '4px'}}/>
+                      : null
+                    }
+                    <Field
+                        as={InputText}
+                        label="Logo perusahaan"
+                        required
+                        type="text"
+                        name="logo"
+                        value={values.logo?values.logo.name:''}
+                        helperText={touched.logo && errors.logo}
+                        error={touched.logo && errors.logo ? true : false}
+                        InputProps={{
+                          readOnly: true,
+                          endAdornment: (
+                              <InputAdornment position="end">
+                                <InputFiles
+                                  accept="application/pdf"
+                                  onChange={(files) =>
+                                    this.handleFileUpload(files, "logo", setFieldValue)
+                                  }
+                                >
+                                  <Button >Browse</Button>
+                                </InputFiles>
+                              </InputAdornment>
+                          )
+                      }}
+                      />
                   </div>
 
                 </div>
@@ -616,7 +677,7 @@ class InfoPerusahaan extends Component {
           </p>
           {/* <Link to="/startup-form-informasi-finansial"> */}
             <Button type="submit" form="startupForm">
-              SIMPAN & LANJUTKAN
+              {this.state.isEdit ?"UBAH" : "SIMPAN"} & LANJUTKAN
             </Button>
           {/* </Link> */}
         </div>

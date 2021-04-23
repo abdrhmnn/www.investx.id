@@ -26,6 +26,7 @@ function InputText(props) {
     handleBlur,
     pattern,
     onFocus,
+    readOnly
   } = props;
   return (
     <TextField
@@ -37,6 +38,7 @@ function InputText(props) {
       id={name}
       label={label}
       variant="outlined"
+      readOnly={readOnly}
       value={value}
       helperText={helperText}
       disabled={disabled}
