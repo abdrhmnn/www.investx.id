@@ -27,7 +27,7 @@ import Syarat from "./Syarat";
 class InfoPerusahaan extends Component {
   state = {
     pageName : 'Informasi Perusahaan',
-    business_type : [],
+    business_typeData : [],
     company_type : [],
     information_source : [],
 
@@ -36,6 +36,11 @@ class InfoPerusahaan extends Component {
     districtData: [],
     villageData : [],
 
+    // datas 
+    "name": "",
+    "trademark": "",
+    "business_type": null,
+
     "address": "",
     "province": null,
     "regency": null,
@@ -43,8 +48,16 @@ class InfoPerusahaan extends Component {
     "village" : null,
     "postal_code": "",
 
+    "type": null,
+    "company_age": '',
+    "number_of_branches": '',
+    "number_of_employees": '',
+    "description": "",
+    "website_url" : "",
+    "prospectus" : "",
+
+    ///
     "logo": null,
-    "prospectus" : null,
     modalFile: {},
     loading : false,
     uuid : uuid(),
@@ -69,6 +82,7 @@ class InfoPerusahaan extends Component {
         API.getCompanyDetail(res.data.results[0].id62).then(res=>{
           this.setState({
             ...this.state,
+            ...res.data,
             ...res.data.address[0],
             village : res.data.address[0].kelurahan,
           })
@@ -120,7 +134,7 @@ class InfoPerusahaan extends Component {
     API.refCompanyGeneral().then(res=>{
       console.log(res)
       this.setState({ 
-        business_type : res.data.business_type,
+        business_typeData : res.data.business_type,
         company_type : res.data.company_type,
         information_source : res.data.information_source,
       })
@@ -162,17 +176,20 @@ class InfoPerusahaan extends Component {
     });
   }
 
-  apiFileToLink = (name , value, initialName)=>{
+  apiFileToLink = (name , value, setFieldValue)=>{
     const body ={
       "name": name,
       "file_base64": value
     }
     API.refPostFile(body).then(res =>{
       console.log(res.data.url, 'INI HASIL URLNYA')
-      this.setState({
-        [name] : {url : res.data.url, name : initialName},
-        loading : false
-      })
+      setFieldValue(name , res.data.url)
+
+      this.setState({loading: false})
+      // this.setState({
+      //   [name] : {url : res.data.url, name : initialName},
+      //   loading : false
+      // })
     }).catch(err=>{
       this.setState({loading: false})
       console.log(err.response)
@@ -184,7 +201,7 @@ class InfoPerusahaan extends Component {
     })
   }
 
-  handleFileUpload = (file, name) => {
+  handleFileUpload = (file, name, ) => {
     this.setState({loading: true})
     console.log(file[0].name);
     console.log(file);
@@ -199,12 +216,12 @@ class InfoPerusahaan extends Component {
     this.setState({ modalFile: {} });
   };
 
-  handleFileUploadPdf = (file, name) => {
+  handleFileUploadPdf = (file, name, setFieldValue) => {
     this.setState({loading: true})
     console.log(file);
-    const initialName = file[0].name
+    // const initialName = file[0].name
     pdf2base64(file[0]).then((res)=>{
-      this.apiFileToLink(name, res, initialName )
+      this.apiFileToLink(name, res, setFieldValue )
           // console.log(res)
     })
     this.setState({ modalFile: {} });
@@ -212,9 +229,9 @@ class InfoPerusahaan extends Component {
 
   render() {
     const initialValueObj = {
-      "name": "",
-      "trademark": "",
-      "business_type": null,
+      "name": this.state.name,
+      "trademark": this.state.trademark,
+      "business_type": this.state.business_type,
 
       address: this.state.address,
       province : this.state.province,
@@ -223,11 +240,13 @@ class InfoPerusahaan extends Component {
       village : this.state.village,
       postal_code : this.state.postal_code,
 
-      "type": null,
-      "company_age": '',
-      "number_of_branches": '',
-      "number_of_employees": '',
-      "description": "",
+      "type": this.state.type,
+      "company_age": this.state.company_age,
+      "number_of_branches": this.state.number_of_branches,
+      "number_of_employees": this.state.number_of_employees,
+      "description": this.state.description,
+      "website_url" : this.state.website_url,
+      "prospectus" : this.state.prospectus
     }
 
     const schemaObj = Yup.object({
@@ -238,7 +257,7 @@ class InfoPerusahaan extends Component {
       province: Yup.object().nullable().required(),
       regency: Yup.object().nullable().required(),
       district: Yup.object().nullable().required(),
-      kelurahan: Yup.object().nullable().required(),
+      village: Yup.object().nullable().required(),
 
       company_age: Yup.number().typeError("value have to be number").required(),
       number_of_branches: Yup.number().typeError("value have to be number").required(),
@@ -254,9 +273,9 @@ class InfoPerusahaan extends Component {
     // ]
     const locationInputForms =[
       {key : 'province', label : 'Provinsi', data : this.state.provinceData,getData : null, clearData : ['regency', 'district', 'village'],  prevId : null },
-      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiRegency(false, id), clearData : ['district', 'village'], prevId : 'province' },
-      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiDistrict(false,id), clearData : ['village'], prevId : 'regency'},
-      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : (id)=>this.apiVillage(false, id), clearData : [], prevId : 'district'},
+      {key : 'regency', label : 'Kota/Kabupaten', data : this.state.regencyData, getData : (id)=>this.apiRegency(id), clearData : ['district', 'village'], prevId : 'province' },
+      {key : 'district', label : 'Kecamatan', data : this.state.districtData, getData : (id)=>this.apiDistrict(id), clearData : ['village'], prevId : 'regency'},
+      {key : 'village', label : 'Kelurahan', data : this.state.villageData, getData : (id)=>this.apiVillage(id), clearData : [], prevId : 'district'},
       
     ]
 
@@ -289,7 +308,7 @@ class InfoPerusahaan extends Component {
                   "province": val.province.id,
                   "regency": val.regency.id,
                   "district": val.district.id,
-                  "kelurahan": val.kelurahan.id
+                  "kelurahan": val.village.id
                 },
                 "type": val.type.id,
                 "company_age": val.company_age,
@@ -371,7 +390,7 @@ class InfoPerusahaan extends Component {
                       required
                       name="business_type"
                       getOptionLabel={(val) => val.text}
-                      options={this.state.business_type}
+                      options={this.state.business_typeData}
                       helperText={touched.business_type && errors.business_type}
                       error={touched.business_type && errors.business_type ? true : false}
                       value={values.business_type}
@@ -506,9 +525,7 @@ class InfoPerusahaan extends Component {
                       name="number_of_employees"
                       // placeholder='Tempat Lahir *'
                       helperText={touched.number_of_employees && errors.number_of_employees}
-                      error={
-                        touched.number_of_employees && errors.number_of_employees ? true : false
-                      }
+                      error={touched.number_of_employees && errors.number_of_employees ? true : false}
                     />
                   </div>
 
@@ -545,11 +562,12 @@ class InfoPerusahaan extends Component {
                   <div className="col-md-12 startup-company-logo mb-4">
                     <div className="label-cus">Prospectus *</div>
                     <div className="file-frame">
-                      <span>{this.state.prospectus ? this.state.prospectus.name : 'Select File...' }</span>
+                      {/* <span>{this.state.prospectus ? this.state.prospectus.name : 'Select File...' }</span> */}
+                      <span>{values.prospectus ? values.prospectus : 'Select File...' }</span>
                       <InputFiles
                         accept="application/pdf"
                         onChange={(files) =>
-                          this.handleFileUploadPdf(files, "prospectus")
+                          this.handleFileUploadPdf(files, "prospectus", setFieldValue)
                         }
                       >
                         <Button type="button">Browse</Button>
