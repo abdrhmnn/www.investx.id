@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // import { Link } from "react-router-dom";
 import InputFiles from "react-input-files";
-import imageFileToBase64 from 'image-file-to-base64-exif'
+// import imageFileToBase64 from 'image-file-to-base64-exif'
 import pdf2base64 from 'pdf-to-base64'
 
 import { Formik, Field } from "formik";
@@ -17,12 +17,13 @@ import HeaderStartupForm from "./HeaderStartupForm";
 
 import uuid from 'react-uuid'
 
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 // import ModalTemplate from "../shared/ModalTemplate";
 import Syarat from "./Syarat";
+import helper from "../../helpers/helper";
 
 class InfoPerusahaan extends Component {
   state = {
@@ -75,12 +76,11 @@ class InfoPerusahaan extends Component {
   }
   
   checkall =()=>{
-    this.setState({loading : true})
     API.refCheckCompanyMe().then(res=>{
       console.log(res, 'ARRAY')
       if (res.data.results[0].is_general_complete) {
-        console.log(res.data.results[0].nonce)
         var nonce = res.data.results[0].nonce
+        this.setState({loading : true})
         API.getCompanyDetail(res.data.results[0].id62).then(val=>{
           this.setState({
             ...this.state,
@@ -91,12 +91,13 @@ class InfoPerusahaan extends Component {
             uuid : nonce,
             loading : false
           })
-          console.log(val)
-          console.log(nonce)
+
         }).catch(err=>{
           this.setState({loading : false})
           console.log(err.response)
         })
+      }else{
+        this.setState({loading : false}) 
       }
       // if (res.data.results.length !== 0) {
       //   const data = res.data.results[0]
@@ -211,13 +212,15 @@ class InfoPerusahaan extends Component {
 
   handleFileUpload = (file, name,setFieldValue ) => {
     this.setState({loading: true})
-    console.log(file[0].name);
+    console.log(file.name);
     console.log(file);
-    const initialName = file[0].name
-    const maxWidth = 800
-    const maxHeight = 400
-    const quality = 0.9
-    imageFileToBase64(file[0], maxWidth, maxHeight, quality).then((res)=>{
+    const initialName = file.name
+    // const maxWidth = 800
+    // const maxHeight = 400
+    // const quality = 0.9
+    // imageFileToBase64(file[0], maxWidth, maxHeight, quality).then((res)=>{
+    // })
+    helper.getBase64(file).then(res=>{
       this.apiFileToLink(name, res, initialName, setFieldValue )
     })
     this.setState({ modalFile: {} });
@@ -646,9 +649,9 @@ class InfoPerusahaan extends Component {
                           endAdornment: (
                               <InputAdornment position="end">
                                 <InputFiles
-                                  accept="application/pdf"
+                                  accept="image/*"
                                   onChange={(files) =>
-                                    this.handleFileUpload(files, "logo", setFieldValue)
+                                    this.handleFileUpload(files[0], "logo", setFieldValue)
                                   }
                                 >
                                   <Button >Browse</Button>

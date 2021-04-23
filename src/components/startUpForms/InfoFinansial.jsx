@@ -16,8 +16,24 @@ class InfoFinansial extends Component {
   state = {
     pageName : "Informasi Finansial",
     dataBanks : [],
-    dataCompanyBefore : [],
-    loading : false
+    loading : false,
+
+    // datas 
+    "nonce": "",
+    "investment_needed": '',
+    "average_monthly_turnover": '',
+    "average_monthly_profit": '',
+    "average_monthly_turnover_last_year": '',
+    "average_monthly_profit_last_year": '',
+    "total_debt": '',
+    "paid_up_capital": '',
+    "book_value_per_share": '',
+    "bank": null,
+    "number": "",
+    "name": "",
+    "branch": "",
+
+    isEdit : false
   };
 
   componentDidMount(){
@@ -27,25 +43,31 @@ class InfoFinansial extends Component {
   
   checkFormCompany = ()=>{
     API.refCheckCompanyMe().then(res=>{
-      console.log(res.data.results[0], 'CHECK')
-      this.setState({dataCompanyBefore : res.data.results})
-      const data = res.data.results[0]
-      const checkArr = [
-        // {label :'is_general_complete', isCompleteLink : '/startup-form-informasi-finansial'},
-        {label :'is_financial_complete', isCompleteLink : '/startup-form-informasi-nonfinansial'},
-        // {label :'is_nonfinancial_complete',  isCompleteLink : '/startup'},
-        // {label :'is_media_complete', isCompleteLink : '/startup'},
-      ]
-      for (const val of checkArr) {
-        if (data[`${val.label}`]) {
-            this.props.history.push(val.isCompleteLink)
-        }
+      this.setState({loading : true, nonce : res.data.results[0].nonce})
+      console.log(res, 'ARRAY')
+      if (res.data.results[0].is_financial_complete) {
+        console.log(res.data.results[0].nonce)
+        var nonce = res.data.results[0].nonce
+        API.getCompanyDetail(res.data.results[0].id62).then(val=>{
+          this.setState({
+            ...this.state,
+            ...val.data,
+            isEdit : true,
+            loading : false
+          })
+          console.log(val)
+          console.log(nonce)
+        }).catch(err=>{
+          this.setState({loading : false})
+          console.log(err.response)
+        })
       }
     }).catch(err => {
+      this.setState({loading : false})
       console.log(err.response)
       Swal.fire({
         icon: 'error',
-        title: 'Error 500',
+        title: 'Error 5000',
         showConfirmButton: true,
       }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
     })
@@ -70,18 +92,18 @@ class InfoFinansial extends Component {
   render() {
     const initialValueObj = {
       // "nonce": "",
-      "investment_needed": '',
-      "average_monthly_turnover": '',
-      "average_monthly_profit": '',
-      "average_monthly_turnover_last_year": '',
-      "average_monthly_profit_last_year": '',
-      "total_debt": '',
-      "paid_up_capital": '',
-      "book_value_per_share": '',
-      "bank": null,
-      "number": "",
-      "name": "",
-      "branch": ""
+      "investment_needed": this.state.investment_needed,
+      "average_monthly_turnover": this.state.average_monthly_turnover,
+      "average_monthly_profit": this.state.average_monthly_profit,
+      "average_monthly_turnover_last_year": this.state.average_monthly_turnover_last_year,
+      "average_monthly_profit_last_year": this.state.average_monthly_profit_last_year,
+      "total_debt": this.state.total_debt,
+      "paid_up_capital": this.state.paid_up_capital,
+      "book_value_per_share": this.state.book_value_per_share,
+      "bank": this.state.bank,
+      "number": this.state.number,
+      "name": this.state.name,
+      "branch": this.state.branch,
     }
 
     const schemaObj = Yup.object({
@@ -119,18 +141,19 @@ class InfoFinansial extends Component {
 
     return (
       <div className="all-forms-style">
-        <HeaderStartupForm activeStep={4} />
+        <HeaderStartupForm backPath='/startup-form-informasi-perusahaan' activeStep={4} />
         <Loading onOpen={this.state.loading}/>
 
         <div className="box-form-data">
           <p className="title">Informasi Finansial</p>
           <Formik
+            enableReinitialize
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
               console.log(val);
               const body = {
-                "nonce": this.state.dataCompanyBefore[0].nonce,
+                "nonce": this.state.nonce,
                 "investment_needed": val.investment_needed,
                 "average_monthly_turnover": val.average_monthly_turnover,
                 "average_monthly_profit": val.average_monthly_profit,
@@ -173,8 +196,8 @@ class InfoFinansial extends Component {
               errors, 
               touched,
               setFieldValue,
-              handleBlur
-              // values 
+              handleBlur,
+              values 
             }) => (
               <form onSubmit={handleSubmit} id="startupForm">
                 <div className="row">
@@ -187,6 +210,7 @@ class InfoFinansial extends Component {
                           // as={InputTextCurrency}
                           label={res.label}
                           required
+                          value={values[res.key]}
                           type="text"
                           name={res.key}
                           currencySymbol={"Rp"}
@@ -254,7 +278,7 @@ class InfoFinansial extends Component {
           </p>
           {/* <Link to="/startup-form-informasi-nonfinansial"> */}
             <Button type="submit" form="startupForm">
-              SIMPAN & LANJUTKAN
+              {this.state.isEdit ? "UBAH" : "SIMPAN"} & LANJUTKAN
             </Button>
           {/* </Link> */}
         </div>
