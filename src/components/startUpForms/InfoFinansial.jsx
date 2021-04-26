@@ -67,7 +67,7 @@ class InfoFinansial extends Component {
       console.log(err.response)
       Swal.fire({
         icon: 'error',
-        title: 'Error 5000',
+        title: 'Error 500',
         showConfirmButton: true,
       }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
     })
