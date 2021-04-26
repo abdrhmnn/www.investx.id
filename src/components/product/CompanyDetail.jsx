@@ -147,7 +147,7 @@ class CompanyDetail extends Component {
               <div className="col-md-8">
                 <div className="header-detail">
                   <img
-                    src={logo}
+                    src={logo.url}
                     alt="logo"
                     className="logo"
                   />
@@ -248,7 +248,7 @@ class CompanyDetail extends Component {
                   </div>
                   {
                     prospectus !== null ?
-                      <a href={prospectus.url} download>
+                      <a href={prospectus? prospectus.url : null} download='prospectus'>
                         <Button className="down" >DOWNLOAD PROSPEKTUS</Button>
                       </a>
                       : 
@@ -260,12 +260,12 @@ class CompanyDetail extends Component {
                   <p>Location</p>
                     { address ?
                       address.map((res, i)=>(
-                        <>
+                        <div key={i}>
                         <EmbedMap address= {`${res.address} ${res.kelurahan} ${res.district} ${res.regency} ${res.province}`}/>
                         <p className="desc-address" key={i}>
                           {`${res.address} Kel/Desa ${res.kelurahan} Kecamatan ${res.district}, Kab/Kota ${res.regency}, Provinsi ${res.province}`}
                         </p>
-                        </>
+                        </div>
                       ))
                       : <EmbedMap />
                     }
