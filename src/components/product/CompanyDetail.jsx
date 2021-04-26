@@ -147,7 +147,7 @@ class CompanyDetail extends Component {
               <div className="col-md-8">
                 <div className="header-detail">
                   <img
-                    src={logo.url}
+                    src={logo ? logo.url : ''}
                     alt="logo"
                     className="logo"
                   />
