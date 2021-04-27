@@ -77,6 +77,11 @@ class DataDiri extends Component {
     this.setState({loading : true})
     API.getProfileCheck().then(res=>{
       console.log(res)
+      const {is_personal_id_complete, is_document_complete} = res.data.profile
+      if (this.state.isStartUp && is_personal_id_complete && is_document_complete) {
+        this.props.history.push('/startup-form-informasi-perusahaan')
+      }
+
       this.setState({
         ...res.data.profile,
         ...res.data.profile.id_card_address,

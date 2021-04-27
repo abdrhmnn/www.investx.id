@@ -78,7 +78,13 @@ class InfoPerusahaan extends Component {
   checkall =()=>{
     API.refCheckCompanyMe().then(res=>{
       console.log(res, 'ARRAY')
-      if (res.data.results[0].is_general_complete) {
+      const {
+        is_general_complete, 
+        is_financial_complete, 
+        is_nonfinancial_complete, 
+        is_media_complete
+      } = res.data.results[0]
+      if (!is_general_complete && !is_financial_complete && !is_nonfinancial_complete && !is_media_complete) {
         var nonce = res.data.results[0].nonce
         this.setState({loading : true})
         API.getCompanyDetail(res.data.results[0].id62).then(val=>{
