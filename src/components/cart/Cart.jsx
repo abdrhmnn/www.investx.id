@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import arrowback from "../../images/arrowback.svg";
 import helper from '../../helpers/helper';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import { Button, Fab} from '@material-ui/core';
+import { Button, ClickAwayListener, Fab} from '@material-ui/core';
 import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
+import Swal from 'sweetalert2';
 
 
 
@@ -51,6 +52,7 @@ class Cart extends Component {
         API.addCartShare(id, body).then(res=>{
             console.log(res)
             this.getCart()
+            this.setState({activeButton : null})
         }).catch(err=>{
             console.log(err.response)
         })
@@ -58,15 +60,35 @@ class Cart extends Component {
     }
 
     handleDelete = (id) =>{
-        API.deleteCart(id).then(res =>{
-            console.log(res)
-            this.getCart()
-            alert('sukses delete')
+        Swal.fire({
+            title: `Konfirmasi hapus data?`,
+            showConfirmButton: false,
+            showCancelButton: true,
+            // confirmButtonText: `Delete`,
+            showDenyButton: true,
+            denyButtonText: `Hapus`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isDenied) {
+                API.deleteCart(id).then(res =>{
+                    console.log(res)
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil di hapus',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    this.getCart()
+                }).catch(err =>{
+                    console.log(err.response)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal menghapus',
+                    })
+                })
+            } 
+          })
 
-        }).catch(err =>{
-            console.log(err.response)
-            alert('gagal delete')
-        })
     }
       
     render() {
@@ -105,25 +127,30 @@ class Cart extends Component {
                                     <Tbody>
                                     <Tr style={{backgroundColor : '#e9e9e9'}}>
                                         <Td>
-                                            <img style={{width : 30, height: 30, borderRadius: '50%'}} src={res.fundraise.logo} alt="logo" /> &nbsp;
-                                            {res.fundraise.name}
+                                            <div style={{display : 'flex', alignItems : 'center', margin : '0 5px', flexWrap: 'wrap'}}>
+                                                <img style={{width : 30, height: 30, borderRadius: '50%', marginRight : 5}} src={res.fundraise.logo} alt="logo" />
+                                                {res.fundraise.name}
+
+                                            </div>
                                         </Td>
                                         <Td>
-                                        <form style={{display : 'flex'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
-                                            <input 
-                                            type="number" 
-                                            className='ml-2'
-                                            min={res.min_invest_share} 
-                                            defaultValue={res.qty} 
-                                            onChange={(e)=> this.setState({qty : e.target.value})}
-                                            onClick={()=> this.setState({activeButton : res.id62})}
-                                            />
-                                            {
-                                                this.state.activeButton === res.id62 ?
-                                                <Button type='submit' className='mx-2' variant='contained'>Save</Button>
-                                                : null
-                                            }
-                                        </form>
+                                            <ClickAwayListener onClickAway={() => this.setState({ activeButton: null })}>
+                                                <form style={{display : 'flex', flexWrap : 'wrap', padding : '0 5px'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
+                                                    <input 
+                                                    style={{width : "100%", marginBottom: '5px'}}
+                                                    type="number" 
+                                                    min={res.min_invest_share} 
+                                                    defaultValue={res.qty} 
+                                                    onChange={(e)=> this.setState({qty : e.target.value})}
+                                                    onClick={()=> this.setState({activeButton : res.id62})}
+                                                    />
+                                                    {
+                                                        this.state.activeButton === res.id62 ?
+                                                        <Button style={{width : "100%"}} type='submit' color='primary' variant='outlined'>Simpan</Button>
+                                                        : null
+                                                    }
+                                                </form>
+                                            </ClickAwayListener>
                                         </Td>
                                         <Td>
                                             <Button variant='contained' className='mx-2' onClick={()=> this.handleDelete(res.id62)}>

@@ -198,7 +198,13 @@ class Navbar extends Component {
                 onClose={() => this.setState({ isOpenRes: false })}
                 component={this.responsiveMenuComp}
               />
-              {kuki.get("auth") ? (
+              {kuki.get("auth") ? 
+                <div style={{display : 'flex', alignItems : 'center'}}>
+                <Badge className='mr-4' badgeContent={parseInt(localStorage.getItem('cartInvestxLength'))} color="secondary">
+                  <Link to={parseInt(localStorage.getItem('cartInvestxLength')) !== 0?'/cart' : '#'} className='ml-4'>
+                    <ShoppingCart />
+                  </Link>
+                </Badge> 
                 <HamburgerMenu
                   isOpen={this.state.isOpenRes}
                   menuClicked={() =>
@@ -213,13 +219,14 @@ class Navbar extends Component {
                   animationDuration={0.3}
                   className="burger"
                 />
-              ) : (
+                </div>
+               : 
                 <Link to="/login">
                   <Button style={butLogin} className="but-login">
                     Log In
                   </Button>
                 </Link>
-              )}
+              }
             </div>
             <ul>
               <li>

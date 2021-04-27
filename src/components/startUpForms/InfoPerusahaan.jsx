@@ -64,7 +64,7 @@ class InfoPerusahaan extends Component {
     uuid : uuid(),
     // checkPoinData:  [],
 
-    modalSyarat : false,
+    modalSyarat : true,
 
     isEdit : false,
   };
@@ -96,7 +96,8 @@ class InfoPerusahaan extends Component {
               village : val.data.address[0].kelurahan,
               isEdit : true,
               uuid : nonce,
-              loading : false
+              loading : false,
+              modalSyarat : false
             })
           }).catch(err=>{
             this.setState({loading : false})
