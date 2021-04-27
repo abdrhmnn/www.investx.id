@@ -31,7 +31,7 @@ class Footer extends Component {
                       <Link to="/">Careers</Link>
                     </li>
                     <li>
-                      <Link to="/">Invest in InvestX</Link>
+                      <Link to="/company-list">Invest in InvestX</Link>
                     </li>
                   </ul>
                 </div>
@@ -42,7 +42,7 @@ class Footer extends Component {
                       <Link to="/">Raise Capital</Link>
                     </li>
                     <li>
-                      <Link to="/">How it Works</Link>
+                      <Link to="/how">How it Works</Link>
                     </li>
                     <li>
                       <Link to="/">Why InvestX</Link>

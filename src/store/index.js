@@ -8,13 +8,16 @@ const initialState = {
   dataDetailCompany : {},
   dataDetailTags: [],
   // TABS 
-  dataFinansialTab : {}
+  dataFinansialTab : {},
+  badgeTotal : 10
 };
 
 const reducer = (state = initialState, action) => {
-  if (action.type === "HAHA") {
-    console.log("yiiihaaa");
-    return "hahaha";
+  if (action.type === "BADGE_TOTAL") {
+    return {
+      ...state,
+      badgeTotal : action.data
+    };
   }
 
   if (action.type === "CHANGE_TAB") {
@@ -49,7 +52,6 @@ const reducer = (state = initialState, action) => {
     };
   }
   
-
   if (action.type === "SEND_FINANSIAL_TAB") {
     console.log("post detail TAB FINANSIAL");
     return {

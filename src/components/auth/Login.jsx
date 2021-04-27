@@ -4,6 +4,7 @@ import logoMobile from "../../images/logo.svg";
 import { Link, Redirect } from "react-router-dom";
 import bluewoman from "../../images/bg/bluewoman.jpg";
 
+
 import {
   Button,
   TextField,
@@ -30,8 +31,7 @@ class Login extends Component {
   handleLoginSubmit = (val)=>{
     console.log(val);
   this.setState({ loading: true });
-  API.login(val)
-    .then((res) => {
+  API.login(val).then((res) => {
       const {token,register_status,email,full_name,phone_number,} = res.data
       kuki.set("email", email);
       kuki.set("full_name", full_name);
@@ -39,7 +39,7 @@ class Login extends Component {
       kuki.set("token", token);
       kuki.set("status", register_status);
       kuki.set("auth", true);
-
+      //check approved profile
         API.getProfileCheck().then(result =>{
           if (result.data.profile.is_investor_approved) {
             kuki.set("isInvestorComplete", result.data.profile.is_investor_approved);
@@ -58,7 +58,14 @@ class Login extends Component {
                 text: `${Object.entries(err.response.data)}` ,
               })
           })
-              
+
+        //check badges
+        API.getCart().then(res=>{
+          window.localStorage.setItem('cartInvestxLength', res.data.results.length)
+        }).catch(err=>{
+            console.log(err.response)
+        })
+      
     })
     .catch((err) => {
       this.setState({ loading: false });

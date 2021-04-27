@@ -5,6 +5,8 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import { Button, Fab} from '@material-ui/core';
 import logo from "../../images/logo.svg";
 import API from "../../api";
+import Loading from '../shared/Loading';
+
 
 
 
@@ -13,7 +15,8 @@ class Cart extends Component {
     state={
         data : [],
         qty : '',
-        activeButton : ''
+        activeButton : '',
+        loaading : false
     }
 
     componentDidMount(){
@@ -23,12 +26,19 @@ class Cart extends Component {
 
     
     getCart = ()=>{
+        this.setState({loading : true})
         API.getCart().then(res=>{
+            if (res.data.results.length === 0) {
+                this.props.history.goBack()
+            }
+            console.log(res.data.results.length)
+            window.localStorage.setItem('cartInvestxLength', res.data.results.length)
             this.setState({
-                data : res.data.results
+                data : res.data.results,
+                loading : false
             })
-            console.log(res.data.results)
         }).catch(err=>{
+            this.setState({loading : false})
             console.log(err.response)
         })
     }
@@ -63,6 +73,7 @@ class Cart extends Component {
         console.log(this.state.data2)
         return (
             <div className="all-forms-style invoice">
+                <Loading onOpen={this.state.loading}/>
                 <div className="bg">
                 <div className="bg-round"></div>
                 </div>
@@ -98,9 +109,10 @@ class Cart extends Component {
                                             {res.fundraise.name}
                                         </Td>
                                         <Td>
-                                        <form className="wrap-cal" id='calculator-invest' onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
+                                        <form style={{display : 'flex'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
                                             <input 
                                             type="number" 
+                                            className='ml-2'
                                             min={res.min_invest_share} 
                                             defaultValue={res.qty} 
                                             onChange={(e)=> this.setState({qty : e.target.value})}
@@ -108,13 +120,13 @@ class Cart extends Component {
                                             />
                                             {
                                                 this.state.activeButton === res.id62 ?
-                                                <Button type='submit' variant='contained'>Save</Button>
+                                                <Button type='submit' className='mx-2' variant='contained'>Save</Button>
                                                 : null
                                             }
                                         </form>
                                         </Td>
                                         <Td>
-                                            <Button variant='contained' onClick={()=> this.handleDelete(res.id62)}>
+                                            <Button variant='contained' className='mx-2' onClick={()=> this.handleDelete(res.id62)}>
                                                 Delete
                                             </Button>
                                         </Td>
@@ -144,4 +156,5 @@ class Cart extends Component {
     }
 }
 
-export default Cart;
+  
+  export default Cart

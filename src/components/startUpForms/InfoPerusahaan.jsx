@@ -78,33 +78,36 @@ class InfoPerusahaan extends Component {
   checkall =()=>{
     API.refCheckCompanyMe().then(res=>{
       console.log(res, 'ARRAY')
-      const {
-        is_general_complete, 
-        is_financial_complete, 
-        is_nonfinancial_complete, 
-        is_media_complete
-      } = res.data.results[0]
-      if (!is_general_complete && !is_financial_complete && !is_nonfinancial_complete && !is_media_complete) {
-        var nonce = res.data.results[0].nonce
-        this.setState({loading : true})
-        API.getCompanyDetail(res.data.results[0].id62).then(val=>{
-          this.setState({
-            ...this.state,
-            ...val.data,
-            ...val.data.address[0],
-            village : val.data.address[0].kelurahan,
-            isEdit : true,
-            uuid : nonce,
-            loading : false
+      if (res.data.results.length !== 0) {
+        const {
+          is_general_complete, 
+          is_financial_complete, 
+          is_nonfinancial_complete, 
+          is_media_complete
+        } = res.data.results[0]
+        if (!is_general_complete && !is_financial_complete && !is_nonfinancial_complete && !is_media_complete) {
+          var nonce = res.data.results[0].nonce
+          this.setState({loading : true})
+          API.getCompanyDetail(res.data.results[0].id62).then(val=>{
+            this.setState({
+              ...this.state,
+              ...val.data,
+              ...val.data.address[0],
+              village : val.data.address[0].kelurahan,
+              isEdit : true,
+              uuid : nonce,
+              loading : false
+            })
+          }).catch(err=>{
+            this.setState({loading : false})
+            console.log(err.response)
           })
+        }else{
+          this.setState({loading : false}) 
+        }
 
-        }).catch(err=>{
-          this.setState({loading : false})
-          console.log(err.response)
-        })
-      }else{
-        this.setState({loading : false}) 
       }
+
       // if (res.data.results.length !== 0) {
       //   const data = res.data.results[0]
       //   // console.log(res)

@@ -160,6 +160,12 @@ class Invest extends Component {
       }).then(()=>{
         this.setState({modalConfirm : false, loading : false})
       })
+      API.getCart().then(res=>{
+          window.localStorage.setItem('cartInvestxLength', res.data.results.length)
+      }).catch(err=>{
+          console.log(err.response)
+      })
+      
     }).catch(err =>{
       this.setState({loading : false})
       Swal.fire({

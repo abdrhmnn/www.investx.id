@@ -5,7 +5,7 @@ import kuki from "../../helpers/kuki";
 
 import logo from "../../images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { Button, ClickAwayListener } from "@material-ui/core";
+import { Badge, Button, ClickAwayListener } from "@material-ui/core";
 import walletnav from "../../images/walletnav.svg";
 import ModalTemplate from "./ModalTemplate";
 import VerifyOtp from "./VerifyOtp";
@@ -67,6 +67,7 @@ class Navbar extends Component {
       kuki.remove("email")
       kuki.remove("phone_number")
       kuki.remove("isInvestorComplete")
+      window.localStorage.clear()
       window.location.href= '/'
     // for (let i in arrKuki) {
     //   kuki.remove(arrKuki[i], { path: '/' })
@@ -235,9 +236,11 @@ class Navbar extends Component {
               </li>
               {kuki.get("auth") ? 
               <>
-              <Link to='/cart' className='ml-4' >
-                <ShoppingCart />
-              </Link>
+              <Badge badgeContent={parseInt(localStorage.getItem('cartInvestxLength'))} color="secondary">
+                  <Link to={parseInt(localStorage.getItem('cartInvestxLength')) !== 0?'/cart' : '#'} className='ml-4'>
+                    <ShoppingCart />
+                  </Link>
+              </Badge>
 
                 <li className="">
                   <ClickAwayListener
@@ -314,7 +317,6 @@ class Navbar extends Component {
 const mapStateToProps = (state) => {
   return {
     activeTab: state.activeTab,
-    // number : state.number
   };
 };
 
