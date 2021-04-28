@@ -285,6 +285,7 @@ class InfoPerusahaan extends Component {
       number_of_branches: Yup.number().typeError("value have to be number").required(),
       number_of_employees: Yup.number().typeError("value have to be number").required(),
       description: Yup.string().required(),
+      website_url: Yup.string().required(),
     });
 
     const locationInputForms =[
@@ -335,7 +336,6 @@ class InfoPerusahaan extends Component {
                 "prospectus": val.prospectus,
                 "logo": val.logo
               }
-              if (this.state.logo) {
                 this.setState({loading : true})
                 API.postCompanyGeneral(body).then(res =>{
                   localStorage.setItem("uuid", this.state.uuid);
@@ -356,8 +356,6 @@ class InfoPerusahaan extends Component {
                   })
                   console.log(err.response)
                 })
-              }
-
             }}
           >
             {({
@@ -562,6 +560,7 @@ class InfoPerusahaan extends Component {
                   <div className="col-md-12">
                     <Field
                       as={InputText}
+                      required
                       label="Website Perusahaan"
                       type="text"
                       name="website_url"

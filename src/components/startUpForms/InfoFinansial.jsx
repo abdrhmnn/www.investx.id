@@ -45,23 +45,25 @@ class InfoFinansial extends Component {
     API.refCheckCompanyMe().then(res=>{
       this.setState({loading : true, nonce : res.data.results[0].nonce})
       console.log(res, 'ARRAY')
-      if (res.data.results[0].is_financial_complete) {
+      // if (res.data.results[0].is_financial_complete) {
         console.log(res.data.results[0].nonce)
         var nonce = res.data.results[0].nonce
         API.getCompanyDetail(res.data.results[0].id62).then(val=>{
           this.setState({
             ...this.state,
             ...val.data,
-            isEdit : true,
-            loading : false
+            isEdit : res.data.results[0].is_financial_complete,
+            loading : false,
+            "nonce" : nonce
           })
           console.log(val)
           console.log(nonce)
         }).catch(err=>{
-          this.setState({loading : false})
           console.log(err.response)
+          this.setState({loading : false})
         })
-      }
+      // }
+      // this.setState({loading : true})
     }).catch(err => {
       this.setState({loading : false})
       console.log(err.response)
