@@ -81,24 +81,26 @@ class DataDiri extends Component {
       if (this.state.isStartUp && is_personal_id_complete && is_document_complete) {
         this.props.history.push('/startup-form-informasi-perusahaan')
       }
-
-      this.setState({
-        ...res.data.profile,
-        ...res.data.profile.id_card_address,
-        village : res.data.profile.id_card_address.kelurahan,
-        isSameAdd : JSON.stringify(res.data.profile.id_card_address) === JSON.stringify(res.data.profile.occupation_address),
-        // data occupation
-        addressOcc: res.data.profile.occupation_address.address,
-        provinceOcc : res.data.profile.occupation_address.province,
-        regencyOcc : res.data.profile.occupation_address.regency,
-        districtOcc : res.data.profile.occupation_address.district,
-        villageOcc : res.data.profile.occupation_address.kelurahan,
-        postal_codeOcc : res.data.profile.occupation_address.postal_code,
-
-        isEdit : res.data.profile.is_personal_id_complete,
-
-        loading : false
-      })
+      if (is_personal_id_complete) {
+        this.setState({
+          ...res.data.profile,
+          ...res.data.profile.id_card_address,
+          village : res.data.profile.id_card_address.kelurahan,
+          isSameAdd : JSON.stringify(res.data.profile.id_card_address) === JSON.stringify(res.data.profile.occupation_address),
+          // data occupation
+          addressOcc: res.data.profile.occupation_address.address,
+          provinceOcc : res.data.profile.occupation_address.province,
+          regencyOcc : res.data.profile.occupation_address.regency,
+          districtOcc : res.data.profile.occupation_address.district,
+          villageOcc : res.data.profile.occupation_address.kelurahan,
+          postal_codeOcc : res.data.profile.occupation_address.postal_code,
+  
+          isEdit : res.data.profile.is_personal_id_complete,
+  
+          loading : false
+        })
+      }
+      this.setState({loading : false})
     }).catch(()=>{
       Swal.fire({
         icon: 'error',
@@ -114,7 +116,7 @@ class DataDiri extends Component {
         provinceData: res.data.results,
         provinceDataOccupation: res.data.results,
        });
-      // console.log(this.state,'state');
+      // console.log(res,'privince');
     }).catch((err) => {
       console.log(err.response);
     });
@@ -221,7 +223,7 @@ class DataDiri extends Component {
       
     ]
     const locationInputFormsOcc =[
-      {key : 'provinceOcc', label : 'Provinsi', data : this.state.provinceDataOccupation, getData : (id)=>this.apiRegency(true, id), clearData : ['regency', 'district', 'village'],  prevId : null },
+      {key : 'provinceOcc', label : 'Provinsi', data : this.state.provinceDataOccupation, getData : null, clearData : ['regency', 'district', 'village'],  prevId : null },
       {key : 'regencyOcc', label : 'Kota/Kabupaten', data : this.state.regencyDataOccupation,  getData : (id)=>this.apiRegency(true, id), clearData : ['district', 'village'], prevId : 'province' },
       {key : 'districtOcc', label : 'Kecamatan', data : this.state.districtDataOccupation,  getData : (id)=>this.apiDistrict(true,id), clearData : ['village'], prevId : 'regency'},
       {key : 'villageOcc', label : 'Kelurahan', data : this.state.villageDataOccupation,  getData : (id)=>this.apiVillage(true, id), clearData : [], prevId : 'district'},
