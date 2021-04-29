@@ -113,6 +113,7 @@ class App extends Component {
           <PrivatRoute exact path="/cart" component={Cart} />
           
           <Route exact path="/company-list" component={CompanyList} />
+          <Route exact path="/company-list/:ordering" component={CompanyList} />
           <Route exact path="/company-list/detail/:id" component={CompanyDetail}/>
           <Route exact path="/invoice/:idTransaction" component={Invoice}/>
           {/* //redirect  */}

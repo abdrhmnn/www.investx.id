@@ -55,7 +55,7 @@ class CompanyList extends Component {
       limit : this.state.limit,
       offset : (this.state.page -1) * this.state.limit,
       city : this.state.cityFil ? this.state.cityFil.value : '',
-      
+      ordering : this.props.match.params.ordering.replace('-',"_")
     }
     API.fundraise(params).then(res=>{
       console.log(res, 'DATA FUNDRAISE')
@@ -135,6 +135,12 @@ class CompanyList extends Component {
       console.log(this.state.tipeBisnisCount);
     }
   };
+
+  handleOrdering = (val)=>{
+    console.log(val)
+    this.props.history.push(`/company-list/${val.value}`)
+    this.getData()
+  }
   render() {
     console.log(this.state, 'INI STATE');
     const filterCheck = [
@@ -153,10 +159,10 @@ class CompanyList extends Component {
       { id: 5, name: "Food" },
     ];
 
-    const options = [
-      { value: "bandung", label: "Bandung" },
-      { value: "jakarta", label: "Jakarta" },
-      { value: "bekasi", label: "Bekasi" },
+    const optionsOrdering = [
+      { value: "highly-selective", label: "Highly selective" },
+      { value: "closed-soon", label: "Closed Soon"},
+      { value: "new-startup", label: "New Startup" },
     ];
     return (
       <>
@@ -434,7 +440,19 @@ class CompanyList extends Component {
                   </div>
                   <div className="filad">
                     <span>Urutkan : </span>{" "}
-                    <Select className="selfil" options={options} />
+                    <Select className="selfil" 
+                    options={optionsOrdering} 
+                    onChange={this.handleOrdering} 
+                    value={
+                      this.props.match.params.ordering === 'highly-selective' ? 
+                      { value: "highly-selective", label: "Highly selective" }
+                      :this.props.match.params.ordering === 'closed-soon' ? 
+                      { value: "closed-soon", label: "Closed Soon"}
+                      :this.props.match.params.ordering === 'new-startup' ?
+                      { value: "new-startup", label: "New Startup" }
+                      : null
+                    }
+                    />
                   </div>
                 </div>
 

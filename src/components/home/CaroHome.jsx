@@ -14,19 +14,46 @@ import API from "../../api";
 
 class CaroHome extends Component {
   state={
-    data : []
+    data_highly_selective : [],
+    data_closed_soon : [],
+    data_new_startup : []
   }
   componentDidMount(){
     this.getObj()
   }
   getObj = () =>{
-    API.fundraise().then(res=>{
+    const params1 = {
+      ordering : "highly_selective"
+    }
+    API.fundraise(params1).then(res=>{
       console.log(res, 'data fundraise')
       this.setState({ 
-        data : res.data.results,
+        data_highly_selective : res.data.results,
       })
     }).catch(err => console.log(err.response))
+
+    const params2 = {
+      ordering : "closed_soon"
+    }
+    API.fundraise(params2).then(res=>{
+      console.log(res, 'data fundraise')
+      this.setState({ 
+        data_closed_soon : res.data.results,
+      })
+    }).catch(err => console.log(err.response))
+
+    const params3 = {
+      ordering : "new_startup"
+    }
+    API.fundraise(params3).then(res=>{
+      console.log(res, 'data fundraise')
+      this.setState({ 
+        data_new_startup : res.data.results,
+      })
+    }).catch(err => console.log(err.response))
+
   }
+
   render() {
     const responsiveStyle = [
       {
@@ -85,7 +112,7 @@ class CaroHome extends Component {
           <div className="header">
             <div className="wrap">
               <span className="sele">Highly selective</span>
-              <Link to="/company-list">
+              <Link to="/company-list/highly-selective">
                 <u>See All</u>
               </Link>
             </div>
@@ -94,7 +121,7 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings} ref={(c) => (this.slider = c)}>
-              {this.state.data.map((res, i) => (
+              {this.state.data_highly_selective.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
@@ -113,7 +140,7 @@ class CaroHome extends Component {
           <div className="header">
             <div className="wrap">
               <span className="sele">Closed Soon</span>
-              <Link to="/company-list">
+              <Link to="/company-list/closed-soon">
                 <u>See All</u>
               </Link>
             </div>
@@ -122,7 +149,7 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings2} ref={(c) => (this.slider2 = c)}>
-              {this.state.data.map((res, i) => (
+              {this.state.data_closed_soon.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
@@ -141,7 +168,7 @@ class CaroHome extends Component {
           <div className="header">
             <div className="wrap">
               <span className="sele">New Startup</span>
-              <Link to="/company-list">
+              <Link to="/company-list/new-startup">
                 <u>See All</u>
               </Link>
             </div>
@@ -150,7 +177,7 @@ class CaroHome extends Component {
 
           <div className="carousell-sec">
             <Slider {...settings3} ref={(c) => (this.slider3 = c)}>
-              {this.state.data.map((res, i) => (
+              {this.state.data_new_startup.map((res, i) => (
                 <Link key={i} to={`company-list/detail/${res.id62}`}>
                   <Card data={res} />
                 </Link>
