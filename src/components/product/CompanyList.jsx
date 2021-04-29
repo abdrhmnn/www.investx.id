@@ -55,7 +55,7 @@ class CompanyList extends Component {
       limit : this.state.limit,
       offset : (this.state.page -1) * this.state.limit,
       city : this.state.cityFil ? this.state.cityFil.value : '',
-      ordering : this.props.match.params.ordering.replace('-',"_")
+      ordering : this.props.match.params.ordering? this.props.match.params.ordering.replace('-',"_"): null
     }
     API.fundraise(params).then(res=>{
       console.log(res, 'DATA FUNDRAISE')
