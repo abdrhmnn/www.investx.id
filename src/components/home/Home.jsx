@@ -20,21 +20,35 @@ import CaroQuotes from "./CaroQuotes";
 // import FAQ from "./FAQ";
 import { Link } from "react-router-dom";
 import kuki from "../../helpers/kuki";
+import API from "../../api";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
   state = {
     // modalOtp: false,
     // modalTerimakasih: false,
+    dataRecentInvest : []
   };
 
   componentDidMount() {
     window.scrollTo({ top: 0 });
+    this.getData()
+  }
+
+  getData = ()=>{
+    const params = {limit : 10}
+    API.refRecentInvest(params).then(res=>{
+      this.setState({
+        dataRecentInvest : res.data.results
+      })
+    }).catch(err=>{
+      console.log(err.response)
+    })
   }
 
 
   render() {
-    const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8];
+    // const arr = [1, 2, 3, 4, 5, 6, 7, 7, 8];
     console.log("====================================");
     console.log(this.props);
     console.log("====================================");
@@ -163,21 +177,14 @@ class Home extends Component {
           </div>
           <div className="last-invest">
             <Slider {...settings}>
-              {arr.map((res, i) => (
-                <div
-                  className="card-last"
-                  key={i}
-                  onClick={this.props.hahaFunct}
-                >
-                  <img
-                    src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png"
-                    alt=""
-                  />
+              {this.state.dataRecentInvest.map((res, i) => (
+                <div className="card-last" key={i} >
+                  <img src={res.company_logo} alt="company-logo"/>
                   <div className="name">
-                    John Donal Invested <span>$1000 </span>
-                    in <span>Fleting</span>
+                    {res.full_name} <span>$1000 </span>
+                    in <span>{res.company_name}</span>
                     <br />
-                    <p className="time">2 hours again</p>
+                    <p className="time">{res.created_at}</p>
                   </div>
                 </div>
               ))}

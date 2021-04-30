@@ -68,6 +68,13 @@ const REFERENCE = {
       });
     },
 
+    refRecentInvest: (props) =>{
+      return axios.get(apiBaseUrl + `/investment/recent-invest/`,{
+        params : props, 
+        // headers: { Authorization: `Token ${kuki.get("token")}` },
+      });
+    },
+
 }
 
 export default REFERENCE
