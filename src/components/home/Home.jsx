@@ -21,6 +21,7 @@ import CaroQuotes from "./CaroQuotes";
 import { Link } from "react-router-dom";
 import kuki from "../../helpers/kuki";
 import API from "../../api";
+import helper from "../../helpers/helper";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
@@ -38,6 +39,7 @@ class Home extends Component {
   getData = ()=>{
     const params = {limit : 10}
     API.refRecentInvest(params).then(res=>{
+      console.log(res)
       this.setState({
         dataRecentInvest : res.data.results
       })
@@ -181,7 +183,7 @@ class Home extends Component {
                 <div className="card-last" key={i} >
                   <img src={res.company_logo} alt="company-logo"/>
                   <div className="name">
-                    {res.full_name} <span>$1000 </span>
+                    {res.full_name} <span>Rp {helper.idr(res.amount)} </span>
                     in <span>{res.company_name}</span>
                     <br />
                     <p className="time">{res.created_at}</p>
