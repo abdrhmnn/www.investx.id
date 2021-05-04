@@ -241,7 +241,9 @@ class InfoPerusahaan extends Component {
     console.log(file, 'INI FILE PDF');
     const initialName = file[0].name
     pdf2base64(file[0]).then((res)=>{
-      this.apiFileToLink(name, res, initialName, setFieldValue )
+      const addMime = `data:text/pdf;base64,${res}`
+      // console.log(addMime, 'STRING PDF')
+      this.apiFileToLink(name, addMime, initialName, setFieldValue )
     })
     this.setState({ modalFile: {} });
   };
