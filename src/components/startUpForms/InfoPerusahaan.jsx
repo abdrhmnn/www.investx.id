@@ -3,7 +3,7 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import InputFiles from "react-input-files";
 // import imageFileToBase64 from 'image-file-to-base64-exif'
-import pdf2base64 from 'pdf-to-base64'
+// import pdf2base64 from 'pdf-to-base64'
 
 import { Formik, Field } from "formik";
 import * as Yup from "yup";
@@ -240,10 +240,13 @@ class InfoPerusahaan extends Component {
     this.setState({loading: true})
     console.log(file, 'INI FILE PDF');
     const initialName = file[0].name
-    pdf2base64(file[0]).then((res)=>{
-      const addMime = `data:text/pdf;base64,${res}`
-      // console.log(addMime, 'STRING PDF')
-      this.apiFileToLink(name, addMime, initialName, setFieldValue )
+    // pdf2base64(file).then((res)=>{
+    //   const addMime = `data:text/pdf;base64,${res}`
+    //   // console.log(addMime, 'STRING PDF')
+    //   this.apiFileToLink(name, addMime, initialName, setFieldValue )
+    // })
+    helper.getBase64(file[0]).then(res=>{
+      this.apiFileToLink(name, res, initialName, setFieldValue )
     })
     this.setState({ modalFile: {} });
   };
