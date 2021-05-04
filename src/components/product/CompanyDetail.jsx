@@ -248,7 +248,7 @@ class CompanyDetail extends Component {
                   </div>
                   {
                     prospectus !== null ?
-                      <a href={prospectus? prospectus.url : null} download='prospectus'>
+                      <a href={prospectus? prospectus.url : null} download='prospectus' target='_blank'>
                         <Button className="down" >DOWNLOAD PROSPEKTUS</Button>
                       </a>
                       : 

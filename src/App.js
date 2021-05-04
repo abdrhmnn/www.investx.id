@@ -82,6 +82,30 @@ const PrivatRoute = ({ component: Component, ...rest }) => {
   );
 };
 
+const RedirectRegister = ({ component: Component, ...rest }) => {
+  const isAuth = kuki.get("auth");
+  const isToken = kuki.get("token");
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        isAuth && isToken ? (
+          <Component {...props} {...rest} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/signup",
+              state: {
+                // from: props.location
+              },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
+
 class App extends Component {
   render() {
     // console.log(process.env.REACT_APP_NOT_SECRET_CODE)
@@ -96,19 +120,19 @@ class App extends Component {
           <Route path="/how" component={HowItWorks} />
 
           <Route exact path="/email-verify/:code" component={SelectForm} />
-          <PrivatRoute exact path="/investor-form-data-diri" component={DataDiri}/>
-          <PrivatRoute exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
-          <PrivatRoute exact path="/investor-form-dokumen" component={Dokumen}/>
-          <PrivatRoute exact path="/investor-form-bank" component={Bank} />
-          <PrivatRoute exact path="/investor-form-preference" component={Preference}/>
+          <RedirectRegister exact path="/investor-form-data-diri" component={DataDiri}/>
+          <RedirectRegister exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
+          <RedirectRegister exact path="/investor-form-dokumen" component={Dokumen}/>
+          <RedirectRegister exact path="/investor-form-bank" component={Bank} />
+          <RedirectRegister exact path="/investor-form-preference" component={Preference}/>
 
-          <PrivatRoute exact path="/startup-form-data-diri" component={DataDiri}/>
-          <PrivatRoute exact path="/startup-form-dokumen" component={Dokumen}/>
-          <PrivatRoute exact path="/startup-form-informasi-perusahaan" component={InfoPerusahaan}/>
-          <PrivatRoute exact path="/startup-form-informasi-finansial" component={InfoFinansial}/>
-          <PrivatRoute exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
-          <PrivatRoute exact path="/startup-form-media" component={Media} />
-          <PrivatRoute exact path="/startup-form-syarat" component={Syarat} />
+          <RedirectRegister exact path="/startup-form-data-diri" component={DataDiri}/>
+          <RedirectRegister exact path="/startup-form-dokumen" component={Dokumen}/>
+          <RedirectRegister exact path="/startup-form-informasi-perusahaan" component={InfoPerusahaan}/>
+          <RedirectRegister exact path="/startup-form-informasi-finansial" component={InfoFinansial}/>
+          <RedirectRegister exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
+          <RedirectRegister exact path="/startup-form-media" component={Media} />
+          <RedirectRegister exact path="/startup-form-syarat" component={Syarat} />
 
           <PrivatRoute exact path="/cart" component={Cart} />
           
