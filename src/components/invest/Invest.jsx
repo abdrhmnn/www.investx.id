@@ -21,10 +21,6 @@ import Swal from "sweetalert2";
 import helper from "../../helpers/helper";
 
 
-
-
-
-
 class Invest extends Component {
   state = {
     lembarSaham: 1,

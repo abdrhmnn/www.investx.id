@@ -1,49 +1,107 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
 import { Button, Fab } from "@material-ui/core";
+import API from "../../api";
+import helper from "../../helpers/helper";
+import Swal from "sweetalert2";
 
 class TopUpDetail extends Component {
   state = {
-    isInvoice: false,
+    // isInvoice: false,
+    data : {},
+    tokenPayment :''
   };
 
-  setIsInvoice = (status) => {
-    this.setState({
-      isInvoice: status,
-    });
-  };
+  // setIsInvoice = (status) => {
+  //   this.setState({
+  //     isInvoice: status,
+  //   });
+  // };
+
+  componentDidMount(){
+    const script = document.createElement("script");
+
+    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.async = true;
+    script["data-client-key"] = "SB-Mid-client-BiP4Rpf3B1lBAwY_"; //key mor save with queryreact
+    document.body.appendChild(script);
+    // console.log(this.props.match.params.invoiceNumber)
+    API.getInvoiceTopup(this.props.match.params.invoiceNumber).then(res=>{
+      console.log(res)
+      this.setState({data : res.data})
+    }).catch(err=>{
+      console.log(err.response)
+    })
+  }
+
+
+  handlePay = ()=>{
+    // this.setState({modalConfirm : false, loading : true})
+    const idPayment = this.state.data.number
+    const data ={
+      "channel": "snap"
+    }
+    API.investPayment(idPayment, data).then(res=>{
+      console.log(res, 'token payment')
+      this.setState({
+        tokenPayment : res.data.payment_detail.token,
+        loading : false
+      }, ()=>{
+        // if (channelVal=== 'snap') {
+            window.snap.pay(this.state.tokenPayment,{
+              onSuccess: function(result){
+                console.log('success');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+              },
+              onPending: function(result){
+                console.log('pending');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+              },
+              onError: function(result){
+                console.log('error');
+                console.log(result);
+                window.location.href = `/invoice/${idPayment}`
+              },
+              onClose: function(){
+                console.log('customer closed the popup without finishing the payment');
+                window.location.reload()
+                // document.body.style = null;
+                // document.body.style.overflowX = "auto";
+                // document.body.style.overflow = "auto";
+              }
+            })
+        // } 
+        // if (channelVal=== 'wallet') {
+        //     window.location.href = `/invoice/${idPayment}`
+        // }
+      })
+
+    }).catch(err =>{
+      this.setState({loading : false})
+      Swal.fire({
+        icon: 'error',
+        title: `Pembayaran gagal`,
+        // text : `${Object.entries(err.response.data)} \n`
+      })
+      console.log(err.response)
+    })
+  }
 
   render() {
-    const but = {
-      color: "#0288D1",
-      borderRadius: "8px",
-      border: "1px solid #0288d1",
-      backgroundColor: "white",
-      fontSize: "16px",
-      outline: "unset !important",
-    };
-    const butSolid = {
-      backgroundColor: "#0288d1",
-      border: "none",
-      borderRadius: "8px",
-      color: "white",
-      fontSize: "16px",
-      outline: "unset !important",
-    };
-
+    const {amount, status, number} = this.state.data
     return (
       <div className="all-forms-style detail-transaction">
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link onClick={() => this.props.history.goBack()}>
-          <Fab className="back-button">
+          <Fab className="back-button" onClick={() => this.props.history.goBack()}>
             <img src={arrowback} alt="" />
           </Fab>
-        </Link>
         <div className="logo-invest">
           <img src={logo} alt="" />
         </div>
@@ -52,55 +110,53 @@ class TopUpDetail extends Component {
         </p>
 
         <div className="payment-detail box-form-data">
-          <div className="d-flex justify-content-between">
+          {/* <div className="d-flex justify-content-between">
             <p className="name">Tanggal</p>
             <p className="amount">22/09/2020</p>
-          </div>
+          </div> */}
           <div className="d-flex justify-content-between">
             <p className="name">No Invoice</p>
-            <p className="amount">ABC123-EF45</p>
+            <p className="amount">{number}</p>
           </div>
           <div className="d-flex justify-content-between">
             <p className="name">Status</p>
-            <p
-              className={"amount " + (this.state.isInvoice ? "text-blue" : "")}
-            >
-              {this.state.isInvoice ? "Success" : "Pending"}
+            <p>
+              {status}
             </p>
           </div>
-          <div className="d-flex justify-content-between">
+          {/* <div className="d-flex justify-content-between">
             <p className="name">Pembayaran</p>
             <p className="amount">Top Up Wallet</p>
-          </div>
-          <div className="d-flex justify-content-between">
+          </div> */}
+          {/* <div className="d-flex justify-content-between">
             <p className="name">Metode Pengiriman</p>
             <p className="amount">BCA Virtual Account</p>
-          </div>
+          </div> */}
           <div className="d-flex justify-content-between">
             <p className="name">Nominal Top Up</p>
-            <p className="amount text-blue">Rp. 200,000,-</p>
+            <p className="amount text-blue">Rp. {helper.idr(Math.round(amount - 1000))}</p>
           </div>
           <div className="d-flex justify-content-between">
             <p className="name">Administrasi</p>
-            <p className="amount text-blue">Rp. 2,500,-</p>
+            <p className="amount text-blue">Rp. 1,000,-</p>
           </div>
           <div className="tile-active d-flex justify-content-between">
             <p className="name">Total</p>
             <div>
               <br />
-              <p className="amount total-amount text-blue">Rp. 202, 500</p>
+              <p className="amount total-amount text-blue">Rp. {helper.idr(Math.round(amount))}</p>
             </div>
           </div>
           <br />
-          <div
+          {/* <div
             className="d-flex justify-content-between"
             style={{ marginBottom: "30px" }}
           >
             <p className="name">Batas Waktu</p>
             <p className="amount">12;34;00</p>
-          </div>
+          </div> */}
 
-          {this.state.isInvoice ? (
+          {/* {this.state.isInvoice ? (
             <div style={{ marginBottom: "180px" }}>
               <p className="note" style={{ marginBottom: "34px" }}>
                 *Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
@@ -126,23 +182,23 @@ class TopUpDetail extends Component {
               </div>
             </div>
           ) : (
+          )} */}
             <div>
-              <p className="note" style={{ marginBottom: "20px" }}>
+              {/* <p className="note" style={{ marginBottom: "20px" }}>
                 *Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error
                 reiciendis culpa quidem. Aliquam labore totam ea, fuga tenetur
                 fugiat obcaecati eveniet itaque quisquam, hic magni neque,
                 aperiam unde accusamus harum.
-              </p>
+              </p> */}
               <Button
-                style={butSolid}
-                className="but-solid"
+                className="but-topup-pay"
+                variant='contained'
                 type="submit"
-                onClick={() => this.setIsInvoice(true)}
+                onClick={this.handlePay}
               >
                 BAYAR
               </Button>
             </div>
-          )}
         </div>
       </div>
     );

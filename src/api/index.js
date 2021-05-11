@@ -6,6 +6,7 @@ import FUNDRAISE from './fundraise'
 import FORM_COMPANY from './formCompany'
 import FORM_INVESTOR from './formInvestor'
 import TRANSACTION from "./transaction";
+import TOPUP from "./topup";
 
 // const localBaseUrl = "http://192.168.0.14:8000";
 // const apiBaseUrl = process.env.BASE_URL;
@@ -110,6 +111,7 @@ const API = {
   ...REFERENCE,
   ...FUNDRAISE,
   ...TRANSACTION,
+  ...TOPUP
 
 };
 

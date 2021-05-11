@@ -41,10 +41,13 @@
         font-size: 16;
         font-weight: bold;
     }
-    .but-solid {
-        padding: 0.7em 0;
+    .but-topup-pay {
         width: 100%;
         font-size: 16;
+        .MuiButton-label{
+            color: white !important;
+        }
+        background: #0288D1 !important;
     }
 
     .btn-send-proff {

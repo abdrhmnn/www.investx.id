@@ -38,9 +38,9 @@ import InfoNonFinansial from "./components/startUpForms/InfoNonFinansial";
 import Media from "./components/startUpForms/Media";
 import Syarat from "./components/startUpForms/Syarat";
 import CompanyList from "./components/product/CompanyList";
-import TopUpMethod from "./components/topup/TopUpMethod";
+import TopUp from "./components/topup/TopUp";
 import TopUpDetail from "./components/topup/TopUpDetail";
-import TopUpStatus from "./components/topup/TopUpStatus";
+// import TopUpStatus from "./components/topup/TopUpStatus";
 
 import Wallet from "./components/withDraw/Wallet";
 import withDraw from "./components/withDraw/withDraw";
@@ -143,9 +143,9 @@ class App extends Component {
           {/* //redirect  */}
           <PrivatRoute exact path="/company-list/detail/:id/invest" component={Invest}/>
 
-          <Route exact path="/topup" component={TopUpMethod} />
-          <Route exact path="/topup-detail" component={TopUpDetail} />
-          <Route exact path="/topup-status" component={TopUpStatus} />
+          <Route exact path="/topup" component={TopUp} />
+          <Route exact path="/topup/detail/:invoiceNumber" component={TopUpDetail} />
+          {/* <Route exact path="/topup-status" component={TopUpStatus} /> */}
 
           <Route exact path="/payment" component={Payment} />
           <Route exact path="/payment-status" component={PaymentStatus} />
