@@ -1,75 +1,73 @@
 
-import axios from "axios";
+import * as axios from "axios";
 import kuki from "../helpers/kuki";
-
-const apiBaseUrl = "https://api.staging.investx.id";
 
 
 const REFERENCE = {
     refPostFile : (body) =>{
-        return axios.post(apiBaseUrl + `/reference/file/`, body,{
+        return axios.post(`/reference/file/`, body,{
             headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
     
     refInvPersonal: () =>{
-        return axios.get(apiBaseUrl + `/reference/investor/personal/`,{
+        return axios.get(`/reference/investor/personal/`,{
         //   params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refInvEducation: () =>{
-        return axios.get(apiBaseUrl + `/reference/investor/education/`,{
+        return axios.get(`/reference/investor/education/`,{
         //   params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refInvPreference: () =>{
-        return axios.get(apiBaseUrl + `/reference/investor/preference/`,{
+        return axios.get(`/reference/investor/preference/`,{
         //   params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refTags: () =>{
-        return axios.get(apiBaseUrl + `/reference/tags/`,{
+        return axios.get(`/reference/tags/`,{
         //   params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refCompanyNonFinancial: () =>{
-        return axios.get(apiBaseUrl + `/reference/company/nonfinancial/`,{
+        return axios.get(`/reference/company/nonfinancial/`,{
         //   params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refBanks: (props) =>{
-        return axios.get(apiBaseUrl + `/reference/bank/`,{
+        return axios.get(`/reference/bank/`,{
           params : props, 
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
 
     refCompanyGeneral: () =>{
-      return axios.get(apiBaseUrl + `/reference/company/general/`,{
+      return axios.get(`/reference/company/general/`,{
         // params : props, 
         headers: { Authorization: `Token ${kuki.get("token")}` },
       });
     },
 
     refCheckCompanyMe: () =>{
-      return axios.get(apiBaseUrl + `/company/me/`,{
+      return axios.get(`/company/me/`,{
         // params : props, 
         headers: { Authorization: `Token ${kuki.get("token")}` },
       });
     },
 
     refRecentInvest: (props) =>{
-      return axios.get(apiBaseUrl + `/investment/recent-invest/`,{
+      return axios.get(`/investment/recent-invest/`,{
         params : props, 
         // headers: { Authorization: `Token ${kuki.get("token")}` },
       });

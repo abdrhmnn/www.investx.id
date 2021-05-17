@@ -32,7 +32,7 @@ class Cart extends Component {
             if (res.data.results.length === 0) {
                 this.props.history.goBack()
             }
-            console.log(res.data.results.length)
+            console.log(res.data.results)
             window.localStorage.setItem('cartInvestxLength', res.data.results.length)
             this.setState({
                 data : res.data.results,

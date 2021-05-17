@@ -1,4 +1,4 @@
-import axios from "axios";
+import * as axios from "axios";
 import kuki from "../helpers/kuki";
 
 import REFERENCE from './reference'
@@ -7,16 +7,19 @@ import FORM_COMPANY from './formCompany'
 import FORM_INVESTOR from './formInvestor'
 import TRANSACTION from "./transaction";
 import TOPUP from "./topup";
+import PROFILE_TABS from "./profileTabs";
 
 // const localBaseUrl = "http://192.168.0.14:8000";
 // const apiBaseUrl = process.env.BASE_URL;
-const apiBaseUrl = "https://api.staging.investx.id";
+
+//GLOBAL AXIOS BASE URL
+axios.defaults.baseURL = process.env.REACT_APP_STAGING_URL
 
 
 const API = {
   register: (props) => {
     console.log(props);
-    return axios.post(apiBaseUrl + `/authentication/register/`, {
+    return axios.post(`/authentication/register/`, {
       phone_number: props.phone_number,
       password: props.password,
       email: props.email.toLowerCase(),
@@ -29,7 +32,7 @@ const API = {
       email: props.email.toLowerCase(),
       password: props.password,
     };
-    return axios.post(apiBaseUrl + `/authentication/password/`, body);
+    return axios.post(`/authentication/password/`, body);
   },
   // logout: () => {
   //   const myPromise = new Promise((resolve, reject) => {  
@@ -52,18 +55,18 @@ const API = {
       phone_number: kuki.get("phone_number"),
       code: code,
     };
-    return axios.post(apiBaseUrl + `/authentication/verify-phone/`, body, {
+    return axios.post(`/authentication/verify-phone/`, body, {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
   verifyEmail: (props) => {
-    return axios.post(apiBaseUrl + `/authentication/verify-email/`, props);
+    return axios.post(`/authentication/verify-email/`, props);
   },
   resendOtp: () => {
     const body = {
       phone_number: kuki.get("phone_number"),
     };
-    return axios.post(apiBaseUrl + `/authentication/resend-otp/`, body, {
+    return axios.post(`/authentication/resend-otp/`, body, {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
@@ -71,34 +74,34 @@ const API = {
     const body = {
       email: kuki.get("email"),
     };
-    return axios.post(apiBaseUrl + `/authentication/resend-email/`, body, {
+    return axios.post(`/authentication/resend-email/`, body, {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   ///API LOCATIONS
   getProvince: () => {
-    return axios.get(apiBaseUrl + `/reference/province/`, {
+    return axios.get(`/reference/province/`, {
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getRegency: (data) => {
-    return axios.get(apiBaseUrl + `/reference/regency/`, {
+    return axios.get(`/reference/regency/`, {
       params : {province_id : data},
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getDistrict: (data) => {
-    return axios.get(apiBaseUrl + `/reference/district/`, {
+    return axios.get(`/reference/district/`, {
       params : {regency_id : data},
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getVillage: (data) => {
-    return axios.get(apiBaseUrl + `/reference/kelurahan/`, {
+    return axios.get(`/reference/kelurahan/`, {
       params : {district_id : data},
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
@@ -111,7 +114,8 @@ const API = {
   ...REFERENCE,
   ...FUNDRAISE,
   ...TRANSACTION,
-  ...TOPUP
+  ...TOPUP,
+  ...PROFILE_TABS
 
 };
 

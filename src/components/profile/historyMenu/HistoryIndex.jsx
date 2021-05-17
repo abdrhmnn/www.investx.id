@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import penarikanicon from "../../../images/profile/penarikanicon.svg";
-import topupicon from "../../../images/profile/topupicon.svg";
-import pendanaanicon from "../../../images/profile/pendanaanicon.svg";
+// import topupicon from "../../../images/profile/topupicon.svg";
+// import pendanaanicon from "../../../images/profile/pendanaanicon.svg";
 import Select from "react-select";
+import API from "../../../api";
+import moment from "moment";
 
 class HistoryIndex extends Component {
   state = {
+    data : [],
     objListHistories: [
       {
         type: "pendanaan",
@@ -81,28 +84,40 @@ class HistoryIndex extends Component {
       },
     ],
   };
+
+  componentDidMount(){
+    API.getHistory().then(res=>{
+      console.log(res)
+      this.setState({data : res.data.results})
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
+
   listComp = () => {
-    return this.state.objListHistories.map((res, i) => (
+    return this.state.data.map((res, i) => (
       <div className="listhistory" key={i}>
         <p className="date ">
-          {res.date} <br />
-          {res.time}
+          {moment(res.created_at.utc).format('Do MMMM YYYY')}
+          <br />
+          {moment(res.created_at.utc).format('hh:mm:ss')}
+          {/* {res.time}   */}
         </p>
         <div
           className="boxinfo"
-          style={{
-            backgroundColor:
-              res.type === "pendanaan"
-                ? "#FFFDE7"
-                : res.type === "penarikan"
-                ? "#EAF8FF"
-                : res.type === "topup"
-                ? "#F3FFE6"
-                : null,
-          }}
+          // style={{
+          //   backgroundColor:
+          //     res.type === "pendanaan"
+          //       ? "#FFFDE7"
+          //       : res.type === "penarikan"
+          //       ? "#EAF8FF"
+          //       : res.type === "topup"
+          //       ? "#F3FFE6"
+          //       : null,
+          // }}
         >
           {/* <img className='his-logo' src="https://placeimg.com/640/480/tech" alt="logo"/> */}
-          {res.type === "pendanaan" ? (
+          {/* {res.type === "pendanaan" ? (
             <p className="desc">
               {" "}
               <img src={pendanaanicon} alt="icon" /> Melakukan pendanaan{" "}
@@ -122,11 +137,15 @@ class HistoryIndex extends Component {
               <span>Rp. 1,500,000 </span> melalui <span>{res.bank}</span> dari
               rekening <span>{res.rek}</span>{" "}
             </p>
-          ) : null}
+          ) : null} */}
+          <p className="desc">
+              <img src={penarikanicon} alt="icon" /> 
+              <span>{res.description}</span>
+            </p>
         </div>
-        <p className="status-his">
+        <p className="status-his pl-3">
           <span className="lab-his">Status</span> <br />
-          {res.status === "success" ? (
+          {/* {res.status === "success" ? (
             <span style={{ color: "#7ED321" }}>Berhasil</span>
           ) : res.status === "waiting" ? (
             <span style={{ color: "#FFB93E" }}>Menunggu Pembayaran</span>
@@ -136,7 +155,8 @@ class HistoryIndex extends Component {
             <span style={{ color: "#FD6262" }}>Dibatalkan</span>
           ) : res.status === "reject" ? (
             <span style={{ color: "#FF2E2E" }}>Ditolak</span>
-          ) : null}
+          ) : null} */}
+          <span>{res.status}</span>
         </p>
       </div>
     ));
