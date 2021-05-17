@@ -7,6 +7,7 @@ import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 
@@ -120,18 +121,23 @@ class Cart extends Component {
                                     <Thead>
                                         <Tr>
                                         <Th>Nama</Th>
+                                        <Th>Harga perlembar</Th>
                                         <Th>Qty</Th>
+                                        <Th>Tangal berakhir</Th>
                                         <Th>Action</Th>
                                         </Tr>
                                     </Thead>
                                     <Tbody>
                                     <Tr style={{backgroundColor : '#e9e9e9'}}>
                                         <Td>
-                                            <div style={{display : 'flex', alignItems : 'center', margin : '0 5px', flexWrap: 'wrap'}}>
+                                            <div style={{display : 'flex', alignItems : 'center', margin : '0 5px'}}>
                                                 <img style={{width : 30, height: 30, borderRadius: '50%', marginRight : 5}} src={res.fundraise.logo} alt="logo" />
                                                 {res.fundraise.name}
 
                                             </div>
+                                        </Td>
+                                        <Td>
+                                        Rp. {helper.idr(Math.round(res.fundraise.price_per_share))}
                                         </Td>
                                         <Td>
                                             <ClickAwayListener onClickAway={() => this.setState({ activeButton: null })}>
@@ -151,6 +157,9 @@ class Cart extends Component {
                                                     }
                                                 </form>
                                             </ClickAwayListener>
+                                        </Td>
+                                        <Td>
+                                            <i>{moment(res.fundraise.end_date).format('Do MMMM YYYY')}</i> 
                                         </Td>
                                         <Td>
                                             <Button variant='contained' className='mx-2' onClick={()=> this.handleDelete(res.id62)}>
