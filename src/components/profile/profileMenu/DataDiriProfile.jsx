@@ -506,7 +506,8 @@ class DataDiriProfile extends Component {
     postal_codeOcc : '',
 
     isSameAdd: false,
-    isEdit : false
+    isEdit : false,
+    isActiveEdit : false
   };
 
   componentDidMount(){
@@ -519,10 +520,10 @@ class DataDiriProfile extends Component {
     this.setState({loading : true})
     API.getProfileCheck().then(res=>{
       console.log(res)
-      const {is_personal_id_complete, is_document_complete} = res.data.profile
-      if (this.state.isStartUp && is_personal_id_complete && is_document_complete) {
-        this.props.history.push('/startup-form-informasi-perusahaan')
-      }
+      const {is_personal_id_complete} = res.data.profile
+      // if (this.state.isStartUp && is_personal_id_complete && is_document_complete) {
+      //   this.props.history.push('/startup-form-informasi-perusahaan')
+      // }
       if (is_personal_id_complete) {
         this.setState({
           ...res.data.profile,
@@ -544,11 +545,12 @@ class DataDiriProfile extends Component {
       }
       this.setState({loading : false})
     }).catch(()=>{
+      this.setState({loading : false})
       Swal.fire({
         icon: 'error',
         title: 'Error 500',
         showConfirmButton: true,
-      }).then((result)=> result.isConfirmed ? this.props.history.push('/') : null )
+      })
     })
   }
   
@@ -613,6 +615,12 @@ class DataDiriProfile extends Component {
     });
   }
 
+  deactiveEdit = ()=>{
+    this.setState({
+      deactiveEdit: false
+    }, ()=> this.checkProfile())
+  }
+
   render() {
   
     const initialValueObj = {
@@ -672,7 +680,7 @@ class DataDiriProfile extends Component {
     ]
 
     return (
-      <div className="all-forms-style p-0">
+      <div className="all-forms-style p-0" style={{backgroundColor : 'unset'}}>
         <Loading onOpen={this.state.loading}/>
         {/* {
           this.state.isStartUp ?
@@ -680,8 +688,20 @@ class DataDiriProfile extends Component {
           :
           <HeaderInvestForm backPath='/' activeStep={1} />
         } */}
-        <div className="box-form-data" style={{border : 0}}>
-          <p className="title">Data Diri</p>
+        <div className="box-form-data" style={{border : 0, marginBottom: 0}}>
+          <div className='mb-4 editprofile' style={{display : 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            <p className="title mb-0">
+                Data Diri
+            </p>
+            {
+              !this.state.isActiveEdit?
+              <Button onClick={()=> this.setState({isActiveEdit : !this.state.isActiveEdit})}>
+                Ubah <i className="fas fa-pen ml-1"></i>
+              </Button>
+              : null
+            }
+
+          </div>
           <Formik
             enableReinitialize
             initialValues={initialValueObj}
@@ -722,7 +742,8 @@ class DataDiriProfile extends Component {
                   title: 'Data Diri berhasil di simpan',
                   showConfirmButton: false,
                   timer: 1500
-                }).then(()=> this.props.history.push( this.state.isStartUp ? '/startup-form-dokumen' : '/investor-form-pendidikan-pekerjaan'))
+                })
+                // .then(()=> this.props.history.push( this.state.isStartUp ? '/startup-form-dokumen' : '/investor-form-pendidikan-pekerjaan'))
               }).catch(err =>{
                 this.setState({loading : false})
                 Swal.fire({
@@ -757,6 +778,7 @@ class DataDiriProfile extends Component {
                           ? "button-gender line-error"
                           : "button-gender"
                       }
+                      disabled={!this.state.isActiveEdit}
                     >
                       <Button className={values.gender === 1 ? "act-gen" : null}
                         onClick={() => setFieldValue("gender", 1)}
@@ -790,6 +812,7 @@ class DataDiriProfile extends Component {
                       required
                       helperText={touched.birth_place && errors.birth_place}
                       error={touched.birth_place && errors.birth_place ? true : false}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
                   <div className="col-md-6">
@@ -807,6 +830,7 @@ class DataDiriProfile extends Component {
                       }}
                       onBlur={handleBlur}
                       as={InputText}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
                   <div className="col-md-12">
@@ -823,6 +847,7 @@ class DataDiriProfile extends Component {
                       // value={values.marital_status}
                       onBlur={handleBlur}
                       onChange={(e, val) => setFieldValue("marital_status", val)}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
                   <div className="col-md-12">
@@ -839,6 +864,7 @@ class DataDiriProfile extends Component {
                       onBlur={handleBlur}
                       required
                       onChange={(e, val) => setFieldValue("citizenship", val)}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
                   <div className="col-md-6">
@@ -862,6 +888,7 @@ class DataDiriProfile extends Component {
                       rows={5}
                       helperText={touched.address && errors.address}
                       error={touched.address && errors.address ? true : false}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
                   
@@ -905,6 +932,7 @@ class DataDiriProfile extends Component {
                             console.log(reason)
                           }}
                           onOpen={()=> res.prevId !== null && res.getData !== null && values[res.prevId] !== null ? res.getData(values[res.prevId].id): null}
+                          disabled={!this.state.isActiveEdit}
                         />
                         </div>
                       )
@@ -924,6 +952,7 @@ class DataDiriProfile extends Component {
                       name="postal_code"
                       helperText={touched.postal_code && errors.postal_code}
                       error={touched.postal_code && errors.postal_code ? true : false}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
 
@@ -948,7 +977,7 @@ class DataDiriProfile extends Component {
                             { color: "#01579B", marginBottom: 3 } 
                           }
                           name="isSameAdd"
-                          disabled={values.address.length === 0 || !values.province || !values.regency || !values.district || !values.village || !values.postal_code}
+                          disabled={values.address.length === 0 || !values.province || !values.regency || !values.district || !values.village || !values.postal_code ||!this.state.isActiveEdit}
                           onChange={(e)=>{
                             setFieldValue("isSameAdd", e.target.checked)
                             if (e.target.checked) {
@@ -988,6 +1017,7 @@ class DataDiriProfile extends Component {
                       // placeholder=''
                       helperText={touched.addressOcc && errors.addressOcc}
                       error={touched.addressOcc && errors.addressOcc ? true : false}
+                      disabled={!this.state.isActiveEdit}
                     />
                   </div>
 
@@ -1030,6 +1060,7 @@ class DataDiriProfile extends Component {
                             }
                             console.log(reason)
                           }}
+                          disabled={!this.state.isActiveEdit}
                           onOpen={()=> res.prevId !== null && res.getData !== null && values[`${res.prevId}Occ`] !== null ? res.getData(values[`${res.prevId}Occ`].id): null}
                         />
                         </div>
@@ -1046,6 +1077,7 @@ class DataDiriProfile extends Component {
                         name="postal_codeOcc"
                         helperText={touched.postal_codeOcc && errors.postal_codeOcc}
                         error={touched.postal_codeOcc && errors.postal_codeOcc ? true : false}
+                        disabled={!this.state.isActiveEdit}
                       />
                     </div>
 
@@ -1055,19 +1087,26 @@ class DataDiriProfile extends Component {
             )}
           </Formik>
         </div>
-
-        <div className="foot-data-diri">
-          <p className="agreement">
+        {
+          this.state.isActiveEdit?
+        <div className="foot-data-diri mb-5">
+          {/* <p className="agreement">
             *Saya menjamin bahwa informasi yang saya cantumkan diatas adalah
             benar dan siap bertanggung jawab atas segala konsekuensi yang
             terjadi di kemudian hari, serta memiliki kemampuan analisis resiko
             terhadap saham penerbit dan memenuhi kriteria pemodal sesuai
             peraturan yang berlaku.
-          </p>
+          </p> */}
             <Button type="submit" form="dataDiriForm">
               {this.state.isEdit ? "UBAH" : "SIMPAN"} & LANJUTKAN
             </Button>
+            <Button variant='contained' onClick={this.deactiveEdit}>
+              Batal
+            </Button>
         </div>
+        : null
+        }
+
       </div>
     );
   }
