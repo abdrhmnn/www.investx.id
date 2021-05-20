@@ -657,7 +657,7 @@ class DataDiriProfile extends Component {
             peraturan yang berlaku.
           </p> */}
             <Button type="submit" form="dataDiriForm">
-              {this.state.isEdit ? "UBAH" : "SIMPAN"} & LANJUTKAN
+              {this.state.isEdit ? "UBAH" : "SIMPAN"}
             </Button>
             <Button variant='contained' onClick={this.deactiveEdit}>
               Batal
