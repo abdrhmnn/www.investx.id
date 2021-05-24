@@ -176,7 +176,7 @@ class DataDiriProfile extends Component {
 
   deactiveEdit = ()=>{
     this.setState({
-      deactiveEdit: false
+      isActiveEdit: false,
     }, ()=> this.checkProfile())
   }
 
@@ -254,7 +254,7 @@ class DataDiriProfile extends Component {
             </p>
             {
               !this.state.isActiveEdit?
-              <Button onClick={()=> this.setState({isActiveEdit : !this.state.isActiveEdit})}>
+              <Button onClick={()=> this.setState({isActiveEdit : true})}>
                 Ubah <i className="fas fa-pen ml-1"></i>
               </Button>
               : null
@@ -293,8 +293,9 @@ class DataDiriProfile extends Component {
                 "occupation_address": val.isSameAdd ? idCardAddress : occupationAddress
               }
 
+              this.setState({loading : true})
               API.postPersonalAccount(data).then(res =>{
-                this.setState({loading : true})
+                this.setState({loading : false, isActiveEdit : false})
                 console.log(res)
                 Swal.fire({
                   icon: 'success',
@@ -656,7 +657,7 @@ class DataDiriProfile extends Component {
             terhadap saham penerbit dan memenuhi kriteria pemodal sesuai
             peraturan yang berlaku.
           </p> */}
-            <Button type="submit" form="dataDiriForm">
+            <Button type="submit" form="dataDiriProfileForm">
               {this.state.isEdit ? "UBAH" : "SIMPAN"}
             </Button>
             <Button variant='contained' onClick={this.deactiveEdit}>
