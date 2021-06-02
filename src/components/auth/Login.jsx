@@ -142,7 +142,7 @@ class Login extends Component {
                           name="email"
                           variant="outlined"
                           fullWidth={true}
-                          label="Email or Phone number"
+                          label="Email"
                           // onBlur={handleBlur}
                           error={touched.email && errors.email ? true : false}
                           helperText={touched.email && errors.email}
