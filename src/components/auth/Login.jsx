@@ -33,12 +33,7 @@ class Login extends Component {
   this.setState({ loading: true });
   API.login(val).then((res) => {
       const {token,register_status,email,full_name,phone_number,} = res.data
-      kuki.set("email", email);
-      kuki.set("full_name", full_name);
-      kuki.set("phone_number", phone_number);
       kuki.set("token", token);
-      kuki.set("status", register_status);
-      kuki.set("auth", true);
       //check approved profile
         API.getProfileCheck().then(result =>{
           if (result.data.profile.is_investor_approved) {
@@ -48,7 +43,19 @@ class Login extends Component {
           }
             console.log(result.data.profile, 'data profile')
             this.setState({loading : false})
-            window.location.href = "/";
+            //check badges
+            API.getCart().then(res=>{
+              console.log(res.data.results.length);
+              kuki.set('email', email);
+              kuki.set('full_name', full_name);
+              kuki.set('phone_number', phone_number);
+              kuki.set('status', register_status);
+              kuki.set('auth', true);
+              window.localStorage.setItem('cartInvestxLength', res.data.results.length)
+              window.location.href = "/";
+            }).catch(err=>{
+                console.log(err.response)
+            })
           }).catch(err =>{
               this.setState({loading : false})
               console.log(err.response, 'ini profile')
@@ -58,14 +65,6 @@ class Login extends Component {
                 text: `${Object.entries(err.response.data)}` ,
               })
           })
-
-        //check badges
-        API.getCart().then(res=>{
-          window.localStorage.setItem('cartInvestxLength', res.data.results.length)
-        }).catch(err=>{
-            console.log(err.response)
-        })
-      
     })
     .catch((err) => {
       this.setState({ loading: false });

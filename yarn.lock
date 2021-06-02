@@ -8370,6 +8370,11 @@ node-fetch@^1.0.1:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 
+node-fetch@^2.2.0:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
+
 node-forge@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.10.0.tgz#32dea2afb3e9926f02ee5ce8794902691a676bf3"
@@ -9049,6 +9054,13 @@ pbkdf2@^3.0.3:
     ripemd160 "^2.0.1"
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
+
+pdf-to-base64@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/pdf-to-base64/-/pdf-to-base64-1.0.3.tgz#58075407f5d8b0700c6bfc2143890262704e3ccb"
+  integrity sha512-hReb9RzE8/kZE9Sjq913XXg3t8tyNn4VyDFs3VfXtMEIr/IQlKih+Te8EakJTkps8HxjUlULM5007xkp/DXs/Q==
+  dependencies:
+    node-fetch "^2.2.0"
 
 performance-now@^2.1.0:
   version "2.1.0"
@@ -10468,6 +10480,11 @@ react-spinners@^0.9.0:
   integrity sha512-+x6eD8tn/aYLdxZjNW7fSR1uoAXLb9qq6TFYZR1dFweJvckcf/HfP8Pa/cy5HOvB/cvI4JgrYXTjh2Me3S6Now==
   dependencies:
     "@emotion/core" "^10.0.15"
+
+react-super-responsive-table@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-super-responsive-table/-/react-super-responsive-table-5.2.0.tgz#5357c928f7bca7851b3ae3f2e8e7550f7acf5c7d"
+  integrity sha512-gC6QX/+HNt7d5QDvhp83Q8AV8/44mbeRo4Z4UQ9KfBbY9dyHkQZUXRbaWPFp6CHmfSyVlJaRseTHzwMKmJjRKA==
 
 react-test-renderer@^16.0.0-0:
   version "16.14.0"
