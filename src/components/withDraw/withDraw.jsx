@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import { Button } from "@material-ui/core";
+import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
+import walleticon from "../../images/profile/walleticon.svg";
 
 import PaymentMethod from "../payment/PaymentMethod";
 
@@ -12,12 +13,13 @@ class withDraw extends Component {
     toggleMethods: false,
   };
 
+  
   setToggleMethods = () => {
     this.setState({
       toggleMethods: !this.state.toggleMethods,
     });
   };
-
+  
   render() {
     return (
       <div className="all-forms-style">
@@ -33,16 +35,26 @@ class withDraw extends Component {
           <img src={logo} alt="" />
         </div>
 
-        <p className="title">WITHDRAW</p>
+        <p className="title">PILIH BANK</p>
+        
+        <div className="row box-form-title">
+          <div className="">
+            <img src={walleticon} alt="wallet" style={{height: "29px", width: "30px", marginRight: "5px"}} />
+            {" Saldo Anda"}
+          </div>
+          <div style={{marginLeft:"450px", maxWidth:"1000px"}}>
+            {" Rp 15.000.000"}
+          </div>
+        </div>
 
         <div className="box-form-data">
-          <div className="title-alt">Jumlah Nominal</div>
+          <div className="title-alt">Nominal Withdraw</div>
           <div className="input-border-underline">
             <input type="number" name="username" />
           </div>
         </div>
 
-        <p className="box-form-title">Pilih Bank Transfer</p>
+        <p className="box-form-title">Rekening Tujuan</p>
         <div className="payment-methods box-form-data">
           <PaymentMethod />
         </div>
