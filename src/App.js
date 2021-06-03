@@ -56,6 +56,7 @@ import Payment from "./components/payment/Payment";
 import PaymentStatus from "./components/payment/PaymentStatus";
 import Invoice from "./components/invest/Invoice";
 import Cart from "./components/cart/Cart";
+import Contact from "./components/ContactUs/Contact";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -117,6 +118,7 @@ class App extends Component {
           <Route path="/signup" component={Register} />
           <Route path="/term" component={Term} />
           <Route path="/about" component={AboutUs} />
+          <Route path="/contact" component={Contact} />
           <Route path="/how" component={HowItWorks} />
 
           <Route exact path="/email-verify/:code" component={SelectForm} />
