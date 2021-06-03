@@ -17,9 +17,9 @@ class Benefit extends Component {
           <div className="parag">
             <p className="title">Smart way to raise money</p>
             <p className="desc">
-              Cras vel arcu massa. Pellentesque at rhoncus justo, sed rutrum
+              {/* Cras vel arcu massa. Pellentesque at rhoncus justo, sed rutrum
               felis. Nullam vel mi in justo fringilla hendrerit in a nisi.
-              Mauris tempus erat est.
+              Mauris tempus erat est. */}
             </p>
             <ul>
               <li>

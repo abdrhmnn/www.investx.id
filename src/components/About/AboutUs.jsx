@@ -36,9 +36,9 @@ class AboutUs extends Component {
             </div>
           </div>
           <p className="jfot">
-            Cras vel arcu massa. Pellentesque at rhoncus justo, sed rutrum
+            {/* Cras vel arcu massa. Pellentesque at rhoncus justo, sed rutrum
             felis. Cras vel arcu massa. Pellentesque at rhoncus justo, sed
-            rutrum felis.
+            rutrum felis. */}
           </p>
         </div>
         <div className="whatis">
