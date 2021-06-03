@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import walleticon from "../../images/profile/walleticon.svg";
 
 import PaymentMethod from "../payment/PaymentMethod";
+import CurrencyInput from 'react-currency-input-field';
 
 class withDraw extends Component {
   state = {
@@ -19,7 +20,7 @@ class withDraw extends Component {
       toggleMethods: !this.state.toggleMethods,
     });
   };
-  
+
   render() {
     return (
       <div className="all-forms-style">
@@ -50,7 +51,14 @@ class withDraw extends Component {
         <div className="box-form-data">
           <div className="title-alt">Nominal Withdraw</div>
           <div className="input-border-underline">
-            <input type="number" name="username" />
+            {/* <input onChange={this.numberFormat} type="number" name="username"/> */}
+            <CurrencyInput
+              id="input-example"
+              name="input-name"
+              defaultValue={""}
+              decimalsLimit={2}
+              onValueChange={(value, name) => console.log(value, name)}
+            />
           </div>
         </div>
 
