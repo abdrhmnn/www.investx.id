@@ -88,7 +88,7 @@ class Footer extends Component {
                       <Link to="/">Annual Reports</Link>
                     </li>
                     <li>
-                      <Link to="/">Contact Us</Link>
+                      <Link to="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </div>

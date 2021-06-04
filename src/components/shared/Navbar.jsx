@@ -184,7 +184,7 @@ class Navbar extends Component {
             </Link>
             <ul>
               <li>
-                <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>Start Investing</Link>
+                <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>Start Investing</Link>
               </li>
               <li>
                 <Link to="/startup-form-data-diri">Get Funding</Link>

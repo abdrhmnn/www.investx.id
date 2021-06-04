@@ -32,7 +32,6 @@ class SelectForm extends Component {
           showConfirmButton: false,
           timer: 1500,
         });
-        kuki.set("status", { phone: kuki.get("status").phone, email: true });
         this.setState({ loading: false });
       })
       .catch(() => {
@@ -42,7 +41,7 @@ class SelectForm extends Component {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            window.location.href = "/000";
+            window.location.href = "/404";
           }
         });
       });
