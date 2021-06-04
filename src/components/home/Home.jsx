@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 import kuki from "../../helpers/kuki";
 import API from "../../api";
 import helper from "../../helpers/helper";
+import FAQ from "./FAQ";
+import JoinNow from "./JoinNow";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
@@ -216,10 +218,10 @@ class Home extends Component {
         <CaroHome />
         <Benefit />
         <CaroQuotes />
-        {/* <JoinNow /> */}
-        {/* <div>
-          <FAQ />
-        </div> */}
+        <JoinNow/>
+        <div>
+          <FAQ/>
+        </div>
 
         <Footer />
         <Ojk />
