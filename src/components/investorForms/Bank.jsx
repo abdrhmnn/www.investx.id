@@ -61,14 +61,14 @@ class Bank extends Component {
   render() {
 
     const initialValueObj = {
-      "bank": null,
+      "bank": "",
       "number": "",
       "name": "",
       "branch": ""
     }
 
     const schemaObj = Yup.object({
-      bank: Yup.object().nullable().required(),
+      bank: Yup.object().required(),
       branch: Yup.string().required(),
       name: Yup.string().required(),
       number: Yup.string().required(),
@@ -85,16 +85,17 @@ class Bank extends Component {
             initialValues={initialValueObj}
             validationSchema={schemaObj}
             onSubmit={(val) => {
-              console.log(val.bank.value)
-              console.log(typeof(val.bank.value))
+              console.log(val.bank)
+              // console.log(typeof(val.bank.value))
               const body = {
                 "bank": parseInt(val.bank.id),
                 "number": val.number,
                 "name": val.name,
                 "branch": val.branch
               }
+              console.log("BODY BANK",body)
               API.postBank(body).then(res =>{
-                this.setState({loading : true})
+                // this.setState({loading : true})
                 console.log(res)
                 Swal.fire({
                   icon: 'success',
@@ -109,7 +110,7 @@ class Bank extends Component {
                   title: `Data ${this.state.pageName} gagal di simpan`,
                   text : `${Object.entries(err.response.data)} \n`
                 })
-                console.log(err.response)
+              //   console.log(err.response)
               })
 
             }}
