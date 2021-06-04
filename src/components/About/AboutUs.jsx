@@ -173,7 +173,7 @@ class AboutUs extends Component {
             ></iframe>
           </div>
         </div>
-
+        
         <div className="join-investor" style={beda}>
           <h2>Invest in Highly vetted early-staged companies</h2>
           <br />

@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 import kuki from "../../helpers/kuki";
 import API from "../../api";
 import helper from "../../helpers/helper";
+import FAQ from "./FAQ";
+import JoinNow from "./JoinNow";
 // import PopSuccessForm from "../shared/PopSuccessForm";
 
 class Home extends Component {
@@ -159,12 +161,13 @@ class Home extends Component {
                         dengan InvestX.
                       </p>
 
-                      <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>
+                      <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>
                         <Button style={butSolid} className="start-invest-but">
                           Start Investing
                         </Button>
                       </Link>
-                      <Link to="/startup-form-data-diri">
+                      {/* to="/startup-form-data-diri" */}
+                      <Link to="/company-list">
                         <Button style={but} className="get-fund-but">
                           Get Funding
                         </Button>{" "}
@@ -215,10 +218,10 @@ class Home extends Component {
         <CaroHome />
         <Benefit />
         <CaroQuotes />
-        {/* <JoinNow /> */}
-        {/* <div>
-          <FAQ />
-        </div> */}
+        <JoinNow/>
+        <div>
+          <FAQ/>
+        </div>
 
         <Footer />
         <Ojk />
