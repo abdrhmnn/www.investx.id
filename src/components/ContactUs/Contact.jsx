@@ -7,6 +7,9 @@ import phoneIcon from '../../images/phoneicon.svg';
 import emailIcon from '../../images/emailicon.svg';
 
 export default function Contact() {
+    
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     return (
         <>
             <Navbar/>
