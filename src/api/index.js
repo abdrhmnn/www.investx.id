@@ -34,6 +34,12 @@ const API = {
     };
     return axios.post(`/authentication/password/`, body);
   },
+  forgotPassword: (props) => {
+    const body = {
+      email: props.email.toLowerCase()
+    };
+    return axios.post(`/authentication/forgot-password/`, body);
+  },
   // logout: () => {
   //   const myPromise = new Promise((resolve, reject) => {  
   //     var arrRemoved = [];  

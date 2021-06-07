@@ -214,7 +214,7 @@ class Login extends Component {
                             </div>
                             <span>Remember me</span>
                           </div>
-                          <Link to="/" className="forgot">
+                          <Link to="/forgot-password" className="forgot">
                             Forgot Password?
                           </Link>
                         </div>
