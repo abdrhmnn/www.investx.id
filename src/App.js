@@ -57,6 +57,8 @@ import PaymentStatus from "./components/payment/PaymentStatus";
 import Invoice from "./components/invest/Invoice";
 import Cart from "./components/cart/Cart";
 import Contact from "./components/ContactUs/Contact";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -116,11 +118,13 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Register} />
+          <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="/term" component={Term} />
           <Route path="/about" component={AboutUs} />
           <Route path="/contact" component={Contact} />
           <Route path="/how" component={HowItWorks} />
 
+          <Route exact path="/forget-password/:id" component={ResetPassword} />
           <Route exact path="/email-verify/:code" component={SelectForm} />
           <RedirectRegister exact path="/investor-form-data-diri" component={DataDiri}/>
           <RedirectRegister exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
