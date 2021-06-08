@@ -120,7 +120,7 @@ class Media extends Component {
       localStorage.removeItem('formAgree')
       Swal.fire({
         icon: 'success',
-        title: `Data ${this.state.pageName} berhasil di simpan`,
+        title: 'Data akan di-review',
         showConfirmButton: false,
         timer: 1500
       }).then(()=> this.props.history.push('/company-list') )
