@@ -5,6 +5,7 @@ import Slider from "react-slick";
 // import "slick-carousel/slick/slick-theme.css";
 // import { Link } from "react-router-dom";
 import { Button, LinearProgress } from "@material-ui/core";
+import { Heart } from 'react-feather'
 
 import locacaro from "../../images/company/locacaro.svg";
 import website from "../../images/company/website.svg";
@@ -27,6 +28,7 @@ import kuki from "../../helpers/kuki";
 
 class CompanyDetail extends Component {
   state={
+    isFavorite: false,
   }
   componentDidMount(){
     this.getData()
@@ -92,6 +94,16 @@ class CompanyDetail extends Component {
         </Button>
       // </Link>
     )
+  }
+
+  addFavorite = (e) => {
+    e.preventDefault();
+    const companyId = this.props.match.params.id;
+    console.log(companyId)
+
+    console.log(this.state)
+    this.setState((state) => ({ ...state, isFavorite: !this.state.isFavorite}));
+    console.log(this.state);
   }
 
 
@@ -243,8 +255,13 @@ class CompanyDetail extends Component {
                       {/* {kuki.get('auth') ? 'ada' : 'tidak ada kooki'} */}
 
                   <div className="love-share d-flex align-items-center justify-content-center">
-                    <div className="love d-flex align-items-center">
-                      <img src={love} alt="love" /> 200
+                    <div className="love d-flex align-items-center" onClick={this.addFavorite}>
+                      {this.state.isFavorite ? (
+                        <Heart as color="red" />
+                      ) : (
+                        <img src={love} alt="love" />
+                      )}
+                      200
                     </div>
                     <img src={share} alt="share" />
                   </div>
