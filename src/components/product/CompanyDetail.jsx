@@ -101,11 +101,14 @@ class CompanyDetail extends Component {
     const companyId = this.props.match.params.id;
     console.log(companyId)
 
-    console.log(this.state)
     this.setState((state) => ({ ...state, isFavorite: !this.state.isFavorite}));
-    console.log(this.state);
   }
 
+  copySharLink = (e) => {
+    e.preventDefault();
+    const link = window.location.origin + window.location.pathname;
+    navigator.clipboard.writeText(link);
+  }
 
   render() {
     console.log(this.props.dataDetailCompany)
@@ -263,7 +266,9 @@ class CompanyDetail extends Component {
                       )}
                       200
                     </div>
-                    <img src={share} alt="share" />
+                    <div className="share d-flex align-items-center" onClick={this.copySharLink}>
+                      <img src={share} alt="share" />
+                    </div>
                   </div>
                   {
                     prospectus !== null ?
