@@ -26,7 +26,7 @@ class ListOfInvestmentIndex extends Component {
                 <div>
                   <p className="company-name">{companyName}</p>
                   <p className="company-location">
-                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <i className="fas fa-map-marker-alt location-icon"></i>
                     <span className="location-name">{companyLocation}</span>
                   </p>
                 </div>
@@ -97,7 +97,7 @@ class ListOfInvestmentIndex extends Component {
         <p className="title">LIST OF INVESTMENT</p>
         <hr />
 
-        {investments.map((data) => this.renderCardItem(data))}
+        {investments.map((data, idx) => <this.renderCardItem {...data} key={idx} />)}
       </div>
     );
   }
