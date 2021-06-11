@@ -16,6 +16,12 @@ const PROFILE_TABS = {
         headers: { Authorization: `Token ${kuki.get('token')}` },
       });
     },
+    getCompanies: (props) =>{
+      return axios.get(`/company/me/`, {
+        params: props,
+        headers: { Authorization: `Token ${kuki.get('token')}` },
+      });
+    },
 }
 
 export default PROFILE_TABS

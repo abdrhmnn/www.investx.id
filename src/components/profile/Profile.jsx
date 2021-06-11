@@ -32,7 +32,8 @@ class Profile extends Component {
       wallet: null,
       share: null,
       asset: null,
-    }
+    },
+    businesses: null,
   };
 
   componentDidMount() {
@@ -49,6 +50,16 @@ class Profile extends Component {
           balance: {
             ...res.data
           },
+        }));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    API.getCompanies()
+      .then((res) => {
+        this.setState((state) => ({
+          ...state,
+          businesses: res.data.results
         }));
       })
       .catch((err) => {
@@ -259,7 +270,7 @@ class Profile extends Component {
                 <DataDiriProfile />
               </Collapse>
               <Collapse in={this.props.activeTab === 'business'}>
-                <BusinessIndex />
+                <BusinessIndex businesses={this.state.businesses}/>
               </Collapse>
               <Collapse in={this.props.activeTab === 'history'}>
                 <HistoryIndex />
