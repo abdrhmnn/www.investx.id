@@ -38,7 +38,9 @@ const API = {
     const body = {
       email: props.email.toLowerCase()
     };
-    return axios.post(`/authentication/forgot-password/`, body);
+    return axios.post(`/authentication/forgot-password/`, body, {
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
   },
   // logout: () => {
   //   const myPromise = new Promise((resolve, reject) => {  
@@ -111,6 +113,12 @@ const API = {
       params : {district_id : data},
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
+  },
+
+  getInvestment: () => {
+    return axios.get('/investment/',{
+        headers: { Authorization: `Token ${kuki.get("token")}` },
+    })
   },
 
 
