@@ -7,7 +7,11 @@ import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
 import Swal from 'sweetalert2';
+<<<<<<< HEAD
 // import moment from 'moment';
+=======
+import moment from 'moment';
+>>>>>>> 310590035f480af0acc8faeac2d4c15dc395295a
 
 class Cart extends Component {
     state={
