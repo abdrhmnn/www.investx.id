@@ -1,5 +1,5 @@
-import { Box, Button } from "@material-ui/core";
 import React, { Component } from "react";
+import { Box, Button } from "@material-ui/core";
 import { connect } from "react-redux";
 import logo from "../../images/logo.svg";
 import paymentImage from "../../images/paymentimage.svg";

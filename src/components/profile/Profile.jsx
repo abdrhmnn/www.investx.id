@@ -27,6 +27,7 @@ class Profile extends Component {
   state = {
     filterShow: false,
     dataProfile: {},
+    accountBalance: {}
   };
 
   componentDidMount() {
@@ -36,7 +37,14 @@ class Profile extends Component {
       }).catch((err) => {
         console.log(err.response);
       });
-
+    API.getAccountBalance().then((result) => {
+      console.log(result);
+      this.setState({
+        accountBalance: result.data
+      });
+    }).catch((err) => {
+      console.log(err.response)
+    })
   }
 
 
@@ -75,7 +83,7 @@ class Profile extends Component {
                     <div className="pnumber">
                       Asset Balance
                       <br />
-                      <span>Rp. 20,000,000</span>
+                      <span>{this.state.accountBalance.wallet}</span>
                       <div className="saltot">
                         <p className="box-saltot border-right">
                           Saldo Rupiah <br />
