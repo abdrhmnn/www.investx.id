@@ -1,11 +1,30 @@
-import React, { Component } from "react";
-import { Button, Stepper, Step, StepLabel } from "@material-ui/core";
+import React, { Component } from 'react';
+import { Button, Stepper, Step, StepLabel } from '@material-ui/core';
 
-import plusblue from "../../../images/profile/plusblue.svg";
+import plusblue from '../../../images/profile/plusblue.svg';
+
+const Stepping = ({ companyStatus }) => {
+  const steps = ['Under Review', 'Approved', 'Published'];
+  let stepCount = 1;
+  if (companyStatus.approved) stepCount = 2;
+  if (companyStatus.published) stepCount = 3;
+  if (companyStatus.rejected) {
+    steps[2] = 'Rejected';
+    stepCount = 3;
+  }
+  return (
+    <Stepper activeStep={stepCount} alternativeLabel>
+      {steps.map((label) => (
+        <Step key={label}>
+          <StepLabel>{label}</StepLabel>
+        </Step>
+      ))}
+    </Stepper>
+  );
+};
 
 class BusinessIndex extends Component {
   render() {
-    const steps = ["Under Review", "Approved", "Pra-Listing", "Listing"];
     return (
       <div className="profile-business-menu">
         <div className="box-title">
@@ -56,13 +75,7 @@ class BusinessIndex extends Component {
               <div className="listvalue">
                 <div className="listval-child">Status</div>
                 <div className="listval-stepper">
-                  <Stepper activeStep={1} alternativeLabel>
-                    {steps.map((label) => (
-                      <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
-                      </Step>
-                    ))}
-                  </Stepper>
+                  <Stepping companyStatus={business.status} />
                 </div>
                 {/* <div className='listval-child'>Detail</div> */}
               </div>
