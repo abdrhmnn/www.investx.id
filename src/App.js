@@ -39,7 +39,7 @@ import Media from "./components/startUpForms/Media";
 import Syarat from "./components/startUpForms/Syarat";
 import CompanyList from "./components/product/CompanyList";
 import TopUp from "./components/topup/TopUp";
-import TopUpDetail from "./components/topup/TopUpDetail";
+// import TopUpDetail from "./components/topup/TopUpDetail";
 // import TopUpStatus from "./components/topup/TopUpStatus";
 
 import Wallet from "./components/withDraw/Wallet";
@@ -59,6 +59,7 @@ import Cart from "./components/cart/Cart";
 import Contact from "./components/ContactUs/Contact";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
+import TopUpPayment from "./components/topup/TopUpPayment";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -124,7 +125,7 @@ class App extends Component {
           <Route path="/contact" component={Contact} />
           <Route path="/how" component={HowItWorks} />
 
-          <Route exact path="/forget-password/:id" component={ResetPassword} />
+          <Route exact path="/forget-password/:token" component={ResetPassword} />
           <Route exact path="/email-verify/:code" component={SelectForm} />
           <RedirectRegister exact path="/investor-form-data-diri" component={DataDiri}/>
           <RedirectRegister exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
@@ -150,7 +151,7 @@ class App extends Component {
           <PrivatRoute exact path="/company-list/detail/:id/invest" component={Invest}/>
 
           <Route exact path="/topup" component={TopUp} />
-          <Route exact path="/topup/detail/:invoiceNumber" component={TopUpDetail} />
+          <Route exact path="/topup/detail/:invoiceNumber" component={TopUpPayment} />
           {/* <Route exact path="/topup-status" component={TopUpStatus} /> */}
 
           <Route exact path="/payment" component={Payment} />

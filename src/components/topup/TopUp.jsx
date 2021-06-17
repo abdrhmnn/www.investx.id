@@ -7,10 +7,11 @@ import { Button, Fab } from "@material-ui/core";
 import helper from "../../helpers/helper";
 import API from "../../api";
 import Swal from "sweetalert2";
+import walleticon from "../../images/profile/walleticon.svg";
 // import Axios from "axios";
 // import kuki from "../../helpers/kuki";
 
-// import PaymentMethod from "../payment/PaymentMethod";
+import PaymentMethod from "../payment/PaymentMethod";
 
 class TopUp extends Component {
   state = {
@@ -77,6 +78,16 @@ class TopUp extends Component {
         </div>
         <p className="title">Top Up</p>
 
+        <div className="row box-form-title">
+          <div className="">
+            <img src={walleticon} alt="wallet" style={{height: "29px", width: "30px", marginRight: "5px"}} />
+            {" Saldo Anda"}
+          </div>
+          <div style={{marginLeft:"450px", maxWidth:"1000px"}}>
+            {" Rp 15.000.000"}
+          </div>
+        </div>
+
         <div className="box-form-data">
           <div className="title-alt">Jumlah Nominal</div>
           <form className="input-border-underline" id='topup' onSubmit={this.handleSubmit}>
@@ -90,10 +101,10 @@ class TopUp extends Component {
           </form>
         </div>
 
-        {/* <p className="box-form-title">Pilih Metode Pembayaran</p>
+        <p className="box-form-title">Pilih Metode Pembayaran</p>
         <div className="payment-methods box-form-data">
           <PaymentMethod />
-        </div> */}
+        </div>
 
         <p className="box-form-title">Ringkasan Pembayaran</p>
         <div className="payment-detail box-form-data">
@@ -113,7 +124,7 @@ class TopUp extends Component {
 
         <div className="foot-data-diri">
           <div className="agreement"></div>
-          {/* <Link to="/topup/detail"> */}
+          {/* <Link to="/topup/detail/"> */}
             <Button type="submit" form="topup">
               BAYAR SEKARANG
             </Button>
