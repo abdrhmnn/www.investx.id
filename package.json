@@ -12,6 +12,7 @@
     "@unicef/material-ui-currency-textfield": "^0.8.6",
     "axios": "^0.21.1",
     "calidation": "^1.16.2",
+    "caniuse-lite": "^1.0.30001237",
     "clipboard": "^2.0.6",
     "dotenv": "^8.2.0",
     "formik": "^2.1.5",
