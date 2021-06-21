@@ -121,8 +121,8 @@ class Cart extends Component {
                 </div>
                 <p className="title">KERANJANG</p>
                 
-                <div className="row">
-                    <div className="col-md-7 ml-5">
+                <div className="row justify-content-center">
+                    <div className="col-6" style={{marginLeft: '100px'}}>
                     {
                         this.state.data.map((res) => (
                             <>
@@ -220,7 +220,7 @@ class Cart extends Component {
                     </div>
 
                     {/* SUMMARY */}
-                    <div className="col-md-4" style={{paddingTop: '2px'}}>
+                    <div className="col-4" style={{paddingTop: '2px', marginLeft: '30px'}}>
                         <div className="row">
                             <div className="child-company child-form-data">
                                 <div className="row mt-2">

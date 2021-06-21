@@ -14,7 +14,7 @@ import {
 import API from "../../api";
 // import kuki from "../../helpers/kuki";
 
-export default function ForgotPassword() {
+export default function ForgotPassword(props) {
 
     const [email, setEmail] = useState("");
 
@@ -22,7 +22,8 @@ export default function ForgotPassword() {
         e.preventDefault();
 
         const body = {
-            email
+            email,
+            id: props.match.params.id
         };
 
         API.forgotPassword(body).then(() => {
