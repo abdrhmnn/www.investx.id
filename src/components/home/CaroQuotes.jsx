@@ -9,13 +9,15 @@ import { Button } from "@material-ui/core";
 class CaroQuotes extends Component {
   render() {
     const settings = {
-      dots: false,
+      dots: true,
       arrows: false,
-      infinite: false,
+      infinite: true,
       slidesToShow: 1,
       slidesToScroll: 1,
       speed: 500,
-      cssEase: "linear",
+      cssEase: 'linear',
+      autoplay: true,
+      autoplaySpeed: 8000,
     };
     var arr = [1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2];
     return (

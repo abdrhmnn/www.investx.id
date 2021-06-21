@@ -249,15 +249,15 @@ class Dokumen extends Component {
   
                     <div className="col-md-12">
                       <p className="info-dok">
-                        * Jika Anda belum memiliki NPWP dan ingin berinvestasi,
-                        bisa dikosongkan terlebih dahulu. Namun,
+                        {/* * Jika Anda belum memiliki NPWP dan ingin berinvestasi,
+                        bisa dikosongkan terlebih dahulu. Namun, */}
                         <span>
                           {" "}
                           NPWP merupakan syarat wajib untuk bisa melakukan
                           penarikan deviden pada Saldo InvestX.{" "}
                         </span>
                         Anda bisa membuat NPWP secara online di{" "}
-                        <a href="#" target="__blank">
+                        <a href="https://ereg.pajak.go.id/daftar" target="__blank">
                           ereg.pajak.go.id
                         </a>
                       </p>

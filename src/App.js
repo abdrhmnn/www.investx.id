@@ -39,7 +39,7 @@ import Media from "./components/startUpForms/Media";
 import Syarat from "./components/startUpForms/Syarat";
 import CompanyList from "./components/product/CompanyList";
 import TopUp from "./components/topup/TopUp";
-import TopUpDetail from "./components/topup/TopUpDetail";
+// import TopUpDetail from "./components/topup/TopUpDetail";
 // import TopUpStatus from "./components/topup/TopUpStatus";
 
 import Wallet from "./components/withDraw/Wallet";

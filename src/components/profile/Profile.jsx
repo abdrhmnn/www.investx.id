@@ -23,11 +23,17 @@ import ListOfInvestmentIndex from "./listOfInvestmentMenu/ListOfInvestmentIndex"
 import DividendIndex from "./dividendMenu/DividendIndex";
 
 import API from "../../api";
+
 class Profile extends Component {
   state = {
     filterShow: false,
     dataProfile: {},
-    accountBalance: {}
+    balance: {
+      wallet: null,
+      share: null,
+      asset: null,
+    },
+    businesses: null,
   };
 
   componentDidMount() {
@@ -37,14 +43,29 @@ class Profile extends Component {
       }).catch((err) => {
         console.log(err.response);
       });
-    API.getAccountBalance().then((result) => {
-      console.log(result);
-      this.setState({
-        accountBalance: result.data
+    API.getAccountBalance()
+      .then((res) => {
+        this.setState((state) => ({
+          ...state,
+          balance: {
+            ...res.data
+          },
+        }));
+      })
+      .catch((err) => {
+        console.error(err);
       });
-    }).catch((err) => {
-      console.log(err.response)
-    })
+    API.getCompanies()
+      .then((res) => {
+        this.setState((state) => ({
+          ...state,
+          businesses: res.data.results
+        }));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
   }
 
 
@@ -83,15 +104,27 @@ class Profile extends Component {
                     <div className="pnumber">
                       Asset Balance
                       <br />
-                      <span>{this.state.accountBalance.wallet}</span>
+                      {this.state.balance.asset !== null ? (
+                        <span>Rp. {this.state.balance.asset}</span>
+                      ) : (
+                        <span>Loading...</span>
+                      )}
                       <div className="saltot">
                         <p className="box-saltot border-right">
                           Saldo Rupiah <br />
-                          <span>Rp. 15,000,000</span>
+                          {this.state.balance.wallet !== null ? (
+                            <span>Rp. {this.state.balance.wallet}</span>
+                          ) : (
+                            <span>Loading...</span>
+                          )}
                         </p>
                         <p className="box-saltot">
                           Total Saham <br />
-                          <span>Rp. 15,000,000</span>
+                          {this.state.balance.share !== null ? (
+                            <span>Rp. {this.state.balance.share}</span>
+                          ) : (
+                            <span>Loading...</span>
+                          )}
                         </p>
                       </div>
                     </div>
@@ -99,15 +132,15 @@ class Profile extends Component {
                   <div className="pbuttons">
                     <Button
                       className="ftop"
-                      onClick={() => this.props.history.push("/topup")}
+                      onClick={() => this.props.history.push('/topup')}
                     >
-                      {" "}
+                      {' '}
                       <img className="mr-2" src={plustopup} alt="topup" /> Top
                       Up Saldo
                     </Button>
                     <Button
                       className="fsal"
-                      onClick={() => this.props.history.push("/withdraw")}
+                      onClick={() => this.props.history.push('/withdraw')}
                     >
                       Withdraw
                     </Button>
@@ -119,7 +152,7 @@ class Profile extends Component {
                       Usaha yang anda beri investasi <br /> <span>6</span>
                     </p>
                     <p className="usaha">
-                      Estimasi penghasilan dalam 1 tahun <br />{" "}
+                      Estimasi penghasilan dalam 1 tahun <br />{' '}
                       <span>Rp. 125,000,000</span>
                     </p>
                   </div>
@@ -134,8 +167,8 @@ class Profile extends Component {
               <div
                 className={
                   this.state.filterShow
-                    ? "tab-float tab-float-active"
-                    : "tab-float"
+                    ? 'tab-float tab-float-active'
+                    : 'tab-float'
                 }
                 onMouseEnter={() => this.setState({ filterShow: true })}
                 onMouseLeave={() => this.setState({ filterShow: false })}
@@ -143,89 +176,89 @@ class Profile extends Component {
                 <ul>
                   <li
                     className={
-                      this.props.activeTab === "profile"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'profile'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("profile")}
+                    onClick={() => this.handleClick('profile')}
                   >
                     <img
                       className="proficonmenu"
                       src={profile}
                       alt="menu-icon"
-                    />{" "}
+                    />{' '}
                     <span> My Profile</span>
                   </li>
                   <li
                     className={
-                      this.props.activeTab === "business"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'business'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("business")}
+                    onClick={() => this.handleClick('business')}
                   >
                     <img
                       className="proficonmenu"
                       src={busines}
                       alt="menu-icon"
-                    />{" "}
-                    <span>My Business</span>{" "}
+                    />{' '}
+                    <span>My Business</span>{' '}
                   </li>
                   <li
                     className={
-                      this.props.activeTab === "history"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'history'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("history")}
+                    onClick={() => this.handleClick('history')}
                   >
                     <img
                       className="proficonmenu"
                       src={history}
                       alt="menu-icon"
-                    />{" "}
-                    <span>History</span>{" "}
+                    />{' '}
+                    <span>History</span>{' '}
                   </li>
                   <li
                     className={
-                      this.props.activeTab === "favorite"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'favorite'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("favorite")}
+                    onClick={() => this.handleClick('favorite')}
                   >
                     <img
                       className="proficonmenu"
                       src={favorite}
                       alt="menu-icon"
-                    />{" "}
-                    <span>Favorite</span>{" "}
+                    />{' '}
+                    <span>Favorite</span>{' '}
                   </li>
                   <li
                     className={
-                      this.props.activeTab === "list"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'list'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("list")}
+                    onClick={() => this.handleClick('list')}
                   >
-                    <img className="proficonmenu" src={list} alt="menu-icon" />{" "}
-                    <span>List of Investment</span>{" "}
+                    <img className="proficonmenu" src={list} alt="menu-icon" />{' '}
+                    <span>List of Investment</span>{' '}
                   </li>
                   <li
                     className={
-                      this.props.activeTab === "dividen"
-                        ? "active-menu-profile"
-                        : ""
+                      this.props.activeTab === 'dividen'
+                        ? 'active-menu-profile'
+                        : ''
                     }
-                    onClick={() => this.handleClick("dividen")}
+                    onClick={() => this.handleClick('dividen')}
                   >
                     <img
                       className="proficonmenu"
                       src={dividen}
                       alt="menu-icon"
-                    />{" "}
-                    <span>Dividend</span>{" "}
+                    />{' '}
+                    <span>Dividend</span>{' '}
                   </li>
                   {/* <hr/> */}
                   {/* <li><img className='proficonmenu' src={logout} alt="menu-icon"/> Logout</li> */}
@@ -233,22 +266,22 @@ class Profile extends Component {
               </div>
             </div>
             <div className="col-md fbodycon">
-              <Collapse in={this.props.activeTab === "profile"}>
+              <Collapse in={this.props.activeTab === 'profile'}>
                 <DataDiriProfile />
               </Collapse>
-              <Collapse in={this.props.activeTab === "business"}>
-                <BusinessIndex />
+              <Collapse in={this.props.activeTab === 'business'}>
+                <BusinessIndex businesses={this.state.businesses}/>
               </Collapse>
-              <Collapse in={this.props.activeTab === "history"}>
+              <Collapse in={this.props.activeTab === 'history'}>
                 <HistoryIndex />
               </Collapse>
-              <Collapse in={this.props.activeTab === "favorite"}>
+              <Collapse in={this.props.activeTab === 'favorite'}>
                 <FavoriteIndex />
               </Collapse>
-              <Collapse in={this.props.activeTab === "list"}>
+              <Collapse in={this.props.activeTab === 'list'}>
                 <ListOfInvestmentIndex />
               </Collapse>
-              <Collapse in={this.props.activeTab === "dividen"}>
+              <Collapse in={this.props.activeTab === 'dividen'}>
                 <DividendIndex />
               </Collapse>
             </div>

@@ -28,9 +28,9 @@ class ListOfInvestmentIndex extends Component {
         <p className="title">LIST OF INVESTMENT</p>
         <hr />
         {
-          list.map(result => (
+          list.map((result,idx) => (
             // console.log(result.fundraise)
-            <div className="card-item col">
+            <div className="card-item col" key={idx}>
               <div className="row ">
                 <div className="col-md-6 col-8">
                   <div className="row justify-space-between">

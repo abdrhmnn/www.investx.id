@@ -290,7 +290,7 @@ class InfoPerusahaan extends Component {
       number_of_branches: Yup.number().typeError("value have to be number").required(),
       number_of_employees: Yup.number().typeError("value have to be number").required(),
       description: Yup.string().required(),
-      website_url: Yup.string().required(),
+      website_url: Yup.string().required().url(),
     });
 
     const locationInputForms =[
@@ -569,6 +569,8 @@ class InfoPerusahaan extends Component {
                       label="Website Perusahaan"
                       type="text"
                       name="website_url"
+                      helperText={touched.website_url && errors.website_url}
+                      error={touched.website_url && errors.website_url ? true : false}
                     />
                   </div>
 
