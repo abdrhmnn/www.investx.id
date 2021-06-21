@@ -51,6 +51,7 @@ class CompanyList extends Component {
 
   getData = () =>{
     console.log(this.state.cityFil)
+    console.log(this.props.match.params)
     let params = {
       limit : this.state.limit,
       offset : (this.state.page -1) * this.state.limit,

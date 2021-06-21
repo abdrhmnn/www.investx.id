@@ -83,10 +83,10 @@ class CompanyDetail extends Component {
       //   to={isDisabledInvest ? "#" : `/company-list/detail/${this.props.match.params.id}/invest`}
       // >
         <Button 
-        className="start" 
-        variant="contained"
-        disabled={isDisabledInvest? true : false}
-        onClick={this.checkCookies}
+          className="start" 
+          variant="contained"
+          disabled={isDisabledInvest? true : false}
+          onClick={this.checkCookies}
         >
           MULAI INVESTASI
         </Button>

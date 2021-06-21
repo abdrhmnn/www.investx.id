@@ -1,4 +1,3 @@
-
 import * as axios from "axios";
 import kuki from "../helpers/kuki";
 
@@ -10,7 +9,11 @@ const FORM_INVESTOR = {
           headers: { Authorization: `Token ${kuki.get("token")}` },
         });
     },
-      
+    getAccountBalance: () => {
+      return axios.get(`/account/balance/`, {
+        headers: { Authorization: `Token ${kuki.get("token")}` },
+      })
+    },
     postPersonalAccount : (body) =>{
         return axios.post(`/account/personal/`, body,{
           headers: { Authorization: `Token ${kuki.get("token")}` },
