@@ -39,7 +39,7 @@ const INVOICE = {
   },
   //DELLETE CART 
   deleteCart: (id) =>{
-    return axios.delete(`/transaction/cart/${id}/`,{
+    return axios.delete(`/transaction/cart/${id}/`, {
         headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },

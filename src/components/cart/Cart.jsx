@@ -7,11 +7,8 @@ import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
 import Swal from 'sweetalert2';
-<<<<<<< HEAD
+
 // import moment from 'moment';
-=======
-import moment from 'moment';
->>>>>>> 310590035f480af0acc8faeac2d4c15dc395295a
 
 class Cart extends Component {
     state={
@@ -167,7 +164,7 @@ class Cart extends Component {
 
                                             <div className="col-md-3 mt-5">
                                                 <h6 style={{paddingLeft: '35px'}}>Jumlah</h6>
-                                                
+                                                        
                                                         <ClickAwayListener onClickAway={() => this.setState({ activeButton: null })}>
                                                             <form style={{display : 'flex', flexWrap : 'wrap', padding : '0 2px'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
                                                                 {/* <Fab
