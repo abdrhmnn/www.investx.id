@@ -7,7 +7,6 @@ import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
 import Swal from 'sweetalert2';
-
 // import moment from 'moment';
 
 class Cart extends Component {
