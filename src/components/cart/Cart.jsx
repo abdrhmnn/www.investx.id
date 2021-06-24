@@ -7,7 +7,6 @@ import logo from "../../images/logo.svg";
 import API from "../../api";
 import Loading from '../shared/Loading';
 import Swal from 'sweetalert2';
-import {IoMdTrash} from 'react-icons/io';
 
 // import moment from 'moment';
 
@@ -62,15 +61,14 @@ class Cart extends Component {
     handleDelete = (id) =>{
         Swal.fire({
             title: `Konfirmasi hapus data?`,
-            showConfirmButton: true,
+            showConfirmButton: false,
             showCancelButton: true,
-            confirmButtonText: `Delete`,
-            showDenyButton: false,
+            // confirmButtonText: `Delete`,
+            showDenyButton: true,
             denyButtonText: `Hapus`,
           }).then((result) => {
-              console.log(result)
             /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
+            if (result.isDenied) {
                 API.deleteCart(id).then(res =>{
                     console.log(res)
                     Swal.fire({
@@ -169,9 +167,6 @@ class Cart extends Component {
                                                         
                                                         <ClickAwayListener onClickAway={() => this.setState({ activeButton: null })}>
                                                             <form style={{display : 'flex', flexWrap : 'wrap', padding : '0 2px'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
-                                                                <h5>
-                                                                    <IoMdTrash className="text-danger pointer" onClick={() => this.handleDelete(res.id62)}/>
-                                                                </h5>
                                                                 {/* <Fab
                                                                     style={{height:'15px', width: '26px', marginRight:'2px'}}
                                                                     onClick={() => this.setState({ qty: res.qty / 2,})}
