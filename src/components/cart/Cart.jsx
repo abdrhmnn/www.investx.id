@@ -17,7 +17,9 @@ class Cart extends Component {
         qty : '',
         activeButton : '',
         loading : false,
-        select: false
+        totalHarga: 0,
+        totalHargaCheck: 0,
+        dataCheckId: []
     }
 
     componentDidMount(){
@@ -26,7 +28,8 @@ class Cart extends Component {
     }
 
     
-    getCart = ()=>{
+    getCart = ()=> {
+        this.setState({totalHarga: 0})
         this.setState({loading : true})
         API.getCart().then(res=>{
             if (res.data.results.length === 0) {
@@ -37,7 +40,14 @@ class Cart extends Component {
             this.setState({
                 data : res.data.results,
                 loading : false
-            })
+            });
+            
+            for(let i = 0; i < res.data.results.length; i++){
+                var total = parseInt(res.data.results[i].amount) * res.data.results[i].qty
+                this.setState({
+                    totalHarga: this.state.totalHarga + total
+                })
+            }
         }).catch(err=>{
             this.setState({loading : false})
             console.log(err.response)
@@ -59,10 +69,39 @@ class Cart extends Component {
         e.preventDefault()
     }
 
-    handleChecked = () => {
-        this.setState({
-            select: !this.state.select
-        })
+    handleChecked = (id62) => {
+        
+        if(this.state.dataCheckId.includes(id62)) {
+            var cek = this.state.dataCheckId
+
+            for(let i = 0; i < cek.length; i++){
+                if(id62 === cek[i]){
+                    delete cek[i]
+                }
+            }
+
+            for(let i = 0; i < this.state.data.length; i++){
+                if (this.state.data[i].id62 === id62){
+                    this.setState({
+                        totalHargaCheck: this.state.totalHargaCheck - (parseInt(this.state.data[i].amount) * this.state.data[i].qty),
+                        dataCheckId: cek
+                    })
+                }
+            }
+        }
+        // Ketika di Check
+        else {
+            var arr = this.state.dataCheckId;
+            arr.push(id62)
+            for(let i = 0; i < this.state.data.length; i++){
+                if (this.state.data[i].id62 === id62){
+                    this.setState({
+                        totalHargaCheck: this.state.totalHargaCheck + (parseInt(this.state.data[i].amount) * this.state.data[i].qty),
+                        dataCheckId: arr
+                    })
+                }
+            }
+        }
     }
 
     handleDelete = (id) =>{
@@ -97,8 +136,7 @@ class Cart extends Component {
     }
       
     render() {
-        console.log(this.state.data)
-
+        // console.log(this.state.data)
         const but = {
             fontWeight: "500",
             fontSize: "16px",
@@ -133,7 +171,8 @@ class Cart extends Component {
                         {
                             this.state.data.map((res) => (
                                 <>
-                                    <input className="check-box" type="checkbox" value={res.id62} onChange={this.handleChecked}/>
+                                    <input className="check-box" type="checkbox" value={res.id62} onChange={() => this.handleChecked(res.id62)}/>
+
                                     <div className="cart-company box-form-data">
                                         <div className="col">
                                             <div className="row mt-2">
@@ -256,7 +295,7 @@ class Cart extends Component {
                                             </div>
                                             <div className="col-sm-6 bold">
                                                 <h6>
-                                                    Rp. 1.400.000
+                                                    Rp {this.state.totalHargaCheck ? helper.idr(Math.round(this.state.totalHargaCheck)) : helper.idr(Math.round(this.state.totalHarga))}
                                                 </h6>
                                             </div>
                                         </div>
