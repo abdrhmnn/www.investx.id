@@ -167,7 +167,7 @@ class Home extends Component {
                         </Button>
                       </Link>
                       {/* to="/startup-form-data-diri" */}
-                      <Link to="/company-list">
+                      <Link to="/startup-form-data-diri">
                         <Button style={but} className="get-fund-but">
                           Get Funding
                         </Button>{" "}

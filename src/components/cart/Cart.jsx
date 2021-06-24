@@ -163,7 +163,7 @@ class Cart extends Component {
 
                                             <div className="col-md-3 mt-5">
                                                 <h6 style={{paddingLeft: '35px'}}>Jumlah</h6>
-                                                
+                                                        
                                                         <ClickAwayListener onClickAway={() => this.setState({ activeButton: null })}>
                                                             <form style={{display : 'flex', flexWrap : 'wrap', padding : '0 2px'}} onSubmit={(e)=>this.handleSubmit(e, res.id62)}>
                                                                 {/* <Fab
