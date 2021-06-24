@@ -60,6 +60,7 @@ import Contact from "./components/ContactUs/Contact";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import TopUpPayment from "./components/topup/TopUpPayment";
+import ScrollToTop from "./components/shared/ScrollToTop";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -115,6 +116,7 @@ class App extends Component {
     // console.log(process.env.REACT_APP_NOT_SECRET_CODE)
     return (
       <Router>
+        <ScrollToTop />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
