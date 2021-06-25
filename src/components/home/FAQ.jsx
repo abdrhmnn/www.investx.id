@@ -32,19 +32,19 @@ class FAQ extends Component {
       },
       {
         q: "Apa yang harus saya ketahui sebelum mendaftarkan startup?",
-        a: "ipsum",
+        a: "Yang perlu Anda ketahui sebelum mendaftarkan perusahaan sebagai peserta , Anda harus memperhatikan legalitas perusahaan dan laporan keuangan. Karena kedua faktor tersebut merupakan syarat yang mendasar untuk mendaftar sebagai peserta yang menerima urun dana. Dalam proses urun dana pun, kedua faktor tersebut sangat mempengaruhi Pemodal yang ingin berinvestasi, legalitas dan laporan keuangan perusahaan merupakan hal yang sangat diperhatikan.",
       },
       {
         q: "Bagaimana cara mendapat keuntungan di InvestX?",
-        a: "ipsum",
+        a: "Cara mendapatkan keuntungan di InvestX adalah dengan mulai berinvestasi di InvestX. Dengan Anda berinvestasi di InvestX, Anda mendapatkan keuntungan memiliki perusahaan, dari kepemilikan perusahaan tersebut maka Anda akan mendapatkan bagian dari laba operasional perusahaan (dividen).",
       },
       {
         q: "Bagaimana cara mengurangi resiko investasi di InvestX?",
-        a: "ipsum",
+        a: "Sebagai pemodal, Anda harus memperhatikan dan mempelajari setiap informasi penerbit yang disajikan di dalam prospektus dengan cermat. Beberapa contoh informasi yang harus Anda pelajari dan dijadikan sebagai acuan yaitu terkait dengan rencana penggunaan dana oleh penerbit. Apakah rencana tersebut mampu menaikan skala bisnis dan menaikan keuntungan untuk dibagikan kepada Pemodal atau faktor lain di dalam prospektus yang dapat Anda jadikan sebagai acuan.",
       },
       {
         q: "Berapa maksimal dana yang dihimpun melalui InvestX?",
-        a: "ipsum",
+        a: "n.a (harus cek ojk tentang ECF)",
       },
       {
         q: "Berapa jumlah minimum nominal investasi di InvestX?",
