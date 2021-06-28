@@ -50,6 +50,11 @@ class Ojk extends Component {
 
             <div className="col-md-6">
               <p>
+                InvestX tidak memberikan rekomendasi pembelian saham dan tidak mengelola dana dari para pengguna terdaftar di website ini. InvestX berperan menyelenggarakan website equity crowdfunding www.investx.id yang menghubungkan startup dan UKM yang membutuhkan dana dengan para calon investor melalui pembelian saham, serta mengurus legalitas dan administrasi dari pengajuan yang berhasil dicairkan. 
+                Pembelian saham bisnis ini merupakan aktivitas beresiko tinggi, diantaranya seperti risiko penurunan kinerja bahkan bisnis tersebut dapat mengalami kegagalan. Harap pelajari terlebih dahulu risiko yang ada sebelum anda memulai membeli saham. Gunakan dana yang siap anda lepaskan atau disimpan dalam jangka panjang, karena ada kemungkinan anda tidak dapat menjual kembali saham bisnis dengan cepat.
+                Dengan membeli saham di InvestX berarti anda sudah menyetujui seluruh syarat dan ketentuan serta memahami segala risiko investasi termasuk risiko kehilangan sebagian atau seluruh modal.
+              </p>
+              {/* <p>
                 Pembelian saham bisnis merupakan aktivitas beresiko tinggi. Anda
                 berinvestasi pada bisnis yang mungkin saja mengalami kenaikan
                 dan penurunan kinerja bahkan mengalami kegagalan.
@@ -79,7 +84,7 @@ class Ojk extends Component {
                 seluruh syarat dan ketentuan serta memahami semua risiko
                 investasi termasuk resiko kehilangan sebagian atau seluruh
                 modal.
-              </p>
+              </p> */}
               {/* <img src={logoOJK} alt="logo" /> */}
             </div>
           </div>
