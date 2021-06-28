@@ -273,7 +273,9 @@ class Cart extends Component {
                                                 <h7>PT. HM Sampoerna</h7>
                                             </div>
                                             <div className="col-sm-6">
-                                                <h6>Rp. 100.000</h6>
+                                                <h6>
+                                                    Rp {this.state.totalHargaCheck ? helper.idr(Math.round(this.state.totalHargaCheck)) : 0}
+                                                </h6>
                                             </div>
                                         </div>
                                         
@@ -295,7 +297,8 @@ class Cart extends Component {
                                             </div>
                                             <div className="col-sm-6 bold">
                                                 <h6>
-                                                    Rp {this.state.totalHargaCheck ? helper.idr(Math.round(this.state.totalHargaCheck)) : helper.idr(Math.round(this.state.totalHarga))}
+                                                    Rp {this.state.totalHargaCheck ? helper.idr(Math.round(this.state.totalHargaCheck)) : 0}
+                                                    {/* helper.idr(Math.round(this.state.totalHarga)) */}
                                                 </h6>
                                             </div>
                                         </div>

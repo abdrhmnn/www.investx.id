@@ -32,7 +32,7 @@ class FAQ extends Component {
       },
       {
         q: "Apa yang harus saya ketahui sebelum mendaftarkan startup?",
-        a: "Yang perlu Anda ketahui sebelum mendaftarkan perusahaan sebagai peserta , Anda harus memperhatikan legalitas perusahaan dan laporan keuangan. Karena kedua faktor tersebut merupakan syarat yang mendasar untuk mendaftar sebagai peserta yang menerima urun dana. Dalam proses urun dana pun, kedua faktor tersebut sangat mempengaruhi Pemodal yang ingin berinvestasi, legalitas dan laporan keuangan perusahaan merupakan hal yang sangat diperhatikan.",
+        a: "Yang perlu Anda ketahui sebelum mendaftarkan perusahaan sebagai peserta, Anda harus memperhatikan legalitas perusahaan dan laporan keuangan. Karena kedua faktor tersebut merupakan syarat yang mendasar untuk mendaftar sebagai peserta yang menerima urun dana. Dalam proses urun dana pun, kedua faktor tersebut sangat mempengaruhi Pemodal yang ingin berinvestasi, legalitas dan laporan keuangan perusahaan merupakan hal yang sangat diperhatikan.",
       },
       {
         q: "Bagaimana cara mendapat keuntungan di InvestX?",
@@ -44,11 +44,11 @@ class FAQ extends Component {
       },
       {
         q: "Berapa maksimal dana yang dihimpun melalui InvestX?",
-        a: "n.a (harus cek ojk tentang ECF)",
+        a: "Merujuk pada POJK Nomor 37/POJK.04/2018 penawaran saham dilakukan melalui penyelenggara yang telah memperoleh izin dari OJK dan penawaran saham dilakukan dalam jangka waktu paling lama 12 bulan dengan total dana yang dihimpun melalui penawaran saham paling banyak Rp10 Miliar.",
       },
       {
         q: "Berapa jumlah minimum nominal investasi di InvestX?",
-        a: "Dengan hanya 10$, sebenarnya anda sudah dapat berinvestasi di InvestX. Namun batas minimum tersebut tidak diterapkan pada semua usaha UKM, melainkan masing-masing UKM menentukan berapa jumlah minimum untuk para investor dapat memulai investasi.",
+        a: "Dengan hanya Rp 1.000.000, sebenarnya anda sudah dapat berinvestasi di InvestX. Namun batas minimum tersebut tidak diterapkan pada semua usaha UKM, melainkan masing-masing UKM menentukan berapa jumlah minimum untuk para investor dapat memulai investasi.",
       },
     ];
 
