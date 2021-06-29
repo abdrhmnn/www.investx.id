@@ -60,7 +60,7 @@ class Home extends Component {
       dots: false,
       infinite: true,
       arrows: false,
-      slidesToShow: 4,
+      slidesToShow: 2,
       slidesToScroll: 1,
       autoplay: true,
       speed: 5000,
