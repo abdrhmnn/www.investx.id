@@ -239,7 +239,6 @@ class Dokumen extends Component {
                       <Field
                         as={InputText}
                         label="No. NPWP"
-                        required
                         type="text"
                         name="npwp_num"
                         helperText={touched.npwp_num && errors.npwp_num}
