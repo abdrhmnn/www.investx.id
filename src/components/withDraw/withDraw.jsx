@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import arrowback from "../../images/arrowback.svg";
 import logo from "../../images/logo.svg";
-import { Button } from "@material-ui/core";
+import { Button, Fab } from "@material-ui/core";
 import walleticon from "../../images/profile/walleticon.svg";
 
 import PaymentMethod from "../payment/PaymentMethod";
@@ -27,11 +27,11 @@ class withDraw extends Component {
         <div className="bg">
           <div className="bg-round"></div>
         </div>
-        <Link onClick={() => this.props.history.goBack()}>
-          <div className="back-button">
+        {/* <Link onClick={() => this.props.history.goBack()}> */}
+          <Fab className="back-button"  onClick={() => this.props.history.goBack()}>
             <img src={arrowback} alt="" />
-          </div>
-        </Link>
+          </Fab>
+        {/* </Link> */}
         <div className="logo-invest">
           <img src={logo} alt="" />
         </div>
