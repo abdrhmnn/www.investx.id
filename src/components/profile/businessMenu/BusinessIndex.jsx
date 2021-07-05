@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Stepper, Step, StepLabel } from '@material-ui/core';
 
 import plusblue from '../../../images/profile/plusblue.svg';
+import Swal from 'sweetalert2';
+import API from '../../../api';
 
 const Stepping = ({ companyStatus }) => {
   const steps = ['Under Review', 'Approved', 'Published'];
@@ -24,6 +26,21 @@ const Stepping = ({ companyStatus }) => {
 };
 
 class BusinessIndex extends Component {
+  deleteCompany = async (id62) => {
+    try {
+      const deletedCompany = await API.deleteCompany(id62);
+      Swal.fire(
+        deletedCompany.data.message,
+        'Company has been deleted',
+        deletedCompany.data.status
+      );
+      const companiesResp = await API.getCompanies()
+      this.props.refreshBusinesses(companiesResp.data.results);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   render() {
     return (
       <div className="profile-business-menu">
@@ -39,11 +56,7 @@ class BusinessIndex extends Component {
             <div className="list-businessbox" key={business.nonce}>
               <div className="listheader">
                 <div className="box-head">
-                  <img
-                    className="comp-logo"
-                    src="https://placeimg.com/640/480/tech"
-                    alt="logo"
-                  />
+                  <img className="comp-logo" src={business.logo} alt="logo" />
                 </div>
                 <div className="box-head">
                   <p className="title">Nama Perusahaan</p>
@@ -68,7 +81,20 @@ class BusinessIndex extends Component {
                 </div>
                 <div className="box-head">
                   <p className="action">Edit</p>
-                  <p className="action">Hapus</p>
+                  <p
+                    className="action"
+                    onClick={() => {
+                      Swal.fire({
+                        title: 'Do you want to delete this company?',
+                        showCancelButton: true,
+                        confirmButtonText: `Yes`,
+                      }).then(() => {
+                        this.deleteCompany(business.id62);
+                      });
+                    }}
+                  >
+                    Hapus
+                  </p>
                 </div>
               </div>
 

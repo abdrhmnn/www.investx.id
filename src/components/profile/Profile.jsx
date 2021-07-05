@@ -71,6 +71,13 @@ class Profile extends Component {
 
   handleClick = (stringMenu) => this.props.changeTab(stringMenu);
 
+  handleRefreshBusinesses = (businesses = []) => {
+    this.setState((state) => ({
+      ...state,
+      businesses,
+    }));
+  };
+
   render() {
     // console.log(this.props)
 
@@ -270,7 +277,10 @@ class Profile extends Component {
                 <DataDiriProfile />
               </Collapse>
               <Collapse in={this.props.activeTab === 'business'}>
-                <BusinessIndex businesses={this.state.businesses}/>
+                <BusinessIndex
+                  businesses={this.state.businesses}
+                  refreshBusinesses={this.handleRefreshBusinesses}
+                />
               </Collapse>
               <Collapse in={this.props.activeTab === 'history'}>
                 <HistoryIndex />
