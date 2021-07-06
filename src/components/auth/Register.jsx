@@ -111,8 +111,9 @@ class Register extends Component {
       password: Yup.string()
         .required()
         .matches(
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-          "Must Contain 8 Characters, One Number and one special case Character"
+          // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[0-9])[A-Za-z\d0-9]{8,}$/,
+          "Must Contain 8 Characters and One Number"
         ),
       re_password: Yup.string()
         .required("masukan ulang Kata sandi")
