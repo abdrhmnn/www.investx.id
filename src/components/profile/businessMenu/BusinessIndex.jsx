@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Stepper, Step, StepLabel } from '@material-ui/core';
+import { Button, Stepper, Step, StepLabel, Modal } from '@material-ui/core';
 
 import plusblue from '../../../images/profile/plusblue.svg';
 import Swal from 'sweetalert2';
@@ -26,19 +26,46 @@ const Stepping = ({ companyStatus }) => {
 };
 
 class BusinessIndex extends Component {
-  deleteCompany = async (id62) => {
-    try {
-      const deletedCompany = await API.deleteCompany(id62);
-      Swal.fire(
-        deletedCompany.data.message,
-        'Company has been deleted',
-        deletedCompany.data.status
-      );
-      const companiesResp = await API.getCompanies()
-      this.props.refreshBusinesses(companiesResp.data.results);
-    } catch (err) {
-      console.error(err);
-    }
+  state = {
+    openModal: false,
+  };
+
+  handleModalOpen = () => {
+    this.setState((prev) => ({ ...prev, openModal: true }));
+  };
+  handleModalClose = () => {
+    this.setState((prev) => ({ ...prev, openModal: false }));
+  };
+
+  deleteCompany = (id62) => {
+    Swal.fire({
+      title: 'Anda yakin?',
+      text: 'Anda tidak bisa mengembalikannya!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, hapus saja!',
+      cancelButtonText: 'Batal',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        API.deleteCompany(id62)
+          .then((resp) => {
+            Swal.fire(
+              resp.data.message,
+              'Company has been deleted',
+              resp.data.status
+            );
+            return API.getCompanies();
+          })
+          .then((resp) => {
+            this.props.refreshBusinesses(resp.data.results);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    });
   };
 
   render() {
@@ -51,62 +78,64 @@ class BusinessIndex extends Component {
           </Button>
         </div>
 
-        {this.props.businesses &&
-          this.props.businesses.map((business) => (
-            <div className="list-businessbox" key={business.nonce}>
-              <div className="listheader">
-                <div className="box-head">
-                  <img className="comp-logo" src={business.logo} alt="logo" />
-                </div>
-                <div className="box-head">
-                  <p className="title">Nama Perusahaan</p>
-                  <p className="value">{business.trademark}</p>
-                </div>
-                <div className="box-head">
-                  <p className="title">Kode pengajuan</p>
-                  <p className="value">{business.nonce}</p>
-                </div>
-                <div className="box-head">
-                  <p className="title">Tanggal pengajuan</p>
-                  <p className="value">
-                    {new Date(business.created_at.utc).toLocaleDateString(
-                      'id-id',
-                      { day: 'numeric', month: 'long', year: 'numeric' }
-                    )}
-                  </p>
-                </div>
-                <div className="box-head">
-                  <p className="title">Komentar</p>
-                  <p className="value">-</p>
-                </div>
-                <div className="box-head">
-                  <p className="action">Edit</p>
-                  <p
-                    className="action"
-                    onClick={() => {
-                      Swal.fire({
-                        title: 'Do you want to delete this company?',
-                        showCancelButton: true,
-                        confirmButtonText: `Yes`,
-                      }).then(() => {
-                        this.deleteCompany(business.id62);
-                      });
-                    }}
-                  >
-                    Hapus
-                  </p>
-                </div>
+        {this.props.businesses?.map((business) => (
+          <div className="list-businessbox" key={business.nonce}>
+            <div className="listheader">
+              <div className="box-head">
+                <img className="comp-logo" src={business.logo} alt="logo" />
               </div>
-
-              <div className="listvalue">
-                <div className="listval-child">Status</div>
-                <div className="listval-stepper">
-                  <Stepping companyStatus={business.status} />
-                </div>
-                {/* <div className='listval-child'>Detail</div> */}
+              <div className="box-head">
+                <p className="title">Nama Perusahaan</p>
+                <p className="value">{business.trademark}</p>
+              </div>
+              <div className="box-head">
+                <p className="title">Kode pengajuan</p>
+                <p className="value">{business.nonce}</p>
+              </div>
+              <div className="box-head">
+                <p className="title">Tanggal pengajuan</p>
+                <p className="value">
+                  {new Date(business.created_at.utc).toLocaleDateString(
+                    'id-id',
+                    { day: 'numeric', month: 'long', year: 'numeric' }
+                  )}
+                </p>
+              </div>
+              <div className="box-head">
+                <p className="title">Komentar</p>
+                <p className="value">-</p>
+              </div>
+              <div className="box-head">
+                <p className="action" onClick={this.handleModalOpen}>
+                  Edit
+                </p>
+                <p
+                  className="action"
+                  onClick={() => this.deleteCompany(business.id62)}
+                >
+                  Hapus
+                </p>
               </div>
             </div>
-          ))}
+
+            <div className="listvalue">
+              <div className="listval-child">Status</div>
+              <div className="listval-stepper">
+                <Stepping companyStatus={business.status} />
+              </div>
+              {/* <div className='listval-child'>Detail</div> */}
+            </div>
+          </div>
+        ))}
+
+        {/* Modal */}
+        <Modal
+          open={this.state.openModal}
+          onClose={this.handleModalClose}
+          title='Edit'
+        >
+          <div></div>
+        </Modal>
       </div>
     );
   }
