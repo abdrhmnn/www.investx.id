@@ -27,6 +27,11 @@ const PROFILE_TABS = {
         headers: { Authorization: `Token ${kuki.get('token')}` },
       });
     },
+    editCompany: (id, data) =>{
+      return axios.patch(`/dashboard/company/${id}/edit/`, data, {
+        headers: { Authorization: `Token ${kuki.get('token')}` },
+      });
+    },
 }
 
 export default PROFILE_TABS

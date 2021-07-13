@@ -61,6 +61,7 @@ import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
 import TopUpPayment from "./components/topup/TopUpPayment";
 import ScrollToTop from "./components/shared/ScrollToTop";
+import BusinessEdit from "./components/profile/businessMenu/BusinessEdit";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -167,6 +168,7 @@ class App extends Component {
           {/* <Route exact path="/tambah-bank" component={FormBank} /> */}
 
           <PrivatRoute exact path="/profile" component={Profile} />
+          <PrivatRoute exact path="/profile/company/:id/edit" component={BusinessEdit} />
 
           <Route exact path="*" component={emptPage} />
         </Switch>

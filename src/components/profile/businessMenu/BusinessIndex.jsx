@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Stepper, Step, StepLabel, Modal } from '@material-ui/core';
+import { Button, Stepper, Step, StepLabel } from '@material-ui/core';
 
 import plusblue from '../../../images/profile/plusblue.svg';
 import Swal from 'sweetalert2';
 import API from '../../../api';
+// import BusinessEditModal from './BusinessEditModal';
+import { Link } from 'react-router-dom';
 
 const Stepping = ({ companyStatus }) => {
   const steps = ['Under Review', 'Approved', 'Published'];
@@ -107,7 +109,9 @@ class BusinessIndex extends Component {
               </div>
               <div className="box-head">
                 <p className="action" onClick={this.handleModalOpen}>
-                  Edit
+                  <Link to={`/profile/company/${business.id62}/edit`}>
+                    Edit
+                  </Link>
                 </p>
                 <p
                   className="action"
@@ -127,15 +131,6 @@ class BusinessIndex extends Component {
             </div>
           </div>
         ))}
-
-        {/* Modal */}
-        <Modal
-          open={this.state.openModal}
-          onClose={this.handleModalClose}
-          title='Edit'
-        >
-          <div></div>
-        </Modal>
       </div>
     );
   }
