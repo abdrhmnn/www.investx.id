@@ -90,7 +90,7 @@ class Profile extends Component {
               <figure>
                 <img
                   className="profile-pict"
-                  src="https://placeimg.com/640/480/people"
+                  src="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-256.png"
                   alt="card"
                 />
                 <Fab className="change-photo">

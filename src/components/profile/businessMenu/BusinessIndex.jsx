@@ -4,7 +4,6 @@ import { Button, Stepper, Step, StepLabel } from '@material-ui/core';
 import plusblue from '../../../images/profile/plusblue.svg';
 import Swal from 'sweetalert2';
 import API from '../../../api';
-// import BusinessEditModal from './BusinessEditModal';
 import { Link } from 'react-router-dom';
 
 const Stepping = ({ companyStatus }) => {
@@ -87,12 +86,12 @@ class BusinessIndex extends Component {
                 <img className="comp-logo" src={business.logo} alt="logo" />
               </div>
               <div className="box-head">
-                <p className="title">Nama Perusahaan</p>
+                <p className="title">{business.name}</p>
                 <p className="value">{business.trademark}</p>
               </div>
               <div className="box-head">
                 <p className="title">Kode pengajuan</p>
-                <p className="value">{business.nonce}</p>
+                <p className="value">{business.id62}</p>
               </div>
               <div className="box-head">
                 <p className="title">Tanggal pengajuan</p>
