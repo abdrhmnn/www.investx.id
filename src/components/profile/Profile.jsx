@@ -71,6 +71,13 @@ class Profile extends Component {
 
   handleClick = (stringMenu) => this.props.changeTab(stringMenu);
 
+  handleRefreshBusinesses = (businesses = []) => {
+    this.setState((state) => ({
+      ...state,
+      businesses,
+    }));
+  };
+
   render() {
     // console.log(this.props)
 
@@ -83,7 +90,7 @@ class Profile extends Component {
               <figure>
                 <img
                   className="profile-pict"
-                  src="https://placeimg.com/640/480/people"
+                  src="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-256.png"
                   alt="card"
                 />
                 <Fab className="change-photo">
@@ -270,7 +277,10 @@ class Profile extends Component {
                 <DataDiriProfile />
               </Collapse>
               <Collapse in={this.props.activeTab === 'business'}>
-                <BusinessIndex businesses={this.state.businesses}/>
+                <BusinessIndex
+                  businesses={this.state.businesses}
+                  refreshBusinesses={this.handleRefreshBusinesses}
+                />
               </Collapse>
               <Collapse in={this.props.activeTab === 'history'}>
                 <HistoryIndex />
