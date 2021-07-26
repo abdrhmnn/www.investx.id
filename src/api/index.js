@@ -13,7 +13,7 @@ import PROFILE_TABS from "./profileTabs";
 // const apiBaseUrl = process.env.BASE_URL;
 
 //GLOBAL AXIOS BASE URL
-axios.defaults.baseURL = process.env.REACT_APP_STAGING_URL
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 
 const API = {
