@@ -15,7 +15,6 @@ deploy_staging:
   stage: deploy
   environment: Production
   script:
-    - echo $APP_ENV > .env
     - npm install
     - npm run build
     - cd build/
