@@ -33,7 +33,7 @@ build:
   before_script:
     # Log in to Google Container Registry
     - rm -f .env
-    - echo $APP_ENV > .env
+    - echo ${APP_ENV} > .env
     - cat .env
     - echo $GCLOUD_SERVICE_KEY | docker login -u _json_key --password-stdin https://asia.gcr.io
   script:
