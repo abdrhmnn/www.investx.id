@@ -75,6 +75,18 @@ class PaymentMethod extends Component {
                 />
 
                 <img src={data.logo} className={data.class} alt="bca" />
+                <div className="container">
+                  <div className=" row col-sm-12" style={{paddingRight: 0}}>
+                    <h6 style={{marginLeft: "auto", marginTop: "10px", fontSize: "12px", fontWeight: 700}}>
+                      {data.namaRekening}
+                    </h6>
+                  </div>
+                  <div className=" row col-sm-12" style={{paddingRight: 0}}>
+                      <h6 style={{marginLeft: "auto", fontSize: "12px", fontWeight: 700}}>
+                        {data.noRekening}
+                      </h6>
+                  </div>
+                </div>
                 <br />
               </label>
             ))}
@@ -87,13 +99,12 @@ class PaymentMethod extends Component {
   render() {
     const methods = [
       {
-        title: "VIRTUAL ACCOUNT",
-        subtitle: "Dengan Kode Unik Semua Jadi Cepat",
+        title: "TRANSFER REKENING",
         logos: [
-          { id: 0, logo: bca },
-          { id: 1, logo: bni },
-          { id: 2, logo: mandiri },
-          { id: 3, logo: bri },
+          { id: 0, logo: bca, namaRekening: "PT. BCA (Bank Central Asia) TBK", noRekening: "00123450000"},
+          { id: 1, logo: bni, namaRekening: "PT. BNI (Bank Negara Indonesia) TBK", noRekening: "00123450000" },
+          { id: 2, logo: mandiri, namaRekening: "PT. Mandiri TBK", noRekening: "00123450000" },
+          { id: 3, logo: bri, namaRekening: "PT. BRI (Bank Rakyat Indonesia) TBK", noRekening: "00123450000" },
         ],
       },
       {

@@ -210,7 +210,7 @@ class Invest extends Component {
               Bayar menggunakan saldo investx
             </Button>
             <Button onClick={()=>this.handlePaySaham('snap')}>
-              Bayar menggunakan transfer bank/e-money
+              Bayar menggunkan Vritual Account
             </Button>
           </div>
         </div>

@@ -19,6 +19,7 @@ import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
+import { Redirect } from "react-router-dom";
 
 
 class DataDiri extends Component {
@@ -64,7 +65,8 @@ class DataDiri extends Component {
     postal_codeOcc : '',
 
     isSameAdd: false,
-    isEdit : false
+    isEdit : false,
+    isRedirect: false,
   };
 
   componentDidMount(){
@@ -79,7 +81,7 @@ class DataDiri extends Component {
       console.log(res)
       const {is_personal_id_complete, is_document_complete} = res.data.profile
       if (this.state.isStartUp && is_personal_id_complete && is_document_complete) {
-        this.props.history.push('/startup-form-informasi-perusahaan')
+        this.setState({ isRedirect: true });
       }
       if (is_personal_id_complete) {
         this.setState({
@@ -228,6 +230,9 @@ class DataDiri extends Component {
       {key : 'districtOcc', label : 'Kecamatan', data : this.state.districtDataOccupation,  getData : (id)=>this.apiDistrict(true,id), clearData : ['village'], prevId : 'regency'},
       {key : 'villageOcc', label : 'Kelurahan', data : this.state.villageDataOccupation,  getData : (id)=>this.apiVillage(true, id), clearData : [], prevId : 'district'},
     ]
+
+    if (this.state.isRedirect)
+      return <Redirect to="/startup-form-informasi-perusahaan" />;
 
     return (
       <div className="all-forms-style">

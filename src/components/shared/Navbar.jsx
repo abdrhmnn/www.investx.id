@@ -184,7 +184,7 @@ class Navbar extends Component {
             </Link>
             <ul>
               <li>
-                <Link to={kuki.get('isInvestorComplete') ?  "/company-list":"/investor-form-data-diri"}>Start Investing</Link>
+                <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>Start Investing</Link>
               </li>
               <li>
                 <Link to="/startup-form-data-diri">Get Funding</Link>
@@ -257,7 +257,7 @@ class Navbar extends Component {
                       <Link to="/profile" className="linktoprof">
                         <img
                           className="ava"
-                          src="https://pbs.twimg.com/profile_images/1108355467888259072/gxh4yKYO.png"
+                          src="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-512.png"
                           alt="ava"
                         />
                         <span>{kuki.get("full_name")}</span>

@@ -23,6 +23,7 @@ import Swal from "sweetalert2";
 
 import { ToastContainer, toast } from 'react-toastify';
 import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
+import { Redirect } from "react-router-dom";
 
 class Dokumen extends Component {
   state = {
@@ -33,7 +34,8 @@ class Dokumen extends Component {
     loading : false,
     pageName: 'Dokumen',
     pageNameStartUp: 'Dokumen Calon Penerbit',
-    isStartUp : window.location.pathname === "/startup-form-dokumen"
+    isStartUp : window.location.pathname === "/startup-form-dokumen",
+    isRedirect : false
   };
 
   componentDidMount(){
@@ -42,12 +44,10 @@ class Dokumen extends Component {
 
   checkProfile = () =>{
     this.setState({loading : true})
-    const nextLink = '/investor-form-bank'
-    const nextLinkStartUp = '/startup-form-informasi-perusahaan'
     const keyCheck = 'is_document_complete'
     API.getProfileCheck().then(res=>{
       if (res.data.profile[`${keyCheck}`]) {
-        this.props.history.push(this.state.isStartUp ? nextLinkStartUp : nextLink)
+        this.setState({ isRedirect: true });
       }else{
         this.setState({loading : false})
       }
@@ -169,8 +169,16 @@ class Dokumen extends Component {
     }
     const schemaObj = Yup.object({
       id_card_num: Yup.string().required().length(16, 'This field has to be exactly 16 characters!'), 
-      npwp_num: Yup.string().required().length(15, 'This field has to be exactly 15 characters!')
+      npwp_num: Yup.string().length(15, 'This field has to be exactly 15 characters!')
     });
+
+    if (this.state.isRedirect) {
+      const nextLink = '/investor-form-bank';
+      const nextLinkStartUp = '/startup-form-informasi-perusahaan';
+      return (
+        <Redirect to={this.state.isStartUp ? nextLinkStartUp : nextLink} />
+      );
+    }
 
     return (
       <div className="all-forms-style">
@@ -239,7 +247,6 @@ class Dokumen extends Component {
                       <Field
                         as={InputText}
                         label="No. NPWP"
-                        required
                         type="text"
                         name="npwp_num"
                         helperText={touched.npwp_num && errors.npwp_num}
@@ -249,15 +256,15 @@ class Dokumen extends Component {
   
                     <div className="col-md-12">
                       <p className="info-dok">
-                        * Jika Anda belum memiliki NPWP dan ingin berinvestasi,
-                        bisa dikosongkan terlebih dahulu. Namun,
+                        {/* * Jika Anda belum memiliki NPWP dan ingin berinvestasi,
+                        bisa dikosongkan terlebih dahulu. Namun, */}
                         <span>
                           {" "}
                           NPWP merupakan syarat wajib untuk bisa melakukan
                           penarikan deviden pada Saldo InvestX.{" "}
                         </span>
                         Anda bisa membuat NPWP secara online di{" "}
-                        <a href="#" target="__blank">
+                        <a href="https://ereg.pajak.go.id/daftar" target="__blank">
                           ereg.pajak.go.id
                         </a>
                       </p>

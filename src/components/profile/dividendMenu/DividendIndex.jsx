@@ -28,7 +28,7 @@ class DividendIndex extends Component {
                 <div>
                   <p className="company-name">{companyName}</p>
                   <p className="company-location">
-                    <i class="fas fa-map-marker-alt location-icon"></i>
+                    <i className="fas fa-map-marker-alt location-icon"></i>
                     <span className="location-name">{companyLocation}</span>
                   </p>
                 </div>
@@ -40,12 +40,12 @@ class DividendIndex extends Component {
                   width="24px"
                   height="24px"
                   viewBox="0 0 16 16"
-                  class="show-more"
+                  className="show-more"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
                   />
                 </svg>
@@ -117,7 +117,7 @@ class DividendIndex extends Component {
             Total Dividend
             <span>
               <i
-                class="fas fa-question-circle"
+                className="fas fa-question-circle"
                 style={{
                   color: "#4CB5EF",
                   width: "14px",
@@ -136,7 +136,7 @@ class DividendIndex extends Component {
         <div className="riwayat-dividend">
           <p className="label-dividend">Riwayat Dividend</p>
 
-          {dividends.map((data) => this.renderCardItem(data))}
+          {dividends.map((data, idx) => <this.renderCardItem {...data} key={idx} />)}
 
           <hr style={{ marginTop: "40px", marginBottom: "12px" }} />
           <div className="ketentuan-bagi-hasil">

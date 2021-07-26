@@ -152,7 +152,7 @@ class HowItWorks extends Component {
                 <h5 className="title">Sisipkan Dokumen</h5>
                 <p>
                   Untuk mengajukan bisnis, anda harus menyiapkan dokumen sebagai
-                  berikut :{" "}
+                  berikut :{' '}
                 </p>
                 <p>1. Foto KTP, Selfie dengan KTP dan NPWP </p>
                 <p>2. Logo perusahaan </p>
@@ -183,7 +183,9 @@ class HowItWorks extends Component {
             </div>
 
             <center>
-              <Button style={butSolid}>Ajukan Bisnis</Button>
+              <Link to="/startup-form-data-diri">
+                <Button style={butSolid}>Ajukan Bisnis</Button>
+              </Link>
             </center>
           </div>
         </div>
