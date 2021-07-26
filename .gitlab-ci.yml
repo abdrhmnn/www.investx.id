@@ -14,7 +14,6 @@ deploy_staging:
   stage: deploy
   environment: Production
   script:
-    - echo $APP_ENV > .env
     - npm install
     - npm run build
     - cd build/
@@ -34,6 +33,7 @@ build:
   before_script:
     # Log in to Google Container Registry
     - echo $GCLOUD_SERVICE_KEY | docker login -u _json_key --password-stdin https://asia.gcr.io
+    - echo $APP_ENV > .env
   script:
     - docker build --cache-from "${DOCKER_IMAGE_TAG}" -t "${DOCKER_IMAGE_TAG}" .
     - docker push ${DOCKER_IMAGE_TAG}
