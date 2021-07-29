@@ -169,7 +169,7 @@ class Dokumen extends Component {
     }
     const schemaObj = Yup.object({
       id_card_num: Yup.string().required().length(16, 'This field has to be exactly 16 characters!'), 
-      npwp_num: Yup.string().length(15, 'This field has to be exactly 15 characters!')
+      npwp_num: Yup.string().length(16, 'This field has to be exactly 16 characters!')
     });
 
     return (
