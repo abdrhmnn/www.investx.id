@@ -22,3 +22,17 @@ deploy_staging:
     - sshpass -V
     - export SSHPASS=$USER_PASS
     - sshpass -e rsync -r --omit-dir-times -e "ssh -o StrictHostKeyChecking=no" . $USER_NAME@$SERVER_IP:/var/www/www.investx.id/build/
+
+docker-build:
+  stage: deploy
+  image: docker:latest
+  services: 
+    - name: docker:19.03.8-dind
+  before_script:
+    # Log in to Google Container Registry
+    - echo $GCLOUD_SERVICE_KEY | docker login -u _json_key --password-stdin https://asia.gcr.io
+  script:
+    - docker build --cache-from "${DOCKER_IMAGE_TAG}" -t "${DOCKER_IMAGE_TAG}" .
+    - docker push ${DOCKER_IMAGE_TAG}
+  only:
+    - master

@@ -220,7 +220,7 @@ class InfoFinansial extends Component {
                           textAlign='left'
                           decimalCharacter=","
                           digitGroupSeparator="."
-                          minimumValue='1'
+                          // minimumValue='1'
                           placeholder={res.placeholder}
                           helperText={touched[`${res.key}`] && errors[`${res.key}`]}
                           error={

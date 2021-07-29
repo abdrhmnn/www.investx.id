@@ -23,6 +23,7 @@ import Swal from "sweetalert2";
 
 import { ToastContainer, toast } from 'react-toastify';
 import HeaderStartupForm from "../startUpForms/HeaderStartupForm";
+import { Redirect } from "react-router-dom";
 
 class Dokumen extends Component {
   state = {
@@ -33,7 +34,8 @@ class Dokumen extends Component {
     loading : false,
     pageName: 'Dokumen',
     pageNameStartUp: 'Dokumen Calon Penerbit',
-    isStartUp : window.location.pathname === "/startup-form-dokumen"
+    isStartUp : window.location.pathname === "/startup-form-dokumen",
+    isRedirect : false
   };
 
   componentDidMount(){
@@ -42,12 +44,10 @@ class Dokumen extends Component {
 
   checkProfile = () =>{
     this.setState({loading : true})
-    const nextLink = '/investor-form-bank'
-    const nextLinkStartUp = '/startup-form-informasi-perusahaan'
     const keyCheck = 'is_document_complete'
     API.getProfileCheck().then(res=>{
       if (res.data.profile[`${keyCheck}`]) {
-        this.props.history.push(this.state.isStartUp ? nextLinkStartUp : nextLink)
+        this.setState({ isRedirect: true });
       }else{
         this.setState({loading : false})
       }
@@ -171,6 +171,14 @@ class Dokumen extends Component {
       id_card_num: Yup.string().required().length(16, 'This field has to be exactly 16 characters!'), 
       npwp_num: Yup.string().length(16, 'This field has to be exactly 16 characters!')
     });
+
+    if (this.state.isRedirect) {
+      const nextLink = '/investor-form-bank';
+      const nextLinkStartUp = '/startup-form-informasi-perusahaan';
+      return (
+        <Redirect to={this.state.isStartUp ? nextLinkStartUp : nextLink} />
+      );
+    }
 
     return (
       <div className="all-forms-style">
