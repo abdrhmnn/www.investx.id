@@ -114,7 +114,6 @@ const RedirectRegister = ({ component: Component, ...rest }) => {
 
 class App extends Component {
   render() {
-    // console.log(process.env.REACT_APP_NOT_SECRET_CODE)
     return (
       <Router>
         <ScrollToTop />
