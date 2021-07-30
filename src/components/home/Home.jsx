@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../shared/Navbar";
-import ojk from "../../images/ojk.svg";
+// import ojk from "../../images/ojk.svg";
 import x from "../../images/bg/x.svg";
 import greenshield from "../../images/greenshield.svg";
 import zebra from "../../images/bg/zebra.jpg";
@@ -173,7 +173,7 @@ class Home extends Component {
                         </Button>{" "}
                         <br />
                       </Link>
-                      <img src={ojk} alt="" />
+                      {/* <img src={ojk} alt="" /> */}
                     </div>
                   </div>
                 </div>
