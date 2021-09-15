@@ -1,17 +1,17 @@
+import { Badge, Button, ClickAwayListener } from "@material-ui/core";
 import React, { Component } from "react";
+import { ShoppingCart } from "react-feather";
 import HamburgerMenu from "react-hamburger-menu";
 import { connect } from "react-redux";
-import kuki from "../../helpers/kuki";
-
-import logo from "../../images/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { Badge, Button, ClickAwayListener } from "@material-ui/core";
+import kuki from "../../helpers/kuki";
+import logo from "../../images/logo.svg";
 import walletnav from "../../images/walletnav.svg";
-import ModalTemplate from "./ModalTemplate";
-import VerifyOtp from "./VerifyOtp";
-import VerifyEmail from "./VerifyEmail";
 import Loading from "./Loading";
-import { ShoppingCart } from "react-feather";
+import ModalTemplate from "./ModalTemplate";
+import VerifyEmail from "./VerifyEmail";
+import VerifyOtp from "./VerifyOtp";
+
 // import API from "../../api";
 
 const butLogin = {
@@ -55,24 +55,24 @@ class Navbar extends Component {
     }
   }
 
-  handleLogout = ()=>{
+  handleLogout = () => {
     // API.logout().then(res=>alert(res))
     // .catch(err=> alert(err))
     // alert('hahah')
-    // const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
-      kuki.remove("auth")
-      kuki.remove("status")
-      kuki.remove("token")
-      kuki.remove("full_name")
-      kuki.remove("email")
-      kuki.remove("phone_number")
-      kuki.remove("isInvestorComplete")
-      window.localStorage.clear()
-      window.location.href= '/'
+    // const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"]
+    kuki.remove("auth");
+    kuki.remove("status");
+    kuki.remove("token");
+    kuki.remove("full_name");
+    kuki.remove("email");
+    kuki.remove("phone_number");
+    kuki.remove("isInvestorComplete");
+    window.localStorage.clear();
+    window.location.href = "/";
     // for (let i in arrKuki) {
     //   kuki.remove(arrKuki[i], { path: '/' })
     // }
-  }
+  };
 
   handlePop = () => this.setState({ isOpen: !this.state.isOpen });
 
@@ -118,18 +118,17 @@ class Navbar extends Component {
             <Link
               to="/profile"
               key={i}
-              onClick={() => this.handleClick(res.id)}
-            >
+              onClick={() => this.handleClick(res.id)}>
               {res.label}
             </Link>
           ))}
           <a href="/" className="border-top">
             Settings
           </a>
-          <a href='#'
+          <a
+            href="#"
             onClick={this.handleLogout}
-            style={{ cursor: "pointer", color: "#4CB5EF" }}
-            >
+            style={{ cursor: "pointer", color: "#4CB5EF" }}>
             <b>Logout</b>
           </a>
         </div>
@@ -161,7 +160,8 @@ class Navbar extends Component {
     // })
   };
 
-  counterReset = () => this.setState({ counterResetAdd: this.state.counterResetAdd + 1 });
+  counterReset = () =>
+    this.setState({ counterResetAdd: this.state.counterResetAdd + 1 });
 
   render() {
     return (
@@ -184,7 +184,14 @@ class Navbar extends Component {
             </Link>
             <ul>
               <li>
-                <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>Start Investing</Link>
+                <Link
+                  to={
+                    kuki.get("isInvestorComplete")
+                      ? "/investor-form-data-diri"
+                      : "/company-list"
+                  }>
+                  Start Investing
+                </Link>
               </li>
               <li>
                 <Link to="/startup-form-data-diri">Get Funding</Link>
@@ -198,83 +205,104 @@ class Navbar extends Component {
                 onClose={() => this.setState({ isOpenRes: false })}
                 component={this.responsiveMenuComp}
               />
-              {kuki.get("auth") ? 
-                <div style={{display : 'flex', alignItems : 'center'}}>
-                <Badge className='mr-4' badgeContent={parseInt(localStorage.getItem('cartInvestxLength'))} color="secondary">
-                  <Link to={parseInt(localStorage.getItem('cartInvestxLength')) !== 0?'/cart' : '#'} className='ml-4'>
-                    <ShoppingCart />
-                  </Link>
-                </Badge> 
-                <HamburgerMenu
-                  isOpen={this.state.isOpenRes}
-                  menuClicked={() =>
-                    this.setState({ isOpenRes: !this.state.isOpenRes })
-                  }
-                  width={17}
-                  height={12}
-                  strokeWidth={1}
-                  rotate={0}
-                  color="black"
-                  borderRadius={0}
-                  animationDuration={0.3}
-                  className="burger"
-                />
+              {kuki.get("auth") ? (
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Badge
+                    className="mr-4"
+                    badgeContent={parseInt(
+                      localStorage.getItem("cartInvestxLength")
+                    )}
+                    color="secondary">
+                    <Link
+                      to={
+                        parseInt(localStorage.getItem("cartInvestxLength")) !==
+                        0
+                          ? "/cart"
+                          : "#"
+                      }
+                      className="ml-4">
+                      <ShoppingCart />
+                    </Link>
+                  </Badge>
+                  <HamburgerMenu
+                    isOpen={this.state.isOpenRes}
+                    menuClicked={() =>
+                      this.setState({ isOpenRes: !this.state.isOpenRes })
+                    }
+                    width={17}
+                    height={12}
+                    strokeWidth={1}
+                    rotate={0}
+                    color="black"
+                    borderRadius={0}
+                    animationDuration={0.3}
+                    className="burger"
+                  />
                 </div>
-               : 
+              ) : (
                 <Link to="/login">
                   <Button style={butLogin} className="but-login">
                     Log In
                   </Button>
                 </Link>
-              }
+              )}
             </div>
             <ul>
               <li>
-                
                 <NavLink activeClassName="nav-active" to="/how">
                   How it works
                 </NavLink>
               </li>
               <li>
-                
                 <NavLink activeClassName="nav-active" to="/about">
                   About Us
                 </NavLink>
               </li>
-              {kuki.get("auth") ? 
-              <>
-              <Badge badgeContent={parseInt(localStorage.getItem('cartInvestxLength'))} color="secondary">
-                  <Link to={parseInt(localStorage.getItem('cartInvestxLength')) !== 0?'/cart' : '#'} className='ml-4'>
-                    <ShoppingCart />
-                  </Link>
-              </Badge>
+              {kuki.get("auth") ? (
+                <>
+                  <Badge
+                    badgeContent={parseInt(
+                      localStorage.getItem("cartInvestxLength")
+                    )}
+                    color="secondary">
+                    <Link
+                      to={
+                        parseInt(localStorage.getItem("cartInvestxLength")) !==
+                        0
+                          ? "/cart"
+                          : "#"
+                      }
+                      className="ml-4">
+                      <ShoppingCart />
+                    </Link>
+                  </Badge>
 
-                <li className="">
-                  <ClickAwayListener
-                    onClickAway={() => this.setState({ isOpen: false })}
-                  >
-                    <div className="popovercus">
-                      <Link to="/profile" className="linktoprof">
-                        <img
-                          className="ava"
-                          src="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-512.png"
-                          alt="ava"
-                        />
-                        <span>{kuki.get("full_name")}</span>
-                      </Link>
-                      <i
-                        onClick={this.handlePop}
-                        className="ml-3 fas fa-chevron-down"
-                        style={{ color: "#A5A5A5" }}
-                      ></i>
-                      {this.state.isOpen ? (
-                        <div className="menus-pop">{this.commpMenuList()}</div>
-                      ) : null}
-                    </div>
-                  </ClickAwayListener>
-                </li>
+                  <li className="">
+                    <ClickAwayListener
+                      onClickAway={() => this.setState({ isOpen: false })}>
+                      <div className="popovercus">
+                        <Link to="/profile" className="linktoprof">
+                          <img
+                            className="ava"
+                            src="https://cdn3.iconfinder.com/data/icons/galaxy-open-line-gradient-i/200/account-512.png"
+                            alt="ava"
+                          />
+                          <span>{kuki.get("full_name")}</span>
+                        </Link>
+                        <i
+                          onClick={this.handlePop}
+                          className="ml-3 fas fa-chevron-down"
+                          style={{ color: "#A5A5A5" }}></i>
+                        {this.state.isOpen ? (
+                          <div className="menus-pop">
+                            {this.commpMenuList()}
+                          </div>
+                        ) : null}
+                      </div>
+                    </ClickAwayListener>
+                  </li>
                 </>
-              :
+              ) : (
                 <li>
                   <Link to="/login">
                     <Button style={butLogin} className="but-login">
@@ -282,7 +310,8 @@ class Navbar extends Component {
                     </Button>
                   </Link>
                 </li>
-              }
+              )}
+              <li className="lang">EN</li>
             </ul>
           </div>
         </nav>
@@ -293,7 +322,6 @@ class Navbar extends Component {
                 Hi {kuki.get("full_name")}, Anda belum melakukan verifikasi kode
                 OTP.
                 <span onClick={() => this.setState({ modalInputOtp: true })}>
-                  
                   Verifikasi sekarang
                 </span>
               </div>
@@ -303,7 +331,6 @@ class Navbar extends Component {
                 email, jika email verifikasi belum di terima silahkan verifikasi
                 ulang
                 <span onClick={() => this.setState({ modalInputEmail: true })}>
-                  
                   Verifikasi ulang sekarang
                 </span>
               </div>
