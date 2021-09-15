@@ -38,7 +38,7 @@ class Home extends Component {
     this.getData()
   }
 
-  getData = ()=>{
+  getData = ()=> {
     const params = {limit : 10}
     API.refRecentInvest(params).then(res=>{
       console.log(res)

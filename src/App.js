@@ -62,6 +62,7 @@ import ResetPassword from "./components/auth/ResetPassword";
 import TopUpPayment from "./components/topup/TopUpPayment";
 import ScrollToTop from "./components/shared/ScrollToTop";
 import BusinessEdit from "./components/profile/businessMenu/BusinessEdit";
+import Otp from "./components/auth/Otp";
 
 
 const PrivatRoute = ({ component: Component, ...rest }) => {
@@ -126,6 +127,7 @@ class App extends Component {
           <Route path="/about" component={AboutUs} />
           <Route path="/contact" component={Contact} />
           <Route path="/how" component={HowItWorks} />
+          <Route path="/otp-verify" component={Otp} />
 
           <Route exact path="/forget-password/:token" component={ResetPassword} />
           <Route exact path="/email-verify/:code" component={SelectForm} />

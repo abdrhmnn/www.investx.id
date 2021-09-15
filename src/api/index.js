@@ -68,7 +68,9 @@ const API = {
     });
   },
   verifyEmail: (props) => {
-    return axios.post(`/authentication/verify-email/`, props);
+    return axios.post(`/authentication/verify-email/`, {
+      code: props.password
+    });
   },
   resendOtp: () => {
     const body = {

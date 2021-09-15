@@ -10,7 +10,7 @@ import ModalTemplate from "../shared/ModalTemplate";
 
 import successotp from "../../images/successotp.svg";
 import emailicon from "../../images/emailicon.svg";
-import kuki from "../../helpers/cookie";
+import kuki from "../../helpers/kuki";
 import API from "../../api";
 import Swal from "sweetalert2";
 
@@ -23,6 +23,7 @@ class Otp extends Component {
     box5: "",
     box6: "",
     onOpenModal: false,
+    timer: 30
   };
   handleChange = (e) => {
     let boxes = ["box1", "box2", "box3", "box4", "box5", "box6"];
@@ -52,10 +53,20 @@ class Otp extends Component {
       // }
     );
   };
+
+  componentDidMount(){
+    this.timerID = setInterval(() => this.setState({ timer: this.state.timer - 1}), 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
   handleSubmit = (e) => {
     var { box1, box2, box3, box4, box5, box6 } = this.state;
     let otpCode = box1 + box2 + box3 + box4 + box5 + box6;
     console.log(this.state);
+    console.log(otpCode);
     // window.location.href = '/select-form'
     // this.setState({onOpenModal : true})
     API.otp(otpCode)
@@ -126,10 +137,11 @@ class Otp extends Component {
             <img src={mailbox} alt="" />
             <p className="title">Verifikasi Kode OTP</p>
             <p className="desc">Kode verifikasi telah dikirimkan ke nomor</p>
-            <p className="num">{kuki.get("phone_number")}</p>
+            <p className="num">+{kuki.get("phone_number")}</p>
             <form onSubmit={this.handleSubmit} id="otp">
               <input
                 required
+                autoFocus
                 ref={(input) => {
                   this.boxFoc1 = input;
                 }}
@@ -199,8 +211,7 @@ class Otp extends Component {
               Verifikasi
             </Button>
             <p className="info">
-              Belum menerima otp aktivasi? <span>kirim ulang</span> dalam 30
-              detik
+              Belum menerima otp aktivasi? <span>kirim ulang</span> dalam 30 detik
             </p>
           </div>
         </div>

@@ -3,11 +3,13 @@ import logo from "../../images/logo-white.svg";
 import logoMobile from "../../images/logo.svg";
 
 import { Link } from "react-router-dom";
-import bluewoman from "../../images/bg/bluewoman.jpg";
 
+import bluewoman from "../../images/bg/bluewoman.jpg";
 import phoneicon from "../../images/phoneicon.svg";
 import emailicon from "../../images/emailicon.svg";
+
 import Swal from "sweetalert2";
+
 import kuki from "../../helpers/kuki";
 
 import {
@@ -48,28 +50,55 @@ class Register extends Component {
 
   submitRegister = () => {
     this.setState({ loading: true });
-    API.register(this.state.dataPost)
-      .then((res) => {
-        console.log(res);
-        this.setState({ sModalConfirm: false, loading: false });
-        kuki.set("token", res.data.token);
-        kuki.set("status", { phone: false, email: false });
-        kuki.set("auth", true);
-        kuki.set("email", res.data.email);
-        kuki.set("full_name", res.data.full_name);
-        kuki.set("phone_number", res.data.phone_number);
-        window.location.href = "/";
-      })
-      .catch((err) => {
-        this.setState({ loading: false });
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `Error ${Object.keys(err.response.data)}, "${Object.values(
-            err.response.data
-          )}" `,
+
+    // API.verifyEmail(this.state.dataPost)
+    // .then((res) => {
+    //   console.log(res)
+    // })
+    // .catch((err) => {
+    //   this.setState({ loading: false });
+    //   console.log(err)
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: `Error ${Object.keys(err.response.data)}, "${Object.values(
+    //       err.response.data
+    //     )}" `,
+    //   });
+    // });
+
+    // if(this.state.dataPost.email == kuki.get("email")){
+    //   this.setState({ loading: false });
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: `Email has been registered`,
+    //     });
+    // }
+      API.register(this.state.dataPost)
+        .then((res) => {
+          console.log(res);
+          this.setState({ isModalConfirm: false, loading: false });
+          kuki.set("token", res.data.token);
+          kuki.set("status", { phone: false, email: false });
+          kuki.set("auth", true);
+          kuki.set("email", res.data.email);
+          kuki.set("full_name", res.data.full_name);
+          kuki.set("phone_number", res.data.phone_number);
+          window.location.href = "/otp-verify";
+        })
+        .catch((err) => {
+          this.setState({ loading: false });
+          if(Object.keys(err.response.status === 400)){
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: `This email/phone number is already registered`
+            });
+            this.setState({ isModalConfirm: false });
+          }
+          this.setState({ isModalConfirm: false });
         });
-      });
   };
 
   modalConfirm = () => (
@@ -103,21 +132,21 @@ class Register extends Component {
     console.log(this.state);
 
     const schemaObj = Yup.object({
-      full_name: Yup.string().required().min(3),
-      email: Yup.string().required().email(),
+      full_name: Yup.string().required("Full Name is required").min(3),
+      email: Yup.string().required("Email is required").email('Alamat email tidak valid'),
       phone_number: Yup.string()
-        .required()
-        .matches(/^\d+$/, "must be a number"),
+        .required("Phone Number is required")
+        .matches(/^\d+$/, "Must be a number"),
       password: Yup.string()
-        .required()
+        .required("Password is required")
         .matches(
           // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[0-9])[A-Za-z\d0-9]{8,}$/,
           "Must Contain 8 Characters and One Number"
         ),
       re_password: Yup.string()
-        .required("masukan ulang Kata sandi")
-        .oneOf([Yup.ref("password"), null], "Kata sandi tidak sama"),
+        .required("Please re-input your password")
+        .oneOf([Yup.ref("password"), null], "Password doesn't same"),
     });
 
     const initialValuesObj = {
@@ -189,7 +218,9 @@ class Register extends Component {
                         fullWidth={true}
                         label="Email"
                         // onBlur={handleBlur}
-                        error={touched.email && errors.email ? true : false}
+                        error={
+                          touched.email && errors.email ? true : false
+                        }
                         helperText={touched.email && errors.email}
                         as={TextField}
                       />
@@ -200,12 +231,10 @@ class Register extends Component {
                         name="phone_number"
                         variant="outlined"
                         fullWidth={true}
-                        label="phone number"
+                        label="Phone Number"
                         placeholder="No. ( Ex : 628xxx/08xxxx )"
                         error={
-                          touched.phone_number && errors.phone_number
-                            ? true
-                            : false
+                          touched.phone_number && errors.phone_number ? true : false
                         }
                         helperText={touched.phone_number && errors.phone_number}
                         as={TextField}
@@ -230,6 +259,7 @@ class Register extends Component {
                           id="outlined-adornment-password"
                           type={this.state.showPassword ? "text" : "password"}
                           value={values.password}
+                          val
                           onChange={handleChange}
                           endAdornment={
                             <InputAdornment position="end">
@@ -259,9 +289,7 @@ class Register extends Component {
 
                       <FormControl
                         error={
-                          touched.re_password && errors.re_password
-                            ? true
-                            : false
+                          touched.re_password && errors.re_password ? true : false
                         }
                         className="custom_text_input"
                         fullWidth={true}
