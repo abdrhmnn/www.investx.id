@@ -3,6 +3,9 @@ import Navbar from "../shared/Navbar";
 // import ojk from "../../images/ojk.svg";
 import x from "../../images/bg/x.svg";
 import greenshield from "../../images/greenshield.svg";
+import appStore from "../../images/mobileStore/appStore.svg";
+import ojkLogo from "../../images/ojk.svg"
+import googlePlayStore from "../../images/mobileStore/googlePlayStore.png"
 import zebra from "../../images/bg/zebra.jpg";
 import Footer from "../shared/Footer";
 import Ojk from "../shared/Ojk";
@@ -78,30 +81,30 @@ class Home extends Component {
       ],
     };
 
-    const butSolid = {
-      width: "205px",
-      height: "52px",
-      background: "#4cb5ef",
-      boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
-      borderRadius: "8px",
-      border: "none",
-      color: "white",
-      marginRight: "28px",
-      fontWeight: "500",
-      fontSize: "16px",
-    };
+    // const butSolid = {
+    //   width: "205px",
+    //   height: "52px",
+    //   background: "#4cb5ef",
+    //   boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
+    //   borderRadius: "8px",
+    //   border: "none",
+    //   color: "white",
+    //   marginRight: "28px",
+    //   fontWeight: "500",
+    //   fontSize: "16px",
+    // };
 
-    const but = {
-      fontWeight: "500",
-      fontSize: "16px",
-      background: "#ffffff",
-      border: "1px solid #0288d1",
-      boxSizing: "border-box",
-      boxShadow: "0px 0px 9px #4cb5ef",
-      borderRadius: "8px",
-      width: "205px",
-      height: "52px",
-    };
+    // const but = {
+    //   fontWeight: "500",
+    //   fontSize: "16px",
+    //   background: "#ffffff",
+    //   border: "1px solid #0288d1",
+    //   boxSizing: "border-box",
+    //   boxShadow: "0px 0px 9px #4cb5ef",
+    //   borderRadius: "8px",
+    //   width: "205px",
+    //   height: "52px",
+    // };
 
     const carouselItem = [
       { image: zebra },
@@ -132,7 +135,7 @@ class Home extends Component {
           className="jumbo carousel slide carousel-fade"
           data-ride="carousel"
         >
-          <ol className="carousel-indicators">
+          {/* <ol className="carousel-indicators">
             {carouselItem.map((res, i) => (
               <li
                 key={i}
@@ -141,7 +144,7 @@ class Home extends Component {
                 className={`indicator-color ${i === 0 ? "active" : ""}}`}
               ></li>
             ))}
-          </ol>
+          </ol> */}
           <div className="carousel-inner">
             {carouselItem.map((res, i) => (
               <div key={i} className={`carousel-item ${i === 0 ? "active" : ""}`}>
@@ -156,24 +159,27 @@ class Home extends Component {
                         <span>CROWDFUNDING</span>
                       </p>
                       <p className="desc">
-                        Mewujudkan era baru dalam berinvestasi Dapatkan
-                        pendapatan secara pasif dan pendanaan dengan cepat
-                        dengan InvestX.
+                        A new era of investment <br /> Let your money work for you.
                       </p>
 
-                      <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>
+                      <div className="flex-img">
+                        <img src={googlePlayStore} alt="Get in on Google Play Store" />
+                        <img src={appStore} alt="Available on the App Store" width="150"/>
+                      </div>
+
+                      {/* <Link to={kuki.get('isInvestorComplete') ?  "/investor-form-data-diri" : "/company-list"}>
                         <Button style={butSolid} className="start-invest-but">
                           Start Investing
                         </Button>
-                      </Link>
+                      </Link> */}
                       {/* to="/startup-form-data-diri" */}
-                      <Link to="/startup-form-data-diri">
+                      {/* <Link to="/startup-form-data-diri">
                         <Button style={but} className="get-fund-but">
                           Get Funding
                         </Button>{" "}
                         <br />
-                      </Link>
-                      {/* <img src={ojk} alt="" /> */}
+                      </Link> */}
+                      <img src={ojkLogo} alt="Otoritas Jasa Keuangan" />
                     </div>
                   </div>
                 </div>
