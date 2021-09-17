@@ -1,20 +1,18 @@
 import * as axios from "axios";
 import kuki from "../helpers/kuki";
-
-import REFERENCE from './reference'
-import FUNDRAISE from './fundraise'
-import FORM_COMPANY from './formCompany'
-import FORM_INVESTOR from './formInvestor'
-import TRANSACTION from "./transaction";
-import TOPUP from "./topup";
+import FORM_COMPANY from "./formCompany";
+import FORM_INVESTOR from "./formInvestor";
+import FUNDRAISE from "./fundraise";
 import PROFILE_TABS from "./profileTabs";
+import REFERENCE from "./reference";
+import TOPUP from "./topup";
+import TRANSACTION from "./transaction";
 
 // const localBaseUrl = "http://192.168.0.14:8000";
 // const apiBaseUrl = process.env.BASE_URL;
 
 //GLOBAL AXIOS BASE URL
-axios.defaults.baseURL = process.env.REACT_APP_API_URL
-
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 const API = {
   register: (props) => {
@@ -36,24 +34,22 @@ const API = {
   },
   forgotPassword: (props) => {
     const body = {
-      email: props.email.toLowerCase()
+      email: props.email.toLowerCase(),
     };
-    return axios.post(`/authentication/forgot-password/`, body, {
-      headers: { Authorization: `Token ${kuki.get("token")}` },
-    });
+    return axios.post(`/authentication/forgot-password/`, body);
   },
   // logout: () => {
-  //   const myPromise = new Promise((resolve, reject) => {  
-  //     var arrRemoved = [];  
-  //     const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"] 
+  //   const myPromise = new Promise((resolve, reject) => {
+  //     var arrRemoved = [];
+  //     const arrKuki= ["auth","status","token","full_name","email","phone_number","isInvestorComplete"]
   //     for (const c of arrKuki) {
   //       kuki.remove(c)
   //       arrRemoved.push(c)
   //     }
-  //     if(arrRemoved.length === 7) {    
-  //         resolve('logout'); 
-  //       } else {    
-  //         reject('Logout is rejected');  
+  //     if(arrRemoved.length === 7) {
+  //         resolve('logout');
+  //       } else {
+  //         reject('Logout is rejected');
   //       }
   //   })
   //   return myPromise
@@ -96,31 +92,30 @@ const API = {
 
   getRegency: (data) => {
     return axios.get(`/reference/regency/`, {
-      params : {province_id : data},
+      params: { province_id: data },
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getDistrict: (data) => {
     return axios.get(`/reference/district/`, {
-      params : {regency_id : data},
+      params: { regency_id: data },
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getVillage: (data) => {
     return axios.get(`/reference/kelurahan/`, {
-      params : {district_id : data},
+      params: { district_id: data },
       headers: { Authorization: `Token ${kuki.get("token")}` },
     });
   },
 
   getInvestment: () => {
-    return axios.get('/investment/',{
-        headers: { Authorization: `Token ${kuki.get("token")}` },
-    })
+    return axios.get("/investment/", {
+      headers: { Authorization: `Token ${kuki.get("token")}` },
+    });
   },
-
 
   //IMPORTED APIS
   ...FORM_INVESTOR,
@@ -129,8 +124,7 @@ const API = {
   ...FUNDRAISE,
   ...TRANSACTION,
   ...TOPUP,
-  ...PROFILE_TABS
-
+  ...PROFILE_TABS,
 };
 
 export default API;
