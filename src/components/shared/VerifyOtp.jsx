@@ -109,6 +109,7 @@ class VerifyOtp extends React.Component {
               <form onSubmit={handleSubmit} id="otp">
                 <input
                   required
+                  autoFocus
                   onInput={(e) => e.target.nextElementSibling.focus()}
                   type="number"
                   maxLength="1"

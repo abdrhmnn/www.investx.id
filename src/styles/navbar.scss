@@ -18,6 +18,11 @@ nav {
   font-size: 16px;
   .left {
     display: flex;
+    height: 72px;
+    // background-color: skyblue;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0 25px;
     align-items: center;
     // img{
     //     // margin-left: 40px;
