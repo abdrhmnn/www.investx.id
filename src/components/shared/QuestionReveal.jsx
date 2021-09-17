@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import Typography from "@material-ui/core/Typography";
+import React, { Component } from "react";
 
 class QuestionReveal extends Component {
   state = {
@@ -21,14 +20,12 @@ class QuestionReveal extends Component {
             this.setState({
               expanded: !this.state.expanded,
             });
-          }}
-        >
+          }}>
           <AccordionSummary
             className="px-0 item"
-            expandIcon={<i className="icon fas fa-chevron-up"></i>}
+            expandIcon={<i className="icon fas fa-chevron-down"></i>}
             aria-controls="panel4bh-content"
-            id="panel4bh-header"
-          >
+            id="panel4bh-header">
             <Typography className="question">{q}</Typography>
           </AccordionSummary>
           <AccordionDetails>
