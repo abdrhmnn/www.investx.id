@@ -9,7 +9,6 @@ import "slick-carousel/slick/slick.css";
 import API from "../../api";
 import helper from "../../helpers/helper";
 import kuki from "../../helpers/kuki";
-// import ojk from "../../images/ojk.svg";
 import x from "../../images/bg/x.svg";
 
 import greenshield from "../../images/greenshield.svg";
@@ -18,7 +17,6 @@ import ojkLogo from "../../images/ojk.svg"
 import googlePlayStore from "../../images/mobileStore/googlePlayStore.png"
 
 import zebra from "../../images/bg/zebra.jpg";
-import greenshield from "../../images/greenshield.svg";
 import Footer from "../shared/Footer";
 import Navbar from "../shared/Navbar";
 import Ojk from "../shared/Ojk";
@@ -136,7 +134,7 @@ class Home extends Component {
           id="carouselHome"
           className="jumbo carousel slide carousel-fade"
           data-ride="carousel">
-          <ol className="carousel-indicators">
+          {/* <ol className="carousel-indicators">
             {carouselItem.map((res, i) => (
               <li
                 key={i}
@@ -144,7 +142,7 @@ class Home extends Component {
                 data-slide-to={i.toString()}
                 className={`indicator-color ${i === 0 ? "active" : ""}}`}></li>
             ))}
-          </ol>
+          </ol> */}
           <div className="carousel-inner">
             {carouselItem.map((res, i) => (
               <div

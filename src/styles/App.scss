@@ -51,7 +51,7 @@ a {
 
 
 .container {
-    padding-left: 0 !important;
+    padding-left: 70px !important;
     padding-right: 0 !important;
 }
 
@@ -135,7 +135,7 @@ input[type="number"] {
 
 @media only screen and (max-width: 768px) {
     .container {
-        padding-left: 20px !important;
+        padding-left: 0 !important;
         padding-right: 20px !important;
     }
 }
