@@ -81,30 +81,30 @@ class Home extends Component {
       ],
     };
 
-    const butSolid = {
-      width: "205px",
-      height: "52px",
-      background: "#4cb5ef",
-      boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
-      borderRadius: "8px",
-      border: "none",
-      color: "white",
-      marginRight: "28px",
-      fontWeight: "500",
-      fontSize: "16px",
-    };
+    // const butSolid = {
+    //   width: "205px",
+    //   height: "52px",
+    //   background: "#4cb5ef",
+    //   boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
+    //   borderRadius: "8px",
+    //   border: "none",
+    //   color: "white",
+    //   marginRight: "28px",
+    //   fontWeight: "500",
+    //   fontSize: "16px",
+    // };
 
-    const but = {
-      fontWeight: "500",
-      fontSize: "16px",
-      background: "#ffffff",
-      border: "1px solid #0288d1",
-      boxSizing: "border-box",
-      boxShadow: "0px 0px 9px #4cb5ef",
-      borderRadius: "8px",
-      width: "205px",
-      height: "52px",
-    };
+    // const but = {
+    //   fontWeight: "500",
+    //   fontSize: "16px",
+    //   background: "#ffffff",
+    //   border: "1px solid #0288d1",
+    //   boxSizing: "border-box",
+    //   boxShadow: "0px 0px 9px #4cb5ef",
+    //   borderRadius: "8px",
+    //   width: "205px",
+    //   height: "52px",
+    // };
 
     const carouselItem = [
       { image: zebra },
