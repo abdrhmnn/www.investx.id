@@ -114,14 +114,14 @@ class AboutUs extends Component {
                   to multinational companies.
                 </p>
                 <div className="socials">
-                  <a href="/">
+                  <a href="https://www.linkedin.com/in/adiarriansyah/" target="_blank" rel="noreferrer">
                     <img className="img-soc" src={linkedin} alt="linkedin" />
                   </a>
-                  <a href="/">
+                  <a href="https://twitter.com/adiarriansyah" target="_blank" rel="noreferrer">
                     <img className="img-soc" src={twitter} alt="twitter" />
                   </a>
-                  <a href="/">
-                    <img className="img-soc" src={gmail} alt="gamil" />
+                  <a href="mailto:adi@sagara.asia">
+                    <img className="img-soc" src={gmail} alt="gmail" />
                   </a>
                 </div>
               </div>
@@ -140,13 +140,13 @@ class AboutUs extends Component {
                   from zero to something.
                 </p>
                 <div className="socials">
-                  <a href="/">
+                  <a href="https://www.linkedin.com/in/ardzix/" target="_blank" rel="noreferrer">
                     <img className="img-soc" src={linkedin} alt="linkedin" />
                   </a>
-                  <a href="/">
+                  <a href="https://twitter.com/ardzix" target="_blank" rel="noreferrer">
                     <img className="img-soc" src={twitter} alt="twitter" />
                   </a>
-                  <a href="/">
+                  <a href="mailto:arif@sagaratech.com">
                     <img className="img-soc" src={gmail} alt="gamil" />
                   </a>
                 </div>

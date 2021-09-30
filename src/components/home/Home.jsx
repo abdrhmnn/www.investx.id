@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import API from "../../api";
 import helper from "../../helpers/helper";
-import kuki from "../../helpers/kuki";
+// import kuki from "../../helpers/kuki";
 import x from "../../images/bg/x.svg";
 
 import greenshield from "../../images/greenshield.svg";
