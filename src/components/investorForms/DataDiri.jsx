@@ -70,7 +70,7 @@ class DataDiri extends Component {
   };
 
   componentDidMount(){
-    this.checkProfile()
+    // this.checkProfile()
     this.apiProvince()
     this.getObjOpt()
   }
@@ -204,16 +204,16 @@ class DataDiri extends Component {
 
     const schemaObj = Yup.object({
       gender: Yup.number().required(),
-      birth_place: Yup.string().required(),
-      birth_date: Yup.string().required(),
-      marital_status : Yup.object().nullable().required(),
-      citizenship : Yup.object().nullable().required(),
+      birth_place: Yup.string().required('Tempat lahir tidak valid'),
+      birth_date: Yup.string().required('Tanggal lahir tidak valid'),
+      marital_status : Yup.object().nullable().required('Status pernikahan tidak valid'),
+      citizenship : Yup.object().nullable().required('Status kewarnegaraan tidak valid'),
       address : Yup.string().required(),
-      province : Yup.object().nullable().required(),
-      regency : Yup.object().nullable().required(),
-      district : Yup.object().nullable().required(),
-      village : Yup.object().nullable().required(),
-      postal_code : Yup.string().required(),
+      province : Yup.object().nullable().required('Provinsi tidak valid'),
+      regency : Yup.object().nullable().required('Kota/Kabupaten tidak valid'),
+      district : Yup.object().nullable().required('Kecamatan tidak valid'),
+      village : Yup.object().nullable().required('Kelurahan tidak valid'),
+      postal_code : Yup.string().required('Kode pos tidak valid'),
 
     });
 
@@ -300,6 +300,7 @@ class DataDiri extends Component {
           >
             {({handleBlur,handleSubmit,errors,values,touched,setFieldValue,}) => (
               <form onSubmit={handleSubmit} id="dataDiriForm">
+                <p style={{ paddingLeft: 20, color: '#A9A9A9'}}>Nama Lengkap Sesuai KTP</p>
                 <div className="row">
                   <div className="col-md-12">
                     <Field
@@ -307,13 +308,13 @@ class DataDiri extends Component {
                       label="Name"
                       type="text"
                       name="name"
-                      placeholder="Nama Lengkap"
                       disabled={true}
                       // errorsMessage={touched.name && errors.name}
                       // error ={touched.name && errors.name}
                     />
                   </div>
                   <div className="col-md-12">
+                  <p style={{ paddingLeft: 20, color: '#A9A9A9'}}>Jenis Kelamin*</p>
                     <ButtonGroup
                       className={
                         errors.gender

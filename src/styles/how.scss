@@ -98,6 +98,7 @@
         .steps {
             display: flex;
             justify-content: space-between;
+            padding: 0 !important;
             .step-box {
                 overflow: hidden;
                 width: 339px;
@@ -273,6 +274,10 @@
 
         .kartu{
             padding: 30px 0;
+
+            .steps{
+                justify-content: center;
+            }
         }
 
         .steps{

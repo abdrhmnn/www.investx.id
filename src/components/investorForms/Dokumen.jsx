@@ -39,7 +39,7 @@ class Dokumen extends Component {
   };
 
   componentDidMount(){
-    this.checkProfile()
+    // this.checkProfile()
   }
 
   checkProfile = () =>{
@@ -168,8 +168,8 @@ class Dokumen extends Component {
         "npwp_num": "",
     }
     const schemaObj = Yup.object({
-      id_card_num: Yup.string().required().length(16, 'This field has to be exactly 16 characters!'), 
-      npwp_num: Yup.string().length(16, 'This field has to be exactly 16 characters!')
+      id_card_num: Yup.string().required('No. KTP tidak valid').length(16, 'This field has to be exactly 16 characters!'), 
+      npwp_num: Yup.string().required('No. NPWP tidak valid').length().length(16, 'This field has to be exactly 16 characters!')
     });
 
     if (this.state.isRedirect) {
@@ -247,6 +247,7 @@ class Dokumen extends Component {
                       <Field
                         as={InputText}
                         label="No. NPWP"
+                        required
                         type="text"
                         name="npwp_num"
                         helperText={touched.npwp_num && errors.npwp_num}

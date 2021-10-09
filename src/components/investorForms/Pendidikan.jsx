@@ -29,7 +29,7 @@ class Pendidikan extends Component {
   };
 
   componentDidMount(){
-    this.checkProfile()
+    // this.checkProfile()
     this.getObjOpt()
   }
 
@@ -81,11 +81,11 @@ class Pendidikan extends Component {
     };
 
     const schemaObj = Yup.object({
-      last_education: Yup.object().nullable().required(),
-      profession: Yup.object().nullable().required(),
-      job_industry: Yup.object().nullable().required(),
-      monthly_salary: Yup.object().nullable().required(),
-      income_source: Yup.object().nullable().required(),
+      last_education: Yup.object().nullable().required('Pendidikan terakhir tidak valid'),
+      profession: Yup.object().nullable().required('Pekerjaan tidak valid'),
+      job_industry: Yup.object().nullable().required('Industri pekerjaan tidak valid'),
+      monthly_salary: Yup.object().nullable().required('Pendapat perbulan tidak valid'),
+      income_source: Yup.object().nullable().required('Sumber pendapatan tidak valid'),
     });
 
     return (

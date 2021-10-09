@@ -127,23 +127,23 @@ class App extends Component {
           <Route path="/about" component={AboutUs} />
           <Route path="/contact" component={Contact} />
           <Route path="/how" component={HowItWorks} />
-          <Route path="/otp-verify" component={Otp} />
+          <Route path="/verify-otp" component={Otp} />
 
           <Route exact path="/forget-password/:token" component={ResetPassword} />
           <Route exact path="/email-verify/:code" component={SelectForm} />
           <RedirectRegister exact path="/investor-form-data-diri" component={DataDiri}/>
-          <RedirectRegister exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
+          <Route exact path="/investor-form-pendidikan-pekerjaan" component={Pendidikan}/>
           <RedirectRegister exact path="/investor-form-dokumen" component={Dokumen}/>
-          <RedirectRegister exact path="/investor-form-bank" component={Bank} />
-          <RedirectRegister exact path="/investor-form-preference" component={Preference}/>
+          <Route exact path="/investor-form-bank" component={Bank} />
+          <Route exact path="/investor-form-preference" component={Preference}/>
 
-          <RedirectRegister exact path="/startup-form-data-diri" component={DataDiri}/>
-          <RedirectRegister exact path="/startup-form-dokumen" component={Dokumen}/>
-          <RedirectRegister exact path="/startup-form-informasi-perusahaan" component={InfoPerusahaan}/>
-          <RedirectRegister exact path="/startup-form-informasi-finansial" component={InfoFinansial}/>
-          <RedirectRegister exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
-          <RedirectRegister exact path="/startup-form-media" component={Media} />
-          <RedirectRegister exact path="/startup-form-syarat" component={Syarat} />
+          <Route exact path="/startup-form-data-diri" component={DataDiri}/>
+          <Route exact path="/startup-form-dokumen" component={Dokumen}/>
+          <Route exact path="/startup-form-informasi-perusahaan" component={InfoPerusahaan}/>
+          <Route exact path="/startup-form-informasi-finansial" component={InfoFinansial}/>
+          <Route exact path="/startup-form-informasi-nonfinansial" component={InfoNonFinansial}/>
+          <Route exact path="/startup-form-media" component={Media} />
+          <Route exact path="/startup-form-syarat" component={Syarat} />
 
           <PrivatRoute exact path="/cart" component={Cart} />
           

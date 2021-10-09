@@ -19,8 +19,8 @@ class Bank extends Component {
   }
 
   componentDidMount(){
-    this.checkProfile()
-    this.getBanks()
+    // this.checkProfile()
+    // this.getBanks()
   }
 
   getBanks = () =>{
@@ -68,10 +68,10 @@ class Bank extends Component {
     }
 
     const schemaObj = Yup.object({
-      bank: Yup.object().required(),
-      branch: Yup.string().required(),
-      name: Yup.string().required(),
-      number: Yup.string().required(),
+      bank: Yup.object().required('Nama bank tidak valid'),
+      branch: Yup.string().required('Kantor cabang tidak valid'),
+      name: Yup.string().required('Nama pemilik rekening tidak valid'),
+      number: Yup.string().required('No. Rekening tidak valid'),
     });
 
     return (

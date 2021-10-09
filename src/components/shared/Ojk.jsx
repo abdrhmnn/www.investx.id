@@ -7,7 +7,7 @@ class Ojk extends Component {
     return (
       <div className="ojk">
         <div className="container">
-          <header> Attention </header>
+          <header>Attention</header>
           <div className="row">
             <div className="col-md-6  border-right">
               <p>

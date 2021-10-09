@@ -25,7 +25,7 @@ class Preference extends Component {
   };
 
   componentDidMount(){
-    this.checkProfileAll()
+    // this.checkProfileAll()
     this.getObjOpt()
   }
 
@@ -93,9 +93,9 @@ class Preference extends Component {
       }
 
     const schemaObj = Yup.object({
-      budget_preference: Yup.object().nullable().required(),
-      risk_preference: Yup.object().nullable().required(),
-      information_source: Yup.object().nullable().required(),
+      budget_preference: Yup.object().nullable().required('Budget Investasi tidak valid'),
+      risk_preference: Yup.object().nullable().required('Preferensi resiko investasi tidak valid'),
+      information_source: Yup.object().nullable().required('Preferensi investasi tidak valid'),
       investment_preference : Yup.array().min(1, 'Harus di isi minimal 1')
     });
 

@@ -28,7 +28,7 @@ class InfoNonFinansial extends Component {
 
   componentDidMount(){
     this.getObjOpt()
-    this.checkFormCompany()
+    // this.checkFormCompany()
   }
 
   checkFormCompany = ()=>{
@@ -88,14 +88,14 @@ class InfoNonFinansial extends Component {
     }
 
     const schemaObj = Yup.object({
-      financial_data_collection_system: Yup.object().nullable().required(),
-      credit_reputation: Yup.object().nullable().required(),
-      market_position: Yup.object().nullable().required(),
-      future_strategy: Yup.object().nullable().required(),
-      location_status: Yup.object().nullable().required(),
-      competition_level: Yup.object().nullable().required(),
-      managerial_skill: Yup.object().nullable().required(),
-      technical_skill: Yup.object().nullable().required(),
+      financial_data_collection_system: Yup.object().nullable().required('Sistem pencatatan keuangan tidak valid'),
+      credit_reputation: Yup.object().nullable().required('Reputasi pinjaman bank tidak valid'),
+      market_position: Yup.object().nullable().required('Posisi pasar tidak valid'),
+      future_strategy: Yup.object().nullable().required('Strategi tidak valid'),
+      location_status: Yup.object().nullable().required('Lokasi tidak valid'),
+      competition_level: Yup.object().nullable().required('Tingkat persaingan tidak valid'),
+      managerial_skill: Yup.object().nullable().required('Kemampuan manajerial tidak valid'),
+      technical_skill: Yup.object().nullable().required('Kemampuan teknis tidak valid'),
     });
 
     const inputFieldNonFinansial = [

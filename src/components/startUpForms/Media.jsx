@@ -26,7 +26,7 @@ class Media extends Component {
   }
 
   componentDidMount(){
-    this.checkFormCompany()
+    // this.checkFormCompany()
   }
 
   checkFormCompany = ()=>{

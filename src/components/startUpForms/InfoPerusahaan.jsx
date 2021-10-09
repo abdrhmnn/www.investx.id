@@ -72,7 +72,7 @@ class InfoPerusahaan extends Component {
   componentDidMount(){
     this.getObjOpt()
     this.apiProvince()
-    this.checkall()
+    // this.checkall()
   }
   
   checkall =()=>{
@@ -275,22 +275,22 @@ class InfoPerusahaan extends Component {
     }
 
     const schemaObj = Yup.object({
-      name: Yup.string().required(),
-      trademark: Yup.string().required(),
-      business_type: Yup.object().nullable().required(),
+      name: Yup.string().required('Nama perusahaan tidak valid'),
+      trademark: Yup.string().required('Merk dagang tidak valid'),
+      business_type: Yup.object().nullable().required('Jenis usaha tidak valid'),
       address: Yup.string().required(),
-      province: Yup.object().nullable().required(),
-      regency: Yup.object().nullable().required(),
-      district: Yup.object().nullable().required(),
-      village: Yup.object().nullable().required(),
+      province: Yup.object().nullable().required('Provinsi tidak valid'),
+      regency: Yup.object().nullable().required('Kota/Kabupaten tidak valid'),
+      district: Yup.object().nullable().required('Kecamatan tidak valid'),
+      village: Yup.object().nullable().required('Kelurahan tidak valid'),
 
-      prospectus: Yup.object().nullable().required(),
-      logo: Yup.object().nullable().required(),
-      company_age: Yup.number().typeError("value have to be number").required(),
-      number_of_branches: Yup.number().typeError("value have to be number").required(),
-      number_of_employees: Yup.number().typeError("value have to be number").required(),
+      prospectus: Yup.object().nullable().required('Prospectus tidak valid'),
+      logo: Yup.object().nullable().required('Logo tidak valid'),
+      company_age: Yup.number().typeError("value have to be number").required('Lama usaha tidak valid'),
+      number_of_branches: Yup.number().typeError("value have to be number").required('Jumlah cabang tidak valid'),
+      number_of_employees: Yup.number().typeError("value have to be number").required('Jumlah karyawan tidak valid'),
       description: Yup.string().required().max(500),
-      website_url: Yup.string().required().url(),
+      website_url: Yup.string().required('URL Website tidak valid').url(),
     });
 
     const locationInputForms =[
@@ -307,7 +307,7 @@ class InfoPerusahaan extends Component {
       <div className="all-forms-style">
         <Loading onOpen={this.state.loading}/>
         <HeaderStartupForm backPath='/' activeStep={3} />
-        {this.state.modalSyarat ? <Syarat onClose={()=>this.setState({modalSyarat : false})}/> : null}
+        {/* {this.state.modalSyarat ? <Syarat onClose={()=>this.setState({modalSyarat : false})}/> : null} */}
 
         <div className="box-form-data">
           <p className="title">Informasi Perusahaan</p>

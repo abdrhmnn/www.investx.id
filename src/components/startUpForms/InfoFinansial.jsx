@@ -37,8 +37,8 @@ class InfoFinansial extends Component {
   };
 
   componentDidMount(){
-    this.getBanks()
-    this.checkFormCompany()
+    // this.getBanks()
+    // this.checkFormCompany()
   }
   
   checkFormCompany = ()=>{
@@ -118,10 +118,10 @@ class InfoFinansial extends Component {
       paid_up_capital: Yup.number().typeError("value have to be number").required(),
       book_value_per_share: Yup.number().typeError("value have to be number").required(),
 
-      bank: Yup.object().nullable().required(),
-      branch: Yup.string().required(),
-      name: Yup.string().required(),
-      number: Yup.number().typeError("value have to be number").required(),
+      bank: Yup.object().nullable().required('Nama bank tidak valid'),
+      branch: Yup.string().required('Kantor cabang tidak valid'),
+      name: Yup.string().required('Nama pemilik cabang tidak valid'),
+      number: Yup.number().typeError("value have to be number").required('No. Rekening tidak valid'),
     });
 
     const formInputFinansial = [
