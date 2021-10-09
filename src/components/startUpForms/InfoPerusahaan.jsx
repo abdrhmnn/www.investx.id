@@ -22,7 +22,7 @@ import API from "../../api";
 import Loading from "../shared/Loading";
 import Swal from "sweetalert2";
 // import ModalTemplate from "../shared/ModalTemplate";
-import Syarat from "./Syarat";
+// import Syarat from "./Syarat";
 import helper from "../../helpers/helper";
 
 class InfoPerusahaan extends Component {
